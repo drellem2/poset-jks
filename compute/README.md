@@ -24,3 +24,13 @@ splitting cycles of linear extensions span H_P (n ≤ 6). Findings:
 
     python3 splitting_cycles.py --nmax 5 --nmax-comb 6 > output/splitting_cycles.txt   # ~4 s
     python3 -m unittest test_splitting_cycles
+
+`poset_lie_structure.py` checks the steps of the proof of the character
+identity in `../notes/global_module_operations_plethlog.md` (T1-T5 for all
+posets n <= 6, and n = 7, 8 examples), the global module HH_n by direct
+homology against eq. (frob) (n <= 6), the primitives of the Hopf monoid of
+posets with a linear extension (n <= 4), and the e_zeta-model bracket test.
+Exit status 0 iff every check passes. Run from this directory:
+
+    python3 poset_lie_structure.py > output/poset_lie_structure.txt   # ~40 s
+    python3 -m unittest test_poset_lie_structure

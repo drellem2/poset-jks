@@ -35,3 +35,10 @@ code in [`compute/`](compute/) (`cd compute && python3 poset_jks_check.py --help
   cycles for all posets n ≤ 6. Findings, literature/novelty check and
   bibliography corrections:
   [`notes/literature_novelty_jks_maps.md`](notes/literature_novelty_jks_maps.md).
+- `cd compute && python3 poset_lie_structure.py` (plain Python, ~40 s) — checks every
+  step of a proposed proof of the character identity for all posets (Weisner's
+  theorem on the orbit partition; n ≤ 6 plus n = 7, 8 examples), direct homology of
+  the global module HH_n against eq. (frob) for n ≤ 6 (fixes the sign twist), the
+  primitives of the Hopf monoid of posets with a linear extension (n ≤ 4), and the
+  e_ζ-model bracket test. Findings (proof pending independent audit):
+  [`notes/global_module_operations_plethlog.md`](notes/global_module_operations_plethlog.md).

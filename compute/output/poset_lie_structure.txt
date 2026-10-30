@@ -1,0 +1,86 @@
+== theorem steps T1-T5, all unlabeled posets with n <= 6 ==
+  n=1: 1 posets, 1 (poset, class) pairs
+  n=2: 2 posets, 3 (poset, class) pairs
+  n=3: 5 posets, 9 (poset, class) pairs
+  n=4: 16 posets, 34 (poset, class) pairs
+  n=5: 63 posets, 144 (poset, class) pairs
+  n=6: 318 posets, 758 (poset, class) pairs
+  T1           : pass   544   fail 0
+  T2           : pass   544   fail 0
+  T3           : pass   544   fail 0
+  T4_lie       : pass   949   fail 0
+  T4_formula   : pass   949   fail 0
+  T5           : pass   405   fail 0
+  control_no_mu: pass   936   fail 13
+== larger examples (g != 1 only) ==
+  antichain_7            n=7 g=(6 7)                    (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(5 6 7)                  (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(4 5)(6 7)               (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(4 5 6 7)                (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(3 4)(5 6 7)             (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(3 4 5 6 7)              (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(2 3)(4 5)(6 7)          (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(2 3)(4 5 6 7)           (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(2 3 4)(5 6 7)           (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(2 3 4 5 6 7)            (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(1 2)(3 4)(5 6 7)        (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(1 2)(3 4 5 6 7)         (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(1 2 3)(4 5 6 7)         (-1)^(n-3)sgn*mu=+0  OK
+  antichain_7            n=7 g=(1 2 3 4 5 6 7)          (-1)^(n-3)sgn*mu=-1  OK
+  2-chains x3 + point    n=7 g=(3 5)(4 6)               (-1)^(n-3)sgn*mu=+0  OK
+  2-chains x3 + point    n=7 g=(1 3 5)(2 4 6)           (-1)^(n-3)sgn*mu=+0  OK
+  2-chains x4            n=8 g=(5 7)(6 8)               (-1)^(n-3)sgn*mu=+0  OK
+  2-chains x4            n=8 g=(3 5 7)(4 6 8)           (-1)^(n-3)sgn*mu=+0  OK
+  2-chains x4            n=8 g=(1 3)(2 4)(5 7)(6 8)     (-1)^(n-3)sgn*mu=-10  OK
+  2-chains x4            n=8 g=(1 3 5 7)(2 4 6 8)       (-1)^(n-3)sgn*mu=+0  OK
+  4-chains x2            n=8 g=(1 5)(2 6)(3 7)(4 8)     (-1)^(n-3)sgn*mu=-1  OK
+  V x2 + 2-chain         n=8 g=(5 6)                    (-1)^(n-3)sgn*mu=+0  OK
+  V x2 + 2-chain         n=8 g=(2 3)(5 6)               (-1)^(n-3)sgn*mu=+0  OK
+  V x2 + 2-chain         n=8 g=(1 4)(2 5)(3 6)          (-1)^(n-3)sgn*mu=+0  OK
+  V x2 + 2-chain         n=8 g=(1 4)(2 5 3 6)           (-1)^(n-3)sgn*mu=+0  OK
+  failures: none   [8.2s]
+== direct top homology and the global module HH_n, 3 <= n <= 6 ==
+  a_n = [1, 2, 7, 40, 357, 4824]   b_n = n[x^n] log A = [1, 3, 16, 131, 1561, 26532]
+  n=3: sum over labeled P of dim H_P = 32; (n-1)! b_n = 32; dim H_P != e_C(P) for 0 posets
+    class (3,)               chi_HH =       -1  frob(twisted) =       -1  OK
+    class (2, 1)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (1, 1, 1)          chi_HH =      +32  frob(twisted) =      +32  OK
+  n=4: sum over labeled P of dim H_P = 786; (n-1)! b_n = 786; dim H_P != e_C(P) for 0 posets
+    class (4,)               chi_HH =       +0  frob(twisted) =       +0  OK
+    class (3, 1)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (2, 2)             chi_HH =       -6  frob(twisted) =       -6  OK
+    class (2, 1, 1)          chi_HH =       +0  frob(twisted) =       +0  OK
+    class (1, 1, 1, 1)       chi_HH =     +786  frob(twisted) =     +786  OK
+  n=5: sum over labeled P of dim H_P = 37464; (n-1)! b_n = 37464; dim H_P != e_C(P) for 0 posets
+    class (5,)               chi_HH =       -1  frob(twisted) =       -1  OK
+    class (4, 1)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (3, 2)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (3, 1, 1)          chi_HH =       +0  frob(twisted) =       +0  OK
+    class (2, 2, 1)          chi_HH =       +0  frob(twisted) =       +0  OK
+    class (2, 1, 1, 1)       chi_HH =       +0  frob(twisted) =       +0  OK
+    class (1, 1, 1, 1, 1)    chi_HH =   +37464  frob(twisted) =   +37464  OK
+  n=6: sum over labeled P of dim H_P = 3183840; (n-1)! b_n = 3183840; dim H_P != e_C(P) for 0 posets
+    class (6,)               chi_HH =       -1  frob(twisted) =       -1  OK   <- twist matters; untwisted predicts +1
+    class (5, 1)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (4, 2)             chi_HH =       +0  frob(twisted) =       +0  OK
+    class (4, 1, 1)          chi_HH =       +0  frob(twisted) =       +0  OK
+    class (3, 3)             chi_HH =       -9  frob(twisted) =       -9  OK
+    class (3, 2, 1)          chi_HH =       +0  frob(twisted) =       +0  OK
+    class (3, 1, 1, 1)       chi_HH =       +0  frob(twisted) =       +0  OK
+    class (2, 2, 2)          chi_HH =     +128  frob(twisted) =     +128  OK   <- twist matters; untwisted predicts -128
+    class (2, 2, 1, 1)       chi_HH =       +0  frob(twisted) =       +0  OK
+    class (2, 1, 1, 1, 1)    chi_HH =       +0  frob(twisted) =       +0  OK
+    class (1, 1, 1, 1, 1, 1) chi_HH = +3183840  frob(twisted) = +3183840  OK
+  all homology checks pass: True   [29.2s]
+== Hopf monoid Q (posets with a linear extension), n <= 4 ==
+  n=1: dim Q[n] = 1, dim Prim(Q)[n] = 1, (n-1)! b_n = 1; character = ch V_n (untwisted): True
+  n=2: dim Q[n] = 4, dim Prim(Q)[n] = 3, (n-1)! b_n = 3; character = ch V_n (untwisted): True
+  n=3: dim Q[n] = 42, dim Prim(Q)[n] = 32, (n-1)! b_n = 32; character = ch V_n (untwisted): True
+  n=4: dim Q[n] = 960, dim Prim(Q)[n] = 786, (n-1)! b_n = 786; character = ch V_n (untwisted): True
+  all Hopf checks pass: True   [0.1s]
+== bracket test, e_zeta model, |P| + |Q| <= 5 ==
+  pairs (P,Q) tested: 71
+  ker(W_P -> Lie(P)) = 0 (nothing to test): 51
+  ker != 0, commutator descends: 0
+  ker != 0, commutator does NOT descend: 20 (of which P is an antichain: 12)
+ALL CHECKS PASS: True
