@@ -80,3 +80,11 @@ directory:
 
     python3 conjecture_s.py --nmax 6 --ne 6 --nrho 5 > output/conjecture_s.txt   # ~3 s
     python3 -m unittest test_conjecture_s
+
+`second_read_globalind.py` checks the unconditional identity
+(+)_P Lie(P) ~= Ind_{C_n}^{S_n}(zeta (x) C[B_n]) by direct linear algebra in
+C[S_n], with two positive controls (n <= 5). Findings: section C of
+`../notes/audit_cyclic_compatible_posets_bn.md`. Run from this directory:
+
+    python3 second_read_globalind.py 5 > output/second_read_globalind.txt   # ~2 s
+    python3 -m unittest test_second_read_globalind

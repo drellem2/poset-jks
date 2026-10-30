@@ -184,3 +184,89 @@ All of these agree with the brute-force bijection check.
    (§A) to §5. This pins down that the conjecture enters only through
    H_n ≅ sgn⊗⊕Lie(P).
 4. Optional: cite a source for the "cycle of irreducibles" remark, or drop it.
+
+## C. Second read of §A (mg-95e4d)
+
+**Verdict: CONFIRMED.** The proof in §A is correct as written. It proves
+⊕_{P on [n]} Lie(P) ≅ Ind_{C_n}^{S_n}(ζ ⊗ C[B_n]) unconditionally (PROVEN),
+with B_n the bn note's set. Nothing in it is BROKEN. Two small points are
+left implicit; neither affects the conclusion (see below).
+
+**Re-derivation.** Conventions as in the seed note: a word w = w_1⋯w_n is the
+permutation i ↦ w_i, so w∘γ is the word (w_2, …, w_n, w_1) and τ∘w is the
+word (τw_1, …, τw_n). With τP the relabeled poset (τa <_{τP} τb ⇔ a <_P b),
+w ∈ Lin(P) ⇔ τw ∈ Lin(τP), so Lin(τP) = τ Lin(P).
+
+1. γe_ζ = (1/n) Σ_j ζ^{−j} γ^{j+1} = ζ e_ζ, so wγ^j e_ζ = ζ^j w e_ζ. The
+   vector w e_ζ is supported on the coset wC_n with all coefficients nonzero,
+   and distinct cosets are disjoint. So Lie(P) has basis
+   {w_O e_ζ : O a right coset with O ∩ Lin(P) ≠ ∅}, for any choice of
+   representatives w_O. This is (posetLiedim) of the seed note.
+2. Left multiplication by τ maps Lie(P) onto Lie(τP), since τ Lin(P) =
+   Lin(τP). In ⊕_P Lie(P) (external sum, as in the seed note's HH_n line),
+   τ sends the basis vector v_{(P,O)} = w_O e_ζ to τw_O e_ζ. Since τw_O ∈ τO,
+   τw_O = w_{τO} γ^j for some j, giving ζ^j v_{(τP,τO)}. And (τP, τO) is again
+   in X = {(P, O) : O ∩ Lin(P) ≠ ∅}, because τO ∩ Lin(τP) = τ(O ∩ Lin(P)).
+   So the representation is monomial on X.
+3. The map X → S_n/C_n, (P, O) ↦ O, is equivariant for left multiplication.
+   S_n acts transitively on right cosets, and the stabilizer of O_0 = C_n is
+   C_n. So ⊕_P Lie(P) = ⊕_O V_O with τV_O = V_{τO}: a system of imprimitivity.
+   Hence ⊕_P Lie(P) ≅ Ind_{C_n}^{S_n} V_{O_0}.
+4. The fibre over O_0. Here γ^j is the word (1+j, …, n, 1, …, j) = L_j of the
+   bn note, so V_{O_0} has basis {v_P = e_ζ ∈ Lie(P) : some L_j ∈ Lin(P)},
+   indexed by exactly B_n. With w_{O_0} = id, γ^j v_P = γ^j e_ζ (in summand
+   γ^j P) = ζ^j v_{γ^j P}. The bn note's σ is the same permutation as γ
+   (σ∘L_c = L_{c+1}, i.e. γγ^c = γ^{c+1}). So V_{O_0} ≅ ζ ⊗ C[B_n] with C_n
+   acting on C[B_n] by the bn note's relabeling. ∎
+
+Dimension check: (n−1)! · b_n = Σ_P e_C(P), which is Prop. 1 of the bn note.
+
+**The consequences drawn in §A also hold.**
+- (globalind) ⇔ HH_n ≅ sgn ⊗ ⊕_P Lie(P). This holds because sgn ⊗ (·) is
+  invertible.
+- (mainconj) for one P in each S_n-orbit of labeled posets implies
+  (globalind). On both sides, the summands over one orbit form
+  Ind_{Aut P}^{S_n} of the Aut(P)-module of a single summand: relabeling
+  permutes the summands, and the stabilizer of the summand P is Aut(P). Then
+  Ind_G(sgn|_G ⊗ M) ≅ sgn ⊗ Ind_G M.
+- The opposite cyclic order. Swapping γ for γ^{−1} swaps ζ for ζ^{−1} and
+  conjugates the character. Characters of S_n-modules are rational-valued,
+  so the two induced modules are isomorphic.
+
+**Points left implicit (not errors).**
+- The orbit argument requires the isomorphism in (mainconj) to be
+  Aut(P)-equivariant, which is how the seed note states it. It does *not*
+  require the isomorphisms for different P to be compatible: Ind over each
+  orbit only uses the one representative. The seed note's word "natural" is
+  not needed for this step.
+- The S_n-action on HH_n is the one induced by relabeling, as the seed note
+  defines it ("Relabeling permutes the summands"). §A uses that action, so
+  no sign convention on homology enters.
+
+**COMPUTED, independent of the argument above.** The script
+`compute/second_read_globalind.py` does not use the monomial basis. For each
+cycle type it picks one τ. For each τ-fixed labeled poset P, it row-reduces the
+spanning set {w e_ζ : w ∈ Lin(P)} in C[S_n], checks that the span is τ-stable,
+and takes the trace of τ on it. It compares the total with the Frobenius
+formula for Ind_{C_n}^{S_n}(ζ ⊗ C[B_n]). There, B_n is built straight from its
+definition and the character of the fibre at γ^j is ζ^j · #{P ∈ B_n : γ^j P = P}.
+
+    python3 compute/second_read_globalind.py 5    # ~2 s; output in compute/output/second_read_globalind.txt
+
+The two sides agree for every cycle type for 2 ≤ n ≤ 5. For example, at n = 4
+both give 786 at the identity and −6 at cycle type (2,2); at n = 5 both give
+37464 at the identity and −1 at a 5-cycle. Two positive controls must fail,
+and do for n = 3, 4, 5:
+- ζ replaced by the trivial character;
+- B_n replaced by the set of all labeled posets.
+
+At n = 2 every poset is in B_2, so the second control cannot fail there.
+The script exits 0 only if the identity holds and both controls fail.
+
+**Status of the successor items listed above.** Items 1 and 2 were applied
+to `notes/cyclic_compatible_posets_bn.md` in mg-95e4d:
+- the summary now says b_n is brute-forced for n ≤ 7 and b_8 comes from
+  Lemma 1(c);
+- the proof of Prop. 1 now says C_n.
+
+Items 3 and 4 remain open.

@@ -5,7 +5,9 @@ eq. (bnlog), and section "Prime-degree sanity check".
 
 **Summary.**
 - With the definition pinned down in §1, the note's values of a_n (n ≤ 8) and
-  b_n (n ≤ 8) are reproduced by brute force (COMPUTED).
+  b_n (n ≤ 7) are reproduced by brute force (COMPUTED). The value b_8 is
+  computed as 8 Σ_{natural Q} 1/|C(Q)|, which equals b_8 by Lemma 1(c)
+  (PROVEN, §3.1); B_8 itself is not enumerated.
 - The identity b_n = n[x^n] log A(x) is PROVEN (§3) by a bijection with
   "cyclic factorizations" into irreducible pieces.
 - Σ_P e_C(P) = (n−1)! b_n is PROVEN (§2), so the dimension of the right-hand
@@ -61,7 +63,7 @@ reproduces every value the note gives.
 
 **Proposition 1 (PROVEN).** Σ_{P labeled on [n]} e_C(P) = (n−1)! · b_n.
 
-*Proof.* S_n acts on words by right rotation, w ↦ w∘γ, and e_C(P) counts the
+*Proof.* C_n acts on words by right rotation, w ↦ w∘γ, and e_C(P) counts the
 orbits O of this action that meet Lin(P). Swapping the order of summation:
 
     Σ_P e_C(P) = Σ_O #{P : O ∩ Lin(P) ≠ ∅}.

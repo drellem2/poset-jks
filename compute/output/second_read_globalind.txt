@@ -1,0 +1,26 @@
+n=2: #posets=3 b_n=3
+   (2,): direct trace -1.000000-0.000000i   Ind -1.000000+0.000000i
+   (1, 1): direct trace +3.000000+0.000000i   Ind +3.000000+0.000000i
+   identity holds: True; control zeta->1 agrees: False; control B_n->all posets agrees: True
+n=3: #posets=19 b_n=16
+   (3,): direct trace -1.000000-0.000000i   Ind -1.000000+0.000000i
+   (2, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (1, 1, 1): direct trace +32.000000+0.000000i   Ind +32.000000+0.000000i
+   identity holds: True; control zeta->1 agrees: False; control B_n->all posets agrees: False
+n=4: #posets=219 b_n=131
+   (4,): direct trace -0.000000+0.000000i   Ind -0.000000+0.000000i
+   (3, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (2, 2): direct trace -6.000000-0.000000i   Ind -6.000000+0.000000i
+   (2, 1, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (1, 1, 1, 1): direct trace +786.000000+0.000000i   Ind +786.000000+0.000000i
+   identity holds: True; control zeta->1 agrees: False; control B_n->all posets agrees: False
+n=5: #posets=4231 b_n=1561
+   (5,): direct trace -1.000000-0.000000i   Ind -1.000000+0.000000i
+   (4, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (3, 2): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (3, 1, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (2, 2, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (2, 1, 1, 1): direct trace +0.000000+0.000000i   Ind +0.000000+0.000000i
+   (1, 1, 1, 1, 1): direct trace +37464.000000-0.000000i   Ind +37464.000000+0.000000i
+   identity holds: True; control zeta->1 agrees: False; control B_n->all posets agrees: False
+ALL CHECKS PASSED
