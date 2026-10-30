@@ -1,0 +1,204 @@
+# Lean formalization of the poset JKS theorem: plan, step 1
+
+This directory holds a Lean 4 + Mathlib project. It states the main theorem of
+`notes/poset_jks_theorem.tex` (Theorem `thm:main`) and a first, homology-free milestone. All
+proofs of the stated results are `sorry`. This step provides the scaffold, the ingredient map,
+the choice of route, and faithful statements. It proves nothing about the theorem itself.
+
+* Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
+  (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
+* `lake build` succeeds. It reports 12 `sorry` warnings and no errors.
+* No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
+
+## Reproduce
+
+```sh
+cd lean
+lake exe cache get                         # fetch prebuilt Mathlib
+lake build                                 # builds PosetJKS; expect 12 "declaration uses sorry"
+lake env lean scripts/PrintAxioms.lean     # the #print axioms table below
+grep -rn "^  sorry" PosetJKS               # the sorry list below
+```
+
+## Files
+
+| File | Contents |
+|---|---|
+| `PosetJKS/Basic.lean` | words `Fin n ≃ α`; the ambient space `ℂ[S_n]` (`Alg`); `rot` (right mult. by `γ^j`); `wEζ` (`w e_ζ`); `Lin(P)` (`IsLinExt`); unions of components; shuffles `u ⧢ v`; `Sh_n`, `W_P`, `R_P`, `PLie(P)`; `Cyc(P)`, `e_C(P)`, `r_g(C)`, the class sum `∑_{gC=C} ζ^{r_g(C)}`; the `Aut(P)` action (`relabel`) and its invariance of `PLie`, `W_P`, `R_P` (**all proved**) |
+| `PosetJKS/OrderComplex.lean` | oriented chains of the order complex (`Chains`, `bd`), reduced homology `redHom`; order-preserving partitions (`IsOrderPreserving`, `OP`, `ProperOP`); `H_P` (`HP`); the `Aut(P)` action on the proper part and on `H_P` (`actProper`, `actHP`); the fixed lattice `OP(P)^g` and `μ(OP(P)^g)` (`muFixed`) (**all proved**) |
+| `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1 (statements `sorry`) |
+| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (statements `sorry`) |
+| `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem |
+
+## 1. Ingredient map: what Mathlib has, what must be built
+
+These are the declarations I actually found in the pinned Mathlib by grepping
+`.lake/packages/mathlib/Mathlib`. "Absent" means a targeted grep found nothing. It does not
+prove that nothing exists under another name. Sizes are rough line counts for the remaining
+work.
+
+| Ingredient | In Mathlib (found) | Built here (step 1) | Still to build | Size |
+|---|---|---|---|---|
+| **`OP(P)`** | `Setoid` with `Setoid.completeLattice` (refinement order; `Setoid.bot_def`: `⊥` is `=`, `Setoid.top_def`), `Setoid.comap`, `Setoid.ker`, `Finpartition`, `Relation.ReflTransGen` | `IsOrderPreserving` (acyclic quotient), `OP`, `ProperOP`, `OPFixed`, `actSetoid`, `actProper : ProperOP ≃o ProperOP`; `isOrderPreserving_bot/top`; `OPFixed.bot_ne_top` | `OP(P)` is a lattice with meet the partition meet; `OP(P)^g` is a lattice containing `O_g`; joins with `O_g`; `{x : x ∨ O_g = 1̂} = X(P,g)` (note, Lemmas `lem:orbitquot`, `lem:lattice`) | 400–700 |
+| **Order complex, reduced homology** | `PreAbstractSimplicialComplex` / `AbstractSimplicialComplex` (faces only, no homology); `SSet`, `CategoryTheory.nerve`, `mem_nerve_nonDegenerate_iff_strictMono`; `AlternatingFaceMapComplex.obj`, `alternatingFaceMapComplex`, `SimplicialObject.Augmented`, `normalizedMooreComplex`; `AlgebraicTopology.singularHomologyFunctor`; `HomologicalComplex.eulerChar`, `homologyEulerChar` (definitions only). **Absent:** simplicial homology of a simplicial complex, the order complex of a poset, geometric realisation of a poset, wedges of spheres, homotopy types of complexes | hand-rolled augmented oriented chain complex on chains `Fin m ↪o L`: `Chains`, `face`, `bd`, `cycles`, `boundaries`, `redHom`; functoriality `chainMap`, `bd_chainMap`, `homMap` | `∂∘∂ = 0` (not needed for the statements; needed for every proof) ~60; optional bridge to `alternatingFaceMapComplex (nerve L)` (normalised) ~300+ | 60–400 |
+| **Möbius function, P. Hall** | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
+| **Hopf trace formula** | `LinearMap.trace`, `LinearMap.trace_restrict_eq_of_forall_mem` (PID file), `HomologicalComplex.eulerChar` (definition). **Absent:** Euler–Poincaré `χ(C) = χ(H)`, the Hopf trace formula, additivity of trace over `0 → U → V → V/U → 0` | — | Pure linear algebra on a bounded complex of finite-dimensional spaces with a chain endomorphism; specialise to `Chains`/`redHom`. Uses `LinearMap.trace_eq_matrix_trace` with an adapted basis | 300–500 |
+| **Jenča–Sarkoci** (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C} S^{n-3}`) | Nothing usable: no homotopy types of finite complexes, no shellability or discrete Morse theory, no Quillen fibre lemma | statement of its homological content only: `jencaSarkoci_homology` (`H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)`) | The homotopy statement cannot be expressed in current Mathlib. The homological content needs a combinatorial acyclicity proof, e.g. a shelling or acyclic matching of `Δ(\widehat{OP(P)})`, or a formal transcription of the Jenča–Sarkoci argument. **This is the main obstacle of the topological route.** | 2000–5000+, research-level |
+| **`Lie(P) = span{w e_ζ}`** | `Finsupp`, `Finsupp.lmapDomain`, `Finsupp.linearCombination`, `MonoidAlgebra`, `FreeLieAlgebra`, `finRotate`, `Equiv.Perm.sign`, `IsPrimitiveRoot`, `IsPrimitiveRoot.pow_eq_one_iff_dvd`, `IsPrimitiveRoot.geom_sum_eq_zero`. **Absent:** shuffle algebra / shuffle product on `ℂ[S_n]`, Ree's theorem `Lie_n^⊥ = Sh_n`, Wachs's comb basis | `Word`, `Alg` (`ℂ[S_n]` as `Word α →₀ ℂ`), `rot`, `wEζ`, `PLie`, `shuffle`, `Sh`, `W`, `R`, `cyc`, `eC`, `classRot`, `fixedClassSum`, `prefixSet`, `restrict`, `IsCut` | basis `{w_C e_ζ}` of `PLie(P)` (Lemma `lem:liechar`) ~200; contraction operator `E_{a,x}` and `E_{a,x}(Sh) ⊆ Sh` (note's "key tool") ~300; Prop. Φ (Wachs + Ree), only for Theorem S(c),(d) ~1500+ | 500 (milestone) / +1500 (Φ) |
+| **`Aut(P)` actions, characters** | `α ≃o α` is a group (`RelIso` group instance, `Mathlib/Algebra/Order/Group/End.lean`), `orderOf`; `Representation`, `Representation.character`, `Representation.char_iso`, `FDRep.character`, `FDRep.char_iso`, `FDRep.char_orthonormal`, `FDRep.simple_iff_char_is_norm_one`, Maschke `MonoidAlgebra.Submodule.exists_isCompl`. **Absent:** "equal characters imply isomorphic" for finite groups over `ℂ` (only iso ⇒ equal characters, `char_iso`) | `relabel`, `relabel_mem_PLie`, `relabel_mem_W`, `relabel_mem_R` (all proved); `actPLie`, `actMP`, `actHP`, `actProper` | equal characters ⇒ isomorphic (Maschke + orthonormality; multiplicities read off by inner products) ~300–500 | 300–500 |
+
+## 2. Route comparison and recommendation
+
+**Topological route (Proofs I and II).** The proof is tr(`g`|`H_P`) = `(-1)^{n-3} μ(OP(P)^g)`
+(Hopf + Hall + Jenča–Sarkoci), then the Möbius computation via Weisner (Proof I) or Crapo
+(Proof II), the Lie-side character computation, and "equal characters ⇒ isomorphic". Hall, Hopf,
+Weisner and character theory are all finite combinatorics or linear algebra. Each is a moderate
+self-contained project, listed above. But the route cannot close without Jenča–Sarkoci, even in
+its homological form, and nothing in Mathlib comes close to supporting it. It is a large,
+research-level formalization, and it is on the critical path of *both* proofs of (mainiso) and
+of Theorem S(c),(d).
+
+**Combinatorial targets.**
+
+* *The character identity (characterconj)* needs no homology. It is an identity between a Möbius
+  value of the finite lattice `OP(P)^g` and a sum of roots of unity. It still needs the lattice
+  structure of `OP(P)` and `OP(P)^g` (Lemmas `lem:orbitquot`, `lem:lattice`), Weisner, the
+  interval and base-case lemmas, the Möbius-side Proposition `prop:Mside`, and the Lie-side
+  Proposition `prop:Lside` with Ramanujan sums. That is substantial lattice and Möbius
+  infrastructure, of which Mathlib supplies only `IncidenceAlgebra.mu`.
+* *Theorem S(a),(b), Theorem Ψ, Corollary Ψ.1* (`PLie(P) ≅ ℂ[Lin P]/R_P`, explicit and
+  `Aut(P)`-equivariant, for every finite poset): **pure word combinatorics.** The proofs are
+  inductions on `n` through the contraction `P/{a,x}` and the operator `E_{a,x}`, plus
+  connectivity of `Lin(P)` under adjacent incomparable swaps and the cut/rotation description of
+  cyclic classes ([S, Lemmas 1–6], [Nat, §3.1]). They use none of Jenča–Sarkoci, Hall, Hopf,
+  Wachs or Ree. The audits ([AudS], [AudNat]) found no gaps, and the statements are
+  computer-checked for `n ≤ 6`.
+
+**Recommendation: first milestone M1 = Corollary Ψ.1, through Theorem S(a),(b) and Theorem Ψ**
+(`Milestone.lean`). Reasons:
+
+1. It needs no homology and no topology. Every ingredient is `Finsupp`, `List`, `Equiv.Perm` and
+   finite sums, and all the definitions it needs are already in place and compile, including the
+   `Aut(P)` actions with their invariance proofs.
+2. Its proof is short, elementary and fully written out in the notes, with independent audits.
+   The induction (contract an adjacent pair, apply `E_{a,x}`, read off coefficients) transcribes
+   directly. Generalising the ground set to an arbitrary finite type `α`, as done here, makes the
+   contraction `P/{a,x}` a new finite poset type without relabelling.
+3. It is a real piece of the main theorem. It is one of its two explicit models: an explicit
+   `Aut(P)`-isomorphism `PLie(P) ≅ ℂ[Lin P]/R_P`. With Theorem S(d), which needs Φ and
+   Jenča–Sarkoci, it gives (mainiso) with an explicit map.
+4. Its statements can be sanity-checked against the existing Python computations
+   (`compute/natural_isomorphism.py`, `compute/conjecture_s.py`).
+
+Then **M2 = the character identity (characterconj)**, also homology-free, after the `OP(P)`
+lattice and Weisner infrastructure. Then **M3 = Hall and Hopf** (finite combinatorics and linear
+algebra), which reduce (mainiso) to `jencaSarkoci_homology`, `trace_PLie` and "equal characters
+⇒ isomorphic". `jencaSarkoci_homology` stays the last open input. Alternatively, Theorem S(c)
+plus Prop. Φ gives the lower bound `dim H_P ≥ e_C(P)` without it. The matching upper bound and
+the vanishing outside degree `n-3` still need it.
+
+## 3. Statements: informal vs Lean (for a faithfulness audit)
+
+Common setup. The poset `P` is a finite type `α` with `[PartialOrder α]`, `[Fintype α]` and
+`[DecidableEq α]`, and `n = Fintype.card α`. `Aut(P)` is `α ≃o α`. `sgn(g)` is
+`Equiv.Perm.sign g.toEquiv` (`sgnC g`, cast to `ℂ`). `ζ` is any complex number with
+`IsPrimitiveRoot ζ n`.
+
+| Informal (note) | Lean | Remarks |
+|---|---|---|
+| poset on `[n]`; words `w = w_1⋯w_n ∈ S_n` | ground set any finite type `α`; `Word α := Fin n ≃ α`; `ℂ[S_n]` is `Alg α := Word α →₀ ℂ` | Equivalent after choosing a labelling `α ≃ [n]`. Left action (relabel letters) and right action (permute positions) are as in the note. `sgn(w)` of a word is labelling-dependent and is not used in the stated theorems |
+| `(wγ^j)_i = w_{i+j}` | `rot w j := (finRotate n ^ j).trans w`, so `rot w j i = w (i + j)` | |
+| `w e_ζ = (1/n)∑_j ζ^{-j} wγ^j` | `wEζ ζ w := ∑_{j<n} (n⁻¹ (ζ^j)⁻¹) • wd (rot w j)` | |
+| `Lin(P)` | `IsLinExt α w := ∀ i j, w i < w j → i < j` | |
+| union of components | `IsUnionOfComponents S := ∀ x y, x ≤ y → (x ∈ S ↔ y ∈ S)` | closed under comparability, i.e. a union of components of the comparability graph |
+| `π` order-preserving (`P/π` acyclic) | `IsOrderPreserving s`: mutual reachability along steps `a ≤ b` or `a ~ b` forces `x ~ y` | equivalent to acyclicity (see the module docstring of `OrderComplex.lean`) |
+| `OP(P)`, `0̂`, `1̂`, refinement order | subtype of `Setoid α`; `⊥` = discrete, `⊤` = one block, `≤` = refinement (Mathlib's order on `Setoid`) | |
+| `H_P = H̃_{n-3}(Δ(\widehat{OP(P)});ℂ)` | `HP α := redHom (ProperOP α) (n - 3)` = `ker ∂ / im ∂` on the augmented oriented chain complex of chains `Fin m ↪o ProperOP α` | `n - 3` is natural subtraction; every statement about `H_P` assumes `3 ≤ n`, as the note does |
+| `g` acts on `H_P` | `actHP g := homMap (actProper g) _` (pushforward of chains) | well-definedness proved |
+| `μ(OP(P)^g) = μ(0̂,1̂)` | `muFixed g := IncidenceAlgebra.mu ℤ (OPFixed.bot g) (OPFixed.top g)` | Mathlib's recursively defined Möbius function |
+| `Cyc(P)`, `e_C(P)` | `cyc α` = image of `coset` on `Lin(P)`; `eC α := (cyc α).card` | |
+| `r_g(C)` for `gC = C` | `classRot g C` = least `r < n` with `g ∘ w = rot w r` for some `w ∈ C` | the note proves `r` is independent of `w`; rotations `r < n` of a word are distinct, so `r` is unique |
+| `∑_{gC=C} ζ^{r_g(C)}` | `fixedClassSum ζ g` (sum over `C ∈ cyc α` with `C.image (· ∘ g) = C`) | |
+| `PLie(P)` | `PLie α ζ := span {wEζ ζ w : IsLinExt α w}` | |
+| **(characterconj)** `(-1)^{n-3} μ(OP(P)^g) = sgn(g) ∑_{gC=C} ζ^{r_g(C)}`, `n ≥ 3` | `character_identity (hn : 3 ≤ n) (hζ) g` | hypotheses: `n ≥ 3` and `ζ` primitive, both from the note |
+| **(mainiso)** `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules | `main_iso hn hζ : ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ g x, (e (actHP g x) : Alg α) = sgnC g • relabel g (e x)` | equivariance is stated in the ambient `ℂ[S_n]`, so no action on the submodule `PLie` is needed in the statement |
+| **(closed)** `sgn(g)(-1)^{n-3}μ = ∑ ζ^{r} = μ(o) ∑_{x∈F(P,g)} e_C(P|_{B_0(x)})` | `closed_formula hn hζ g B₀ hB₀` | `x ∈ F(P,g)` is `InF g x`: `x` is a set of blocks forming a partition into `orderOf g` blocks, each a nonempty union of components, `g` maps blocks to blocks, transitively. `B₀` is an arbitrary choice of one block per `x` (`hB₀`). The note says "any one block"; the Lean form quantifies over all choices. `e_C(P|_B)` is `eC ↥B` with the induced order |
+| `tr(g|H_P) = (-1)^{n-3}μ(OP(P)^g)` (Lemma `lem:homchar`) | `trace_HP hn g` | the note proves it *from* (A)–(C). Here it is stated outright |
+| `tr(g|PLie) = ∑ ζ^{r_g(C)}` (Lemma `lem:liechar`) | `trace_PLie hζ g` | |
+| (A) Jenča–Sarkoci | `jencaSarkoci_homology hn`: `H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)` | homological content only (all that the proofs use); the homotopy-type statement is not expressible in Mathlib today |
+| (B) P. Hall | `hall_mu_eq_reducedEuler L (h : ⊥ ≠ ⊤)` | the hypothesis `0̂ ≠ 1̂` belongs to the *cited result*, not to the main theorem. It is needed: for a one-point `L`, `μ = 1` while `χ̃(∅) = -1` |
+| (C) Hopf trace formula | not stated in Lean yet | step 2 (linear algebra; see §1) |
+| `B_P` (first block contains the base component `P_1`) | `InB x₀ w`: `w ∈ Lin(P)` and `x₀` lies in every nonempty union-prefix of `w` | base component = component of the base point `x₀`. Union-prefixes are nested and are unions of components, so "first block ⊇ `P_1`" ⇔ "`x₀` ∈ every nonempty union-prefix" |
+| **Theorem S(a)** | `thmS_a x₀`: `B_P` independent mod `Sh_n`, `|B_P| = e_C(P)`, and `P` connected ⇒ `W_P ∩ Sh_n = 0` | connected: `IsConnectedPoset α` = nonempty and only `∅`, `univ` are unions of components |
+| **Theorem S(b)** | `thmS_b x₀`: `span B_P ⊔ R_P = W_P`, `span B_P ⊓ R_P = 0`, `W_P ⊓ Sh_n = R_P`, `dim R_P = |Lin P| − e_C(P)` | |
+| `Sh_n`, `R_P`, `u ⧢ v` | `Sh α`, `R α`, `shuffle S u v` = sum of the words whose subwords on `S` and `Sᶜ` are `u` and `v` | for words `u`, `v` on complementary letter sets these are exactly the interleavings |
+| admissible `λ : [n] → ℂ^×` | `IsAdmissible lam` (`lam : α → ℂ`, `∏ lam = 1`, `∏_U lam ≠ 1` for nonempty proper unions `U`) | `∏ lam = 1` forces values in `ℂ^×` |
+| **Theorem Ψ** | `thmPsi lam hlam rep hrep`: class sums `s_λ(rep C)` independent mod `Sh_n` for every choice of representatives `rep C ∈ C ∩ Lin(P)` | |
+| **Corollary Ψ.1**: `ψ_P : L_P → M_P` is an `Aut(P)`-isomorphism, every finite `P` | `corPsi_bijective hζ`, `corPsi_equivariant ζ g`, and packaged `corPsi hζ` (`∃ e : PLie ≃ₗ MP`, `e = ψ_P`, equivariant) | `MP α := W_P ⧸ R_P` and `ψ_P(y) = pr_P(y) mod R_P`. The note writes the target as `(W_P + Sh_n)/Sh_n`; the two agree under the identification given by `W_P ∩ Sh_n = R_P` (Theorem S(b)) |
+
+**Hypotheses audit.** Every hypothesis of a stated theorem is present in the note's statement:
+`3 ≤ n` (main theorem, `trace_HP`, `jencaSarkoci_homology`), `IsPrimitiveRoot ζ n`,
+admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining properties, and
+`⊥ ≠ ⊤` in the cited Hall theorem. No hypothesis was added. The gaps are listed below instead.
+
+## 4. Sorries (12) and gaps
+
+`sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`). No definition
+depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
+
+| # | Location | Theorem |
+|---|---|---|
+| 1 | `MainTheorem.lean:38` | `character_identity` |
+| 2 | `MainTheorem.lean:47` | `main_iso` |
+| 3 | `MainTheorem.lean:70` | `closed_formula` |
+| 4 | `MainTheorem.lean:78` | `trace_HP` |
+| 5 | `MainTheorem.lean:83` | `trace_PLie` |
+| 6 | `MainTheorem.lean:93` | `jencaSarkoci_homology` (cited input A) |
+| 7 | `MainTheorem.lean:104` | `hall_mu_eq_reducedEuler` (cited input B) |
+| 8 | `Milestone.lean:38` | `thmS_a` |
+| 9 | `Milestone.lean:46` | `thmS_b` |
+| 10 | `Milestone.lean:67` | `thmPsi` |
+| 11 | `Milestone.lean:121` | `corPsi_bijective` |
+| 12 | `Milestone.lean:126` | `corPsi_equivariant` |
+
+`corPsi` has a complete proof from #11 and #12.
+
+Gaps and deliberate modelling choices:
+
+* The Hopf trace formula (C) is not yet stated in Lean.
+* `∂ ∘ ∂ = 0` is not yet proved for `bd`. The definition `redHom = ker ∂_d / (im ∂_{d+1} ∩ ker ∂_d)`
+  does not depend on it, but every homology proof will.
+* `H̃_{-1}` is not modelled, since `redHom` is indexed by `d : ℕ`. It plays no role for `n ≥ 3`.
+* Jenča–Sarkoci is represented only by its homological content. See §1 and §2.
+* Theorem S(c),(d), Prop. Φ and Lemma D (splitting cycles `ρ_w`) are not yet stated. They need
+  `sgn(w)` for words, which requires fixing a labelling `α ≃ Fin n`, and the cycles `ρ_w` as
+  elements of `Chains`.
+* The `x ∈ F(P,g)` data in `closed_formula` is a `Finset (Finset α)` of blocks rather than a
+  `Setoid`. This is equivalent, and convenient for "`g` permutes the blocks".
+* There are no positive-control instances yet: no Lean evaluation of these definitions on small
+  posets. `OPFixed.bot_ne_top` is the only non-degeneracy lemma. Step 2 should add small
+  examples, such as the 3-antichain and the 3-chain, ideally checked against `compute/`.
+
+## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
+
+```
+'PosetJKS.character_identity' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.main_iso' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.closed_formula' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.trace_HP' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.trace_PLie' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.thmS_a' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.thmS_b' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.thmPsi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.corPsi_bijective' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.corPsi_equivariant' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.corPsi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.actHP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.actMP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.muFixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The stated theorems depend only on the three standard axioms and on `sorryAx`, which comes from
+the visible `sorry`s above. The definitions they are stated in terms of are `sorry`-free.
