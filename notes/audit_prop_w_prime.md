@@ -443,3 +443,23 @@ From `compute/` (plain Python 3; no third-party packages):
     python3 -m unittest test_audit_prop_w_prime                       # < 1 s, positive and negative controls
 
 The archived log is `compute/output/audit_prop_w_prime.txt`.
+
+## Corrections (later audit, 2026-10-30)
+
+The text above is left as it was when this audit was made. Theorem W″ (§2)
+was independently audited in `notes/audit_theorem_w2.md` ("[AudW2]"), which
+finds that it HOLDS with no mathematical fix. It records two notes on the
+write-up ([AudW2, §6]), neither of which changes a statement:
+- The input list in the header of Theorem W″ is incomplete. Part (c) also
+  uses [FP] Lemma A, [FP] Lemma B(b) and the sign rule [AudFP] §A.1(i), as
+  its proof cites. Part (b) also uses the averaging argument of [FP]
+  Lemma B(a), with the hypothesis as fixed in [AudFP] §C.1.
+- In "V^U is a top-cone of A^U", several e ∈ S_max can restrict to the same
+  hyperplane K of A^U. They cannot ask for opposite sides of K, since then
+  |V| ∩ U would lie in K, against its full dimension in U. So the
+  constraints are a consistent sign assignment on hyperplanes of A^U
+  ([AudW2, §2, step 3]).
+
+The corrections of §5 have since been applied: to `notes/general_theory.md`
+(§1.5 statement of Theorem G\*, Theorem 1), to `notes/fixed_point_formula.md`,
+and, as a dated section at its end, to `notes/audit_fixed_point_formula.md`.

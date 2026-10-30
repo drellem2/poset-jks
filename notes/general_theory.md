@@ -15,7 +15,10 @@ The audits and the prior-art check of this note are [AudA] =
 `notes/audit_general_theory_cones.md` (§§0–1), [AudB] =
 `notes/audit_general_theory_hopf.md` (§2), [AudC] =
 `notes/audit_theorem_c.md` (an independent audit of [AudA, §C]) and
-[NovGT] = `notes/novelty_general_theory.md`.
+[NovGT] = `notes/novelty_general_theory.md`. [AudW] =
+`notes/audit_prop_w_prime.md` and [AudW2] = `notes/audit_theorem_w2.md`
+(its independent audit of Theorem W″) supply the bound m(V) ≥ 1 of
+Theorem 1.
 
 Every claim carries one of these tags:
 - **PROVEN**: a full proof is given here. Cited inputs are named.
@@ -108,7 +111,7 @@ g ∈ Stab_W(V), the general analogue of [Thm, eq. closed].
 |---|---|---|
 | (a) cones of real arrangements | General theorems 1–2, Prop. 3 and Theorem G\* proven (G\* given Brown). G\* carries all of the poset JKS content beyond J–S. | **1** |
 | (b) species / Hopf monoids | Settled for posets (Thms 6–8). What remains is the extension to general arrangements (Aguiar–Mahajan bimonoids) and a cooperad. | 2 |
-| (c) congruence lattices / closure systems | No general lattice statement survives. The lattices that matter are the Λ(V) of (a). An oriented-matroid version is the only lattice-level generalization proposed. | 3 |
+| (c) congruence lattices / closure systems | No general lattice statement survives. The lattices that matter are the Λ(V) of (a). An oriented-matroid version (Theorems 1, 2 and C for T-convex sets of every simple oriented matroid) is the only lattice-level generalization; it is PROVEN and independently audited (§6). | 3 |
 
 ---
 
@@ -218,7 +221,7 @@ in the proof of Theorem 2.
 §0).** Let V be a top-cone of a finite real central essential arrangement of
 rank d ≥ 1. Then
 
-  Δ(Λ̄(V)) ≃ ⋁^{m(V)} S^{d−2},  and m(V) ≥ 0.
+  Δ(Λ̄(V)) ≃ ⋁^{m(V)} S^{d−2},  and m(V) ≥ 1.
 
 (For d = 1 read ⋁^1 S^{−1} = ∅.)
 
@@ -313,7 +316,15 @@ face poset of its (d − 2)-skeleton X, so Δ(Q′) ≅ X.
 
     μ_{Λ(V)}(0, R^d) = χ̃(Δ(Λ̄(V))) = (−1)^{d−2} rank H̃_{d−2}.
 
-  So the number is m(V) ≥ 0. ∎
+  So the number is m(V) ≥ 0.
+- In fact m(V) ≥ 1 ([AudW, §2, Remarks], independently audited in [AudW2,
+  §4]). For d = 1, Λ(V) = {0, R^1} and m = 1. For d ≥ 2, take a chamber C
+  of V. Its chamber cycle ρ_C ([AudA, §C]; explicit formula [AudC, §B.1])
+  is a (d − 2)-cycle in Δ(Λ̄(C)) ⊆ Δ(Λ̄(V)) with coefficient ±1 on each
+  chain (span F_1 < ⋯ < span F_{d−1}) of a complete flag of proper faces of
+  C, and distinct flags give distinct chains. So ρ_C ≠ 0. Δ(Λ̄(V)) has no
+  (d − 1)-simplices, so there are no boundaries in degree d − 2, and
+  [ρ_C] ≠ 0 in H̃_{d−2}. ∎
 
 **Corollary 1.1 (rank count; PROVEN).** For every top-cone V,
 
@@ -611,11 +622,14 @@ H ⊆ L iff −H ⊆ L.
 ### 1.5 The general theorem
 
 **Theorem G\* (cone JKS; PROVEN, given Brown and the cell facts of §0).**
-For every top-cone V of every finite real central essential arrangement with
-symmetry group W:
+For every top-cone V of every finite real central essential arrangement A,
+and every finite group G of linear maps with GA = A:
 - (numerical) q(V) = m(V);
 - (equivariant) H̃_{d−2}(Λ̄(V); C) ≅ det ⊗ (Γ_V + Lune)/Lune as
-  Stab_W(V)-modules, where det is the determinant of the action on R^d.
+  Stab_G(V)-modules, where det is the determinant of the action on R^d.
+
+This is [AudA, Thm C(iv)] as stated there ([AudW, §3]); G = W is a special
+case.
 
 *Status.* The first version of this note stated this as Conjecture G\*. It
 is PROVEN in `notes/audit_general_theory_cones.md` §C (Theorem C there,
@@ -1050,7 +1064,10 @@ so it is a closure system (Moore family) in Π_n.
   proof-technique question inside (a), not a separate framework.
 
 **Verdict.** (c) gives no general statement beyond (a). Its useful content is
-the oriented-matroid version of Theorem 1 and the open fixed-point formula.
+the oriented-matroid version of Theorem 1 and the fixed-point formula, both
+now PROVEN and independently audited (§6; `notes/fixed_point_formula.md`,
+`notes/audit_fixed_point_formula.md`). Only the vanishing criterion for
+χ_V(g) is still open.
 
 ## 4. Other frameworks considered
 
@@ -1102,7 +1119,8 @@ the oriented-matroid version of Theorem 1 and the open fixed-point formula.
   `notes/audit_prop_w_prime.md` §3. The Weisner recursion (Prop. W) holds
   whenever Fix(g) lies in a hyperplane of A (Prop. W′, independently
   audited); that this is exact (Thm W″) is PROVEN in
-  `notes/audit_prop_w_prime.md`, not yet independently audited. Prior art
+  `notes/audit_prop_w_prime.md`, independently audited in
+  `notes/audit_theorem_w2.md`. Prior art
   (`notes/novelty_fixed_point_formula.md`): for V = all chambers, EZ, EZ′
   and CF are known in substance (Moseley Prop. 6.1 with Sundaram–Welker
   Thm 2.5); for proper cones they were not found. Baclawski–Björner 1981
@@ -1138,7 +1156,7 @@ would carry Theorems 6–8.
 | Claim | Status | Depends on |
 |---|---|---|
 | Lemma 0.1, 0.2 | PROVEN; Lemma 0.2 KNOWN (AM *Topics* Prop. 2.26–2.27) | elementary convexity |
-| Theorem 1 (cone wedge) | PROVEN | BWW poset fiber theorem (CITED, re-checked in [AudA]; removable by [AudA, Prop. A]); regular CW facts; Hall (CITED) |
+| Theorem 1 (cone wedge) | PROVEN; m(V) ≥ 1 by [AudW, §2], audited in [AudW2, §4] | BWW poset fiber theorem (CITED, re-checked in [AudA]; removable by [AudA, Prop. A]); regular CW facts; Hall (CITED) |
 | Cor. 1.1 / Theorem 2 (cone Zaslavsky) | PROVEN; COMPUTED `[zas]`; Thm 2 is an instance of Zaslavsky 1977 Thm 1.2 | Thm 2: regular CW facts only |
 | Lemma 1.3 (component formula, Foata) | PROVEN; COMPUTED `[foata]` n ≤ 6 | elementary |
 | Cor. 1.4 (J–S reproved) | PROVEN | Thm 1, Thm 2, Lemma 1.3, [Cone, Prop. 2.2] |
@@ -1152,7 +1170,7 @@ would carry Theorems 6–8.
 | Theorem 6 (local PBW) | PROVEN; COMPUTED `[pbw]`, `[pbw-eq]` | Thm S(b), Lemma 1.3, ψ_P, Thm main |
 | (b) meets (a): decomposables = lune span | PROVEN (subspace identity only) | [Cone, Cor. 3.1]; M_P ≅ H_P ⊗ sgn via ψ_P and Thm main |
 | Fixed-point formula: EZ, EZ′, CF for μ(Λ(V)^g), any finite-order symmetry g (`notes/fixed_point_formula.md`) | PROVEN; independently audited in `notes/audit_fixed_point_formula.md` (hold, with fixes applied); COMPUTED on 7,200 pairs (V, g); KNOWN for V = all chambers, NOT FOUND for proper cones (`notes/novelty_fixed_point_formula.md`) | cell facts of §0, Lemmas 0.1–0.2, Hopf trace formula; Thm 1 and G\* for the module form |
-| Weisner recursion, Props. W and W′ (`notes/fixed_point_formula.md` §4) | PROVEN; W audited in `notes/audit_fixed_point_formula.md`, W′ in `notes/audit_prop_w_prime.md`; exactness (Thm W″) PROVEN in `notes/audit_prop_w_prime.md`, not yet independently audited | Weisner; Thm 1 for W″ |
+| Weisner recursion, Props. W and W′ (`notes/fixed_point_formula.md` §4) | PROVEN; W audited in `notes/audit_fixed_point_formula.md`, W′ in `notes/audit_prop_w_prime.md`; exactness (Thm W″) PROVEN in `notes/audit_prop_w_prime.md`, independently audited in `notes/audit_theorem_w2.md` | Weisner; Thm 1 for W″ |
 | Exact criterion for χ_V(g) ≢ 0 | OPEN | — |
 | OM version: Theorems 1, 2, C (G\*) for T-convex sets of every simple oriented matroid (`notes/oriented_matroid_cones.md`) | PROVEN (C given Brown); independently audited in `notes/audit_oriented_matroid_cones.md` (hold); COMPUTED on realizable and non-realizable OMs of ranks 3 and 4 | Brown (CITED, re-checked; LRB-general); OM combinatorics; Hall; for the homotopy form of Thm 1 with r ≥ 5, shellability (BLSWZ Prop. 4.3.2, CITED) |
 | (b1), (b2), comodernism | CONJECTURED | — |

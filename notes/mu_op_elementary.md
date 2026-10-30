@@ -19,11 +19,11 @@ needs no topology at all.
 
 | Claim | Status | Inputs |
 |---|---|---|
-| **Theorem A.** μ(OP(P)) = (−1)^{n−1} e_C(P) for every finite poset P on n ≥ 1 points | **PROVEN** twice (Proof W, §2; Proof Z, §3), not yet independently audited; **COMPUTED** for all 405 posets with n ≤ 6 | Proof W: dual Weisner + Lemma C; Proof Z: Lemma W + Möbius inversion + products + [GT] Lemma 1.3 |
+| **Theorem A.** μ(OP(P)) = (−1)^{n−1} e_C(P) for every finite poset P on n ≥ 1 points | **PROVEN** twice (Proof W, §2; Proof Z, §3), independently audited in [AudME] (both hold and are homology-free); **COMPUTED** for all 405 posets with n ≤ 6 | Proof W: dual Weisner + Lemma C; Proof Z: Lemma W + Möbius inversion + products + [GT] Lemma 1.3 |
 | Lemma M (OP(P) closed under the partition meet; x ∧ π_a = 0̂ iff x ∈ {0̂} ∪ {π_ab}) | **PROVEN**; COMPUTED `[meet]` | [Thm] Lemma `lem:lattice`(i) |
 | Lemma U (upper intervals: [π, 1̂] ≅ OP(P/π)) | **PROVEN**; COMPUTED `[upper]` | none |
 | Lemma D (μ(OP(P)) = −Σ_b μ(OP(P/π_ab)), a minimal) | **PROVEN**; COMPUTED `[weis]` | Weisner (dual form), Lemmas M, U |
-| Lemma C (e_C(P) = Σ_b e_C(P/π_ab), a minimal) | **PROVEN** here; it is Jenča–Sarkoci §4 (Lemmas 4.6–4.11, read in source); COMPUTED `[rec]` | none |
+| Lemma C (e_C(P) = Σ_b e_C(P/π_ab), a minimal) | **PROVEN** here; it is Jenča–Sarkoci §4 (Lemmas 4.6, 4.8–4.11 and the first half of the proof of Thm 4.5; Lemma 4.7 is an Example; read in source); COMPUTED `[rec]` | none |
 | Lemma W (Σ over P-compatible set compositions of (−1)^{#blocks} = (−1)^n [P antichain]) | **PROVEN**; COMPUTED `[W]` | none |
 | Lemma F (the face identity, the braid case of [GT] Thm 2, Step "f(Y)") | **PROVEN**; COMPUTED `[faces]`, `[inv]` | Lemma W |
 | Corollary (P connected: μ(OP(P)) = (−1)^{n−1} \|Lin P\|) | **PROVEN**; COMPUTED `[conn]` | Lemma F, Möbius inversion only |
@@ -36,7 +36,8 @@ Tags: [Thm] = `notes/poset_jks_theorem.tex`; [GT] = `notes/general_theory.md`;
 [FP] = `notes/fixed_point_formula.md`; [Lit] =
 `notes/literature_novelty_jks_maps.md`; [JS] = Jenča–Sarkoci, *Linear
 extensions and order-preserving poset partitions*, JCTA 122 (2014) 28–38,
-arXiv:1112.5782v2 (arXiv numbering).
+arXiv:1112.5782v2 (arXiv numbering); [AudME] =
+`notes/audit_mu_op_elementary.md` (the independent audit of this note).
 
 ## 0. Conventions
 
@@ -119,8 +120,9 @@ meet; that is what Lemma M(b) computed.
 
 π_ab ∈ OP(P) for a minimal means: a and b are incomparable, or b covers a.
 
-**Lemma C (PROVEN; this is [JS] §4, Lemmas 4.6–4.11 and the proof of
-Thm 4.5, read in the arXiv v2 source).** Let n ≥ 2 and a be minimal in P.
+**Lemma C (PROVEN; this is [JS] §4, Lemmas 4.6, 4.8–4.11 and the first half
+of the proof of Thm 4.5, read in the arXiv v2 source; Lemma 4.7 is an
+Example in v2's shared numbering).** Let n ≥ 2 and a be minimal in P.
 Then
 
   e_C(P) = Σ_{b ≠ a, π_ab ∈ OP(P)} e_C(P/π_ab).
@@ -282,7 +284,8 @@ m(P) = e_C(P). ∎
 
 - **[JS]** (read in arXiv v2): Thm 3.8 is the recursion of Lemma D for the
   number of spheres, proved by a discrete Morse matching (Forman, Kozlov's
-  patchwork theorem). §4 (Lemmas 4.6–4.11) proves Lemma C by the map S_a.
+  patchwork theorem). §4 (Lemmas 4.6, 4.8–4.11 and the first half of the
+  proof of Thm 4.5) proves Lemma C by the map S_a.
   The paper never mentions the Möbius function or Weisner's theorem. So a
   combinatorial proof of the *count* recursion for e_C is known; its pairing
   with Weisner (Lemma D) was not found.
@@ -331,8 +334,9 @@ homology-free but needs products and the Foata bijection. Its value is
 conceptual: it is the braid case of the cone Zaslavsky theorem without
 topology. Route 1 as written needs CW complexes and is the most expensive.
 
-Before formalization, Lemmas C, D, W and both proofs of Theorem A need an
-independent audit.
+Lemmas C, D, W and both proofs of Theorem A have been independently audited
+in [AudME], which finds that they hold and are homology-free, and that
+Proof W is fit to formalize as written.
 
 ## 7. Computations
 

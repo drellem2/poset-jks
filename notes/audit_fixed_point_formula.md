@@ -502,3 +502,22 @@ python3 -m unittest test_audit_fixed_point_formula
 
 Log of the full run: `compute/output/audit_fixed_point_formula.txt` (ends
 "ALL CHECKS PASSED").
+
+## Corrections (later audit, 2026-10-30)
+
+The text above is left as it was when this audit was made. Later audits
+correct it as follows ([AudW] = `notes/audit_prop_w_prime.md`, §5;
+[AudW2] = `notes/audit_theorem_w2.md`; [AudA] =
+`notes/audit_general_theory_cones.md`; [AudC] = `notes/audit_theorem_c.md`):
+- **Verdict table (Prop. W row) and §C.3, "Is the weak hypothesis
+  necessary? (OPEN.)":** necessity is PROVEN (Theorem W″ of [AudW, §2],
+  independently audited in [AudW2], which finds that it holds). For g ≠ 1
+  the identity holds iff Fix(g) lies in a hyperplane of A. When it does
+  not, the sum Σ_{X ∩ Fix g = 0} μ_M(X, R^d) is (−1)^{dim Fix g}
+  m(V^{Fix g}) ≠ 0.
+- **§C.3, side experiment:** "(−1)^d det(g) times the sum was always a
+  positive integer, between 1 and 3". The value is m(V^{Fix g}), and the
+  range 1–3 is not general (up to 15 on D_4, [AudW]).
+- **§D, last row, and §F, first bullet:** Theorem G\* for g ∉ Stab_W(V) is
+  covered by [AudA] Thm C(iv) as stated, audited in [AudC] §B (iv), and
+  re-derived in [AudW, §3]. It does not rest on an unaudited reading.

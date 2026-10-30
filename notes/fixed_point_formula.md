@@ -32,7 +32,7 @@ hold, with the fixes applied below: the hypothesis of Lemma B(a), the
 reflection-arrangement hypothesis of Cor. P, and the routine details of the
 Hopf-trace step of EZ. Proposition W′ (§4) and the G\* identification for
 g ∉ Stab_W(V) (§1) were independently audited in [AudW]. Theorem W″ (§4)
-is PROVEN in [AudW] and not yet independently audited.
+is PROVEN in [AudW] and independently audited in [AudW2] (holds).
 
 **Prior art.** For V = all chambers, EZ, EZ′ and CF are known in substance,
 for every finite group of linear symmetries of A: EZ′ follows from Moseley,
@@ -60,7 +60,7 @@ novelty. Details are in §6.
 | V | if one hyperplane of A contains both L and Fix(g), then μ(Λ(V)^g) = 0 | **PROVEN**; audited in [AudFP]; COMPUTED. Sufficient, not necessary. NOT FOUND | CF, F |
 | W | Weisner recursion: if Fix(g) is a flat and g ≠ 1, Σ_{X ∈ 𝓛^g, X ∩ Fix g = 0} χ_{V_X}(ḡ) = 0 | **PROVEN**; audited in [AudFP] (holds, with Lemma B(a) fixed); COMPUTED. The flat hypothesis is sufficient, not necessary: see W′. NOT FOUND | Weisner, averaging |
 | W′ | the identity of W holds whenever g ≠ 1 and Fix(g) lies in a hyperplane of A | **PROVEN** in [AudFP, §C.3], independently audited in [AudW, §1] (holds); COMPUTED in both. NOT FOUND | Weisner, Lemma B (fixed) |
-| W″ | if Fix(g) lies in no hyperplane of A, the sum of W equals m(V^{Fix g}) ≥ 1; so for g ≠ 1 the identity holds iff Fix(g) lies in a hyperplane | **PROVEN in `notes/audit_prop_w_prime.md`, not yet independently audited**; COMPUTED there on 285 pairs | [GT] Lemma 0.1, [GT] Thm 1, Hall, Quillen |
+| W″ | if Fix(g) lies in no hyperplane of A, the sum of W equals m(V^{Fix g}) ≥ 1; so for g ≠ 1 the identity holds iff Fix(g) lies in a hyperplane | **PROVEN in `notes/audit_prop_w_prime.md`, independently audited in `notes/audit_theorem_w2.md`** (holds); COMPUTED in both (285 and 1,693 pairs) | [GT] Lemma 0.1, [GT] Thm 1, Hall, Quillen; for (c) also Lemmas A, B(b) and the sign rule [AudFP, §A.1(i)] |
 | G\* for any g | χ_V(g) is the character of (Lie[A]\|_V)^\* for every finite-order linear symmetry g of (A, V), including g ∉ Stab_W(V) | **PROVEN** in [AudA, Thm C(iv)] as stated there (any finite group of linear symmetries); sign audited in [AudC, §B (iv)]; re-derived in [AudW, §3] | Brown (CITED); [GT] Thm 1 |
 | Braid | CF for C_P is a formula over Π(components)^g; it agrees with [Thm, eq. closed] | **PROVEN** (both sides proven); audited in [AudFP]; COMPUTED for every poset with n ≤ 6 and every g ∈ Aut(P) | CF, [Thm] |
 | BB | Baclawski–Björner 1981 as prior art | **NOT ACCESSIBLE**; per Wachs, Thm 4.6.1, it contains the fixed-point Möbius theorem χ_P(g) = μ(P̂^g), a general poset fact used in §1, not a cone formula | §6 |
@@ -532,13 +532,13 @@ dual Weisner sum of the interval [b, 1̂] of M at a ≠ 1̂, and vanishes. The
 terms lie in 𝓛^g by Lemma B(b), and the χ form follows as in the proof of
 Proposition W. ∎ [AudW, §1.2] gives a second proof by a conical contraction.
 
-**Theorem W″ (PROVEN in `notes/audit_prop_w_prime.md`, not yet independently
-audited).** If Fix(g) lies in no hyperplane of A, then
+**Theorem W″ (PROVEN in `notes/audit_prop_w_prime.md`, independently audited
+in `notes/audit_theorem_w2.md`).** If Fix(g) lies in no hyperplane of A, then
 
   Σ_{X ∈ 𝓛^g, X ∩ Fix(g) = 0} χ_{V_X}(ḡ) = m(V^{Fix g}) ≥ 1,
 
 where V^{Fix g} is the top-cone of the restriction A^{Fix g} with
-|V^{Fix g}| = |V| ∩ Fix(g) ([AudW, §2]). So, if W″ holds, for g ≠ 1 the
+|V^{Fix g}| = |V| ∩ Fix(g) ([AudW, §2]). So for g ≠ 1 the
 identity of Proposition W holds iff Fix(g) lies in a hyperplane of A. On A_3
 and A_4, [AudFP] and [AudW] find independently that the failures listed
 above (11 of 20, 36 of 108) are exactly the pairs where Fix(g) lies in no
@@ -693,7 +693,11 @@ The prior-art check is [NovFP]; its verdicts are summarized here.
 ## 7. Pointers for other notes
 
 `notes/general_theory.md` §§5–6 now record the status of this note.
-Suggested changes elsewhere, not applied:
+Applied: the [GT] §1.5 statement of Theorem G\* (Stab_G(V), any finite
+group G of linear symmetries), m(V) ≥ 1 in [GT] Theorem 1, and the
+corrections to [AudFP] listed in [AudW, §5], recorded in a dated "Corrections (later
+audit)" section at the end of [AudFP]. Suggested changes elsewhere, not
+applied:
 - [GT] §1.5 (last paragraph) and §3 ("Fixed-point lattices"): the
   fixed-point formula is now Theorem CF here, with EZ/EZ′ as its
   equivariant Zaslavsky/PBW form, for all finite-order symmetries, not only
@@ -701,17 +705,6 @@ Suggested changes elsewhere, not applied:
   above.
 - [GT] §1.5 COMPUTED `[eq]`: D_4 is now covered in full (12,313 cones, 110
   W-orbits) for the Möbius side.
-- [GT] §1.5, statement of Theorem G\*: "with symmetry group W …
-  Stab_W(V)-modules" should say "for every finite group G of linear maps
-  with GA = A … Stab_G(V)-modules", matching [AudA, Thm C(iv)] ([AudW, §5]).
-- [GT] Theorem 1: m(V) ≥ 0 can be sharpened to m(V) ≥ 1 ([AudW, §2,
-  Remarks]).
-- [AudFP] verdict table (Prop. W row) and §C.3: the necessity of the weak
-  hypothesis, marked OPEN there, is Theorem W″ of [AudW], not yet
-  independently audited. The range "between 1 and 3" of the side experiment
-  is not general: the value is m(V^{Fix g}), which reaches 15 on D_4. [AudFP]
-  §D (last row) and §F (first bullet): G\* for g ∉ Stab_W(V) is [AudA,
-  Thm C(iv)] as stated, audited in [AudC, §B (iv)] ([AudW, §5]).
 
 ## Reproduce
 
@@ -730,5 +723,6 @@ References: [GT] = `notes/general_theory.md`; [Thm] =
 `notes/audit_general_theory_cones.md`; [AudC] = `notes/audit_theorem_c.md`;
 [AudFP] = `notes/audit_fixed_point_formula.md` (the independent audit of
 this note); [AudW] = `notes/audit_prop_w_prime.md` (the independent audit of
-Prop. W′ and of G\* for g ∉ Stab_W(V)); [NovFP] =
+Prop. W′ and of G\* for g ∉ Stab_W(V), where Theorem W″ is proved); [AudW2]
+= `notes/audit_theorem_w2.md` (the independent audit of Theorem W″); [NovFP] =
 `notes/novelty_fixed_point_formula.md` (the prior-art check of this note).
