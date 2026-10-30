@@ -124,7 +124,7 @@ lemma wd_apply (w z : Word α) : wd w z = if w = z then 1 else 0 := Finsupp.sing
 /-- The list of letters of a word. -/
 def toL (w : Word α) : List α := List.ofFn w
 
-lemma toL_injective : Function.Injective (toL (α := α)) := fun w w' h =>
+lemma toL_injective : Function.Injective (toL (α := α)) := fun _ _ h =>
   Equiv.ext fun i => congrFun (List.ofFn_inj.1 h) i
 
 lemma length_toL (w : Word α) : (toL w).length = Fintype.card α := List.length_ofFn

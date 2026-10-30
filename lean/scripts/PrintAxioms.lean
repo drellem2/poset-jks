@@ -14,6 +14,15 @@ import PosetJKS
 #print axioms PosetJKS.corPsi_bijective
 #print axioms PosetJKS.corPsi_equivariant
 #print axioms PosetJKS.corPsi
+
+-- Supporting results of the first milestone (lists; `PosetJKS/Words.lean`, `Milestone.lean`)
+#print axioms PosetJKS.L.map_E_ShL
+#print axioms PosetJKS.L.eq_zero_of_inBL
+#print axioms PosetJKS.L.eq_zero_of_eqL
+#print axioms PosetJKS.L.eqL_classSum
+#print axioms PosetJKS.card_inB
+#print axioms PosetJKS.wd_mem_SB_sup_R
+#print axioms PosetJKS.pr_wEζ
 #print axioms PosetJKS.actHP
 #print axioms PosetJKS.actMP
 #print axioms PosetJKS.muFixed

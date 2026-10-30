@@ -1,13 +1,18 @@
-# Lean formalization of the poset JKS theorem: plan, step 1
+# Lean formalization of the poset JKS theorem: plan and status
 
 This directory holds a Lean 4 + Mathlib project. It states the main theorem of
-`notes/poset_jks_theorem.tex` (Theorem `thm:main`) and a first, homology-free milestone. All
-proofs of the stated results are `sorry`. This step provides the scaffold, the ingredient map,
-the choice of route, and faithful statements. It proves nothing about the theorem itself.
+`notes/poset_jks_theorem.tex` (Theorem `thm:main`) and a first, homology-free milestone M1.
+
+* **Step 1** gave the scaffold, the ingredient map, the choice of route, and faithful
+  statements (all proofs `sorry`).
+* **Step 2 (M1, done)** proves Theorem S(a), S(b), Theorem Ψ and Corollary Ψ.1
+  (`PLie(P) ≅ ℂ[Lin P]/R_P`, explicit and `Aut(P)`-equivariant, every finite poset with
+  `n ≥ 1`). These are sorry-free and depend only on `propext`, `Classical.choice`, `Quot.sound`
+  (§5). The main theorem and its homological inputs are still `sorry` (§4).
 
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
-* `lake build` succeeds. It reports 12 `sorry` warnings and no errors.
+* `lake build` succeeds. It reports 7 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
 * No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
 
 ## Reproduce
@@ -15,7 +20,7 @@ the choice of route, and faithful statements. It proves nothing about the theore
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 12 "declaration uses sorry"
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 7 "declaration uses sorry"
 lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
 grep -rn "^  sorry" PosetJKS               # the sorry list below
 ```
@@ -26,7 +31,9 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 |---|---|
 | `PosetJKS/Basic.lean` | words `Fin n ≃ α`; the ambient space `ℂ[S_n]` (`Alg`); `rot` (right mult. by `γ^j`); `wEζ` (`w e_ζ`); `Lin(P)` (`IsLinExt`); unions of components; shuffles `u ⧢ v`; `Sh_n`, `W_P`, `R_P`, `PLie(P)`; `Cyc(P)`, `e_C(P)`, `r_g(C)`, the class sum `∑_{gC=C} ζ^{r_g(C)}`; the `Aut(P)` action (`relabel`) and its invariance of `PLie`, `W_P`, `R_P` (**all proved**) |
 | `PosetJKS/OrderComplex.lean` | oriented chains of the order complex (`Chains`, `bd`), reduced homology `redHom`; order-preserving partitions (`IsOrderPreserving`, `OP`, `ProperOP`); `H_P` (`HP`); the `Aut(P)` action on the proper part and on `H_P` (`actProper`, `actHP`); the fixed lattice `OP(P)^g` and `μ(OP(P)^g)` (`muFixed`) (**all proved**) |
-| `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1 (statements `sorry`) |
+| `PosetJKS/Words.lean` | M1 core, on lists over a fixed type with an arbitrary relation `r`: shuffles `shq`, `ShL`, the contraction operator `E_{a,x}` and Lemma 1 (`map_E_ShL`); the contraction relation `rc` and Lemma 5 (`inBL_contract`); Theorem A (`eq_zero_of_inBL`) and Theorem Ψ (`eq_zero_of_eqL`) on lists; Lemma Ψ.0 (`eqL_classSum`); the measure `μ` (`muL`), the Lemma 6 step (`muL_lt_of_shuffle`) and Lemma 4 (`inBL_rotate_muL`, `rotate_eq_zero_of_inBL`) (**all proved**) |
+| `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
+| `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (statements `sorry`) |
 | `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/`, `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
@@ -125,7 +132,7 @@ Common setup. The poset `P` is a finite type `α` with `[PartialOrder α]`, `[Fi
 | **(mainiso)** `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules | `main_iso hn hζ : ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ g x, (e (actHP g x) : Alg α) = sgnC g • relabel g (e x)` | equivariance is stated in the ambient `ℂ[S_n]`, so no action on the submodule `PLie` is needed in the statement |
 | **(closed)** `sgn(g)(-1)^{n-3}μ = ∑ ζ^{r} = μ(o) ∑_{x∈F(P,g)} e_C(P|_{B_0(x)})` | `closed_formula hn hζ g B₀ hB₀` | `x ∈ F(P,g)` is `InF g x`: `x` is a set of blocks forming a partition into `orderOf g` blocks, each a nonempty union of components, `g` maps blocks to blocks, transitively. `B₀` is an arbitrary choice of one block per `x` (`hB₀`). The note says "any one block"; the Lean form quantifies over all choices. `e_C(P|_B)` is `eC ↥B` with the induced order |
 | `tr(g|H_P) = (-1)^{n-3}μ(OP(P)^g)` (Lemma `lem:homchar`) | `trace_HP hn g` | the note proves it *from* (A)–(C). Here it is stated outright |
-| `tr(g|PLie) = ∑ ζ^{r_g(C)}` (Lemma `lem:liechar`) | `trace_PLie hζ g` | |
+| `tr(g|PLie) = ∑ ζ^{r_g(C)}` (Lemma `lem:liechar`) | `trace_PLie h0 hζ g` | `h0 : 0 < n`, the note's implicit `n ≥ 1` (§4) |
 | (A) Jenča–Sarkoci | `jencaSarkoci_homology hn`: `H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)` | homological content only (all that the proofs use); the homotopy-type statement is not expressible in Mathlib today |
 | (B) P. Hall | `hall_mu_eq_reducedEuler L (h : ⊥ ≠ ⊤)` | the hypothesis `0̂ ≠ 1̂` belongs to the *cited result*, not to the main theorem. It is needed: for a one-point `L`, `μ = 1` while `χ̃(∅) = -1` |
 | (C) Hopf trace formula | not stated in Lean yet | step 2 (linear algebra; see §1) |
@@ -135,14 +142,16 @@ Common setup. The poset `P` is a finite type `α` with `[PartialOrder α]`, `[Fi
 | `Sh_n`, `R_P`, `u ⧢ v` | `Sh α`, `R α`, `shuffle S u v` = sum of the words whose subwords on `S` and `Sᶜ` are `u` and `v` | for words `u`, `v` on complementary letter sets these are exactly the interleavings |
 | admissible `λ : [n] → ℂ^×` | `IsAdmissible lam` (`lam : α → ℂ`, `∏ lam = 1`, `∏_U lam ≠ 1` for nonempty proper unions `U`) | `∏ lam = 1` forces values in `ℂ^×` |
 | **Theorem Ψ** | `thmPsi lam hlam rep hrep`: class sums `s_λ(rep C)` independent mod `Sh_n` for every choice of representatives `rep C ∈ C ∩ Lin(P)` | |
-| **Corollary Ψ.1**: `ψ_P : L_P → M_P` is an `Aut(P)`-isomorphism, every finite `P` | `corPsi_bijective hζ`, `corPsi_equivariant ζ g`, and packaged `corPsi hζ` (`∃ e : PLie ≃ₗ MP`, `e = ψ_P`, equivariant) | `MP α := W_P ⧸ R_P` and `ψ_P(y) = pr_P(y) mod R_P`. The note writes the target as `(W_P + Sh_n)/Sh_n`; the two agree under the identification given by `W_P ∩ Sh_n = R_P` (Theorem S(b)) |
+| **Corollary Ψ.1**: `ψ_P : L_P → M_P` is an `Aut(P)`-isomorphism, every finite `P` | `corPsi_bijective h0 hζ`, `corPsi_equivariant ζ g`, and packaged `corPsi h0 hζ` (`∃ e : PLie ≃ₗ MP`, `e = ψ_P`, equivariant) | `MP α := W_P ⧸ R_P` and `ψ_P(y) = pr_P(y) mod R_P`. The note writes the target as `(W_P + Sh_n)/Sh_n`; the two agree under the identification given by `W_P ∩ Sh_n = R_P` (Theorem S(b)) |
 
 **Hypotheses audit.** Every hypothesis of a stated theorem is present in the note's statement:
 `3 ≤ n` (main theorem, `trace_HP`, `jencaSarkoci_homology`), `IsPrimitiveRoot ζ n`,
 admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining properties, and
-`⊥ ≠ ⊤` in the cited Hall theorem. No hypothesis was added. The gaps are listed below instead.
+`⊥ ≠ ⊤` in the cited Hall theorem. The one hypothesis not written in the note is
+`h0 : 0 < Fintype.card α` on `trace_PLie`, `corPsi_bijective` and `corPsi`. It is the note's
+implicit `n ≥ 1` (its objects use `1/n`), and the statements are false without it (§4).
 
-## 4. Sorries (12) and gaps
+## 4. Sorries (7) and gaps
 
 `sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`). No definition
 depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
@@ -153,16 +162,47 @@ depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no
 | 2 | `MainTheorem.lean:47` | `main_iso` |
 | 3 | `MainTheorem.lean:70` | `closed_formula` |
 | 4 | `MainTheorem.lean:78` | `trace_HP` |
-| 5 | `MainTheorem.lean:83` | `trace_PLie` |
-| 6 | `MainTheorem.lean:93` | `jencaSarkoci_homology` (cited input A) |
-| 7 | `MainTheorem.lean:104` | `hall_mu_eq_reducedEuler` (cited input B) |
-| 8 | `Milestone.lean:38` | `thmS_a` |
-| 9 | `Milestone.lean:46` | `thmS_b` |
-| 10 | `Milestone.lean:67` | `thmPsi` |
-| 11 | `Milestone.lean:121` | `corPsi_bijective` |
-| 12 | `Milestone.lean:126` | `corPsi_equivariant` |
+| 5 | `MainTheorem.lean:84` | `trace_PLie` |
+| 6 | `MainTheorem.lean:94` | `jencaSarkoci_homology` (cited input A) |
+| 7 | `MainTheorem.lean:105` | `hall_mu_eq_reducedEuler` (cited input B) |
 
-`corPsi` has a complete proof from #11 and #12.
+The five M1 sorries of step 1 (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`,
+`corPsi_equivariant`) are closed. `corPsi` follows from the last two.
+
+**Statement changes in step 2.** Following `AUDIT_FAITHFULNESS.md` §1.1, three statements
+gained the hypothesis `h0 : 0 < Fintype.card α`. Nothing else in any statement changed.
+
+| Theorem | Before | After |
+|---|---|---|
+| `trace_PLie` (`MainTheorem.lean:81`) | `theorem trace_PLie {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) (g : α ≃o α) :` | `theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) (g : α ≃o α) :` |
+| `corPsi_bijective` (`Milestone.lean`) | `theorem corPsi_bijective {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :` | `theorem corPsi_bijective (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :` |
+| `corPsi` (`Milestone.lean`) | `theorem corPsi {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :` | `theorem corPsi (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :` |
+
+The `n = 0` counterexamples `Test.corPsi_bijective_false` and `Test.trace_PLie_false` are
+kept; they show the statements without `h0` are false.
+
+**How M1 is proved** (`Words.lean`, `Bridge.lean`, `Milestone.lean`). The proofs follow
+`notes/conjecture_s_splitting_cycles_span.md` §2–§5 and `notes/natural_isomorphism.md` §3.1,
+with one change of route.
+
+* The induction is carried out on lists over the fixed type `α`, for a letter set
+  `A : Finset α` and an *arbitrary* relation `r` (linear extensions: words that never put `q`
+  before `p` when `r p q`). The contraction `P/{a,x}` is the relation `rc r a x` on
+  `A ∖ {x}`. The note takes its transitive closure, which has the same linear extensions and
+  the same unions of components, so the ambient type never changes.
+* Because `r` is arbitrary, the induction step applies `E_{a,x}` to *every* pair of distinct
+  letters, not only to pairs adjacent in some linear extension. The induction hypothesis then
+  gives `X(…pq…) = X(…qp…)` for all adjacent transpositions, so `X` is constant on all
+  arrangements of `A`. The final step is the note's: some arrangement is outside `B_P` (resp.
+  the cyclic relation (Ψ.1) at a singleton `{y}` gives `c = λ(y)⁻¹ c`). This replaces the
+  note's use of connectivity of `Lin(P)` under swaps (Lemma 3) and of a cover relation
+  realised adjacently. Lemma 3 is not needed.
+* Theorem Ψ is proved on lists for every `X` supported on linear extensions satisfying the
+  cyclic relation (Ψ.1), `X(ts)·λ(s) = X(st)` for every union-prefix `s`. Lemma Ψ.0
+  (`eqL_classSum`) shows each class sum `s_λ(w)` satisfies it. This avoids indexing the
+  induction by cyclic classes and needs no case `n ≥ 3`.
+* Corollary Ψ.1: injectivity from Theorem Ψ with `λ ≡ ζ` via `pr_P(w e_ζ) = s_ζ(w)/n`;
+  surjectivity from `dim PLie(P) = e_C(P) = dim ℂ[Lin P]/R_P` (Theorem S(b)).
 
 Gaps and deliberate modelling choices:
 
@@ -177,8 +217,8 @@ Gaps and deliberate modelling choices:
 * The `x ∈ F(P,g)` data in `closed_formula` is a `Finset (Finset α)` of blocks rather than a
   `Setoid`. This is equivalent, and convenient for "`g` permutes the blocks".
 * Positive controls on small posets are in `Test.lean`, and the faithfulness audit is
-  `AUDIT_FAITHFULNESS.md`. **Known statement defect:** `trace_PLie`, `corPsi_bijective` and
-  `corPsi` are false at `n = 0` (proved there). The audit suggests adding `0 < Fintype.card α`.
+  `AUDIT_FAITHFULNESS.md`. Its one defect (`trace_PLie`, `corPsi_bijective`, `corPsi` false at
+  `n = 0`) is fixed by `h0` (above).
 
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
@@ -190,16 +230,33 @@ Gaps and deliberate modelling choices:
 'PosetJKS.trace_PLie' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.thmS_a' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.thmS_b' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.thmPsi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.corPsi_bijective' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.corPsi_equivariant' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.corPsi' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.thmS_a' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.thmS_b' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.thmPsi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.corPsi_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.corPsi_equivariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.corPsi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.L.map_E_ShL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.L.eq_zero_of_inBL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.L.eq_zero_of_eqL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.L.eqL_classSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.card_inB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.wd_mem_SB_sup_R' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.pr_wEζ' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.actHP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.actMP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.muFixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.fixedClassSum_g3_prim' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.muFixed_chain2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.not_op_chain3_02_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.relabel_wEζ_of_rot' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.bd_comp_bd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.bd_zero_single' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.corPsi_bijective_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.trace_PLie_false' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
-The stated theorems depend only on the three standard axioms and on `sorryAx`, which comes from
-the visible `sorry`s above. The definitions they are stated in terms of are `sorry`-free.
+The M1 theorems (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`, `corPsi_equivariant`,
+`corPsi`) and their supporting results depend only on the three standard axioms. The remaining
+stated theorems also depend on `sorryAx`, from the visible `sorry`s in §4. The definitions are
+`sorry`-free.
