@@ -43,3 +43,30 @@ n ≤ 6 and repeated-component disjoint unions at n = 7, 8, 9. Findings:
 
     python3 fixed_point_mobius.py --nmax 6 --large 7 8 9 > output/fixed_point_mobius.txt
     python3 -m unittest test_fixed_point_mobius
+
+## n = 7 sweep and the direct homology cross-check
+
+`n7_sweep.py` runs the same check (it imports `poset_jks_check.analyse`) on
+all 2045 unlabeled posets with n = 7. It adds a faster canonical form and tags
+the named symmetric families. `equivariant_homology.py` is a second, separate
+instrument for the left-hand side. It computes the trace of g directly on
+ker(d: C_{n-3} -> C_{n-4}) of the order complex of the proper part of OP(P)
+(this kernel equals H~_{n-3}). It works eigenspace by eigenspace over F_p,
+with p = 1 mod ord(g), using two primes, and it does not use Moebius numbers.
+Findings: `../notes/n7_character_sweep_and_homology_crosscheck.md`.
+
+    # ~70 s on 3 workers
+    python3 n7_sweep.py --n 7 --jobs 3 --tsv output/n7_character_table.tsv \
+        > output/n7_summary.txt
+    # homology trace vs mu side: every n=6 pair, the n=6 discriminating pairs, every n=7 pair
+    python3 equivariant_homology.py output/character_table.tsv --select all --n 6 \
+        --out output/n6_homology_all.tsv > output/n6_homology_all.txt
+    python3 equivariant_homology.py output/character_table.tsv --select discriminating \
+        --n 6 --with-identity --out output/n6_homology_discriminating.tsv \
+        > output/n6_homology_discriminating.txt
+    # n = 7: ~38 CPU-min; output/n7_homology_all.* is the merge of three runs with
+    # --shard 0/3, 1/3, 2/3 (rows sorted by poset id)
+    python3 equivariant_homology.py output/n7_character_table.tsv --select all --n 7 \
+        --out output/n7_homology_all.tsv > output/n7_homology_all.txt
+    # tests (includes the JKS closed-form positive control and a corrupted-boundary negative control)
+    python3 -m unittest test_n7_and_homology

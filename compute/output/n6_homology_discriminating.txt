@@ -1,0 +1,18 @@
+16 (P, g) pairs selected from output/character_table.tsv
+  n6_000 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_008 g=id |OP|=193 top simplices=2400 mult(p=1000003)=[100] trace_H=100 mu-side=100 rhs=100 AGREE [0.0s] dim=100 e_C=100 ok
+  n6_022 g=id |OP|=174 top simplices=1986 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_057 g=id |OP|=174 top simplices=1962 mult(p=1000003)=[74] trace_H=74 mu-side=74 rhs=74 AGREE [0.0s] dim=74 e_C=74 ok
+  n6_149 g=id |OP|=174 top simplices=1986 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_185 g=id |OP|=106 top simplices=844 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  3x2chain (1<2, 3<4, 5<6) g=id |OP|=174 top simplices=1962 mult(p=1000003)=[74] trace_H=74 mu-side=74 rhs=74 AGREE [0.0s] dim=74 e_C=74 ok
+  n6_000 g=(1 2)(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[64, 56] trace_H=8 mu-side=8 rhs=8 AGREE [0.1s]
+  n6_000 g=(1 2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[38, 41, 41] trace_H=-3 mu-side=-3 rhs=-3 AGREE [0.1s]
+  n6_000 g=(1 2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 19, 22, 18, 22, 19] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.1s]
+  n6_008 g=(1 2)(3 4)(5 6) |OP|=193 top simplices=2400 mult(p=1000003)=[52, 48] trace_H=4 mu-side=4 rhs=4 AGREE [0.1s]
+  n6_022 g=(1 2)(3 5)(4 6) |OP|=174 top simplices=1986 mult(p=1000003)=[39, 37] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s]
+  n6_057 g=(1 2 3)(4 6 5) |OP|=174 top simplices=1962 mult(p=1000003)=[24, 25, 25] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.0s]
+  n6_149 g=(1 3)(2 4)(5 6) |OP|=174 top simplices=1986 mult(p=1000003)=[39, 37] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s]
+  n6_185 g=(1 3)(2 4)(5 6) |OP|=106 top simplices=844 mult(p=1000003)=[10, 9] trace_H=1 mu-side=1 rhs=1 AGREE [0.0s]
+  3x2chain (1<2, 3<4, 5<6) g=(1 3 5)(2 4 6) |OP|=174 top simplices=1962 mult(p=1000003)=[24, 25, 25] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.0s]
+disagreements: 0; skipped: 0

@@ -1,0 +1,786 @@
+784 (P, g) pairs selected from output/character_table.tsv
+  n6_000 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_000 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000081)=[24, 24, 24, 24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(1 2)(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[64, 56] trace_H=8 mu-side=8 rhs=8 AGREE [0.1s]
+  n6_000 g=(1 2)(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_000 g=(1 2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[38, 41, 41] trace_H=-3 mu-side=-3 rhs=-3 AGREE [0.1s]
+  n6_000 g=(1 2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 19, 22, 18, 22, 19] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.1s]
+  n6_001 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_001 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_001 g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_001 g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_001 g=(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_002 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_002 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_002 g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_002 g=(2 3) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_002 g=(2 3)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_002 g=(2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_003 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_003 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_003 g=(3 4) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_003 g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_003 g=(2 3 4) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_003 g=(2 3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_004 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_004 g=(4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_004 g=(3 4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_004 g=(2 3)(4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_004 g=(2 3 4 5) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_005 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=(2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_005 g=(2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000081)=[24, 24, 24, 24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_006 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_006 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_006 g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_006 g=(1 2) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_006 g=(1 2)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_006 g=(1 2)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_007 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_007 g=(5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_007 g=(4 5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_008 g=id |OP|=193 top simplices=2400 mult(p=1000003)=[100] trace_H=100 mu-side=100 rhs=100 AGREE [0.0s] dim=100 e_C=100 ok
+  n6_008 g=(5 6) |OP|=193 top simplices=2400 mult(p=1000003)=[50, 50] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_008 g=(1 2)(3 4) |OP|=193 top simplices=2400 mult(p=1000003)=[50, 50] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_008 g=(1 2)(3 4)(5 6) |OP|=193 top simplices=2400 mult(p=1000003)=[52, 48] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s]
+  n6_009 g=id |OP|=193 top simplices=2400 mult(p=1000003)=[100] trace_H=100 mu-side=100 rhs=100 AGREE [0.0s] dim=100 e_C=100 ok
+  n6_009 g=(5 6) |OP|=193 top simplices=2400 mult(p=1000003)=[50, 50] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_010 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_010 g=(5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_011 g=id |OP|=186 top simplices=2235 mult(p=1000003)=[90] trace_H=90 mu-side=90 rhs=90 AGREE [0.0s] dim=90 e_C=90 ok
+  n6_011 g=(4 5) |OP|=186 top simplices=2235 mult(p=1000003)=[45, 45] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_012 g=id |OP|=186 top simplices=2235 mult(p=1000003)=[90] trace_H=90 mu-side=90 rhs=90 AGREE [0.0s] dim=90 e_C=90 ok
+  n6_012 g=(4 5) |OP|=186 top simplices=2235 mult(p=1000003)=[45, 45] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_013 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_013 g=(4 5) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_014 g=id |OP|=181 top simplices=2133 mult(p=1000003)=[84] trace_H=84 mu-side=84 rhs=84 AGREE [0.0s] dim=84 e_C=84 ok
+  n6_014 g=(5 6) |OP|=181 top simplices=2133 mult(p=1000003)=[42, 42] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_014 g=(4 5 6) |OP|=181 top simplices=2133 mult(p=1000003)=[28, 28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_015 g=id |OP|=181 top simplices=2133 mult(p=1000003)=[84] trace_H=84 mu-side=84 rhs=84 AGREE [0.0s] dim=84 e_C=84 ok
+  n6_015 g=(5 6) |OP|=181 top simplices=2133 mult(p=1000003)=[42, 42] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_015 g=(4 5 6) |OP|=181 top simplices=2133 mult(p=1000003)=[28, 28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_016 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_016 g=(5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_016 g=(4 5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=id |OP|=183 top simplices=2100 mult(p=1000003)=[80] trace_H=80 mu-side=80 rhs=80 AGREE [0.0s] dim=80 e_C=80 ok
+  n6_017 g=(5 6) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(3 4) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(3 4)(5 6) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(1 2) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(1 2)(5 6) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(1 2)(3 4) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_017 g=(1 2)(3 4)(5 6) |OP|=183 top simplices=2100 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_018 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_018 g=(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_018 g=(3 4) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_018 g=(3 4)(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_019 g=id |OP|=179 top simplices=2070 mult(p=1000003)=[80] trace_H=80 mu-side=80 rhs=80 AGREE [0.0s] dim=80 e_C=80 ok
+  n6_019 g=(1 2)(4 5) |OP|=179 top simplices=2070 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_020 g=id |OP|=172 top simplices=1905 mult(p=1000003)=[70] trace_H=70 mu-side=70 rhs=70 AGREE [0.0s] dim=70 e_C=70 ok
+  n6_020 g=(3 4) |OP|=172 top simplices=1905 mult(p=1000003)=[35, 35] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_021 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_021 g=(3 4) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_022 g=id |OP|=174 top simplices=1986 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_022 g=(5 6) |OP|=174 top simplices=1986 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_022 g=(3 4)(5 6) |OP|=174 top simplices=1986 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_022 g=(1 2)(3 5)(4 6) |OP|=174 top simplices=1986 mult(p=1000003)=[39, 37] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s]
+  n6_022 g=(1 2)(3 5 4 6) |OP|=174 top simplices=1986 mult(p=1000033)=[19, 19, 19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_023 g=id |OP|=169 top simplices=1884 mult(p=1000003)=[70] trace_H=70 mu-side=70 rhs=70 AGREE [0.0s] dim=70 e_C=70 ok
+  n6_023 g=(5 6) |OP|=169 top simplices=1884 mult(p=1000003)=[35, 35] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_024 g=id |OP|=164 top simplices=1782 mult(p=1000003)=[64] trace_H=64 mu-side=64 rhs=64 AGREE [0.0s] dim=64 e_C=64 ok
+  n6_024 g=(5 6) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_024 g=(3 4) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_024 g=(3 4)(5 6) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_025 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_025 g=(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_025 g=(3 4) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_025 g=(3 4)(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_026 g=id |OP|=161 top simplices=1710 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_026 g=(4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_026 g=(3 4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_026 g=(1 2) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_026 g=(1 2)(4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_026 g=(1 2)(3 4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[10, 10, 10, 10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_027 g=id |OP|=119 top simplices=1080 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_027 g=(4 5) |OP|=119 top simplices=1080 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_027 g=(3 4 5) |OP|=119 top simplices=1080 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_028 g=id |OP|=159 top simplices=1698 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_028 g=(3 4) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_028 g=(1 2)(5 6) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_028 g=(1 2)(3 4)(5 6) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_029 g=id |OP|=151 top simplices=1575 mult(p=1000003)=[54] trace_H=54 mu-side=54 rhs=54 AGREE [0.0s] dim=54 e_C=54 ok
+  n6_029 g=(4 5) |OP|=151 top simplices=1575 mult(p=1000003)=[27, 27] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_029 g=(3 4 5) |OP|=151 top simplices=1575 mult(p=1000003)=[18, 18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_030 g=id |OP|=119 top simplices=1080 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_030 g=(4 5) |OP|=119 top simplices=1080 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_030 g=(3 4 5) |OP|=119 top simplices=1080 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=id |OP|=141 top simplices=1440 mult(p=1000003)=[48] trace_H=48 mu-side=48 rhs=48 AGREE [0.0s] dim=48 e_C=48 ok
+  n6_031 g=(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(4 5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[16, 16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(3 4 5 6) |OP|=141 top simplices=1440 mult(p=1000033)=[12, 12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(1 2) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(1 2)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(1 2)(4 5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[8, 8, 8, 8, 8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(1 2)(3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_031 g=(1 2)(3 4 5 6) |OP|=141 top simplices=1440 mult(p=1000033)=[12, 12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_032 g=id |OP|=104 top simplices=900 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_032 g=(5 6) |OP|=104 top simplices=900 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_032 g=(4 5 6) |OP|=104 top simplices=900 mult(p=1000003)=[8, 8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_032 g=(3 4)(5 6) |OP|=104 top simplices=900 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_032 g=(3 4 5 6) |OP|=104 top simplices=900 mult(p=1000033)=[6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_033 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_033 g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_033 g=(2 3) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_033 g=(2 3)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_033 g=(1 2 3) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_033 g=(1 2 3)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_034 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_034 g=(5 6) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_035 g=id |OP|=156 top simplices=1500 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_035 g=(5 6) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_035 g=(2 3) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_035 g=(2 3)(5 6) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_036 g=id |OP|=186 top simplices=2235 mult(p=1000003)=[90] trace_H=90 mu-side=90 rhs=90 AGREE [0.0s] dim=90 e_C=90 ok
+  n6_036 g=(2 3) |OP|=186 top simplices=2235 mult(p=1000003)=[45, 45] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_037 g=id |OP|=186 top simplices=2235 mult(p=1000003)=[90] trace_H=90 mu-side=90 rhs=90 AGREE [0.0s] dim=90 e_C=90 ok
+  n6_037 g=(2 3) |OP|=186 top simplices=2235 mult(p=1000003)=[45, 45] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_038 g=id |OP|=163 top simplices=1710 mult(p=1000003)=[55] trace_H=55 mu-side=55 rhs=55 AGREE [0.0s] dim=55 e_C=55 ok
+  n6_039 g=id |OP|=156 top simplices=1500 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_039 g=(2 3) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_040 g=id |OP|=176 top simplices=2000 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_040 g=(5 6) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_040 g=(2 3) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_040 g=(2 3)(5 6) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_041 g=id |OP|=176 top simplices=2000 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_041 g=(5 6) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_041 g=(2 3) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_041 g=(2 3)(5 6) |OP|=176 top simplices=2000 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_042 g=id |OP|=161 top simplices=1656 mult(p=1000003)=[52] trace_H=52 mu-side=52 rhs=52 AGREE [0.0s] dim=52 e_C=52 ok
+  n6_042 g=(5 6) |OP|=161 top simplices=1656 mult(p=1000003)=[26, 26] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_043 g=id |OP|=156 top simplices=1500 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_043 g=(5 6) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_043 g=(2 3) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_043 g=(2 3)(5 6) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_044 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_044 g=(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_044 g=(1 2) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_044 g=(1 2)(5 6) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_045 g=id |OP|=112 top simplices=900 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_045 g=(5 6) |OP|=112 top simplices=900 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_046 g=id |OP|=148 top simplices=1470 mult(p=1000003)=[45] trace_H=45 mu-side=45 rhs=45 AGREE [0.0s] dim=45 e_C=45 ok
+  n6_047 g=id |OP|=148 top simplices=1470 mult(p=1000003)=[45] trace_H=45 mu-side=45 rhs=45 AGREE [0.0s] dim=45 e_C=45 ok
+  n6_048 g=id |OP|=132 top simplices=1230 mult(p=1000003)=[35] trace_H=35 mu-side=35 rhs=35 AGREE [0.0s] dim=35 e_C=35 ok
+  n6_049 g=id |OP|=112 top simplices=900 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_050 g=id |OP|=137 top simplices=1300 mult(p=1000003)=[38] trace_H=38 mu-side=38 rhs=38 AGREE [0.0s] dim=38 e_C=38 ok
+  n6_050 g=(5 6) |OP|=137 top simplices=1300 mult(p=1000003)=[19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_051 g=id |OP|=137 top simplices=1300 mult(p=1000003)=[38] trace_H=38 mu-side=38 rhs=38 AGREE [0.0s] dim=38 e_C=38 ok
+  n6_051 g=(5 6) |OP|=137 top simplices=1300 mult(p=1000003)=[19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_052 g=id |OP|=127 top simplices=1155 mult(p=1000003)=[32] trace_H=32 mu-side=32 rhs=32 AGREE [0.0s] dim=32 e_C=32 ok
+  n6_052 g=(5 6) |OP|=127 top simplices=1155 mult(p=1000003)=[16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_053 g=id |OP|=112 top simplices=900 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_053 g=(5 6) |OP|=112 top simplices=900 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_054 g=id |OP|=179 top simplices=2070 mult(p=1000003)=[80] trace_H=80 mu-side=80 rhs=80 AGREE [0.0s] dim=80 e_C=80 ok
+  n6_054 g=(2 3)(4 5) |OP|=179 top simplices=2070 mult(p=1000003)=[40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_055 g=id |OP|=148 top simplices=1470 mult(p=1000003)=[45] trace_H=45 mu-side=45 rhs=45 AGREE [0.0s] dim=45 e_C=45 ok
+  n6_056 g=id |OP|=132 top simplices=1185 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_056 g=(2 3)(4 5) |OP|=132 top simplices=1185 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_057 g=id |OP|=174 top simplices=1962 mult(p=1000003)=[74] trace_H=74 mu-side=74 rhs=74 AGREE [0.0s] dim=74 e_C=74 ok
+  n6_057 g=(2 3)(4 5) |OP|=174 top simplices=1962 mult(p=1000003)=[37, 37] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_057 g=(1 2 3)(4 6 5) |OP|=174 top simplices=1962 mult(p=1000003)=[24, 25, 25] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.0s]
+  n6_058 g=id |OP|=170 top simplices=1886 mult(p=1000003)=[70] trace_H=70 mu-side=70 rhs=70 AGREE [0.0s] dim=70 e_C=70 ok
+  n6_059 g=id |OP|=144 top simplices=1403 mult(p=1000003)=[42] trace_H=42 mu-side=42 rhs=42 AGREE [0.0s] dim=42 e_C=42 ok
+  n6_060 g=id |OP|=166 top simplices=1810 mult(p=1000003)=[66] trace_H=66 mu-side=66 rhs=66 AGREE [0.0s] dim=66 e_C=66 ok
+  n6_060 g=(2 3)(4 5) |OP|=166 top simplices=1810 mult(p=1000003)=[33, 33] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_061 g=id |OP|=144 top simplices=1403 mult(p=1000003)=[42] trace_H=42 mu-side=42 rhs=42 AGREE [0.0s] dim=42 e_C=42 ok
+  n6_062 g=id |OP|=132 top simplices=1185 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_062 g=(2 3)(4 5) |OP|=132 top simplices=1185 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_063 g=id |OP|=172 top simplices=1905 mult(p=1000003)=[70] trace_H=70 mu-side=70 rhs=70 AGREE [0.0s] dim=70 e_C=70 ok
+  n6_063 g=(1 2) |OP|=172 top simplices=1905 mult(p=1000003)=[35, 35] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_064 g=id |OP|=132 top simplices=1230 mult(p=1000003)=[35] trace_H=35 mu-side=35 rhs=35 AGREE [0.0s] dim=35 e_C=35 ok
+  n6_065 g=id |OP|=145 top simplices=1380 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_066 g=id |OP|=125 top simplices=1065 mult(p=1000003)=[25] trace_H=25 mu-side=25 rhs=25 AGREE [0.0s] dim=25 e_C=25 ok
+  n6_067 g=id |OP|=166 top simplices=1810 mult(p=1000003)=[66] trace_H=66 mu-side=66 rhs=66 AGREE [0.0s] dim=66 e_C=66 ok
+  n6_067 g=(1 2)(5 6) |OP|=166 top simplices=1810 mult(p=1000003)=[33, 33] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_068 g=id |OP|=142 top simplices=1361 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_069 g=id |OP|=162 top simplices=1724 mult(p=1000003)=[61] trace_H=61 mu-side=61 rhs=61 AGREE [0.0s] dim=61 e_C=61 ok
+  n6_070 g=id |OP|=158 top simplices=1648 mult(p=1000003)=[57] trace_H=57 mu-side=57 rhs=57 AGREE [0.0s] dim=57 e_C=57 ok
+  n6_071 g=id |OP|=130 top simplices=1188 mult(p=1000003)=[33] trace_H=33 mu-side=33 rhs=33 AGREE [0.0s] dim=33 e_C=33 ok
+  n6_072 g=id |OP|=140 top simplices=1307 mult(p=1000003)=[37] trace_H=37 mu-side=37 rhs=37 AGREE [0.0s] dim=37 e_C=37 ok
+  n6_073 g=id |OP|=125 top simplices=1065 mult(p=1000003)=[25] trace_H=25 mu-side=25 rhs=25 AGREE [0.0s] dim=25 e_C=25 ok
+  n6_074 g=id |OP|=125 top simplices=1110 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_074 g=(1 2) |OP|=125 top simplices=1110 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_075 g=id |OP|=96 top simplices=720 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_076 g=id |OP|=123 top simplices=1100 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_076 g=(1 2)(5 6) |OP|=123 top simplices=1100 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_077 g=id |OP|=133 top simplices=1233 mult(p=1000003)=[35] trace_H=35 mu-side=35 rhs=35 AGREE [0.0s] dim=35 e_C=35 ok
+  n6_078 g=id |OP|=131 top simplices=1191 mult(p=1000003)=[33] trace_H=33 mu-side=33 rhs=33 AGREE [0.0s] dim=33 e_C=33 ok
+  n6_079 g=id |OP|=118 top simplices=1025 mult(p=1000003)=[27] trace_H=27 mu-side=27 rhs=27 AGREE [0.0s] dim=27 e_C=27 ok
+  n6_080 g=id |OP|=96 top simplices=720 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_081 g=id |OP|=158 top simplices=1634 mult(p=1000003)=[56] trace_H=56 mu-side=56 rhs=56 AGREE [0.0s] dim=56 e_C=56 ok
+  n6_081 g=(5 6) |OP|=158 top simplices=1634 mult(p=1000003)=[28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_081 g=(1 2) |OP|=158 top simplices=1634 mult(p=1000003)=[28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_081 g=(1 2)(5 6) |OP|=158 top simplices=1634 mult(p=1000003)=[28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_082 g=id |OP|=119 top simplices=1045 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_082 g=(5 6) |OP|=119 top simplices=1045 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_083 g=id |OP|=152 top simplices=1545 mult(p=1000003)=[52] trace_H=52 mu-side=52 rhs=52 AGREE [0.0s] dim=52 e_C=52 ok
+  n6_083 g=(5 6) |OP|=152 top simplices=1545 mult(p=1000003)=[26, 26] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_084 g=id |OP|=119 top simplices=1045 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_084 g=(5 6) |OP|=119 top simplices=1045 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_085 g=id |OP|=129 top simplices=1166 mult(p=1000003)=[32] trace_H=32 mu-side=32 rhs=32 AGREE [0.0s] dim=32 e_C=32 ok
+  n6_085 g=(5 6) |OP|=129 top simplices=1166 mult(p=1000003)=[16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_086 g=id |OP|=109 top simplices=883 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_086 g=(5 6) |OP|=109 top simplices=883 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_087 g=id |OP|=146 top simplices=1456 mult(p=1000003)=[48] trace_H=48 mu-side=48 rhs=48 AGREE [0.0s] dim=48 e_C=48 ok
+  n6_087 g=(5 6) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_087 g=(1 2) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_087 g=(1 2)(5 6) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_088 g=id |OP|=109 top simplices=925 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_088 g=(5 6) |OP|=109 top simplices=925 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_089 g=id |OP|=126 top simplices=1118 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_089 g=(5 6) |OP|=126 top simplices=1118 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_090 g=id |OP|=104 top simplices=823 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_090 g=(5 6) |OP|=104 top simplices=823 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_091 g=id |OP|=111 top simplices=940 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_091 g=(5 6) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_091 g=(1 2) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_091 g=(1 2)(5 6) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_092 g=id |OP|=84 top simplices=600 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_092 g=(5 6) |OP|=84 top simplices=600 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_093 g=id |OP|=161 top simplices=1710 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_093 g=(4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_093 g=(2 3) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_093 g=(2 3)(4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_093 g=(1 2 3) |OP|=161 top simplices=1710 mult(p=1000003)=[20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_093 g=(1 2 3)(4 5) |OP|=161 top simplices=1710 mult(p=1000003)=[10, 10, 10, 10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_094 g=id |OP|=125 top simplices=1110 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_094 g=(4 5) |OP|=125 top simplices=1110 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_095 g=id |OP|=114 top simplices=915 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_095 g=(4 5) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_095 g=(2 3) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_095 g=(2 3)(4 5) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_096 g=id |OP|=152 top simplices=1545 mult(p=1000003)=[52] trace_H=52 mu-side=52 rhs=52 AGREE [0.0s] dim=52 e_C=52 ok
+  n6_096 g=(2 3) |OP|=152 top simplices=1545 mult(p=1000003)=[26, 26] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_097 g=id |OP|=146 top simplices=1456 mult(p=1000003)=[48] trace_H=48 mu-side=48 rhs=48 AGREE [0.0s] dim=48 e_C=48 ok
+  n6_097 g=(4 5) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_097 g=(2 3) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_097 g=(2 3)(4 5) |OP|=146 top simplices=1456 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_098 g=id |OP|=122 top simplices=1062 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_098 g=(4 5) |OP|=122 top simplices=1062 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_099 g=id |OP|=114 top simplices=915 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_099 g=(4 5) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_099 g=(2 3) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_099 g=(2 3)(4 5) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_100 g=id |OP|=100 top simplices=810 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_100 g=(4 5) |OP|=100 top simplices=810 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_100 g=(1 2) |OP|=100 top simplices=810 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_100 g=(1 2)(4 5) |OP|=100 top simplices=810 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_101 g=id |OP|=80 top simplices=540 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_101 g=(4 5) |OP|=80 top simplices=540 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_102 g=id |OP|=115 top simplices=990 mult(p=1000003)=[26] trace_H=26 mu-side=26 rhs=26 AGREE [0.0s] dim=26 e_C=26 ok
+  n6_103 g=id |OP|=111 top simplices=935 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_103 g=(4 5) |OP|=111 top simplices=935 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_104 g=id |OP|=95 top simplices=750 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_104 g=(4 5) |OP|=95 top simplices=750 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_105 g=id |OP|=80 top simplices=540 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_105 g=(4 5) |OP|=80 top simplices=540 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_106 g=id |OP|=149 top simplices=1476 mult(p=1000003)=[48] trace_H=48 mu-side=48 rhs=48 AGREE [0.0s] dim=48 e_C=48 ok
+  n6_106 g=(2 3)(5 6) |OP|=149 top simplices=1476 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_106 g=(1 2 3)(4 5 6) |OP|=149 top simplices=1476 mult(p=1000003)=[16, 16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_107 g=id |OP|=142 top simplices=1378 mult(p=1000003)=[44] trace_H=44 mu-side=44 rhs=44 AGREE [0.0s] dim=44 e_C=44 ok
+  n6_107 g=(2 3)(5 6) |OP|=142 top simplices=1378 mult(p=1000003)=[22, 22] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_108 g=id |OP|=113 top simplices=948 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_109 g=id |OP|=100 top simplices=765 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_109 g=(2 3)(5 6) |OP|=100 top simplices=765 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_110 g=id |OP|=134 top simplices=1276 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_110 g=(4 5) |OP|=134 top simplices=1276 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_110 g=(1 2) |OP|=134 top simplices=1276 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_110 g=(1 2)(4 5) |OP|=134 top simplices=1276 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_111 g=id |OP|=101 top simplices=815 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_111 g=(4 5) |OP|=101 top simplices=815 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_112 g=id |OP|=108 top simplices=887 mult(p=1000003)=[22] trace_H=22 mu-side=22 rhs=22 AGREE [0.0s] dim=22 e_C=22 ok
+  n6_112 g=(4 5) |OP|=108 top simplices=887 mult(p=1000003)=[11, 11] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_113 g=id |OP|=93 top simplices=692 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_113 g=(4 5) |OP|=93 top simplices=692 mult(p=1000003)=[7, 7] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_114 g=id |OP|=90 top simplices=690 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_114 g=(4 5) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_114 g=(1 2) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_114 g=(1 2)(4 5) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_115 g=id |OP|=70 top simplices=450 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_115 g=(4 5) |OP|=70 top simplices=450 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=id |OP|=125 top simplices=1170 mult(p=1000003)=[36] trace_H=36 mu-side=36 rhs=36 AGREE [0.0s] dim=36 e_C=36 ok
+  n6_116 g=(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(2 3) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(2 3)(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(2 3)(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[6, 6, 6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(1 2 3) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(1 2 3)(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[6, 6, 6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_116 g=(1 2 3)(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_117 g=id |OP|=95 top simplices=750 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_117 g=(5 6) |OP|=95 top simplices=750 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_117 g=(4 5 6) |OP|=95 top simplices=750 mult(p=1000003)=[6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_118 g=id |OP|=85 top simplices=615 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_118 g=(5 6) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_118 g=(4 5 6) |OP|=85 top simplices=615 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_118 g=(2 3) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_118 g=(2 3)(5 6) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_118 g=(2 3)(4 5 6) |OP|=85 top simplices=615 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_119 g=id |OP|=75 top simplices=540 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_119 g=(5 6) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_119 g=(4 5 6) |OP|=75 top simplices=540 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_119 g=(1 2) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_119 g=(1 2)(5 6) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_119 g=(1 2)(4 5 6) |OP|=75 top simplices=540 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_120 g=id |OP|=60 top simplices=360 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_120 g=(5 6) |OP|=60 top simplices=360 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_120 g=(4 5 6) |OP|=60 top simplices=360 mult(p=1000003)=[2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_121 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_121 g=(3 4) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_121 g=(2 3 4) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_121 g=(1 2)(3 4) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_121 g=(1 2 3 4) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_122 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_122 g=(3 4) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_123 g=id |OP|=156 top simplices=1500 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_123 g=(2 3) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_124 g=id |OP|=153 top simplices=1350 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_124 g=(3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_124 g=(2 3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_125 g=id |OP|=181 top simplices=2133 mult(p=1000003)=[84] trace_H=84 mu-side=84 rhs=84 AGREE [0.0s] dim=84 e_C=84 ok
+  n6_125 g=(3 4) |OP|=181 top simplices=2133 mult(p=1000003)=[42, 42] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_125 g=(2 3 4) |OP|=181 top simplices=2133 mult(p=1000003)=[28, 28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_126 g=id |OP|=181 top simplices=2133 mult(p=1000003)=[84] trace_H=84 mu-side=84 rhs=84 AGREE [0.0s] dim=84 e_C=84 ok
+  n6_126 g=(3 4) |OP|=181 top simplices=2133 mult(p=1000003)=[42, 42] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_126 g=(2 3 4) |OP|=181 top simplices=2133 mult(p=1000003)=[28, 28, 28] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_127 g=id |OP|=161 top simplices=1656 mult(p=1000003)=[52] trace_H=52 mu-side=52 rhs=52 AGREE [0.0s] dim=52 e_C=52 ok
+  n6_127 g=(3 4) |OP|=161 top simplices=1656 mult(p=1000003)=[26, 26] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_128 g=id |OP|=155 top simplices=1460 mult(p=1000003)=[38] trace_H=38 mu-side=38 rhs=38 AGREE [0.0s] dim=38 e_C=38 ok
+  n6_128 g=(2 3) |OP|=155 top simplices=1460 mult(p=1000003)=[19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_129 g=id |OP|=153 top simplices=1350 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_129 g=(3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_129 g=(2 3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_130 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_130 g=(1 2) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_131 g=id |OP|=112 top simplices=900 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_132 g=id |OP|=132 top simplices=1185 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_132 g=(1 2)(3 4) |OP|=132 top simplices=1185 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_133 g=id |OP|=125 top simplices=1065 mult(p=1000003)=[25] trace_H=25 mu-side=25 rhs=25 AGREE [0.0s] dim=25 e_C=25 ok
+  n6_134 g=id |OP|=109 top simplices=810 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_135 g=id |OP|=144 top simplices=1403 mult(p=1000003)=[42] trace_H=42 mu-side=42 rhs=42 AGREE [0.0s] dim=42 e_C=42 ok
+  n6_136 g=id |OP|=144 top simplices=1403 mult(p=1000003)=[42] trace_H=42 mu-side=42 rhs=42 AGREE [0.0s] dim=42 e_C=42 ok
+  n6_137 g=id |OP|=130 top simplices=1188 mult(p=1000003)=[33] trace_H=33 mu-side=33 rhs=33 AGREE [0.0s] dim=33 e_C=33 ok
+  n6_138 g=id |OP|=111 top simplices=876 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  n6_139 g=id |OP|=125 top simplices=1076 mult(p=1000003)=[26] trace_H=26 mu-side=26 rhs=26 AGREE [0.0s] dim=26 e_C=26 ok
+  n6_140 g=id |OP|=121 top simplices=1006 mult(p=1000003)=[23] trace_H=23 mu-side=23 rhs=23 AGREE [0.0s] dim=23 e_C=23 ok
+  n6_141 g=id |OP|=109 top simplices=810 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_142 g=id |OP|=114 top simplices=915 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_142 g=(3 4) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_142 g=(1 2) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_142 g=(1 2)(3 4) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_143 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_143 g=(3 4) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_144 g=id |OP|=132 top simplices=1154 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_144 g=(3 4) |OP|=132 top simplices=1154 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_145 g=id |OP|=132 top simplices=1154 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_145 g=(3 4) |OP|=132 top simplices=1154 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_146 g=id |OP|=115 top simplices=937 mult(p=1000003)=[21] trace_H=21 mu-side=21 rhs=21 AGREE [0.0s] dim=21 e_C=21 ok
+  n6_147 g=id |OP|=108 top simplices=846 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_147 g=(3 4) |OP|=108 top simplices=846 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_148 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_148 g=(3 4) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_149 g=id |OP|=174 top simplices=1986 mult(p=1000003)=[76] trace_H=76 mu-side=76 rhs=76 AGREE [0.0s] dim=76 e_C=76 ok
+  n6_149 g=(3 4) |OP|=174 top simplices=1986 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_149 g=(1 2)(3 4) |OP|=174 top simplices=1986 mult(p=1000003)=[38, 38] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_149 g=(1 3)(2 4)(5 6) |OP|=174 top simplices=1986 mult(p=1000003)=[39, 37] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s]
+  n6_149 g=(1 3 2 4)(5 6) |OP|=174 top simplices=1986 mult(p=1000033)=[19, 19, 19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_150 g=id |OP|=137 top simplices=1300 mult(p=1000003)=[38] trace_H=38 mu-side=38 rhs=38 AGREE [0.0s] dim=38 e_C=38 ok
+  n6_150 g=(3 4) |OP|=137 top simplices=1300 mult(p=1000003)=[19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_151 g=id |OP|=169 top simplices=1884 mult(p=1000003)=[70] trace_H=70 mu-side=70 rhs=70 AGREE [0.0s] dim=70 e_C=70 ok
+  n6_151 g=(3 4) |OP|=169 top simplices=1884 mult(p=1000003)=[35, 35] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_152 g=id |OP|=137 top simplices=1300 mult(p=1000003)=[38] trace_H=38 mu-side=38 rhs=38 AGREE [0.0s] dim=38 e_C=38 ok
+  n6_152 g=(3 4) |OP|=137 top simplices=1300 mult(p=1000003)=[19, 19] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_153 g=id |OP|=142 top simplices=1361 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_154 g=id |OP|=125 top simplices=1076 mult(p=1000003)=[26] trace_H=26 mu-side=26 rhs=26 AGREE [0.0s] dim=26 e_C=26 ok
+  n6_155 g=id |OP|=132 top simplices=1154 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_155 g=(3 4) |OP|=132 top simplices=1154 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_156 g=id |OP|=121 top simplices=975 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_156 g=(3 4) |OP|=121 top simplices=975 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_157 g=id |OP|=164 top simplices=1782 mult(p=1000003)=[64] trace_H=64 mu-side=64 rhs=64 AGREE [0.0s] dim=64 e_C=64 ok
+  n6_157 g=(3 4) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_157 g=(1 2) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_157 g=(1 2)(3 4) |OP|=164 top simplices=1782 mult(p=1000003)=[32, 32] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_158 g=id |OP|=127 top simplices=1155 mult(p=1000003)=[32] trace_H=32 mu-side=32 rhs=32 AGREE [0.0s] dim=32 e_C=32 ok
+  n6_158 g=(3 4) |OP|=127 top simplices=1155 mult(p=1000003)=[16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_159 g=id |OP|=140 top simplices=1307 mult(p=1000003)=[37] trace_H=37 mu-side=37 rhs=37 AGREE [0.0s] dim=37 e_C=37 ok
+  n6_160 g=id |OP|=121 top simplices=1006 mult(p=1000003)=[23] trace_H=23 mu-side=23 rhs=23 AGREE [0.0s] dim=23 e_C=23 ok
+  n6_161 g=id |OP|=131 top simplices=1114 mult(p=1000003)=[26] trace_H=26 mu-side=26 rhs=26 AGREE [0.0s] dim=26 e_C=26 ok
+  n6_161 g=(3 4) |OP|=131 top simplices=1114 mult(p=1000003)=[13, 13] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_162 g=id |OP|=119 top simplices=925 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_162 g=(3 4) |OP|=119 top simplices=925 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_163 g=id |OP|=122 top simplices=1062 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_163 g=(1 2) |OP|=122 top simplices=1062 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_164 g=id |OP|=94 top simplices=690 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_165 g=id |OP|=118 top simplices=967 mult(p=1000003)=[22] trace_H=22 mu-side=22 rhs=22 AGREE [0.0s] dim=22 e_C=22 ok
+  n6_165 g=(1 2)(3 4) |OP|=118 top simplices=967 mult(p=1000003)=[11, 11] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_166 g=id |OP|=111 top simplices=878 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  n6_167 g=id |OP|=92 top simplices=636 mult(p=1000003)=[11] trace_H=11 mu-side=11 rhs=11 AGREE [0.0s] dim=11 e_C=11 ok
+  n6_168 g=id |OP|=102 top simplices=777 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_168 g=(3 4) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_168 g=(1 2) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_168 g=(1 2)(3 4) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_169 g=id |OP|=78 top simplices=500 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_169 g=(3 4) |OP|=78 top simplices=500 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_170 g=id |OP|=119 top simplices=1080 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_170 g=(2 3) |OP|=119 top simplices=1080 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_170 g=(1 2 3) |OP|=119 top simplices=1080 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_171 g=id |OP|=96 top simplices=720 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_172 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_172 g=(2 3) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_173 g=id |OP|=119 top simplices=1045 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_173 g=(2 3) |OP|=119 top simplices=1045 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_174 g=id |OP|=119 top simplices=1045 mult(p=1000003)=[28] trace_H=28 mu-side=28 rhs=28 AGREE [0.0s] dim=28 e_C=28 ok
+  n6_174 g=(2 3) |OP|=119 top simplices=1045 mult(p=1000003)=[14, 14] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_175 g=id |OP|=109 top simplices=925 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_175 g=(2 3) |OP|=109 top simplices=925 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_176 g=id |OP|=94 top simplices=690 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_177 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_177 g=(2 3) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_178 g=id |OP|=80 top simplices=540 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_178 g=(1 2) |OP|=80 top simplices=540 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_179 g=id |OP|=64 top simplices=360 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_180 g=id |OP|=94 top simplices=690 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_181 g=id |OP|=94 top simplices=690 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_182 g=id |OP|=86 top simplices=610 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_183 g=id |OP|=76 top simplices=500 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_184 g=id |OP|=64 top simplices=360 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_185 g=id |OP|=106 top simplices=844 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  n6_185 g=(1 3)(2 4)(5 6) |OP|=106 top simplices=844 mult(p=1000003)=[10, 9] trace_H=1 mu-side=1 rhs=1 AGREE [0.0s]
+  n6_186 g=id |OP|=133 top simplices=1233 mult(p=1000003)=[35] trace_H=35 mu-side=35 rhs=35 AGREE [0.0s] dim=35 e_C=35 ok
+  n6_187 g=id |OP|=106 top simplices=844 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  n6_188 g=id |OP|=115 top simplices=990 mult(p=1000003)=[26] trace_H=26 mu-side=26 rhs=26 AGREE [0.0s] dim=26 e_C=26 ok
+  n6_189 g=id |OP|=98 top simplices=749 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_190 g=id |OP|=94 top simplices=690 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_191 g=id |OP|=86 top simplices=583 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_192 g=id |OP|=129 top simplices=1166 mult(p=1000003)=[32] trace_H=32 mu-side=32 rhs=32 AGREE [0.0s] dim=32 e_C=32 ok
+  n6_192 g=(1 2) |OP|=129 top simplices=1166 mult(p=1000003)=[16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_193 g=id |OP|=98 top simplices=749 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_194 g=id |OP|=113 top simplices=948 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_195 g=id |OP|=94 top simplices=694 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_196 g=id |OP|=93 top simplices=666 mult(p=1000003)=[13] trace_H=13 mu-side=13 rhs=13 AGREE [0.0s] dim=13 e_C=13 ok
+  n6_197 g=id |OP|=84 top simplices=553 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_198 g=id |OP|=101 top simplices=815 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_198 g=(1 2) |OP|=101 top simplices=815 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_199 g=id |OP|=78 top simplices=530 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_200 g=id |OP|=84 top simplices=580 mult(p=1000003)=[11] trace_H=11 mu-side=11 rhs=11 AGREE [0.0s] dim=11 e_C=11 ok
+  n6_201 g=id |OP|=73 top simplices=455 mult(p=1000003)=[7] trace_H=7 mu-side=7 rhs=7 AGREE [0.0s] dim=7 e_C=7 ok
+  n6_202 g=id |OP|=72 top simplices=460 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_202 g=(1 2) |OP|=72 top simplices=460 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_203 g=id |OP|=56 top simplices=300 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_204 g=id |OP|=159 top simplices=1698 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_204 g=(3 4)(5 6) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_204 g=(1 2) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_204 g=(1 2)(3 4)(5 6) |OP|=159 top simplices=1698 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_205 g=id |OP|=123 top simplices=1100 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_205 g=(3 4)(5 6) |OP|=123 top simplices=1100 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_206 g=id |OP|=131 top simplices=1191 mult(p=1000003)=[33] trace_H=33 mu-side=33 rhs=33 AGREE [0.0s] dim=33 e_C=33 ok
+  n6_207 g=id |OP|=115 top simplices=937 mult(p=1000003)=[21] trace_H=21 mu-side=21 rhs=21 AGREE [0.0s] dim=21 e_C=21 ok
+  n6_208 g=id |OP|=118 top simplices=967 mult(p=1000003)=[22] trace_H=22 mu-side=22 rhs=22 AGREE [0.0s] dim=22 e_C=22 ok
+  n6_208 g=(3 4)(5 6) |OP|=118 top simplices=967 mult(p=1000003)=[11, 11] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_209 g=id |OP|=111 top simplices=844 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_209 g=(3 4)(5 6) |OP|=111 top simplices=844 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_210 g=id |OP|=111 top simplices=935 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_210 g=(1 2) |OP|=111 top simplices=935 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_211 g=id |OP|=86 top simplices=610 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_212 g=id |OP|=105 top simplices=820 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_212 g=(1 2)(3 4)(5 6) |OP|=105 top simplices=820 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_213 g=id |OP|=96 top simplices=719 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_214 g=id |OP|=82 top simplices=543 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_215 g=id |OP|=85 top simplices=606 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_215 g=(3 4)(5 6) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_215 g=(1 2) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_215 g=(1 2)(3 4)(5 6) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_216 g=id |OP|=66 top simplices=395 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_216 g=(3 4)(5 6) |OP|=66 top simplices=395 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_217 g=id |OP|=151 top simplices=1575 mult(p=1000003)=[54] trace_H=54 mu-side=54 rhs=54 AGREE [0.0s] dim=54 e_C=54 ok
+  n6_217 g=(2 3) |OP|=151 top simplices=1575 mult(p=1000003)=[27, 27] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_217 g=(1 2 3) |OP|=151 top simplices=1575 mult(p=1000003)=[18, 18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_218 g=id |OP|=118 top simplices=1025 mult(p=1000003)=[27] trace_H=27 mu-side=27 rhs=27 AGREE [0.0s] dim=27 e_C=27 ok
+  n6_219 g=id |OP|=108 top simplices=846 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_219 g=(2 3) |OP|=108 top simplices=846 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_220 g=id |OP|=126 top simplices=1118 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_220 g=(2 3) |OP|=126 top simplices=1118 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_221 g=id |OP|=111 top simplices=878 mult(p=1000003)=[19] trace_H=19 mu-side=19 rhs=19 AGREE [0.0s] dim=19 e_C=19 ok
+  n6_222 g=id |OP|=106 top simplices=775 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_222 g=(2 3) |OP|=106 top simplices=775 mult(p=1000003)=[7, 7] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_223 g=id |OP|=95 top simplices=750 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_223 g=(1 2) |OP|=95 top simplices=750 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_224 g=id |OP|=76 top simplices=500 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_225 g=id |OP|=96 top simplices=719 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_226 g=id |OP|=86 top simplices=614 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_227 g=id |OP|=74 top simplices=458 mult(p=1000003)=[7] trace_H=7 mu-side=7 rhs=7 AGREE [0.0s] dim=7 e_C=7 ok
+  n6_228 g=id |OP|=108 top simplices=887 mult(p=1000003)=[22] trace_H=22 mu-side=22 rhs=22 AGREE [0.0s] dim=22 e_C=22 ok
+  n6_228 g=(1 2) |OP|=108 top simplices=887 mult(p=1000003)=[11, 11] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_229 g=id |OP|=84 top simplices=580 mult(p=1000003)=[11] trace_H=11 mu-side=11 rhs=11 AGREE [0.0s] dim=11 e_C=11 ok
+  n6_230 g=id |OP|=91 top simplices=658 mult(p=1000003)=[13] trace_H=13 mu-side=13 rhs=13 AGREE [0.0s] dim=13 e_C=13 ok
+  n6_231 g=id |OP|=79 top simplices=507 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_232 g=id |OP|=79 top simplices=541 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_232 g=(1 2) |OP|=79 top simplices=541 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_233 g=id |OP|=62 top simplices=355 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_234 g=id |OP|=95 top simplices=750 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_234 g=(2 3) |OP|=95 top simplices=750 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_234 g=(1 2 3) |OP|=95 top simplices=750 mult(p=1000003)=[6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_235 g=id |OP|=74 top simplices=490 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_236 g=id |OP|=67 top simplices=405 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_236 g=(2 3) |OP|=67 top simplices=405 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_237 g=id |OP|=60 top simplices=360 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_237 g=(1 2) |OP|=60 top simplices=360 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_238 g=id |OP|=48 top simplices=240 mult(p=1000003)=[3] trace_H=3 mu-side=3 rhs=3 AGREE [0.0s] dim=3 e_C=3 ok
+  n6_239 g=id |OP|=141 top simplices=1440 mult(p=1000003)=[48] trace_H=48 mu-side=48 rhs=48 AGREE [0.0s] dim=48 e_C=48 ok
+  n6_239 g=(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(3 4) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(2 3 4) |OP|=141 top simplices=1440 mult(p=1000003)=[16, 16, 16] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(2 3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[8, 8, 8, 8, 8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(1 2)(3 4) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(1 2)(3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000003)=[24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(1 2 3 4) |OP|=141 top simplices=1440 mult(p=1000033)=[12, 12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_239 g=(1 2 3 4)(5 6) |OP|=141 top simplices=1440 mult(p=1000033)=[12, 12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_240 g=id |OP|=111 top simplices=940 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_240 g=(5 6) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_240 g=(3 4) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_240 g=(3 4)(5 6) |OP|=111 top simplices=940 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_241 g=id |OP|=102 top simplices=777 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_241 g=(5 6) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_241 g=(2 3) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_241 g=(2 3)(5 6) |OP|=102 top simplices=777 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_242 g=id |OP|=99 top simplices=696 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_242 g=(5 6) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_242 g=(3 4) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_242 g=(3 4)(5 6) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_242 g=(2 3 4) |OP|=99 top simplices=696 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_242 g=(2 3 4)(5 6) |OP|=99 top simplices=696 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_243 g=id |OP|=90 top simplices=690 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_243 g=(5 6) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_243 g=(1 2) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_243 g=(1 2)(5 6) |OP|=90 top simplices=690 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_244 g=id |OP|=72 top simplices=460 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_244 g=(5 6) |OP|=72 top simplices=460 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_245 g=id |OP|=85 top simplices=606 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_245 g=(5 6) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_245 g=(1 2)(3 4) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_245 g=(1 2)(3 4)(5 6) |OP|=85 top simplices=606 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_246 g=id |OP|=79 top simplices=541 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_246 g=(5 6) |OP|=79 top simplices=541 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_247 g=id |OP|=69 top simplices=412 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_247 g=(5 6) |OP|=69 top simplices=412 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=id |OP|=71 top simplices=464 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_248 g=(5 6) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(3 4) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(3 4)(5 6) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(1 2) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(1 2)(5 6) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(1 2)(3 4) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_248 g=(1 2)(3 4)(5 6) |OP|=71 top simplices=464 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_249 g=id |OP|=56 top simplices=305 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_249 g=(5 6) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_249 g=(3 4) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_249 g=(3 4)(5 6) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_250 g=id |OP|=75 top simplices=540 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_250 g=(5 6) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_250 g=(2 3) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_250 g=(2 3)(5 6) |OP|=75 top simplices=540 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_250 g=(1 2 3) |OP|=75 top simplices=540 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_250 g=(1 2 3)(5 6) |OP|=75 top simplices=540 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_251 g=id |OP|=60 top simplices=360 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_251 g=(5 6) |OP|=60 top simplices=360 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_252 g=id |OP|=55 top simplices=300 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_252 g=(5 6) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_252 g=(2 3) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_252 g=(2 3)(5 6) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_253 g=id |OP|=50 top simplices=270 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_253 g=(5 6) |OP|=50 top simplices=270 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_253 g=(1 2) |OP|=50 top simplices=270 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_253 g=(1 2)(5 6) |OP|=50 top simplices=270 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_254 g=id |OP|=40 top simplices=180 mult(p=1000003)=[2] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s] dim=2 e_C=2 ok
+  n6_254 g=(5 6) |OP|=40 top simplices=180 mult(p=1000003)=[1, 1] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_255 g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  n6_255 g=(4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_255 g=(3 4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_255 g=(2 3)(4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_255 g=(2 3 4 5) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_255 g=(1 2)(3 4 5) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_255 g=(1 2 3 4 5) |OP|=203 top simplices=2700 mult(p=1000081)=[24, 24, 24, 24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  n6_256 g=id |OP|=166 top simplices=1800 mult(p=1000003)=[60] trace_H=60 mu-side=60 rhs=60 AGREE [0.0s] dim=60 e_C=60 ok
+  n6_256 g=(4 5) |OP|=166 top simplices=1800 mult(p=1000003)=[30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_256 g=(3 4 5) |OP|=166 top simplices=1800 mult(p=1000003)=[20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_257 g=id |OP|=156 top simplices=1500 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_257 g=(4 5) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_257 g=(2 3) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_257 g=(2 3)(4 5) |OP|=156 top simplices=1500 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_258 g=id |OP|=153 top simplices=1350 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_258 g=(3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_258 g=(2 3 4) |OP|=153 top simplices=1350 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_259 g=id |OP|=152 top simplices=1260 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_259 g=(4 5) |OP|=152 top simplices=1260 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_259 g=(3 4 5) |OP|=152 top simplices=1260 mult(p=1000003)=[8, 8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_259 g=(2 3)(4 5) |OP|=152 top simplices=1260 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_259 g=(2 3 4 5) |OP|=152 top simplices=1260 mult(p=1000033)=[6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_260 g=id |OP|=139 top simplices=1350 mult(p=1000003)=[40] trace_H=40 mu-side=40 rhs=40 AGREE [0.0s] dim=40 e_C=40 ok
+  n6_260 g=(4 5) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_260 g=(1 2) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_260 g=(1 2)(4 5) |OP|=139 top simplices=1350 mult(p=1000003)=[20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_261 g=id |OP|=112 top simplices=900 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_261 g=(4 5) |OP|=112 top simplices=900 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_262 g=id |OP|=132 top simplices=1185 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_262 g=(1 2)(3 4) |OP|=132 top simplices=1185 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_263 g=id |OP|=125 top simplices=1065 mult(p=1000003)=[25] trace_H=25 mu-side=25 rhs=25 AGREE [0.0s] dim=25 e_C=25 ok
+  n6_264 g=id |OP|=109 top simplices=810 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_265 g=id |OP|=121 top simplices=975 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_265 g=(4 5) |OP|=121 top simplices=975 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_266 g=id |OP|=119 top simplices=925 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_266 g=(4 5) |OP|=119 top simplices=925 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_267 g=id |OP|=108 top simplices=756 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_267 g=(4 5) |OP|=108 top simplices=756 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_268 g=id |OP|=114 top simplices=915 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_268 g=(3 4) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_268 g=(1 2) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_268 g=(1 2)(3 4) |OP|=114 top simplices=915 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_269 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_269 g=(3 4) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_270 g=id |OP|=111 top simplices=844 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_270 g=(1 2)(4 5) |OP|=111 top simplices=844 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_271 g=id |OP|=106 top simplices=775 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_271 g=(3 4) |OP|=106 top simplices=775 mult(p=1000003)=[7, 7] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_272 g=id |OP|=88 top simplices=560 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_272 g=(3 4) |OP|=88 top simplices=560 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_273 g=id |OP|=99 top simplices=696 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_273 g=(4 5) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_273 g=(3 4 5) |OP|=99 top simplices=696 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_273 g=(1 2) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_273 g=(1 2)(4 5) |OP|=99 top simplices=696 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_273 g=(1 2)(3 4 5) |OP|=99 top simplices=696 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_274 g=id |OP|=76 top simplices=450 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_274 g=(4 5) |OP|=76 top simplices=450 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_274 g=(3 4 5) |OP|=76 top simplices=450 mult(p=1000003)=[2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_275 g=id |OP|=119 top simplices=1080 mult(p=1000003)=[30] trace_H=30 mu-side=30 rhs=30 AGREE [0.0s] dim=30 e_C=30 ok
+  n6_275 g=(2 3) |OP|=119 top simplices=1080 mult(p=1000003)=[15, 15] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_275 g=(1 2 3) |OP|=119 top simplices=1080 mult(p=1000003)=[10, 10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_276 g=id |OP|=96 top simplices=720 mult(p=1000003)=[15] trace_H=15 mu-side=15 rhs=15 AGREE [0.0s] dim=15 e_C=15 ok
+  n6_277 g=id |OP|=89 top simplices=600 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_277 g=(2 3) |OP|=89 top simplices=600 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_278 g=id |OP|=109 top simplices=883 mult(p=1000003)=[20] trace_H=20 mu-side=20 rhs=20 AGREE [0.0s] dim=20 e_C=20 ok
+  n6_278 g=(2 3) |OP|=109 top simplices=883 mult(p=1000003)=[10, 10] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_279 g=id |OP|=104 top simplices=823 mult(p=1000003)=[18] trace_H=18 mu-side=18 rhs=18 AGREE [0.0s] dim=18 e_C=18 ok
+  n6_279 g=(2 3) |OP|=104 top simplices=823 mult(p=1000003)=[9, 9] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_280 g=id |OP|=92 top simplices=636 mult(p=1000003)=[11] trace_H=11 mu-side=11 rhs=11 AGREE [0.0s] dim=11 e_C=11 ok
+  n6_281 g=id |OP|=88 top simplices=560 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_281 g=(2 3) |OP|=88 top simplices=560 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_282 g=id |OP|=80 top simplices=540 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_282 g=(1 2) |OP|=80 top simplices=540 mult(p=1000003)=[5, 5] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_283 g=id |OP|=64 top simplices=360 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_284 g=id |OP|=86 top simplices=583 mult(p=1000003)=[10] trace_H=10 mu-side=10 rhs=10 AGREE [0.0s] dim=10 e_C=10 ok
+  n6_285 g=id |OP|=82 top simplices=543 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_286 g=id |OP|=74 top simplices=458 mult(p=1000003)=[7] trace_H=7 mu-side=7 rhs=7 AGREE [0.0s] dim=7 e_C=7 ok
+  n6_287 g=id |OP|=63 top simplices=336 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_288 g=id |OP|=100 top simplices=765 mult(p=1000003)=[16] trace_H=16 mu-side=16 rhs=16 AGREE [0.0s] dim=16 e_C=16 ok
+  n6_288 g=(2 3)(4 5) |OP|=100 top simplices=765 mult(p=1000003)=[8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_289 g=id |OP|=84 top simplices=553 mult(p=1000003)=[9] trace_H=9 mu-side=9 rhs=9 AGREE [0.0s] dim=9 e_C=9 ok
+  n6_290 g=id |OP|=76 top simplices=452 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_290 g=(2 3)(4 5) |OP|=76 top simplices=452 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_291 g=id |OP|=93 top simplices=692 mult(p=1000003)=[14] trace_H=14 mu-side=14 rhs=14 AGREE [0.0s] dim=14 e_C=14 ok
+  n6_291 g=(1 2) |OP|=93 top simplices=692 mult(p=1000003)=[7, 7] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_292 g=id |OP|=73 top simplices=455 mult(p=1000003)=[7] trace_H=7 mu-side=7 rhs=7 AGREE [0.0s] dim=7 e_C=7 ok
+  n6_293 g=id |OP|=79 top simplices=507 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_294 g=id |OP|=69 top simplices=396 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_295 g=id |OP|=69 top simplices=412 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_295 g=(1 2) |OP|=69 top simplices=412 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_296 g=id |OP|=54 top simplices=270 mult(p=1000003)=[3] trace_H=3 mu-side=3 rhs=3 AGREE [0.0s] dim=3 e_C=3 ok
+  n6_297 g=id |OP|=85 top simplices=615 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_297 g=(4 5) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_297 g=(2 3) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_297 g=(2 3)(4 5) |OP|=85 top simplices=615 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_297 g=(1 2 3) |OP|=85 top simplices=615 mult(p=1000003)=[4, 4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_297 g=(1 2 3)(4 5) |OP|=85 top simplices=615 mult(p=1000003)=[2, 2, 2, 2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_298 g=id |OP|=67 top simplices=405 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_298 g=(4 5) |OP|=67 top simplices=405 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_299 g=id |OP|=61 top simplices=336 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_299 g=(4 5) |OP|=61 top simplices=336 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_299 g=(2 3) |OP|=61 top simplices=336 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_299 g=(2 3)(4 5) |OP|=61 top simplices=336 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_300 g=id |OP|=55 top simplices=300 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_300 g=(4 5) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_300 g=(1 2) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_300 g=(1 2)(4 5) |OP|=55 top simplices=300 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_301 g=id |OP|=44 top simplices=200 mult(p=1000003)=[2] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s] dim=2 e_C=2 ok
+  n6_301 g=(4 5) |OP|=44 top simplices=200 mult(p=1000003)=[1, 1] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_302 g=id |OP|=104 top simplices=900 mult(p=1000003)=[24] trace_H=24 mu-side=24 rhs=24 AGREE [0.0s] dim=24 e_C=24 ok
+  n6_302 g=(3 4) |OP|=104 top simplices=900 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_302 g=(2 3 4) |OP|=104 top simplices=900 mult(p=1000003)=[8, 8, 8] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_302 g=(1 2)(3 4) |OP|=104 top simplices=900 mult(p=1000003)=[12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_302 g=(1 2 3 4) |OP|=104 top simplices=900 mult(p=1000033)=[6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_303 g=id |OP|=84 top simplices=600 mult(p=1000003)=[12] trace_H=12 mu-side=12 rhs=12 AGREE [0.0s] dim=12 e_C=12 ok
+  n6_303 g=(3 4) |OP|=84 top simplices=600 mult(p=1000003)=[6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_304 g=id |OP|=78 top simplices=500 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_304 g=(2 3) |OP|=78 top simplices=500 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_305 g=id |OP|=76 top simplices=450 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_305 g=(3 4) |OP|=76 top simplices=450 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_305 g=(2 3 4) |OP|=76 top simplices=450 mult(p=1000003)=[2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_306 g=id |OP|=70 top simplices=450 mult(p=1000003)=[8] trace_H=8 mu-side=8 rhs=8 AGREE [0.0s] dim=8 e_C=8 ok
+  n6_306 g=(1 2) |OP|=70 top simplices=450 mult(p=1000003)=[4, 4] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_307 g=id |OP|=56 top simplices=300 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_308 g=id |OP|=66 top simplices=395 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_308 g=(1 2)(3 4) |OP|=66 top simplices=395 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_309 g=id |OP|=62 top simplices=355 mult(p=1000003)=[5] trace_H=5 mu-side=5 rhs=5 AGREE [0.0s] dim=5 e_C=5 ok
+  n6_310 g=id |OP|=54 top simplices=270 mult(p=1000003)=[3] trace_H=3 mu-side=3 rhs=3 AGREE [0.0s] dim=3 e_C=3 ok
+  n6_311 g=id |OP|=56 top simplices=305 mult(p=1000003)=[4] trace_H=4 mu-side=4 rhs=4 AGREE [0.0s] dim=4 e_C=4 ok
+  n6_311 g=(3 4) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_311 g=(1 2) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_311 g=(1 2)(3 4) |OP|=56 top simplices=305 mult(p=1000003)=[2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_312 g=id |OP|=44 top simplices=200 mult(p=1000003)=[2] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s] dim=2 e_C=2 ok
+  n6_312 g=(3 4) |OP|=44 top simplices=200 mult(p=1000003)=[1, 1] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_313 g=id |OP|=60 top simplices=360 mult(p=1000003)=[6] trace_H=6 mu-side=6 rhs=6 AGREE [0.0s] dim=6 e_C=6 ok
+  n6_313 g=(2 3) |OP|=60 top simplices=360 mult(p=1000003)=[3, 3] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_313 g=(1 2 3) |OP|=60 top simplices=360 mult(p=1000003)=[2, 2, 2] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_314 g=id |OP|=48 top simplices=240 mult(p=1000003)=[3] trace_H=3 mu-side=3 rhs=3 AGREE [0.0s] dim=3 e_C=3 ok
+  n6_315 g=id |OP|=44 top simplices=200 mult(p=1000003)=[2] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s] dim=2 e_C=2 ok
+  n6_315 g=(2 3) |OP|=44 top simplices=200 mult(p=1000003)=[1, 1] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_316 g=id |OP|=40 top simplices=180 mult(p=1000003)=[2] trace_H=2 mu-side=2 rhs=2 AGREE [0.0s] dim=2 e_C=2 ok
+  n6_316 g=(1 2) |OP|=40 top simplices=180 mult(p=1000003)=[1, 1] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  n6_317 g=id |OP|=32 top simplices=120 mult(p=1000003)=[1] trace_H=1 mu-side=1 rhs=1 AGREE [0.0s] dim=1 e_C=1 ok
+  star5_up (1 < 2,3,4,5,6) g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  star5_up (1 < 2,3,4,5,6) g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_up (1 < 2,3,4,5,6) g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_up (1 < 2,3,4,5,6) g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_up (1 < 2,3,4,5,6) g=(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_up (1 < 2,3,4,5,6) g=(2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_up (1 < 2,3,4,5,6) g=(2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000081)=[24, 24, 24, 24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=id |OP|=203 top simplices=2700 mult(p=1000003)=[120] trace_H=120 mu-side=120 rhs=120 AGREE [0.1s] dim=120 e_C=120 ok
+  star5_down (2,3,4,5,6 < 1) g=(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[40, 40, 40] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=(3 4)(5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[60, 60] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=(3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000033)=[30, 30, 30, 30] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=(2 3)(4 5 6) |OP|=203 top simplices=2700 mult(p=1000003)=[20, 20, 20, 20, 20, 20] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  star5_down (2,3,4,5,6 < 1) g=(2 3 4 5 6) |OP|=203 top simplices=2700 mult(p=1000081)=[24, 24, 24, 24, 24] trace_H=0 mu-side=0 rhs=0 AGREE [0.1s]
+  K33 ({1,2,3} < {4,5,6}) g=id |OP|=125 top simplices=1170 mult(p=1000003)=[36] trace_H=36 mu-side=36 rhs=36 AGREE [0.0s] dim=36 e_C=36 ok
+  K33 ({1,2,3} < {4,5,6}) g=(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(2 3) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(2 3)(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[18, 18] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(2 3)(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[6, 6, 6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(1 2 3) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(1 2 3)(5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[6, 6, 6, 6, 6, 6] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  K33 ({1,2,3} < {4,5,6}) g=(1 2 3)(4 5 6) |OP|=125 top simplices=1170 mult(p=1000003)=[12, 12, 12] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  3x2chain (1<2, 3<4, 5<6) g=id |OP|=174 top simplices=1962 mult(p=1000003)=[74] trace_H=74 mu-side=74 rhs=74 AGREE [0.0s] dim=74 e_C=74 ok
+  3x2chain (1<2, 3<4, 5<6) g=(3 5)(4 6) |OP|=174 top simplices=1962 mult(p=1000003)=[37, 37] trace_H=0 mu-side=0 rhs=0 AGREE [0.0s]
+  3x2chain (1<2, 3<4, 5<6) g=(1 3 5)(2 4 6) |OP|=174 top simplices=1962 mult(p=1000003)=[24, 25, 25] trace_H=-1 mu-side=-1 rhs=-1 AGREE [0.0s]
+disagreements: 0; skipped: 0

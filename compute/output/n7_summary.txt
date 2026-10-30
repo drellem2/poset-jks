@@ -1,0 +1,101 @@
+unlabeled poset counts (fast canonical form): {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+enumeration: 0.3s
+n=7: 2045 posets, 4804 (poset, conjugacy class) pairs
+  F0_note   fails on    0 pairs /   0 posets   (sgn(g) * sum zeta^{r_g(C)}   [note, eq. characterconj])
+  F1_conj   fails on    0 pairs /   0 posets   (sgn(g) * sum zeta^{-r_g(C)}  [opposite Fourier/rotation convention])
+  F2_nosgn  fails on    0 pairs /   0 posets   (sum zeta^{r_g(C)}            [WRONG: sign twist dropped])
+  F3_count  fails on    1 pairs /   1 posets   (sgn(g) * #{C : gC = C}       [WRONG: phase dropped])
+  F4_nopar  fails on    0 pairs /   0 posets   (LHS without (-1)^{n-3}, vs F0 [WRONG: degree sign dropped])
+  JS dim (-1)^(n-3) mu(OP(P)) == e_C(P): failures 0
+  connected => e_C == |Lin|: failures 0; disconnected posets with e_C != |Lin|: 395
+nonidentity pairs: 2759
+control rejections at n=7 (pairs / posets):
+  F0_note       0 /    0
+  F1_conj       0 /    0
+  F2_nosgn      0 /    0
+  F3_count      1 /    1
+  F4_nopar      0 /    0
+pairs with nonzero character at g != id: 1
+
+DISCRIMINATING pairs (some wrong control F1-F4 other than F4 fails):
+  n7_0000 [7x1-chain] covers=- |Aut|=5040 |OP|=877 e_C=720 g=(1 2 3 4 5 6 7) sgn=+1 mu=-1 #fix=6 rot={'1': 1, '2': 1, '3': 1, '4': 1, '5': 1, '6': 1} lhs=-1 rhs=-1 fails=F3_count
+
+Named symmetric families:
+  n7_0000 7x1-chain: |Aut|=5040 |OP|=877 e_C=720 classes=15 F0 ok=True nonzero g!=id: [('(1 2 3 4 5 6 7)', -1)]
+  n7_0001 layered1+6; claw up (1 < n-1 arms): |Aut|=720 |OP|=877 e_C=720 classes=11 F0 ok=True nonzero g!=id: none
+  n7_0013 layered2+5: |Aut|=240 |OP|=557 e_C=240 classes=14 F0 ok=True nonzero g!=id: none
+  n7_0014 layered1+1+5: |Aut|=120 |OP|=406 e_C=120 classes=7 F0 ok=True nonzero g!=id: none
+  n7_0082 layered3+4: |Aut|=144 |OP|=445 e_C=144 classes=15 F0 ok=True nonzero g!=id: none
+  n7_0083 layered1+2+4: |Aut|=48 |OP|=297 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_0089 layered2+1+4: |Aut|=48 |OP|=260 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_0090 layered1+1+1+4: |Aut|=24 |OP|=208 e_C=24 classes=5 F0 ok=True nonzero g!=id: none
+  n7_0091 3x2-chain+1pt: |Aut|=6 |OP|=767 e_C=444 classes=3 F0 ok=True nonzero g!=id: none
+  n7_0092 spider 3 arms of length 2: |Aut|=6 |OP|=459 e_C=90 classes=3 F0 ok=True nonzero g!=id: none
+  n7_0106 crown3+1pt: |Aut|=6 |OP|=667 e_C=288 classes=3 F0 ok=True nonzero g!=id: none
+  n7_0333 layered4+3: |Aut|=144 |OP|=445 e_C=144 classes=15 F0 ok=True nonzero g!=id: none
+  n7_0334 layered1+3+3: |Aut|=36 |OP|=305 e_C=36 classes=9 F0 ok=True nonzero g!=id: none
+  n7_0341 layered2+2+3: |Aut|=24 |OP|=215 e_C=24 classes=12 F0 ok=True nonzero g!=id: none
+  n7_0342 layered1+1+2+3: |Aut|=12 |OP|=170 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_0364 layered3+1+3: |Aut|=36 |OP|=225 e_C=36 classes=9 F0 ok=True nonzero g!=id: none
+  n7_0365 layered1+2+1+3; 2x2 < 3-antichain: |Aut|=12 |OP|=165 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_0371 layered2+1+1+3: |Aut|=12 |OP|=150 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_0372 layered1+1+1+1+3: |Aut|=6 |OP|=120 e_C=6 classes=3 F0 ok=True nonzero g!=id: none
+  n7_0378 2x2-chain+3pt: |Aut|=12 |OP|=840 e_C=600 classes=6 F0 ok=True nonzero g!=id: none
+  n7_0388 2x3-chain+1pt: |Aut|=2 |OP|=477 e_C=114 classes=2 F0 ok=True nonzero g!=id: none
+  n7_0389 spider 2 arms of length 3; 2x3-chain + common bottom: |Aut|=2 |OP|=245 e_C=20 classes=2 F0 ok=True nonzero g!=id: none
+  n7_0872 2+2 crown (=K22)+3pt: |Aut|=24 |OP|=803 e_C=480 classes=12 F0 ok=True nonzero g!=id: none
+  n7_0914 layered5+2: |Aut|=240 |OP|=557 e_C=240 classes=14 F0 ok=True nonzero g!=id: none
+  n7_0915 layered1+4+2: |Aut|=48 |OP|=404 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_0923 layered2+3+2: |Aut|=24 |OP|=257 e_C=24 classes=12 F0 ok=True nonzero g!=id: none
+  n7_0924 layered1+1+3+2: |Aut|=12 |OP|=198 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_0952 layered3+2+2: |Aut|=24 |OP|=215 e_C=24 classes=12 F0 ok=True nonzero g!=id: none
+  n7_0953 layered1+2+2+2: |Aut|=8 |OP|=155 e_C=8 classes=8 F0 ok=True nonzero g!=id: none
+  n7_0959 layered2+1+2+2: |Aut|=8 |OP|=140 e_C=8 classes=8 F0 ok=True nonzero g!=id: none
+  n7_0960 layered1+1+1+2+2: |Aut|=4 |OP|=112 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1025 layered4+1+2: |Aut|=48 |OP|=260 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_1026 layered1+3+1+2: |Aut|=12 |OP|=190 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1033 layered2+2+1+2: |Aut|=8 |OP|=140 e_C=8 classes=8 F0 ok=True nonzero g!=id: none
+  n7_1034 layered1+1+2+1+2: |Aut|=4 |OP|=110 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1054 layered3+1+1+2: |Aut|=12 |OP|=150 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1055 layered1+2+1+1+2: |Aut|=4 |OP|=110 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1061 layered2+1+1+1+2: |Aut|=4 |OP|=100 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1062 layered1+1+1+1+1+2: |Aut|=2 |OP|=80 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_1504 layered6+1; claw down: |Aut|=720 |OP|=877 e_C=720 classes=11 F0 ok=True nonzero g!=id: none
+  n7_1505 layered1+5+1: |Aut|=120 |OP|=675 e_C=120 classes=7 F0 ok=True nonzero g!=id: none
+  n7_1515 layered2+4+1: |Aut|=48 |OP|=404 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_1516 layered1+1+4+1: |Aut|=24 |OP|=304 e_C=24 classes=5 F0 ok=True nonzero g!=id: none
+  n7_1557 layered3+3+1: |Aut|=36 |OP|=305 e_C=36 classes=9 F0 ok=True nonzero g!=id: none
+  n7_1558 layered1+2+3+1: |Aut|=12 |OP|=213 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1564 layered2+1+3+1: |Aut|=12 |OP|=190 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1565 layered1+1+1+3+1: |Aut|=6 |OP|=152 e_C=6 classes=3 F0 ok=True nonzero g!=id: none
+  n7_1572 2x3-chain + common top: |Aut|=2 |OP|=245 e_C=20 classes=2 F0 ok=True nonzero g!=id: none
+  n7_1616 chain2*chain2+3pt: |Aut|=12 |OP|=689 e_C=240 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1659 chain2*chain3+1pt: |Aut|=1 |OP|=315 e_C=30 classes=1 F0 ok=True nonzero g!=id: none
+  n7_1680 layered4+2+1: |Aut|=48 |OP|=297 e_C=48 classes=10 F0 ok=True nonzero g!=id: none
+  n7_1681 layered1+3+2+1: |Aut|=12 |OP|=213 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1688 layered2+2+2+1: |Aut|=8 |OP|=155 e_C=8 classes=8 F0 ok=True nonzero g!=id: none
+  n7_1689 layered1+1+2+2+1: |Aut|=4 |OP|=122 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1709 layered3+1+2+1; 3-antichain < 2x2: |Aut|=12 |OP|=165 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1710 layered1+2+1+2+1: |Aut|=4 |OP|=121 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1716 layered2+1+1+2+1: |Aut|=4 |OP|=110 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1717 layered1+1+1+1+2+1: |Aut|=2 |OP|=88 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_1904 layered5+1+1: |Aut|=120 |OP|=406 e_C=120 classes=7 F0 ok=True nonzero g!=id: none
+  n7_1905 layered1+4+1+1: |Aut|=24 |OP|=304 e_C=24 classes=5 F0 ok=True nonzero g!=id: none
+  n7_1913 layered2+3+1+1: |Aut|=12 |OP|=198 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1914 layered1+1+3+1+1: |Aut|=6 |OP|=152 e_C=6 classes=3 F0 ok=True nonzero g!=id: none
+  n7_1941 layered3+2+1+1: |Aut|=12 |OP|=170 e_C=12 classes=6 F0 ok=True nonzero g!=id: none
+  n7_1942 layered1+2+2+1+1: |Aut|=4 |OP|=122 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1948 layered2+1+2+1+1: |Aut|=4 |OP|=110 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_1949 layered1+1+1+2+1+1: |Aut|=2 |OP|=88 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_2008 layered4+1+1+1: |Aut|=24 |OP|=208 e_C=24 classes=5 F0 ok=True nonzero g!=id: none
+  n7_2009 layered1+3+1+1+1: |Aut|=6 |OP|=152 e_C=6 classes=3 F0 ok=True nonzero g!=id: none
+  n7_2016 layered2+2+1+1+1: |Aut|=4 |OP|=112 e_C=4 classes=4 F0 ok=True nonzero g!=id: none
+  n7_2017 layered1+1+2+1+1+1: |Aut|=2 |OP|=88 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_2036 layered3+1+1+1+1: |Aut|=6 |OP|=120 e_C=6 classes=3 F0 ok=True nonzero g!=id: none
+  n7_2037 layered1+2+1+1+1+1: |Aut|=2 |OP|=88 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_2043 layered2+1+1+1+1+1: |Aut|=2 |OP|=80 e_C=2 classes=2 F0 ok=True nonzero g!=id: none
+  n7_2044 1x7-chain; layered1+1+1+1+1+1+1: |Aut|=1 |OP|=64 e_C=1 classes=1 F0 ok=True nonzero g!=id: none
+
+timing: analyse() wall 68.4s on 3 workers; per poset median 0.08s, max 7.49s, sum 204.8s CPU
+  slowest: n7_0000(|OP|=877, |Aut|=5040, 7.5s), n7_0001(|OP|=877, |Aut|=720, 1.5s), n7_1504(|OP|=877, |Aut|=720, 1.4s)
+ALL F0 (note's identity) CHECKS PASS at n=7: True
