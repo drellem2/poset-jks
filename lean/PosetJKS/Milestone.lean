@@ -3,14 +3,18 @@ import PosetJKS.Bridge
 /-!
 # First milestone: the homology-free presentation `PLie(P) ≅ ℂ[Lin P]/R_P`
 
-Statements of `notes/poset_jks_theorem.tex`:
+Statements and proofs of `notes/poset_jks_theorem.tex`:
 
 * Theorem S (a), (b) (`thmS_a`, `thmS_b`): pure word combinatorics modulo shuffles;
 * Theorem Ψ (`thmPsi`): admissible class sums are independent modulo `Sh_n`;
 * Corollary Ψ.1 (`corPsi_bijective`, `corPsi_equivariant`): the truncation map
-  `ψ_P : PLie(P) → ℂ[Lin P]/R_P` is an `Aut(P)`-isomorphism, for every finite poset `P`.
+  `ψ_P : PLie(P) → ℂ[Lin P]/R_P` is an `Aut(P)`-isomorphism, for every finite poset `P` with
+  `n ≥ 1`.
 
 None of these uses homology, the Jenča–Sarkoci theorem, P. Hall, or the Hopf trace formula.
+The inductions (Theorem A, Theorem Ψ through the contraction `E_{a,x}`) are done on lists in
+`Words.lean`; `Bridge.lean` transfers them to words `Fin n ≃ α`. Here: Lemma 4 (`card_inB`),
+Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`), and the theorems.
 -/
 
 open Finset
@@ -197,7 +201,7 @@ lemma wd_mem_SB_sup_R (x₀ : α) {w : Word α} (hw : IsLinExt α w) : wd w ∈ 
   refine sub_mem (Submodule.mem_sup_right hsh) (Submodule.sum_mem _ fun z hz => ?_)
   obtain ⟨hzw, hzF⟩ := Finset.mem_erase.1 hz
   obtain ⟨h1, h2⟩ := (Finset.mem_filter.1 hzF).2
-  have key := L.muL_lt_of_shuffle (r := (· < ·)) (mem_univ x₀) hlin (z := toL z)
+  have key := L.muL_lt_of_shuffle (r := (· < ·)) hlin (z := toL z)
     (by rw [hk, ← hS, ← restrict_eq, h1]) (by rw [hk, ← hS, ← restrict_compl, h2])
     (fun h => hzw (toL_injective h))
   rw [hk] at key
@@ -246,12 +250,116 @@ open Classical in
 noncomputable def sLam (lam : α → ℂ) (w : Word α) : Alg α :=
   ∑ k ∈ (range (Fintype.card α)).filter (IsCut w), (∏ a ∈ prefixSet w k, lam a)⁻¹ • wd (rot w k)
 
+
+lemma prod_prefixSet (lam : α → ℂ) (w : Word α) (k : ℕ) :
+    ∏ a ∈ prefixSet w k, lam a = L.lamL lam ((toL w).take k) := by
+  rw [prefixSet_eq, L.lamL_eq_prod lam ((isWordOn_toL w).1.sublist (List.take_sublist _ _))]
+
+open Classical in
+lemma mem_cuts_iff (w : Word α) (k : ℕ) :
+    k ∈ (range (Fintype.card α)).filter (IsCut w) ↔
+      k < (toL w).length ∧ L.UoC (· < ·) univ ((toL w).take k).toFinset := by
+  rw [Finset.mem_filter, Finset.mem_range, IsCut, length_toL, isUnionOfComponents_iff,
+    prefixSet_eq]
+  tauto
+
+open Classical in
+lemma toLmap_sLam (lam : α → ℂ) (w : Word α) :
+    toLmap (sLam lam w) = ∑ k ∈ (range (Fintype.card α)).filter (IsCut w),
+      (L.lamL lam ((toL w).take k))⁻¹ • Finsupp.single ((toL w).rotate k) (1 : ℂ) := by
+  simp only [sLam, map_sum, map_smul, toLmap_wd, toL_rot, prod_prefixSet]
+
+open Classical in
+lemma sLam_apply (lam : α → ℂ) (w z : Word α) :
+    sLam lam w z = ∑ k ∈ (range (Fintype.card α)).filter (IsCut w),
+      (∏ a ∈ prefixSet w k, lam a)⁻¹ * (if rot w k = z then 1 else 0) := by
+  simp only [sLam, alg_sum_apply, alg_smul_apply, wd_apply]
+
+lemma sLam_self (lam : α → ℂ) (w : Word α) (h0 : 0 < Fintype.card α) : sLam lam w w = 1 := by
+  classical
+  rw [sLam_apply, Finset.sum_eq_single 0]
+  · simp [prefixSet, rot_zero]
+  · intro k hk hk0
+    rw [if_neg, mul_zero]
+    intro h
+    have hkn := Finset.mem_range.1 (Finset.mem_filter.1 hk).1
+    have hne : toL w ≠ [] := by
+      intro h'; have := congrArg List.length h'; rw [length_toL] at this; simp at this; omega
+    have := List.Nodup.rotate_congr (isWordOn_toL w).1 hne k 0
+      (by rw [← toL_rot, h, List.rotate_zero])
+    rw [length_toL, Nat.mod_eq_of_lt hkn, Nat.zero_mod] at this
+    exact hk0 this
+  · intro h
+    exact absurd (Finset.mem_filter.2 ⟨Finset.mem_range.2 h0, h0, fun x y _ => by
+      simp [prefixSet]⟩) h
+
+lemma sLam_eq_zero_of_not_mem (lam : α → ℂ) {w z : Word α} (h : z ∉ coset w) :
+    sLam lam w z = 0 := by
+  classical
+  rw [sLam_apply]
+  refine Finset.sum_eq_zero fun k hk => ?_
+  rw [if_neg, mul_zero]
+  rintro rfl
+  exact h (Finset.mem_image.2 ⟨k, (Finset.mem_filter.1 hk).1, rfl⟩)
+
+lemma cyc_eq_coset (h0 : 0 < Fintype.card α) {C : Finset (Word α)} (hC : C ∈ cyc α)
+    {z : Word α} (hz : z ∈ C) : C = coset z := by
+  obtain ⟨w₀, -, rfl⟩ := Finset.mem_image.1 hC
+  exact (coset_eq_of_mem h0 hz).symm
+
 /-- Theorem Ψ: for admissible `λ`, the class sums `s_λ(C)`, one for each cyclic class `C`
 (computed from any representative `w ∈ C ∩ Lin(P)`), are linearly independent modulo `Sh_n`. -/
 theorem thmPsi (lam : α → ℂ) (hlam : IsAdmissible lam) (rep : cyc α → Word α)
     (hrep : ∀ C, rep C ∈ C.1 ∧ IsLinExt α (rep C)) :
     LinearIndependent ℂ (fun C => (Sh α).mkQ (sLam lam (rep C))) := by
-  sorry
+  classical
+  rw [linearIndependent_iff']
+  intro s g hg C hC
+  have h0 : 0 < Fintype.card α := by
+    obtain ⟨w₀, -, hw₀⟩ := Finset.mem_image.1 C.2
+    have := hw₀ ▸ (hrep C).1
+    obtain ⟨j, hj, -⟩ := Finset.mem_image.1 this
+    exact lt_of_le_of_lt (Nat.zero_le _) (Finset.mem_range.1 hj)
+  set X : Alg α := ∑ C ∈ s, g C • sLam lam (rep C) with hX
+  have hXSh : X ∈ Sh α := by
+    rw [← Submodule.Quotient.mk_eq_zero (Sh α)]
+    have : (Sh α).mkQ X = 0 := by rw [hX, map_sum]; simpa only [map_smul] using hg
+    exact this
+  have hlamw : ∀ w : Word α, L.lamL lam (toL w) = 1 := fun w => by
+    rw [L.lamL_eq_prod lam (isWordOn_toL w).1, (isWordOn_toL w).2]; exact hlam.1
+  have hX0 : X = 0 := by
+    apply toLmap_injective
+    rw [map_zero]
+    have hTX : toLmap X = ∑ C ∈ s, g C • toLmap (sLam lam (rep C)) := by
+      rw [hX, map_sum]; simp only [map_smul]
+    refine L.eq_zero_of_eqL univ (· < ·) lam _ (map_Sh_le (Submodule.mem_map_of_mem hXSh))
+      ?_ ?_ ?_
+    · intro l hl
+      rw [hTX, Finsupp.finset_sum_apply] at hl
+      obtain ⟨C', -, hC'⟩ := Finset.exists_ne_zero_of_sum_ne_zero hl
+      rw [Finsupp.smul_apply, smul_eq_mul] at hC'
+      have hne := right_ne_zero_of_mul hC'
+      rw [toLmap_sLam] at hne
+      exact L.linL_of_classSum ((isLinExt_iff _).1 (hrep C').2) _ (mem_cuts_iff _) hne
+    · rw [hTX]
+      refine L.eqL_sum _ _ fun C' _ => L.eqL_smul _ ?_
+      rw [toLmap_sLam]
+      exact L.eqL_classSum (isWordOn_toL _) (hlamw _) _ (mem_cuts_iff _)
+    · intro U _ hne hU hUoC
+      exact hlam.2 U hne hU ((isUnionOfComponents_iff U).2 hUoC)
+  -- read off the coefficient of `rep C`
+  have hcoef := congrArg (fun Y : Alg α => Y (rep C)) hX0
+  simp only [hX, alg_sum_apply, alg_smul_apply, alg_zero_apply] at hcoef
+  rw [Finset.sum_eq_single C, sLam_self lam _ h0, mul_one] at hcoef
+  · exact hcoef
+  · intro C' _ hC'
+    rw [sLam_eq_zero_of_not_mem, mul_zero]
+    intro hmem
+    apply hC'
+    apply Subtype.ext
+    rw [cyc_eq_coset h0 C'.2 (hrep C').1, cyc_eq_coset h0 C.2 (hrep C).1]
+    exact (coset_eq_of_mem h0 hmem).symm
+  · intro h; exact absurd hC h
 
 /-! ### Corollary Ψ.1: the truncation isomorphism `ψ_P : PLie(P) ≅ ℂ[Lin P]/R_P` -/
 
@@ -301,17 +409,182 @@ noncomputable def actMP (g : α ≃o α) : MP α →ₗ[ℂ] MP α :=
   Submodule.mapQ _ _ ((relabel g.toEquiv).restrict fun _ hy => relabel_mem_W g hy)
     fun x hy => by exact relabel_mem_R g hy
 
+
+open Classical in
+lemma pr_eq (y : Alg α) : pr α y = ∑ w ∈ univ.filter (IsLinExt α), y w • wd w := by
+  rw [pr, LinearMap.coe_sum, Finset.sum_apply]
+  refine Finset.sum_congr rfl fun w _ => ?_
+  change Finsupp.single w (y w) = y w • Finsupp.single w (1 : ℂ)
+  rw [Finsupp.smul_single_one]
+
+open Classical in
+lemma pr_apply (y : Alg α) (z : Word α) : pr α y z = if IsLinExt α z then y z else 0 := by
+  rw [pr_eq, alg_sum_apply]
+  simp only [alg_smul_apply, wd_apply, mul_ite, mul_one, mul_zero]
+  rw [Finset.sum_ite_eq']
+  simp
+
+open Classical in
+lemma pr_wd (z : Word α) : pr α (wd z) = if IsLinExt α z then wd z else 0 := by
+  apply alg_ext
+  intro y
+  rw [pr_apply]
+  by_cases hz : IsLinExt α z
+  · rw [if_pos hz]
+    by_cases hy : IsLinExt α y
+    · rw [if_pos hy]
+    · rw [if_neg hy, wd_apply, if_neg (fun (h : z = y) => hy (h ▸ hz))]
+  · rw [if_neg hz, alg_zero_apply]
+    split_ifs with hy
+    · rw [wd_apply, if_neg (fun (h : z = y) => hz (h ▸ hy))]
+    · rfl
+
+lemma relabel_apply (g : Equiv.Perm α) (y : Alg α) (z : Word α) :
+    relabel g y z = y (z.trans g.symm) := by
+  have := Finsupp.mapDomain_apply (f := fun w : Word α => w.trans g)
+    (fun w w' h => Equiv.ext fun i => g.injective (congrArg (fun u : Word α => u i) h)) y
+    (z.trans g.symm)
+  rw [Equiv.trans_assoc, Equiv.symm_trans_self, Equiv.trans_refl] at this
+  exact this
+
+lemma isLinExt_trans_symm_iff (g : α ≃o α) (z : Word α) :
+    IsLinExt α (z.trans g.toEquiv.symm) ↔ IsLinExt α z := by
+  have h : ∀ a b : α, g.toEquiv.symm a < g.toEquiv.symm b ↔ a < b :=
+    fun a b => g.symm.lt_iff_lt
+  simp only [IsLinExt, Equiv.trans_apply, h]
+
+lemma pr_relabel (g : α ≃o α) (y : Alg α) :
+    pr α (relabel g.toEquiv y) = relabel g.toEquiv (pr α y) := by
+  classical
+  apply alg_ext
+  intro z
+  rw [pr_apply, relabel_apply, relabel_apply, pr_apply, isLinExt_trans_symm_iff]
+
+lemma isLinExt_rot_iff {w : Word α} (hw : IsLinExt α w) {j : ℕ}
+    (hj : j < Fintype.card α) : IsLinExt α (rot w j) ↔ IsCut w j := by
+  have hl := (isLinExt_iff w).1 hw
+  have hsplit : toL w = (toL w).take j ++ (toL w).drop j := (List.take_append_drop _ _).symm
+  rw [isLinExt_iff, toL_rot, List.rotate_eq_drop_append_take (by rw [length_toL]; omega), IsCut,
+    isUnionOfComponents_iff, prefixSet_eq]
+  constructor
+  · intro h; exact ⟨hj, L.uoC_of_linL_rotate (hsplit ▸ hl) h⟩
+  · rintro ⟨-, h⟩; exact L.linL_rotate (hsplit ▸ hl) h
+
+lemma card_prefixSet (w : Word α) {k : ℕ} (hk : k ≤ Fintype.card α) :
+    (prefixSet w k).card = k := by
+  rw [prefixSet_eq, List.toFinset_card_of_nodup
+    ((isWordOn_toL w).1.sublist (List.take_sublist _ _)), List.length_take, length_toL,
+    min_eq_left hk]
+
+/-- `pr_P(w e_ζ) = s_ζ(w)/n` for `w ∈ Lin(P)` (`notes/natural_isomorphism.md`, Cor. Ψ.1). -/
+lemma pr_wEζ (ζ : ℂ) {w : Word α} (hw : IsLinExt α w) :
+    pr α (wEζ ζ w) = ((Fintype.card α : ℂ))⁻¹ • sLam (fun _ => ζ) w := by
+  classical
+  rw [wEζ, map_sum, sLam, Finset.smul_sum, Finset.sum_filter]
+  refine Finset.sum_congr rfl fun j hj => ?_
+  have hj' := Finset.mem_range.1 hj
+  rw [map_smul, pr_wd]
+  by_cases hc : IsCut w j
+  · rw [if_pos ((isLinExt_rot_iff hw hj').2 hc), if_pos hc, Finset.prod_const,
+      card_prefixSet w hj'.le, smul_smul]
+  · rw [if_neg (fun h => hc ((isLinExt_rot_iff hw hj').1 h)), if_neg hc, smul_zero]
+
 /-- Corollary Ψ.1, bijectivity: for every finite poset `P` and every primitive `n`-th root of
 unity `ζ`, the truncation map `ψ_P` is a linear isomorphism `PLie(P) ≅ ℂ[Lin P]/R_P`. -/
 theorem corPsi_bijective (h0 : 0 < Fintype.card α) {ζ : ℂ}
     (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
     Function.Bijective (psi α ζ) := by
-  sorry
+  classical
+  obtain ⟨x₀⟩ : Nonempty α := Fintype.card_pos_iff.1 h0
+  have hrepex : ∀ C : cyc α, ∃ w, w ∈ C.1 ∧ IsLinExt α w := fun C => by
+    obtain ⟨w, hw, hC⟩ := Finset.mem_image.1 C.2
+    exact ⟨w, hC ▸ self_mem_coset h0 w, (Finset.mem_filter.1 hw).2⟩
+  choose rep hrep using hrepex
+  set v : cyc α → Alg α := fun C => wEζ ζ (rep C) with hv
+  have hadm : IsAdmissible (fun _ : α => ζ) := by
+    refine ⟨by rw [Finset.prod_const, Finset.card_univ]; exact hζ.pow_eq_one,
+      fun U hne hU _ => ?_⟩
+    rw [Finset.prod_const]
+    intro h
+    have hdvd := (hζ.pow_eq_one_iff_dvd _).1 h
+    have hlt : U.card < Fintype.card α := by
+      rw [← Finset.card_univ]; exact Finset.card_lt_card (Finset.ssubset_univ_iff.2 hU)
+    exact absurd (Nat.le_of_dvd (Finset.card_pos.2 hne) hdvd) (not_le.2 hlt)
+  have hψ := thmPsi (fun _ => ζ) hadm rep hrep
+  have hn : ((Fintype.card α : ℂ)) ≠ 0 := by exact_mod_cast h0.ne'
+  have key : ∀ c : cyc α → ℂ, pr α (∑ C, c C • v C) ∈ Sh α → c = 0 := by
+    intro c hc
+    have hpr : pr α (∑ C, c C • v C) =
+        ((Fintype.card α : ℂ))⁻¹ • ∑ C, c C • sLam (fun _ => ζ) (rep C) := by
+      rw [map_sum, Finset.smul_sum]
+      refine Finset.sum_congr rfl fun C _ => ?_
+      rw [map_smul, hv, pr_wEζ ζ (hrep C).2, smul_comm]
+    rw [hpr] at hc
+    have hmem := Submodule.smul_mem _ (Fintype.card α : ℂ) hc
+    rw [smul_smul, mul_inv_cancel₀ hn, one_smul] at hmem
+    have h0' : ∑ C, c C • (Sh α).mkQ (sLam (fun _ => ζ) (rep C)) = 0 := by
+      simp only [← map_smul, ← map_sum]
+      exact (Submodule.Quotient.mk_eq_zero (Sh α)).2 hmem
+    funext C
+    exact Fintype.linearIndependent_iff.1 hψ c h0' C
+  have hli : LinearIndependent ℂ v := Fintype.linearIndependent_iff.2 fun c hc => by
+    have := key c (by rw [hc, map_zero]; exact zero_mem _)
+    intro C; simp [this]
+  have hspan : PLie α ζ = Submodule.span ℂ (Set.range v) := by
+    refine le_antisymm ?_ (Submodule.span_le.2 ?_)
+    · rw [PLie, Submodule.span_le]
+      rintro _ ⟨w, hw, rfl⟩
+      let C : cyc α := ⟨coset w, Finset.mem_image.2 ⟨w, Finset.mem_filter.2 ⟨mem_univ _, hw⟩,
+        rfl⟩⟩
+      obtain ⟨j, hj⟩ := ((mem_coset_iff h0).1 (hrep C).1).symm
+      have hwr : w = rot (rep C) j := toL_injective (by rw [toL_rot, hj])
+      rw [hwr, wEζ_rot hζ.pow_eq_one]
+      exact Submodule.smul_mem _ _ (Submodule.subset_span ⟨C, rfl⟩)
+    · rintro _ ⟨C, rfl⟩
+      exact Submodule.subset_span ⟨rep C, (hrep C).2, rfl⟩
+  have hdimL : Module.finrank ℂ (PLie α ζ) = eC α := by
+    rw [hspan, finrank_span_eq_card hli, eC, Fintype.card_coe]
+  have hdimM : Module.finrank ℂ (MP α) = eC α := by
+    have h1 : Module.finrank ℂ (MP α) + Module.finrank ℂ (RinW α) = Module.finrank ℂ (W α) :=
+      Submodule.finrank_quotient_add_finrank (RinW α)
+    have h2 : Module.finrank ℂ (RinW α) = Module.finrank ℂ (R α) :=
+      (Submodule.comapSubtypeEquivOfLe R_le_W).finrank_eq
+    have h3 := (thmS_b x₀).2.2.2
+    have h4 : Module.finrank ℂ (W α) = Nat.card {w : Word α // IsLinExt α w} := by
+      rw [W, finrank_span_wd]
+    have h5 : eC α ≤ Nat.card {w : Word α // IsLinExt α w} := by
+      rw [eC, cyc, Nat.card_eq_fintype_card, Fintype.card_subtype]
+      exact Finset.card_image_le
+    omega
+  have hinj : Function.Injective (psi α ζ) := by
+    rw [injective_iff_map_eq_zero]
+    intro y hy
+    have hy' : (y : Alg α) ∈ Submodule.span ℂ (Set.range v) := hspan ▸ y.2
+    obtain ⟨c, hc⟩ := (Submodule.mem_span_range_iff_exists_fun ℂ).1 hy'
+    have hR : pr α (y : Alg α) ∈ Sh α := by
+      have : prW α y ∈ RinW α := by
+        rw [psi, LinearMap.comp_apply, LinearMap.comp_apply, Submodule.mkQ_apply,
+          Submodule.Quotient.mk_eq_zero] at hy
+        exact hy
+      exact R_le_Sh this
+    rw [← hc] at hR
+    have hc0 := key c hR
+    apply Subtype.ext
+    rw [← hc, hc0]
+    simp
+  exact ⟨hinj,
+    (LinearMap.injective_iff_surjective_of_finrank_eq_finrank (hdimL.trans hdimM.symm)).1 hinj⟩
 
 /-- Corollary Ψ.1, equivariance: `ψ_P` commutes with the action of `Aut(P)` (no sign twist). -/
 theorem corPsi_equivariant (ζ : ℂ) (g : α ≃o α) :
     psi α ζ ∘ₗ actPLie ζ g = actMP g ∘ₗ psi α ζ := by
-  sorry
+  refine LinearMap.ext fun y => ?_
+  simp only [psi, actPLie, actMP, LinearMap.comp_apply, Submodule.mkQ_apply,
+    Submodule.mapQ_apply]
+  congr 1
+  apply Subtype.ext
+  simp only [prW, LinearMap.codRestrict_apply, LinearMap.restrict_apply, Submodule.subtype_apply]
+  exact pr_relabel g y
 
 /-- Corollary Ψ.1 in packaged form: an `Aut(P)`-equivariant linear isomorphism
 `PLie(P) ≃ ℂ[Lin P]/R_P` (namely `ψ_P`). -/

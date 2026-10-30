@@ -139,8 +139,8 @@ lemma filter_ins_tt (hx : q x = true) (ha : q a = true) (l : List α) :
   | nil => rfl
   | cons b l ih =>
     by_cases hba : b = a
-    · subst hba; simp [List.filter_cons, hx, ha, ih]
-    · by_cases hb : q b = true <;> simp [List.filter_cons, hba, hb, ih]
+    · subst hba; simp [hx, ha, ih]
+    · by_cases hb : q b = true <;> simp [hba, hb, ih]
 
 lemma filter_insA_tt (hx : q x = true) (ha : q a = true) (l : List α) :
     (insA x a l).filter q = insA x a (l.filter q) := by
@@ -148,8 +148,8 @@ lemma filter_insA_tt (hx : q x = true) (ha : q a = true) (l : List α) :
   | nil => rfl
   | cons b l ih =>
     by_cases hba : b = a
-    · subst hba; simp [List.filter_cons, hx, ha, ih]
-    · by_cases hb : q b = true <;> simp [List.filter_cons, hba, hb, ih]
+    · subst hba; simp [hx, ha, ih]
+    · by_cases hb : q b = true <;> simp [hba, hb, ih]
 
 lemma filter_ins_ff (hx : q x = false) (ha : q a = false) (l : List α) :
     (ins x a l).filter q = l.filter q := by
@@ -157,8 +157,8 @@ lemma filter_ins_ff (hx : q x = false) (ha : q a = false) (l : List α) :
   | nil => rfl
   | cons b l ih =>
     by_cases hba : b = a
-    · subst hba; simp [List.filter_cons, hx, ha, ih]
-    · by_cases hb : q b = true <;> simp [List.filter_cons, hba, hb, ih]
+    · subst hba; simp [hx, ha, ih]
+    · by_cases hb : q b = true <;> simp [hba, hb, ih]
 
 lemma filter_insA_ff (hx : q x = false) (ha : q a = false) (l : List α) :
     (insA x a l).filter q = l.filter q := by
@@ -166,8 +166,8 @@ lemma filter_insA_ff (hx : q x = false) (ha : q a = false) (l : List α) :
   | nil => rfl
   | cons b l ih =>
     by_cases hba : b = a
-    · subst hba; simp [List.filter_cons, hx, ha, ih]
-    · by_cases hb : q b = true <;> simp [List.filter_cons, hba, hb, ih]
+    · subst hba; simp [hx, ha, ih]
+    · by_cases hb : q b = true <;> simp [hba, hb, ih]
 
 lemma filter_ins_eq_insA (h : q x ≠ q a) (l : List α) :
     (ins x a l).filter q = (insA x a l).filter q := by
@@ -176,7 +176,7 @@ lemma filter_ins_eq_insA (h : q x ≠ q a) (l : List α) :
   | cons b l ih =>
     by_cases hba : b = a
     · subst hba
-      cases hx : q x <;> cases hb : q b <;> simp_all [List.filter_cons]
+      cases hx : q x <;> cases hb : q b <;> simp_all
     · simp [hba, List.filter_cons, ih]
 
 /-- An `x`-free list `m` is recovered from `ins x a m`. -/
@@ -281,7 +281,7 @@ noncomputable def sgnE (x a : α) (u : List α) : ℂ :=
 
 /-- Lemma 1, case `x, a` on the `q`-side. -/
 lemma E_shq_tt (hxa : x ≠ a) (hqx : q x = true) (hqa : q a = true) {u v : List α}
-    (hxu : x ∈ u) (hxv : x ∉ v) :
+    (hxu : x ∈ u) :
     E a x (shq q u v) = sgnE x a u • shq q (u.filter (· ≠ x)) v := by
   set u' := u.filter (· ≠ x) with hu'
   have hxu' : x ∉ u' := by simp [hu']
@@ -325,9 +325,9 @@ lemma E_shq_tt (hxa : x ≠ a) (hqx : q x = true) (hqa : q a = true) {u v : List
 
 /-- Lemma 1, case `x, a` both off the `q`-side. -/
 lemma E_shq_ff (hxa : x ≠ a) (hqx : q x = false) (hqa : q a = false) {u v : List α}
-    (hxu : x ∉ u) (hxv : x ∈ v) :
+    (hxv : x ∈ v) :
     E a x (shq q u v) = sgnE x a v • shq q u (v.filter (· ≠ x)) := by
-  rw [shq_swap, E_shq_tt hxa (by simp [hqx]) (by simp [hqa]) hxv hxu, shq_swap]
+  rw [shq_swap, E_shq_tt hxa (by simp [hqx]) (by simp [hqa]) hxv, shq_swap]
   simp only [Bool.not_not]
 
 /-- Lemma 1, case `x`, `a` on different sides: the image vanishes. -/
@@ -365,7 +365,7 @@ theorem map_E_ShL {A : Finset α} (hxa : x ≠ a) (hx : x ∈ A) (ha : a ∈ A) 
     have hxv : x ∉ v := fun h => by
       have := hv.2 ▸ List.mem_toFinset.2 h; simp [hxS] at this
     rw [E_shq_tt hxa (by simpa using hxS) (by simpa using haS)
-      (List.mem_toFinset.1 (hu.2 ▸ hxS)) hxv]
+      (List.mem_toFinset.1 (hu.2 ▸ hxS))]
     refine Submodule.smul_mem _ _ ?_
     rw [shq_congr (q' := fun b => decide (b ∈ S.erase x)) (fun b hb => by simp [hb])
       (by simp) hxv]
@@ -380,9 +380,8 @@ theorem map_E_ShL {A : Finset α} (hxa : x ≠ a) (hx : x ∈ A) (ha : a ∈ A) 
   · rw [E_shq_mixed (by simp [hxS, haS])]; exact zero_mem _
   · rw [E_shq_mixed (by simp [hxS, haS])]; exact zero_mem _
   · -- both off `S`
-    have hxu : x ∉ u := fun h => hxS (hu.2 ▸ List.mem_toFinset.2 h)
     have hxv : x ∈ v := List.mem_toFinset.1 (hv.2 ▸ Finset.mem_sdiff.2 ⟨hx, hxS⟩)
-    rw [E_shq_ff hxa (by simpa using hxS) (by simpa using haS) hxu hxv]
+    rw [E_shq_ff hxa (by simpa using hxS) (by simpa using haS) hxv]
     refine Submodule.smul_mem _ _ (gen _ _ _ ?_ hne ?_ hu ?_)
     · intro c hc; exact Finset.mem_erase.2 ⟨fun hcx => hxS (hcx ▸ hc), hSA hc⟩
     · intro h
@@ -478,8 +477,7 @@ lemma linL_contract {A : Finset α} {a x : α} (hxa : x ≠ a) {pre post c : Lis
       simp only [List.nodup_append, List.nodup_cons, List.mem_cons, List.mem_append] at hnd
       grind
     · simp only [List.nodup_append, List.nodup_cons, List.mem_cons, List.mem_append] at hnd
-      simp only [List.pairwise_append, List.pairwise_cons, List.mem_cons, List.mem_append,
-        List.mem_singleton] at hpw
+      simp only [List.pairwise_append, List.pairwise_cons, List.mem_cons, List.mem_append] at hpw
       rw [List.pairwise_append, List.pairwise_cons]
       refine ⟨hpre.imp_of_mem fun {p q} hp hq h => ?_, ⟨fun q hq => ?_,
         hpost.imp_of_mem fun {p q} hp hq h => ?_⟩, fun p hp q hq => ?_⟩ <;> simp only [rc] <;>
@@ -497,7 +495,7 @@ lemma split_pullback {a x : α} {pre post c s' t' : List α} (hc : c = [x, a] �
       · rw [h1, List.append_nil] at hs; exact hs
     · refine ⟨pre ++ c ++ as', t', by simp, ?_, fun _ => by rcases hc with rfl | rfl <;> simp⟩
       rw [h1, pb, if_pos (by simp)]
-      rcases hc with rfl | rfl <;> ext b <;> simp <;> tauto
+      rcases hc with rfl | rfl <;> ext b <;> simp [or_left_comm]
   · refine ⟨s', bs ++ c ++ post, by simp [h1], ?_, id⟩
     rw [pb, if_neg (by intro ha; exact hpre (h1 ▸ List.mem_append_left _ (List.mem_toFinset.1 ha)))]
 
@@ -573,7 +571,7 @@ lemma perm_invariant_of_E {A : Finset α} {X : List α →₀ ℂ}
     List.Perm.append_left _ (List.Perm.swap q p post)
   by_cases hw : IsWordOn A (pre ++ p :: q :: post)
   · have hnd := hw.1
-    simp only [List.nodup_append, List.nodup_cons, List.mem_cons, List.mem_append] at hnd
+    simp only [List.nodup_append, List.nodup_cons, List.mem_cons] at hnd
     have hpA : p ∈ A := (mem_of_isWordOn hw).1 (by simp)
     have hqA : q ∈ A := (mem_of_isWordOn hw).1 (by simp)
     have hq1 : q ∉ pre := by grind
@@ -756,7 +754,7 @@ lemma lamL_ins (lam : α → ℂ) (a x : α) (l : List α) :
     by_cases hb : b = a
     · subst hb
       simp only [lamL, List.map_cons, List.map_nil, List.prod_cons, List.prod_nil, lamc,
-        if_pos rfl, if_true]
+        if_true]
       ring
     · simp [lamL, lamc, hb]
 
@@ -769,7 +767,7 @@ lemma lamL_insA (lam : α → ℂ) (a x : α) (l : List α) :
     by_cases hb : b = a
     · subst hb
       simp only [lamL, List.map_cons, List.map_nil, List.prod_cons, List.prod_nil, lamc,
-        if_pos rfl, if_true]
+        if_true]
       ring
     · simp [lamL, lamc, hb]
 
@@ -816,7 +814,7 @@ lemma isWordOn_ins {A : Finset α} {a x : α} (hxa : x ≠ a) (hx : x ∈ A) {y 
     simp only [List.nodup_append, List.nodup_cons, List.mem_cons, List.mem_append] at hnd ⊢
     grind
 
-lemma prod_pb (lam : α → ℂ) {a x : α} (hxa : x ≠ a) {U : Finset α} (hx : x ∉ U) :
+lemma prod_pb (lam : α → ℂ) {a x : α} {U : Finset α} (hx : x ∉ U) :
     ∏ b ∈ pb a x U, lam b = ∏ b ∈ U, lamc lam a x b := by
   unfold pb
   split_ifs with ha
@@ -873,7 +871,7 @@ theorem eq_zero_of_eqL (A : Finset α) (r : α → α → Prop) (lam : α → �
       rw [← hEq _ _ hw1 (by rw [toFinset_ins hxs]; exact hU s hxs hs),
         ← hEq _ _ hw2 (by rw [toFinset_insA hxs]; exact hU s hxs hs), lamL_ins, lamL_insA]
     · have hxU : x ∉ U := fun h => by simpa using hU h
-      rw [← prod_pb lam hxa hxU]
+      rw [← prod_pb lam hxU]
       refine hadm _ ?_ ?_ ?_ (uoC_pb hxa ha hxU hUoC)
       · intro b hb
         rw [mem_pb hxU] at hb
@@ -1070,7 +1068,7 @@ lemma inBL_iff_muL {A : Finset α} {x₀ : α} {l : List α} :
 /-- The step of **Lemma 6** (`notes/conjecture_s_splitting_cycles_span.md` §5): if `w ∉ B_P`
 splits as `s t` at its longest union-prefix `s` avoiding `x₀`, every other word `z` of `s ⧢ t`
 is a linear extension with `μ(z) < μ(w)`. -/
-lemma muL_lt_of_shuffle {A : Finset α} {x₀ : α} (hx₀ : x₀ ∈ A) {l z : List α}
+lemma muL_lt_of_shuffle {A : Finset α} {x₀ : α} {l z : List α}
     (hl : LinL r A l)
     (hz1 : z.filter (fun b => decide (b ∈ (l.take (muL r A x₀ l)).toFinset)) =
       l.take (muL r A x₀ l))
