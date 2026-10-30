@@ -1,0 +1,37 @@
+primes [1000000021, 3000000361], seed 20261030
+[enum] poset counts n=1..6: [1, 2, 5, 16, 63, 318]: OK
+[sh] n=2: combs kill all proper shuffles=True, rank combs=1=(n-1)!, dim Sh=1=n!-(n-1)!: OK
+[sh] n=3: combs kill all proper shuffles=True, rank combs=2=(n-1)!, dim Sh=4=n!-(n-1)!: OK
+[sh] n=4: combs kill all proper shuffles=True, rank combs=6=(n-1)!, dim Sh=18=n!-(n-1)!: OK
+[sh] n=5: combs kill all proper shuffles=True, rank combs=24=(n-1)!, dim Sh=96=n!-(n-1)!: OK
+[cut] Lemma 4, 75414 (P, w, k), n<=6: 0 mismatches: OK
+[psi0] Lemma Psi.0, 1926 (P, w, cut), n<=5: 0 failures: OK
+[con] Step-1 claim E(s_lam(v)) = +-s_lam'(v\x) and lam' admissible, 13624 cases, 3<=n<=5: 0 failures: OK
+[ctl] wrong weight lam'(a) = lam(a) breaks the Step-1 claim in 298/1096 cases: OK
+[psi] n=2: 2 posets; class sums independent mod Sh for every primitive zeta at 2 primes: 2/2; 3 random admissible lam: 2/2; dim M_P = e_C = dim L_P: 2/2: OK
+[psi] n=3: 5 posets; class sums independent mod Sh for every primitive zeta at 2 primes: 5/5; 3 random admissible lam: 5/5; dim M_P = e_C = dim L_P: 5/5: OK
+[psi] n=4: 16 posets; class sums independent mod Sh for every primitive zeta at 2 primes: 16/16; 3 random admissible lam: 16/16; dim M_P = e_C = dim L_P: 16/16: OK
+[psi] n=5: 63 posets; class sums independent mod Sh for every primitive zeta at 2 primes: 63/63; 3 random admissible lam: 63/63; dim M_P = e_C = dim L_P: 63/63: OK
+[psi] n=6: 318 posets; class sums independent mod Sh for every primitive zeta at 2 primes: 318/318; 3 random admissible lam: 318/318; dim M_P = e_C = dim L_P: 318/318: OK
+[ctl] lam == 1 drops rank on the antichain, n=2..6: [True, True, True, True, True]: OK
+[ctl] non-primitive root (order d | n): #posets with rank drop {(4, 2): 3, (6, 2): 30, (6, 3): 15}: OK
+[equi] pr commutes with Aut(P) and with relabelings, 19694 cases, n<=5: 0 failures: OK
+[ext] n=2: R_P e_zeta = 0 <=> (connected or n<=2): 2/2; witness coeff = 1/n: 0/0: OK
+[ext] n=3: R_P e_zeta = 0 <=> (connected or n<=2): 5/5; witness coeff = 1/n: 14/14: OK
+[ext] n=4: R_P e_zeta = 0 <=> (connected or n<=2): 16/16; witness coeff = 1/n: 100/100: OK
+[ext] n=5: R_P e_zeta = 0 <=> (connected or n<=2): 63/63; witness coeff = 1/n: 802/802: OK
+[ext] n=6: R_P e_zeta = 0 <=> (connected or n<=2): 318/318; witness coeff = 1/n: 7542/7542: OK
+[prc] n=3: uniform map y -> y mod Sh carries L_P onto M_P for 4/5 posets (chain: no); Theta not natural along some P -> C_w for 2/2 disconnected P: OK
+[prc] n=4: uniform map y -> y mod Sh carries L_P onto M_P for 6/16 posets (chain: no); Theta not natural along some P -> C_w for 6/6 disconnected P: OK
+[prc] n=5: uniform map y -> y mod Sh carries L_P onto M_P for 8/63 posets (chain: no); Theta not natural along some P -> C_w for 19/19 disconnected P: OK
+[prc] n=6: uniform map y -> y mod Sh carries L_P onto M_P for 10/318 posets (chain: no); Theta not natural along some P -> C_w for 80/80 disconnected P: OK
+[lie] n=2: rank Lie_n e_zeta = (n-1)! for every primitive zeta, 2 primes: OK
+[lie] n=3: rank Lie_n e_zeta = (n-1)! for every primitive zeta, 2 primes: OK
+[lie] n=4: rank Lie_n e_zeta = (n-1)! for every primitive zeta, 2 primes: OK
+[lie] n=5: rank Lie_n e_zeta = (n-1)! for every primitive zeta, 2 primes: OK
+[lie] n=6: rank Lie_n e_zeta = (n-1)! for every primitive zeta, 2 primes: OK
+[sum] n=2: phi_Sigma invertible for 1/1 disconnected posets: OK
+[sum] n=3: phi_Sigma invertible for 2/2 disconnected posets: OK
+[sum] n=4: phi_Sigma invertible for 6/6 disconnected posets: OK
+[sum] n=5: phi_Sigma invertible for 19/19 disconnected posets: OK
+ALL CHECKS PASSED
