@@ -34,3 +34,12 @@ Exit status 0 iff every check passes. Run from this directory:
 
     python3 poset_lie_structure.py > output/poset_lie_structure.txt   # ~40 s
     python3 -m unittest test_poset_lie_structure
+
+`fixed_point_mobius.py` brute-force checks every lemma of the direct proof of
+eq. (characterconj) (complements of an orbit-merging element in OP(P)^g,
+interval Möbius numbers, fixed-class counts), for all unlabeled posets with
+n ≤ 6 and repeated-component disjoint unions at n = 7, 8, 9. Findings:
+`../notes/fixed_point_mobius_identity.md`. Run from this directory:
+
+    python3 fixed_point_mobius.py --nmax 6 --large 7 8 9 > output/fixed_point_mobius.txt
+    python3 -m unittest test_fixed_point_mobius
