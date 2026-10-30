@@ -67,8 +67,8 @@ the notes file it comes from.
 \begin{itemize}[nosep]
 \item \st{proven}: a proof is given here or in the cited notes file, and it
   depends only on the inputs it names;
-\item \st{computed}: checked by a script in \src{compute/}, with the
-  reproduce command in \S\ref{sec:computations} and in \src{compute/README.md};
+\item \st{computed}: checked by a script in \src{compute/}, listed in
+  \S\ref{sec:computations}, with the reproduce command in \src{compute/README.md};
 \item \st{cited}: a published theorem, with its location;
 \item \st{conjectured}.
 \end{itemize}
@@ -876,7 +876,7 @@ linearly independent modulo top-lunes. For the braid arrangement this is the
 connected case of Theorem~\ref{thm:S}(a), with a geometric proof. The
 general-cone form of Conjecture~S is [Cone, Conjecture~G], \st{conjectured}
 and \st{computed} for every top-cone of $A_2,A_3,A_4,B_2,B_3$ and on
-samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}, Ex.~10.9:
+samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}~\cite{AguiarMahajan}, Ex.~10.9:
 ``non-singleton top-cone'' should read ``non-pointed top-cone''. These
 results are \st{proven} in [Cone] but have \emph{not} been independently
 audited. They are recorded here only as a remark.
@@ -1031,7 +1031,7 @@ Character identity \eqref{eq:characterconj}, exact in $\mathbb Z[\zeta]$; trace 
 \src{poset_jks_check.py} & all posets $n\le6$ ($758$ pairs at $n=6$) & [Repro]\\
 Character identity at $n=7$ & \src{n7_sweep.py} & all $2045$ posets, $4804$ pairs & [N7]\\
 Trace of $g$ on $\ker\partial_{n-3}$ by direct homology vs.\ $(-1)^{n-3}\mu(\OP(P)^g)$ (no M\"obius, no Lefschetz) &
-\src{equivariant_homology.py} & every pair $n=4,5,6,7$ & [N7]\\
+\src{equivariant_homology.py} & every pair $n=4,5,6,7$ ($n=4,5$ not archived) & [N7]\\
 Steps of Proof I (T1--T5); $\HH_n$ vs.\ (frob) by direct homology; primitives of $\mathbf Q$; $e_\zeta$-bracket test &
 \src{poset_lie_structure.py} & $n\le6$ (+ $n=7,8$ examples); $\mathbf Q$: $n\le4$; bracket: $n\le5$ & [Glob]\\
 Every lemma of Proof II &
