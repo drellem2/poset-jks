@@ -1,0 +1,103 @@
+[A3 (realizable control)] rank=3 n=6
+  [chi] 1/1 (ok; ok)
+  covectors=75 topes=24 flats=15
+  [sphere] 25/25 (L-0 is a homology S^2 with a +-1 fundamental cycle; tope boundaries)
+  [lem02] 729/729 (sign conditions s; 232 distinct K)
+  |mu(L(M))|=6 dim Gamma/Lune=6
+  [propB] 50/50 (rank of C->rho_C = 6; lunes killed at chain level)
+  [eq-rho] 48/48 (|Aut M|=48 signed perms; g.omega = det(g) omega, g.rho_C = det(g) rho_gC)
+  cones=219
+  [flatL] 219/219
+  [zas] 219/219
+  [wedge] 219/219
+  [fib] 219/219
+  [brown] 219/219
+  [rho] 219/219
+  [q=m] 219/219
+  [G1] 219/219
+  [eq] 219/219
+  [eq] sum of stabiliser orders 576; control (no det twist) holds on 128/219 cones
+  => PASS
+[B3 (realizable control)] rank=3 n=9
+  [chi] 1/1 (ok; ok)
+  covectors=147 topes=48 flats=24
+  [sphere] 49/49 (L-0 is a homology S^2 with a +-1 fundamental cycle; tope boundaries)
+  [lem02] 19683/19683 (sign conditions s; 963 distinct K)
+  |mu(L(M))|=15 dim Gamma/Lune=15
+  [propB] 92/92 (rank of C->rho_C = 15; lunes killed at chain level)
+  [eq-rho] 48/48 (|Aut M|=48 signed perms; g.omega = det(g) omega, g.rho_C = det(g) rho_gC)
+  cones=941
+  [flatL] 941/941
+  [zas] 941/941
+  [wedge] 941/941
+  [fib] 941/941
+  [brown] 941/941
+  [rho] 941/941
+  [q=m] 941/941
+  [G1] 941/941
+  [eq] 941/941
+  [eq] sum of stabiliser orders 1680; control (no det twist) holds on 826/941 cones
+  => PASS
+[Pappus (realizable control)] rank=3 n=9
+  [chi] 1/1 (ok; ok)
+  covectors=183 topes=56 flats=29
+  [sphere] 57/57 (L-0 is a homology S^2 with a +-1 fundamental cycle; tope boundaries)
+  [lem02] 19683/19683 (sign conditions s; 1261 distinct K)
+  |mu(L(M))|=19 dim Gamma/Lune=19
+  [propB] 110/110 (rank of C->rho_C = 19; lunes killed at chain level)
+  [eq-rho] 12/12 (|Aut M|=12 signed perms; g.omega = det(g) omega, g.rho_C = det(g) rho_gC)
+  cones=1233
+  [flatL] 1233/1233
+  [zas] 1233/1233
+  [wedge] 1233/1233
+  [fib] 1233/1233
+  [brown] 1233/1233
+  [rho] 1233/1233
+  [q=m] 1233/1233
+  [G1] 1233/1233
+  [eq] 1233/1233
+  [eq] sum of stabiliser orders 1608; control (no det twist) holds on 942/1233 cones
+  => PASS
+[non-Pappus, chi(XYZ)=+1] rank=3 n=9
+  [chi] 1/1 (ok; ok)
+  [nonreal] 1/1 (zero triples = the 8 Pappus lines without (6, 7, 8))
+  covectors=195 topes=58 flats=31
+  [sphere] 59/59 (L-0 is a homology S^2 with a +-1 fundamental cycle; tope boundaries)
+  [lem02] 19683/19683 (sign conditions s; 1320 distinct K)
+  |mu(L(M))|=20 dim Gamma/Lune=20
+  [propB] 116/116 (rank of C->rho_C = 20; lunes killed at chain level)
+  [eq-rho] 2/2 (|Aut M|=2 signed perms; g.omega = det(g) omega, g.rho_C = det(g) rho_gC)
+  cones=1295
+  [flatL] 1295/1295
+  [zas] 1295/1295
+  [wedge] 1295/1295
+  [fib] 1295/1295
+  [brown] 1295/1295
+  [rho] 1295/1295
+  [q=m] 1295/1295
+  [G1] 1295/1295
+  [eq] 1295/1295
+  [eq] sum of stabiliser orders 1296; control (no det twist) holds on 1294/1295 cones
+  => PASS
+[non-Pappus, chi(XYZ)=-1] rank=3 n=9
+  [chi] 1/1 (ok; ok)
+  [nonreal] 1/1 (zero triples = the 8 Pappus lines without (6, 7, 8))
+  covectors=195 topes=58 flats=31
+  [sphere] 59/59 (L-0 is a homology S^2 with a +-1 fundamental cycle; tope boundaries)
+  [lem02] 19683/19683 (sign conditions s; 1320 distinct K)
+  |mu(L(M))|=20 dim Gamma/Lune=20
+  [propB] 116/116 (rank of C->rho_C = 20; lunes killed at chain level)
+  [eq-rho] 2/2 (|Aut M|=2 signed perms; g.omega = det(g) omega, g.rho_C = det(g) rho_gC)
+  cones=1295
+  [flatL] 1295/1295
+  [zas] 1295/1295
+  [wedge] 1295/1295
+  [fib] 1295/1295
+  [brown] 1295/1295
+  [rho] 1295/1295
+  [q=m] 1295/1295
+  [G1] 1295/1295
+  [eq] 1295/1295
+  [eq] sum of stabiliser orders 1296; control (no det twist) holds on 1294/1295 cones
+  => PASS
+ALL PASS
