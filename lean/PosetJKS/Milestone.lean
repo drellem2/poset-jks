@@ -65,38 +65,48 @@ lemma eq_zero_of_inB (x₀ : α) {X : Alg α} (hX : X ∈ Sh α) (hB : ∀ w, X 
   obtain ⟨w, rfl, hw⟩ := toLmap_support hl
   exact (inB_iff x₀ w).1 (hB w hw)
 
+/-- Two words of `B_P` in the same cyclic class are equal (Lemma 4, uniqueness). -/
+lemma inB_coset_inj (x₀ : α) {w w' : Word α} (hw : InB x₀ w) (hw' : InB x₀ w')
+    (h : coset w = coset w') : w = w' := by
+  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
+  have hmem : w' ∈ coset w := by
+    rw [h]; exact self_mem_coset h0 w'
+  obtain ⟨j, hj, rfl⟩ := Finset.mem_image.1 hmem
+  have hj' := Finset.mem_range.1 hj
+  have hB := (inB_iff x₀ w).1 hw
+  have hB' := (inB_iff x₀ _).1 hw'
+  rw [toL_rot, List.rotate_eq_drop_append_take (by rw [length_toL]; omega)] at hB'
+  have := L.rotate_eq_zero_of_inBL hB (by rw [length_toL]; exact hj') hB'
+  subst this
+  exact (rot_zero w).symm
+
+/-- Every cyclic class contains a word of `B_P` (Lemma 4, existence). -/
+lemma exists_inB_coset (x₀ : α) {C : Finset (Word α)} (hC : C ∈ cyc α) :
+    ∃ w, InB x₀ w ∧ coset w = C := by
+  classical
+  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
+  obtain ⟨w, hw, rfl⟩ := Finset.mem_image.1 hC
+  have hlin := (isLinExt_iff w).1 (Finset.mem_filter.1 hw).2
+  have hk : L.muL (· < ·) univ x₀ (toL w) ≤ (toL w).length := L.muL_spec.1
+  refine ⟨rot w (L.muL (· < ·) univ x₀ (toL w)), (inB_iff x₀ _).2 ?_, ?_⟩
+  · rw [toL_rot, List.rotate_eq_drop_append_take hk]
+    exact L.inBL_rotate_muL (mem_univ x₀) hlin
+  · exact coset_eq_of_mem h0 ((mem_coset_iff h0).2 ⟨_, (toL_rot w _).symm⟩)
+
 /-- **Lemma 4** (`notes/conjecture_s_splitting_cycles_span.md` §3): `|B_P| = e_C(P)`; every
 cyclic class contains exactly one word of `B_P`. -/
 theorem card_inB (x₀ : α) : Nat.card {w : Word α // InB x₀ w} = eC α := by
   classical
-  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
   rw [Nat.card_eq_fintype_card, Fintype.card_subtype, eC, cyc]
   refine Finset.card_bij (fun w _ => coset w) ?_ ?_ ?_
   · intro w hw
     exact Finset.mem_image.2 ⟨w, Finset.mem_filter.2 ⟨mem_univ _,
       (Finset.mem_filter.1 hw).2.1⟩, rfl⟩
   · intro w hw w' hw' h
-    have hw := (Finset.mem_filter.1 hw).2
-    have hw' := (Finset.mem_filter.1 hw').2
-    have hmem : w' ∈ coset w := by
-      rw [show coset w = coset w' from h]; exact self_mem_coset h0 w'
-    obtain ⟨j, hj, rfl⟩ := Finset.mem_image.1 hmem
-    have hj' := Finset.mem_range.1 hj
-    have hB := (inB_iff x₀ w).1 hw
-    have hB' := (inB_iff x₀ _).1 hw'
-    rw [toL_rot, List.rotate_eq_drop_append_take (by rw [length_toL]; omega)] at hB'
-    have := L.rotate_eq_zero_of_inBL hB (by rw [length_toL]; exact hj') hB'
-    subst this
-    exact (rot_zero w).symm
+    exact inB_coset_inj x₀ (Finset.mem_filter.1 hw).2 (Finset.mem_filter.1 hw').2 h
   · intro C hC
-    obtain ⟨w, hw, rfl⟩ := Finset.mem_image.1 hC
-    have hlin := (isLinExt_iff w).1 (Finset.mem_filter.1 hw).2
-    have hk : L.muL (· < ·) univ x₀ (toL w) ≤ (toL w).length := L.muL_spec.1
-    refine ⟨rot w (L.muL (· < ·) univ x₀ (toL w)), Finset.mem_filter.2 ⟨mem_univ _,
-      (inB_iff x₀ _).2 ?_⟩, ?_⟩
-    · rw [toL_rot, List.rotate_eq_drop_append_take hk]
-      exact L.inBL_rotate_muL (mem_univ x₀) hlin
-    · exact coset_eq_of_mem h0 ((mem_coset_iff h0).2 ⟨_, (toL_rot w _).symm⟩)
+    obtain ⟨w, hw, rfl⟩ := exists_inB_coset x₀ hC
+    exact ⟨w, Finset.mem_filter.2 ⟨mem_univ _, hw⟩, rfl⟩
 
 /-- Theorem S(a). -/
 theorem thmS_a (x₀ : α) :
