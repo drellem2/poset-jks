@@ -3,5 +3,7 @@ import PosetJKS.Words
 import PosetJKS.Bridge
 import PosetJKS.OrderComplex
 import PosetJKS.Milestone
+import PosetJKS.LieTrace
+import PosetJKS.OPLattice
 import PosetJKS.MainTheorem
 import PosetJKS.Test
