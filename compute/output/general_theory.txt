@@ -1,0 +1,80 @@
+[A2] d=2 m=3 topes=6 cones=19 (all)
+  [flatL] 19/19
+  [zas] 19/19
+  [brown] 19/19
+  [q=m] 19/19
+  [wedge] 19/19
+  [eq] 19/19
+  [eq] |W|=6, sum of stabiliser orders 30; control (no det twist) holds on 19/19 cones
+  => PASS
+[A3] d=3 m=6 topes=24 cones=219 (all)
+  [flatL] 219/219
+  [zas] 219/219
+  [brown] 219/219
+  [q=m] 219/219
+  [wedge] 219/219
+  [eq] 219/219
+  [eq] |W|=24, sum of stabiliser orders 384; control (no det twist) holds on 219/219 cones
+  => PASS
+[B2] d=2 m=4 topes=8 cones=33 (all)
+  [flatL] 33/33
+  [zas] 33/33
+  [brown] 33/33
+  [q=m] 33/33
+  [wedge] 33/33
+  [eq] 33/33
+  [eq] |W|=8, sum of stabiliser orders 56; control (no det twist) holds on 24/33 cones
+  => PASS
+[B3] d=3 m=9 topes=48 cones=941 (all)
+  [flatL] 941/941
+  [zas] 941/941
+  [brown] 941/941
+  [q=m] 941/941
+  [wedge] 941/941
+  [eq] 941/941
+  [eq] |W|=48, sum of stabiliser orders 1680; control (no det twist) holds on 826/941 cones
+  => PASS
+[generic5 R^3] d=3 m=5 topes=22 cones=163 (all)
+  [flatL] 163/163
+  [zas] 163/163
+  [brown] 163/163
+  [q=m] 163/163
+  [wedge] 163/163
+  => PASS
+[random7 R^3] d=3 m=7 topes=38 cones=491 (all)
+  [flatL] 491/491
+  [zas] 491/491
+  [brown] 491/491
+  [q=m] 491/491
+  [wedge] 491/491
+  => PASS
+[random6 R^4] d=4 m=6 topes=50 cones=579 (all)
+  [flatL] 579/579
+  [zas] 579/579
+  [brown] 579/579
+  [q=m] 579/579
+  [wedge] 579/579
+  => PASS
+[A4] d=4 m=10 topes=120 cones=4231 (all)
+  [flatL] 4231/4231
+  [zas] 4231/4231
+  [brown] 4231/4231
+  [q=m] 4231/4231
+  [eq] 4231/4231
+  [eq] |W|=120, sum of stabiliser orders 7560; control (no det twist) holds on 4231/4231 cones
+  => PASS
+[D4] d=4 m=12 topes=192 cones=150 (sample)
+  [flatL] 150/150
+  [zas] 150/150
+  [brown] 150/150
+  [q=m] 150/150
+  [eq] 150/150
+  [eq] |W|=384, sum of stabiliser orders 848; control (no det twist) holds on 86/150 cones
+  => PASS
+[posets n=1] 1 posets: [foata] 1/1 [pbw] 1/1 [prim] 1/1 [pbw-eq] 1/1
+[posets n=2] 2 posets: [foata] 2/2 [pbw] 2/2 [prim] 2/2 [pbw-eq] 2/2
+[posets n=3] 5 posets: [foata] 5/5 [pbw] 5/5 [prim] 5/5 [pbw-eq] 5/5
+[posets n=4] 16 posets: [foata] 16/16 [pbw] 16/16 [prim] 16/16 [pbw-eq] 16/16
+[posets n=5] 63 posets: [foata] 63/63 [pbw] 63/63 [prim] 63/63 [pbw-eq] 63/63
+[posets n=6] 318 posets: [foata] 318/318 [pbw] 318/318 [prim] 318/318 [pbw-eq] 318/318
+ALL CHECKS PASSED
