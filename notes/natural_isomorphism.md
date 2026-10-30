@@ -17,8 +17,8 @@ means: proven, using the same three inputs as Theorem C of the Conjecture S note
 Cor. Ψ.1 is elementary: it needs none of (Φ), (D), (JS). One defect was found, in the computational
 evidence only: the `[wgt]` check and the λ ≡ 1 counts "5/6, 16/19, 63/80" were computed on a wrong
 object. They are corrected in §3.2 below (the true counts are 6/6, 19/19, 80/80, and the drop is
-PROVEN for every disconnected P). The script itself has not been changed, so its archived `[wgt]`
-lines still show the wrong counts. A minor notation slip in Prop. 3 is also corrected (§4).
+PROVEN for every disconnected P). The script was fixed in commit 7c10288 (mg-dab53): `[wgt]` now
+prints the true counts and asserts them (§3.2). A minor notation slip in Prop. 3 is also corrected (§4).
 
 ## Summary
 
@@ -339,17 +339,21 @@ COMPUTED (`[psi]`): ψ_P is an isomorphism for all 2+5+16+63+318 unlabeled poset
 2 ≤ n ≤ 6, and for all 2045 with n = 7 (395 of them disconnected). The check is a rank
 computation modulo Sh_n via L_0, so it is independent of the proof.
 
-`[wgt]` is **defective** (audit §5): it takes as class representative the least rotation of a word,
-which need not lie in Lin P, so on such posets it does not compute s_λ(C). Its "independent" counts
-are therefore not evidence for Theorem Ψ. The statement for random admissible weights is instead
-COMPUTED by the audit's own `[psi]` (3 random admissible λ per poset, all posets n ≤ 6).
+`[wgt]` was **defective** (audit §5): it took as class representative the least rotation of a
+word, which need not lie in Lin P, so on such posets it did not compute s_λ(C). **Fixed** in commit
+7c10288 (mg-dab53): it now takes the least word of C ∩ Lin P (`lin_class_reps`).
+- COMPUTED (`[wgt]`, after the fix): s_λ(C) independent mod Sh for 2 random admissible λ per poset,
+  4/4, 10/10, 32/32, 126/126, 636/636 draws for n = 2..6.
+- The statement is also COMPUTED by the audit's own `[psi]` (3 random admissible λ per poset, all
+  posets n ≤ 6).
 
 Positive control: λ ≡ 1 is inadmissible, and the rank drops for **every** disconnected P.
 - PROVEN (audit §5): Σ_C s_1(C) = Σ_{w∈Lin P} w. Write P = P_1 + P′ with P_1 a component. Then
   Lin P is the disjoint union of the shuffle sets s ш t (s ∈ Lin P_1, t ∈ Lin P′), so this sum
   lies in Sh_n.
 - COMPUTED: the drop occurs for 1/1, 2/2, 6/6, 19/19, 80/80 disconnected posets, n = 2..6
-  (`audit_natural_isomorphism.psi_rank` with λ ≡ 1; see the audit's Reproduce section).
+  (`audit_natural_isomorphism.psi_rank` with λ ≡ 1; see the audit's Reproduce section). The fixed
+  `[wgt]` prints the same counts and fails unless every disconnected P drops.
 - The figures "5/6, 16/19, 63/80" printed by this note's `[wgt]` (and quoted in an earlier version
   of this paragraph) are **wrong**; they come from the defect above. So λ ≡ 1 always fails, and the
   earlier remark that "admissibility is only sufficient" does not apply to it.
@@ -494,7 +498,7 @@ Each command exits with status 0 iff every check passes. The last line printed i
 | `[lie]` | rank Lie_n e_ζ = (n−1)! | n ≤ 6 |
 | `[sum]` | φ_Σ and Σ\|P_i\|φ_i invertible; φ_Σ equivariant (n ≤ 5); control φ_0 not equivariant | disconnected P, n ≤ 6 |
 | `[psi]` | ψ_P is an isomorphism (Theorem 2) | all posets, n ≤ 6 (and n = 7) |
-| `[wgt]` | Theorem Ψ, random admissible weights; control λ ≡ 1. **Defective** (audit §5): wrong class representatives; its counts are not evidence | all posets, n ≤ 6 |
+| `[wgt]` | Theorem Ψ, random admissible weights; control λ ≡ 1 drops for every disconnected P. Was defective (audit §5, wrong class representatives); **fixed** in 7c10288 | all posets, n ≤ 6 |
 | `[dyn]` | φ_Σ(x) = xθ_n^*e_ζ for the antichain | n ≤ 5 |
 | `[cop]` | Prop. 4 for the three maps; control: cobracket descends on M | all pairs, n ≤ 5 |
 
@@ -502,8 +506,8 @@ Rigour:
 - Arithmetic is modulo primes p ≡ 1 (mod 420), with ζ an n-th root of unity mod p.
 - **Full rank mod p proves full rank over Q(ζ).** Reduction modulo a prime of Z[ζ] above p is a
   ring map, so a nonzero minor mod p is nonzero in Z[ζ].
-- So `[psi]`, `[sum]` (invertibility) and `[lie]` are proofs for the listed n. (`[wgt]` would be
-  too, but it computes the wrong object; see §3.2.)
+- So `[psi]`, `[sum]` (invertibility), `[lie]` and (since the fix in 7c10288) `[wgt]` are proofs
+  for the listed n, the last for the sampled λ.
 - A *vanishing* mod p is only evidence. The vanishings in `[ext]` (connected or n ≤ 2) are checked
   at two primes, and are PROVEN anyway (Theorem 1(ii), (iii)).
 - Non-vanishings ("R_P e_ζ ≠ 0", "does not descend") are certified by one nonzero coordinate mod
@@ -511,6 +515,7 @@ Rigour:
 
 Positive controls (`test_natural_isomorphism.py` and in-script):
 - λ ≡ 1 makes the antichain rank drop;
+- `[wgt]` rerun with the old least-rotation representatives fails (5/6 at n = 4);
 - φ_0 alone is not equivariant;
 - the cobracket does descend for C_2 + C_2 and for 1 + 1;
 - the witness coefficient for two 2-chains is exactly 1/4;
@@ -521,8 +526,8 @@ Positive controls (`test_natural_isomorphism.py` and in-script):
 - Conjecture 3.3: φ_Σ invertible for all P.
 - ~~An independent audit of Theorem Ψ / Theorem 2.~~ Done: `notes/audit_natural_isomorphism.md`
   (HOLDS).
-- Fix `[wgt]` in `compute/natural_isomorphism.py` to use a class member lying in Lin P (audit §5).
-  Not done.
+- ~~Fix `[wgt]` in `compute/natural_isomorphism.py` to use a class member lying in Lin P (audit §5).~~
+  Done in commit 7c10288 (mg-dab53).
 - Whether Theorem Ψ (weighted contraction) or Cor. Ψ.2 appears in the literature on Klyachko's
   theorem. Not searched.
 - A natural e_ζ-side coproduct of a twisted form. A phase-twisted restriction w ↦ χ(w) w|_S⊗w|_T

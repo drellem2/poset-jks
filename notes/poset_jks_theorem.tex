@@ -1182,8 +1182,10 @@ evidence for Theorem~\ref{thm:Psi}, and its $\lambda\equiv1$ counts
 ($5/6$, $16/19$, $63/80$ at $n=4,5,6$) are wrong: the true counts are
 $6/6$, $19/19$, $80/80$, as proven above. The statement for random admissible
 weights rests instead on [AudNat, \texttt{[psi]}]. Theorem~\ref{thm:Psi}
-itself is unaffected, and so is the \texttt{[psi]} check of [Nat]. The script
-has not been fixed.
+itself is unaffected, and so is the \texttt{[psi]} check of [Nat].
+\emph{Fixed} in commit \texttt{7c10288} (mg-dab53): the check now takes a
+representative in $\Lin(P)$, prints $6/6$, $19/19$, $80/80$, and fails unless
+every disconnected $P$ drops.
 
 \section{The global module and $b_n$}\label{sec:global}
 
@@ -1362,7 +1364,7 @@ Lune form of Conjecture~S; pointed cones; Conjecture~G on other arrangements &
 \src{cone_lie.py} & $A_2,A_3,A_4,B_2,B_3$; samples of $D_4,B_4$ & [Cone]\\
 Independent audit of [Cone]: Zaslavsky face counts, Lemmas L and E exactly, Thm~5.2 (pointed cones), Ex.~10.9 correction, Conjecture~G1 &
 \src{audit_cone_lune.py} & $6$ arrangements outside [Cone]'s list ($A_1\times A_2$, resonance in $\mathbb R^3$, $A_2\times A_2$, generic $6$ in $\mathbb R^5$, non-generic $7$ in $\mathbb R^4$, $H_3$) & [AudCone]\\
-$R_Pe_\zeta=0$ iff connected or $n\le2$; witness coefficient; $\psi_P$ an isomorphism; $\varphi_\Sigma$; $\Lie_ne_\zeta$; Prop.~4 maps. (Its \texttt{[wgt]} check is defective, \S\ref{sec:natural}) &
+$R_Pe_\zeta=0$ iff connected or $n\le2$; witness coefficient; $\psi_P$ an isomorphism; $\varphi_\Sigma$; $\Lie_ne_\zeta$; Prop.~4 maps; Theorem~$\Psi$ for random admissible $\lambda$ (\texttt{[wgt]}, fixed in \texttt{7c10288}, \S\ref{sec:natural}) &
 \src{natural_isomorphism.py} & $n\le6$; $\psi_P$ and $R_Pe_\zeta$: also all $2045$ posets at $n=7$; $\varphi_\Sigma$ equivariance, Prop.~4: $n\le5$ & [Nat]\\
 Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theorem~$\Psi$ for every primitive $\zeta$ and random admissible $\lambda$, equivariance, Theorem~\ref{thm:ext}, $\Theta$ vs.\ extensions, $\varphi_\Sigma$; comb pairing $=\Sh_n$ without Ree &
 \src{audit_natural_isomorphism.py} & all posets $n\le6$ (Lemma~$\Psi$.0, contraction, $\varphi_\Sigma$, equivariance, comb pairing: $n\le5$) & [AudNat]\\
@@ -1398,8 +1400,8 @@ Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theo
     appears in the literature on Klyachko's theorem (one search only);
   \item a canonical $e_\zeta$-side coproduct of twisted form; every
     candidate twist found in [Nat, \S7] needs a base point;
-  \item the \texttt{[wgt]} check of \src{natural_isomorphism.py} is
-    defective and has not been fixed; the $n=7$ \texttt{[psi]} run, the
+  \item the \texttt{[wgt]} check of \src{natural_isomorphism.py} was
+    defective; it is fixed in commit \texttt{7c10288}. The $n=7$ \texttt{[psi]} run, the
     $n=6$ and size-weighted $\varphi_\Sigma$ checks, the equivariance of
     $\varphi_\Sigma$ and the Dynkin formula were not re-run by [AudNat]
     (UNCHECKED); Props.~3--5 of [Nat] were audited by re-reading only.
