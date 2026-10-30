@@ -115,7 +115,9 @@ the repository's own reproduction, with its script.
 \section{Objects and conventions}\label{sec:setup}
 
 Let $P$ be a poset on $[n]$. These conventions are those of [Seed], [Repro]
-and [AudChar, S1].
+and [AudChar, S1]. Throughout, $n\ge1$, i.e.\ $P$ is nonempty: $e_\zeta$
+below involves $\frac1n$, and statements quantified over ``every finite
+poset'' are about nonempty posets.
 
 \begin{itemize}
 \item \emph{Order-preserving partitions.} A set partition $\pi$ of $[n]$ is
@@ -245,6 +247,7 @@ $\sum_i(-1)^i\operatorname{tr}(g\mid\widetilde H_i(\Delta))
 \end{proof}
 
 \begin{lemma}[eq.\ (liechar); {[AudChar, S1]}]\label{lem:liechar}
+Let $P$ be a finite poset on $n\ge1$ points and $g\in\Aut(P)$. Then
 $\operatorname{tr}(g\mid\PLie(P))=\sum_{gC=C}\zeta^{r_g(C)}$. \st{proven}
 \end{lemma}
 
@@ -371,7 +374,7 @@ For any finite poset $Q$ on $|Q|\ge1$ points and $h\in\Aut(Q)$, put
 \]
 
 \begin{lemma}[Base case; fixes slip (a) of {[AudChar, \S2]}]\label{lem:small}
-Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $Q$,
+Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $Q$ on $|Q|\ge1$ points,
 $\widetilde M(Q,1)=e_C(Q)$. \st{proven}
 \end{lemma}
 
@@ -388,7 +391,7 @@ form one rotation class.
 
 \begin{proposition}[M\"obius side; {[Glob, Prop.~2.5]}, {[AudChar, I7--I11]}]
 \label{prop:Mside}
-Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $P$ and every
+Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $P$ on $n\ge1$ points and every
 $g\in\Aut(P)$ of order $o$,
 \[
 \widetilde M(P,g)=\mu(o)\sum_{x\in F(P,g)}e_C\bigl(P|_{B_0(x)}\bigr).
@@ -475,7 +478,7 @@ $w\gamma^j$, $b$ precedes $a$, so $a\not<b$.
 
 \begin{proposition}[Lie side; {[Glob, Prop.~2.7]}, {[AudChar, S3--S4]}]
 \label{prop:Lside}
-For every finite poset $P$ and every $g\in\Aut(P)$ of order $o$,
+For every finite poset $P$ on $n\ge1$ points and every $g\in\Aut(P)$ of order $o$,
 \[
 \sum_{gC=C}\zeta^{r_g(C)}=\mu(o)\sum_{x\in F(P,g)}e_C\bigl(P|_{B_0(x)}\bigr).
 \]
@@ -989,7 +992,7 @@ Roots of unity of non-primitive order also fail on some posets
 (\st{computed}, [AudNat, \S2.3]).
 
 \begin{corollary}[{[Nat, Cor.~$\Psi$.1]}, {[AudNat, row~4, \S2.4]}]\label{cor:psi}
-For every finite poset $P$, $\psi_P:L_P\to M_P$ is an $\Aut(P)$-isomorphism.
+For every finite poset $P$ on $n\ge1$ points, $\psi_P:L_P\to M_P$ is an $\Aut(P)$-isomorphism.
 \st{proven}, \st{audited}, unconditionally (elementary).
 \end{corollary}
 
@@ -1165,7 +1168,7 @@ $\theta_n$ the Dynkin element (\st{proven} in [Nat]; not re-checked by
 [AudNat]).
 
 \begin{conjecture}[{[Nat, Conj.~3.3]}]\label{conj:phisigma}
-$\varphi_\Sigma$ is invertible for every finite poset $P$. \st{conjectured}.
+$\varphi_\Sigma$ is invertible for every finite poset $P$ on $n\ge1$ points. \st{conjectured}.
 \end{conjecture}
 
 \paragraph{The functorial model.} The model $M_P\subseteq\mathbb C[S_n]/\Sh_n$
