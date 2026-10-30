@@ -1,0 +1,15 @@
+n=1: posets=1 failures=0 distinct (mu, e_C) pairs=1
+  (mu, e_C) counts: {(1, 1): 1}
+n=2: posets=2 failures=0 distinct (mu, e_C) pairs=1
+  (mu, e_C) counts: {(-1, 1): 2}
+n=3: posets=5 failures=0 distinct (mu, e_C) pairs=2
+  (mu, e_C) counts: {(1, 1): 1, (2, 2): 4}
+n=4: posets=16 failures=0 distinct (mu, e_C) pairs=6
+n=5: posets=63 failures=0 distinct (mu, e_C) pairs=16
+n=6: posets=318 failures=0 distinct (mu, e_C) pairs=56
+total posets checked: 405
+checks: main conn W faces inv meet weis upper rec comp
+negative control neg-lin: fails on 108 cases (fails as required)
+negative control neg-strict: fails on 399 cases (fails as required)
+negative control neg-nonmin: fails on 606 cases (fails as required)
+ALL CHECKS PASS
