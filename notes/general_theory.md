@@ -1081,13 +1081,27 @@ the oriented-matroid version of Theorem 1 and the open fixed-point formula.
   and the equivariant form follows from the W-equivariance of Φ_A
   ([AudA, Prop. B]), with the det twist automatic. The computations of
   §1.5 are now checks of the theorem.
-- *First open problem to attack.* **The character of H̃_{d−2}(Λ̄(V)) as a
-  Stab_W(V)-module**: a fixed-point formula for μ(Λ(V)^g), g ∈ Stab_W(V),
-  for a reflection arrangement. This is the general analogue of [Thm, eq.
-  closed], which is proved by Weisner's theorem on the orbit partition and
-  has no general analogue yet (§1.5). By Theorem G\* it computes the
-  character of det ⊗ (Lie[A]|_V)^*. Baclawski–Björner 1981 is the
-  candidate prior art (§3).
+- *The first open problem is solved.* **The character of H̃_{d−2}(Λ̄(V))
+  as a Stab_W(V)-module**, a fixed-point formula for μ(Λ(V)^g), is given in
+  `notes/fixed_point_formula.md` for every finite-order linear symmetry g
+  of (A, V), not only g ∈ Stab_W(V): the equivariant cone Zaslavsky
+  theorem EZ, its PBW form EZ′, and the closed formula CF over the g-stable
+  flats in the lineality space. They are PROVEN and independently audited
+  in `notes/audit_fixed_point_formula.md` (hold, with a fix to the
+  hypothesis of Lemma B(a), the reflection-arrangement hypothesis of
+  Cor. P, and routine Hopf-step details). By Theorem G\* the formula
+  computes the character of det ⊗ (Lie[A]|_V)^*; for g ∉ Stab_W(V) that
+  identification is [AudA, Thm C(iv)] as stated, re-derived in
+  `notes/audit_prop_w_prime.md` §3. The Weisner recursion (Prop. W) holds
+  whenever Fix(g) lies in a hyperplane of A (Prop. W′, independently
+  audited); that this is exact (Thm W″) is PROVEN in
+  `notes/audit_prop_w_prime.md`, not yet independently audited. Prior art
+  (`notes/novelty_fixed_point_formula.md`): for V = all chambers, EZ, EZ′
+  and CF are known in substance (Moseley Prop. 6.1 with Sundaram–Welker
+  Thm 2.5); for proper cones they were not found. Baclawski–Björner 1981
+  is not accessible; per Wachs, Thm 4.6.1, it holds the general
+  fixed-point Möbius theorem, not a cone formula. What remains open is an
+  exact criterion for χ_V(g) ≢ 0, generalizing the braid case.
 - *Other open directions.*
   - The oriented-matroid version of Theorems 1–2 (§3). It would be refuted
     by a T-convex set of a non-realizable oriented matroid where Λ̄ is not
@@ -1103,8 +1117,10 @@ is a side question.
 
 **3. (c) Lattices: no independent program.** Keep only the oriented-matroid
 version of Theorems 1–2, as a remark or a later generalization, and the
-fixed-point Möbius formula for reflection-group stabilizers of cones, as a
-sub-problem of (a)'s equivariant side.
+fixed-point Möbius formula for symmetries of cones, as a sub-problem of
+(a)'s equivariant side; that formula is now Theorem CF of
+`notes/fixed_point_formula.md` (audited), with its vanishing criterion
+open.
 
 **Publication shape.** "Lie modules of cones of hyperplane arrangements". The
 main theorem would be G\*: H̃(Λ̄(V)) ≅ det ⊗ (Lie[A]|_V)^*, now proven given
@@ -1131,6 +1147,9 @@ would carry Theorems 6–8.
 | Theorem 8 (filtration) | PROVEN | CMM–PBW for species (CITED: AM *Monoidal Functors* §11.9.3, re-checked in [AudB]) for the equality |
 | Theorem 6 (local PBW) | PROVEN; COMPUTED `[pbw]`, `[pbw-eq]` | Thm S(b), Lemma 1.3, ψ_P, Thm main |
 | (b) meets (a): decomposables = lune span | PROVEN (subspace identity only) | [Cone, Cor. 3.1]; M_P ≅ H_P ⊗ sgn via ψ_P and Thm main |
+| Fixed-point formula: EZ, EZ′, CF for μ(Λ(V)^g), any finite-order symmetry g (`notes/fixed_point_formula.md`) | PROVEN; independently audited in `notes/audit_fixed_point_formula.md` (hold, with fixes applied); COMPUTED on 7,200 pairs (V, g); KNOWN for V = all chambers, NOT FOUND for proper cones (`notes/novelty_fixed_point_formula.md`) | cell facts of §0, Lemmas 0.1–0.2, Hopf trace formula; Thm 1 and G\* for the module form |
+| Weisner recursion, Props. W and W′ (`notes/fixed_point_formula.md` §4) | PROVEN; W audited in `notes/audit_fixed_point_formula.md`, W′ in `notes/audit_prop_w_prime.md`; exactness (Thm W″) PROVEN in `notes/audit_prop_w_prime.md`, not yet independently audited | Weisner; Thm 1 for W″ |
+| Exact criterion for χ_V(g) ≢ 0 | OPEN | — |
 | (b1), (b2), OM version, comodernism | CONJECTURED | — |
 
 Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not
@@ -1142,7 +1161,10 @@ Dorpalen-Barry arXiv:2104.02740 and Dorpalen-Barry–Proudfoot–Wang,
 Deshpande arXiv:1111.1251. Not re-checked: AM *Topics* Thm 14.32 in the form
 Φ_A(ρ_C) = ±C (no longer used), and the Malvenuto–Reutenauer product
 convention. Not accessible: Zaslavsky 1977 (used as quoted by Deshpande).
-Not read: Baclawski–Björner 1981. Read (arXiv text, grep):
+Not accessible: Baclawski–Björner 1981; per Wachs, *Poset topology*,
+Thm 4.6.1, it contains the fixed-point Möbius theorem, not a fixed-point
+formula for cones (`notes/novelty_fixed_point_formula.md` §6). Read (arXiv
+text, grep):
 Dorpalen-Barry–Kim–Reiner arXiv:1906.00036.
 
 ## Prior art
