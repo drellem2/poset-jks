@@ -1,0 +1,57 @@
+Audit of Theorem W'' -- exact arithmetic, Fourier-Motzkin faces
+[control] chambers coord3: 8 (expected 8)
+[control] chambers G2: 12 (expected 12)
+[control] chambers A2xA1: 12 (expected 12)
+[control] chambers coordsum3: 14 (expected 14)
+[control] chambers K4: 30 (expected 30)
+[control] chambers K5: 62 (expected 62)
+coord3     d=3 n= 3 chambers=  8 faces=  27 cones=   27 (non-pointed   19) |G|= 48 orbits=   4 pairs=   66 W2a=  40 W2b=  26 (g=1: 4, V^U non-pointed: 20) max m(V^U)=1 homology-checked=26
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 10, k=2: 12; V^U non-pointed: 17; max m(V^U) for g != 1: 1
+G2         d=2 n= 6 chambers= 12 faces=  25 cones=   73 (non-pointed   13) |G|= 12 orbits=  10 pairs=   27 W2a=  17 W2b=  10 (g=1: 10, V^U non-pointed: 3) max m(V^U)=5 homology-checked=10
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): ; V^U non-pointed: 0; max m(V^U) for g != 1: 0
+A2xA1      d=3 n= 4 chambers= 12 faces=  39 cones=   57 (non-pointed   33) |G|= 24 orbits=   8 pairs=   54 W2a=  36 W2b=  18 (g=1: 8, V^U non-pointed: 14) max m(V^U)=2 homology-checked=18
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=2: 10; V^U non-pointed: 8; max m(V^U) for g != 1: 1
+coordsum3  d=3 n= 4 chambers= 14 faces=  51 cones=   71 (non-pointed   33) |G|= 12 orbits=  13 pairs=   43 W2a=   7 W2b=  36 (g=1: 13, V^U non-pointed: 17) max m(V^U)=3 homology-checked=36
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 6, k=2: 17; V^U non-pointed: 10; max m(V^U) for g != 1: 2
+cyc3       d=3 n= 7 chambers= 38 faces= 135 cones=  505 (non-pointed   99) |G|=  6 orbits=  87 pairs=   98 W2a=   3 W2b=  95 (g=1: 87, V^U non-pointed: 20) max m(V^U)=12 homology-checked=95
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 8; V^U non-pointed: 2; max m(V^U) for g != 1: 1
+K4         d=4 n= 5 chambers= 30 faces= 181 cones=  231 (non-pointed  131) |G|= 48 orbits=  21 pairs=  180 W2a=  30 W2b= 150 (g=1: 21, V^U non-pointed: 75) max m(V^U)=4 homology-checked=150
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 18, k=2: 54, k=3: 57; V^U non-pointed: 63; max m(V^U) for g != 1: 3
+cyc4       d=4 n= 9 chambers=102 faces= 493 cones= 2809 (non-pointed  841) |G|= 16 orbits= 228 pairs=  385 W2a=  29 W2b= 356 (g=1: 228, V^U non-pointed: 115) max m(V^U)=20 homology-checked=356
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 8, k=2: 42, k=3: 78; V^U non-pointed: 40; max m(V^U) for g != 1: 7
+K5         d=5 n= 6 chambers= 62 faces= 603 cones=  715 (non-pointed  473) |G|=240 orbits=  30 pairs=  840 W2a= 130 W2b= 710 (g=1: 30, V^U non-pointed: 380) max m(V^U)=5 homology-checked=710
+           g != 1 with Fix(g) in no hyperplane, by k = dim Fix(g): k=1: 72, k=2: 216, k=3: 253, k=4: 139; V^U non-pointed: 361; max m(V^U) for g != 1: 4
+
+[Folkman] checks=8 failures=0
+[G] checks=406 failures=0
+[Lb] checks=1693 failures=0
+[VU=] checks=1401 failures=0
+[VUcone] checks=1401 failures=0
+[W2a] checks=292 failures=0
+[W2b] checks=1401 failures=0
+[adj] checks=1401 failures=0
+[chi] checks=1693 failures=0
+[cl] checks=1401 failures=0
+[fixch] checks=1401 failures=0
+[hall] checks=1401 failures=0
+[homol] checks=1401 failures=0
+[m(V)] checks=8976 failures=0
+[m>=1] checks=1401 failures=0
+[pi] checks=1401 failures=0
+[pisig] checks=1401 failures=0
+[pointed] checks=2846 failures=0
+[rho] checks=1279 failures=0
+[sgn] checks=1693 failures=0
+[sigma] checks=1401 failures=0
+[sigpi] checks=1401 failures=0
+
+Negative controls (count of instances where the wrong statement fails; must be > 0):
+[neg:nosign] fires on 652
+[neg:m(V)] fires on 571
+[neg:#Vg] fires on 644
+[neg:noclose] fires on 4653
+[neg:rho+1] fires on 1279
+[neg:nohyp] fires on 1000
+
+totals: W2a pairs 292, W2b pairs 1401 (of which g = 1: 401, g != 1: 1000, V^U non-pointed: 644, of which g != 1: 501), max m(V^U) for g != 1 = 7, max m(V^U) = 20
+ALL CHECKS PASSED
