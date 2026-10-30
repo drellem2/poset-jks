@@ -29,3 +29,9 @@ code in [`compute/`](compute/) (`cd compute && python3 poset_jks_check.py --help
   (all labeled posets n ≤ 6, explicit cyclic-factorization bijection, character of
   ⊕_P Lie(P); `--b8` adds a_n and b_n via Lemma 1(c) to n = 8). Audit:
   [`notes/audit_cyclic_compatible_posets_bn.md`](notes/audit_cyclic_compatible_posets_bn.md).
+- `cd compute && python3 splitting_cycles.py --nmax 5 --nmax-comb 6` (plain Python, ~4 s) —
+  splitting cycles vs shuffles (explicit JKS map), the counterexample to the
+  note's restricted image identity, and the span of linear-extension splitting
+  cycles for all posets n ≤ 6. Findings, literature/novelty check and
+  bibliography corrections:
+  [`notes/literature_novelty_jks_maps.md`](notes/literature_novelty_jks_maps.md).

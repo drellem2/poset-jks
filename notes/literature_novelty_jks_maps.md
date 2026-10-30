@@ -22,7 +22,13 @@ u ш v, where u and v are nonempty words on complementary letter sets.
 
 ## Summary
 
-1. **Novelty (CITED / searched).** SEE §1.
+1. **Novelty (searched; §1).** No prior work proves, refutes, or states
+   eq. (mainconj), or attaches any group action or Lie module to the homology
+   of O(P). Only three or four papers cite Jenča–Sarkoci, and none studies a
+   group action. The closest work is Aguiar–Mahajan's JKS theorem for
+   arbitrary arrangements (Topics in Hyperplane Arrangements, Thm 14.32). It
+   is about the whole arrangement, not a cone. The search is not exhaustive;
+   the query log is in §1.4.
 2. **Jenča–Sarkoci (CITED).** Their theorem is exactly what the note uses.
    Their cyclic classes are the C_n-orbits meeting Lin(P), in the note's sense.
    The only hypothesis is n ≥ 3; P need not be connected or labeled. Their
@@ -69,14 +75,157 @@ u ш v, where u and v are nonempty words on complementary letter sets.
    adjoint Dynkin element θ_n^*, whose kernel is exactly Sh_n. Replace the
    target statement eq. (restrictionlemma) by Conjecture S. Do not try to
    prove containment in W_P e_ζ or W_P κ_n: it is false.
-7. **Aguiar–Mahajan.** SEE §4.
+7. **Aguiar–Mahajan (§4).** Aguiar–Mahajan prove JKS for every real
+   arrangement (Topics Thm 14.32). They do not have a Lie/JKS theory relative
+   to a cone or lune: no such statement was found in the cone, lune, Lie or
+   Peirce chapters. So step 3 of the note's arrangement program
+   ("maximal-support Lie/Peirce component of C_P") is not available
+   off the shelf. Their Ree criterion (Topics Lemmas 10.7–10.8: Lie elements
+   are the vectors orthogonal to the non-singleton top-lunes) is §3's Sh_n.
+   **Caution:** Topics Exercise 10.9, as printed in the authors' preliminary
+   version, says "top-cone" instead of "top-lune". Read literally, that is
+   false for the braid arrangement: there is a COMPUTED counterexample at
+   n = 3 (§4.2).
 8. **Bibliography corrections.** See §5.
 
 ---
 
 ## 1. Novelty search
 
-SEE AGENT
+Each source below was read in full text unless it is marked [abstract] or
+[secondary].
+
+### 1.1 Papers citing Jenča–Sarkoci (CITED)
+
+The union of the OpenAlex (W2050207319: 3 citing works) and Semantic Scholar
+(arXiv:1112.5782: 4 real citing records) lists:
+
+- **R. Schweig, R. Woodroofe**, arXiv:1604.03115 (Adv. Math. 2017), Thm 1.5:
+  O(P) is comodernistic, hence CL-shellable. This re-proves the wedge-of-spheres
+  part of J–S by shelling. It has no group action. It does not cover
+  eq. (mainconj), but a CL-shelling gives a cohomology basis of decreasing
+  chains, which may be useful to the containment item.
+- **H. Bonnier, H. Oberhauser**, arXiv:1908.06496 (Bernoulli 2020), §2: Möbius
+  inversion on the lattice of ordered (order-preserving) partitions, used for
+  signature cumulants, i.e. logarithms of tensor series. This has a log/Lie
+  flavour but makes no representation-theoretic statement. Tangential.
+- **N. Williams**, survey of poset congruences, arXiv:2303.03765, §5.3
+  (order congruences). Nothing on group actions or Lie.
+- Borenstein–Shashkov, arXiv:1909.04215 ("Garland recurrences"). Text
+  extraction failed; **not checked**.
+
+### 1.2 Other candidates (CITED)
+
+- **Aguiar–Mahajan**, see §4. JKS for arbitrary arrangements; no cone version.
+- **G. Dorpalen-Barry, J. S. Kim, V. Reiner**, *Whitney numbers for poset
+  cones*, arXiv:1906.00036 (Order) [read in part]. They study the poset
+  L_int(K_P) of flats meeting the interior of the order cone. That is a
+  different poset from O(P). The results are enumerative refinements of
+  |Lin P| via Zaslavsky (Thm 2.9), with no representations. Not covering, but
+  this is the right literature for "the geometry of C_P".
+- **G. Dorpalen-Barry**, *The Varchenko–Gel'fand ring of a cone*,
+  arXiv:2104.02740 [read in part]. Its Hilbert series is the Poincaré
+  polynomial of the cone. No group action.
+- **R. Ehrenborg, J. Jung**, *The topology of restricted partition posets*,
+  J. Algebraic Combin. 37 (2013) 643–666, arXiv:1312.2036 [abstract]. The
+  pointed partition posets Π•_c̄ are wedges of spheres, counted by the
+  permutations with descent composition c̄, i.e. by the linear extensions of
+  a zigzag poset. The top homology is a border-strip Specht module for
+  S_{n−1}. This is the nearest structural analogue found ("homology counted
+  by linear extensions, with an explicit module"), but it is a different
+  poset and a different group. Partial analogy only.
+- **R. Ehrenborg, D. Hedmark**, *Filters in the partition lattice*,
+  arXiv:1606.01443 [abstract]. Homology of filters Π*_Δ as S_{n−1}-modules.
+  Not about arbitrary P.
+- **B. Sagan, S. Sundaram**, *Ordered set partition posets*,
+  arXiv:2506.23355 [abstract]. S_n acting on Whitney and rank-selected
+  homology of subposets of the permutohedron face lattice. Not about P.
+- **W. Norledge, A. Ocneanu**, *Hopf monoids, permutohedral cones, and
+  generalized retarded functions*, arXiv:1911.11736 (Ann. Inst. Henri
+  Poincaré D 10 (2023) 555–609). Their "permutohedral cones" live in the
+  **adjoint** braid arrangement. Ordinary preposet cones appear only as
+  "braid cones" (§3). The results are Thm 4.2 (Steinmann relations ⇔ spanned
+  by characteristic functions of permutohedral tangent cones), Thm 4.5
+  (Zie* → Žie* is an isomorphism) and comb bases of Zie. No module is attached
+  to a single cone, and there is no homology. The same holds for
+  Liu–Norledge–Ocneanu arXiv:1901.03243 and Norledge arXiv:2212.14000 and
+  arXiv:2009.09969 (all grepped).
+- **P. McNamara, C. Reutenauer**, *P-partitions and a multi-parameter Klyachko
+  idempotent*, arXiv:math/0509125 [secondary]. Uses linear extensions and
+  P-partitions to prove Lie-ness of Klyachko-type idempotents, writing
+  shuffles as Lin of two disjoint chains. This is the nearest
+  "linear extensions + Lie idempotent" paper. It does not study O(P).
+- Not checked: Hossain, NCSU PhD thesis 2019 (no abstract found); Dorpalen-Barry
+  UMN thesis 2021; Norledge arXiv:2301.00702.
+
+### 1.3 Novelty verdict
+
+- **eq. (mainconj): no prior statement found (searched; not a proof of
+  novelty).** No paper found gives a group action on H_P, a Lie module
+  indexed by linear extensions, or a JKS theorem for a cone of the braid
+  arrangement.
+- **The pieces are classical:**
+  - the antichain case (JKS);
+  - the dimension count (J–S Thm 4.5);
+  - JKS for any arrangement (Aguiar–Mahajan, Topics Thm 14.32);
+  - splitting cycles and their pairing with combs (Wachs 1998);
+  - Lie_n^⊥ = shuffles = span of non-singleton top-lune indicators (Ree;
+    Aguiar–Mahajan Topics Lemmas 10.7–10.8).
+- **Not found in this form:** Proposition Φ (§3.2) and Conjecture S (§3.4).
+  Both are short consequences of classical facts, so a specialist may know
+  them.
+- **Recommendation:** before publication, ask an expert (e.g. Wachs, Reiner,
+  Aguiar) whether "the splitting cycles of linear extensions span H_P" is
+  folklore.
+
+### 1.4 Query log
+
+- Web searches:
+  - Jenča–Sarkoci title + arXiv
+  - order-preserving partitions + homology + symmetric group + free Lie +
+    linear extensions
+  - Norledge–Ocneanu permutohedral cones
+  - Aguiar–Mahajan Topics TOC / Lie / Zie / Dynkin
+  - Aguiar–Mahajan arXiv bimonoids + Lie + cones + JKS
+  - homology "order-preserving partitions" + representation + linear
+    extensions + Lie
+  - "Lie elements" + cone + braid arrangement + linear extensions + "top-cone"
+  - Dorpalen-Barry cone Varchenko–Gelfand equivariant
+  - Barcelo 1990 + Lyndon + NBC
+  - Klyachko "Lie elements in the tensor algebra" + Siberian/DOI (twice)
+  - Wachs "(co)homology of the partition lattice" pdf
+  - "order congruence lattice" + homology + automorphism group
+  - Lie representation + linear extensions + cyclic idempotent + Klyachko
+  - "acyclic digraph" contraction poset homology spheres Lie
+  - Ehrenborg–Hedmark
+  - Ehrenborg–Jung
+  - Hossain thesis
+  - "Whitehouse module" OR "Foulkes character" + "linear extensions" + poset
+    homology
+  - Hopf monoid of posets + primitive + Lie + linear extensions
+    (Aguiar–Ardila)
+  - "linear extensions" + "free Lie algebra" + poset module + cyclic
+  - Jenča Sarkoci + automorphism/representation + Lie
+- Of these, the following returned nothing relevant: "order congruence
+  lattice"…, Lie representation + linear extensions…, "acyclic digraph"…,
+  "Whitehouse module"…, Hopf monoid of posets…, "linear extensions" + "free
+  Lie algebra"…, and Jenča Sarkoci + automorphism….
+- APIs:
+  - OpenAlex: doi lookup → W2050207319; `filter=cites:W2050207319`; search
+    "order congruences poset homology"; Barcelo doi.
+  - Semantic Scholar: citations of arXiv:1112.5782.
+  - Crossref: Klyachko.
+  - arXiv API: au:Norledge; au:Bastidas AND au:Mahajan.
+  - Google Scholar "cited by": returned no data (probably blocked).
+- Full texts read or grepped:
+  - Jenča–Sarkoci arXiv:1112.5782v2
+  - Wachs `homlie.ps` and `toolnotes.pdf`
+  - Aguiar–Mahajan Topics (authors' preliminary version, pi.math.cornell.edu/~maguiar/surv-226.pdf)
+  - Bimonoids front matter (CUP)
+  - arXiv 1911.11736, 1906.00036, 2104.02740, 1604.03115, 1908.06496,
+    2303.03765, 1901.03243, 2212.14000, 2009.09969 and 1709.07504
+- Barcelo 1990 full text: **not accessible** (ScienceDirect returned 403 or
+  a bot check).
 
 ## 2. Jenča–Sarkoci
 
@@ -283,7 +432,10 @@ This verifies Proposition Φ for n ≤ 5 independently of the derivation above.
 cycles are the signed shuffle relations" stated in this form. Wachs's papers
 contain it implicitly (it is equivalent to Lemma 3.1 + Thm 4.2 + Thm 4.3 of
 Wachs 1998). It is the homology form of the classical "Lie_n^* = words modulo
-shuffles". SEE AGENT for whether the search found it.
+shuffles". The search in §1 did not find it either. Compare Aguiar–Mahajan,
+Topics Thm 14.32 and Prop. 14.27. There the Björner–Wachs basis of
+H_{r−2}(Π[A]) ⊗ E^o[A] is used for any arrangement, but it is not phrased as
+a shuffle presentation.
 
 ### 3.3 eq. (restrictionlemma) is false for every J (PROVEN)
 
@@ -422,11 +574,147 @@ For the containment-proof item:
 
 ## 4. Aguiar–Mahajan and cones
 
-SEE AGENT
+### 4.1 Sources
+
+- M. Aguiar, S. Mahajan, *Topics in Hyperplane Arrangements*, Math. Surveys
+  Monogr. 226, AMS 2017. Read from the authors' preliminary version,
+  pi.math.cornell.edu/~maguiar/surv-226.pdf. **Numbers below are from that
+  version and may differ in print.**
+- M. Aguiar, S. Mahajan, *Bimonoids for Hyperplane Arrangements*, Encyclopedia
+  Math. Appl. **173**, CUP 2020. Only the table of contents was read, from the
+  CUP front matter.
+
+### 4.2 What is there (CITED)
+
+- **Topics, Ch. 2 (Cones)** and **Ch. 3 (Lunes)** develop the combinatorics.
+  This includes §2.7, the poset of top-cones. A top-cone of the braid
+  arrangement is an order cone C_P, and its chambers are Lin(P).
+- **Topics (10.1), Lemma 10.5.** Lie[A] is the space of Σ x_C H_C in the
+  chamber space Γ[A] with Σ_{C: HC = D} x_C = 0 for all O < H ≤ D. It is the
+  primitive part of Γ[A].
+- **Lemma 10.7/10.8 (Ree criterion).** The coefficients of a Lie element sum
+  to zero on every non-singleton top-lune.
+  - For the braid arrangement, the top-lune of a top-nested face (H, D),
+    with H = (B_1 | ⋯ | B_k), is {C : HC = D}. That is the set of shuffles of
+    the words D|_{B_1}, …, D|_{B_k}. So Lemma 10.7 is exactly Ree's criterion
+    Lie_n^⊥ = Sh_n used in §3. (PROVEN: unwinding the Tits product.)
+- **Exercise 10.9, as printed** (preliminary version, p. 267): "z ∈ Lie[A]
+  iff the sum of the coefficients of z of chambers in any non-singleton
+  top-cone of A is zero." **Read literally this is false** for the braid
+  arrangement.
+  - Counterexample (COMPUTED, and checkable by hand): n = 3, the top-cone
+    {x_1 ≤ x_2, x_1 ≤ x_3} (§2.1.3 of Topics: a top-cone is any cone of
+    maximum dimension). Its chambers are the words 123 and 132.
+  - The Lie element [2,[1,3]] = 213 − 231 − 132 + 312 is orthogonal to all
+    six proper shuffles. But its coefficient sum on {123, 132} is −1.
+  - More generally, for n = 3, 4, 5 the chamber sum Σ_{w ∈ Lin P} w lies
+    outside Sh_n for 2/4, 9/15 and 43/62 of the unlabeled non-chain posets
+    (COMPUTED; the command is in §6).
+  - Σ_{w ∈ Lin P} w does lie in Sh_n when P is disconnected, because then
+    Lin P is a union of shuffle sets.
+  - Either the exercise intends a restricted class of top-cones, or the
+    printed version differs. **Do not cite Exercise 10.9 without checking
+    the published text.**
+- **Theorem 14.32 (JKS for any arrangement).** Unbracketing, (14.20a–e),
+  gives a natural isomorphism H^{r−2}(Π[A]) ⊗ E^o[A] → Lie[A]. Here Π[A] is
+  the flat lattice, r is the rank, and E^o[A] is the orientation space,
+  identified with Det(⊤/⊥) in Lemma 14.23.
+- **Related results.**
+  - Prop. 14.25: (co)homology is concentrated in top degree, of dimension
+    |μ|.
+  - Prop. 14.27: the Björner–Wachs basis.
+  - Cor. 14.33: the dual Björner–Wachs basis maps to the Dynkin basis.
+  - Thm 14.34: the Whitney-cohomology version.
+  - §14.8 specializes to type A.
+- **Ch. 13 (Loewy series and Peirce decompositions)**: §13.5 "Lie over flats"
+  and §13.6 "Lie under flats".
+- **Bimonoids (from the table of contents).**
+  - §1.2 nested faces and lunes
+  - §1.12 Lie and Zie elements
+  - §7.7 species of top-nested faces and top-lunes
+  - Ch. 16 Lie monoids
+  - Ch. 17 PBW / Cartier–Milnor–Moore, with §17.4 the Solomon operator
+
+### 4.3 What is not there
+
+- No result was found that attaches a Lie module, or a homology
+  representation, to a **single cone or lune**, or to a sub-object of the
+  face poset cut out by a cone.
+- The searched chapters are Topics Chs 2, 3, 10 and 13–14. Bimonoids could be
+  checked only through its contents.
+- Topics Thm 8.22 is a Varchenko determinant for a combinatorial top-cone. It
+  is not homology.
+- §2.8 "partial-flats" come from subarrangements and carry no Lie theory.
+- So the note's arrangement program (§ "Potential proof via
+  hyperplane-arrangement Lie theory", steps 1–4) would be **new work**:
+  - Steps 1–2 are elementary. The faces of C_P are the P-compatible ordered
+    set partitions, and their supports form O(P).
+  - Step 3, a Peirce component for a cone, has no counterpart in the
+    sources read.
+  - Prop. C (§3.3) shows that step 4 cannot hold literally with target
+    W_P e_ζ. Any arrangement-theoretic version must land in W_P modulo
+    shuffles, i.e. in Conjecture S form.
+- A possible conceptual route to Conjecture S, in AM language. Conjecture S
+  says that the top-lunes (shuffle sets) give exactly
+  dim(W_P ∩ Sh_n) = |Lin P| − e_C(P) relations among the chambers of C_P.
+  The obvious relations come from top-lunes contained in C_P, i.e. shuffles
+  of linear extensions of complementary unions of components of P. For
+  connected P there are none, and Conjecture S says there are no relations
+  at all. (CONJECTURED; the dimension statement is COMPUTED for n ≤ 6 as
+  Conjecture S.)
 
 ## 5. Bibliography corrections (proposed; the seed note is not edited)
 
-SEE AGENT
+1. **Klyachko** (CITED via Crossref, DOI verified). Replace with:
+   - A. A. Klyachko, *Lie elements in the tensor algebra*, Sibirsk. Mat. Zh.
+     **15** (1974), no. 6, 1296–1304.
+   - English translation: Siberian Math. J. **15** (1974), no. 6, 914–920,
+     doi:10.1007/BF00966559.
+
+   Some secondary sources give "914–921" or "(1975)". Crossref gives Nov.
+   1974 and 914–920. Wachs's Poset Topology notes misprint the year as 1971.
+   The relevant theorem is Lie_n ≅ Ind_{C_n}^{S_n} ζ, i.e. the
+   identification of the Lie representation with an induced character of the
+   cyclic group generated by an n-cycle. Klyachko's paper is not numbered by
+   theorem in any source seen here, so cite it as "Klyachko (1974)".
+2. **Jenča–Sarkoci.** The entry is correct. The authors are Gejza Jenča and
+   Peter Sarkoci. Add arXiv:1112.5782. When citing, use **Theorem 4.5** for
+   eq. (JSdim), **Definition 4.1** for cyclic classes, **Corollary 4.4 /
+   Corollary 4.12** for the connected case, and **Theorem 3.8** for the
+   recursion. These are arXiv v2 numbers. Pages 28–38 were not re-checked
+   against the journal.
+3. **Barcelo 1990.** The entry is correct as far as checked (DOI resolves to
+   the article; full text not accessible). Her own theorem number for the
+   isomorphism was **not found**. Cite it via Wachs 1998, Thm 4.1 ("Barcelo
+   correspondence": Lyndon basis ↔ dual Björner basis of **cohomology**,
+   giving Lie_n ≅ H^{n−3}(Π̄_n) ⊗ sgn).
+4. **Wachs 1998.** The entry is correct. Add precise pointers: Prop. 2.3
+   (splitting basis), Lemma 3.1, Thm 4.3 (comb correspondence) and Thm 5.4
+   (general correspondence). These are preprint numbers; re-check against
+   the journal. Add also: M. L. Wachs, *Poset topology: tools and
+   applications*, IAS/Park City Math. Ser. 13, AMS 2007, 497–615,
+   arXiv:math/0602226 (Thms 1.6.2, 3.2.8, 3.2.9).
+5. **Aguiar–Mahajan.** Add the volume number: Encyclopedia Math. Appl.
+   **173**. Also add *Topics in Hyperplane Arrangements*, Math. Surveys
+   Monogr. **226**, AMS 2017. That is where the cone/lune combinatorics and
+   the JKS theorem for arrangements (Thm 14.32) are.
+6. **Missing references the note relies on implicitly.**
+   - R. Ree, *Lie elements and an algebra associated with shuffles*, Ann. of
+     Math. 68 (1958) 210–220.
+   - C. Reutenauer, *Free Lie Algebras*, LMS Monographs 7, Oxford 1993.
+   - The JKS attributions (from memory; **verify**):
+     - R. P. Stanley, *Some aspects of groups acting on finite posets*,
+       J. Combin. Theory Ser. A 32 (1982) 132–161.
+     - P. Hanlon, *The fixed-point partition lattices*, Pacific J. Math. 96
+       (1981) 319–341.
+     - A. Joyal, *Foncteurs analytiques et espèces de structures*, LNM 1234
+       (1986) 126–159.
+   - Optional: Schweig–Woodroofe (CL-shellability of O(P)), Dorpalen-Barry–
+     Kim–Reiner (poset cones), McNamara–Reutenauer (P-partitions and
+     Klyachko idempotents).
+7. **Substantive correction, not bibliographic.** eq. (restrictionlemma) and
+   the "second formulation" W_P κ_n are false as stated (§3.3). Replace them
+   by Conjecture S (§3.4).
 
 ## 6. Reproduction
 
@@ -435,6 +723,22 @@ of `compute/poset_jks_check.py`). Run from `compute/`:
 
     python3 splitting_cycles.py --nmax 5 --nmax-comb 6 > output/splitting_cycles.txt   # ~4 s
     python3 -m unittest test_splitting_cycles
+
+The Exercise 10.9 counterexample count (§4.2) comes from this one-liner,
+run in `compute/`:
+
+    python3 -c "import poset_jks_check as pj, splitting_cycles as sc
+    for n in (3,4,5):
+        co=sc.comb_coordinates(n); bad=tot=0
+        for rel in pj.unlabeled_posets_by_extension(n)[n]:
+            lin=pj.linear_extensions(rel,n)
+            if len(lin)==1: continue
+            tot+=1; acc={}
+            for w in lin:
+                for j,v in co.get(w,{}).items(): acc[j]=acc.get(j,0)+v
+            bad+=any(acc.values())
+        print(n,tot,bad)"
+    # prints: 3 4 2 / 4 15 9 / 5 62 43
 
 The archived output is `compute/output/splitting_cycles.txt`. Its last line,
 `ALL CHECKS PASSED`, gates the following: Proposition Φ for n ≤ 5, the
