@@ -99,3 +99,12 @@ connected P (n ≤ 6), and the Topics Ex. 10.9 counts. Findings:
 
     python3 audit_jks_maps.py > output/audit_jks_maps.txt   # ~40 s, exit 0 iff all pass
     python3 -m unittest test_audit_jks_maps
+`audit_character_identity.py` is an independent, self-contained audit of both
+proofs of eq. (characterconj): Weisner/inversion (mg-266cf) and Crapo
+(mg-8878d). It checks every intermediate lemma by brute force, plus direct
+homology traces for n <= 6. It imports no other script here. Findings:
+`../notes/audit_character_identity_proof.md`. Run from this directory:
+
+    python3 audit_character_identity.py --nmax 6 --large 7 8 9 --homology 6 > output/audit_character_identity.txt   # ~5 min
+    python3 audit_character_identity.py --nmax 0 --large 10 --skip-identity-large > output/audit_character_identity_n10.txt   # ~5 min
+    python3 -m unittest test_audit_character_identity

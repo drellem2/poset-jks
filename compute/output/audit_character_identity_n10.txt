@@ -1,0 +1,15 @@
+2 x chain2 + 2 x V: n=10, |Aut|=16, classes=10, nonzero closed-formula classes=1, failures so far 0
+posets checked: 1
+  A: 9
+  B: 9
+  B_nonzero: 1
+  C: 9
+  D: 9
+  E: 9
+  E_unequal: 8
+  E_nonempty: 1
+  F: 1
+  H: 0
+  H_trace: 0
+failures: 0
+ALL CHECKS PASS

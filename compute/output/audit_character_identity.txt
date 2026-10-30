@@ -1,0 +1,39 @@
+n=1: done, posets so far 1, failures 0
+n=2: done, posets so far 3, failures 0
+n=3: done, posets so far 8, failures 0
+n=4: done, posets so far 24, failures 0
+n=5: done, posets so far 87, failures 0
+n=6: done, posets so far 405, failures 0
+4 x chain2: n=8, |Aut|=24, classes=5, nonzero closed-formula classes=2, failures so far 0
+3 x chain3: n=9, |Aut|=6, classes=3, nonzero closed-formula classes=2, failures so far 0
+2 x chain4: n=8, |Aut|=2, classes=2, nonzero closed-formula classes=2, failures so far 0
+2 x chain3 + 2 x pt: n=8, |Aut|=4, classes=4, nonzero closed-formula classes=2, failures so far 0
+3 x chain2 + pt: n=7, |Aut|=6, classes=3, nonzero closed-formula classes=1, failures so far 0
+2 x V + pt: n=7, |Aut|=8, classes=5, nonzero closed-formula classes=1, failures so far 0
+2 x V + 2 x pt: n=8, |Aut|=16, classes=10, nonzero closed-formula classes=2, failures so far 0
+2 x N4: n=8, |Aut|=2, classes=2, nonzero closed-formula classes=2, failures so far 0
+2 x C22: n=8, |Aut|=32, classes=14, nonzero closed-formula classes=2, failures so far 0
+V + Lambda + pt: n=7, |Aut|=4, classes=4, nonzero closed-formula classes=1, failures so far 0
+2 x chain2 + 3 x pt: n=7, |Aut|=12, classes=6, nonzero closed-formula classes=1, failures so far 0
+3 x V: n=9, |Aut|=48, classes=10, nonzero closed-formula classes=2, failures so far 0
+3 x Lambda: n=9, |Aut|=48, classes=10, nonzero closed-formula classes=2, failures so far 0
+2 x Y4: n=8, |Aut|=8, classes=5, nonzero closed-formula classes=2, failures so far 0
+3 x chain2 + 2 x pt: n=8, |Aut|=12, classes=6, nonzero closed-formula classes=1, failures so far 0
+2 x chain3 + 3 x pt: n=9, |Aut|=12, classes=6, nonzero closed-formula classes=1, failures so far 0
+4 x chain2 + pt: n=9, |Aut|=24, classes=5, nonzero closed-formula classes=1, failures so far 0
+2 x N4 + pt: n=9, |Aut|=2, classes=2, nonzero closed-formula classes=1, failures so far 0
+2 x V + chain3: n=9, |Aut|=8, classes=5, nonzero closed-formula classes=1, failures so far 0
+posets checked: 424
+  A: 1056
+  B: 1056
+  B_nonzero: 447
+  C: 632
+  D: 632
+  E: 632
+  E_unequal: 593
+  E_nonempty: 20
+  F: 39
+  H: 402
+  H_trace: 543
+failures: 0
+ALL CHECKS PASS
