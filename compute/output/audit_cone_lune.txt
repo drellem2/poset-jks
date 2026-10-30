@@ -1,0 +1,89 @@
+[CTL] dropping one line breaks the Zaslavsky tope count: True
+[CTL] half-plane of A_2: not pointed and dependent mod Lune: True
+[CTL] corrupted lune is caught by the exact E_h membership test: True
+[CTL] full A_2: dim Lie^int = dim Lie = 2: True
+[A1xA2 (reducible, R^3)] m=4 d=3 lines=4 covectors=39 topes=12 flats=10
+  [faces] topes 12 = Zaslavsky 12; covectors 39 = sum |mu(X,Y)| 39: True
+  [lie]   dim Lune^perp = 2, |mu(flat lattice)| = 2: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (44 nonzero images)
+  cones: 57 total, 57 tested
+  [L]     Lemma L on 57 cones x 27 lunes: True
+  [5.2]   pointed cones: 24; rank(Lie|_V) = |V|: 24/24
+  [7.1a]  chamber sum in Lune <=> not pointed: 57/57 (non-pointed: 33)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 57/57 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 56/56
+  [int]   full V: dim Lie^int <= 2, dim Lune^perp = 2 (reported)
+  => PASS
+[resonance R^3 (all 0/1 normals)] m=7 d=3 lines=9 covectors=99 topes=32 flats=18
+  [faces] topes 32 = Zaslavsky 32; covectors 99 = sum |mu(X,Y)| 99: True
+  [lie]   dim Lune^perp = 9, |mu(flat lattice)| = 9: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (110 nonzero images)
+  cones: 397 total, 397 tested
+  [L]     Lemma L on 300 cones x 63 lunes: True
+  [5.2]   pointed cones: 298; rank(Lie|_V) = |V|: 298/298
+  [7.1a]  chamber sum in Lune <=> not pointed: 397/397 (non-pointed: 99)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 397/397 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 396/396
+  [int]   full V: dim Lie^int <= 9, dim Lune^perp = 9 (reported)
+  => PASS
+[A2xA2 (reducible, R^4)] m=6 d=4 lines=6 covectors=169 topes=36 flats=25
+  [faces] topes 36 = Zaslavsky 36; covectors 169 = sum |mu(X,Y)| 169: True
+  [lie]   dim Lune^perp = 4, |mu(flat lattice)| = 4: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (324 nonzero images)
+  cones: 361 total, 361 tested
+  [L]     Lemma L on 300 cones x 133 lunes: True
+  [5.2]   pointed cones: 144; rank(Lie|_V) = |V|: 144/144
+  [7.1a]  chamber sum in Lune <=> not pointed: 361/361 (non-pointed: 217)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 361/361 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 360/360
+  [int]   full V: dim Lie^int <= 4, dim Lune^perp = 4 (reported)
+  => PASS
+[generic 6 in R^5] m=6 d=5 lines=15 covectors=603 topes=62 flats=58
+  [faces] topes 62 = Zaslavsky 62; covectors 603 = sum |mu(X,Y)| 603: True
+  [lie]   dim Lune^perp = 5, |mu(flat lattice)| = 5: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (1572 nonzero images)
+  cones: 715 total, 715 tested
+  [L]     Lemma L on 300 cones x 473 lunes: True
+  [5.2]   pointed cones: 242; rank(Lie|_V) = |V|: 242/242
+  [7.1a]  chamber sum in Lune <=> not pointed: 715/715 (non-pointed: 473)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 715/715 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 714/714
+  [int]   full V: dim Lie^int <= 5, dim Lune^perp = 5 (reported)
+  => PASS
+[non-generic 7 in R^4] m=7 d=4 lines=17 covectors=393 topes=68 flats=45
+  [faces] topes 68 = Zaslavsky 68; covectors 393 = sum |mu(X,Y)| 393: True
+  [lie]   dim Lune^perp = 13, |mu(flat lattice)| = 13: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (698 nonzero images)
+  cones: 1093 total, 1093 tested
+  [L]     Lemma L on 300 cones x 263 lunes: True
+  [5.2]   pointed cones: 704; rank(Lie|_V) = |V|: 704/704
+  [7.1a]  chamber sum in Lune <=> not pointed: 1093/1093 (non-pointed: 389)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 1093/1093 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 1092/1092
+  [int]   full V: dim Lie^int <= 13, dim Lune^perp = 13 (reported)
+  => PASS
+[H3 (non-crystallographic, Q(sqrt5))] m=15 d=3 lines=31 covectors=363 topes=120 flats=48
+  [faces] topes 120 = Zaslavsky 120; covectors 363 = sum |mu(X,Y)| 363: True
+  [lie]   dim Lune^perp = 45, |mu(flat lattice)| = 45: True (reported)
+  [class] every flat class is a non-singleton L(H,D): True
+  [E]     E_h(L) in Lune[A^h] exactly, and 0 unless h in z(H): True (390 nonzero images)
+  cones: 7745 total, 7745 tested
+  [L]     Lemma L on 300 cones x 211 lunes: True
+  [5.2]   pointed cones: 7294; rank(Lie|_V) = |V|: 7294/7294
+  [7.1a]  chamber sum in Lune <=> not pointed: 7745/7745 (non-pointed: 451)
+  [7.1b]  pointed non-singleton cone with sum outside Lune: True
+  [G1]    dim(Gamma_V cap Lune) = rank(lunes in V): 7745/7745 (Conjecture G1, reported)
+  [int]   Lie^int(V) = 0 (direct rank) for proper V: 1500/1500
+  [int]   full V: dim Lie^int <= 45, dim Lune^perp = 45 (reported)
+  => PASS
+ALL CHECKS PASSED
