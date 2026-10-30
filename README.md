@@ -14,3 +14,10 @@ Open problems are in its sections "Status: proved, supported, and open" and
 "Concrete next research steps".
 
 `./build.sh` builds the note to PDF if a TeX toolchain is present.
+
+## Computations
+
+- `python3 compute/cyclic_posets.py [NMAX]` (default 7; plain Python) — brute-force
+  checks of a_n, b_n = |B_n| (cyclic-compatible posets), b_n = n[x^n] log A(x),
+  Σ_P e_C(P) = (n−1)! b_n and the C_n-action on B_n. Findings and proof:
+  [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md).
