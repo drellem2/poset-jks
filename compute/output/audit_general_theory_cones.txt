@@ -1,0 +1,31 @@
+audit_general_theory_cones.py (mg-7ab20)
+[arrangements: all top-cones unless noted]
+  A2: d=2 n=3 faces=13 chambers=6 top-cones=19 audited=19 hom=19 rho=19 prop3=19 saliola=19 lunes=7 max m=2
+  B2: d=2 n=4 faces=17 chambers=8 top-cones=33 audited=33 hom=33 rho=33 prop3=33 saliola=33 lunes=9 max m=3
+  A3: d=3 n=6 faces=75 chambers=24 top-cones=219 audited=219 hom=219 rho=219 prop3=219 saliola=219 lunes=49 max m=6
+  B3: d=3 n=9 faces=147 chambers=48 top-cones=941 audited=941 hom=941 rho=941 prop3=941 saliola=940 lunes=91 max m=15
+  generic5: d=3 n=5 faces=83 chambers=22 top-cones=163 audited=163 hom=163 rho=163 prop3=163 saliola=162 lunes=51 max m=6
+  rand7_R3: d=3 n=7 faces=171 chambers=44 top-cones=635 audited=635 hom=635 rho=635 prop3=635 saliola=634 lunes=99 max m=15
+  A4: d=4 n=10 faces=541 chambers=120 top-cones=4231 audited=4231 hom=4231 rho=4231 prop3=4231 saliola=0 lunes=381 max m=24
+  rand6_R4: d=4 n=6 faces=345 chambers=52 top-cones=609 audited=609 hom=609 rho=609 prop3=609 saliola=0 lunes=233 max m=10
+  D4: d=4 n=12 faces=865 chambers=192 top-cones=12313 audited=60 hom=60 rho=60 prop3=60 saliola=0 lunes=577 max m=35
+[eqv] g rho_C = det(g) rho_{gC}:
+  B2: 64 (g, C) pairs
+  B3: 2304 (g, C) pairs
+[braid]
+  braid n=2: 3 cones = 3 labeled posets; Lambda=OP^op, m=e_C, Lemma 1.3 checked
+  braid n=3: 19 cones = 19 labeled posets; Lambda=OP^op, m=e_C, Lemma 1.3 checked
+  braid n=4: 219 cones = 219 labeled posets; Lambda=OP^op, m=e_C, Lemma 1.3 checked
+  braid n=5: 4231 cones = 4231 labeled posets; Lambda=OP^op, m=e_C, Lemma 1.3 checked
+  Lemma 1.3 on 120 random posets with n = 6, 7
+[CTL]
+  [CTL] zas_over_all_Lambda: fires
+  [CTL] nonconvex_zas: fires
+  [CTL] lemma13_with_Lin: fires
+  [CTL] prop3_with_FV: fires
+  [CTL] saliola_wrong_recursion: fires
+  [CTL] lune_incoherent_signs: fires
+  [CTL] rho_span_nonconvex: fires
+  [CTL] hom_instrument_circle: fires
+  [CTL] hom_instrument_S0: fires
+RESULT: ALL CHECKS PASS
