@@ -17,3 +17,13 @@ import PosetJKS
 #print axioms PosetJKS.actHP
 #print axioms PosetJKS.actMP
 #print axioms PosetJKS.muFixed
+
+-- Controls and counterexamples in `PosetJKS/Test.lean` (must not depend on `sorryAx`)
+#print axioms PosetJKS.Test.fixedClassSum_g3_prim
+#print axioms PosetJKS.Test.muFixed_chain2
+#print axioms PosetJKS.Test.not_op_chain3_02_1
+#print axioms PosetJKS.relabel_wEζ_of_rot
+#print axioms PosetJKS.bd_comp_bd
+#print axioms PosetJKS.bd_zero_single
+#print axioms PosetJKS.Test.corPsi_bijective_false
+#print axioms PosetJKS.Test.trace_PLie_false
