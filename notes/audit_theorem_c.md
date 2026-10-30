@@ -1,6 +1,6 @@
 # Audit: Theorem C (chamber cycles span; Conjecture G\*) and Props. A, B
 
-Work item: mg-96f1a. This is an independent adversarial audit of §C of
+This is an independent adversarial audit of §C of
 `notes/audit_general_theory_cones.md` ("[AudGT]"): Proposition A,
 Proposition B and Theorem C. Those results appeared beyond the brief of
 the audit that produced them, so no one had yet read them adversarially.
