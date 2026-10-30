@@ -100,7 +100,8 @@ abbreviations used below are:
 \textbf{[Bn]} & \src{notes/cyclic_compatible_posets_bn.md}\\
 \textbf{[AudBn]} & \src{notes/audit_cyclic_compatible_posets_bn.md}\\
 \textbf{[Repro]} & \src{notes/reproduce_character_identity_n_le_5.md}\\
-\textbf{[N7]} & \src{notes/n7_character_sweep_and_homology_crosscheck.md}
+\textbf{[N7]} & \src{notes/n7_character_sweep_and_homology_crosscheck.md}\\
+\textbf{[Cit]} & \src{notes/citation_check.md}
 \end{tabular}
 \end{center}
 Equation names such as (mainconj), (characterconj) and (restrictionlemma)
@@ -154,18 +155,21 @@ external results.
   $\Delta(\widehat{\OP(P)})\simeq\bigvee^{e_C(P)}S^{n-3}$. The hypothesis
   is only that $P$ is finite with $n\ge3$; it need not be connected
   ([Lit, \S2.1--2.2]). Their order congruences are the partitions with
-  acyclic quotient (their Thm~3.3, after Cz\'edli--Lenkehegyi), and their
+  acyclic quotient (their Def.~3.1, after K\"ortesi--Radeleczki--Szil\'agyi;
+  equivalently kernels of order-preserving maps, their Thm~3.3, after
+  Cz\'edli--Lenkehegyi), and their
   $e_C$ is ours ([Lit, \S2.2]).
 \item\label{in:Hall} \st{cited} P.~Hall's theorem: for a finite bounded
   poset $L$, $\mu_L(\hat0,\hat1)=\widetilde\chi(\Delta(\overline L))$, where
   $\overline L$ is the proper part. See Stanley, \emph{EC1}, 2nd ed.,
-  Prop.~3.8.5 (number not re-checked).
+  Prop.~3.8.5, in the form of Prop.~3.8.6 ([Cit, \S1]).
 \item\label{in:Hopf} \st{cited} The Hopf trace formula: for a simplicial
   self-map $f$ of a finite complex,
   $\sum_i(-1)^i\operatorname{tr}(f\mid C_i)=\sum_i(-1)^i\operatorname{tr}(f\mid H_i)$.
   It also holds for the augmented complex and reduced homology. See
   Munkres, \emph{Elements of Algebraic Topology}, Thm~22.1 (number not
-  re-checked).
+  re-checked); an open reference for the augmented form is Wachs,
+  \emph{Poset topology: tools and applications}, Thm~2.3.9 ([Cit, \S1]).
 \end{enumerate}
 Proof~II (Remark~\ref{rem:proofII}) also uses Crapo's complementation
 theorem~\cite{Crapo}. Proof~I does not use it.
@@ -1431,16 +1435,17 @@ Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theo
   itself remains \st{conjectured}.
 \item \textbf{Items the audits list as UNCHECKED.}
   \begin{itemize}[nosep]
-  \item Exact theorem numbers: Crapo's theorem; Hall (EC1 Prop.~3.8.5); the
-    Hopf trace formula (Munkres Thm~22.1); Weisner (EC1 Cor.~3.9.3); Ree
-    (Reutenauer Thm~3.1); Cartier--Milnor--Moore/PBW for species.
-  \item Jen\v{c}a--Sarkoci: the identification of order congruences with
-    acyclic-quotient partitions was taken from [Lit, \S2.1--2.2], not
-    re-read in the paper ([AudChar, S6]). Journal page numbers were not
-    re-checked against the arXiv numbering.
-  \item Wachs 1998 and Aguiar--Mahajan \emph{Topics}: numbering checked
-    against preprint or preliminary versions only; the journal and print
-    numbering is UNCHECKABLE so far ([AudLit, \S5]).
+  \item Checked in [Cit]: Hall (EC1 Prop.~3.8.5, in the form of
+    Prop.~3.8.6); Weisner (EC1 Cor.~3.9.3, dual form); the Wachs 1998
+    preprint numbers (Lemma~3.1, Thms~4.2--4.3, Prop.~2.3); the
+    Jen\v{c}a--Sarkoci arXiv v2 numbering, including the identification of
+    order congruences with acyclic-quotient partitions; and
+    Cartier--Milnor--Moore/PBW for species (Aguiar--Mahajan, Ch.~11).
+  \item NOT ACCESSIBLE ([Cit]): Crapo's theorem (Thm~3 according to
+    Stanley, EC1 Ex.~3.92); the Hopf trace formula (Munkres Thm~22.1); Ree
+    (Reutenauer Thm~3.1); and all journal or print numberings
+    (Jen\v{c}a--Sarkoci in JCTA, Wachs in Discrete Math., EC1 in print,
+    Aguiar--Mahajan \emph{Topics} in print; cf.\ [AudLit, \S5]).
   \item $\Sh_n\kappa_n\ne0$ for $n\ge6$, and hence the $P$-dependent
     $\kappa_n$-version of Prop.~C$'$ ([AudLit, rows 8, 30]).
   \item [AudLit, rows 24, 28, 29]: the conjectured restriction isomorphism

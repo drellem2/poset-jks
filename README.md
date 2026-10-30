@@ -53,6 +53,9 @@ The character identity and the main theorem:
   Proof II (Crapo complementation).
 - [`notes/audit_character_identity_proof.md`](notes/audit_character_identity_proof.md):
   independent audit of both proofs.
+- [`notes/citation_check.md`](notes/citation_check.md): check of the main
+  theorem's cited inputs (Jenča–Sarkoci, P. Hall, Hopf trace formula) and of
+  Crapo, Weisner, Ree, Wachs and Aguiar–Mahajan against the sources.
 
 JKS maps, the correction, and the explicit basis:
 - [`notes/literature_novelty_jks_maps.md`](notes/literature_novelty_jks_maps.md):
