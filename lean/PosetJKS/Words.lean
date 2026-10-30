@@ -1226,6 +1226,62 @@ lemma rotate_eq_zero_of_inBL {A : Finset α} {x₀ : α} {l : List α} {j : ℕ}
     (by rw [toFinset_right hw]; exact uoC_sdiff hU)
   exact (List.nodup_append.1 hw.1).2.2 x₀ h1 x₀ h2 rfl
 
+/-! ### Closure properties used by the transfer to words `Fin n ≃ α` -/
+
+/-- A word whose subwords on `S` and off `S` are linear extensions, for a union of components
+`S`, is a linear extension. -/
+lemma linL_of_filter {A S : Finset α} {z : List α} (hz : IsWordOn A z) (hS : UoC r A S)
+    (h1 : (z.filter (fun b => decide (b ∈ S))).Pairwise (fun p q => ¬ r q p))
+    (h2 : (z.filter (fun b => !decide (b ∈ S))).Pairwise (fun p q => ¬ r q p)) :
+    LinL r A z := by
+  refine ⟨hz, List.pairwise_iff_forall_sublist.2 fun {p q} hpq => ?_⟩
+  have hp : p ∈ A := (mem_of_isWordOn hz).1 (hpq.subset (by simp))
+  have hq : q ∈ A := (mem_of_isWordOn hz).1 (hpq.subset (by simp))
+  by_cases hpS : p ∈ S <;> by_cases hqS : q ∈ S
+  · have := hpq.filter (fun b => decide (b ∈ S))
+    simp only [List.filter_cons, hpS, hqS, decide_true, if_true, List.filter_nil] at this
+    exact List.pairwise_iff_forall_sublist.1 h1 this
+  · intro hqp; exact hqS ((hS q hq p hp hqp).2 hpS)
+  · intro hqp; exact hpS ((hS q hq p hp hqp).1 hqS)
+  · have := hpq.filter (fun b => !decide (b ∈ S))
+    simp only [List.filter_cons, hpS, hqS, decide_false, Bool.not_false, if_true,
+      List.filter_nil] at this
+    exact List.pairwise_iff_forall_sublist.1 h2 this
+
+lemma eqL_zero {A : Finset α} {lam : α → ℂ} : EqL r A lam 0 := fun _ _ _ _ => by simp
+
+lemma eqL_add {A : Finset α} {lam : α → ℂ} {X Y : List α →₀ ℂ} (hX : EqL r A lam X)
+    (hY : EqL r A lam Y) : EqL r A lam (X + Y) := fun s t h hs => by
+  simp only [Finsupp.add_apply, add_mul, hX s t h hs, hY s t h hs]
+
+lemma eqL_smul {A : Finset α} {lam : α → ℂ} {X : List α →₀ ℂ} (c : ℂ) (hX : EqL r A lam X) :
+    EqL r A lam (c • X) := fun s t h hs => by
+  simp only [Finsupp.smul_apply, smul_eq_mul, mul_assoc, hX s t h hs]
+
+lemma eqL_sum {ι : Type*} {A : Finset α} {lam : α → ℂ} (I : Finset ι) (X : ι → List α →₀ ℂ)
+    (h : ∀ i ∈ I, EqL r A lam (X i)) : EqL r A lam (∑ i ∈ I, X i) := by
+  classical
+  induction I using Finset.induction_on with
+  | empty => simpa using eqL_zero
+  | insert i I hi ih =>
+    rw [Finset.sum_insert hi]
+    exact eqL_add (h i (Finset.mem_insert_self _ _))
+      (ih fun j hj => h j (Finset.mem_insert_of_mem hj))
+
+/-- The class sum of a linear extension is supported on linear extensions. -/
+lemma linL_of_classSum {A : Finset α} {lam : α → ℂ} {w : List α} (hw : LinL r A w)
+    (K : Finset ℕ) (hK : ∀ k, k ∈ K ↔ k < w.length ∧ UoC r A (w.take k).toFinset) {z : List α}
+    (hz : (∑ k ∈ K, (lamL lam (w.take k))⁻¹ • Finsupp.single (w.rotate k) (1 : ℂ)) z ≠ 0) :
+    LinL r A z := by
+  rw [Finsupp.finset_sum_apply] at hz
+  obtain ⟨k, hk, hkz⟩ := Finset.exists_ne_zero_of_sum_ne_zero hz
+  simp only [Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul] at hkz
+  split_ifs at hkz with h
+  · obtain ⟨hkl, hU⟩ := (hK k).1 hk
+    rw [← h, List.rotate_eq_drop_append_take hkl.le]
+    exact linL_rotate ((List.take_append_drop k w).symm ▸ hw) hU
+  · simp at hkz
+
 end L
 
 end PosetJKS
