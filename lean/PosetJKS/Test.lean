@@ -287,66 +287,8 @@ section Eigen
 
 variable {α : Type*} [Fintype α] [DecidableEq α]
 
-open Fin.NatCast in
-theorem finRotate_pow_apply (m j : ℕ) (i : Fin (m + 1)) :
-    (finRotate (m + 1) ^ j) i = i + (j : Fin (m + 1)) := by
-  induction j with
-  | zero => simp
-  | succ j ih =>
-    rw [pow_succ', Equiv.Perm.mul_apply, ih, finRotate_succ_apply, Nat.cast_succ, add_assoc]
-
-theorem rot_rot (w : Word α) (r j : ℕ) : rot (rot w r) j = rot w (r + j) := by
-  ext i
-  simp only [rot, Equiv.trans_apply, pow_add, Equiv.Perm.mul_apply]
-
-theorem rot_zero (w : Word α) : rot w 0 = w := by ext; simp [rot]
-
-open Fin.NatCast in
-theorem finRotate_pow_self (k : ℕ) : finRotate k ^ k = 1 := by
-  cases k with
-  | zero => exact Subsingleton.elim _ _
-  | succ m =>
-    ext i
-    rw [finRotate_pow_apply, Fin.natCast_self, add_zero, Equiv.Perm.one_apply]
-
-theorem rot_card (w : Word α) : rot w (Fintype.card α) = w := by
-  ext i
-  simp [rot, finRotate_pow_self]
-
-/-- `(w γ) e_ζ = ζ (w e_ζ)` when `ζ^n = 1`: the note's `γ e_ζ = ζ e_ζ`. -/
-theorem wEζ_rot_one {ζ : ℂ} (hζ : ζ ^ Fintype.card α = 1) (w : Word α) :
-    wEζ ζ (rot w 1) = ζ • wEζ ζ w := by
-  rcases Nat.eq_zero_or_pos (Fintype.card α) with h0 | hpos
-  · simp [wEζ, h0]
-  have hz : ζ ≠ 0 := by
-    rintro rfl
-    rw [zero_pow hpos.ne'] at hζ
-    exact zero_ne_one hζ
-  set F : ℕ → Alg α := fun j => (((Fintype.card α : ℂ))⁻¹ * (ζ ^ j)⁻¹) • wd (rot w j) with hF
-  have hterm : ∀ j, (((Fintype.card α : ℂ))⁻¹ * (ζ ^ j)⁻¹) • wd (rot (rot w 1) j) =
-      ζ • F (j + 1) := by
-    intro j
-    rw [hF, rot_rot, add_comm 1 j, smul_smul]
-    congr 1
-    rw [pow_succ]
-    field_simp
-  have hshift : ∑ j ∈ range (Fintype.card α), F (j + 1) =
-      ∑ j ∈ range (Fintype.card α), F j := by
-    have h1 := sum_range_succ' F (Fintype.card α)
-    have h2 := sum_range_succ F (Fintype.card α)
-    have hFn : F (Fintype.card α) = F 0 := by
-      simp only [hF, hζ, rot_card, rot_zero, pow_zero]
-    rw [h2, hFn] at h1
-    exact (add_right_cancel h1).symm
-  simp only [wEζ]
-  rw [Finset.sum_congr rfl fun j _ => hterm j, ← Finset.smul_sum, hshift]
-
-theorem wEζ_rot {ζ : ℂ} (hζ : ζ ^ Fintype.card α = 1) (w : Word α) (r : ℕ) :
-    wEζ ζ (rot w r) = ζ ^ r • wEζ ζ w := by
-  induction r with
-  | zero => simp [rot_zero]
-  | succ r ih =>
-    rw [← rot_rot, wEζ_rot_one hζ, ih, smul_smul, pow_succ, mul_comm]
+-- `finRotate_pow_apply`, `rot_rot`, `rot_zero`, `rot_card` and `wEζ_rot` are in
+-- `PosetJKS/Bridge.lean`.
 
 /-- The trace convention behind `trace_PLie` and `fixedClassSum`: if `g w = w γ^r` (the relation
 that defines `classRot`), then `g · (w e_ζ) = ζ^r (w e_ζ)`, so the class contributes `ζ^r`, not
