@@ -11,6 +11,11 @@ Sources are abbreviated as in [Thm]: [Cone] = `notes/cone_lune_lie_theory.md`,
 [AudCone] its audit, [Glob] = `notes/global_module_operations_plethlog.md`,
 [S] = `notes/conjecture_s_splitting_cycles_span.md`, [Nat] =
 `notes/natural_isomorphism.md`, [Nov2] = `notes/novelty_search_2.md`.
+The audits and the prior-art check of this note are [AudA] =
+`notes/audit_general_theory_cones.md` (§§0–1), [AudB] =
+`notes/audit_general_theory_hopf.md` (§2), [AudC] =
+`notes/audit_theorem_c.md` (an independent audit of [AudA, §C]) and
+[NovGT] = `notes/novelty_general_theory.md`.
 
 Every claim carries one of these tags:
 - **PROVEN**: a full proof is given here. Cited inputs are named.
@@ -37,7 +42,9 @@ nothing that (a) does not already contain. The new results are these.
    lattices.
 2. **Theorem 2 (Zaslavsky's theorem for cones, with lineality; PROVEN,
    elementary).** #V = Σ_X m(V_X), where X runs over the flats contained in
-   the lineality space lin V and V_X is the localized cone. This has three
+   the lineality space lin V and V_X is the localized cone. It is an
+   instance of Zaslavsky's fundamental theorem of dissection theory
+   (Zaslavsky 1977, Thm 1.2; see §1.2). This has three
    specializations:
    - V = all chambers gives Zaslavsky's theorem;
    - pointed V gives #V = m(V);
@@ -48,47 +55,58 @@ nothing that (a) does not already contain. The new results are these.
    q(V) ≤ m(V), where q(V) = dim Γ_V/(Γ_V ∩ Lune) is the cone's Lie
    dimension. This corrects [Cone, §6]: the LRB that sees H_P is Σ_L, not
    the face monoid F(V) of the whole cone.
-4. **Conjecture G\* (the cone JKS conjecture).** q(V) = m(V) for every
-   top-cone, and equivariantly H̃_{d−2}(Λ(V)) ≅ det ⊗ (Γ_V + Lune)/Lune as
-   Stab_W(V)-modules.
-   - It is PROVEN for pointed cones, for V = all chambers, and for the braid
-     arrangement.
+4. **Theorem G\* (the cone JKS theorem; PROVEN, given Brown).** q(V) = m(V)
+   for every top-cone, and equivariantly H̃_{d−2}(Λ(V)) ≅ det ⊗
+   (Γ_V + Lune)/Lune as Stab_W(V)-modules.
+   - The first version of this note stated it as Conjecture G\*. It is
+     PROVEN in `notes/audit_general_theory_cones.md` §C (Theorem C there),
+     given Brown and the standard cell facts, and independently audited in
+     `notes/audit_theorem_c.md`, which finds that it holds with proof fixes
+     (recorded in §1.5).
+   - The pointed case, the case V = all chambers and the braid case were
+     proven here before that.
    - The numerical form is COMPUTED on every top-cone of A_2, A_3, A_4, B_2,
      B_3 and of three non-reflection arrangements (6,676 cones), and on 150
      sampled cones of D_4.
    - The equivariant form is COMPUTED on all cones of A_2, A_3, A_4, B_2 and
-     B_3, and on the D_4 sample. This computation is new. The det twist is
-     detected: without it the identity fails on 9/33 cones of B_2, 115/941 of
-     B_3 and 64/150 of D_4.
+     B_3, and on the D_4 sample. This computation on proper cones is new.
+     The det twist is detected: without it the identity fails on 9/33 cones
+     of B_2, 115/941 of B_3 and 64/150 of D_4.
+   - With the proof in place, these computations are checks of the theorem.
 
-   For the braid arrangement this conjecture is exactly Theorem S(d) of
+   For the braid arrangement this theorem is exactly Theorem S(d) of
    [Thm], H_P ⊗ sgn ≅ C[Lin P]/R_P.
 5. **Hopf monoids (b): the P-graded Lie structure exists (PROVEN).** Let Q′
    be the Hopf monoid of pairs (P, ℓ), with ℓ a linear extension of P. Its
    product is disjoint union with concatenation. Its coproduct is
    restriction, but only to unions of components. Q′ is cocommutative and
    graded by posets.
-   - Its primitives are Prim(Q′)_P = pr_P(Lie) ≅ Lie(P) ≅ sgn ⊗ H_P. The
-     bracket Lie(P) ⊗ Lie(Q) → Lie(P + Q) is the truncation of the free Lie
-     bracket (Theorem 7).
+   - Its primitives are 𝔭_P = Prim(Q′)_P = R_P^⊥ = pr_P(Lie) ≅ Lie(P) ≅
+     sgn ⊗ H_P. The bracket 𝔭_P ⊗ 𝔭_Q → 𝔭_{P+Q} is the truncation of the
+     free Lie bracket (Theorem 7). On Klyachko's model Lie(P) = W_P e_ζ it
+     exists only by transport through 𝔭_P ≅ Lie(P), and it is not induced
+     by concatenation there ([Glob, §3.4]).
    - Q′ is the associated graded of [Glob]'s Hopf monoid 𝐐, for the
      filtration by number of relations (Theorem 8). This settles [Glob]'s
      filtration conjecture.
    - The local PBW conjecture of [Glob] also holds (Theorem 6):
      C[Lin P] ≅ ⊕_{σ ∈ Π(components)} ⊗_{B∈σ} Lie(P|_B) as Aut(P)-modules.
-   - The lunes inside C_P are exactly the decomposables of the dual
-     commutative Hopf monoid. So (b) and (a) are the same structure on the
-     braid arrangement.
+   - The lunes inside C_P span exactly the decomposables of the dual
+     commutative Hopf monoid in degree P: (W_+ · W_+)_P = R_P =
+     span{top-lunes ⊆ C_P}. This single subspace identity is what links
+     (b) to (a) on the braid arrangement; the coproduct, the bracket and the
+     PBW decomposition have no stated counterpart in (a).
 
-**Recommendation (§5).** Pursue (a). The first theorem to attack is
-Conjecture G\*, in the form "the chamber cycles of V span
-H̃_{d−2}(Λ(V))". By Theorem 1 this is a statement about one map in a fiber
-decomposition that is already proven. It would be refuted by a single
-top-cone with q(V) < m(V).
+**Recommendation (§5).** Pursue (a). Its central statement, Theorem G\*
+("the chamber cycles of V span H̃_{d−2}(Λ(V))", and its consequences
+q(V) = m(V) and the det-twisted equivariant identity), is now proven, given
+Brown ([AudA, §C], audited in [AudC]). The first open problem to attack is
+the equivariant character: a fixed-point formula for μ(Λ(V)^g) for
+g ∈ Stab_W(V), the general analogue of [Thm, eq. closed].
 
 | Framework | Status after this note | Rank |
 |---|---|---|
-| (a) cones of real arrangements | General theorems 1–2 and Prop. 3 proven. One conjecture (G\*) carries all of the poset JKS content beyond J–S. | **1** |
+| (a) cones of real arrangements | General theorems 1–2, Prop. 3 and Theorem G\* proven (G\* given Brown). G\* carries all of the poset JKS content beyond J–S. | **1** |
 | (b) species / Hopf monoids | Settled for posets (Thms 6–8). What remains is the extension to general arrangements (Aguiar–Mahajan bimonoids) and a cooperad. | 2 |
 | (c) congruence lattices / closure systems | No general lattice statement survives. The lattices that matter are the Λ(V) of (a). An oriented-matroid version is the only lattice-level generalization proposed. | 3 |
 
@@ -161,10 +179,16 @@ re-checked against a source:
   homeomorphic to the complex (Björner, *Posets, regular CW complexes and
   Bruhat order*, Europ. J. Combin. 5 (1984)).
 
+[AudC, §A.1] reads the second fact in an open source, Matoušek, *Using the
+Borsuk–Ulam theorem* (Springer 2003), §4.5, Notes, p. 85 (stated there
+without proof), and proves the first directly. It also gives a geometric
+realization of Δ(faces ≠ O) that makes both facts unnecessary.
+
 Each |V| ∩ Y ∩ S, for a flat Y, is a subcomplex.
 
-**Lemma 0.2 (PROVEN).** Let Y ≠ 0 be a subspace and C ⊆ Y a closed convex
-polyhedral cone with dim C = dim Y.
+**Lemma 0.2 (PROVEN; KNOWN: Aguiar–Mahajan, *Topics in Hyperplane
+Arrangements*, Prop. 2.26–2.27, read in [NovGT, §1]).** Let Y ≠ 0 be a
+subspace and C ⊆ Y a closed convex polyhedral cone with dim C = dim Y.
 - If C ≠ Y, then C ∩ S is contractible.
 - If C = Y, then C ∩ S is the sphere S^{dim Y − 1}.
 
@@ -178,6 +202,11 @@ polyhedral cone with dim C = dim Y.
   x ∈ −int C if t > 0; and if t = 0 the point is x ≠ 0.
 - So C ∖ 0 is contractible. C ∩ S is a deformation retract of C ∖ 0, by
   radial projection. ∎
+
+The proof needs v ≠ 0, which holds because v ∈ int C and C ≠ Y ≠ 0
+([AudA, §B.1]). AM Prop. 2.26 states the lemma for any cone of the
+arrangement, and AM eq. (2.12) is the Euler-characteristic identity used
+in the proof of Theorem 2.
 
 ---
 
@@ -193,9 +222,11 @@ rank d ≥ 1. Then
 
 (For d = 1 read ⋁^1 S^{−1} = ∅.)
 
-**Cited input (CITED; statement as recalled, theorem number not
-re-checked).** This is the poset fiber theorem: Björner–Wachs–Welker,
-*Poset fiber theorems*, Trans. AMS 357 (2005) 1877–1899, Thm 1.1. Let
+**Cited input (CITED, re-checked: [AudA, §A.1] read it in the authors'
+preprint, where it is Thm 1.1 and matches the statement below word for
+word; the published theorem number was not checked).** This is the poset
+fiber theorem: Björner–Wachs–Welker, *Poset fiber theorems*, Trans. AMS 357
+(2005) 1877–1899, Thm 1.1. Let
 f : P → Q be a poset map such that, for every q ∈ Q, the fiber
 Δ(f^{-1}(Q_{≤q})) is ℓ(f^{-1}(Q_{<q}))-connected, where ℓ is the length of
 the longest chain and ℓ(∅) = −1. Then
@@ -203,6 +234,11 @@ the longest chain and ℓ(∅) = −1. Then
   Δ(P) ≃ Δ(Q) ∨ ⋁_{q ∈ Q} Δ(f^{-1}(Q_{≤q})) ∗ Δ(Q_{>q}),
 
 where each wedge is taken at q.
+
+The fiber theorem is in fact removable from Theorem 1: [AudA, §C, Prop. A]
+gives a map g : Δ(Λ̄(V)) → Δ(Q′) with Δ(f) ∘ g ≃ id, from Lemma 0.2 and
+the cell facts alone (audited in [AudC, §A]). Corollary 1.1 still uses the
+decomposition (1.1), but Theorem 2 reproves it.
 
 *Proof.*
 
@@ -252,8 +288,9 @@ face poset of its (d − 2)-skeleton X, so Δ(Q′) ≅ X.
 
   This is Z^N if Z is contractible. If Z = S^{d−1}, it is Z^{N−1}, the
   quotient by the primitive vector given by the fundamental class. Here we
-  use H̃_{d−2}(Z) = 0, which holds for d ≥ 3. For d = 2, Z is S^1 or an
-  arc, X is N or N + 1 points, and the same counts hold.
+  use H̃_{d−2}(Z) = 0, which holds for every d ≥ 2 (for d = 2, Z is S^1
+  or an arc, hence connected). For d = 2, X is N or N + 1 points, and the
+  same counts hold.
 - Since (Z, X) is (d − 2)-connected, π_i(X) ≅ π_i(Z) = 0 for i ≤ d − 3.
 
 *Step 5: conclusion.*
@@ -353,13 +390,24 @@ A_3.
 - Dorpalen-Barry–Kim–Reiner refine this count for poset cones by Whitney
   numbers. Their poset is not OP(P): a grep of the text finds no
   "order-preserving", "Jen[čc]a" or homology of the closed-cone lattice.
-- Theorem 2 with Λ(V) and the lineality sum was **not found**. It is
-  elementary, and may be folklore.
-- Theorem 1 for non-pointed cones was **not found** either. The pointed case
-  is a one-line Quillen fiber lemma argument.
-- Margolis–Saliola–Steinberg (*CW left regular bands*, arXiv:1508.05446)
-  is the most likely place for a related statement, since the face monoid of
-  a cone is a CW LRB. It was **not read** (search result only).
+- **Theorem 2 is an instance of Zaslavsky's fundamental theorem of
+  dissection theory** (Zaslavsky, *A combinatorial analysis of topological
+  dissections*, Adv. Math. 25 (1977), Thm 1.2; CITED as quoted in
+  Deshpande, arXiv:1111.1251, Thm 3.9, since the original was not
+  accessible). Dissect T = |V| ∩ S by the hyperplanes of A. The
+  intersections are indexed by Λ(V), and the Euler characteristics of the
+  pieces are given by Lemma 0.2. A short computation then gives Theorem 2
+  ([NovGT, §3]). The proof above is the Möbius-inversion form of
+  Zaslavsky's theorem (Deshpande, eq. (3.1) and Thm 3.6; the same argument
+  is Margolis–Saliola–Steinberg, Lemma 9.1). The formula written in terms
+  of Λ(V) and lin V was not found stated.
+- Theorem 1 for non-pointed cones was **not found** ([NovGT, §2]). The
+  pointed case is a one-line Quillen fiber lemma argument.
+- Margolis–Saliola–Steinberg (arXiv:1508.05446; read in [NovGT, §2.2]) do
+  **not** cover the closed cone. Their CW left regular band is the face
+  semigroup of the *open* cone, whose support semilattice is L^int(K); their
+  results give the L^int count, not Theorem 2. The closed-cone face monoid
+  F(V) is neither a COM nor a CW LRB in their sense unless V is a flat.
 
 ### 1.3 The braid case: Jenča–Sarkoci reproved
 
@@ -436,6 +484,8 @@ theorem).** For every finite poset P on n ≥ 2 points,
   connected P, where m(C_P) = |Lin P| = e_C(P).
 - Induction on the number of components gives m(C_P) = e_C(P). ∎
 
+The case n = 2 is conventional; Jenča–Sarkoci assume n ≥ 3 ([AudA, §B.6]).
+
 **Consequence for [Thm].** Input (A) of [Thm] (Jenča–Sarkoci) can be
 replaced by the poset fiber theorem together with standard facts on regular
 CW complexes. This does not remove citations; it trades a specialized one for
@@ -454,11 +504,17 @@ on L.
   Put Lie_L(Γ_V) = {z ∈ Γ_V : Hz = 0 for all H ∈ Σ_L ∖ O}. Then, under the
   standard inner product,
 
-    span{top-lunes contained in V} = Lie_L(Γ_V)^⊥   (inside Γ_V).
+    span{non-singleton top-lunes contained in V} = Lie_L(Γ_V)^⊥   (inside Γ_V).
+
+  The lunes are the non-singleton ones, L(H, D) with H ≠ O. The singleton
+  L(O, D) = {D} is a top-lune in [Cone]'s convention, and with singletons
+  the left side would be all of Γ_V ([AudA, §B.7]). Throughout, "lunes in
+  V" means non-singleton lunes.
 
 - (b) (PROVEN, given Brown's description of the simple modules of an LRB
-  algebra; CITED, as in [Cone, §6], not re-checked) The multiplicity of the
-  bottom simple module S_0 in Γ_V is
+  algebra; CITED, re-checked: [AudA, §A.2] read Brown, arXiv:math/0006145,
+  §7.2, Thm 3 and its Corollary, and checked the hypotheses for Σ_L) The
+  multiplicity of the bottom simple module S_0 in Γ_V is
 
     [Γ_V : S_0] = Σ_{X ∈ Λ_L} μ(0, X) c_X = m(V).
 
@@ -467,9 +523,11 @@ on L.
 
     q(V) ≤ dim Lie_L(Γ_V) ≤ m(V).
 
-- (c) (PROVEN, given Saliola's idempotents; the property used was not
-  re-checked against the source) dim Lie_L(Γ_V) = m(V). So q(V) = m(V) iff
-  Γ_V ∩ Lune is spanned by the lunes inside V, which is (G1) of [Cone].
+- (c) (PROVEN, given Saliola's idempotents; CITED, re-checked: [AudA, §A.3]
+  read Saliola, arXiv:math/0608698, §4, (4.1), Lemma 4.1 and Thm 4.2. It
+  also follows from Theorem G\* without Saliola) dim Lie_L(Γ_V) = m(V).
+  So q(V) = m(V) iff Γ_V ∩ Lune is spanned by the lunes inside V, which is
+  (G1) of [Cone].
 
 *Proof.*
 
@@ -501,6 +559,14 @@ is c_{span x}: the chambers C ≥ x in V correspond to the chambers of the
 localization in V_{span x}. So c_Y = Σ_{X ⊇ Y} [Γ_V : S_X], and Möbius
 inversion gives [Γ_V : S_0] = Σ_X μ(0, X) c_X.
 
+Over a field of characteristic p, the trace identity determines the
+integers [Γ_V : S_X] only modulo p. There, use ranks instead, as Brown does
+in the proof of his Thm 4 (§7.3): x acts as an idempotent of rank
+c_{span x}, it is triangular in a composition series with diagonal entries
+χ_{X_i}(x) ∈ {0, 1}, and the rank of an idempotent is the multiplicity of
+the eigenvalue 1. This gives c_Y = Σ_{X ⊇ Y} [Γ_V : S_X] as integers over
+every field ([AudC, §B.3]). Over C the trace argument is already correct.
+
 (b) *Comparison with m(V).* c_X = #V_X. Theorem 2 applied to V_X reads
 #V_X = Σ_{X ⊆ X′ ⊆ L} m(V_{X′}). Here we use that lin V_X = L/X and that
 the flats of A_X/X inside L/X are the X′/X; the intervals of Λ_L are
@@ -514,7 +580,8 @@ q(V) = #V − dim(Γ_V ∩ Lune) ≤ #V − dim span{lunes in V} = dim Lie_L(Γ_
 by (a).
 
 (c) *Cited input.* Saliola (*The quiver of the semigroup algebra of a left
-regular band*, IJAC 17 (2007), §4; CITED, statement not re-checked) gives an
+regular band*, IJAC 17 (2007), §4; CITED, re-checked in [AudA, §A.3]:
+(4.1), Lemma 4.1 at X = 0, Thm 4.2) gives an
 idempotent e_0 ∈ kΣ_L that satisfies x e_0 = 0 for x ≠ O and χ_0(e_0) = 1.
 
 (c) *Proof.*
@@ -531,52 +598,93 @@ Together with [Cone]'s `[K]` check, (G1), this gives equality throughout
 
 **Correction to [Cone, §6].** [Cone] concluded that "LRB theory of F(P)
 does not see H_P". The intrinsic Lie part, killed by all of F(V) ∖ O, is
-indeed 0 for proper cones. The right LRB is the smaller monoid Σ_L of the
+indeed 0 for proper cones. This vanishing is KNOWN: Brown (*Semigroups,
+rings, and Markov chains*, J. Theoret. Probab. 13 (2000), §4.2, Thm 2)
+studies exactly the LRB F(V) of faces of a closed convex set of chambers,
+whose support lattice is Λ(V), and his multiplicities vanish off the flats
+meeting the open cone, in particular at the bottom flat for proper V
+([NovGT, §4]). The right LRB is the smaller monoid Σ_L of the
 lineality space. Its bottom multiplicity is exactly m(V) = dim H̃(Λ̄(V)).
 This uses the opposite involution through Lemma L, as [Cone] said it must:
 H ⊆ L iff −H ⊆ L.
 
-### 1.5 The general conjecture
+### 1.5 The general theorem
 
-**Conjecture G\* (cone JKS; CONJECTURED).** For every top-cone V of every
-finite real central essential arrangement with symmetry group W:
+**Theorem G\* (cone JKS; PROVEN, given Brown and the cell facts of §0).**
+For every top-cone V of every finite real central essential arrangement with
+symmetry group W:
 - (numerical) q(V) = m(V);
 - (equivariant) H̃_{d−2}(Λ̄(V); C) ≅ det ⊗ (Γ_V + Lune)/Lune as
   Stab_W(V)-modules, where det is the determinant of the action on R^d.
 
+*Status.* The first version of this note stated this as Conjecture G\*. It
+is PROVEN in `notes/audit_general_theory_cones.md` §C (Theorem C there,
+from Props. A and B there), given Brown (read, [AudA, §A.2]), Hall and the
+cell facts. It was independently audited in `notes/audit_theorem_c.md`,
+which finds that it HOLDS WITH FIXES; no conclusion changes. The fixes are:
+- Prop. 3(a) must say non-singleton lunes (made above);
+- over a field of characteristic p, Prop. 3(b) must count multiplicities by
+  ranks of idempotents, not by traces (made above, [AudC, §B.3]); over C
+  nothing changes;
+- the cell facts and the two homotopy lemmas used (the contractible carrier
+  lemma and Quillen's order-homotopy lemma) are standard; [AudC, §§A–B]
+  gives short proofs, and cites the order-complex fact to Matoušek §4.5
+  (see §0).
+
+*Proof outline* ([AudA, §C]). Prop. A gives a section of Δ(f) up to
+homotopy, so f_* : H_{d−2}(X) → H̃_{d−2}(Λ̄(V)) is onto and the chamber
+cycles ρ_C span (form (ii) below). Prop. B shows that C ↦ ρ_C induces
+Γ/Lune ≅ H̃_{d−2}(L̄(A)), using Prop. 3(a)–(b) at V = all chambers. Since
+Δ(Λ̄(V)) ⊆ Δ(L̄(A)) and both have dimension ≤ d − 2, the span of the ρ_C,
+C ∈ V, has dimension m(V) in the first and q(V) in the second, so
+q(V) = m(V). Finally g·ρ_C = det(g) ρ_{gC} for linear g, which gives the
+equivariant form. [AudC, §C] shows that in the braid case the sign
+convention matches Prop. Φ of [Thm] up to a global sign c_n = ±1, so this
+reproduces the sgn twist of [Thm] exactly.
+
 **Equivalent forms of the numerical statement.** The first is PROVEN given
 Prop. 3(c). The second is PROVEN given that an ambient isomorphism
-Φ_A : H̃_{d−2}(L̄(A)) → Γ/Lune with Φ_A(ρ_C) = ±C exists. For the braid
-arrangement this is Prop. Φ of [Thm] (CITED). For general A it is
-Aguiar–Mahajan, Topics, Thm 14.32 (CITED from [Cone], statement not
-re-checked).
+Φ_A : H̃_{d−2}(L̄(A)) → Γ/Lune with Φ_A(ρ_C) = ±C exists. That is Prop. B
+of [AudA, §C] (PROVEN given Brown; audited in [AudC, §B.2]). For the braid
+arrangement it is also Prop. Φ of [Thm] (CITED there for n ≥ 7). The
+earlier citation for general A, Aguiar–Mahajan, Topics, Thm 14.32, is not
+needed. It is stated cohomologically, H^{r−2}(Π[A]) ⊗ E^o[A] ≅ Lie[A], and
+the form Φ_A(ρ_C) = ±C is not stated in the passage read; it would have to
+be derived by dualizing the unbracketing formula (14.20c) ([NovGT, §5]).
 - (i) (G1) Γ_V ∩ Lune = span{lunes in V}.
 - (ii) (G3) The chamber cycles ρ_C, C ∈ V, span H̃_{d−2}(Λ̄(V)).
   - Φ_A maps the span of these cycles isomorphically onto
     (Γ_V + Lune)/Lune, which has dimension q(V). The whole group has
     dimension m(V) by Theorem 1. So (ii) holds iff q(V) = m(V).
   - Equivalently, the map f_* : H_{d−2}(X) → H_{d−2}(Λ̄(V)) in the proof of
-    Theorem 1 is surjective. This holds because H_{d−2}(X) is spanned by
-    the boundaries of the chambers, and f_* sends ∂C to ρ_C.
+    Theorem 1 is surjective, because H_{d−2}(X) is spanned by the
+    boundaries of the chambers and f_* sends ∂C to ρ_C. Surjectivity does
+    not follow from the fiber theorem as stated, which says nothing about
+    compatibility with Δ(f). It is true by [AudA, Prop. A].
 - (iii) (extension) Every vector of Lie_L(Γ_V) is the restriction to V of a
   global Lie element. This is (i) dualized, since
   (Γ_V ∩ Lune)^⊥ = pr_V(Lie[A]).
 
-**Known cases (PROVEN).**
+**Special cases with direct proofs (PROVEN).** These were proven here
+before the general proof, and do not need it.
 - *Pointed V:* Γ_V ∩ Lune = 0 ([Cone, Thm 5.2], audited), so q = #V = m(V)
   by Theorem 2.
-- *V = all chambers:* q = |μ(L(A))| (Aguiar–Mahajan, CITED), and this
-  equals m(V).
+- *V = all chambers:* here L = R^d and every non-singleton lune lies in V,
+  so (G1) is a tautology. Prop. 3(c) then gives q = dim Lie_{R^d}(Γ) =
+  m(V) = |μ(L(A))| ([AudA, §B.8]). No citation of Aguiar–Mahajan is needed.
 - *Braid arrangement:* q(C_P) = e_C(P) by [Thm, Thm S(b)] (pure word
   combinatorics, audited), and m(C_P) = e_C(P) by Cor. 1.4.
 - The equivariant form for braid is [Thm, Thm S(d)], H_P ⊗ sgn ≅ M_P,
-  since det = sgn there. That is PROVEN given Prop. Φ, as in [Thm].
+  since det = sgn there. That is PROVEN given Prop. Φ, as in [Thm]. By
+  Theorem G\* it is also PROVEN given Brown, for every n.
 
 **COMPUTED.**
 - `[q=m]`: all top-cones of A_2 (19), A_3 (219), A_4 (4231), B_2 (33),
   B_3 (941), generic5 (163), random7 in R^3 (491) and random6 in R^4 (579),
   plus 150 sampled cones of D_4.
-- `[eq]` (new): the equivariant form for every g in the stabilizer of every
+- `[eq]` (new on proper cones; for V = all chambers the det twist is
+  Aguiar–Mahajan's orientation space E^o[A], Topics Thm 14.32, [NovGT, §5]):
+  the equivariant form for every g in the stabilizer of every
   cone of A_2, A_3, A_4, B_2 and B_3, and of the D_4 sample. Here W is the
   full hyperoctahedral group W(B_4), which preserves D_4.
   - The left side is computed as (−1)^d μ(Λ(V)^g). This is the
@@ -592,8 +700,7 @@ re-checked).
 
 **How poset JKS specializes.** For V = C_P:
 - Theorem 1 gives Jenča–Sarkoci;
-- Conjecture G\*, already a theorem in this case, gives H_P ⊗ sgn ≅
-  C[Lin P]/R_P = M_P;
+- Theorem G\* gives H_P ⊗ sgn ≅ C[Lin P]/R_P = M_P;
 - the truncation isomorphism ψ_P of [Thm, Cor. psi] identifies M_P with
   Klyachko's model Lie(P) = W_P e_ζ.
 
@@ -618,9 +725,10 @@ case:
   Euler valuation) that keeps track of the flats in lin V instead of killing
   them;
 - the identification of m(V) with an LRB multiplicity of Σ_L (Prop. 3);
-- the equivariant computation.
+- the equivariant computation;
+- Theorem G\* itself ([AudA, §C]).
 
-None of these follows from the valuation. Conjecture G\* is a statement about
+None of these follows from the valuation. Theorem G\* is a statement about
 non-pointed cones by construction, since it holds trivially for pointed
 ones.
 
@@ -671,7 +779,11 @@ it maps Q′_P to Q′_{P|_S} ⊗ Q′_{P|_T}, and in that case P = P|_S + P|_T.
   - So Δ_{S′,T′} μ_{S,T} = (μ_{A,C} ⊗ μ_{B,D})(Δ_{A,B} ⊗ Δ_{C,D}), including
     when both sides are zero.
 - The grading statements are immediate. P is recovered from (P|_S, P|_T)
-  when S is a union of components. ∎
+  when S is a union of components. They use that uu′ ∈ Lin(P + P′) and
+  ℓ|_S ∈ Lin(P|_S).
+- This shows that Q′ is a connected cocommutative bimonoid. It is Hopf
+  because it is connected (Aguiar–Mahajan, *Monoidal Functors, Species and
+  Hopf Algebras*, Prop. 8.10, Takeuchi's formula (8.24); [AudB, §1]). ∎
 
 **Theorem 7 (P-graded Lie structure; PROVEN).** Let 𝔭 = Prim(Q′).
 - (a) 𝔭 = ⊕_P 𝔭_P is graded by posets, with 𝔭_P = 𝔭 ∩ Q′_P. The commutator
@@ -680,11 +792,17 @@ it maps Q′_P to Q′_{P|_S} ⊗ Q′_{P|_T}, and in that case P = P|_S + P|_T.
   R_P under the pairing with orthonormal basis Lin(P). Also
   𝔭_P = pr_P(Lie_I), the truncations of Lie polynomials to the linear
   extensions. Here Lie_I is the multilinear part of the free Lie algebra on
-  I, and Ree's theorem is CITED as in [Thm].
+  I, and Ree's theorem is CITED as in [Thm]. Ree is used only for this
+  second description, which [AudB] also COMPUTED for n ≤ 6 without Ree;
+  the identification 𝔭_P = R_P^⊥ and parts (a), (c), (d) do not use it.
 - (c) dim 𝔭_P = e_C(P). As Aut(P)-modules,
   𝔭_P ≅ M_P^* ≅ M_P ≅ Lie(P) ≅ sgn ⊗ H_P.
-- (d) The bracket is the truncation of the free Lie bracket:
-  [pr_P x, pr_{P′} y] = pr_{P+P′}[x, y] for x ∈ Lie_S and y ∈ Lie_T.
+- (d) The bracket 𝔭_P ⊗ 𝔭_{P′} → 𝔭_{P+P′} is the truncation of the free
+  Lie bracket: [pr_P x, pr_{P′} y] = pr_{P+P′}[x, y] for x ∈ Lie_S and
+  y ∈ Lie_T. It lives on 𝔭_P = R_P^⊥ ⊆ W_P. On Klyachko's model
+  Lie(P) = W_P e_ζ it exists only by transport through
+  𝔭_P ≅ W_P/R_P → W_P e_ζ (by ψ_P^{-1}), and it is not induced by
+  concatenation there ([Glob, §3.4]; [AudB, §2.3]).
 - (e) For the antichains, 𝔭 restricts to the classical Lie species with its
   bracket.
 
@@ -700,8 +818,10 @@ it maps Q′_P to Q′_{P|_S} ⊗ Q′_{P|_T}, and in that case P = P|_S + P|_T.
   primitive.
 
 The commutator of primitives is primitive in any bimonoid in species
-(Aguiar–Mahajan, *Monoidal Functors, Species and Hopf Algebras*, Ch. 11;
-CITED, standard). By Lemma 2.1 it lies in degree P + P′.
+(Aguiar–Mahajan, *Monoidal Functors, Species and Hopf Algebras*, §11.9.2,
+p. 394: "P(h) is a Lie submonoid of h", for the commutator of Prop. 1.26;
+CITED, read in [AudB]; [AudB, §2.1] also gives a direct five-line proof).
+By Lemma 2.1 it lies in degree P + P′.
 
 (b) *Primitives as an annihilator.* Let x = Σ c_ℓ ℓ ∈ W_P, let S be a
 proper nonempty union of components, s ∈ Lin(P|_S) and t ∈ Lin(P|_T). Then
@@ -740,7 +860,9 @@ posets with n ≤ 6.
 **Theorem 8 (the filtration; PROVEN).** Let r(P) be the number of strict
 relations of P, and let F_r𝐐 = span{(P, ℓ) : r(P) ≤ r}. This is a Hopf
 filtration of [Glob]'s 𝐐, and gr 𝐐 ≅ Q′ as Hopf monoids. Moreover, given the
-Cartier–Milnor–Moore and PBW theorems for species (CITED as in [Glob]),
+Cartier–Milnor–Moore and PBW theorems for species (CITED: Aguiar–Mahajan,
+*Monoidal Functors*, §11.9.3, eq. (11.40) for CMM and the paragraph after
+Cor. 11.46 for PBW, pp. 395–396; re-read in [AudB, §3], hypotheses match),
 gr Prim(𝐐) = Prim(Q′) = ⊕_P 𝔭_P with 𝔭_P ≅ Lie(P). So [Glob]'s conjecture
 (2) holds for this filtration.
 
@@ -778,8 +900,12 @@ Aut(P)-modules,
   C[Lin P] ≅ ⊕_{σ ∈ Π(K)} ⊗_{B∈σ} Lie(P|_B) ≅ ⊕_{σ} ⊗_{B∈σ} (sgn ⊗ H_{P|_B}),
 
 which is "Sym over components" of the Lie(P|_T), as conjectured in
-[Glob, §4.3]. For n = |B| ≤ 2 use the conventions of [Thm]. Since C[Lin P]
-is a free Aut(P)-module, so is the right-hand side.
+[Glob, §4.3]. For n = |B| ≤ 2 use the conventions of [Thm]. An element
+g ∈ Aut(P) may map a block B to a different block gB, so in the last
+term "sgn on B" is to be read as the orientation line det(k^B), which is
+functorial under bijections ([AudB, §4]). With that reading the transport
+argument in the proof is correct. Since C[Lin P] is a free Aut(P)-module,
+so is the right-hand side.
 
 *Proof.*
 
@@ -821,24 +947,35 @@ C[S_n] ≅ ⊕_{σ ∈ Π_n} ⊗_B Lie(B), i.e. T ≅ Sym ∘ Lie, as S_n-module
 
 ### 2.3 How (b) meets (a), what remains, and prior art
 
-**(b) = (a) on the braid arrangement (PROVEN).** Let W = Q′^* be the dual.
-It is commutative: its product is the shuffle product with disjoint union,
-and its coproduct is deconcatenation at cuts. Its decomposables in degree P
-are (W_+ · W_+)_P = R_P = span{lunes in C_P} ([Cone, Cor. 3.1]). Its
-indecomposables are M_P = W_P/R_P ≅ H_P ⊗ sgn ([Thm, Thm S(d)]).
+**Where (b) meets (a) on the braid arrangement (PROVEN).** Let W = Q′^* be
+the dual. It is commutative: its product is the shuffle product with
+disjoint union, and its coproduct is deconcatenation at cuts. Its
+decomposables in degree P are
 
-So the relations that cut Γ_{C_P} down to H_P are exactly the products. This
-is how Lemma L of (a), "lunes in V have their flat in lin V", reads
-algebraically. It also explains why the "functorial model" of [Thm,
-§natural] is the M side: it is the indecomposable quotient of a Hopf monoid.
+  (W_+ · W_+)_P = R_P = span{top-lunes ⊆ C_P}   ([Cone, Cor. 3.1]).
+
+This single subspace identity is what is proven. The coproduct of W, the
+bracket and the PBW decomposition have no stated counterpart in (a). For
+n ≥ 3 (for n ≤ 2 use the conventions of [Thm]) the indecomposables are
+M_P = W_P/R_P ≅ H_P ⊗ sgn as Aut(P)-modules ([AudB, §5]). This abstract
+isomorphism follows from ψ_P ([Thm, Cor. psi]) and [Thm, Thm main],
+without Prop. Φ. The route through [Thm, Thm S(d)] holds given Prop. Φ for
+n ≥ 7, which [AudC, §C.3] proves for every n, given Brown.
+
+*Remark (interpretation, not a theorem).* So the relations that cut
+Γ_{C_P} down to H_P are exactly the products. This is how Lemma L of (a),
+"lunes in V have their flat in lin V", reads algebraically. It also
+suggests why the "functorial model" of [Thm, §natural] is the M side: it
+is the indecomposable quotient of a Hopf monoid.
 
 **Remaining conjectures (CONJECTURED).**
 - (b1) *Arrangement version.* For a general real arrangement, the cones V
   should carry the analogous structure in Aguiar–Mahajan's theory of
   bimonoids over the Tits monoid (*Bimonoids for Hyperplane Arrangements*,
-  CUP 2020), with "lunes in V" as the decomposables. Conjecture G\* would
+  CUP 2020), with "lunes in V" as the decomposables. Theorem G\* would
   then be a PBW statement for the cone. This is the precise way (b) would
-  generalize, and it is the same open problem as (a).
+  generalize. The structure is open, though its numerical content, G\*, is
+  now proven (§1.5).
 - (b2) *Cooperad.* [Glob]'s deconcatenation at all down-sets (not only at
   cuts) gives maps W_P → ⊕_{S ideal} W_{P|_S} ⊗ W_{P|_T}. This is the
   coproduct of Malvenuto–Reutenauer's double-poset Hopf algebra, restricted
@@ -911,59 +1048,51 @@ the oriented-matroid version of Theorem 1 and the open fixed-point formula.
 ## 4. Other frameworks considered
 
 - **Varchenko–Gelfand rings and COMs** (Dorpalen-Barry's thesis *Cones of
-  hyperplane arrangements*, 2021; Dorpalen-Barry–Proudfoot–Wang,
-  arXiv:2208.04855; both found by search, **not read**). They attach a
-  filtered ring to a cone whose associated graded is governed by L^int(K).
-  If its top graded piece, or a dual Orlik–Solomon-type algebra built from
-  Λ(V), were isomorphic to H̃(Λ̄(V)) ⊗ det equivariantly, that would give a
-  third, cohomological model in Conjecture G\*. Not investigated. It is a
-  natural second step after G\*.
+  hyperplane arrangements*, 2021, not opened; its cone chapter
+  arXiv:2104.02740 and Dorpalen-Barry–Proudfoot–Wang, arXiv:2208.04855,
+  read in [NovGT, §5]). They attach a filtered ring to an *open* cone whose
+  associated graded is governed by L^int(K); neither gives a model of
+  H̃(Λ̄(V)) or mentions a group action on top homology. If its top graded
+  piece, or a dual Orlik–Solomon-type algebra built from Λ(V), were
+  isomorphic to H̃(Λ̄(V)) ⊗ det equivariantly, that would give a third,
+  cohomological model in Theorem G\*. Not investigated. It is a natural
+  next step after G\*.
 - **Koszul-duality / operadic** (Fresse, Vallette, Delcroix-Oger–Dupont).
   This is the right language for (b2), and it sits under (b).
 
 ## 5. Ranked recommendation
 
 **1. Pursue (a): the Lie theory of cones of real hyperplane arrangements.**
-- *Why.* It already proves general theorems (1, 2 and Prop. 3) that contain
+- *Why.* It proves general theorems (1, 2, Prop. 3 and G\*) that contain
   the homotopy and dimension part of poset JKS (Jenča–Sarkoci) as the braid
-  case. It isolates all of the remaining content in one conjecture, G\*,
-  which holds in the pointed, full and braid cases and on 6,826 computed
-  cones.
+  case. All of the remaining content sits in one theorem, G\*, proven in
+  [AudA, §C] given Brown and independently audited in [AudC]. It was
+  first established in the pointed, full and braid cases, and it is
+  checked on 6,826 computed cones.
 - It explains the poset-specific features:
   - lineality = components;
   - lunes in V = shuffles over unions of components;
   - the bottom multiplicity of Σ_L = e_C.
 - The type-A-only part, Klyachko's e_ζ model and the cyclic character
   formula, is cleanly separated out.
-- *First theorem to attack.* **Conjecture G\* in the form (ii): for every
-  top-cone V, the chamber cycles span H̃_{d−2}(Λ̄(V)).** Equivalently, the
-  map f_* : H_{d−2}(skeleton) → H_{d−2}(Λ̄(V)) of Theorem 1's proof is
-  onto. Suggested route: induction on dim lin V.
-  - Peel off one line X ⊆ L. By (1.1), its fiber term is
-    S^0 ∗ Λ̄(V_X), and the lunes of X inside V give explicit cycles
-    Σ_{C∈lune} ∂C there.
-  - Show that these lune cycles span the extra summands of (1.1). That is a
-    lune-PBW statement: dim span{lunes in V} = Σ_{0≠X⊆L} m(V_X).
-  - Then f_* is onto by rank count.
-  - The restriction maps E_h of [Cone, Lemma E] (PROVEN, audited) give the
-    induction step on the Lie side, as in [Cone, Thm 5.2].
-  - What is missing is the analogue of the first-block basis B_P of
-    [Thm, Thm S(a)] for the lunes of the lineality flats. For the braid
-    arrangement it exists, so the general lemma should be modelled on it.
-- *Equivariant upgrade.* Once (ii) holds, G\*-eq follows from the
-  W-equivariance of the ambient Φ_A, so it needs no separate argument. The
-  det twist is then automatic, and it is confirmed computationally (§1.5).
-- *What would refute it.*
-  - (1) A single top-cone, in any real arrangement, with q(V) < m(V). By
-    Prop. 3(b) a failure must be a strict inequality in this direction, so
-    the search is a finite rank computation. The best places to look are
-    rank ≥ 4 non-reflection or non-simplicial arrangements: random 7–8
-    planes in R^4, all cones of B_4 and D_4, and samples of H_4. None of
-    these is fully tested.
-  - (2) A cone and g ∈ Stab(V) with χ_H(g) ≠ det(g) χ_Q(g).
-  - (3) For the combinatorial generalization, a T-convex set of a
-    non-realizable oriented matroid where Λ̄ is not a wedge of spheres.
-    This would refute the §3 conjecture, not G\*.
+- *G\* is no longer open.* The earlier recommendation here was to attack
+  Conjecture G\* in the form (ii), that the chamber cycles span
+  H̃_{d−2}(Λ̄(V)). That is now Theorem G\* (§1.5): (ii) is [AudA, Prop. A],
+  and the equivariant form follows from the W-equivariance of Φ_A
+  ([AudA, Prop. B]), with the det twist automatic. The computations of
+  §1.5 are now checks of the theorem.
+- *First open problem to attack.* **The character of H̃_{d−2}(Λ̄(V)) as a
+  Stab_W(V)-module**: a fixed-point formula for μ(Λ(V)^g), g ∈ Stab_W(V),
+  for a reflection arrangement. This is the general analogue of [Thm, eq.
+  closed], which is proved by Weisner's theorem on the orbit partition and
+  has no general analogue yet (§1.5). By Theorem G\* it computes the
+  character of det ⊗ (Lie[A]|_V)^*. Baclawski–Björner 1981 is the
+  candidate prior art (§3).
+- *Other open directions.*
+  - The oriented-matroid version of Theorems 1–2 (§3). It would be refuted
+    by a T-convex set of a non-realizable oriented matroid where Λ̄ is not
+    a wedge of spheres.
+  - A cohomological model of G\* (§4).
 
 **2. (b) Hopf monoids: write up, do not research further on its own.**
 Theorems 6–8 settle [Glob]'s filtration and local-PBW conjectures and give
@@ -978,35 +1107,58 @@ fixed-point Möbius formula for reflection-group stabilizers of cones, as a
 sub-problem of (a)'s equivariant side.
 
 **Publication shape.** "Lie modules of cones of hyperplane arrangements". The
-main theorem would be G\*: H̃(Λ̄(V)) ≅ det ⊗ (Lie[A]|_V)^*. Proven parts:
-Theorems 1–2, Prop. 3, the pointed, full and braid cases, and poset JKS with
-Klyachko's model as the type-A corollary. The braid-arrangement chapter
+main theorem would be G\*: H̃(Λ̄(V)) ≅ det ⊗ (Lie[A]|_V)^*, now proven given
+Brown ([AudA, §C], audited in [AudC]). Proven parts: Theorems 1–2,
+Prop. 3, G\*, and poset JKS with Klyachko's model as the type-A
+corollary. The braid-arrangement chapter
 would carry Theorems 6–8.
 
 ## 6. Status table
 
 | Claim | Status | Depends on |
 |---|---|---|
-| Lemma 0.1, 0.2 | PROVEN | elementary convexity |
-| Theorem 1 (cone wedge) | PROVEN | BWW poset fiber theorem; regular CW facts; Hall (CITED) |
-| Cor. 1.1 / Theorem 2 (cone Zaslavsky) | PROVEN; COMPUTED `[zas]` | Thm 2: regular CW facts only |
+| Lemma 0.1, 0.2 | PROVEN; Lemma 0.2 KNOWN (AM *Topics* Prop. 2.26–2.27) | elementary convexity |
+| Theorem 1 (cone wedge) | PROVEN | BWW poset fiber theorem (CITED, re-checked in [AudA]; removable by [AudA, Prop. A]); regular CW facts; Hall (CITED) |
+| Cor. 1.1 / Theorem 2 (cone Zaslavsky) | PROVEN; COMPUTED `[zas]`; Thm 2 is an instance of Zaslavsky 1977 Thm 1.2 | Thm 2: regular CW facts only |
 | Lemma 1.3 (component formula, Foata) | PROVEN; COMPUTED `[foata]` n ≤ 6 | elementary |
 | Cor. 1.4 (J–S reproved) | PROVEN | Thm 1, Thm 2, Lemma 1.3, [Cone, Prop. 2.2] |
-| Prop. 3(a) | PROVEN | [Cone, Lemma L] |
-| Prop. 3(b), q ≤ m | PROVEN; COMPUTED `[brown]` | Brown (CITED) |
-| Prop. 3(c) | PROVEN given Saliola (property not re-checked) | Saliola (CITED) |
-| Conjecture G\* numerical | CONJECTURED; PROVEN for pointed / full / braid; COMPUTED `[q=m]` 6,826 cones | — |
-| Conjecture G\* equivariant | CONJECTURED; PROVEN for braid given Prop. Φ; COMPUTED `[eq]` (new) | — |
-| Lemma 2.1, Theorem 7 | PROVEN; COMPUTED `[prim]` | Thm S(b), Ree, ψ_P, Thm main |
-| Theorem 8 (filtration) | PROVEN | CMM–PBW for species (CITED) for the equality |
+| Prop. 3(a) (non-singleton lunes) | PROVEN | [Cone, Lemma L] |
+| Prop. 3(b), q ≤ m | PROVEN; COMPUTED `[brown]` | Brown (CITED, re-checked in [AudA, §A.2]); ranks, not traces, in characteristic p |
+| Prop. 3(c) | PROVEN given Saliola; also a consequence of G\* | Saliola (CITED, re-checked in [AudA, §A.3]) |
+| Theorem G\* numerical (formerly Conjecture G\*) | PROVEN in [AudA, §C] (Theorem C), independently audited in [AudC] (holds with proof fixes, applied in §1.5); COMPUTED `[q=m]` 6,826 cones as a check | Brown (CITED, re-checked); Hall; cell facts |
+| Theorem G\* equivariant (formerly Conjecture G\*) | PROVEN in [AudA, §C] (Theorem C(iv)), independently audited in [AudC]; COMPUTED `[eq]` (new on proper cones) as a check | Brown (CITED, re-checked); Hall; cell facts |
+| Lemma 2.1, Theorem 7 | PROVEN; COMPUTED `[prim]` | Thm S(b), Ree (only for 𝔭_P = pr_P(Lie_I)), ψ_P, Thm main; AM *Monoidal Functors* §11.9.2, Prop. 8.10 |
+| Theorem 8 (filtration) | PROVEN | CMM–PBW for species (CITED: AM *Monoidal Functors* §11.9.3, re-checked in [AudB]) for the equality |
 | Theorem 6 (local PBW) | PROVEN; COMPUTED `[pbw]`, `[pbw-eq]` | Thm S(b), Lemma 1.3, ψ_P, Thm main |
+| (b) meets (a): decomposables = lune span | PROVEN (subspace identity only) | [Cone, Cor. 3.1]; M_P ≅ H_P ⊗ sgn via ψ_P and Thm main |
 | (b1), (b2), OM version, comodernism | CONJECTURED | — |
 
-Not re-checked against sources: BWW Thm 1.1 (statement as recalled),
-Brown's simple modules, Saliola's idempotent property, AM Thm 14.32, and the
-Malvenuto–Reutenauer product convention. Not read: Margolis–Saliola–Steinberg
-arXiv:1508.05446, Dorpalen-Barry–Proudfoot–Wang, Baclawski–Björner 1981.
-Read (arXiv text, grep): Dorpalen-Barry–Kim–Reiner arXiv:1906.00036.
+Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not
+checked), Brown arXiv:math/0006145 §7.2 Thm 3 and its Corollary, Saliola
+arXiv:math/0608698 §4 ((4.1), Lemma 4.1, Thm 4.2), all in [AudA, §A]; AM
+*Monoidal Functors* §§8, 11.9, in [AudB]. Read in [NovGT]:
+Margolis–Saliola–Steinberg arXiv:1508.05446, Brown §§3–4, AM *Topics*,
+Dorpalen-Barry arXiv:2104.02740 and Dorpalen-Barry–Proudfoot–Wang,
+Deshpande arXiv:1111.1251. Not re-checked: AM *Topics* Thm 14.32 in the form
+Φ_A(ρ_C) = ±C (no longer used), and the Malvenuto–Reutenauer product
+convention. Not accessible: Zaslavsky 1977 (used as quoted by Deshpande).
+Not read: Baclawski–Björner 1981. Read (arXiv text, grep):
+Dorpalen-Barry–Kim–Reiner arXiv:1906.00036.
+
+## Prior art
+
+The prior-art check of this note is `notes/novelty_general_theory.md`
+([NovGT]). In summary:
+- Lemma 0.2 is KNOWN (Aguiar–Mahajan, *Topics*, Prop. 2.26–2.27).
+- Theorem 2 is an instance of Zaslavsky 1977 Thm 1.2 (§1.2).
+- The vanishing of the bottom multiplicity of F(V) is KNOWN (Brown 2000,
+  §4.2, Thm 2; §1.4). Prop. 3(a) and (b) are combinations of AM (10.4),
+  Brown's Thm 1 and the choice of Σ_L; the combination was not found.
+- Margolis–Saliola–Steinberg cover only the open cone (L^int-type support
+  lattices), not the closed cone or Λ(V) (§1.2).
+- Theorem 1, Theorem G\* beyond V = all chambers, and Theorems 6–8 were NOT
+  FOUND. For V = all chambers, G\* with its det twist is AM *Topics*
+  Thm 14.32 (orientation space E^o[A]).
 
 ## Reproduce
 
