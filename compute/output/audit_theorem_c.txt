@@ -1,0 +1,52 @@
+Audit of Theorem C / Props. A, B (independent code)
+Positive controls:
+  [ctl] exact rank sees [[p]] (1) where mod-p rank does not (0): True
+  [ctl] mod-2 rank detects the torsion of Z/[[2]]: True
+  [ctl] face counts A3 24/75, B3 48/147: True
+  [ctl] |mu| and dim H~ for A3 (6) and B3 (15): True
+  [ctl] Sum_C [C] is a cycle with det orientation, not with +1: True
+  [ctl] a non-convex set U of B3 chambers whose cycles do not span: (6, 6, 11)
+  [ctl] lune relation with one sign flipped fails: True
+  [ctl] equivariance without det fails: True
+  [ctl] braid: c(w) alone is not constant (sgn needed): True
+  [ctl] B3 is simplicial (non-Coxeter certificate does not fire): True
+Arrangements:
+  R4: d=4, 9 hyperplanes, 138 chambers, 829 faces, Euler char ok True, non-simplicial chambers 86
+  R5: d=5, 8 hyperplanes, 174 chambers, 1871 faces, Euler char ok True, non-simplicial chambers 144
+  B4: d=4, 16 hyperplanes, 384 chambers, 1697 faces, Euler char ok True, non-simplicial chambers 0
+  A5: d=5, 15 hyperplanes, 720 chambers, 4683 faces, Euler char ok True, non-simplicial chambers 0
+  normals R4: [(1, 0, 1, -1), (1, 1, 0, 0), (1, 0, 1, 0), (1, 1, 1, 1), (1, 1, -1, 0), (0, 1, 1, 1), (0, 1, 1, 0), (1, 1, 1, 0), (1, 0, 1, 1)]
+  normals R5: [(1, -1, -1, -1, 0), (0, 1, -1, 1, -1), (1, -1, 0, -1, 0), (1, 0, 0, 1, 0), (0, 0, 1, -1, 1), (0, 0, 1, 0, 1), (1, 1, 0, -1, 1), (1, 0, -1, -1, 0)]
+Orientation coherence (Sum_C [C] is a cycle):
+  R4: True
+  R5: True
+Theorem C(i): chamber cycles span H~_{d-2}(Lambda-bar(V)) (rank mod p; rigorous, see note):
+  [span] R4: 400 cones, sizes 1..69, lineality dims [0, 1, 2, 3], failures 0
+  [span] R4 non-pointed: 100 cones, sizes 5..69, lineality dims [1, 2, 3], failures 0
+  [span] R5: 400 cones, sizes 1..87, lineality dims [0, 1, 2, 3, 4], failures 0
+  [span] R5 non-pointed: 100 cones, sizes 4..87, lineality dims [1, 2, 3, 4], failures 0
+  [span] B4 non-pointed: 150 cones, sizes 8..192, lineality dims [1, 2, 3], failures 0
+  [span] A5 non-pointed: 60 cones, sizes 6..360, lineality dims [1, 2, 3, 4], failures 0
+Theorem C(i), exact rank over Q (sample):
+  [span-exact] R4 non-pointed: 40 cones, sizes 8..69, lineality dims [1, 2, 3], failures 0
+  [span-exact] R5 non-pointed: 40 cones, sizes 4..87, lineality dims [1, 2, 3, 4], failures 0
+  [span-exact] B4 non-pointed: 20 cones, sizes 24..192, lineality dims [1, 2, 3], failures 0
+  [span-exact] A5 non-pointed: 10 cones, sizes 12..180, lineality dims [1, 2, 3], failures 0
+Prop. B (lune relations at chain level; dim Gamma/Lune = |mu|; no small torsion):
+  [propB] R4: 515 non-singleton lunes, all chain sums zero: True; #chambers 138 - rank Lune 104 = 34 = |mu| 34; rank mod [2, 3] = [104, 104]; rank span rho = 34
+  [propB] R5: 1275 non-singleton lunes, all chain sums zero: True; #chambers 174 - rank Lune 149 = 25 = |mu| 25; rank mod [2, 3] = [149, 149]; rank span rho = 25
+  [propB] B4: 1089 non-singleton lunes, all chain sums zero: True; #chambers 384 - rank Lune 279 = 105 = |mu| 105; rank mod [2, 3] = [279, 279]; rank span rho = 105
+Theorem C(ii)-(iii): q(V) = m(V) = #V - dim span{lunes in V}:
+  [q=m-exact] R4 non-pointed: 60 cones, failures 0
+  [q=m-exact] R5 non-pointed: 60 cones, failures 0
+  [q=m] B4 non-pointed: 40 cones, failures 0
+Theorem C(iv): g.rho_C = det(g) rho_{gC} at chain level:
+  B4: 60 signed permutations x 40 chambers: failures 0; without det: 1000 failures (control)
+Braid case vs Prop. Phi (Wachs normalization):
+  n=3: c(w)*sgn(w) over all w in S_n = [-1]; det(transposition) = [-1]
+  n=4: c(w)*sgn(w) over all w in S_n = [1]; det(transposition) = [-1]
+  n=5: c(w)*sgn(w) over all w in S_n = [1]; det(transposition) = [-1]
+  n=6: c(w)*sgn(w) over all w in S_n = [-1]; det(transposition) = [-1]
+  A4: det(g) = sgn(g) for all g in S_5; g.rho_C = sgn(g) rho_gC for all g, 10 chambers: failures 0
+
+RESULT: ALL CHECKS PASS
