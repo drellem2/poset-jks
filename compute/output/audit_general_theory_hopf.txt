@@ -1,0 +1,57 @@
+primes: [1999999861, 1999999621]
+[enum] PASS: posets n=1..6: [1, 2, 5, 16, 63, 318]
+[axioms] PASS: Q' axiom 'assoc' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'unit' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'counit' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'coassoc' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'cocomm' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'compat' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'natural' on all labelled posets, n <= 4
+[axioms] PASS: Q' axiom 'closed' on all labelled posets, n <= 4
+[axioms] PASS: connected: dim Q'[empty] = 1
+[axioms] PASS: sanity: [Glob]'s Q (restriction to every S) satisfies all axioms, n <= 3
+[axioms] CONTROL FIRED: down-set coproduct breaks cocommutativity (failed axioms: ['cocomm'])
+[axioms] CONTROL FIRED: ordinal-sum product breaks compatibility (failed axioms: ['compat'])
+[prim] PASS: n=1: dim Prim(Q')[n] = 1, sum_P e_C(P) = 1, sum_P dim(Prim cap Q'_P) = 1
+[prim] PASS: n=1: dim Prim(Q)[n] = 1 = dim Prim(Q')[n] (CMM shadow)
+[prim] PASS: n=2: dim Prim(Q')[n] = 3, sum_P e_C(P) = 3, sum_P dim(Prim cap Q'_P) = 3
+[prim] PASS: n=2: dim Prim(Q)[n] = 3 = dim Prim(Q')[n] (CMM shadow)
+[prim] CONTROL FIRED: n=2: Prim(Q) is not P-homogeneous: sum_P dim(Prim(Q) cap Q_P) = 1 < 3
+[prim] PASS: n=3: dim Prim(Q')[n] = 32, sum_P e_C(P) = 32, sum_P dim(Prim cap Q'_P) = 32
+[prim] PASS: n=3: dim Prim(Q)[n] = 32 = dim Prim(Q')[n] (CMM shadow)
+[prim] CONTROL FIRED: n=3: Prim(Q) is not P-homogeneous: sum_P dim(Prim(Q) cap Q_P) = 2 < 32
+[prim] PASS: n=4: dim Prim(Q')[n] = 786, sum_P e_C(P) = 786, sum_P dim(Prim cap Q'_P) = 786
+[prim] PASS: n=4: dim Prim(Q)[n] = 786 = dim Prim(Q')[n] (CMM shadow)
+[prim] CONTROL FIRED: n=4: Prim(Q) is not P-homogeneous: sum_P dim(Prim(Q) cap Q_P) = 6 < 786
+[ree] PASS: n=2: combs . shuffles = 0 exactly: True; rank Lie_n = 1 (want 1); rank Sh_n = 1 (want 1)
+[ree] PASS: n=3: combs . shuffles = 0 exactly: True; rank Lie_n = 2 (want 2); rank Sh_n = 4 (want 4)
+[ree] PASS: n=4: combs . shuffles = 0 exactly: True; rank Lie_n = 6 (want 6); rank Sh_n = 18 (want 18)
+[ree] PASS: n=5: combs . shuffles = 0 exactly: True; rank Lie_n = 24 (want 24); rank Sh_n = 96 (want 96)
+[ree] PASS: n=6: combs . shuffles = 0 exactly: True; rank Lie_n = 120 (want 120)
+[ree] CONTROL FIRED: n=3: some w e_zeta pairs nonzero with a proper shuffle (Klyachko's module is not the Lie elements)
+[trunc] PASS: 405 posets n <= 6: truncated combs are orthogonal to R_P (exact), rank pr_P(Lie) = e_C(P) and rank R_P = |Lin P| - e_C(P) (so pr_P(Lie) = R_P^perp = p_P); failures: 0
+[trunc] CONTROL FIRED: pr_P(Lie) is NOT orthogonal to the down-set shuffles for 399 posets
+[char] PASS: 2460 pairs (P, g in Aut P), n <= 6: p_P is g-stable and trace of g on p_P = sum_(gC=C) zeta^r_g(C) = chi of Lie(P) (no sign twist); failures: 0
+[char] CONTROL FIRED: untwisted class count sum_(gC=C) 1 differs from chi(p_P) on 220 pairs
+[brkt] PASS: 286 pairs (P, P'), |P|+|P'| <= 6, 858 random comb pairs: [pr x, pr y] lies in W_(P+P'), is orthogonal to R_(P+P') (primitive) and equals pr_(P+P')[x, y], exactly; failures: 0
+[brkt] CONTROL FIRED: [Glob 3.4] reproduced: of the 77 pairs with ker(W_P -> Lie(P)) != 0, 77 have a commutator that does not descend to the e_zeta model
+[brkt] CONTROL FIRED: [12, 3] with 12 a non-primitive word of the 2-antichain pairs nonzero with R_(3-antichain)
+[filt] PASS: 139062 (labelled P, S), n <= 5: r(P|S)+r(P|T) <= r(P), with equality iff S is a union of components; failures: 0
+[filt] PASS: n=2: dim gr_r Prim(Q) = [1, 2], sum_(r(P)=r) e_C(P) = [1, 2]; leading terms Q'-primitive: True
+[filt] CONTROL FIRED: n=2: some leading term is NOT primitive for Q's own coproduct
+[filt] PASS: n=3: dim gr_r Prim(Q) = [2, 12, 12, 6], sum_(r(P)=r) e_C(P) = [2, 12, 12, 6]; leading terms Q'-primitive: True
+[filt] CONTROL FIRED: n=3: some leading term is NOT primitive for Q's own coproduct
+[filt] PASS: n=4: dim gr_r Prim(Q) = [6, 72, 204, 240, 168, 72, 24], sum_(r(P)=r) e_C(P) = [6, 72, 204, 240, 168, 72, 24]; leading terms Q'-primitive: True
+[filt] CONTROL FIRED: n=4: some leading term is NOT primitive for Q's own coproduct
+[pbw] PASS: V_Q = prim: 405 posets n <= 6: the shuffle products over all partitions of the components are |Lin P| vectors of rank |Lin P| (Thm 6 isomorphism); failures: 0
+[pbw] PASS: V_Q = first-block: 405 posets n <= 6: the shuffle products over all partitions of the components are |Lin P| vectors of rank |Lin P| (Thm 6 isomorphism); failures: 0
+[pbw] PASS: Lemma 1.3: |Lin P| = sum_sigma prod_B e_C(P|_B), posets n <= 6; failures: 0
+[pbw] CONTROL FIRED: dropping partitions with >= 3 blocks loses rank on 29 posets
+[pbw] PASS: equivariant form: 2460 pairs (P, g), n <= 6: |Lin P|[g=1] = sum_(g sigma = sigma) prod_(orbits) chi_p(P|B)(g^k|B); failures: 0
+[pbw] CONTROL FIRED: with dim in place of chi_p the identity fails on 2055 pairs
+[dual] PASS: n <= 4: dual of Delta(Q') is (P1, s).(P2, t) = sum_(l in s sh t) (P1 + P2, l): disjoint union with shuffle
+[dual] PASS: n <= 4: dual of mu(Q') is deconcatenation at cuts (prefixes that are unions of components)
+[dual] CONTROL FIRED: dual of [Glob]'s Q coproduct is NOT disjoint union + shuffle (it also produces posets with relations across S, T)
+[dual] PASS: 86 posets 2 <= n <= 5: span of the braid top-lunes contained in C_P (computed from sign vectors and the Tits product) = R_P = decomposables (W_+ W_+)_P; failures: 0
+[dual] CONTROL FIRED: lunes merely meeting C_P (truncated) span a different space on 82 posets
+ALL CHECKS PASSED
