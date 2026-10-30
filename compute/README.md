@@ -108,3 +108,13 @@ homology traces for n <= 6. It imports no other script here. Findings:
     python3 audit_character_identity.py --nmax 6 --large 7 8 9 --homology 6 > output/audit_character_identity.txt   # ~5 min
     python3 audit_character_identity.py --nmax 0 --large 10 --skip-identity-large > output/audit_character_identity_n10.txt   # ~5 min
     python3 -m unittest test_audit_character_identity
+
+`audit_conjecture_s.py` is the independent audit (mg-8c10c) of the
+Conjecture S proof; it imports no other module of this repository. It checks
+Lemma 1 and its adjoint, Lemmas 2–6, Theorems A and B (every base component),
+the Ree-free shuffle-membership cross-check, and Theorem C / Cor. 5.5 at chain
+level without Prop. Phi or Jenca–Sarkoci (n <= 6), with positive controls.
+Findings: `../notes/audit_conjecture_s.md`. Run from this directory:
+
+    python3 audit_conjecture_s.py --nmax 6 --ne 6 --nlem 6 --nchn 6 --nree 6 > output/audit_conjecture_s.txt
+    python3 -m unittest test_audit_conjecture_s
