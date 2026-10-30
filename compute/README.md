@@ -88,3 +88,14 @@ C[S_n], with two positive controls (n <= 5). Findings: section C of
 
     python3 second_read_globalind.py 5 > output/second_read_globalind.txt   # ~2 s
     python3 -m unittest test_second_read_globalind
+
+## Independent audit of the JKS-map findings (mg-350d5)
+
+`audit_jks_maps.py` re-checks, with code written from scratch, Prop. Φ (chain
+level, n ≤ 6), Lemma B / Prop. C, Lemma D, Conjecture S with a direct
+dim H_P computation (all posets n ≤ 6), the S2′ criterion μ(O(P)^g) = 0 for
+connected P (n ≤ 6), and the Topics Ex. 10.9 counts. Findings:
+`../notes/audit_literature_novelty_jks_maps.md`. Run from this directory:
+
+    python3 audit_jks_maps.py > output/audit_jks_maps.txt   # ~40 s, exit 0 iff all pass
+    python3 -m unittest test_audit_jks_maps
