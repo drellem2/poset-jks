@@ -1,0 +1,157 @@
+positive control: A3 / B3 chambers 24 / 48, top-cones 219 / 941 (expect 24/48, 219/941)
+== A3 (all cones up to W; G = +-W): d=3, hyperplanes=6, covectors=75, chambers=24, flats=15, |G|=48, cones=16, pairs (V,g): {'W': 59, 'G\\W': 37}
+   g != 1 in W: chi != 0 on 4, zero by Cor. V on 18, zero otherwise on 21; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   g != 1 in G\W: chi != 0 on 13, zero by Cor. V on 3, zero otherwise on 21; Fix(g) not a flat on 20, Prop. W sum != 0 on 11 of them
+   Fix(g) not a flat, cl(Fix g) != R^d: index sets {X^g = 0} and {X cap cl(Fix g) = 0} differ on 7 of 9 pairs
+   Fix(g) not a flat, (cl(Fix g) != R^d, Prop. W sum = 0) -> pairs: (False, False): 11, (True, True): 9
+   [2.1] holds on 612/612   (assert)
+   [B] holds on 406/406   (assert)
+   [CF] holds on 96/96   (assert)
+   [EZ] holds on 96/96   (assert)
+   [F] holds on 272/272   (assert)
+   [P] holds on 34/34   (assert)
+   [V] holds on 21/21   (assert)
+   [W] holds on 60/60   (assert)
+   [W-nonflat] holds on 9/20   (control)
+   [Wcl] holds on 69/69   (assert)
+   [Wweak] holds on 69/69   (assert)
+   [neg:2.1-no-orientation] holds on 567/612   (control)
+   [neg:CF-all-chambers] holds on 18/96   (control)
+   [neg:EZ-no-detbar] holds on 68/96   (control)
+   [par] holds on 612/612   (assert)
+== B3 (all cones up to W; G = W): d=3, hyperplanes=9, covectors=147, chambers=48, flats=24, |G|=48, cones=35, pairs (V,g): {'W': 134}
+   g != 1 in W: chi != 0 on 47, zero by Cor. V on 36, zero otherwise on 16; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   [2.1] holds on 1314/1314   (assert)
+   [B] holds on 706/706   (assert)
+   [CF] holds on 134/134   (assert)
+   [EZ] holds on 134/134   (assert)
+   [F] holds on 405/405   (assert)
+   [P] holds on 56/56   (assert)
+   [V] holds on 36/36   (assert)
+   [W] holds on 99/99   (assert)
+   [Wcl] holds on 99/99   (assert)
+   [Wweak] holds on 99/99   (assert)
+   [neg:2.1-no-orientation] holds on 1314/1314   (control)
+   [neg:CF-all-chambers] holds on 35/134   (control)
+   [neg:EZ-no-detbar] holds on 101/134   (control)
+   [par] holds on 1314/1314   (assert)
+== tetra7 (all cones; G = signed perms, not W): d=3, hyperplanes=7, covectors=99, chambers=32, flats=18, |G|=48, cones=397, pairs (V,g): {'W': 397, 'G\\W': 611}
+   g != 1 in G\W: chi != 0 on 417, zero by Cor. V on 126, zero otherwise on 68; Fix(g) not a flat on 386, Prop. W sum != 0 on 386 of them
+   Fix(g) not a flat, (cl(Fix g) != R^d, Prop. W sum = 0) -> pairs: (False, False): 386
+   [2.1] holds on 9168/9168   (assert)
+   [B] holds on 3700/3700   (assert)
+   [CF] holds on 1008/1008   (assert)
+   [EZ] holds on 1008/1008   (assert)
+   [F] holds on 1168/1168   (assert)
+   [P] holds on 624/624   (assert)
+   [V] holds on 126/126   (assert)
+   [W] holds on 225/225   (assert)
+   [W-nonflat] holds on 0/386   (control)
+   [Wcl] holds on 225/225   (assert)
+   [Wweak] holds on 225/225   (assert)
+   [neg:2.1-no-orientation] holds on 8466/9168   (control)
+   [neg:CF-all-chambers] holds on 485/1008   (control)
+   [neg:EZ-no-detbar] holds on 639/1008   (control)
+   [par] holds on 9168/9168   (assert)
+== hex6 (all cones; G = <h,-1>, h non-orthogonal of order 6): d=3, hyperplanes=13, covectors=375, chambers=110, flats=54, |G|=12, cones=5361, pairs (V,g): {'W': 5361, 'G\\W': 159}
+   g != 1 in G\W: chi != 0 on 67, zero by Cor. V on 60, zero otherwise on 32; Fix(g) not a flat on 93, Prop. W sum != 0 on 93 of them
+   Fix(g) not a flat, (cl(Fix g) != R^d, Prop. W sum = 0) -> pairs: (False, False): 93
+   [2.1] holds on 143892/143892   (assert)
+   [B] holds on 630/630   (assert)
+   [CF] holds on 5520/5520   (assert)
+   [EZ] holds on 5520/5520   (assert)
+   [F] holds on 278/278   (assert)
+   [P] holds on 5136/5136   (assert)
+   [V] holds on 60/60   (assert)
+   [W] holds on 66/66   (assert)
+   [W-nonflat] holds on 0/93   (control)
+   [Wcl] holds on 66/66   (assert)
+   [Wweak] holds on 66/66   (assert)
+   [neg:2.1-no-orientation] holds on 143892/143892   (control)
+   [neg:CF-all-chambers] holds on 5371/5520   (control)
+   [neg:EZ-no-detbar] holds on 5502/5520   (control)
+   [par] holds on 143892/143892   (assert)
+== A4 (all cones up to W; G = +-W): d=4, hyperplanes=10, covectors=541, chambers=120, flats=52, |G|=240, cones=63, pairs (V,g): {'W': 325, 'G\\W': 153}
+   g != 1 in W: chi != 0 on 24, zero by Cor. V on 134, zero otherwise on 104; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   g != 1 in G\W: chi != 0 on 37, zero by Cor. V on 8, zero otherwise on 108; Fix(g) not a flat on 108, Prop. W sum != 0 on 36 of them
+   Fix(g) not a flat, cl(Fix g) != R^d: index sets {X^g = 0} and {X cap cl(Fix g) = 0} differ on 65 of 72 pairs
+   Fix(g) not a flat, (cl(Fix g) != R^d, Prop. W sum = 0) -> pairs: (False, False): 36, (True, True): 72
+   [2.1] holds on 5992/5992   (assert)
+   [B] holds on 3639/3639   (assert)
+   [CF] holds on 478/478   (assert)
+   [EZ] holds on 478/478   (assert)
+   [F] holds on 1921/1921   (assert)
+   [P] holds on 170/170   (assert)
+   [V] holds on 142/142   (assert)
+   [W] holds on 307/307   (assert)
+   [W-nonflat] holds on 72/108   (control)
+   [Wcl] holds on 379/379   (assert)
+   [Wweak] holds on 379/379   (assert)
+   [neg:2.1-no-orientation] holds on 5587/5992   (control)
+   [neg:CF-all-chambers] holds on 65/478   (control)
+   [neg:EZ-no-detbar] holds on 421/478   (control)
+   [par] holds on 5992/5992   (assert)
+positive control: F4 chambers 1152 (1152), mu(L(F4)) = 385 (1*5*7*11 = 385)
+== F4 (60 sampled cones + all chambers; G = W(F4)): d=4, hyperplanes=24, covectors=5089, chambers=1152, flats=268, |G|=1152, cones=61, pairs (V,g): {'W': 2022}
+   g != 1 in W: chi != 0 on 973, zero by Cor. V on 572, zero otherwise on 416; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   [2.1] holds on 39274/39274   (assert)
+   [B] holds on 30887/30887   (assert)
+   [CF] holds on 2022/2022   (assert)
+   [EZ] holds on 2022/2022   (assert)
+   [F] holds on 16084/16084   (assert)
+   [P] holds on 470/470   (assert)
+   [V] holds on 572/572   (assert)
+   [W] holds on 1961/1961   (assert)
+   [Wcl] holds on 1961/1961   (assert)
+   [Wweak] holds on 1961/1961   (assert)
+   [neg:2.1-no-orientation] holds on 39274/39274   (control)
+   [neg:CF-all-chambers] holds on 62/2022   (control)
+   [neg:EZ-no-detbar] holds on 1769/2022   (control)
+   [par] holds on 39274/39274   (assert)
+positive control: D5 chambers 1920 (1920), |G| = 3840 (3840)
+== D5 (40 sampled cones; G = W(B5) incl. odd sign changes): d=5, hyperplanes=20, covectors=12483, chambers=1920, flats=403, |G|=3840, cones=40, pairs (V,g): {'W': 864, 'G\\W': 626}
+   g != 1 in W: chi != 0 on 114, zero by Cor. V on 635, zero otherwise on 75; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   g != 1 in G\W: chi != 0 on 151, zero by Cor. V on 400, zero otherwise on 75; Fix(g) not a flat on 356, Prop. W sum != 0 on 65 of them
+   Fix(g) not a flat, cl(Fix g) != R^d: index sets {X^g = 0} and {X cap cl(Fix g) = 0} differ on 163 of 291 pairs
+   Fix(g) not a flat, (cl(Fix g) != R^d, Prop. W sum = 0) -> pairs: (False, False): 65, (True, True): 291
+   [2.1] holds on 58900/58900   (assert)
+   [B] holds on 48253/48253   (assert)
+   [CF] holds on 1490/1490   (assert)
+   [EZ] holds on 1490/1490   (assert)
+   [F] holds on 6036/6036   (assert)
+   [P] holds on 462/462   (assert)
+   [V] holds on 1035/1035   (assert)
+   [W] holds on 1094/1094   (assert)
+   [W-nonflat] holds on 291/356   (control)
+   [Wcl] holds on 1385/1385   (assert)
+   [Wweak] holds on 1385/1385   (assert)
+   [neg:2.1-no-orientation] holds on 56117/58900   (control)
+   [neg:CF-all-chambers] holds on 41/1490   (control)
+   [neg:EZ-no-detbar] holds on 1327/1490   (control)
+   [par] holds on 58900/58900   (assert)
+== B5 (25 sampled cones; G = W): d=5, hyperplanes=25, covectors=24483, chambers=3840, flats=648, |G|=3840, cones=25, pairs (V,g): {'W': 1966}
+   g != 1 in W: chi != 0 on 187, zero by Cor. V on 1690, zero otherwise on 64; Fix(g) not a flat on 0, Prop. W sum != 0 on 0 of them
+   [2.1] holds on 77838/77838   (assert)
+   [B] holds on 66500/66500   (assert)
+   [CF] holds on 1966/1966   (assert)
+   [EZ] holds on 1966/1966   (assert)
+   [P] holds on 1310/1310   (assert)
+   [V] holds on 1690/1690   (assert)
+   [W] holds on 1941/1941   (assert)
+   [Wcl] holds on 1941/1941   (assert)
+   [Wweak] holds on 1941/1941   (assert)
+   [neg:2.1-no-orientation] holds on 77838/77838   (control)
+   [neg:CF-all-chambers] holds on 25/1966   (control)
+   [neg:EZ-no-detbar] holds on 1857/1966   (control)
+   [par] holds on 77838/77838   (assert)
+== braid n=3: 12 (P, g) pairs, P up to relabelling
+== braid n=4: 59 (P, g) pairs, P up to relabelling
+== braid n=5: 325 (P, g) pairs, P up to relabelling
+   [braid:CF-braid] holds on 396/396
+   [braid:Lambda=OP] holds on 396/396
+   [braid:eq-closed] holds on 396/396
+   negative control neg:2.1-no-orientation: fails on 3935 of 336990 -> FIRES
+   negative control neg:EZ-no-detbar: fails on 1030 of 12714 -> FIRES
+   negative control neg:CF-all-chambers: fails on 6612 of 12714 -> FIRES
+   negative control W-nonflat: fails on 591 of 963 -> FIRES
+ALL CHECKS PASSED
