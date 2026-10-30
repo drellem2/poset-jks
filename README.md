@@ -2,49 +2,73 @@
 
 Research program on a poset generalization of the Joyal–Klyachko–Stanley theorem.
 
-**Conjecture.** For a finite poset P on [n], the top homology of the lattice of
-order-preserving partitions of P is, as an Aut(P)-module, the sign twist of the
-span of {w·e_ζ : w a linear extension of P} in C[S_n], where e_ζ is the
-cyclic Fourier idempotent. For the antichain this is classical JKS; the
-dimensions agree for every P by Jenča–Sarkoci. Checked by computer for all
-posets with n ≤ 5.
+**Status (October 2026).** The seed note's main conjecture holds as an
+abstract isomorphism. For every finite poset P on n ≥ 3 points, the top
+homology H_P of the proper part of the lattice of order-preserving partitions
+is isomorphic, as an Aut(P)-module, to the sign twist of
+Lie(P) = span{w·e_ζ : w a linear extension of P}. There is also a closed
+formula for the character. The result is proved twice: once via Weisner's
+theorem and once via Crapo's complementation theorem. Both proofs assume
+Jenča–Sarkoci Thm 4.5, P. Hall's theorem and the Hopf trace formula, and an
+independent audit found that both hold. The isomorphism is abstract; a
+*natural* isomorphism is still open. The seed note's "restricted JKS image
+identity" (its eq. restrictionlemma) is **false**. In its place, the splitting
+cycles of the linear extensions span H_P, with an explicit basis (formerly
+"Conjecture S"). That result is proved and audited, conditional on a cited
+theorem of Wachs; it is checked without that input for n ≤ 6. The global
+induced-module formula and b_n = n[x^n] log A(x) are proved. The
+consolidated, self-contained account, with the epistemic status of every
+claim, is
+[`notes/poset_jks_theorem.tex`](notes/poset_jks_theorem.tex).
 
-The note: [`notes/poset_jks_research_note.tex`](notes/poset_jks_research_note.tex).
-Open problems are in its sections "Status: proved, supported, and open" and
-"Concrete next research steps".
+`./build.sh` builds the two TeX notes to PDF if a TeX toolchain is present.
 
-Independent reproduction of the n ≤ 5 computation (extended to all n = 6):
-[`notes/reproduce_character_identity_n_le_5.md`](notes/reproduce_character_identity_n_le_5.md),
-code in [`compute/`](compute/) (`cd compute && python3 poset_jks_check.py --help`).
+## Notes
 
-`./build.sh` builds the note to PDF if a TeX toolchain is present.
+- [`notes/poset_jks_theorem.tex`](notes/poset_jks_theorem.tex): the
+  consolidated write-up (theorem, proof, corrections, computational record,
+  open problems). Start here.
+- [`notes/poset_jks_research_note.tex`](notes/poset_jks_research_note.tex):
+  the original research note (the seed note), kept unedited. Its
+  "open problems" are partly solved, and its eq. (restrictionlemma) is
+  false. See the write-up above.
+
+The character identity and the main theorem:
+- [`notes/reproduce_character_identity_n_le_5.md`](notes/reproduce_character_identity_n_le_5.md):
+  independent reproduction of the character identity, all posets n ≤ 6.
+- [`notes/n7_character_sweep_and_homology_crosscheck.md`](notes/n7_character_sweep_and_homology_crosscheck.md):
+  all 2045 posets at n = 7, and a direct equivariant-homology cross-check.
+- [`notes/global_module_operations_plethlog.md`](notes/global_module_operations_plethlog.md):
+  Proof I (Weisner), the global module HH_n, operations on posets, and the
+  Hopf monoid behind the plethystic logarithm.
+- [`notes/fixed_point_mobius_identity.md`](notes/fixed_point_mobius_identity.md):
+  Proof II (Crapo complementation).
+- [`notes/audit_character_identity_proof.md`](notes/audit_character_identity_proof.md):
+  independent audit of both proofs.
+
+JKS maps, the correction, and the explicit basis:
+- [`notes/literature_novelty_jks_maps.md`](notes/literature_novelty_jks_maps.md):
+  literature and novelty search, explicit JKS maps (Prop. Φ), the
+  counterexample to eq. (restrictionlemma) (Prop. C), and the statement of
+  Conjecture S.
+- [`notes/audit_literature_novelty_jks_maps.md`](notes/audit_literature_novelty_jks_maps.md):
+  its audit, including the strengthening of Prop. C to poset-dependent maps.
+- [`notes/conjecture_s_splitting_cycles_span.md`](notes/conjecture_s_splitting_cycles_span.md):
+  proof of Conjecture S via shuffle-preserving contractions.
+- [`notes/audit_conjecture_s.md`](notes/audit_conjecture_s.md): its audit.
+- [`notes/cone_lune_lie_theory.md`](notes/cone_lune_lie_theory.md): cone/lune
+  Lie theory for the order cone; a lune form of Conjecture S, and
+  independence of the chambers of pointed cones for every real arrangement
+  (not yet independently audited).
+
+Cyclic-compatible posets and b_n:
+- [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md):
+  proof of b_n = n[x^n] log A(x).
+- [`notes/audit_cyclic_compatible_posets_bn.md`](notes/audit_cyclic_compatible_posets_bn.md):
+  its audit, and the unconditional proof of ⊕_P Lie(P) ≅ Ind_{C_n}^{S_n}(ζ ⊗ C[B_n]).
 
 ## Computations
 
-- `python3 compute/cyclic_posets.py [NMAX]` (default 7; plain Python) — brute-force
-  checks of a_n, b_n = |B_n| (cyclic-compatible posets), b_n = n[x^n] log A(x),
-  Σ_P e_C(P) = (n−1)! b_n and the C_n-action on B_n. Findings and proof:
-  [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md).
-- `python3 compute/audit_cyclic_posets.py [--b8]` — independent re-check of the above
-  (all labeled posets n ≤ 6, explicit cyclic-factorization bijection, character of
-  ⊕_P Lie(P); `--b8` adds a_n and b_n via Lemma 1(c) to n = 8). Audit:
-  [`notes/audit_cyclic_compatible_posets_bn.md`](notes/audit_cyclic_compatible_posets_bn.md).
-- `cd compute && python3 splitting_cycles.py --nmax 5 --nmax-comb 6` (plain Python, ~4 s) —
-  splitting cycles vs shuffles (explicit JKS map), the counterexample to the
-  note's restricted image identity, and the span of linear-extension splitting
-  cycles for all posets n ≤ 6. Findings, literature/novelty check and
-  bibliography corrections:
-  [`notes/literature_novelty_jks_maps.md`](notes/literature_novelty_jks_maps.md).
-- `cd compute && python3 poset_lie_structure.py` (plain Python, ~40 s) — checks every
-  step of a proposed proof of the character identity for all posets (Weisner's
-  theorem on the orbit partition; n ≤ 6 plus n = 7, 8 examples), direct homology of
-  the global module HH_n against eq. (frob) for n ≤ 6 (fixes the sign twist), the
-  primitives of the Hopf monoid of posets with a linear extension (n ≤ 4), and the
-  e_ζ-model bracket test. Findings (proof pending independent audit):
-  [`notes/global_module_operations_plethlog.md`](notes/global_module_operations_plethlog.md).
-- `cd compute && python3 conjecture_s.py --nmax 6 --ne 6 --nrho 5` (plain Python, ~3 s;
-  `--nmax 7 --ne 7` ~90 s) — linear extensions modulo proper shuffles: the
-  contraction lemma, W_P ∩ Sh_n = R_P, the first-block basis, and Conjecture S
-  for all posets n ≤ 7. Proof of Conjecture S for every finite poset (hence the
-  main conjecture for connected P), pending independent audit:
-  [`notes/conjecture_s_splitting_cycles_span.md`](notes/conjecture_s_splitting_cycles_span.md).
+All code is plain Python 3 in [`compute/`](compute/). Every script, with its
+reproduce command, is listed in [`compute/README.md`](compute/README.md).
+Unit tests: `cd compute && python3 -m unittest discover -p 'test_*.py'`.
