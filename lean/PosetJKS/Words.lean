@@ -913,6 +913,319 @@ theorem eq_zero_of_eqL (A : Finset α) (r : α → α → Prop) (lam : α → �
     refine eq_zero_of_perm_invariant hW hperm hl₀ ?_
     by_contra h; exact hlin₀ (hlin _ h)
 
+/-! ### Lemma Ψ.0: the class sums satisfy the cyclic relation -/
+
+lemma rotate_of_append {w p q : List α} (h : w = p ++ q) (hq : q ≠ []) :
+    w.rotate p.length = q ++ p ∧ p.length < w.length ∧ w.take p.length = p := by
+  subst h
+  refine ⟨List.rotate_append_length_eq p q, ?_, by simp⟩
+  simp only [List.length_append]
+  have := List.length_pos_iff.2 hq
+  omega
+
+lemma lamL_ne_zero_of_word {lam : α → ℂ} {A : Finset α} {w : List α} (hw : IsWordOn A w)
+    (hlam : lamL lam w = 1) {s t : List α} (hst : IsWordOn A (s ++ t)) : lamL lam s ≠ 0 := by
+  have hp : (s ++ t).Perm w :=
+    List.perm_of_nodup_nodup_toFinset_eq hst.1 hw.1 (hst.2.trans hw.2.symm)
+  intro h
+  have := lamL_perm lam hp
+  rw [lamL_append, h, zero_mul, hlam] at this
+  exact zero_ne_one this
+
+/-- The key step of Lemma Ψ.0: rotating a rotation `s t` of `w` at a union-prefix `s` gives a
+rotation of `w` at a union-prefix, with the weight multiplied by `λ(s)`. -/
+lemma rotate_rotate {A : Finset α} {lam : α → ℂ} {w s₁ t₁ s t : List α} (hw : w = s₁ ++ t₁)
+    (hnd : w.Nodup) (hlam : lamL lam w = 1) (h₁ : UoC r A s₁.toFinset) (hs : UoC r A s.toFinset)
+    (ht : t ≠ []) (h : t₁ ++ s₁ = s ++ t) :
+    ∃ p q, w = p ++ q ∧ q ≠ [] ∧ t ++ s = q ++ p ∧ UoC r A p.toFinset ∧
+      lamL lam p = lamL lam s₁ * lamL lam s := by
+  rcases List.append_eq_append_iff.1 h with ⟨m, h1, h2⟩ | ⟨m, h1, h2⟩
+  · -- `s = t₁ ++ m`, `s₁ = m ++ t`
+    subst h1 h2
+    refine ⟨m, t ++ t₁, by simp [hw], by simp [ht], by simp, ?_, ?_⟩
+    · have : m.toFinset = (t₁ ++ m).toFinset ∩ (m ++ t).toFinset := by
+        rw [hw] at hnd
+        have hd := (List.nodup_append.1 hnd).2.2
+        ext b
+        simp only [List.mem_toFinset, Finset.mem_inter, List.mem_append]
+        constructor
+        · intro hb; exact ⟨Or.inr hb, Or.inl hb⟩
+        · rintro ⟨hb | hb, hb'⟩
+          · exact absurd rfl (hd b (List.mem_append.2 hb') b hb)
+          · exact hb
+      rw [this]; exact uoC_inter hs h₁
+    · rw [hw] at hlam
+      simp only [lamL_append] at hlam ⊢
+      linear_combination (-lamL lam m) * hlam
+  · -- `t₁ = s ++ m`, `t = m ++ s₁`
+    subst h1 h2
+    by_cases hm : m = []
+    · subst hm
+      simp only [List.nil_append] at ht
+      refine ⟨[], w, by simp, ?_, by simp [hw], by simp [UoC], ?_⟩
+      · intro hw0; rw [hw0] at hw; exact ht (List.append_eq_nil_iff.1 hw.symm).1
+      · rw [hw] at hlam; simp only [lamL_append, List.append_nil] at hlam
+        rw [lamL_nil, hlam]
+    · refine ⟨s₁ ++ s, m, by simp [hw], hm, by simp, ?_, lamL_append _ _ _⟩
+      rw [List.toFinset_append]; exact uoC_union h₁ hs
+
+/-- **Lemma Ψ.0** (`notes/natural_isomorphism.md` §3.1): for a linear extension `w` and weights
+with `λ(w) = 1`, the class sum `s_λ(w) = ∑_{k cut} λ(w_1⋯w_k)⁻¹ w γ^k` satisfies the cyclic
+relation (Ψ.1). `K` is the set of cuts. -/
+theorem eqL_classSum {A : Finset α} {lam : α → ℂ} {w : List α} (hw : IsWordOn A w)
+    (hlam : lamL lam w = 1) (K : Finset ℕ)
+    (hK : ∀ k, k ∈ K ↔ k < w.length ∧ UoC r A (w.take k).toFinset) :
+    EqL r A lam (∑ k ∈ K, (lamL lam (w.take k))⁻¹ • Finsupp.single (w.rotate k) (1 : ℂ)) := by
+  set Y := ∑ k ∈ K, (lamL lam (w.take k))⁻¹ • Finsupp.single (w.rotate k) (1 : ℂ) with hY
+  have hval : ∀ z k₀, k₀ ∈ K → w.rotate k₀ = z → Y z = (lamL lam (w.take k₀))⁻¹ := by
+    intro z k₀ hk₀ hz
+    rw [hY, Finsupp.finset_sum_apply, Finset.sum_eq_single k₀]
+    · simp [hz]
+    · intro k hk hne
+      simp only [Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul]
+      rw [if_neg, mul_zero]
+      intro h
+      have hwne : w ≠ [] := by
+        rintro rfl; have := (hK k₀).1 hk₀; simp at this
+      have := List.Nodup.rotate_congr hw.1 hwne k k₀ (h.trans hz.symm)
+      rw [Nat.mod_eq_of_lt ((hK k).1 hk).1, Nat.mod_eq_of_lt ((hK k₀).1 hk₀).1] at this
+      exact hne this
+    · intro h; exact absurd hk₀ h
+  have hzero : ∀ z, (¬ ∃ k ∈ K, w.rotate k = z) → Y z = 0 := by
+    intro z hz
+    rw [hY, Finsupp.finset_sum_apply]
+    refine Finset.sum_eq_zero fun k hk => ?_
+    simp only [Finsupp.smul_apply, Finsupp.single_apply, smul_eq_mul]
+    rw [if_neg (fun h => hz ⟨k, hk, h⟩), mul_zero]
+  -- one direction of the class correspondence
+  have step : ∀ s t, IsWordOn A (s ++ t) → UoC r A s.toFinset → t ≠ [] → ∀ k ∈ K,
+      w.rotate k = s ++ t → ∃ k' ∈ K, w.rotate k' = t ++ s ∧
+        lamL lam (w.take k') = lamL lam (w.take k) * lamL lam s := by
+    intro s t hst hs ht k hk hrot
+    obtain ⟨hkw, hUk⟩ := (hK k).1 hk
+    rw [List.rotate_eq_drop_append_take hkw.le] at hrot
+    obtain ⟨p, q, hpq, hq, htq, hUp, hlp⟩ := rotate_rotate (List.take_append_drop k w).symm
+      hw.1 hlam hUk hs ht hrot
+    obtain ⟨h1, h2, h3⟩ := rotate_of_append hpq hq
+    refine ⟨p.length, (hK _).2 ⟨h2, by rw [h3]; exact hUp⟩, by rw [h1, htq], by rw [h3, hlp]⟩
+  intro s t hst hs
+  by_cases ht : t = []
+  · subst ht
+    have : lamL lam s = 1 := by
+      rw [← hlam]
+      exact lamL_perm lam (List.perm_of_nodup_nodup_toFinset_eq (by simpa using hst.1) hw.1
+        (by simpa using hst.2.trans hw.2.symm))
+    simp [this]
+  by_cases hs0 : s = []
+  · subst hs0; simp
+  by_cases h : ∃ k ∈ K, w.rotate k = s ++ t
+  · obtain ⟨k, hk, hrot⟩ := h
+    obtain ⟨k', hk', hrot', hl⟩ := step s t hst hs ht k hk hrot
+    rw [hval _ k' hk' hrot', hval _ k hk hrot, hl, mul_inv, mul_assoc,
+      inv_mul_cancel₀ (lamL_ne_zero_of_word hw hlam hst), mul_one]
+  · rw [hzero _ h, hzero, zero_mul]
+    rintro ⟨k', hk', hrot'⟩
+    have hts : IsWordOn A (t ++ s) := isWordOn_perm List.perm_append_comm hst
+    have hUt : UoC r A t.toFinset := by rw [toFinset_right hst]; exact uoC_sdiff hs
+    obtain ⟨k, hk, hrot, -⟩ := step t s hts hUt hs0 k' hk' hrot'
+    exact h ⟨k, hk, hrot⟩
+
+/-! ### The measure `μ`, Lemma 6 and Lemma 4 on lists -/
+
+open Classical in
+/-- `μ(l)`: the length of the longest union-prefix of `l` not containing `x₀`. -/
+noncomputable def muL (r : α → α → Prop) (A : Finset α) (x₀ : α) (l : List α) : ℕ :=
+  Nat.findGreatest (fun k => UoC r A (l.take k).toFinset ∧ x₀ ∉ l.take k) l.length
+
+lemma muL_spec {A : Finset α} {x₀ : α} {l : List α} :
+    muL r A x₀ l ≤ l.length ∧ UoC r A (l.take (muL r A x₀ l)).toFinset ∧
+      x₀ ∉ l.take (muL r A x₀ l) ∧
+      ∀ k, muL r A x₀ l < k → k ≤ l.length → UoC r A (l.take k).toFinset → x₀ ∈ l.take k := by
+  classical
+  have hdef : Nat.findGreatest (fun k => UoC r A (l.take k).toFinset ∧ x₀ ∉ l.take k)
+      l.length = muL r A x₀ l := rfl
+  obtain ⟨h1, h2, h3⟩ := Nat.findGreatest_eq_iff.1 hdef
+  by_cases h0 : muL r A x₀ l = 0
+  · refine ⟨h1, by rw [h0]; simp [UoC], by rw [h0]; simp, fun k hk hkl hU => ?_⟩
+    by_contra hx; exact h3 hk hkl ⟨hU, hx⟩
+  · exact ⟨h1, (h2 h0).1, (h2 h0).2, fun k hk hkl hU => by_contra fun hx => h3 hk hkl ⟨hU, hx⟩⟩
+
+lemma inBL_iff_muL {A : Finset α} {x₀ : α} {l : List α} :
+    InBL r A x₀ l ↔ LinL r A l ∧ muL r A x₀ l = 0 := by
+  obtain ⟨h1, h2, h3, h4⟩ := muL_spec (r := r) (A := A) (x₀ := x₀) (l := l)
+  constructor
+  · rintro ⟨hl, hB⟩
+    refine ⟨hl, by_contra fun h0 => h3 (hB _ _ (List.take_append_drop _ l).symm ?_ h2)⟩
+    intro h
+    rcases List.take_eq_nil_iff.1 h with h | h
+    · exact h0 h
+    · have := List.length_eq_zero_iff.2 h; omega
+  · rintro ⟨hl, h0⟩
+    refine ⟨hl, fun s t hst hs hU => ?_⟩
+    have hk : l.take s.length = s := by rw [hst]; simp
+    have := h4 s.length (by rw [h0]; exact List.length_pos_iff.2 hs)
+      (by rw [hst]; simp) (by rw [hk]; exact hU)
+    rwa [hk] at this
+
+/-- The step of **Lemma 6** (`notes/conjecture_s_splitting_cycles_span.md` §5): if `w ∉ B_P`
+splits as `s t` at its longest union-prefix `s` avoiding `x₀`, every other word `z` of `s ⧢ t`
+is a linear extension with `μ(z) < μ(w)`. -/
+lemma muL_lt_of_shuffle {A : Finset α} {x₀ : α} (hx₀ : x₀ ∈ A) {l z : List α}
+    (hl : LinL r A l)
+    (hz1 : z.filter (fun b => decide (b ∈ (l.take (muL r A x₀ l)).toFinset)) =
+      l.take (muL r A x₀ l))
+    (hz2 : z.filter (fun b => !decide (b ∈ (l.take (muL r A x₀ l)).toFinset)) =
+      l.drop (muL r A x₀ l))
+    (hzl : z ≠ l) : LinL r A z ∧ muL r A x₀ z < muL r A x₀ l := by
+  obtain ⟨hk1, hkU, hkx, hkmax⟩ := muL_spec (r := r) (A := A) (x₀ := x₀) (l := l)
+  set k := muL r A x₀ l
+  set s := l.take k
+  set t := l.drop k
+  set S := s.toFinset
+  have hl' : l = s ++ t := (List.take_append_drop k l).symm
+  have hzperm : z.Perm (s ++ t) := by
+    rw [← hz1, ← hz2]; exact (List.filter_append_perm _ z).symm
+  have hzw : IsWordOn A z := isWordOn_perm hzperm.symm (hl' ▸ hl.1)
+  have hpwl := hl'.symm ▸ hl.2
+  -- `z` is a linear extension
+  have hzlin : LinL r A z := by
+    refine ⟨hzw, List.pairwise_iff_forall_sublist.2 fun {p q} hpq => ?_⟩
+    have hp : p ∈ A := (mem_of_isWordOn hzw).1 (hpq.subset (by simp))
+    have hq : q ∈ A := (mem_of_isWordOn hzw).1 (hpq.subset (by simp))
+    by_cases hpS : p ∈ S <;> by_cases hqS : q ∈ S
+    · have := hpq.filter (fun b => decide (b ∈ S))
+      rw [hz1] at this
+      simp only [List.filter_cons, hpS, hqS, decide_true, if_true, List.filter_nil] at this
+      exact List.pairwise_iff_forall_sublist.1 (List.pairwise_append.1 hpwl).1 this
+    · intro hqp; exact hqS ((hkU q hq p hp hqp).2 hpS)
+    · intro hqp; exact hpS ((hkU q hq p hp hqp).1 hqS)
+    · have := hpq.filter (fun b => !decide (b ∈ S))
+      rw [hz2] at this
+      simp only [List.filter_cons, hpS, hqS, decide_false, Bool.not_false, if_true,
+        List.filter_nil] at this
+      exact List.pairwise_iff_forall_sublist.1 (List.pairwise_append.1 hpwl).2.1 this
+  refine ⟨hzlin, ?_⟩
+  obtain ⟨hm1, hmU, hmx, -⟩ := muL_spec (r := r) (A := A) (x₀ := x₀) (l := z)
+  by_contra hge
+  push Not at hge
+  have hm0 : 0 < muL r A x₀ z := by
+    have : 0 < k := by
+      by_contra h0
+      push Not at h0
+      have hk0 : k = 0 := by omega
+      apply hzl
+      rw [hl']
+      have hs : s = [] := by simp [s, hk0]
+      have hS : S = ∅ := by simp [S, hs]
+      rw [hs, List.nil_append, ← hz2]
+      simp [hS]
+    omega
+  set j := muL r A x₀ z
+  set π := z.take j
+  set ρ := z.drop j
+  have hz' : z = π ++ ρ := (List.take_append_drop j z).symm
+  have hπt : π.filter (fun b => !decide (b ∈ S)) = [] := by
+    by_contra hne
+    set πt := π.filter (fun b => !decide (b ∈ S))
+    have ht' : t = πt ++ ρ.filter (fun b => !decide (b ∈ S)) := by
+      rw [← hz2, hz', List.filter_append]
+    have htake : l.take (k + πt.length) = s ++ πt := by
+      rw [hl', ht', ← List.append_assoc, List.take_left' (by simp [s, List.length_take,
+        min_eq_left hk1])]
+    have hset : (s ++ πt).toFinset = S ∪ π.toFinset := by
+      ext b
+      simp only [List.toFinset_append, Finset.mem_union, List.mem_toFinset, πt,
+        List.mem_filter, S]
+      constructor
+      · rintro (h | ⟨h, -⟩)
+        · exact Or.inl h
+        · exact Or.inr h
+      · rintro (h | h)
+        · exact Or.inl h
+        · by_cases hb : b ∈ s
+          · exact Or.inl hb
+          · exact Or.inr ⟨h, by simp [hb]⟩
+    have hlen : k + πt.length ≤ l.length := by
+      have : t.length = l.length - k := by simp [t]
+      have h2 : πt.length ≤ t.length := by rw [ht']; simp
+      omega
+    have := hkmax (k + πt.length) (by have := List.length_pos_iff.2 hne; omega) hlen
+      (by rw [htake, hset]; exact uoC_union hkU hmU)
+    rw [htake] at this
+    rcases List.mem_append.1 this with h | h
+    · exact hkx h
+    · exact hmx (List.mem_of_mem_filter h)
+  -- so `π` lies in `S`, hence is a prefix of `s`
+  have hπS : π.filter (fun b => decide (b ∈ S)) = π := by
+    rw [List.filter_eq_self]
+    intro b hb
+    by_contra h
+    have : b ∈ π.filter (fun b => !decide (b ∈ S)) := List.mem_filter.2 ⟨hb, by simpa using h⟩
+    rw [hπt] at this; simp at this
+  have hs' : s = π ++ ρ.filter (fun b => decide (b ∈ S)) := by
+    rw [← hz1, hz', List.filter_append, hπS]
+  have hπlen : π.length = j := by simp [π, List.length_take, min_eq_left hm1]
+  have hslen : s.length = k := by simp [s, List.length_take, min_eq_left hk1]
+  have hρ : ρ.filter (fun b => decide (b ∈ S)) = [] := by
+    have := congrArg List.length hs'
+    rw [List.length_append, hπlen, hslen] at this
+    exact List.length_eq_zero_iff.1 (by omega)
+  apply hzl
+  have hρt : ρ.filter (fun b => !decide (b ∈ S)) = ρ := by
+    rw [List.filter_eq_self]
+    intro b hb
+    by_contra h
+    have : b ∈ ρ.filter (fun b => decide (b ∈ S)) := List.mem_filter.2 ⟨hb, by simpa using h⟩
+    rw [hρ] at this; simp at this
+  rw [hl', hz', hs', hρ, List.append_nil, ← hρt, ← hz2, hz', List.filter_append, hπt,
+    List.nil_append]
+
+/-- **Lemma 4**, existence: rotating a linear extension at `μ` gives a word of `B_P`. -/
+lemma inBL_rotate_muL {A : Finset α} {x₀ : α} (hx₀ : x₀ ∈ A) {l : List α} (hl : LinL r A l) :
+    InBL r A x₀ (l.drop (muL r A x₀ l) ++ l.take (muL r A x₀ l)) := by
+  obtain ⟨hk1, hkU, hkx, hkmax⟩ := muL_spec (r := r) (A := A) (x₀ := x₀) (l := l)
+  set k := muL r A x₀ l
+  have hl' : l = l.take k ++ l.drop k := (List.take_append_drop k l).symm
+  refine ⟨linL_rotate (hl' ▸ hl) hkU, fun π ρ h hπ hU => ?_⟩
+  by_contra hx
+  have hxd : x₀ ∈ l.drop k := by
+    have : x₀ ∈ l := (mem_of_isWordOn hl.1).2 hx₀
+    rw [hl'] at this
+    rcases List.mem_append.1 this with h | h
+    · exact absurd h hkx
+    · exact h
+  rcases List.append_eq_append_iff.1 h with ⟨m, h1, h2⟩ | ⟨m, h1, h2⟩
+  · exact hx (h1 ▸ List.mem_append_left _ hxd)
+  · have htake : l.take (k + π.length) = l.take k ++ π := by
+      conv_lhs => rw [hl', h1, ← List.append_assoc]
+      rw [List.take_left' (by simp [List.length_take, min_eq_left hk1])]
+    have hlen : k + π.length ≤ l.length := by
+      have := congrArg List.length h1
+      simp only [List.length_append, List.length_drop] at this
+      omega
+    have := hkmax (k + π.length) (by have := List.length_pos_iff.2 hπ; omega) hlen
+      (by rw [htake, List.toFinset_append]; exact uoC_union hkU hU)
+    rw [htake] at this
+    rcases List.mem_append.1 this with h | h
+    · exact hkx h
+    · exact hx h
+
+/-- **Lemma 4**, uniqueness: a nontrivial rotation of a word of `B_P` is not in `B_P`. -/
+lemma rotate_eq_zero_of_inBL {A : Finset α} {x₀ : α} {l : List α} {j : ℕ}
+    (hl : InBL r A x₀ l) (hj : j < l.length) (hl' : InBL r A x₀ (l.drop j ++ l.take j)) :
+    j = 0 := by
+  by_contra h0
+  have hsplit : l = l.take j ++ l.drop j := (List.take_append_drop j l).symm
+  have hU : UoC r A (l.take j).toFinset := uoC_of_linL_rotate (hsplit ▸ hl.1) hl'.1
+  have h1 := hl.2 _ _ hsplit (by
+    intro h; rcases List.take_eq_nil_iff.1 h with h | h
+    · exact h0 h
+    · simp [h] at hj) hU
+  have hw : IsWordOn A (l.take j ++ l.drop j) := hsplit ▸ hl.1.1
+  have h2 := hl'.2 _ _ rfl (by intro h; rw [List.drop_eq_nil_iff] at h; omega)
+    (by rw [toFinset_right hw]; exact uoC_sdiff hU)
+  exact (List.nodup_append.1 hw.1).2.2 x₀ h1 x₀ h2 rfl
+
 end L
 
 end PosetJKS
