@@ -116,7 +116,8 @@ noncomputable def actMP (g : α ≃o α) : MP α →ₗ[ℂ] MP α :=
 
 /-- Corollary Ψ.1, bijectivity: for every finite poset `P` and every primitive `n`-th root of
 unity `ζ`, the truncation map `ψ_P` is a linear isomorphism `PLie(P) ≅ ℂ[Lin P]/R_P`. -/
-theorem corPsi_bijective {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
+theorem corPsi_bijective (h0 : 0 < Fintype.card α) {ζ : ℂ}
+    (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
     Function.Bijective (psi α ζ) := by
   sorry
 
@@ -127,10 +128,10 @@ theorem corPsi_equivariant (ζ : ℂ) (g : α ≃o α) :
 
 /-- Corollary Ψ.1 in packaged form: an `Aut(P)`-equivariant linear isomorphism
 `PLie(P) ≃ ℂ[Lin P]/R_P` (namely `ψ_P`). -/
-theorem corPsi {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
+theorem corPsi (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
     ∃ e : PLie α ζ ≃ₗ[ℂ] MP α, (∀ y, e y = psi α ζ y) ∧
       ∀ (g : α ≃o α) (y : PLie α ζ), e (actPLie ζ g y) = actMP g (e y) := by
-  refine ⟨LinearEquiv.ofBijective (psi α ζ) (corPsi_bijective hζ), fun _ => rfl, fun g y => ?_⟩
+  refine ⟨LinearEquiv.ofBijective (psi α ζ) (corPsi_bijective h0 hζ), fun _ => rfl, fun g y => ?_⟩
   simp only [LinearEquiv.ofBijective_apply]
   exact LinearMap.congr_fun (corPsi_equivariant ζ g) y
 

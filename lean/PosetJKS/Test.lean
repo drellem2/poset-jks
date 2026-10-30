@@ -23,8 +23,9 @@ computation, which is a transcription, not the Lean definition, and is labelled 
 * `PLie` and `HP` are spans/quotients and not computable. Checked by proved lemmas: the
   eigenvalue relation `relabel g (w e_ζ) = ζ^r w e_ζ` (fixes the `ζ` and rotation convention
   against `classRot`), `∂ ∘ ∂ = 0` for `bd`, and the augmentation `bd 0`.
-* Counterexamples (the statements are false as stated): `corPsi_bijective` and `trace_PLie` at
-  the empty poset (`n = 0`).
+* Counterexamples at the empty poset (`n = 0`): without the hypothesis `0 < Fintype.card α`,
+  `corPsi_bijective` and `trace_PLie` would be false. These lemmas are why both statements
+  (and `corPsi`) carry `h0 : 0 < Fintype.card α`, the note's implicit `n ≥ 1`.
 -/
 
 open Finset
@@ -684,8 +685,8 @@ theorem MP_fin0_ne : (RinW (Fin 0)).mkQ ⟨wd w0, wd_w0_mem_W⟩ ≠ 0 := by
   unfold wd
   exact Finsupp.single_ne_zero.2 one_ne_zero
 
-/-- **`corPsi_bijective` is false as stated, at `n = 0`.** `ζ = 0` is a primitive `0`-th root of
-unity in Mathlib, `PLie(∅) = 0` (the sum defining `w e_ζ` is empty), but
+/-- **`corPsi_bijective` needs `h0 : 0 < n`: without it, it fails at `n = 0`.** `ζ = 0` is a
+primitive `0`-th root of unity in Mathlib, `PLie(∅) = 0` (the sum defining `w e_ζ` is empty), but
 `ℂ[Lin ∅]/R_∅ = ℂ`. -/
 theorem corPsi_bijective_false :
     IsPrimitiveRoot (0 : ℂ) (Fintype.card (Fin 0)) ∧ ¬ Function.Bijective (psi (Fin 0) 0) := by
@@ -700,8 +701,9 @@ theorem cyc_fin0 : cyc (Fin 0) = {∅} := by
   rw [cyc_eq]
   decide
 
-/-- **`trace_PLie` is false as stated, at `n = 0`.** The empty word's coset `(range 0).image _`
-is empty, so `Cyc(∅) = {∅}` and `fixedClassSum = ζ^0 = 1`, while `PLie(∅) = 0` has trace `0`. -/
+/-- **`trace_PLie` needs `h0 : 0 < n`: without it, it fails at `n = 0`.** The empty word's
+coset `(range 0).image _` is empty, so `Cyc(∅) = {∅}` and `fixedClassSum = ζ^0 = 1`, while
+`PLie(∅) = 0` has trace `0`. -/
 theorem trace_PLie_false (ζ : ℂ) :
     LinearMap.trace ℂ (PLie (Fin 0) ζ) (actPLie ζ (OrderIso.refl _)) ≠
       fixedClassSum ζ (OrderIso.refl (Fin 0)) := by

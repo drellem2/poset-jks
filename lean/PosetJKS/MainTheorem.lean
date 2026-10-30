@@ -78,7 +78,8 @@ theorem trace_HP (hn : 3 ≤ Fintype.card α) (g : α ≃o α) :
   sorry
 
 /-- (liechar): `tr(g | PLie(P)) = ∑_{gC=C} ζ^{r_g(C)}`. Elementary. -/
-theorem trace_PLie {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α)) (g : α ≃o α) :
+theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α))
+    (g : α ≃o α) :
     LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g := by
   sorry
 
