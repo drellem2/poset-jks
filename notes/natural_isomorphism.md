@@ -12,6 +12,14 @@ Builds on:
 Every claim is tagged PROVEN, COMPUTED, CITED or CONJECTURED. "PROVEN given (Φ), (D), (JS)"
 means: proven, using the same three inputs as Theorem C of the Conjecture S note.
 
+**Audit (mg-583e6).** This note has been independently audited in
+`notes/audit_natural_isomorphism.md`. Verdict: Theorem Ψ, Cor. Ψ.1, Theorems 1 and 2 HOLD.
+Cor. Ψ.1 is elementary: it needs none of (Φ), (D), (JS). One defect was found, in the computational
+evidence only: the `[wgt]` check and the λ ≡ 1 counts "5/6, 16/19, 63/80" were computed on a wrong
+object. They are corrected in §3.2 below (the true counts are 6/6, 19/19, 80/80, and the drop is
+PROVEN for every disconnected P). The script itself has not been changed, so its archived `[wgt]`
+lines still show the wrong counts. A minor notation slip in Prop. 3 is also corrected (§4).
+
 ## Summary
 
 Part 1 sorts the possible meanings of "natural". Part 2 answers each one.
@@ -320,8 +328,8 @@ members of C.**
   every P, with no use of the character identity.
   - Its inputs are those of Conjecture S: Prop. Φ (Wachs + Ree), Lemma D, and Jenča–Sarkoci
     Thm 4.5. The last is only used for dim H_P = e_C(P).
-  - It is independent of `notes/global_module_operations_plethlog.md` §2. **It should get an
-    independent audit before it is relied on.**
+  - It is independent of `notes/global_module_operations_plethlog.md` §2. It has been
+    independently audited (`notes/audit_natural_isomorphism.md`, rows 5–6: HOLDS).
 - Θ_P is **not** natural along extensions when P is disconnected and n ≥ 3. Nothing is
   (Theorem 1(i)).
   - Concretely: for y ∈ L_{P′} ⊆ L_P, the truncations pr_{P′}(y) and pr_P(y) differ on
@@ -329,13 +337,22 @@ members of C.**
 
 COMPUTED (`[psi]`): ψ_P is an isomorphism for all 2+5+16+63+318 unlabeled posets with
 2 ≤ n ≤ 6, and for all 2045 with n = 7 (395 of them disconnected). The check is a rank
-computation modulo Sh_n via L_0, so it is independent of the proof. `[wgt]`: random admissible weights give independence for 2 random draws per
-poset, n ≤ 6.
+computation modulo Sh_n via L_0, so it is independent of the proof.
 
-Positive control: λ ≡ 1 is inadmissible, and the rank drops for the antichain at every n ≤ 6.
-- This is because cyclic sums of words lie in Sh_n.
-- It also drops for 63 of the 80 disconnected posets at n = 6, though admissibility is only
-  sufficient.
+`[wgt]` is **defective** (audit §5): it takes as class representative the least rotation of a word,
+which need not lie in Lin P, so on such posets it does not compute s_λ(C). Its "independent" counts
+are therefore not evidence for Theorem Ψ. The statement for random admissible weights is instead
+COMPUTED by the audit's own `[psi]` (3 random admissible λ per poset, all posets n ≤ 6).
+
+Positive control: λ ≡ 1 is inadmissible, and the rank drops for **every** disconnected P.
+- PROVEN (audit §5): Σ_C s_1(C) = Σ_{w∈Lin P} w. Write P = P_1 + P′ with P_1 a component. Then
+  Lin P is the disjoint union of the shuffle sets s ш t (s ∈ Lin P_1, t ∈ Lin P′), so this sum
+  lies in Sh_n.
+- COMPUTED: the drop occurs for 1/1, 2/2, 6/6, 19/19, 80/80 disconnected posets, n = 2..6
+  (`audit_natural_isomorphism.psi_rank` with λ ≡ 1; see the audit's Reproduce section).
+- The figures "5/6, 16/19, 63/80" printed by this note's `[wgt]` (and quoted in an earlier version
+  of this paragraph) are **wrong**; they come from the defect above. So λ ≡ 1 always fails, and the
+  earlier remark that "admissibility is only sufficient" does not apply to it.
 
 ### 3.3 A second canonical isomorphism (COMPUTED; CONJECTURED in general)
 
@@ -373,7 +390,9 @@ Write P ⊕ Q (all of P below all of Q). It is connected, and Lin(P⊕Q) = Lin P
 Structure maps (PROVEN well defined):
 - q^M : M_{P⊕Q} = W_P W_Q → M_P ⊗ M_Q, uv ↦ ū ⊗ v̄. This is the deconcatenation at the unique
   cut set P, and R_{P⊕Q} = 0.
-- q^L : L_{P⊕Q} → L_P ⊗ L_Q, uve_ζ ↦ ue_ζ ⊗ ve_ζ. L_{P⊕Q} has basis {uve_ζ}.
+- q^L : L_{P⊕Q} → L_P ⊗ L_Q, uve_ζ ↦ ue_{ζ_P} ⊗ ve_{ζ_Q}. L_{P⊕Q} has basis {uve_ζ}. Here
+  ζ_P, ζ_Q are primitive |P|-th and |Q|-th roots of unity, as L_P, L_Q require (corrected per
+  the audit, row 13; an earlier version wrote e_ζ with ζ the n-th root).
 
 Call a family η "ordinal-compatible" if (η_P ⊗ η_Q) q^M = q^L η_{P⊕Q} for all P, Q.
 
@@ -475,7 +494,7 @@ Each command exits with status 0 iff every check passes. The last line printed i
 | `[lie]` | rank Lie_n e_ζ = (n−1)! | n ≤ 6 |
 | `[sum]` | φ_Σ and Σ\|P_i\|φ_i invertible; φ_Σ equivariant (n ≤ 5); control φ_0 not equivariant | disconnected P, n ≤ 6 |
 | `[psi]` | ψ_P is an isomorphism (Theorem 2) | all posets, n ≤ 6 (and n = 7) |
-| `[wgt]` | Theorem Ψ, random admissible weights; control λ ≡ 1 | all posets, n ≤ 6 |
+| `[wgt]` | Theorem Ψ, random admissible weights; control λ ≡ 1. **Defective** (audit §5): wrong class representatives; its counts are not evidence | all posets, n ≤ 6 |
 | `[dyn]` | φ_Σ(x) = xθ_n^*e_ζ for the antichain | n ≤ 5 |
 | `[cop]` | Prop. 4 for the three maps; control: cobracket descends on M | all pairs, n ≤ 5 |
 
@@ -483,7 +502,8 @@ Rigour:
 - Arithmetic is modulo primes p ≡ 1 (mod 420), with ζ an n-th root of unity mod p.
 - **Full rank mod p proves full rank over Q(ζ).** Reduction modulo a prime of Z[ζ] above p is a
   ring map, so a nonzero minor mod p is nonzero in Z[ζ].
-- So `[psi]`, `[sum]` (invertibility), `[lie]` and `[wgt]` are proofs for the listed n.
+- So `[psi]`, `[sum]` (invertibility) and `[lie]` are proofs for the listed n. (`[wgt]` would be
+  too, but it computes the wrong object; see §3.2.)
 - A *vanishing* mod p is only evidence. The vanishings in `[ext]` (connected or n ≤ 2) are checked
   at two primes, and are PROVEN anyway (Theorem 1(ii), (iii)).
 - Non-vanishings ("R_P e_ζ ≠ 0", "does not descend") are certified by one nonzero coordinate mod
@@ -499,8 +519,10 @@ Positive controls (`test_natural_isomorphism.py` and in-script):
 ## 7. Open
 
 - Conjecture 3.3: φ_Σ invertible for all P.
-- An independent audit of Theorem Ψ / Theorem 2. They give a constructive proof of eq.
-  (mainconj).
+- ~~An independent audit of Theorem Ψ / Theorem 2.~~ Done: `notes/audit_natural_isomorphism.md`
+  (HOLDS).
+- Fix `[wgt]` in `compute/natural_isomorphism.py` to use a class member lying in Lin P (audit §5).
+  Not done.
 - Whether Theorem Ψ (weighted contraction) or Cor. Ψ.2 appears in the literature on Klyachko's
   theorem. Not searched.
 - A natural e_ζ-side coproduct of a twisted form. A phase-twisted restriction w ↦ χ(w) w|_S⊗w|_T
