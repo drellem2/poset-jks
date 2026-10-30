@@ -58,8 +58,9 @@ JKS maps, the correction, and the explicit basis:
 - [`notes/audit_conjecture_s.md`](notes/audit_conjecture_s.md): its audit.
 - [`notes/cone_lune_lie_theory.md`](notes/cone_lune_lie_theory.md): cone/lune
   Lie theory for the order cone; a lune form of Conjecture S, and
-  independence of the chambers of pointed cones for every real arrangement
-  (not yet independently audited).
+  independence of the chambers of pointed cones for every finite real
+  central essential arrangement (audited:
+  notes/audit_cone_lune_lie_theory.md).
 
 Cyclic-compatible posets and b_n:
 - [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md):

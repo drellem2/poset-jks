@@ -90,6 +90,7 @@ abbreviations used below are:
 \textbf{[S]} & \src{notes/conjecture_s_splitting_cycles_span.md}\\
 \textbf{[AudS]} & \src{notes/audit_conjecture_s.md}\\
 \textbf{[Cone]} & \src{notes/cone_lune_lie_theory.md}\\
+\textbf{[AudCone]} & \src{notes/audit_cone_lune_lie_theory.md}\\
 \textbf{[Bn]} & \src{notes/cyclic_compatible_posets_bn.md}\\
 \textbf{[AudBn]} & \src{notes/audit_cyclic_compatible_posets_bn.md}\\
 \textbf{[Repro]} & \src{notes/reproduce_character_identity_n_le_5.md}\\
@@ -864,22 +865,25 @@ Ch.~6). For general $P$, no prior statement of (a) or (b) was found
 folklore.
 \end{remark}
 
-\begin{remark}[Cone/lune form; \textbf{not audited}; {[Cone]}]
+\begin{remark}[Cone/lune form; {[Cone]}, audited in {[AudCone]}]
 [Cone] restates Theorem~\ref{thm:S}(b)--(c) in the language of
 Aguiar--Mahajan's top-lunes. Let $\Gamma_{C_P}$ be the span of the chambers
 of the order cone $C_P$, and let $\mathrm{Lune}$ be the span of the
 non-singleton top-lunes. Then
 $\Gamma_{C_P}\cap\mathrm{Lune}=\operatorname{span}\{\text{top-lunes}\subseteq C_P\}$
-([Cone, Thm~4.1]). [Cone, Lemma~E, Thm~5.2] also proves, for every real
-central arrangement, that the chambers of a \emph{pointed} top-cone are
-linearly independent modulo top-lunes. For the braid arrangement this is the
+([Cone, Thm~4.1(a)]; \st{proven}, \st{audited} [AudCone, row~11]). The
+lune form of Theorem~\ref{thm:S}(c) ([Cone, Thm~4.1(c)]) is \st{proven}
+given Prop.~$\Phi$, Lemma~\ref{lem:D} and \ref{in:JS}, exactly as
+Theorem~\ref{thm:S}(c) is ([AudCone, row~12]). [Cone, Lemma~E, Thm~5.2] also
+proves, for every finite real central \emph{essential} arrangement, that the
+chambers of a \emph{pointed} top-cone are linearly independent modulo
+top-lunes (\st{proven}, \st{audited} [AudCone, rows~7--9, \S B.5]). For the braid arrangement this is the
 connected case of Theorem~\ref{thm:S}(a), with a geometric proof. The
 general-cone form of Conjecture~S is [Cone, Conjecture~G], \st{conjectured}
 and \st{computed} for every top-cone of $A_2,A_3,A_4,B_2,B_3$ and on
 samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}~\cite{AguiarMahajan}, Ex.~10.9:
-``non-singleton top-cone'' should read ``non-pointed top-cone''. These
-results are \st{proven} in [Cone] but have \emph{not} been independently
-audited. They are recorded here only as a remark.
+``non-singleton top-cone'' should read ``non-pointed top-cone''
+([AudCone, row~16]). These results are recorded here only as a remark.
 \end{remark}
 
 \section{The global module and $b_n$}\label{sec:global}
@@ -974,11 +978,14 @@ $(2,2,2)$ it has $+128$ where the untwisted formula gives $-128$
 ([Glob, \S1(c)]).
 
 \begin{corollary}[Prime degree]\label{cor:prime}
-For $p$ prime,
+For $p$ an odd prime,
 $\HH_p\cong\frac{b_p-1}{p}\,\mathbb C[S_p]\oplus(\sgn\otimes\Lie_p)$. For
 example, $\HH_3\cong5\operatorname{Reg}\oplus(\sgn\otimes\Lie_3)$ and
 $\HH_5\cong312\operatorname{Reg}\oplus(\sgn\otimes\Lie_5)$. \st{proven},
-given \ref{in:JS}--\ref{in:Hopf}.
+given \ref{in:JS}--\ref{in:Hopf}. The same formula holds for $p=2$, which
+lies outside the range $n\ge3$ of Theorem~\ref{thm:main}, by direct check:
+$\HH_2\cong\mathrm{triv}\oplus\mathbb C[S_2]$, with the convention
+$H_P=\widetilde H_{-1}(\emptyset)=\mathbb C$ (\st{proven} by hand in \src{notes/audit_poset_jks_theorem.md}, \S2).
 \end{corollary}
 
 \begin{proof}

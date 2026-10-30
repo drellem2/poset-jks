@@ -9,6 +9,11 @@ those names.
 
 Every claim is tagged PROVEN, COMPUTED, CITED or CONJECTURED.
 
+Audited in `notes/audit_cone_lune_lie_theory.md` (mg-52a16). The hypothesis
+"essential" (assumed in §1) is now stated in the headings of §§3, 5, 7, and
+the tags of Theorem 4.1(c) and (G3) now carry their conditions (audit rows 9
+and 12). No mathematics was changed.
+
 ## Verdict
 
 | Step | Verdict |
@@ -26,10 +31,10 @@ together with dim H̃_top(Λ(V)) = dim Γ_V/(Γ_V ∩ Lune). For the order cones
 the braid arrangement this is PROVEN (it is Theorem B / C of the Conjecture S
 note). New here:
 
-- **§3, Lemma L (PROVEN, any real arrangement).** A top-lune L(H, D) lies in a
+- **§3, Lemma L (PROVEN, any finite real central essential arrangement).** A top-lune L(H, D) lies in a
   top-cone V iff D ∈ V and H lies in the lineality space of V. For C_P this
   means the blocks of H are unions of components of P.
-- **§5, Lemma E and Theorem 5.2 (PROVEN, any real central arrangement).**
+- **§5, Lemma E and Theorem 5.2 (PROVEN, any finite real central essential arrangement).**
   - Restriction to a hyperplane maps lunes to lunes.
   - Consequently, the chambers of a **pointed** top-cone are linearly
     independent modulo top-lunes.
@@ -40,7 +45,7 @@ note). New here:
   B_4).** The cone-restriction statement holds for every top-cone of every
   real central arrangement. Moreover the chamber cycles of V span
   H̃_top(Λ(V)), which is the general form of Conjecture S.
-- **§7, corrected Topics Ex. 10.9 (PROVEN, any real arrangement).** z is Lie
+- **§7, corrected Topics Ex. 10.9 (PROVEN, any finite real central essential arrangement).** z is Lie
   iff its coefficient sum vanishes on every **non-pointed** top-cone. The
   printed "non-singleton top-cone" is false (literature note §4.2), and
   pointedness is the exact dividing line.
@@ -156,7 +161,7 @@ we have Λ(V) = OP(P) and H̃_top(Λ(V)) = H_P.
 
 ## 3. Which top-lunes lie in a top-cone
 
-**Lemma L (PROVEN, any real central arrangement).** Let V be a top-cone,
+**Lemma L (PROVEN, any finite real central essential arrangement).** Let V be a top-cone,
 H ≠ O a face and D ≥ H a chamber. Then
 
     L(H, D) ⊆ V   ⟺   D ∈ V and H ⊆ lin(V)   ⟺   D ∈ V and S_max(V) ⊆ z(H).
@@ -191,8 +196,9 @@ the arrangements of §8, check `[lin]`.)
 
 ## 4. Step 4 in lune language
 
-**Theorem 4.1 (PROVEN; this is a restatement of Theorems B and C of the
-Conjecture S note).** For every finite poset P:
+**Theorem 4.1 (this is a restatement of Theorems B and C of the Conjecture S
+note).** For every finite poset P (status per part: (a), (b), (d) PROVEN;
+(c) PROVEN given Prop. Φ, Lemma D and J–S Thm 4.5, exactly as Theorem C is):
 
 - (a) Γ_{C_P} ∩ Lune = span{top-lunes contained in C_P}.
   - By Cor. 3.1 the right-hand side is R_P. The left-hand side is
@@ -231,7 +237,7 @@ For the braid arrangement and h = {x_a = x_x}, A^h is the braid arrangement
 on [n] ∖ x, and E_h is the contraction E_{a,x} of the Conjecture S note §2,
 up to a global sign.
 
-**Lemma E (PROVEN, any real central arrangement).** Let H ≠ O and D ≥ H.
+**Lemma E (PROVEN, any finite real central essential arrangement).** Let H ≠ O and D ≥ H.
 
 - If h ∉ z(H), then E_h(L(H, D)) = 0.
 - If h ∈ z(H), then E_h(L(H, D)) = D_h · Σ{F : F a chamber of A^h,
@@ -259,7 +265,7 @@ chamber, in all arrangements of §8, check `[E_h]`.)
 
 ### 5.2 Pointed cones
 
-**Theorem 5.2 (PROVEN, any real central arrangement).** If V is a pointed
+**Theorem 5.2 (PROVEN, any finite real central essential arrangement).** If V is a pointed
 top-cone, its chambers are linearly independent modulo Lune:
 Γ_V ∩ Lune = 0, so q(V) = |V|. Equivalently, every function on the chambers
 of V is the restriction of a Lie element.
@@ -307,8 +313,9 @@ real central arrangement:
   to H̃_{d−2}(Λ(V)) ⊗ E^o ≅ (Lie[A]|_V)^*, as Φ does in Theorem 4.1(c).
 
 Status:
-- **Braid arrangement.** (G1)–(G3) are PROVEN. (G1) and (G2) are Theorem 4.1
-  together with Jenča–Sarkoci. (G3) is Conjecture S.
+- **Braid arrangement.** (G1) and (G2) are PROVEN: they are Theorem 4.1
+  together with Jenča–Sarkoci. (G3) is Conjecture S, and is PROVEN given
+  Prop. Φ, Lemma D and J–S Thm 4.5.
 - **Pointed V.** (G1) is PROVEN by Theorem 5.2. (G2) then reads
   #chambers(V) = |μ(Λ(V))|, a Zaslavsky-type count for pointed cones; it is
   COMPUTED only.
@@ -370,7 +377,7 @@ iff its coefficient sum vanishes on every non-singleton top-cone"), is false
 for the braid arrangement at n = 3. The cone {x_1 ≤ x_2, x_1 ≤ x_3} is a
 counterexample. Lemma L and Theorem 5.2 give the exact repair.
 
-**Proposition 7.1 (PROVEN, any real central arrangement).**
+**Proposition 7.1 (PROVEN, any finite real central essential arrangement).**
 - (a) The chamber sum of a top-cone V lies in Lune iff V is not pointed.
 - (b) Hence z ∈ Lie[A] iff the coefficient sum of z vanishes on every
   non-pointed top-cone.
