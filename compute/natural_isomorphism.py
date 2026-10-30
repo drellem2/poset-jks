@@ -528,11 +528,23 @@ def union_prefix_cuts(w, comps):
     return cuts
 
 
-def weighted_rank(rel, n, lam, p):
-    """Rank mod Sh of { s(w_C) = sum_{cuts k} lam(w_1..w_k)^{-1} rot(w_C, k) }."""
+def lin_class_reps(lin):
+    """One member of Lin P per cyclic class: the least word of C cap Lin P.
+
+    pj.cyclic_classes returns the least rotation, which need not lie in
+    Lin P; s_lam(C) must be built from a word of Lin P (audit section 5)."""
+    reps = {}
+    for w in sorted(lin):
+        reps.setdefault(pj.class_rep(w), w)
+    return [reps[c] for c in sorted(reps)]
+
+
+def weighted_rank(rel, n, lam, p, reps_fn=lin_class_reps):
+    """Rank mod Sh of { s(w_C) = sum_{cuts k} lam(w_1..w_k)^{-1} rot(w_C, k) },
+    w_C in C cap Lin P.  reps_fn is a hook for the positive-control test."""
     lin = pj.linear_extensions(rel, n)
     comps = components(rel, n)
-    reps = pj.cyclic_classes(lin)
+    reps = reps_fn(lin)
     rows, colindex = [], {}
     for r in reps:
         acc = defaultdict(int)
@@ -555,7 +567,7 @@ def weighted_rank(rel, n, lam, p):
     return (rank_dense(dense, p) if cols else 0), len(reps)
 
 
-def check_weights(posets, nmax, out, seed=1):
+def check_weights(posets, nmax, out, seed=1, reps_fn=lin_class_reps):
     import random
     rng = random.Random(seed)
     ok = True
@@ -577,17 +589,19 @@ def check_weights(posets, nmax, out, seed=1):
                     if all(_prod(lam, U, p) != 1 for U in unions):
                         break
                 cnt += 1
-                rk, e = weighted_rank(rel, n, lam, p)
+                rk, e = weighted_rank(rel, n, lam, p, reps_fn)
                 good += rk == e
             if len(comps) > 1:
                 # lam = 1 violates the hypothesis; for antichains the rank
                 # must drop (cyclic sums of words lie in Sh_n): positive control
                 ctl_tested += 1
-                rk, e = weighted_rank(rel, n, [1] * n, p)
+                rk, e = weighted_rank(rel, n, [1] * n, p, reps_fn)
                 ctl_drop += rk < e
                 if not rel:
                     anti_drop = rk < e
-        line = good == cnt and anti_drop
+        # lam = 1 always drops for disconnected P (PROVEN, audit section 5):
+        # sum_C s_1(C) = sum_{w in Lin P} w lies in Sh_n
+        line = good == cnt and anti_drop and ctl_drop == ctl_tested
         ok &= line
         out.append(f"[wgt] n={n}: random admissible weights: independent {good}/{cnt}; "
                    f"lam=1 (inadmissible): rank drops for {ctl_drop}/{ctl_tested} disconnected P, "

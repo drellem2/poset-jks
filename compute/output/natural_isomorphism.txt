@@ -25,9 +25,9 @@
 [psi] n=6: 318 posets (80 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 318/318: True
 [wgt] n=2: random admissible weights: independent 4/4; lam=1 (inadmissible): rank drops for 1/1 disconnected P, incl. the antichain (control): True: True
 [wgt] n=3: random admissible weights: independent 10/10; lam=1 (inadmissible): rank drops for 2/2 disconnected P, incl. the antichain (control): True: True
-[wgt] n=4: random admissible weights: independent 32/32; lam=1 (inadmissible): rank drops for 5/6 disconnected P, incl. the antichain (control): True: True
-[wgt] n=5: random admissible weights: independent 126/126; lam=1 (inadmissible): rank drops for 16/19 disconnected P, incl. the antichain (control): True: True
-[wgt] n=6: random admissible weights: independent 636/636; lam=1 (inadmissible): rank drops for 63/80 disconnected P, incl. the antichain (control): True: True
+[wgt] n=4: random admissible weights: independent 32/32; lam=1 (inadmissible): rank drops for 6/6 disconnected P, incl. the antichain (control): True: True
+[wgt] n=5: random admissible weights: independent 126/126; lam=1 (inadmissible): rank drops for 19/19 disconnected P, incl. the antichain (control): True: True
+[wgt] n=6: random admissible weights: independent 636/636; lam=1 (inadmissible): rank drops for 80/80 disconnected P, incl. the antichain (control): True: True
 [dyn] n=2: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
 [dyn] n=3: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
 [dyn] n=4: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
