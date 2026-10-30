@@ -21,3 +21,7 @@ Open problems are in its sections "Status: proved, supported, and open" and
   checks of a_n, b_n = |B_n| (cyclic-compatible posets), b_n = n[x^n] log A(x),
   Σ_P e_C(P) = (n−1)! b_n and the C_n-action on B_n. Findings and proof:
   [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md).
+- `python3 compute/audit_cyclic_posets.py [--b8]` — independent re-check of the above
+  (all labeled posets n ≤ 6, explicit cyclic-factorization bijection, character of
+  ⊕_P Lie(P); `--b8` adds a_n and b_n via Lemma 1(c) to n = 8). Audit:
+  [`notes/audit_cyclic_compatible_posets_bn.md`](notes/audit_cyclic_compatible_posets_bn.md).
