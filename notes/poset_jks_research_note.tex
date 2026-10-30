@@ -1,0 +1,552 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{lemma}{Lemma}
+\newtheorem{question}{Question}
+\newcommand{\OP}{\mathcal O}
+\newcommand{\Lin}{\operatorname{LinExt}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Cyc}{\operatorname{CycExt}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\HH}{\mathbb H}
+
+\title{A Poset--Joyal--Klyachko--Stanley Conjecture\\and a Possible Poset Lie Theory}
+\author{}
+\date{Research note --- October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note records a conjectural equivariant refinement of the theorem of
+Jen\v{c}a--Sarkoci on the topology of the lattice of order-preserving
+partitions of a finite poset. The conjecture identifies the top homology
+representation with a Klyachko/free-Lie projection of the linear-extension
+set. It is true for the antichain by the classical
+Joyal--Klyachko--Stanley correspondence, has the correct dimension for every
+poset by Jen\v{c}a--Sarkoci, and has been checked computationally for every
+unlabeled poset through $n=5$, together with several symmetric examples at
+$n=6$. The note isolates an equivalent character formula and a concrete
+restriction lemma whose proof would settle the conjecture. It also records
+a global $S_n$-module obtained by summing over all labeled posets and the
+resulting Witt/plethystic-logarithm pattern.
+\end{abstract}
+
+\section{The basic objects}
+
+Let $P$ be a finite poset on the labeled ground set $[n]$.
+
+\subsection{Order-preserving partitions}
+An \emph{order-preserving partition} (order congruence) of $P$ is a set
+partition $\pi$ of $[n]$ such that the quotient relation $P/\pi$ is again
+acyclic. Let $\OP(P)$ be the lattice of order-preserving partitions and
+write
+\[
+\widehat{\OP(P)}=\OP(P)\setminus\{\hat0,\hat1\}.
+\]
+
+Equivalently, begin with the compatible ordered-partition complex
+\[
+\mathcal F(P)=\coprod_k \operatorname{Sur}_{\rm iso}(P,[k]),
+\]
+whose top-dimensional chambers are the linear extensions of $P$.
+Forgetting block order gives the support map
+\[
+\mathcal F(P)\longrightarrow \OP(P).
+\]
+Geometrically, $P$ cuts out the order cone
+\[
+C_P=\{x\in\mathbb R^n:x_i\le x_j \text{ whenever }i<_Pj\},
+\]
+and the braid arrangement subdivides $C_P$ into chambers indexed by
+$\Lin(P)$.
+
+\subsection{Cyclic classes of linear extensions}
+Let $\Lin(P)\subseteq S_n$ be the set of linear extensions, written as words
+$w=w_1\cdots w_n$. Let $C_n=\langle\gamma\rangle$ with
+$\gamma=(1\,2\,\cdots\,n)$ act on positions by cyclic rotation. A cyclic
+class of linear extensions is a $C_n$-orbit in $S_n$ meeting $\Lin(P)$.
+Let
+\[
+e_C(P)=|\Cyc(P)|.
+\]
+
+Jen\v{c}a--Sarkoci prove
+\[
+\Delta(\widehat{\OP(P)})\simeq\bigvee^{e_C(P)}S^{n-3}.
+\]
+Hence
+\begin{equation}
+\dim \widetilde H_{n-3}(\widehat{\OP(P)};\mathbb C)=e_C(P).
+\label{eq:JSdim}
+\end{equation}
+If $P$ is connected, then $e_C(P)=|\Lin(P)|$.
+
+\section{The candidate poset Lie module}
+Fix a primitive $n$th root of unity $\zeta$ and set
+\[
+e_\zeta=\frac1n\sum_{j=0}^{n-1}\zeta^{-j}\gamma^j\in\mathbb C[S_n].
+\]
+Define
+\begin{equation}
+\mathsf{Lie}(P):=\operatorname{span}_{\mathbb C}\{we_\zeta:w\in\Lin(P)\}
+\subseteq\mathbb C[S_n]e_\zeta.
+\label{eq:posetLie}
+\end{equation}
+
+Two linear extensions in the same cyclic class determine proportional
+vectors after multiplication by $e_\zeta$, while vectors supported on
+different right $C_n$-cosets are independent. Therefore
+\begin{equation}
+\dim \mathsf{Lie}(P)=e_C(P).
+\label{eq:posetLiedim}
+\end{equation}
+The automorphism group $G=\Aut(P)$ acts on $\mathsf{Lie}(P)$ by left
+multiplication.
+
+\begin{conjecture}[Poset JKS conjecture]
+For every finite $n$-element poset $P$, there is a natural
+$\Aut(P)$-equivariant isomorphism
+\begin{equation}
+\boxed{
+\widetilde H_{n-3}(\widehat{\OP(P)};\mathbb C)
+\cong \sgn\otimes\mathsf{Lie}(P).}
+\label{eq:mainconj}
+\end{equation}
+Here $\sgn$ is the restriction to $\Aut(P)$ of the sign character of $S_n$.
+\end{conjecture}
+
+\section{Why this is the correct generalization}
+
+\subsection{The antichain recovers classical free Lie theory}
+If $P$ is the antichain on $[n]$, then
+\[
+\OP(P)=\Pi_n,\qquad \Lin(P)=S_n.
+\]
+Thus
+\[
+\mathsf{Lie}(P)=\mathbb C[S_n]e_\zeta\cong\Ind_{C_n}^{S_n}\zeta.
+\]
+By Klyachko this is the multilinear degree-$n$ component $\Lie_n$ of the
+free Lie algebra. The conjecture becomes
+\[
+\widetilde H_{n-3}(\overline{\Pi_n})\cong\sgn\otimes\Lie_n,
+\]
+the classical Joyal--Klyachko--Stanley theorem.
+
+Thus the conjecture is not merely analogous to JKS: it is a proposed
+restriction of the same phenomenon from the full braid arrangement to the
+order cone of a poset.
+
+\subsection{Compatible faces and the braid arrangement}
+The braid arrangement has
+\[
+\text{chambers}=\text{permutations},\qquad
+\text{faces}=\text{ordered set partitions},
+\]
+and support lattice $\Pi_n$. Restriction to $C_P$ retains exactly the
+chambers $\Lin(P)$; compatible faces are surjective isotone maps $P\to[k]$,
+and their supports are the elements of $\OP(P)$.
+
+\section{Equivalent character formulation}
+Let
+\[
+H_P=\widetilde H_{n-3}(\widehat{\OP(P)};\mathbb C).
+\]
+For $g\in G=\Aut(P)$, homology is concentrated in top degree, so the
+Lefschetz trace formula gives
+\begin{equation}
+\chi_{H_P}(g)=(-1)^{n-3}\mu(\OP(P)^g),
+\label{eq:homchar}
+\end{equation}
+where $\OP(P)^g$ is the fixed-point subposet and $\mu$ its M\"obius number.
+
+A cyclic class $C\in\Cyc(P)$ contributes to the trace on $\mathsf{Lie}(P)$
+only if it is setwise fixed. For a fixed class, write
+\[
+r_g(C)\in\mathbb Z/n
+\]
+for the rotation amount induced by $g$. Then
+\begin{equation}
+\chi_{\mathsf{Lie}(P)}(g)=
+\sum_{\substack{C\in\Cyc(P)\\gC=C}}\zeta^{r_g(C)}.
+\label{eq:liechar}
+\end{equation}
+Hence the conjecture is equivalent to
+\begin{equation}
+\boxed{
+(-1)^{n-3}\mu(\OP(P)^g)
+=\sgn(g)\sum_{\substack{C\in\Cyc(P)\\gC=C}}\zeta^{r_g(C)}}
+\qquad(g\in\Aut(P)).
+\label{eq:characterconj}
+\end{equation}
+At $g=1$ this reduces exactly to the Jen\v{c}a--Sarkoci counting theorem.
+Thus the conjecture is an equivariant root-of-unity refinement of their
+result.
+
+\section{Embedding into the classical JKS module}
+There is an inclusion
+\[
+\OP(P)\hookrightarrow\Pi_n.
+\]
+Consequently
+\[
+\Delta(\widehat{\OP(P)})\subseteq\Delta(\overline{\Pi_n}).
+\]
+Both complexes have top dimension $n-3$. There are no ambient
+$(n-2)$-chains, so a nonzero top cycle in $\widehat{\OP(P)}$ cannot become a
+boundary after inclusion. Thus
+\begin{equation}
+H_P\hookrightarrow\widetilde H_{n-3}(\overline{\Pi_n})
+\label{eq:homembed}
+\end{equation}
+is injective and $\Aut(P)$-equivariant.
+
+Let
+\[
+J:\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn
+\stackrel{\sim}{\longrightarrow}\Lie_n
+\]
+be a classical JKS isomorphism, and let
+\[
+W_P=\mathbb C\{\Lin(P)\}\subseteq\mathbb C[S_n].
+\]
+The conjecture follows from the single restricted-image statement
+\begin{equation}
+\boxed{
+J(H_P\otimes\sgn)
+=\operatorname{span}\{we_\zeta:w\in\Lin(P)\}.}
+\label{eq:restrictionlemma}
+\end{equation}
+This is the main concrete lemma still to be proved.
+
+\section{A second formulation using Lie idempotents}
+One may replace $e_\zeta$ by a standard Lie idempotent, for example a
+Klyachko idempotent $\kappa_n$, since both generate isomorphic copies of the
+Lie representation in $\mathbb C[S_n]$. The expected statement is
+\[
+J(H_P\otimes\sgn)=W_P\kappa_n\cong W_Pe_\zeta.
+\]
+This suggests a group-algebra proof:
+\begin{enumerate}[label=\arabic*.]
+\item choose an explicit combinatorial JKS map $J$;
+\item evaluate it on generators of the top cycles of $\OP(P)$;
+\item prove the image lies in $W_P\kappa_n$;
+\item use $\dim H_P=e_C(P)=\dim W_Pe_\zeta$ to conclude equality.
+\end{enumerate}
+Only containment is genuinely new.
+
+\section{Potential proof via splitting spheres}
+For a linear extension $w=w_1\cdots w_n$, allow cuts only between successive
+letters of $w$. These interval partitions form a Boolean sublattice whose
+proper part is an $(n-3)$-sphere. Classical proofs of JKS, especially those
+of Barcelo and Wachs, use closely related splitting cycles/bracketings to
+compare partition-lattice homology with free Lie algebra bases.
+
+This is promising for \eqref{eq:restrictionlemma}. A caution is essential:
+individual cyclically rotated splitting cycles need not be scalar multiples
+in homology, whereas
+\[
+w\gamma^je_\zeta=\zeta^jwe_\zeta
+\]
+(up to Fourier-sign convention). Thus the cyclic Fourier projection must be
+introduced after assembling the relevant top cycles; one should not expect a
+sphere-by-sphere identification.
+
+\begin{lemma}[Desired restricted JKS lemma]
+Under a suitable explicit JKS isomorphism, the span of top cycles supported
+on order-preserving partitions of $P$ maps onto $W_Pe_\zeta$.
+\end{lemma}
+
+\section{Potential proof via hyperplane-arrangement Lie theory}
+Aguiar--Mahajan develop a Lie theory relative to finite real hyperplane
+arrangements, extending the classical JKS correspondence beyond the braid
+arrangement. Their framework uses the Tits algebra, faces, flats, lunes and
+arrangement-theoretic Lie elements.
+
+The poset setting is a cone restriction of the braid arrangement rather
+than a new central arrangement. The natural program is:
+\begin{enumerate}[label=\arabic*.]
+\item express $\mathcal F(P)$ as the face/left-regular-band object attached
+to the cone $C_P$;
+\item identify its support semilattice with $\OP(P)$;
+\item identify the maximal-support Lie/Peirce component;
+\item show that inclusion into the full braid-arrangement Tits algebra sends
+that component to $W_Pe_\zeta\subseteq\Lie_n$.
+\end{enumerate}
+If the existing theory applies directly to cones/lunes, this may prove the
+conjecture conceptually; otherwise it isolates the needed cone-restriction
+version of JKS.
+
+\section{Computational evidence}
+The full character identity \eqref{eq:characterconj} has been checked
+computationally for every unlabeled poset on $n\le5$. In particular, for
+$n=3,4,5$ this covers $5+16+63=84$ nontrivial isomorphism types.
+
+For each $P$ and each $g\in\Aut(P)$ the computation compared
+\[
+(-1)^{n-3}\mu(\OP(P)^g)
+\]
+with
+\[
+\sgn(g)\sum_{C:gC=C}\zeta^{r_g(C)}.
+\]
+No discrepancy was found.
+
+Additional symmetric $n=6$ examples tested include a five-armed star, the
+complete bipartite $3+3$ poset, and three disjoint $2$-chains. In the last
+example an automorphism cyclically permuting the three components gives
+character value $-1$, so the test detects a genuine nontrivial root-of-unity
+phase rather than merely fixed-point counting.
+
+These computations should be independently reproduced and archived before
+being cited as formal results.
+
+\section{A global $S_n$-module}
+Restore full symmetric-group symmetry by summing over every labeled poset on
+$[n]$:
+\begin{equation}
+\HH_n:=\bigoplus_{P\text{ on }[n]}
+\widetilde H_{n-3}(\widehat{\OP(P)};\mathbb C).
+\label{eq:globalH}
+\end{equation}
+Relabeling permutes the summands, so $\HH_n$ is an $S_n$-module.
+Conjecturally,
+\[
+\HH_n\otimes\sgn\cong\bigoplus_{P\text{ on }[n]}\mathsf{Lie}(P).
+\]
+
+Fix one cyclic order and let $B_n$ be the set of labeled posets compatible
+with it. The expected induced representation is
+\begin{equation}
+\HH_n\cong\sgn\otimes
+\Ind_{C_n}^{S_n}(\zeta\otimes\mathbb C[B_n]).
+\label{eq:globalind}
+\end{equation}
+This places the global object in the theory of cyclic/Foulkes characters.
+
+\section{Witt and plethystic-logarithm pattern}
+Let $a_n$ be the number of naturally labeled posets on $[n]$ and set
+\[
+A(x)=1+\sum_{n\ge1}a_nx^n.
+\]
+The initial values are
+\[
+a_n=1,2,7,40,357,4824,96428,\ldots.
+\]
+Empirically, for $b_n=|B_n|$,
+\begin{equation}
+b_n=n[x^n]\log A(x),
+\label{eq:bnlog}
+\end{equation}
+which gives
+\[
+b_n=1,3,16,131,1561,26532,637890,21580043,\ldots.
+\]
+
+Assuming the global induced-module description, the Frobenius characteristic
+has the divisor-sum form
+\begin{equation}
+\ch\HH_n=
+\frac1n\sum_{d\mid n}(-1)^{n-n/d}\mu(d)b_{n/d}p_d^{n/d},
+\label{eq:frob}
+\end{equation}
+with the displayed sign depending on the convention for the outer sign
+twist. Ignoring that twist,
+\begin{equation}
+\sum_{n\ge1}\ch(\HH_n^{\rm untwisted})
+=\sum_{d\ge1}\frac{\mu(d)}{d}\log A(p_d),
+\label{eq:plethlog}
+\end{equation}
+which has exactly the formal shape of a plethystic logarithm.
+
+For comparison,
+\[
+\ch(\Lie_n)=\frac1n\sum_{d\mid n}\mu(d)p_d^{n/d}.
+\]
+Thus the global poset construction appears to replace the scalar one-generator
+input in Witt's formula by the naturally labeled-poset series $A$.
+
+\section{Prime-degree sanity check}
+For prime $p$, the $C_p$-action on $B_p$ has the antichain as a fixed point
+and every other orbit has size $p$. The induced-module picture predicts
+\[
+\HH_p\cong\frac{b_p-1}{p}\,\mathbb C[S_p]\oplus
+(\sgn\otimes\Lie_p).
+\]
+For example,
+\[
+\HH_3\cong5\,\operatorname{Reg}_{S_3}\oplus
+(\sgn\otimes\Lie_3),
+\]
+\[
+\HH_5\cong312\,\operatorname{Reg}_{S_5}\oplus
+(\sgn\otimes\Lie_5).
+\]
+The nonregular summand is exactly the classical Lie representation.
+
+\section{Status: proved, supported, and open}
+\subsection*{Known or elementary}
+\begin{itemize}
+\item Jen\v{c}a--Sarkoci: $\Delta(\widehat{\OP(P)})$ is a wedge of
+$e_C(P)$ spheres of dimension $n-3$.
+\item Hence $\dim H_P=e_C(P)$.
+\item By construction $\dim\mathsf{Lie}(P)=e_C(P)$.
+\item The antichain case is classical JKS/Klyachko.
+\item The inclusion $H_P\hookrightarrow\widetilde
+H_{n-3}(\overline{\Pi_n})$ is equivariant and injective.
+\item The main conjecture is equivalent to the character identity
+\eqref{eq:characterconj}.
+\end{itemize}
+
+\subsection*{Computationally supported}
+\begin{itemize}
+\item The full character identity holds for every unlabeled poset through
+$n=5$ in the current computations.
+\item It also holds for several symmetric $n=6$ examples.
+\item The global dimensions and cyclic orbit structure are consistent with
+\eqref{eq:globalind}--\eqref{eq:plethlog}.
+\end{itemize}
+
+\subsection*{Still to prove}
+\begin{itemize}
+\item The restricted JKS image identity \eqref{eq:restrictionlemma}.
+\item Equivalently, the fixed-point M\"obius/root-of-unity identity
+\eqref{eq:characterconj}.
+\item Naturality with respect to useful operations on posets.
+\item The global induced-module formula \eqref{eq:globalind}.
+\item A direct proof of \eqref{eq:bnlog} in the precise convention used for
+$B_n$.
+\item Whether the modules $\mathsf{Lie}(P)$ admit an intrinsic bracket,
+operadic composition, or Hopf-monoid structure deserving the name ``poset
+Lie algebra.''
+\end{itemize}
+
+\section{Concrete next research steps}
+\subsection{1. Prove the character identity directly}
+For fixed $g\in\Aut(P)$, classify $\OP(P)^g$ and seek a $g$-equivariant
+version of the Jen\v{c}a--Sarkoci recursion. The target is
+\[
+(-1)^{n-3}\mu(\OP(P)^g)=
+\sgn(g)\sum_{C:gC=C}\zeta^{r_g(C)}.
+\]
+The new issue is that fixed cyclic classes must be counted with phase, not
+merely multiplicity.
+
+\subsection{2. Prove restricted JKS containment}
+Choose an explicit JKS map from the literature, preferably one using
+splitting cycles or bracketings. For every top cycle supported in $\OP(P)$,
+show
+\[
+J(z)\in W_Pe_\zeta.
+\]
+Dimension equality then gives the theorem.
+
+\subsection{3. Compare with arrangement Lie idempotents}
+Translate $C_P$ and $\mathcal F(P)$ into the Aguiar--Mahajan framework and
+check whether the maximal-support Lie/Peirce component is already known to
+be the restriction of the braid-arrangement Lie component.
+
+\subsection{4. Extend computation strategically}
+Rather than enumerate all posets at $n=6,7$, prioritize highly symmetric
+families: unions of equal chains, complete layered posets, crowns, products,
+and symmetric width-$2$/$3$ examples. Record for every conjugacy class
+\[
+\mu(\OP(P)^g),\quad \#\{C:gC=C\},\quad\{r_g(C)\},\quad\chi_{H_P}(g).
+\]
+
+\subsection{5. Investigate functorial composition}
+Test $\mathsf{Lie}(P)$ under disjoint sum, ordinal sum, products, and poset
+substitution. A genuine species/operad structure should explain the
+plethystic logarithm rather than merely reproduce it numerically.
+
+\section{Relation to the moonshine motivation}
+The construction does not presently produce modular forms. What it does
+produce is a structurally analogous intermediate phenomenon:
+\[
+\text{large combinatorial family}
+\longrightarrow\text{equivariant homology}
+\longrightarrow\text{Lie/Foulkes characters}
+\longrightarrow\text{Witt/plethystic-logarithm identities}.
+\]
+This is notable because denominator/Witt identities are also a central
+algebraic layer in Borcherds-style moonshine constructions. The immediate
+question is therefore not whether this is already moonshine, but whether the
+compatible-face/order-congruence construction defines a natural
+Lie-theoretic primitive functor on posets.
+
+\begin{question}
+Does the compatible-face/order-congruence construction define a natural
+primitive or Lie functor on posets whose local character theory is governed
+by \eqref{eq:mainconj} and whose global cycle index is the plethystic
+logarithm of the poset species?
+\end{question}
+
+A positive answer would provide a coherent poset Lie theory. Only then does
+it become natural to search for an additional grading or operator whose
+traces might have modular or automorphic properties.
+
+\section{References}
+\begin{thebibliography}{99}
+
+\bibitem{JencaSarkoci}
+G.~Jen\v{c}a and P.~Sarkoci,
+\emph{Linear extensions and order-preserving poset partitions},
+Journal of Combinatorial Theory, Series A \textbf{122} (2014), 28--38.
+DOI: \href{https://doi.org/10.1016/j.jcta.2013.09.010}
+{10.1016/j.jcta.2013.09.010}.
+
+\bibitem{Barcelo}
+H.~Barcelo,
+\emph{On the action of the symmetric group on the free Lie algebra and the
+partition lattice},
+Journal of Combinatorial Theory, Series A \textbf{55} (1990), 93--129.
+DOI: \href{https://doi.org/10.1016/0097-3165(90)90050-7}
+{10.1016/0097-3165(90)90050-7}.
+
+\bibitem{Wachs}
+M.~L.~Wachs,
+\emph{On the (co)homology of the partition lattice and the free Lie algebra},
+Discrete Mathematics \textbf{193} (1998), 287--319.
+DOI: \href{https://doi.org/10.1016/S0012-365X(98)00147-2}
+{10.1016/S0012-365X(98)00147-2}.
+
+\bibitem{AguiarMahajan}
+M.~Aguiar and S.~Mahajan,
+\emph{Bimonoids for Hyperplane Arrangements},
+Encyclopedia of Mathematics and its Applications, Cambridge University
+Press, 2020.
+
+\bibitem{Klyachko}
+A.~A.~Klyachko,
+\emph{Lie elements in the tensor algebra},
+Siberian Mathematical Journal \textbf{15} (1974).
+The relevant theorem identifies the multilinear Lie representation with the
+representation induced from a faithful character of a long cyclic subgroup;
+exact pagination should be checked before publication.
+
+\end{thebibliography}
+
+\section*{Research status summary}
+The compact statement to carry forward is
+\[
+\boxed{
+\widetilde H_{n-3}(\widehat{\OP(P)})
+\stackrel{?}{\cong}
+\sgn\otimes\operatorname{span}\{we_\zeta:w\in\Lin(P)\}.}
+\]
+The strongest next move is to prove either the restricted JKS image identity
+\eqref{eq:restrictionlemma} or the equivalent fixed-point M\"obius identity
+\eqref{eq:characterconj}.
+
+\end{document}
