@@ -1,0 +1,19 @@
+[E]  n=2: E_(a,x)(u sh v) == predicted for 4 (shuffle, pair) cases: True
+[La] n=2: rank L_a = 1 (expect 1), kills all proper shuffles: True: True
+[E]  n=3: E_(a,x)(u sh v) == predicted for 72 (shuffle, pair) cases: True
+[La] n=3: rank L_a = 2 (expect 2), kills all proper shuffles: True: True
+[E]  n=4: E_(a,x)(u sh v) == predicted for 864 (shuffle, pair) cases: True
+[La] n=4: rank L_a = 6 (expect 6), kills all proper shuffles: True: True
+[E]  n=5: E_(a,x)(u sh v) == predicted for 9600 (shuffle, pair) cases: True
+[La] n=5: rank L_a = 24 (expect 24), kills all proper shuffles: True: True
+[E]  n=6: E_(a,x)(u sh v) == predicted for 108000 (shuffle, pair) cases: True
+[La] n=6: rank L_a = 120 (expect 120), kills all proper shuffles: True: True
+[S]  n=2: 2 posets (1 connected): rank(Lin P mod Sh) = e_C: 2/2; K_P = R_P: 2/2; connected K_P = 0: 1/1; [B] first-block basis: 2/2: True
+[S]  n=3: 5 posets (3 connected): rank(Lin P mod Sh) = e_C: 5/5; K_P = R_P: 5/5; connected K_P = 0: 3/3; [B] first-block basis: 5/5: True
+[S]  n=4: 16 posets (10 connected): rank(Lin P mod Sh) = e_C: 16/16; K_P = R_P: 16/16; connected K_P = 0: 10/10; [B] first-block basis: 16/16: True
+[S]  n=5: 63 posets (44 connected): rank(Lin P mod Sh) = e_C: 63/63; K_P = R_P: 63/63; connected K_P = 0: 44/44; [B] first-block basis: 63/63: True
+[S]  n=6: 318 posets (238 connected): rank(Lin P mod Sh) = e_C: 318/318; K_P = R_P: 318/318; connected K_P = 0: 238/238; [B] first-block basis: 318/318: True
+[rho] n=3: {rho_w : w in B_P} independent chains, |B_P| = e_C: 5/5: True
+[rho] n=4: {rho_w : w in B_P} independent chains, |B_P| = e_C: 16/16: True
+[rho] n=5: {rho_w : w in B_P} independent chains, |B_P| = e_C: 63/63: True
+ALL CHECKS PASSED

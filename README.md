@@ -42,3 +42,9 @@ code in [`compute/`](compute/) (`cd compute && python3 poset_jks_check.py --help
   primitives of the Hopf monoid of posets with a linear extension (n ≤ 4), and the
   e_ζ-model bracket test. Findings (proof pending independent audit):
   [`notes/global_module_operations_plethlog.md`](notes/global_module_operations_plethlog.md).
+- `cd compute && python3 conjecture_s.py --nmax 6 --ne 6 --nrho 5` (plain Python, ~3 s;
+  `--nmax 7 --ne 7` ~90 s) — linear extensions modulo proper shuffles: the
+  contraction lemma, W_P ∩ Sh_n = R_P, the first-block basis, and Conjecture S
+  for all posets n ≤ 7. Proof of Conjecture S for every finite poset (hence the
+  main conjecture for connected P), pending independent audit:
+  [`notes/conjecture_s_splitting_cycles_span.md`](notes/conjecture_s_splitting_cycles_span.md).

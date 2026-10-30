@@ -70,3 +70,13 @@ Findings: `../notes/n7_character_sweep_and_homology_crosscheck.md`.
         --out output/n7_homology_all.tsv > output/n7_homology_all.txt
     # tests (includes the JKS closed-form positive control and a corrupted-boundary negative control)
     python3 -m unittest test_n7_and_homology
+
+`conjecture_s.py` checks the proof of Conjecture S in
+`../notes/conjecture_s_splitting_cycles_span.md`: the contraction lemma
+E_{a,x}(Sh) ⊆ Sh, ker L_a = Sh, W_P ∩ Sh_n = R_P, the first-block basis B_P
+(n ≤ 7 with `--nmax 7 --ne 7`), and chain-level independence of
+{ρ_w : w ∈ B_P} (n ≤ 5). Exit status 0 iff every check passes. Run from this
+directory:
+
+    python3 conjecture_s.py --nmax 6 --ne 6 --nrho 5 > output/conjecture_s.txt   # ~3 s
+    python3 -m unittest test_conjecture_s
