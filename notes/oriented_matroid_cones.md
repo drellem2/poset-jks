@@ -8,6 +8,9 @@ the det-twisted module identity). The real-case proofs are in [GT] §§0–1,
 [AudA] = `notes/audit_general_theory_cones.md` §C (Props. A, B and
 Theorem C) and [AudC] = `notes/audit_theorem_c.md`. Prior art already
 recorded in [NovGT] = `notes/novelty_general_theory.md` is not repeated.
+This note is independently audited in [AudOM] =
+`notes/audit_oriented_matroid_cones.md`: every claim tagged PROVEN holds,
+and its corrections are applied here.
 
 Tags, as in [GT]: **PROVEN** (full proof here, cited inputs named),
 **COMPUTED** (by `compute/oriented_matroid_cones.py`, see Reproduce),
@@ -21,9 +24,9 @@ M is a simple OM of rank r on E, and V is a nonempty T-convex set of topes
 | Statement | Status |
 |---|---|
 | **Lemma 0.2-OM** (closed-cone lemma): the closed face complex of V is contractible if V ≠ all topes, and ≃ S^{r−1} if V = all topes; the same for every fibre over a flat | **PROVEN**, by a new elementary argument (deletion and Quillen's fibre lemma; no shellability, no topological representation theorem). The contractible case is also KNOWN, in the stronger form "shellable ball" (Mücksch 2022, Cor. 2.23, from BLSWZ Thm 4.3.3). COMPUTED for every sign condition on four OMs. |
-| **Theorem 1-OM**: Δ(Λ̄(V)) ≃ ⋁^{m(V)} S^{r−2}, with m(V) = (−1)^r μ_{Λ(V)}(0̂, 1̂) ≥ 0 | **PROVEN.** The homology form (free, concentrated in degree r − 2, rank m(V)) is proven for all r by OM combinatorics alone. The homotopy form is proven for r ≤ 3 the same way; for r ≥ 4 it also uses simple connectivity of tope boundaries, which comes from the cell structure (BLSWZ Thm 4.3.3, i.e. the topological representation theorem). COMPUTED on all 1,295 T-convex sets of non-Pappus. |
+| **Theorem 1-OM**: Δ(Λ̄(V)) ≃ ⋁^{m(V)} S^{r−2}, with m(V) = (−1)^r μ_{Λ(V)}(0̂, 1̂) ≥ 0 | **PROVEN.** The homology form (free, concentrated in degree r − 2, rank m(V)) is proven for all r by OM combinatorics alone. The homotopy form is proven for r ≤ 3 the same way. For r ≥ 4 it also uses simple connectivity of tope boundaries (not the topological representation theorem): for r = 4 this follows from Lemma 2.2 and the classification of surfaces, for r ≥ 5 from shellability (BLSWZ Prop. 4.3.2 / Thm 4.3.3, CITED). COMPUTED on all 1,295 T-convex sets of non-Pappus. |
 | **Theorem 2-OM**: #V = Σ_{flats Z ⊇ S_max(V)} (−1)^{rk Z} μ_{Λ(V)}(Z, 1̂) | **PROVEN** (OM combinatorics and Möbius inversion). COMPUTED. |
-| **Prop. 3-OM**: the bottom multiplicity of Σ_L on Γ_V is m(V), and q(V) ≤ m(V) | **PROVEN, given Brown** (an LRB theorem; it uses no geometry). COMPUTED. |
+| **Prop. 3-OM**: the bottom multiplicity of Σ_L on Γ_V is m(V), and q(V) ≤ m(V) | **PROVEN, given Brown** (an LRB theorem; it uses no geometry; CITED, re-checked in the source in [AudOM, §1]). COMPUTED. |
 | **Prop. A-OM, Prop. B-OM** (f_* is split onto; Γ/Lune ≅ H̃_{r−2}(L̄(M)) via C ↦ ρ_C) | **PROVEN** (B given Brown). B is COMPUTED at chain level over Z. |
 | **Theorem C-OM / G\***: the ρ_C span; q(V) = m(V); (G1); H̃_{r−2}(Λ̄(V)) ≅ det ⊗ (Γ_V + Lune)/Lune as Stab(V)-modules | **PROVEN, given Brown.** det is the orientation character of Aut(M) on H_{r−1}(Δ(L ∖ 0)). COMPUTED on non-Pappus (both orientations) and three realizable controls. |
 | "Brown's §7 argument behind Theorem C needs realizability" | **REFUTED.** Brown's §7.2 theorem is stated for an arbitrary finite LRB over an arbitrary field. The covector monoid of any OM satisfies its hypotheses (checked in §5). No step of Theorem C uses realizability. |
@@ -32,8 +35,10 @@ M is a simple OM of rank r on E, and V is a nonempty T-convex set of topes
 **Where realizability is used: nowhere.** Every ingredient of the
 real-case proofs is either purely poset-topological, or LRB algebra, or has
 an OM proof given below. The one place that needs more than covector
-combinatorics is the simple connectivity in Theorem 1 for r ≥ 4. That fact
-holds for every OM by the topological representation theorem (§7).
+combinatorics is the simple connectivity of tope boundaries in Theorem 1
+for r ≥ 4. That fact holds for every OM: for r = 4 by Lemma 2.2 and the
+classification of surfaces, for r ≥ 5 by shellability (§3). The
+topological representation theorem is not used either.
 
 ---
 
@@ -61,13 +66,15 @@ the numbering in the book).**
   M∖f has rank r. If f is a coloop, then L(M) = L(M∖f) × {+, 0, −}.
 - (O4) Cell facts (BLSWZ Thm 4.3.3, as quoted with this number in Mücksch,
   arXiv:2211.14083, Thm 2.21). L ∖ {0} is the face poset of a shellable
-  regular cell decomposition of S^{r−1}. Proposition 4.3.2 (Lawrence, as
-  quoted in Delucchi, arXiv:0705.3107, Thm 3.5) says that every linear
+  regular cell decomposition of S^{r−1}. Proposition 4.3.2 (as quoted in
+  Delucchi, arXiv:0705.3107, Thm 3.5) says that every linear
   extension of the tope poset T(M, B) induces a recursive coatom ordering of
   the face lattice. The topological representation theorem (Folkman–
   Lawrence, BLSWZ Thm 5.2.1) realizes this cell structure by an
   arrangement of pseudospheres.
-  **(O4) is used only once**, in Theorem 1 for r ≥ 4 (§3, Step 5).
+  **(O4) is used only once**, in Theorem 1 for r ≥ 5 (§3, Step 5), and
+  only its shellability half (Prop. 4.3.2), to make tope boundaries simply
+  connected. The topological representation theorem is not used.
 
 Proof that (O3) holds. A covector X with support {f} is minimal nonzero, so
 it is a cocircuit, and its zero set E ∖ f is a hyperplane. So
@@ -316,7 +323,8 @@ Lemma 2.2(c) this has χ = χ(S^{dim X − 2}). So χ grows by
 of rank r ≥ 1.
 - (i) (PROVEN) H̃_i(Δ(Λ̄(V)); Z) is zero for i ≠ r − 2 and free of rank
   m(V) ≥ 0 for i = r − 2.
-- (ii) (PROVEN for r ≤ 3; PROVEN given (O4) for r ≥ 4)
+- (ii) (PROVEN for r ≤ 4; PROVEN given the shellability part of (O4) for
+  r ≥ 5)
   Δ(Λ̄(V)) ≃ ⋁^{m(V)} S^{r−2}.
 
 *Proof.* For r = 1, M is a single element, Λ(V) = {E, ∅}, the proper part
@@ -373,7 +381,18 @@ So H̃_i(Δ(Λ̄(V))) is a direct summand of H̃_i(Δ(Q′)), and
   wedge of H_1-rank many circles.
 - (ii), r ≥ 4: we need π_1(Δ(Λ̄(V))) = 1. By Step 3 it suffices that
   π_1(X) = 1.
-  - (O4) makes each B_T a sphere S^{r−2}, so B_T is simply connected.
+  - (π) Each tope boundary B_T is simply connected. For r = 4 this is
+    elementary ([AudOM, §3.2]). B_T has dimension 2. Every edge lies in
+    exactly two triangles, since a length-2 interval of L is an interval
+    [0, tope] of a rank-2 OM, and a rank-2 tope covers exactly two
+    cocircuits. The link of a vertex X is a cycle: for dim X = 1 or 3 it
+    is a tope boundary of a rank-3 OM (a restriction or a contraction),
+    i.e. a graph with the homology of S^1 and all degrees 2; for dim X = 2
+    it is S^0 ∗ S^0. So B_T is a closed connected surface with χ = 2
+    (Lemma 2.2(a)), hence S^2. For r ≥ 5, a linear extension of the tope
+    poset gives a recursive coatom ordering of L̂ (BLSWZ Prop. 4.3.2,
+    (O4)). It restricts to one of [0, T], so B_T is shellable, hence a
+    wedge of (r − 2)-spheres, hence ≃ S^{r−2} by Lemma 2.2.
   - So the pair (Z_V, X), which is built by attaching cones on the B_T, is
     2-connected, and π_1(X) ≅ π_1(Z_V) = 1.
   - Hurewicz and Whitehead then give a wedge of (r − 2)-spheres, as in
@@ -381,9 +400,13 @@ So H̃_i(Δ(Λ̄(V))) is a direct summand of H̃_i(Δ(Q′)), and
 
 *What the r ≥ 4 step needs, exactly.* Lemma 2.2 shows combinatorially that
 each B_T is a homology (r − 2)-sphere whose suspension is ≃ S^{r−1}. It
-does not show that B_T is simply connected. That is the only point at
-which (O4) enters this note. Shellability gives it (BLSWZ Thm 4.3.3), and
-so does the topological representation theorem.
+does not show that B_T is simply connected; the suspension of any
+homology sphere is a homotopy sphere. Simple connectivity of the B_T is
+exactly what is needed: by van Kampen, π_1(Z_V) is π_1(X) modulo the images
+of the π_1(B_T). For r = 4 it follows from Lemma 2.2 and the classification
+of surfaces; for r ≥ 5 from shellability (BLSWZ Prop. 4.3.2 / Thm 4.3.3).
+That is the only point at which (O4) enters this note. The topological
+representation theorem is not needed.
 
 **Corollary 1.1-OM (rank count).** The Björner–Wachs–Welker decomposition
 of [GT, (1.1)] also transfers, since its hypotheses are Step 2. Taking
@@ -434,7 +457,12 @@ intersection). Then:
 - (3) if z(Y) ⊇ z(X), then X ∘ Y = X.
 
 These are exactly the hypotheses of Brown, *Semigroups, rings, and Markov
-chains* (2000), §2.1 (as read in [AudC, §B.4]). Σ_L is closed under ∘, and
+chains* (2000), §2.1 (as read in [AudC, §B.4]). **Brown's results are
+CITED**, and re-checked in the source in [AudOM, §1]: §2.1, §7.2 Theorem 3
+(Bidigare) and its Corollary, the triangularization at the end of §7.2 and
+the rank argument in the proof of Theorem 4 are all stated for an arbitrary
+finite LRB with identity, over an arbitrary field. Brown names oriented
+matroids only in Appendix A, which none of this uses. Σ_L is closed under ∘, and
 supp maps it onto the interval {flats Z ⊇ S_max}, by (O2) and
 Lemma 1.1(b). So Brown's §7.2 Theorem 3 and its Corollary (Bidigare;
 arbitrary field) apply to kΣ_L. They give one simple module S_Z for each
@@ -474,8 +502,12 @@ Lune = span of the non-singleton lunes in Γ, and q(V) = dim (Γ_V + Lune)/Lune.
     with Z = z(H). It is injective because off Z, C = H. It is surjective
     because a lift Ŷ of a tope Y of M|_Z gives the tope H ∘ Ŷ ≥ H.
   - It carries V onto V|Z. So c_Z = #(V|Z).
-  - Brown's rank argument ([AudC, §B.3]) gives c_Y = Σ_{Z ⊆ Y, Z ⊇ S_max}
-    [Γ_V : S_Z]; here "Z above Y" means Z ⊆ Y.
+  - Brown's rank argument ([AudC, §B.3]; CITED, re-checked in [AudOM, §1])
+    gives c_Y = Σ_{Z ⊆ Y, Z ⊇ S_max} [Γ_V : S_Z]; here "Z above Y" means
+    Z ⊆ Y. This is Brown's proof of his Theorem 4, applied to the module
+    Γ_V of kΣ_L instead of to the chamber ideal; it uses only that each
+    H ∈ Σ_L acts as an idempotent and Brown's triangularization, which
+    holds for every finite-dimensional module.
   - Theorem 2-OM for V|Z reads #(V|Z) = Σ_{S_max ⊆ Z′ ⊆ Z} m(V|Z′). Here
     we use that the flats of M|_Z containing S_max(V|Z) are the flats Z′ ⊆ Z
     containing S_max(V). This is Lemma 1.1(c) applied to V|Z, which is
@@ -569,6 +601,23 @@ determinant-signed ω transforms by sign det ([AudC, §B.5]), and ω is
 unique up to sign. The B_3 control in §8 confirms this. It reproduces the
 det-twisted counts of `compute/output/general_theory.txt` exactly.
 
+**det and the chirotope sign.** For g = (σ, ε) ∈ Aut(M), acting by
+(gX)_{σe} = ε_e X_e, define c(g) = ±1 by
+χ(σb_1, …, σb_r) · ε_{b_1} ⋯ ε_{b_r} = c(g) χ(b_1, …, b_r) for all
+b_1, …, b_r. (It exists because g preserves L, and L determines χ up to a
+global sign.)
+- *PROVEN when g is induced by a linear map.* Let M be realized by vectors
+  v_e, and let A be linear with A v_e = λ_e ε_e v_{σe}, λ_e > 0. Then
+  χ(σb_1, …, σb_r) ε_{b_1} ⋯ ε_{b_r} = sign det(ε_{b_i} v_{σb_i})
+  = sign det(A v_{b_i}) = sign det A · χ(b_1, …, b_r), so
+  c(g) = sign det A = det(g), by the previous paragraph.
+- *COMPUTED otherwise.* det(g) = c(g) for every automorphism tested in
+  [AudOM, §5.4]: 346 automorphisms of seven OMs, including the
+  automorphisms of four non-realizable OMs, where no linear map is
+  available. No proof is known to us for a general g ∈ Aut(M), nor for an
+  automorphism of a realizable M that is induced by no linear map. Theorem C-OM
+  does not depend on it; it would make (iv) computable from χ alone.
+
 ---
 
 ## 7. Ingredient ledger
@@ -580,7 +629,7 @@ and what the OM proof uses in its place.
 |---|---|---|
 | Faces = sign vectors, Tits product, face order | everywhere | Definitional: covectors, composition, conformal order. |
 | Lemma 0.1 (support criterion, flats in lin V, localization) | Thms 1, 2, C | **New OM proof, elementary** (Lemma 1.1). "lin V" becomes the flat cl S_max, and the localization becomes the restriction M\|_Z. |
-| Cell facts: faces ≠ O form a regular CW sphere; order complex ≅ complex | Thm 1 Step 2/4, Thm 2, Prop. A | **Replaced** for every homology statement by Lemmas 2.1(a), 2.2 and 2.3 (covector combinatorics, Quillen, nerve). The full cell structure **transfers via TRT** (O4), and is used only for π_1 in Thm 1, r ≥ 4. |
+| Cell facts: faces ≠ O form a regular CW sphere; order complex ≅ complex | Thm 1 Step 2/4, Thm 2, Prop. A | **Replaced** for every homology statement by Lemmas 2.1(a), 2.2 and 2.3 (covector combinatorics, Quillen, nerve). The only further input is π_1(B_T) = 1 in Thm 1, r ≥ 4: elementary for r = 4 (closed surfaces), and from shellability (O4) for r ≥ 5. The TRT is not used. |
 | Lemma 0.2 (a cone section is a ball or a sphere) | fibres in Thms 1, 2, Prop. A | **New OM proof** (Lemma 2.1, deletion + Quillen). Also KNOWN via shellability (Mücksch, Cor. 2.23). |
 | Euler characteristic of the fibres = alternating cell count | Thm 2 | **New OM proof** (Lemma 2.3, from Lemma 2.2(c)). |
 | Björner–Wachs–Welker fibre theorem | Thm 1 (optional) | Poset topology; transfers verbatim. Not needed: Prop. A-OM replaces it. |
@@ -675,7 +724,9 @@ They also pass:
   only 12 signed automorphisms. So on non-Pappus the equivariant identity
   is exercised by a single non-trivial element.
 - Rank 3 does not exercise the π_1 step of Theorem 1 (r ≥ 4). No rank-4
-  non-realizable OM was tested.
+  non-realizable OM was tested here. [AudOM, §7] addresses this with
+  independent code: two rank-4 non-realizable OMs, A_4, exact integral
+  ranks, π_1 = 1 on every cone, and det = −1 elements in rank 4.
 
 ---
 
@@ -733,7 +784,7 @@ those papers.
 | Theorem 1-OM, V = 𝒯 | KNOWN | L(M) is a geometric lattice, so Folkman's theorem applies. |
 | Theorem 2-OM, V = 𝒯 | KNOWN | Las Vergnas (1975) and Zaslavsky (1975): #topes = Σ \|μ\| (CITED from memory of BLSWZ §4.6, not re-checked). For proper V, the OM form of Zaslavsky's 1977 dissection theorem would need TRT to apply; our proof does not. |
 | Theorem 1-OM, Theorem 2-OM for proper V; Theorem C-OM | **NOT FOUND** | MSS cover the open cone only ([NovGT, §2.2]); no source read states a closed-cone support lattice for OMs. |
-| Brown/Bidigare for OM face monoids | KNOWN in substance | Brown's theorem is LRB-general (read in [AudC, §B.4]). We did not check whether Brown or Bidigare name OMs explicitly. |
+| Brown/Bidigare for OM face monoids | KNOWN in substance | Brown's theorem is LRB-general (read in [AudC, §B.4], re-checked in [AudOM, §1]). Brown names OMs only in Appendix A; Bidigare's thesis was not accessible. Neither is needed. |
 
 ---
 
@@ -751,7 +802,8 @@ those papers.
    in §7. Two items are missing:
    - P. Hall / BWW or Prop. A, which are pure poset topology;
    - the simple connectivity of tope boundaries for r ≥ 4, the one point
-     where the cell structure (TRT) is needed beyond homology.
+     where more than homology is needed. It is elementary for r = 4 and
+     follows from shellability for r ≥ 5; the TRT is not needed.
 3. **`notes/general_theory.md` §1.5 and [AudA, §C]** say the chamber
    orientation comes "by a fixed orientation of R^d". That is correct, but
    the OM form shows that only the integral fundamental cycle of Δ(faces ≠ O)

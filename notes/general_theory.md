@@ -1020,17 +1020,24 @@ so it is a closure system (Moore family) in Π_n.
 - *Congruence lattices of finite algebras:* no analogue was found in which
   the top homology carries a Lie-type representation. The relevant feature
   is convexity in an arrangement, not a universal-algebra property.
-- *Combinatorial version of (a) (CONJECTURED).* Theorems 1 and 2 should hold
-  verbatim for every T-convex set of topes of a (possibly non-realizable)
-  oriented matroid. Only three ingredients are used:
-  - the regular cell structure (topological representation theorem);
-  - Lemma 0.2, the contractibility of convex sets that are not
-    "subspaces";
-  - the localization of Lemma 0.1(c).
+- *Combinatorial version of (a) (PROVEN, given Brown).* Theorems 1, 2 and
+  C (and so G\*) hold for every nonempty T-convex set of topes of every
+  simple oriented matroid, realizable or not. They are PROVEN in
+  `notes/oriented_matroid_cones.md` and independently audited in
+  `notes/audit_oriented_matroid_cones.md` (all claims hold; one
+  attribution fix, applied).
+  - Lemma 0.2 has an elementary OM proof (deletion and Quillen's fibre
+    lemma); it is also KNOWN via shellability (Mücksch 2022, Cor. 2.23).
+  - Brown's theorem is stated for any finite LRB with identity over any
+    field (CITED, re-checked in the source), so realizability is never
+    used.
+  - The homotopy form of Theorem 1 for r ≥ 4 needs simple connectivity of
+    tope boundaries, not the topological representation theorem:
+    elementary for r = 4, from shellability for r ≥ 5.
+  - The det twist becomes the orientation character of Aut(M).
 
-  The second needs an oriented-matroid proof, e.g. via shellability of
-  T-convex sets. This is the only lattice-level generalization that we
-  propose. It sits inside (a).
+  This is the only lattice-level generalization that we propose. It sits
+  inside (a).
 - *Comodernism.* Schweig–Woodroofe prove OP(P) comodernistic, hence
   CL-shellable (CITED in [Nov2]). Whether every Λ(V) is comodernistic is
   open (CONJECTURED plausible, not tested). That would strengthen Theorem 1
@@ -1103,9 +1110,6 @@ the oriented-matroid version of Theorem 1 and the open fixed-point formula.
   fixed-point Möbius theorem, not a cone formula. What remains open is an
   exact criterion for χ_V(g) ≢ 0, generalizing the braid case.
 - *Other open directions.*
-  - The oriented-matroid version of Theorems 1–2 (§3). It would be refuted
-    by a T-convex set of a non-realizable oriented matroid where Λ̄ is not
-    a wedge of spheres.
   - A cohomological model of G\* (§4).
 
 **2. (b) Hopf monoids: write up, do not research further on its own.**
@@ -1116,7 +1120,7 @@ bimonoids for arbitrary arrangements, which is (a) again. The cooperad (b2)
 is a side question.
 
 **3. (c) Lattices: no independent program.** Keep only the oriented-matroid
-version of Theorems 1–2, as a remark or a later generalization, and the
+version of Theorems 1, 2 and G\*, now proven (§3), as a generalization, and the
 fixed-point Möbius formula for symmetries of cones, as a sub-problem of
 (a)'s equivariant side; that formula is now Theorem CF of
 `notes/fixed_point_formula.md` (audited), with its vanishing criterion
@@ -1150,7 +1154,8 @@ would carry Theorems 6–8.
 | Fixed-point formula: EZ, EZ′, CF for μ(Λ(V)^g), any finite-order symmetry g (`notes/fixed_point_formula.md`) | PROVEN; independently audited in `notes/audit_fixed_point_formula.md` (hold, with fixes applied); COMPUTED on 7,200 pairs (V, g); KNOWN for V = all chambers, NOT FOUND for proper cones (`notes/novelty_fixed_point_formula.md`) | cell facts of §0, Lemmas 0.1–0.2, Hopf trace formula; Thm 1 and G\* for the module form |
 | Weisner recursion, Props. W and W′ (`notes/fixed_point_formula.md` §4) | PROVEN; W audited in `notes/audit_fixed_point_formula.md`, W′ in `notes/audit_prop_w_prime.md`; exactness (Thm W″) PROVEN in `notes/audit_prop_w_prime.md`, not yet independently audited | Weisner; Thm 1 for W″ |
 | Exact criterion for χ_V(g) ≢ 0 | OPEN | — |
-| (b1), (b2), OM version, comodernism | CONJECTURED | — |
+| OM version: Theorems 1, 2, C (G\*) for T-convex sets of every simple oriented matroid (`notes/oriented_matroid_cones.md`) | PROVEN (C given Brown); independently audited in `notes/audit_oriented_matroid_cones.md` (hold); COMPUTED on realizable and non-realizable OMs of ranks 3 and 4 | Brown (CITED, re-checked; LRB-general); OM combinatorics; Hall; for the homotopy form of Thm 1 with r ≥ 5, shellability (BLSWZ Prop. 4.3.2, CITED) |
+| (b1), (b2), comodernism | CONJECTURED | — |
 
 Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not
 checked), Brown arXiv:math/0006145 §7.2 Thm 3 and its Corollary, Saliola
