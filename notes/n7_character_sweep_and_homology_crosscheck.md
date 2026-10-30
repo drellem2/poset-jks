@@ -35,6 +35,11 @@ Every claim is tagged PROVEN, COMPUTED, CITED or CONJECTURED. Conventions
    It also agrees on **all 4804 (P, g-class) pairs at n = 7** (2045 posets),
    including the one discriminating n = 7 pair.
    No counterexample appeared.
+5. **A proof has since appeared** on main (mg-8878d,
+   `notes/fixed_point_mobius_identity.md`). It was not audited here. §8
+   explains how this item's results relate to it. In particular, the direct
+   homology trace independently checks that note's input eq. (homchar)
+   through n = 7.
 
 ## 1. Programs and how to reproduce
 
@@ -313,12 +318,38 @@ g is even, so it tests the phase but not the sign.
   adds no test of the sign factor and only one, classical, test of the
   phase. What it does add is a large test of the vanishing μ(OP(P)^g) = 0
   for g ≠ 1 (2758 pairs).
-- CONJECTURED (not part of the note): the vanishing μ(OP(P)^g) = 0 whenever
-  g ≠ 1 is not of type d^{n/d} with a g-fixed linear-extension class. This is
-  the RHS = 0 case of the conjecture, and it is checked through n = 7. It
-  might have a direct proof by a fixed-point-free action on OP(P)^g, or by a
-  closure / complementation argument. It is a natural first sub-target for
-  research step 1 of the note.
+- When this work started I recorded a conjecture here: μ(OP(P)^g) = 0
+  whenever g ≠ 1 has no g-fixed class. A sibling item (mg-8878d) has since
+  proved this vanishing, together with the whole identity, in
+  `notes/fixed_point_mobius_identity.md`; see §8. The conjecture is
+  therefore withdrawn. It is superseded, not refuted.
+
+## 8. Relation to the proof in `notes/fixed_point_mobius_identity.md`
+
+That note was merged while this item was running. It claims a PROVEN
+direct proof of eq. (characterconj) for all P, from cited classical results.
+I have **not** audited that proof. Here is how it relates to this item's
+findings:
+
+- Lemma 1 here is a weaker form of that note's case (a)/(b). Theirs also
+  says that for type d^k the nonzero contributions come from "component
+  transversals" T, with P = T ⊔ gT ⊔ ⋯ ⊔ g^{d−1}T. The empirical pattern in
+  §4, that every non-antichain sign-discriminating n = 6 pair is Q ⊔ Q with
+  the swap, is exactly what their formula predicts for d = 2, k = 3.
+- Their proof gets the left side's homological meaning (eq. homchar) from
+  the Hopf trace formula plus Jenča–Sarkoci concentration (their §1). The
+  homology instrument here computes tr(g | H_{n−3}) directly and uses
+  neither. Its agreement with (−1)^{n−3} μ(OP(P)^g) on all
+  34 + 144 + 784 + 4804 rows for n = 4, …, 7 is an independent COMPUTED
+  check of eq. (homchar) for those cases. That makes it a check on the
+  corollary's input, not only on the Möbius identity.
+- The n = 7 sweep is a COMPUTED confirmation of their theorem's conclusion
+  for all 2045 posets at n = 7. As §2 explains, at prime n this mostly
+  exercises their case (a).
+- With a proof in hand, the recommendations in §7 become audits of the
+  proof, not searches for counterexamples. The most informative cases
+  remain those where their case (b) is nonzero with sgn(g) = −1 on a
+  non-antichain, e.g. Q ⊔ Q at n = 10.
 
 ## 7. Recommendation for the n = 8 item
 
