@@ -7,7 +7,7 @@ that must fail. Archived outputs are in `output/`. Ranks are computed modulo a
 large prime, and are used only in directions that are valid over Q.
 
 The consolidated account of what these computations support is
-`../notes/poset_jks_theorem.tex`, §7 ("Computational record"). Each entry
+`../notes/poset_jks_theorem.tex`, §8 ("Computational record"). Each entry
 below names the notes file whose Reproduce section the command comes from.
 
 Run all unit tests (the slow sweeps are not part of them):
@@ -129,12 +129,40 @@ without Prop. Phi or Jenča–Sarkoci (n <= 6). Findings:
 
 `cone_lie.py` checks the cone/lune statements for the order cone C_P and for
 other real arrangements: the lune form of Conjecture S, pointed top-cones,
-and Conjecture G on A_2, A_3, A_4, B_2, B_3 and samples of D_4, B_4. Findings
-(not yet independently audited): `../notes/cone_lune_lie_theory.md`.
+and Conjecture G on A_2, A_3, A_4, B_2, B_3 and samples of D_4, B_4. Findings:
+`../notes/cone_lune_lie_theory.md`.
 
     python3 cone_lie.py --quick                  # ~7 s, skips A4, D4, B4
     python3 cone_lie.py > output/cone_lie.txt    # all arrangements
     python3 -m unittest test_cone_lie
+
+`audit_cone_lune.py` is the independent audit of those findings. It imports
+no module of this repo and uses exact arithmetic (over Q, and Q(sqrt5) for
+H_3), on six arrangements outside the note's list. Findings:
+`../notes/audit_cone_lune_lie_theory.md`.
+
+    python3 audit_cone_lune.py > output/audit_cone_lune.txt
+    python3 -m unittest test_audit_cone_lune
+
+## The natural-isomorphism question
+
+`natural_isomorphism.py` checks the findings of
+`../notes/natural_isomorphism.md`: R_P e_zeta = 0 iff P is connected or
+n <= 2, the witness coefficient, that the truncation map psi_P is an
+isomorphism (Theorem Psi), phi_Sigma, Lie_n e_zeta, and the disjoint-sum
+maps. Its `[wgt]` check is defective (it uses class representatives outside
+LinExt P), so its lambda = 1 counts are wrong; see
+`../notes/audit_natural_isomorphism.md`, section 5.
+
+    python3 natural_isomorphism.py --nmax 6 > output/natural_isomorphism.txt   # ~6 s
+    python3 natural_isomorphism.py --nmax 7 --only ext,psi > output/natural_isomorphism_n7.txt  # ~100 s
+    python3 -m unittest test_natural_isomorphism
+
+`audit_natural_isomorphism.py` is the independent audit. It imports no module
+of this repo. Findings: `../notes/audit_natural_isomorphism.md`.
+
+    python3 audit_natural_isomorphism.py --nmax 6 > output/audit_natural_isomorphism.txt   # ~40 s
+    python3 -m unittest test_audit_natural_isomorphism
 
 ## Cyclic-compatible posets, b_n and the global module
 

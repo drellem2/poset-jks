@@ -49,7 +49,11 @@ note}). For every finite poset $P$ on $n\ge3$ points, the top homology $H_P$
 of the proper part of the lattice of order-preserving partitions is, as an
 $\Aut(P)$-module, isomorphic to $\sgn\otimes\PLie(P)$. We give a
 self-contained proof via Weisner's theorem, together with a closed formula
-for the character. The isomorphism is abstract, not natural. The seed note's
+for the character. That proof gives an abstract isomorphism. We also record
+an explicit isomorphism, given for every $P$ by one choice-free recipe and
+commuting with relabelling. We show that naturality along order extensions
+holds exactly on connected posets, and that no family of isomorphisms has
+it at a disconnected poset on $n\ge3$ points. The seed note's
 proposed route through a ``restricted JKS image identity'' is false, and we
 record the counterexample. An explicit basis of $H_P$ by splitting cycles of
 linear extensions (formerly ``Conjecture~S'') is proved, conditional on a
@@ -91,6 +95,8 @@ abbreviations used below are:
 \textbf{[AudS]} & \src{notes/audit_conjecture_s.md}\\
 \textbf{[Cone]} & \src{notes/cone_lune_lie_theory.md}\\
 \textbf{[AudCone]} & \src{notes/audit_cone_lune_lie_theory.md}\\
+\textbf{[Nat]} & \src{notes/natural_isomorphism.md}\\
+\textbf{[AudNat]} & \src{notes/audit_natural_isomorphism.md}\\
 \textbf{[Bn]} & \src{notes/cyclic_compatible_posets_bn.md}\\
 \textbf{[AudBn]} & \src{notes/audit_cyclic_compatible_posets_bn.md}\\
 \textbf{[Repro]} & \src{notes/reproduce_character_identity_n_le_5.md}\\
@@ -203,8 +209,9 @@ seed note's conjecture asks for a \emph{natural} isomorphism. Neither proof
 gives one, and neither claims to ([AudChar, \S5]). Choosing an isomorphism
 for one poset in each $S_n$-orbit and transporting it by relabelling gives
 isomorphisms compatible with relabelling, which is all that
-\S\ref{sec:global} needs. Nothing more canonical follows. A natural
-isomorphism stays open (\S\ref{sec:open}).
+\S\ref{sec:global} needs. Nothing more canonical follows from the character
+proof. An explicit, choice-free isomorphism, and the precise extent to which
+any isomorphism can be natural, are in \S\ref{sec:natural}.
 \end{remark}
 
 The proof below is Proof~I of [Glob, \S2], in the form re-derived in
@@ -852,9 +859,11 @@ $\rho_w\otimes1\mapsto\sgn(w)\,we_\zeta$ ([AudLit, row 19]; [S, \S6]). For
 disconnected $P$ it gives the explicit model
 $H_P\otimes\sgn\cong\mathbb C[\Lin P]/R_P$. Theorem~\ref{thm:main} then says
 that this is abstractly isomorphic to
-$\PLie(P)\cong\mathbb C[\Lin P]/(W_P\cap\mathbb C[S_n](1-e_\zeta))$. No
-explicit or natural isomorphism between the two quotients is known for
-disconnected $P$ (\S\ref{sec:open}).
+$\PLie(P)\cong\mathbb C[\Lin P]/(W_P\cap\mathbb C[S_n](1-e_\zeta))$. An
+explicit isomorphism between the two, for every $P$, is the truncation map
+$\psi_P$ of \S\ref{sec:natural} (Corollary~\ref{cor:psi}). It is
+canonical but not natural along extensions, and for disconnected $P$ with
+$n\ge3$ no isomorphism is (Theorem~\ref{thm:ext}).
 \end{remark}
 
 \begin{remark}[Novelty of Theorem~\ref{thm:S}]
@@ -885,6 +894,296 @@ samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}~\cite{AguiarMahajan
 ``non-singleton top-cone'' should read ``non-pointed top-cone''
 ([AudCone, row~16]). These results are recorded here only as a remark.
 \end{remark}
+
+\section{The natural-isomorphism question}\label{sec:natural}
+
+This section is [Nat], as audited in [AudNat] (verdict: Theorem~$\Psi$
+\emph{HOLDS}; one defect, in computational evidence only, recorded at the
+end of the section). It answers the seed note's request for a
+\emph{natural} isomorphism in the following precise form. For every $P$
+there is an explicit isomorphism $H_P\otimes\sgn\cong\PLie(P)$ given by one
+$P$-uniform recipe with no choices, and it commutes with relabelling
+(Theorem~\ref{thm:Theta}). Naturality along order extensions holds exactly on
+connected posets, and no family of maps can have it at a disconnected poset
+with $n\ge3$ (Theorem~\ref{thm:ext}).
+
+\subsection{Two models and the truncation map}
+
+Let $P$ be a poset on $[n]$. Write $\Sh_n$, $W_P$ and $R_P$ as in
+\S\ref{sec:basis}, and put
+\[
+M_P=W_P/R_P=(W_P+\Sh_n)/\Sh_n,\qquad L_P=\PLie(P)=W_Pe_\zeta .
+\]
+A \emph{cut} of $w\in\Lin(P)$ is a $k\in\{0,\dots,n-1\}$ such that
+$\{w_1,\dots,w_k\}$ is a union of components. Then $w\gamma^k\in\Lin(P)$ iff
+$k$ is a cut, so the cyclic class of $w$ is $\{w\gamma^k:k\text{ a cut}\}$
+([S, Lemma~4]). Distinct classes lie in distinct rotation orbits, so
+$\{w_Ce_\zeta\}$, one $w_C$ per class $C$, is a basis of $L_P$, and
+$\dim L_P=e_C(P)=\dim M_P$ by Theorem~\ref{thm:S}(b) ([AudNat, \S1];
+\st{proven}, \st{audited}). Let $\mathrm{pr}_P:\mathbb C[S_n]\to W_P$ be the
+coordinate truncation to $\Lin(P)$, and define
+\[
+\psi_P:L_P\to M_P,\qquad y\mapsto\mathrm{pr}_P(y)+\Sh_n .
+\]
+It is a function of the element $y$, not of a representative, and it lands
+in $M_P$ because $W_P\cap\Sh_n=R_P$. It is $\Aut(P)$-equivariant with no sign
+twist: $\Aut(P)$ permutes $\Lin(P)$, and $\Sh_n$ is $S_n$-stable.
+
+\subsection{Theorem $\Psi$}
+
+Call $\lambda:[n]\to\mathbb C^\times$ \emph{admissible} for $P$ if
+$\lambda([n])=1$ and $\lambda(U)\ne1$ for every nonempty proper union $U$ of
+components, where $\lambda(U)=\prod_{x\in U}\lambda(x)$. For $w\in\Lin(P)$ put
+\[
+s_\lambda(w)=\sum_{k\text{ a cut of }w}\lambda(w_1\cdots w_k)^{-1}\,w\gamma^k .
+\]
+
+\begin{lemma}[{[Nat, Lemma~$\Psi$.0]}, {[AudNat, \S2.1]}]\label{lem:psi0}
+If $m$ is a cut of $w$, then
+$s_\lambda(w\gamma^m)=\lambda(w_1\cdots w_m)\,s_\lambda(w)$. So each cyclic
+class $C$ determines a line $\mathbb C\,s_\lambda(C)$. \st{proven},
+\st{audited}. The hypothesis $\lambda([n])=1$ is used here.
+\end{lemma}
+
+\begin{theorem}[Theorem~$\Psi$; {[Nat, \S3.1]}, {[AudNat, \S2]}]\label{thm:Psi}
+Let $\lambda$ be admissible for $P$. Then the class sums $s_\lambda(C)$, one
+for each cyclic class $C$ of $P$, are linearly independent modulo $\Sh_n$.
+\end{theorem}
+
+\noindent\textbf{Status.} \st{proven}, \st{audited} ([AudNat], rows~1--3,
+verdict \emph{HOLDS}, no gap). It is elementary: it uses only the
+contraction lemma and Lemmas~2--4 of [S], which are pure word
+combinatorics, and Corollary~\ref{cor:psi} adds only Theorem~\ref{thm:S}(b).
+Neither uses Prop.~$\Phi$, nor
+Lemma~\ref{lem:D}, nor \ref{in:JS} ([AudNat, \S2.4]). \st{computed}
+independently for all $1+2+5+16+63+318$ posets with $n\le6$, for every
+primitive $\zeta$ and for three random admissible $\lambda$ per poset
+([AudNat, \texttt{[psi]}]).
+
+\begin{proof}[Proof sketch, following {[Nat, \S3.1]} and {[AudNat, \S2.2]}]
+Induct on $n$. For $n\le2$ it is checked directly; for the $2$-antichain it
+uses $\lambda(x)\ne1$. Let $n\ge3$ and $X=\sum_Cc_Cs_\lambda(C)\in\Sh_n$, and
+let $\tilde c(v)$ be the coefficient of $v$ in $X$ (zero off $\Lin P$). By
+Lemma~\ref{lem:psi0}, $\tilde c(v)=\lambda(v_1\cdots v_m)\tilde c(v\gamma^m)$
+at every cut $m$. Contract an adjacent pair $a,x$ to $Q=P/\{a,x\}$ with
+weight $\lambda'(a)=\lambda(a)\lambda(x)$ and $\lambda'=\lambda$ elsewhere;
+$\lambda'$ is admissible for $Q$. Then $E_{a,x}(X)\in\Sh$, its coefficients
+satisfy the twisted relation for $(Q,\lambda')$, and induction gives
+$\tilde c(v'[a\to xa])=\tilde c(v'[a\to ax])$ for all $v'\in\Lin(Q)$. As in
+Theorem~\ref{thm:S}(a), this makes $\tilde c$ constant on $\Lin(P)$ and zero
+if a cover is realised adjacently. If $P$ is disconnected, a proper cut
+gives $c=\lambda(U)c$ with $\lambda(U)\ne1$, so $c=0$. If $P$ is connected,
+an adjacent cover gives $c=0$.
+\end{proof}
+
+Admissibility cannot be dropped. For $\lambda\equiv1$ the class sums are
+dependent modulo $\Sh_n$ for \emph{every} disconnected $P$: their sum is
+$\sum_{w\in\Lin P}w$, which is a sum of shuffles $s\shuf t$ over a component
+and its complement (\st{proven}, \st{audited} [AudNat, \S5]; \st{computed}
+for $1,2,6,19,80$ of the $1,2,6,19,80$ disconnected posets, $n=2,\dots,6$).
+Roots of unity of non-primitive order also fail on some posets
+(\st{computed}, [AudNat, \S2.3]).
+
+\begin{corollary}[{[Nat, Cor.~$\Psi$.1]}, {[AudNat, row~4, \S2.4]}]\label{cor:psi}
+For every finite poset $P$, $\psi_P:L_P\to M_P$ is an $\Aut(P)$-isomorphism.
+\st{proven}, \st{audited}, unconditionally (elementary).
+\end{corollary}
+
+\begin{proof}
+$\lambda\equiv\zeta$ is admissible, since $\zeta^{|U|}\ne1$ for
+$0<|U|<n$. And $\mathrm{pr}_P(we_\zeta)=s_\zeta(w)/n$, because $w\gamma^k\in\Lin P$
+iff $k$ is a cut. So $\psi_P$ maps the basis $\{w_Ce_\zeta\}$ to
+$\{s_\zeta(C)/n+\Sh_n\}$, which is independent by Theorem~\ref{thm:Psi}.
+Both spaces have dimension $e_C(P)$.
+\end{proof}
+
+\begin{corollary}[Antichain; {[Nat, Cor.~$\Psi$.2]}, {[AudNat, row~12, \S6]}]\label{cor:klyachko}
+$\mathbb C[S_n]e_\zeta\cap\Sh_n=0$ for every primitive $\zeta$. Hence
+$y\mapsto y+\Sh_n$ is an $S_n$-isomorphism
+$\mathbb C[S_n]e_\zeta\cong\mathbb C[S_n]/\Sh_n$, and $x\mapsto xe_\zeta$ is
+injective on $\Lie_n$. With $\Lie_n^\perp=\Sh_n$ (Ree, \st{cited}) this
+reproves Klyachko's $\Lie_n\cong\Ind_{C_n}^{S_n}\zeta$~\cite{Klyachko}.
+\st{proven} given Ree's theorem, \st{audited}. \emph{Novelty unclear}: no
+proof via contractions modulo shuffles was found in one search, but the
+antichain case of Theorem~\ref{thm:S}(a) is classical, and this is
+plausibly folklore-adjacent ([AudNat, \S6]).
+\end{corollary}
+
+\subsection{The explicit isomorphism $\Theta_P$}
+
+\begin{theorem}[{[Nat, Thm~2]}, {[AudNat, rows~5--7]}]\label{thm:Theta}
+For every poset $P$ with $n\ge3$,
+\[
+\Theta_P=\psi_P^{-1}\circ\Phi_P:\ H_P\otimes\sgn\to\PLie(P),
+\qquad \Phi_P(\rho_w\otimes1)=\sgn(w)\,w+R_P,
+\]
+is an $\Aut(P)$-isomorphism, and $\Theta_{\sigma P}(\sigma h)=\sigma\,\Theta_P(h)$
+for every relabelling $\sigma\in S_n$. Its inverse is
+\[
+\Theta_P^{-1}(we_\zeta)=\frac{\sgn(w)}{n}\sum_{k\text{ a cut of }w}(-1)^{(n-1)k}\zeta^{-k}\,\rho_{w\gamma^k}\otimes1 .
+\]
+In words: a cyclic class goes to the $\zeta$-twisted signed sum of the
+splitting cycles of its members. On connected $P$ this is
+$we_\zeta\mapsto\frac{\sgn(w)}n\rho_w\otimes1$.
+\end{theorem}
+
+\noindent\textbf{Status.} \st{proven} given the inputs of
+Theorem~\ref{thm:S}(d) (Prop.~$\Phi$, Lemma~\ref{lem:D}, \ref{in:JS}),
+\st{audited}. Those inputs enter only through
+$\Phi_P:H_P\otimes\sgn\cong M_P$, which is Theorem~\ref{thm:S}(d); the
+isomorphism $L_P\cong M_P$ (Corollary~\ref{cor:psi}) needs none of them. The
+sign comes from $\sgn(\gamma)=(-1)^{n-1}$; the twist lives entirely in
+$\Phi_P$, since $\psi_P$ has none ([AudNat, \S2.4]).
+
+\begin{corollary}[Third proof of \eqref{eq:mainiso}]\label{cor:thirdproof}
+Theorem~\ref{thm:Theta} gives $H_P\cong\sgn\otimes\PLie(P)$ as
+$\Aut(P)$-modules for every $P$ with $n\ge3$, with an explicit isomorphism and
+without the character identity. Its inputs are those of
+Theorem~\ref{thm:S}(c)--(d), not those of \S\ref{sec:theorem}. \st{proven}
+given Prop.~$\Phi$, Lemma~\ref{lem:D} and \ref{in:JS}; \st{audited}
+([AudNat, row~6]).
+\end{corollary}
+
+\begin{remark}[In what sense $\Theta$ is natural]\label{rem:Thetasense}
+This is the precise sense audited in [AudNat, \S3.1].
+\begin{itemize}[nosep]
+\item $\Theta$ is a natural isomorphism on the groupoid of posets on $[n]$
+  and relabellings. On its own this is contentless: any choice of one
+  $\Aut$-isomorphism per isomorphism class, transported, is natural on that
+  groupoid (Remark~\ref{rem:abstract}).
+\item The content is that $\Theta_P$ is given by one recipe, uniform in $P$,
+  with no choice of representative, base component or basis: truncate to
+  $\Lin(P)$, read modulo $\Sh_n$, apply $\Phi_P^{-1}$. ``Canonical'' is meant
+  in this informal sense, not a functorial one. The recipe depends on
+  $\zeta$, exactly as $\PLie(P)$ does.
+\item $\Theta$ is \emph{not} natural along order extensions once
+  disconnected posets are present (Theorem~\ref{thm:ext}(i)). Concretely, it
+  fails along some arrow $P\to C_w$ to a linear extension for every
+  disconnected $P$ with $3\le n\le6$ (\st{computed}, $2/2$, $6/6$, $19/19$,
+  $80/80$, [AudNat, \texttt{[prc]}]), and for every disconnected $P$ with
+  $n\ge3$ by Theorem~\ref{thm:ext}(i).
+\item There is no conflict with Props.~\ref{prop:C} and~\ref{prop:Cprime}.
+  The family $\{\Theta_P\}$ is not the restriction of one ambient map: its
+  $P$-dependence is exactly the truncation $\mathrm{pr}_P$. Each $\Theta_P$
+  is only $\Aut(P)$-equivariant, which is the case that Prop.~\ref{prop:Cprime}
+  does not exclude ([AudNat, \S3.2]). The obvious uniform candidate
+  $y\mapsto y+\Sh_n$ carries $L_P$ onto $M_P$ for only $4/5$, $6/16$, $8/63$,
+  $10/318$ posets ($n=3,\dots,6$), and never for a chain (\st{computed},
+  [AudNat, \texttt{[prc]}]).
+\end{itemize}
+\end{remark}
+
+\subsection{Naturality along extensions holds exactly on connected posets}
+
+Let $\mathcal E$ be the category of posets on $[n]$ with an arrow $P\to P'$
+whenever $\sigma(P)\subseteq P'$ for some $\sigma\in S_n$. Both
+$P\mapsto H_P\otimes\sgn$ and $P\mapsto\PLie(P)$ are contravariant on
+$\mathcal E$, by $H_{P'}\subseteq H_{\sigma P}$ and
+$W_{P'}e_\zeta\subseteq W_{\sigma P}e_\zeta$. For $w\in\Lin(P)$ let $C_w$ be
+the chain $w_1<\dots<w_n$.
+
+\begin{theorem}[{[Nat, Thm~1]}, {[AudNat, rows~9--11, \S4]}]\label{thm:ext}
+Let $P$ be a poset on $[n]$.
+\begin{enumerate}[label=(\roman*)]
+\item If $P$ is disconnected and $n\ge3$, then every linear map
+  $\eta_P:H_P\otimes\sgn\to\PLie(P)$ with
+  $\eta_P(H_{C_w}\otimes\sgn)\subseteq\mathbb Cwe_\zeta$ for all
+  $w\in\Lin(P)$ is \emph{not injective}. So no family of isomorphisms is
+  natural along the arrows $P\to C_w$ of $\mathcal E$.
+\item If $P$ is connected, $\eta_P(\rho_w\otimes1)=\sgn(w)\,we_\zeta$ is an
+  $\Aut(P)$-isomorphism. On the full subcategory of connected posets these
+  maps form a natural isomorphism, and every natural isomorphism there is
+  $c_n\eta$ for one scalar $c_n$ per $n$.
+\item $R_Pe_\zeta=0$ if and only if $P$ is connected or $n\le2$.
+\end{enumerate}
+\end{theorem}
+
+\noindent\textbf{Status.} (i): \st{proven} given Prop.~$\Phi$ and
+Lemma~\ref{lem:D}, \st{audited}. The proof takes a nonempty proper union $S$
+of components with $|[n]\setminus S|\ge2$, $s\in\Lin(P|_S)$,
+$t\in\Lin(P|_{[n]\setminus S})$, and the word $u=t_1st_2\cdots t_b$; no
+proper rotation of $u$ lies in $s\shuf t$, so applying $\eta_P$ to the
+relation $\sum_{z\in s\shuf t}\sgn(z)\rho_z=0$ forces $\eta_P(\rho_u\otimes1)=0$,
+while $\rho_u\ne0$. (ii): \st{proven}, \st{audited}; for $n\ge3$, that $\eta_P$ is an
+isomorphism is Theorem~\ref{thm:S}(d) together with $R_P=0$ for connected
+$P$, so it rests on the same inputs. (iii): \st{proven}, \st{audited},
+elementary. The clause ``or $n\le2$'' is needed: for the $2$-antichain,
+$(12+21)e_{-1}=0$. \st{computed} for all posets with $n\le6$ at two primes,
+the witness coefficient being exactly $1/n$ in all $8458$ cases
+$(P,S,s,t)$ with $3\le n\le6$ ([AudNat, \S4.2]).
+
+Prop.~\ref{prop:C} is the case $P=A_n$ of (i). Theorem~\ref{thm:ext}(i) uses
+only the arrows from $P$ to its own linear extensions, and needs no
+relabelling naturality.
+
+\subsection{Sum structures}
+
+\paragraph{Ordinal sums ([Nat, Prop.~3]; [AudNat, row~13]).} Write $P\oplus Q$
+for all of $P$ below all of $Q$, so $\Lin(P\oplus Q)=\Lin(P)\Lin(Q)$. The
+structure maps are deconcatenation $q^M:M_{P\oplus Q}\to M_P\otimes M_Q$,
+$uv\mapsto\bar u\otimes\bar v$, and
+$q^L:\PLie(P\oplus Q)\to\PLie(P)\otimes\PLie(Q)$,
+$uve_\zeta\mapsto ue_{\zeta_P}\otimes ve_{\zeta_Q}$, with $\zeta_P,\zeta_Q$
+primitive roots of orders $|P|,|Q|$ (the audit's notational correction).
+\begin{itemize}[nosep]
+\item Families of $\Aut$-isomorphisms compatible with $q^M,q^L$ exist, but
+  they are built from arbitrary choices on the ordinally indecomposable
+  pieces, so compatibility with ordinal sums singles out no isomorphism.
+\item No compatible family is $c\cdot(w\mapsto we_\zeta)$ on all connected
+  posets. In particular $\Theta$, and any family natural along extensions
+  among connected posets, is not compatible with ordinal sums. (Take $R=P\oplus1$
+  with $P$ disconnected, $|P|\ge3$; compatibility would need
+  $R_Pe_\zeta=0$, against Theorem~\ref{thm:ext}(iii).)
+\end{itemize}
+\st{proven}, \st{audited} by re-reading only (not recomputed).
+
+\paragraph{Disjoint sums ([Nat, Prop.~4]; [AudNat, row~14, \S4.3]).} Let $P$
+be on $S$ and $Q$ on $T=[n]\setminus S$. On the $e_\zeta$ side, the
+restriction $w\mapsto w|_S\otimes w|_T$ and the deconcatenation never descend
+to maps $\PLie(P+Q)\to\PLie(P)\otimes\PLie(Q)$, and the cobracket descends iff
+$P$ and $Q$ are both connected and $|S|=|T|$. On the $M$ side the cobracket
+$M_{P+Q}\to M_P\otimes M_Q$ always descends. \st{proven}, \st{audited} by
+re-reading, including the tensor-intersection step that [Nat] leaves
+implicit; \st{computed} in [Nat] for all $71$ pairs with $n\le5$ (not re-run
+by [AudNat]). So disjoint-sum compatibility is posed on the $M$ side: on the
+$e_\zeta$ side it exists only after transport by an isomorphism such as
+$\Theta$, where it holds by definition.
+
+\paragraph{The component-sum map $\varphi_\Sigma$ ([Nat, \S3.3]; [AudNat, rows~15--16]).}
+For a component $P_i$, let $B_i$ be the words of $\Lin(P)$ whose first block
+contains $P_i$ (a basis of $M_P$, Theorem~\ref{thm:S}(a)--(b)), and let
+$\varphi_i:M_P\to\PLie(P)$, $b\mapsto be_\zeta$ for $b\in B_i$. Then
+$\varphi_\Sigma=\sum_i\varphi_i$ is $\Aut(P)$-equivariant and involves no
+choice (\st{proven} in [Nat]; equivariance not re-checked by [AudNat]). It is invertible for every disconnected $P$ with
+$n\le6$ (\st{computed} in [Nat]; re-\st{computed} in [AudNat] for $n\le5$
+only). For the antichain, $\varphi_\Sigma(\bar x)=x\theta_n^*e_\zeta$ with
+$\theta_n$ the Dynkin element (\st{proven} in [Nat]; not re-checked by
+[AudNat]).
+
+\begin{conjecture}[{[Nat, Conj.~3.3]}]\label{conj:phisigma}
+$\varphi_\Sigma$ is invertible for every finite poset $P$. \st{conjectured}.
+\end{conjecture}
+
+\paragraph{The functorial model.} The model $M_P\subseteq\mathbb C[S_n]/\Sh_n$
+is natural in every sense above: it is the restriction of the single
+$S_n$-isomorphism of Prop.~\ref{prop:Phi}, and it carries injections along
+extensions, deconcatenation along ordinal sums and the cobracket along
+disjoint sums ([Nat, Prop.~5]; \st{proven} given Prop.~$\Phi$; read in
+[AudNat, \S4.3]). So the natural object is $W_P$ modulo shuffles. The
+$e_\zeta$ model is natural along extensions exactly on connected posets, and
+for every $P$ it is identified with the natural object canonically, but not
+functorially, by $\psi_P$.
+
+\paragraph{Defect found by the audit.} The \texttt{[wgt]} check of
+\src{compute/natural_isomorphism.py} takes as class representative the
+least rotation of a word, which need not lie in $\Lin(P)$, so on such posets
+it does not compute $s_\lambda(C)$ ([AudNat, \S5]). Its counts are not
+evidence for Theorem~\ref{thm:Psi}, and its $\lambda\equiv1$ counts
+($5/6$, $16/19$, $63/80$ at $n=4,5,6$) are wrong: the true counts are
+$6/6$, $19/19$, $80/80$, as proven above. The statement for random admissible
+weights rests instead on [AudNat, \texttt{[psi]}]. Theorem~\ref{thm:Psi}
+itself is unaffected, and so is the \texttt{[psi]} check of [Nat]. The script
+has not been fixed.
 
 \section{The global module and $b_n$}\label{sec:global}
 
@@ -1061,6 +1360,12 @@ $V_n\cong\Ind_{C_n}^{S_n}(\zeta\otimes\mathbb C[B_n])$ by direct linear algebra 
 \src{second_read_globalind.py} & $n\le5$ & [AudBn, \S C]\\
 Lune form of Conjecture~S; pointed cones; Conjecture~G on other arrangements &
 \src{cone_lie.py} & $A_2,A_3,A_4,B_2,B_3$; samples of $D_4,B_4$ & [Cone]\\
+Independent audit of [Cone]: Zaslavsky face counts, Lemmas L and E exactly, Thm~5.2 (pointed cones), Ex.~10.9 correction, Conjecture~G1 &
+\src{audit_cone_lune.py} & $6$ arrangements outside [Cone]'s list ($A_1\times A_2$, resonance in $\mathbb R^3$, $A_2\times A_2$, generic $6$ in $\mathbb R^5$, non-generic $7$ in $\mathbb R^4$, $H_3$) & [AudCone]\\
+$R_Pe_\zeta=0$ iff connected or $n\le2$; witness coefficient; $\psi_P$ an isomorphism; $\varphi_\Sigma$; $\Lie_ne_\zeta$; Prop.~4 maps. (Its \texttt{[wgt]} check is defective, \S\ref{sec:natural}) &
+\src{natural_isomorphism.py} & $n\le6$; $\psi_P$ and $R_Pe_\zeta$: also all $2045$ posets at $n=7$; $\varphi_\Sigma$ equivariance, Prop.~4: $n\le5$ & [Nat]\\
+Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theorem~$\Psi$ for every primitive $\zeta$ and random admissible $\lambda$, equivariance, Theorem~\ref{thm:ext}, $\Theta$ vs.\ extensions, $\varphi_\Sigma$; comb pairing $=\Sh_n$ without Ree &
+\src{audit_natural_isomorphism.py} & all posets $n\le6$ (Lemma~$\Psi$.0, contraction, $\varphi_\Sigma$, equivariance, comb pairing: $n\le5$) & [AudNat]\\
 \end{longtable}
 }
 
@@ -1079,15 +1384,26 @@ Lune form of Conjecture~S; pointed cones; Conjecture~G on other arrangements &
 \section{Open problems and unchecked items}\label{sec:open}
 
 \begin{enumerate}
-\item \textbf{A natural isomorphism.} Theorem~\ref{thm:main} is a character
-  identity. Find an explicit $\Aut(P)$-isomorphism
-  $H_P\otimes\sgn\to\PLie(P)$ that is natural for some useful class of maps
-  between posets. For connected $P$ one is known
-  ($\rho_w\otimes1\mapsto\sgn(w)we_\zeta$, Theorem~\ref{thm:S}). For
-  disconnected $P$ the problem is an explicit isomorphism
-  $\mathbb C[\Lin P]/R_P\cong\mathbb C[\Lin P]/(W_P\cap\mathbb C[S_n](1-e_\zeta))\otimes\sgn$.
-  By Prop.~\ref{prop:Cprime}, it cannot be induced by an $S_n$-equivariant
-  map into $\mathbb C[S_n]e_\zeta$.
+\item \textbf{Natural isomorphism: what remains.} The question is answered,
+  in the precise sense of \S\ref{sec:natural}: an explicit, choice-free,
+  relabelling-compatible isomorphism exists for every $P$
+  (Theorem~\ref{thm:Theta}); naturality along extensions holds exactly on
+  connected posets and is impossible at every disconnected $P$ with $n\ge3$
+  (Theorem~\ref{thm:ext}); and compatibility with ordinal sums is either
+  non-canonical or incompatible with the connected case. Still open:
+  \begin{itemize}[nosep]
+  \item Conjecture~\ref{conj:phisigma} ($\varphi_\Sigma$ invertible for
+    every $P$);
+  \item whether Theorem~\ref{thm:Psi} or Corollary~\ref{cor:klyachko}
+    appears in the literature on Klyachko's theorem (one search only);
+  \item a canonical $e_\zeta$-side coproduct of twisted form; every
+    candidate twist found in [Nat, \S7] needs a base point;
+  \item the \texttt{[wgt]} check of \src{natural_isomorphism.py} is
+    defective and has not been fixed; the $n=7$ \texttt{[psi]} run, the
+    $n=6$ and size-weighted $\varphi_\Sigma$ checks, the equivariance of
+    $\varphi_\Sigma$ and the Dynkin formula were not re-run by [AudNat]
+    (UNCHECKED); Props.~3--5 of [Nat] were audited by re-reading only.
+  \end{itemize}
 \item \textbf{Bracket, cooperad, Hopf-monoid structure.} The commutator of
   concatenations does \emph{not} descend to
   $\PLie(P)\otimes\PLie(Q)\to\PLie(P+Q)$ in the $e_\zeta$ model, even for
@@ -1108,7 +1424,9 @@ Lune form of Conjecture~S; pointed cones; Conjecture~G on other arrangements &
   cited Wachs statements for $n\ge7$.
 \item \textbf{Cone/lune generalization.} [Cone, Conjecture~G]: the general
   form of Conjecture~S for every top-cone of every real central arrangement.
-  The results of [Cone] themselves still await an independent audit.
+  The proven results of [Cone] have been independently audited in [AudCone]
+  (the pointed-cone theorem holds for essential arrangements); Conjecture~G
+  itself remains \st{conjectured}.
 \item \textbf{Items the audits list as UNCHECKED.}
   \begin{itemize}[nosep]
   \item Exact theorem numbers: Crapo's theorem; Hall (EC1 Prop.~3.8.5); the

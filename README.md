@@ -10,8 +10,16 @@ Lie(P) = span{w·e_ζ : w a linear extension of P}. There is also a closed
 formula for the character. The result is proved twice: once via Weisner's
 theorem and once via Crapo's complementation theorem. Both proofs assume
 Jenča–Sarkoci Thm 4.5, P. Hall's theorem and the Hopf trace formula, and an
-independent audit found that both hold. The isomorphism is abstract; a
-*natural* isomorphism is still open. The seed note's "restricted JKS image
+independent audit found that both hold. That isomorphism is abstract, but
+there is also an explicit one, for every P: truncate an element of Lie(P) to
+the linear extensions and read it modulo shuffles. This truncation map is an
+Aut(P)-isomorphism onto C[LinExt P]/R_P, proved by elementary word
+combinatorics ("Theorem Ψ"); composed with the splitting-cycle model below it
+gives H_P ⊗ sgn ≅ Lie(P) with no choices, compatible with relabelling. In the
+stronger sense of naturality along order extensions, an isomorphism exists
+exactly on connected posets: for disconnected P with n ≥ 3, no family of maps
+compatible with the inclusions into P's own linear extensions is injective.
+Both results are independently audited. The seed note's "restricted JKS image
 identity" (its eq. restrictionlemma) is **false**. In its place, the splitting
 cycles of the linear extensions span H_P, with an explicit basis (formerly
 "Conjecture S"). That result is proved and audited, conditional on a cited
@@ -61,6 +69,15 @@ JKS maps, the correction, and the explicit basis:
   independence of the chambers of pointed cones for every finite real
   central essential arrangement (audited:
   notes/audit_cone_lune_lie_theory.md).
+
+The natural-isomorphism question:
+- [`notes/natural_isomorphism.md`](notes/natural_isomorphism.md): which
+  notions of naturality hold; Theorem Ψ (twisted class sums are independent
+  modulo shuffles) and the explicit isomorphism for every P; extension
+  naturality exactly on connected posets; ordinal and disjoint sums.
+- [`notes/audit_natural_isomorphism.md`](notes/audit_natural_isomorphism.md):
+  its audit. Theorem Ψ holds; one check in the note's script is defective,
+  and the count it gave is corrected.
 
 Cyclic-compatible posets and b_n:
 - [`notes/cyclic_compatible_posets_bn.md`](notes/cyclic_compatible_posets_bn.md):
