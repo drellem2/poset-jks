@@ -15,8 +15,8 @@ the choice of route, and faithful statements. It proves nothing about the theore
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS; expect 12 "declaration uses sorry"
-lake env lean scripts/PrintAxioms.lean     # the #print axioms table below
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 12 "declaration uses sorry"
+lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
 grep -rn "^  sorry" PosetJKS               # the sorry list below
 ```
 
@@ -28,7 +28,8 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/OrderComplex.lean` | oriented chains of the order complex (`Chains`, `bd`), reduced homology `redHom`; order-preserving partitions (`IsOrderPreserving`, `OP`, `ProperOP`); `H_P` (`HP`); the `Aut(P)` action on the proper part and on `H_P` (`actProper`, `actHP`); the fixed lattice `OP(P)^g` and `μ(OP(P)^g)` (`muFixed`) (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1 (statements `sorry`) |
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (statements `sorry`) |
-| `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem |
+| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/`, `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
+| `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 
 ## 1. Ingredient map: what Mathlib has, what must be built
 
@@ -166,8 +167,8 @@ depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no
 Gaps and deliberate modelling choices:
 
 * The Hopf trace formula (C) is not yet stated in Lean.
-* `∂ ∘ ∂ = 0` is not yet proved for `bd`. The definition `redHom = ker ∂_d / (im ∂_{d+1} ∩ ker ∂_d)`
-  does not depend on it, but every homology proof will.
+* `∂ ∘ ∂ = 0` is proved for `bd` (`bd_comp_bd`, in `Test.lean`). Move it to `OrderComplex.lean`
+  when proof work starts.
 * `H̃_{-1}` is not modelled, since `redHom` is indexed by `d : ℕ`. It plays no role for `n ≥ 3`.
 * Jenča–Sarkoci is represented only by its homological content. See §1 and §2.
 * Theorem S(c),(d), Prop. Φ and Lemma D (splitting cycles `ρ_w`) are not yet stated. They need
@@ -175,9 +176,9 @@ Gaps and deliberate modelling choices:
   elements of `Chains`.
 * The `x ∈ F(P,g)` data in `closed_formula` is a `Finset (Finset α)` of blocks rather than a
   `Setoid`. This is equivalent, and convenient for "`g` permutes the blocks".
-* There are no positive-control instances yet: no Lean evaluation of these definitions on small
-  posets. `OPFixed.bot_ne_top` is the only non-degeneracy lemma. Step 2 should add small
-  examples, such as the 3-antichain and the 3-chain, ideally checked against `compute/`.
+* Positive controls on small posets are in `Test.lean`, and the faithfulness audit is
+  `AUDIT_FAITHFULNESS.md`. **Known statement defect:** `trace_PLie`, `corPsi_bijective` and
+  `corPsi` are false at `n = 0` (proved there). The audit suggests adding `0 < Fintype.card α`.
 
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
