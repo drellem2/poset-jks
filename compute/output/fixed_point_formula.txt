@@ -1,0 +1,130 @@
+== A2: d=2, |W|=6, |Aut gens group|=12, hyperplanes=3, flats=5, faces=13, top-cones=19, W-orbits=5
+  g != 1 in Stab_W(V): 2 pairs with chi_V(g) != 0, 2 zero by the criterion of Cor. V, 3 zero otherwise
+  [EZ] W: holds on 12/12 (V, g) pairs
+  [CF] W: holds on 12/12 (V, g) pairs
+  [WR] W: holds on 7/7 (V, g) pairs
+  [VC] W: holds on 2/2 (V, g) pairs
+  [int] W: holds on 5/5 cones
+  [EZ] Aut \ W: holds on 8/8 (V, g) pairs
+  [CF] Aut \ W: holds on 8/8 (V, g) pairs
+  [WR] Aut \ W: holds on 3/3 (V, g) pairs
+  [VC] Aut \ W: holds on 0/0 (V, g) pairs
+  [WR, Fix(g) not a flat; reported] Aut \ W: holds on 0/5
+  [braid] mu(Lambda^g) = mu(OP(P)^g), eq. closed and CF-braid: hold on 12/12 (P, g) pairs (P up to relabelling)
+  types (dim Fix(g^k))_k of g in W: 3; those with chi_V(g) = 0 on every cone: 1
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [1, 2]
+== A3: d=3, |W|=24, |Aut gens group|=48, hyperplanes=6, flats=15, faces=75, top-cones=219, W-orbits=16
+  g != 1 in Stab_W(V): 4 pairs with chi_V(g) != 0, 18 zero by the criterion of Cor. V, 21 zero otherwise
+  [EZ] W: holds on 59/59 (V, g) pairs
+  [CF] W: holds on 59/59 (V, g) pairs
+  [WR] W: holds on 43/43 (V, g) pairs
+  [VC] W: holds on 18/18 (V, g) pairs
+  [int] W: holds on 16/16 cones
+  [EZ] Aut \ W: holds on 37/37 (V, g) pairs
+  [CF] Aut \ W: holds on 37/37 (V, g) pairs
+  [WR] Aut \ W: holds on 17/17 (V, g) pairs
+  [VC] Aut \ W: holds on 3/3 (V, g) pairs
+  [WR, Fix(g) not a flat; reported] Aut \ W: holds on 9/20
+  [braid] mu(Lambda^g) = mu(OP(P)^g), eq. closed and CF-braid: hold on 59/59 (P, g) pairs (P up to relabelling)
+  types (dim Fix(g^k))_k of g in W: 5; those with chi_V(g) = 0 on every cone: 3
+    vanishing: order 4, dim Fix(g^k) for k=1..4: [0, 1, 0, 3]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [1, 1, 3]
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [2, 3]
+== A4: d=4, |W|=120, |Aut gens group|=240, hyperplanes=10, flats=52, faces=541, top-cones=4231, W-orbits=63
+  g != 1 in Stab_W(V): 24 pairs with chi_V(g) != 0, 134 zero by the criterion of Cor. V, 104 zero otherwise
+  [EZ] W: holds on 325/325 (V, g) pairs
+  [CF] W: holds on 325/325 (V, g) pairs
+  [WR] W: holds on 262/262 (V, g) pairs
+  [VC] W: holds on 134/134 (V, g) pairs
+  [int] W: holds on 63/63 cones
+  [EZ] Aut \ W: holds on 153/153 (V, g) pairs
+  [CF] Aut \ W: holds on 153/153 (V, g) pairs
+  [WR] Aut \ W: holds on 45/45 (V, g) pairs
+  [VC] Aut \ W: holds on 8/8 (V, g) pairs
+  [WR, Fix(g) not a flat; reported] Aut \ W: holds on 72/108
+  [braid] mu(Lambda^g) = mu(OP(P)^g), eq. closed and CF-braid: hold on 325/325 (P, g) pairs (P up to relabelling)
+  types (dim Fix(g^k))_k of g in W: 7; those with chi_V(g) = 0 on every cone: 5
+    vanishing: order 4, dim Fix(g^k) for k=1..4: [1, 2, 1, 4]
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [1, 2, 3, 2, 1, 4]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [2, 2, 4]
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [2, 4]
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [3, 4]
+== A5: d=5, |W|=720, |Aut gens group|=1440, hyperplanes=15, flats=203, faces=4683, top-cones=130023, W-orbits=318
+  g != 1 in Stab_W(V): 183 pairs with chi_V(g) != 0, 962 zero by the criterion of Cor. V, 597 zero otherwise
+  [EZ] W: holds on 2060/2060 (V, g) pairs
+  [CF] W: holds on 2060/2060 (V, g) pairs
+  [WR] W: holds on 1742/1742 (V, g) pairs
+  [VC] W: holds on 962/962 (V, g) pairs
+  [int] W: holds on 318/318 cones
+  [EZ] Aut \ W: holds on 922/922 (V, g) pairs
+  [CF] Aut \ W: holds on 922/922 (V, g) pairs
+  [WR] Aut \ W: holds on 361/361 (V, g) pairs
+  [VC] Aut \ W: holds on 90/90 (V, g) pairs
+  [WR, Fix(g) not a flat; reported] Aut \ W: holds on 481/561
+  [braid] mu(Lambda^g) = mu(OP(P)^g), eq. closed and CF-braid: hold on 2060/2060 (P, g) pairs (P up to relabelling)
+  types (dim Fix(g^k))_k of g in W: 11; those with chi_V(g) = 0 on every cone: 7
+    vanishing: order 5, dim Fix(g^k) for k=1..5: [1, 1, 1, 1, 5]
+    vanishing: order 4, dim Fix(g^k) for k=1..4: [1, 3, 1, 5]
+    vanishing: order 4, dim Fix(g^k) for k=1..4: [2, 3, 2, 5]
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [2, 3, 4, 3, 2, 5]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [3, 3, 5]
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [3, 5]
+    vanishing: order 2, dim Fix(g^k) for k=1..2: [4, 5]
+== B2: d=2, |W|=8, |Aut gens group|=8, hyperplanes=4, flats=6, faces=17, top-cones=33, W-orbits=7
+  g != 1 in Stab_W(V): 9 pairs with chi_V(g) != 0, 2 zero by the criterion of Cor. V, 0 zero otherwise
+  [EZ] W: holds on 18/18 (V, g) pairs
+  [CF] W: holds on 18/18 (V, g) pairs
+  [WR] W: holds on 11/11 (V, g) pairs
+  [VC] W: holds on 2/2 (V, g) pairs
+  [int] W: holds on 7/7 cones
+  types (dim Fix(g^k))_k of g in W: 4; those with chi_V(g) = 0 on every cone: 0
+== B3: d=3, |W|=48, |Aut gens group|=48, hyperplanes=9, flats=24, faces=147, top-cones=941, W-orbits=35
+  g != 1 in Stab_W(V): 47 pairs with chi_V(g) != 0, 36 zero by the criterion of Cor. V, 16 zero otherwise
+  [EZ] W: holds on 134/134 (V, g) pairs
+  [CF] W: holds on 134/134 (V, g) pairs
+  [WR] W: holds on 99/99 (V, g) pairs
+  [VC] W: holds on 36/36 (V, g) pairs
+  [int] W: holds on 35/35 cones
+  types (dim Fix(g^k))_k of g in W: 8; those with chi_V(g) = 0 on every cone: 2
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [0, 1, 0, 1, 0, 3]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [1, 1, 3]
+== B4: d=4, |W|=384, |Aut gens group|=384, hyperplanes=16, flats=116, faces=1697, top-cones=60201, W-orbits=266
+  g != 1 in Stab_W(V): 378 pairs with chi_V(g) != 0, 436 zero by the criterion of Cor. V, 144 zero otherwise
+  [EZ] W: holds on 1224/1224 (V, g) pairs
+  [CF] W: holds on 1224/1224 (V, g) pairs
+  [WR] W: holds on 958/958 (V, g) pairs
+  [VC] W: holds on 436/436 (V, g) pairs
+  [int] W: holds on 266/266 cones
+  types (dim Fix(g^k))_k of g in W: 14; those with chi_V(g) = 0 on every cone: 4
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [0, 2, 0, 2, 0, 4]
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [1, 2, 1, 2, 1, 4]
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [1, 2, 3, 2, 1, 4]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [2, 2, 4]
+== D4: d=4, |W|=192, |Aut gens group|=1152, hyperplanes=12, flats=72, faces=865, top-cones=12313, W-orbits=110
+  g != 1 in Stab_W(V): 172 pairs with chi_V(g) != 0, 185 zero by the criterion of Cor. V, 64 zero otherwise
+  [EZ] W: holds on 531/531 (V, g) pairs
+  [CF] W: holds on 531/531 (V, g) pairs
+  [WR] W: holds on 421/421 (V, g) pairs
+  [VC] W: holds on 185/185 (V, g) pairs
+  [int] W: holds on 110/110 cones
+  [EZ] Aut \ W: holds on 1419/1419 (V, g) pairs
+  [CF] Aut \ W: holds on 1419/1419 (V, g) pairs
+  [WR] Aut \ W: holds on 777/777 (V, g) pairs
+  [VC] Aut \ W: holds on 202/202 (V, g) pairs
+  [WR, Fix(g) not a flat; reported] Aut \ W: holds on 392/642
+  types (dim Fix(g^k))_k of g in W: 9; those with chi_V(g) = 0 on every cone: 2
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [0, 2, 0, 2, 0, 4]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [2, 2, 4]
+== H3: d=3, |W|=120, |Aut gens group|=120, hyperplanes=15, flats=48, faces=363, top-cones=7745, W-orbits=93
+  g != 1 in Stab_W(V): 38 pairs with chi_V(g) != 0, 79 zero by the criterion of Cor. V, 88 zero otherwise
+  [EZ] W: holds on 298/298 (V, g) pairs
+  [CF] W: holds on 298/298 (V, g) pairs
+  [WR] W: holds on 205/205 (V, g) pairs
+  [VC] W: holds on 79/79 (V, g) pairs
+  [int] W: holds on 93/93 cones
+  types (dim Fix(g^k))_k of g in W: 8; those with chi_V(g) = 0 on every cone: 4
+    vanishing: order 10, dim Fix(g^k) for k=1..10: [0, 1, 0, 1, 0, 1, 0, 1, 0, 3]
+    vanishing: order 6, dim Fix(g^k) for k=1..6: [0, 1, 0, 1, 0, 3]
+    vanishing: order 5, dim Fix(g^k) for k=1..5: [1, 1, 1, 1, 3]
+    vanishing: order 3, dim Fix(g^k) for k=1..3: [1, 1, 3]
+ALL CHECKS PASSED
