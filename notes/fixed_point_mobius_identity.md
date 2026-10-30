@@ -75,7 +75,8 @@ fixed classes that does not depend on the rotation.
 lemma by brute force: complements computed inside the lattice, interval Möbius
 numbers, and fixed classes by rotation. It does not use any step of the proof.
 The run covers all 402 unlabeled posets with 3 ≤ n ≤ 6 and the
-repeated-component disjoint unions at n = 7, 8. See §7.
+repeated-component disjoint unions at n = 7, 8, 9 (fixed-point-free
+uniform classes there). No failures. See §7.
 
 **Not proven here.**
 - A natural isomorphism (see above).
@@ -457,7 +458,7 @@ with at least two layers, and so on.
 Script: `compute/fixed_point_mobius.py`. It reuses the enumeration and
 exact-arithmetic helpers of `compute/poset_jks_check.py`. Run from `compute/`:
 
-    python3 fixed_point_mobius.py --nmax 6 --large 7 8 > output/fixed_point_mobius.txt
+    python3 fixed_point_mobius.py --nmax 6 --large 7 8 9 > output/fixed_point_mobius.txt
 
 The script handles one representative per conjugacy class of Aut(P). It
 works by brute force and does not use any argument from §§2–6:
@@ -485,12 +486,32 @@ Positive controls (the run fails if any of them never fires):
 
 Families covered:
 - all unlabeled posets with 3 ≤ n ≤ 6 (5 + 16 + 63 + 318 = 402);
-- for n = 7, 8, every disjoint union of connected posets of size ≤ 4 in which
-  some component occurs at least twice. These are the posets where the
-  phases live.
+- for n = 7, 8, 9, every disjoint union of connected posets of size ≤ 4 in
+  which some component occurs at least twice (194 posets). These are the
+  posets where the phases live. For these only the fixed-point-free uniform
+  classes d^k are checked (the full OP lattice at g = 1 is too slow for the
+  brute-force Möbius routine); every class is checked for n ≤ 6.
 
 Result (COMPUTED; the archived output is `compute/output/fixed_point_mobius.txt`):
 
-RESULT_PLACEHOLDER
+```
+posets checked: 596 (all unlabeled 3 <= n <= 6, every conjugacy class of Aut(P); repeated-component disjoint unions at n in [7, 8, 9], fixed-point-free uniform classes d^k only)
+  pairs: 975
+  F: 975
+  L2: 518
+  L3: 48
+  L3_with_complements: 239
+  L4: 48
+  L5: 365
+  k1: 7
+  control_no_mud_detected: 239
+  control_lin_detected: 17
+failures: 0
+ALL CHECKS PASS
+```
+
+Runtime about 2 minutes, single core. Note: n = 7 is prime, so its only
+fixed-point-free uniform class is 7^1 (antichain, k = 1); n = 8, 9 carry the
+k ≥ 2 cases (types 2^4, 4^2, 3^3).
 
 Tests: `python3 -m unittest test_fixed_point_mobius` (in `compute/`).

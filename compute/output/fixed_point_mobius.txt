@@ -1,0 +1,13 @@
+posets checked: 596 (all unlabeled 3 <= n <= 6, every conjugacy class of Aut(P); repeated-component disjoint unions at n in [7, 8, 9], fixed-point-free uniform classes d^k only)
+  pairs: 975
+  F: 975
+  L2: 518
+  L3: 48
+  L3_with_complements: 239
+  L4: 48
+  L5: 365
+  k1: 7
+  control_no_mud_detected: 239
+  control_lin_detected: 17
+failures: 0
+ALL CHECKS PASS
