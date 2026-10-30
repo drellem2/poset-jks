@@ -1,5 +1,7 @@
 import PosetJKS.OrderComplex
 import PosetJKS.Milestone
+import PosetJKS.LieTrace
+import PosetJKS.OPLattice
 
 /-!
 # The poset JKS theorem (Theorem `thm:main` of `notes/poset_jks_theorem.tex`)
@@ -80,8 +82,8 @@ theorem trace_HP (hn : 3 ≤ Fintype.card α) (g : α ≃o α) :
 /-- (liechar): `tr(g | PLie(P)) = ∑_{gC=C} ζ^{r_g(C)}`. Elementary. -/
 theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α))
     (g : α ≃o α) :
-    LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g := by
-  sorry
+    LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g :=
+  trace_actPLie h0 hζ.pow_eq_one g
 
 /-! ### Cited inputs, in the form the proofs use them (not assumed; `sorry`'d) -/
 
