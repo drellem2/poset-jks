@@ -64,7 +64,7 @@ statement of Theorem A or B for general P (§F).
 | 17 | §6: eq. (mainconj) for connected P | CONFIRMED given Theorem C | Both sides are free C[Aut P]-modules of rank \|Lin P\|/\|Aut P\| (§B.6). |
 | 18 | "The chain-level check (n ≤ 5) does not go through Φ" | CONFIRMED | §C.2. Top homology equals the top cycle space, so chain independence is homology independence. |
 | 19 | "§2–§5.2 use none of these inputs" | OVERSTATED (wording) | There is no §5.2. The intended range is §2 to Theorem B/Lemma 6. Lemma 1's second proof uses (Ree). The first proof does not, so the claim holds for the proof route that matters. |
-| 20 | Status line "(Φ) CITED / PROVEN in the literature note" | OVERSTATED pending mg-350d5 | Φ is under separate audit. Every homological claim in the S-note is conditional on it. See §C for what survives either way. |
+| 20 | Status line "(Φ) CITED / PROVEN in the literature note" | CONFIRMED after mg-350d5 (was pending) | Φ was under separate audit; mg-350d5 has since CONFIRMED it (§C.0). Every homological claim in the S-note is conditional on it; §C.1 says what would survive if it fell. |
 | 21 | `conjecture_s.py` docstring: [La] "checked here for n ≤ 6" | Inconsistent with the note (n ≤ 7) | The docstring and the note disagree on the range. This is not a mathematical issue. The n = 7 run was not archived (the S-note says so). It was not re-run here. |
 | 22 | n = 7 computations ([S], [B], [E]) | UNCHECKED | Not re-run. Pure Python is too slow at n = 7 without the original's shortcuts. My exhaustive range is n ≤ 6. |
 | 23 | "May be folklore" (novelty) | Partially resolved | The antichain case is classical. Nothing was found for general P (§F). |
@@ -234,6 +234,24 @@ good word 2031 is classified correctly.
 
 Write Φ(⇐) for "Σ a_σ sgn(σ) σ ∈ Sh_n ⇒ Σ a_σ ρ_σ = 0" (well-definedness).
 Write Φ(⇒) for the converse (injectivity).
+
+### C.0 Status of Φ (update after rebase)
+
+The mg-350d5 audit has since merged
+(`notes/audit_literature_novelty_jks_maps.md`, claim-table row 10). It grades
+Prop. Φ CONFIRMED:
+- for n ≤ 6, PROVEN outright by exact chain-level computation, with no use of
+  Wachs;
+- for general n, resting on Wachs 1998 Lemma 3.1 and Thms 4.2–4.3, which it
+  checked against the preprint.
+
+So the conditional claims below are, as of that audit, PROVEN modulo those
+CITED Wachs statements and J–S Thm 4.5.
+
+That audit's row 14 says "Conjecture S remains CONJECTURED for n ≥ 7". That
+sentence grades the literature note, which predates the S-note. It is not a
+verdict on the S-note's proof. This audit finds that proof valid for all n,
+given Φ, D and J–S.
 
 ### C.1 What stands or falls
 
