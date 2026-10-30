@@ -85,6 +85,33 @@ uniform classes there). No failures. See §7.
 - Any statement about the global module H_n of eq. (globalind), beyond what
   follows from the local isomorphisms.
 
+**Relation to the sibling proof in `notes/global_module_operations_plethlog.md`
+(mg-266cf, §2).** That note reached main while this one was being written, and
+it proves the same theorem (its Theorem 2.8) with the same closed formula:
+- its F(P,g) is {y_T : T ∈ 𝒯} when g has type d^k;
+- F(P,g) is empty otherwise;
+- its μ(o) is μ(d).
+
+This note was written without reference to it, and the two proofs differ as
+follows.
+
+| | mg-266cf §2 | this note |
+|---|---|---|
+| distinguished element of L | the full orbit partition O_g | z = merge **one** orbit |
+| lattice identity | Weisner (proved in-line, self-contained) | Crapo's complementation theorem (CITED) |
+| reduction | recursion (W) over X(P,g), then Möbius inversion on X(P,g) | z^⊥ is an antichain, so there is no recursion and no inversion |
+| unequal cycle lengths | falls out of the inversion (F = ∅) | separate one-line argument (Prop. 4): z has no complement |
+| Lie side | cut the circle into g-translates (its Lemma 2.6, Prop. 2.7) | the same idea; here a weighted bijection (Prop. 6) |
+
+Advantages of each:
+- The sibling's proof is more self-contained, because Weisner is proved in
+  line while Crapo is only cited.
+- This proof is shorter on the Möbius side, and in case (a) it yields
+  contractibility of the fixed lattice's proper part via Björner–Walker.
+
+Each proof is a check on the other. The scripts are independent as well:
+`compute/fixed_point_mobius.py` does not import `poset_lie_structure.py`.
+
 ---
 
 ## 0. Conventions
