@@ -9,10 +9,16 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   (`PLie(P) ≅ ℂ[Lin P]/R_P`, explicit and `Aut(P)`-equivariant, every finite poset with
   `n ≥ 1`). These are sorry-free and depend only on `propext`, `Classical.choice`, `Quot.sound`
   (§5). The main theorem and its homological inputs are still `sorry` (§4).
+* **Step 3 (M2, partial)** proves `trace_PLie` (Lemma `lem:liechar`). It also builds the
+  homology-free Möbius-side infrastructure: the lattice facts about `OP(P)` and `OP(P)^g`,
+  Weisner's theorem, the interval lemma and the recursion (W) (unsigned). `character_identity`
+  and `closed_formula` stay `sorry`. They are **not** homology-free: their `g = 1` case is
+  the base case `μ(OP(Q)) = (-1)^{|Q|-3} e_C(Q)`, which the note obtains from Jenča–Sarkoci and
+  Hall (§2, §4.1).
 
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
-* `lake build` succeeds. It reports 7 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
+* `lake build` succeeds. It reports 6 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
 * No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
 
 ## Reproduce
@@ -20,7 +26,7 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 7 "declaration uses sorry"
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 6 "declaration uses sorry"
 lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
 grep -rn "^  sorry" PosetJKS               # the sorry list below
 ```
@@ -34,6 +40,9 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/Words.lean` | M1 core, on lists over a fixed type with an arbitrary relation `r`: shuffles `shq`, `ShL`, the contraction operator `E_{a,x}` and Lemma 1 (`map_E_ShL`); the contraction relation `rc` and Lemma 5 (`inBL_contract`); Theorem A (`eq_zero_of_inBL`) and Theorem Ψ (`eq_zero_of_eqL`) on lists; Lemma Ψ.0 (`eqL_classSum`); the measure `μ` (`muL`), the Lemma 6 step (`muL_lt_of_shuffle`) and Lemma 4 (`inBL_rotate_muL`, `rotate_eq_zero_of_inBL`) (**all proved**) |
 | `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
+| `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
+| `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
+| `PosetJKS/Interval.lean` | M2: `μ` is invariant under interval isomorphisms (`mu_eq_of_interval`); the block `B₀` through a point, its period `m` and `h = g^m|_{B₀}` (`Blk`, `per`, `hres`); Lemma `lem:interval`(i) (`mu_interval`); the recursion (W), unsigned (`recursionW`) (**all proved**) |
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (statements `sorry`) |
 | `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/`, `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
@@ -47,9 +56,9 @@ work.
 
 | Ingredient | In Mathlib (found) | Built here (step 1) | Still to build | Size |
 |---|---|---|---|---|
-| **`OP(P)`** | `Setoid` with `Setoid.completeLattice` (refinement order; `Setoid.bot_def`: `⊥` is `=`, `Setoid.top_def`), `Setoid.comap`, `Setoid.ker`, `Finpartition`, `Relation.ReflTransGen` | `IsOrderPreserving` (acyclic quotient), `OP`, `ProperOP`, `OPFixed`, `actSetoid`, `actProper : ProperOP ≃o ProperOP`; `isOrderPreserving_bot/top`; `OPFixed.bot_ne_top` | `OP(P)` is a lattice with meet the partition meet; `OP(P)^g` is a lattice containing `O_g`; joins with `O_g`; `{x : x ∨ O_g = 1̂} = X(P,g)` (note, Lemmas `lem:orbitquot`, `lem:lattice`) | 400–700 |
+| **`OP(P)`** *(step 3: (i)–(iv) of `lem:lattice`, `lem:orbitquot`, `lem:interval`(i) done; see `OPLattice.lean`, `Interval.lean`)* | `Setoid` with `Setoid.completeLattice` (refinement order; `Setoid.bot_def`: `⊥` is `=`, `Setoid.top_def`), `Setoid.comap`, `Setoid.ker`, `Finpartition`, `Relation.ReflTransGen` | `IsOrderPreserving` (acyclic quotient), `OP`, `ProperOP`, `OPFixed`, `actSetoid`, `actProper : ProperOP ≃o ProperOP`; `isOrderPreserving_bot/top`; `OPFixed.bot_ne_top` | `OP(P)` is a lattice with meet the partition meet; `OP(P)^g` is a lattice containing `O_g`; joins with `O_g`; `{x : x ∨ O_g = 1̂} = X(P,g)` (note, Lemmas `lem:orbitquot`, `lem:lattice`) | 400–700 |
 | **Order complex, reduced homology** | `PreAbstractSimplicialComplex` / `AbstractSimplicialComplex` (faces only, no homology); `SSet`, `CategoryTheory.nerve`, `mem_nerve_nonDegenerate_iff_strictMono`; `AlternatingFaceMapComplex.obj`, `alternatingFaceMapComplex`, `SimplicialObject.Augmented`, `normalizedMooreComplex`; `AlgebraicTopology.singularHomologyFunctor`; `HomologicalComplex.eulerChar`, `homologyEulerChar` (definitions only). **Absent:** simplicial homology of a simplicial complex, the order complex of a poset, geometric realisation of a poset, wedges of spheres, homotopy types of complexes | hand-rolled augmented oriented chain complex on chains `Fin m ↪o L`: `Chains`, `face`, `bd`, `cycles`, `boundaries`, `redHom`; functoriality `chainMap`, `bd_chainMap`, `homMap` | `∂∘∂ = 0` (not needed for the statements; needed for every proof) ~60; optional bridge to `alternatingFaceMapComplex (nerve L)` (normalised) ~300+ | 60–400 |
-| **Möbius function, P. Hall** | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
+| **Möbius function, P. Hall** *(Weisner: done in step 3)* | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
 | **Hopf trace formula** | `LinearMap.trace`, `LinearMap.trace_restrict_eq_of_forall_mem` (PID file), `HomologicalComplex.eulerChar` (definition). **Absent:** Euler–Poincaré `χ(C) = χ(H)`, the Hopf trace formula, additivity of trace over `0 → U → V → V/U → 0` | — | Pure linear algebra on a bounded complex of finite-dimensional spaces with a chain endomorphism; specialise to `Chains`/`redHom`. Uses `LinearMap.trace_eq_matrix_trace` with an adapted basis | 300–500 |
 | **Jenča–Sarkoci** (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C} S^{n-3}`) | Nothing usable: no homotopy types of finite complexes, no shellability or discrete Morse theory, no Quillen fibre lemma | statement of its homological content only: `jencaSarkoci_homology` (`H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)`) | The homotopy statement cannot be expressed in current Mathlib. The homological content needs a combinatorial acyclicity proof, e.g. a shelling or acyclic matching of `Δ(\widehat{OP(P)})`, or a formal transcription of the Jenča–Sarkoci argument. **This is the main obstacle of the topological route.** | 2000–5000+, research-level |
 | **`Lie(P) = span{w e_ζ}`** | `Finsupp`, `Finsupp.lmapDomain`, `Finsupp.linearCombination`, `MonoidAlgebra`, `FreeLieAlgebra`, `finRotate`, `Equiv.Perm.sign`, `IsPrimitiveRoot`, `IsPrimitiveRoot.pow_eq_one_iff_dvd`, `IsPrimitiveRoot.geom_sum_eq_zero`. **Absent:** shuffle algebra / shuffle product on `ℂ[S_n]`, Ree's theorem `Lie_n^⊥ = Sh_n`, Wachs's comb basis | `Word`, `Alg` (`ℂ[S_n]` as `Word α →₀ ℂ`), `rot`, `wEζ`, `PLie`, `shuffle`, `Sh`, `W`, `R`, `cyc`, `eC`, `classRot`, `fixedClassSum`, `prefixSet`, `restrict`, `IsCut` | basis `{w_C e_ζ}` of `PLie(P)` (Lemma `lem:liechar`) ~200; contraction operator `E_{a,x}` and `E_{a,x}(Sh) ⊆ Sh` (note's "key tool") ~300; Prop. Φ (Wachs + Ree), only for Theorem S(c),(d) ~1500+ | 500 (milestone) / +1500 (Φ) |
@@ -68,12 +77,18 @@ of Theorem S(c),(d).
 
 **Combinatorial targets.**
 
-* *The character identity (characterconj)* needs no homology. It is an identity between a Möbius
-  value of the finite lattice `OP(P)^g` and a sum of roots of unity. It still needs the lattice
-  structure of `OP(P)` and `OP(P)^g` (Lemmas `lem:orbitquot`, `lem:lattice`), Weisner, the
-  interval and base-case lemmas, the Möbius-side Proposition `prop:Mside`, and the Lie-side
-  Proposition `prop:Lside` with Ramanujan sums. That is substantial lattice and Möbius
-  infrastructure, of which Mathlib supplies only `IncidenceAlgebra.mu`.
+* *The character identity (characterconj)* is **not** homology-free on the note's route.
+  (Correction made in step 3; step 1 claimed it needed no homology.) It is an identity between
+  a Möbius value of the finite lattice `OP(P)^g` and a sum of roots of unity. Most of its proof
+  is finite lattice and Möbius combinatorics: the lattice structure of `OP(P)` and `OP(P)^g`
+  (Lemmas `lem:orbitquot`, `lem:lattice`), Weisner, the interval lemma, the recursion (W), the
+  Möbius inversion on `X(P,g)`, and the Lie-side Proposition `prop:Lside` with Ramanujan sums.
+  But the Möbius inversion in `prop:Mside` evaluates the terms with `h_x = 1` by the base case
+  Lemma `lem:small`, `μ(OP(Q)) = (-1)^{|Q|-3} e_C(Q)`. For `|Q| ≥ 3` the note proves this from
+  (A) Jenča–Sarkoci and (B) Hall. At `g = 1`, (characterconj) *is* this base case. So closing
+  `character_identity` (and the first conjunct of `closed_formula`) needs either Hall (M3) plus
+  the Euler-characteristic content of `jencaSarkoci_homology`, or a new elementary proof of
+  `μ(OP(P)) = (-1)^{n-1} e_C(P)`. The latter is not in the note and is not attempted here.
 * *Theorem S(a),(b), Theorem Ψ, Corollary Ψ.1* (`PLie(P) ≅ ℂ[Lin P]/R_P`, explicit and
   `Aut(P)`-equivariant, for every finite poset): **pure word combinatorics.** The proofs are
   inductions on `n` through the contraction `P/{a,x}` and the operator `E_{a,x}`, plus
@@ -98,8 +113,9 @@ of Theorem S(c),(d).
 4. Its statements can be sanity-checked against the existing Python computations
    (`compute/natural_isomorphism.py`, `compute/conjecture_s.py`).
 
-Then **M2 = the character identity (characterconj)**, also homology-free, after the `OP(P)`
-lattice and Weisner infrastructure. Then **M3 = Hall and Hopf** (finite combinatorics and linear
+Then **M2 = the character identity (characterconj)**, after the `OP(P)` lattice and Weisner
+infrastructure. Step 3 found that M2 is homology-free only up to the base case `lem:small`
+(see above), so M2 cannot close before `jencaSarkoci_homology` is available. Then **M3 = Hall and Hopf** (finite combinatorics and linear
 algebra), which reduce (mainiso) to `jencaSarkoci_homology`, `trace_PLie` and "equal characters
 ⇒ isomorphic". `jencaSarkoci_homology` stays the last open input. Alternatively, Theorem S(c)
 plus Prop. Φ gives the lower bound `dim H_P ≥ e_C(P)` without it. The matching upper bound and
@@ -151,20 +167,21 @@ admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining
 `h0 : 0 < Fintype.card α` on `trace_PLie`, `corPsi_bijective` and `corPsi`. It is the note's
 implicit `n ≥ 1` (its objects use `1/n`), and the statements are false without it (§4).
 
-## 4. Sorries (7) and gaps
+## 4. Sorries (6) and gaps
 
 `sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`). No definition
 depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
 
 | # | Location | Theorem |
 |---|---|---|
-| 1 | `MainTheorem.lean:38` | `character_identity` |
-| 2 | `MainTheorem.lean:47` | `main_iso` |
-| 3 | `MainTheorem.lean:70` | `closed_formula` |
-| 4 | `MainTheorem.lean:78` | `trace_HP` |
-| 5 | `MainTheorem.lean:84` | `trace_PLie` |
-| 6 | `MainTheorem.lean:94` | `jencaSarkoci_homology` (cited input A) |
-| 7 | `MainTheorem.lean:105` | `hall_mu_eq_reducedEuler` (cited input B) |
+| 1 | `MainTheorem.lean:40` | `character_identity` |
+| 2 | `MainTheorem.lean:49` | `main_iso` |
+| 3 | `MainTheorem.lean:72` | `closed_formula` |
+| 4 | `MainTheorem.lean:80` | `trace_HP` |
+| 6 | `MainTheorem.lean:96` | `jencaSarkoci_homology` (cited input A) |
+| 7 | `MainTheorem.lean:107` | `hall_mu_eq_reducedEuler` (cited input B) |
+
+Numbering as in step 1. #5 `trace_PLie` is closed in step 3 (§4.1).
 
 The five M1 sorries of step 1 (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`,
 `corPsi_equivariant`) are closed. `corPsi` follows from the last two.
@@ -204,6 +221,58 @@ with one change of route.
 * Corollary Ψ.1: injectivity from Theorem Ψ with `λ ≡ ζ` via `pr_P(w e_ζ) = s_ζ(w)/n`;
   surjectivity from `dim PLie(P) = e_C(P) = dim ℂ[Lin P]/R_P` (Theorem S(b)).
 
+### 4.1 How M2 (partial) is proved, deviations, and what remains
+
+`trace_PLie` follows the note's proof of `lem:liechar`. The vectors `w_C e_ζ`, one chosen
+linear extension `w_C` per class, are independent because `w_D e_ζ` has coefficient
+`n⁻¹ [C = D]` at `w_C`. They span because `(w γ^j) e_ζ = ζ^j w e_ζ`. In this basis `g` acts
+monomially, `g · w_C e_ζ = ζ^j w_{gC} e_ζ`, and for `gC = C` the rotation `j` equals `r_g(C)`,
+since rotations `< n` of a word are distinct. The statement is unchanged.
+
+Möbius side (homology-free parts). Deviations from the note's route:
+
+* **No lattice instance on `OP(P)^g`.** Weisner (`weisner`) is stated for a finite poset with
+  `0̂`, `1̂` in which every `x` has a least upper bound `j x` with the fixed element `a`. That is
+  exactly what the note uses (only joins with `a = O_g`), and Lemma `lem:lattice`(iii) supplies
+  it (`OPFixed.join_le_iff`). The proof is the note's.
+* **`O_g` and `x ∨ O_g` are explicit setoids.** `a ~ b` iff `g^k a = b`, resp. `g^k a ~_x b`,
+  for some `k ∈ ℕ`. Acyclicity is proved on the element-level reachability relation of
+  `IsOrderPreserving`. A closed walk `a ⇝ g^h a` is reversed by iterating `o - 1` more times
+  (`rel_back`). This is the note's argument for `lem:orbitquot` and `lem:lattice`(iv).
+* **`X(P,g)` is `{x ∈ OP(P)^g : x ∨ O_g = 1̂}`**, used directly. `joinOrbit_eq_top_iff` and
+  `rel_of_le_of_joinOrbit_eq_top` are the content of `lem:lattice`(iv): transitive on blocks,
+  and blocks are unions of components. Conversely, `isOrderPreserving_of_rel_of_le` shows
+  every partition into unions of components is order-preserving. Matching this with the
+  `Finset`-of-blocks form `InF` used in the statement of `closed_formula` is not yet done.
+* **Interval lemma.** `B₀` is the block through a base point `p` (any block is of this form),
+  `m` is the least `m > 0` with `g^m p ∈ B₀`, and `per_dvd` proves that the stabiliser of `B₀`
+  is generated by `g^m`. The isomorphism `[0̂, x] ≅ OP(P|_{B₀})^h` is restriction to `B₀`
+  (`resP`), with explicit inverse `liftP`. Möbius values transfer by `mu_eq_of_interval`
+  (well-founded induction on Mathlib's recursive `μ`).
+* **(W) is proved unsigned**: `∑_{x ∈ X(P,g)} μ(OP(P|_{B₀(x)})^{h_x}) = 0` for `g ≠ 1`
+  (`recursionW`). The sign identity `lem:interval`(ii), `(-1)^{n-3} sgn(g) = (-1)^{k-3} sgn(h)`,
+  is not formalized.
+
+Remaining for `character_identity` and `closed_formula`:
+
+1. `lem:interval`(ii), the cycle-count sign identity.
+2. The Möbius inversion of `prop:Mside`: the bijection `X(P|_{B₀(x)}, h_x) ≅ {z ∈ X(P,g) : z ≤ x}`
+   compatible with (block, induced automorphism), and `[x, 1̂]_X ≅` the divisor lattice of `o`
+   for `x ∈ F(P,g)`, so `μ_X(x, 1̂) = μ(o)`.
+3. **The base case `lem:small` for `|Q| ≥ 3`**: needs Hall (`hall_mu_eq_reducedEuler`) and the
+   Euler-characteristic content of `jencaSarkoci_homology` (or a new elementary proof). This
+   blocks #1 and #3 independently of items 1, 2 and 4.
+4. `prop:Lside` (homology-free, the second conjunct of `closed_formula`). A route that avoids
+   the note's weights `1/|K(w)|`: by Lemma 4 (`card_inB`) each class has exactly one word in
+   `B_P(x₀)`. A `g`-fixed class with rotation `r` then corresponds to its `B_P` word `w`. With
+   `k = gcd(n, r)`, the first `k` letters of `w` form the block of an `x ∈ F(P,g)` through
+   `x₀`, and they are a word of `B_{P|_{A_0}}(x₀)`. `r/k` is a unit mod `o`. Together this gives
+   a bijection {fixed classes} ≅ `∐_{x ∈ F} B_{P|_{B₀(x)}}(x₀) × (ℤ/o)^×` with
+   `ζ^r = (ζ^k)^{r/k}`, and the Ramanujan sum `∑_{s ∈ (ℤ/o)^×} ω^s = μ(o)`. Mathlib has no
+   lemma "sum of primitive `o`-th roots `= μ(o)`"; it follows from `∑_{ω^o = 1} ω = [o = 1]` by
+   Möbius inversion. Matching the statement's arbitrary choice `B₀` also needs `e_C` to be
+   invariant under order isomorphisms (`g^j : P|_{B} ≅ P|_{g^j B}`).
+
 Gaps and deliberate modelling choices:
 
 * The Hopf trace formula (C) is not yet stated in Lean.
@@ -227,7 +296,7 @@ Gaps and deliberate modelling choices:
 'PosetJKS.main_iso' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.closed_formula' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.trace_HP' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.trace_PLie' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.trace_PLie' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.thmS_a' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -246,6 +315,17 @@ Gaps and deliberate modelling choices:
 'PosetJKS.actHP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.actMP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.muFixed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.trace_actPLie' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.finrank_PLie' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.weisner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.isOrderPreserving_inf' depends on axioms: [propext, Quot.sound]
+'PosetJKS.isOrderPreserving_orbitSetoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.isOrderPreserving_joinOrbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.rel_of_le_of_joinOrbit_eq_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.sum_mu_join_eq_top' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.mu_eq_of_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.mu_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.recursionW' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.fixedClassSum_g3_prim' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.muFixed_chain2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.not_op_chain3_02_1' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -257,6 +337,8 @@ Gaps and deliberate modelling choices:
 ```
 
 The M1 theorems (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`, `corPsi_equivariant`,
-`corPsi`) and their supporting results depend only on the three standard axioms. The remaining
+`corPsi`), `trace_PLie` and the M2 infrastructure (step 3), with their supporting results,
+depend only on the three standard axioms (`isOrderPreserving_inf` does not even use
+`Classical.choice`). The remaining
 stated theorems also depend on `sorryAx`, from the visible `sorry`s in §4. The definitions are
 `sorry`-free.

@@ -27,6 +27,19 @@ import PosetJKS
 #print axioms PosetJKS.actMP
 #print axioms PosetJKS.muFixed
 
+-- Second milestone, partial (`PosetJKS/LieTrace.lean`, `OPLattice.lean`, `Interval.lean`)
+#print axioms PosetJKS.trace_actPLie
+#print axioms PosetJKS.finrank_PLie
+#print axioms PosetJKS.weisner
+#print axioms PosetJKS.isOrderPreserving_inf
+#print axioms PosetJKS.isOrderPreserving_orbitSetoid
+#print axioms PosetJKS.isOrderPreserving_joinOrbit
+#print axioms PosetJKS.rel_of_le_of_joinOrbit_eq_top
+#print axioms PosetJKS.sum_mu_join_eq_top
+#print axioms PosetJKS.mu_eq_of_interval
+#print axioms PosetJKS.mu_interval
+#print axioms PosetJKS.recursionW
+
 -- Controls and counterexamples in `PosetJKS/Test.lean` (must not depend on `sorryAx`)
 #print axioms PosetJKS.Test.fixedClassSum_g3_prim
 #print axioms PosetJKS.Test.muFixed_chain2
