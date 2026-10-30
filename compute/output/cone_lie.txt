@@ -1,0 +1,142 @@
+[A2 (braid n=3)] m=3 d=2 covectors=13 topes=6 flats=5 |mu|=2 rank_p(Lune)=4 (target 4): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 19
+  [lrb] faces of V closed under Tits product: 19/19
+  [lin] lune in V <=> D in V and S_max in Z: 19/19
+  [K]   Gamma_V cap Lune = span(lunes in V): 19/19
+  [q]   q(V) = dim H~_top(Lambda(V)): 19/19; homology concentrated in top degree: 19/19
+  [rho] rank span(rho_C : C in V) = q(V): 19/19
+  [q]   q(V) = |mu(Lambda(V))|: 19/19
+  [pointed] pointed cones: 12; with q = #topes: 12/12
+  [brown] c_X well defined: 19/19; Brown multiplicity m_bottom = q(V): 1/19; m_bottom = 0 or V = all: 19/19 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[A3 (braid n=4)] m=6 d=3 covectors=75 topes=24 flats=15 |mu|=6 rank_p(Lune)=18 (target 18): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 219
+  [lrb] faces of V closed under Tits product: 219/219
+  [lin] lune in V <=> D in V and S_max in Z: 219/219
+  [K]   Gamma_V cap Lune = span(lunes in V): 219/219
+  [q]   q(V) = dim H~_top(Lambda(V)): 219/219; homology concentrated in top degree: 219/219
+  [rho] rank span(rho_C : C in V) = q(V): 219/219
+  [q]   q(V) = |mu(Lambda(V))|: 219/219
+  [pointed] pointed cones: 146; with q = #topes: 146/146
+  [brown] c_X well defined: 219/219; Brown multiplicity m_bottom = q(V): 1/219; m_bottom = 0 or V = all: 219/219 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[A4 (braid n=5)] m=10 d=4 covectors=541 topes=120 flats=52 |mu|=24 rank_p(Lune)=96 (target 96): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 4231
+  [lrb] faces of V closed under Tits product: 4231/4231
+  [lin] lune in V <=> D in V and S_max in Z: 4231/4231
+  [K]   Gamma_V cap Lune = span(lunes in V): 4231/4231
+  [q]   q(V) = dim H~_top(Lambda(V)): 4231/4231; homology concentrated in top degree: 4231/4231
+  [rho] rank span(rho_C : C in V) = q(V): 4231/4231
+  [q]   q(V) = |mu(Lambda(V))|: 4231/4231
+  [pointed] pointed cones: 3060; with q = #topes: 3060/3060
+  [brown] c_X well defined: 4231/4231; Brown multiplicity m_bottom = q(V): 1/4231; m_bottom = 0 or V = all: 4231/4231 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[B2] m=4 d=2 covectors=17 topes=8 flats=6 |mu|=3 rank_p(Lune)=5 (target 5): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 33
+  [lrb] faces of V closed under Tits product: 33/33
+  [lin] lune in V <=> D in V and S_max in Z: 33/33
+  [K]   Gamma_V cap Lune = span(lunes in V): 33/33
+  [q]   q(V) = dim H~_top(Lambda(V)): 33/33; homology concentrated in top degree: 33/33
+  [rho] rank span(rho_C : C in V) = q(V): 33/33
+  [q]   q(V) = |mu(Lambda(V))|: 33/33
+  [pointed] pointed cones: 24; with q = #topes: 24/24
+  [brown] c_X well defined: 33/33; Brown multiplicity m_bottom = q(V): 1/33; m_bottom = 0 or V = all: 33/33 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[B3] m=9 d=3 covectors=147 topes=48 flats=24 |mu|=15 rank_p(Lune)=33 (target 33): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 941
+  [lrb] faces of V closed under Tits product: 941/941
+  [lin] lune in V <=> D in V and S_max in Z: 941/941
+  [K]   Gamma_V cap Lune = span(lunes in V): 941/941
+  [q]   q(V) = dim H~_top(Lambda(V)): 941/941; homology concentrated in top degree: 941/941
+  [rho] rank span(rho_C : C in V) = q(V): 941/941
+  [q]   q(V) = |mu(Lambda(V))|: 941/941
+  [pointed] pointed cones: 778; with q = #topes: 778/778
+  [brown] c_X well defined: 941/941; Brown multiplicity m_bottom = q(V): 1/941; m_bottom = 0 or V = all: 941/941 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[D4] m=12 d=4 covectors=865 topes=192 flats=72 |mu|=45 rank_p(Lune)=147 (target 147): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (sample): 150
+  [lrb] faces of V closed under Tits product: 150/150
+  [lin] lune in V <=> D in V and S_max in Z: 150/150
+  [K]   Gamma_V cap Lune = span(lunes in V): 150/150
+  [q]   q(V) = dim H~_top(Lambda(V)): 150/150; homology concentrated in top degree: 150/150
+  [rho] rank span(rho_C : C in V) = q(V): 150/150
+  [q]   q(V) = |mu(Lambda(V))|: 150/150
+  [pointed] pointed cones: 81; with q = #topes: 81/81
+  [brown] c_X well defined: 150/150; Brown multiplicity m_bottom = q(V): 1/150; m_bottom = 0 or V = all: 150/150 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[B4] m=16 d=4 covectors=1697 topes=384 flats=116 |mu|=105 rank_p(Lune)=279 (target 279): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (sample): 150
+  [lrb] faces of V closed under Tits product: 150/150
+  [lin] lune in V <=> D in V and S_max in Z: 150/150
+  [K]   Gamma_V cap Lune = span(lunes in V): 150/150
+  [q]   q(V) = |mu(Lambda(V))|: 150/150
+  [pointed] pointed cones: 98; with q = #topes: 98/98
+  [brown] c_X well defined: 150/150; Brown multiplicity m_bottom = q(V): 1/150; m_bottom = 0 or V = all: 150/150 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[generic5 R^3 seed 7] m=5 d=3 covectors=83 topes=22 flats=17 |mu|=6 rank_p(Lune)=16 (target 16): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 163
+  [lrb] faces of V closed under Tits product: 163/163
+  [lin] lune in V <=> D in V and S_max in Z: 163/163
+  [K]   Gamma_V cap Lune = span(lunes in V): 163/163
+  [q]   q(V) = dim H~_top(Lambda(V)): 163/163; homology concentrated in top degree: 163/163
+  [rho] rank span(rho_C : C in V) = q(V): 163/163
+  [q]   q(V) = |mu(Lambda(V))|: 163/163
+  [pointed] pointed cones: 112; with q = #topes: 112/112
+  [brown] c_X well defined: 163/163; Brown multiplicity m_bottom = q(V): 1/163; m_bottom = 0 or V = all: 163/163 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[generic6 R^3 seed 11] m=6 d=3 covectors=123 topes=32 flats=23 |mu|=10 rank_p(Lune)=22 (target 22): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 337
+  [lrb] faces of V closed under Tits product: 337/337
+  [lin] lune in V <=> D in V and S_max in Z: 337/337
+  [K]   Gamma_V cap Lune = span(lunes in V): 337/337
+  [q]   q(V) = dim H~_top(Lambda(V)): 337/337; homology concentrated in top degree: 337/337
+  [rho] rank span(rho_C : C in V) = q(V): 337/337
+  [q]   q(V) = |mu(Lambda(V))|: 337/337
+  [pointed] pointed cones: 264; with q = #topes: 264/264
+  [brown] c_X well defined: 337/337; Brown multiplicity m_bottom = q(V): 1/337; m_bottom = 0 or V = all: 337/337 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[random7 R^3 seed 3] m=7 d=3 covectors=139 topes=38 flats=25 |mu|=12 rank_p(Lune)=26 (target 26): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 491
+  [lrb] faces of V closed under Tits product: 491/491
+  [lin] lune in V <=> D in V and S_max in Z: 491/491
+  [K]   Gamma_V cap Lune = span(lunes in V): 491/491
+  [q]   q(V) = dim H~_top(Lambda(V)): 491/491; homology concentrated in top degree: 491/491
+  [rho] rank span(rho_C : C in V) = q(V): 491/491
+  [q]   q(V) = |mu(Lambda(V))|: 491/491
+  [pointed] pointed cones: 392; with q = #topes: 392/392
+  [brown] c_X well defined: 491/491; Brown multiplicity m_bottom = q(V): 1/491; m_bottom = 0 or V = all: 491/491 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+[random6 R^4 seed 5] m=6 d=4 covectors=317 topes=50 flats=40 |mu|=9 rank_p(Lune)=41 (target 41): True
+  [E_h] restriction maps lunes to lunes of A^h or 0: True
+  cones (all): 579
+  [lrb] faces of V closed under Tits product: 579/579
+  [lin] lune in V <=> D in V and S_max in Z: 579/579
+  [K]   Gamma_V cap Lune = span(lunes in V): 579/579
+  [q]   q(V) = dim H~_top(Lambda(V)): 579/579; homology concentrated in top degree: 579/579
+  [rho] rank span(rho_C : C in V) = q(V): 579/579
+  [q]   q(V) = |mu(Lambda(V))|: 579/579
+  [pointed] pointed cones: 340; with q = #topes: 340/340
+  [brown] c_X well defined: 579/579; Brown multiplicity m_bottom = q(V): 1/579; m_bottom = 0 or V = all: 579/579 (not asserted)
+  [full] q(all topes) = |mu| : True
+  => PASS
+ALL CHECKS PASSED
