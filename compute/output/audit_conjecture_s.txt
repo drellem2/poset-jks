@@ -1,0 +1,9 @@
+posets: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318}
+[CTL] positive controls fire: [True, True, True, True, True, True, True, True, True, True, True] -> True
+[L1]  Lemma 1 exact formula on 118540 (shuffle, a, x) cases, n <= 6; E(Sh) in Sh by Ree-free rank, n <= 5: True
+[ADJ] <E w, w'> = <w, sub(w')> on 59400 pairs; sub(comb) _|_ Sh, n <= 5: True
+[REE] comb-coordinate rank = Ree-free generator rank on Lin P for 404 posets, rank Sh_n = n! - (n-1)!, n <= 6: True
+[LEM] Lemmas 2(a),2(b),3,4,5,(*) on 9124 (poset, adjacent pair) cases, n <= 6: {'2a': True, '2b': True, '3': True, '4': True, '5': True, 'star': True} -> True
+[AB]  Theorem A, |B_P| = e_C, Lemma 6, Theorem B (all base components): n=2: 2/2, n=3: 5/5, n=4: 16/16, n=5: 63/63, n=6: 318/318: True
+[CHN] chain level (no Phi, no J-S) for 402 posets, 3 <= n <= 6: {'D': True, 'cycle': True, 'rankB': True, 'Rrel': True, 'iso': True, 'equiv': True} -> True
+ALL CHECKS PASSED

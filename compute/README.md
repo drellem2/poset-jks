@@ -116,5 +116,5 @@ the Ree-free shuffle-membership cross-check, and Theorem C / Cor. 5.5 at chain
 level without Prop. Phi or Jenca–Sarkoci (n <= 6), with positive controls.
 Findings: `../notes/audit_conjecture_s.md`. Run from this directory:
 
-    python3 audit_conjecture_s.py --nmax 6 --ne 6 --nlem 6 --nchn 6 --nree 6 > output/audit_conjecture_s.txt
+    python3 audit_conjecture_s.py --nmax 6 --ne 6 --nlem 6 --nchn 6 --nree 6 > output/audit_conjecture_s.txt   # ~16 min
     python3 -m unittest test_audit_conjecture_s
