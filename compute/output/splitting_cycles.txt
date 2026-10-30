@@ -1,0 +1,32 @@
+n=3: 12 proper shuffles each satisfy sum sgn(w) rho_w = 0 (exact); rank rho = 2 = (n-1)! = 2: True; rank Sh = 4 = n!-(n-1)! = 4: True
+n=3: comb coordinates kill every proper shuffle (exact); rank = 2
+n=3: id*e_zeta proportional to w0*e_zeta: False
+n=3: Sh * e_zeta == 0: False
+n=3: Sh * theta_n^* == 0 (exact): True; rank C[S_n] theta_n^* = 2 (= (n-1)!: True)
+n=3: Klyachko kappa (maj of word) is an idempotent in Lie_n
+n=3: id*kappa proportional to w0*kappa: False
+n=3: Sh * kappa == 0: False
+n=3: 5 unlabeled posets (3 connected); dim span{rho_w : w in Lin(P)} == e_C(P) for all: True; direct rho rank == e_C == dim H_P (direct homology) for all: True
+n=3: dim W_P e_zeta == e_C for all: True; dim W_P kappa == e_C for 5/5; W_P e_zeta == W_(P^op) e_zeta for 4/5
+n=4: 72 proper shuffles each satisfy sum sgn(w) rho_w = 0 (exact); rank rho = 6 = (n-1)! = 6: True; rank Sh = 18 = n!-(n-1)! = 18: True
+n=4: comb coordinates kill every proper shuffle (exact); rank = 6
+n=4: id*e_zeta proportional to w0*e_zeta: False
+n=4: Sh * e_zeta == 0: False
+n=4: Sh * theta_n^* == 0 (exact): True; rank C[S_n] theta_n^* = 6 (= (n-1)!: True)
+n=4: Klyachko kappa (maj of word) is an idempotent in Lie_n
+n=4: id*kappa proportional to w0*kappa: False
+n=4: Sh * kappa == 0: False
+n=4: 16 unlabeled posets (10 connected); dim span{rho_w : w in Lin(P)} == e_C(P) for all: True; direct rho rank == e_C == dim H_P (direct homology) for all: True
+n=4: dim W_P e_zeta == e_C for all: True; dim W_P kappa == e_C for 16/16; W_P e_zeta == W_(P^op) e_zeta for 7/16
+n=5: 480 proper shuffles each satisfy sum sgn(w) rho_w = 0 (exact); rank rho = 24 = (n-1)! = 24: True; rank Sh = 96 = n!-(n-1)! = 96: True
+n=5: comb coordinates kill every proper shuffle (exact); rank = 24
+n=5: id*e_zeta proportional to w0*e_zeta: False
+n=5: Sh * e_zeta == 0: False
+n=5: Sh * theta_n^* == 0 (exact): True; rank C[S_n] theta_n^* = 24 (= (n-1)!: True)
+n=5: Klyachko kappa (maj of word) is an idempotent in Lie_n
+n=5: id*kappa proportional to w0*kappa: False
+n=5: Sh * kappa == 0: False
+n=5: 63 unlabeled posets (44 connected); dim span{rho_w : w in Lin(P)} == e_C(P) for all: True; direct rho rank == e_C == dim H_P (direct homology) for all: True
+n=5: dim W_P e_zeta == e_C for all: True; dim W_P kappa == e_C for 63/63; W_P e_zeta == W_(P^op) e_zeta for 11/63
+n=6: 318 unlabeled posets (238 connected); dim span{rho_w : w in Lin(P)} == e_C(P) for all: True
+ALL CHECKS PASSED
