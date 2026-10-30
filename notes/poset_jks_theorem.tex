@@ -1,0 +1,1192 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{longtable}
+\usepackage{array}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\OP}{\mathcal O}
+\newcommand{\Lin}{\operatorname{LinExt}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Cyc}{\operatorname{CycExt}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\ch}{\operatorname{ch}}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\PLie}{\mathsf{Lie}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\newcommand{\shuf}{\mathbin{\sqcup\mkern-3mu\sqcup}}
+\newcommand{\st}[1]{\textup{[\textsc{#1}]}}
+\newcommand{\src}[1]{\nolinkurl{#1}}
+
+\title{The poset Joyal--Klyachko--Stanley theorem:\\
+statement, proof, corrections and status}
+\author{}
+\date{Consolidated write-up --- October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note collects in one place what the repository has established about
+the conjecture of \src{notes/poset_jks_research_note.tex} (the \emph{seed
+note}). For every finite poset $P$ on $n\ge3$ points, the top homology $H_P$
+of the proper part of the lattice of order-preserving partitions is, as an
+$\Aut(P)$-module, isomorphic to $\sgn\otimes\PLie(P)$. We give a
+self-contained proof via Weisner's theorem, together with a closed formula
+for the character. The isomorphism is abstract, not natural. The seed note's
+proposed route through a ``restricted JKS image identity'' is false, and we
+record the counterexample. An explicit basis of $H_P$ by splitting cycles of
+linear extensions (formerly ``Conjecture~S'') is proved, conditional on a
+cited theorem of Wachs. The global module and the count $b_n$ are settled. We
+end with a table of computer checks and a list of open problems. The seed
+note is not modified. Every statement here carries its epistemic status and
+the notes file it comes from.
+\end{abstract}
+
+\tableofcontents
+
+\section{How to read this note}
+
+\paragraph{Status tags.} Every result carries one of:
+\begin{itemize}[nosep]
+\item \st{proven}: a proof is given here or in the cited notes file, and it
+  depends only on the inputs it names;
+\item \st{computed}: checked by a script in \src{compute/}, with the
+  reproduce command in \S\ref{sec:computations} and in \src{compute/README.md};
+\item \st{cited}: a published theorem, with its location;
+\item \st{conjectured}.
+\end{itemize}
+\st{audited} means that an independent audit re-derived the proof, with its
+own code. The audit files are \src{notes/audit_*.md}. A result marked
+\st{proven} but not \st{audited} has had only its author's own checks.
+
+\paragraph{Sources.} Each result names the notes file it comes from. The
+abbreviations used below are:
+\begin{center}
+\small
+\begin{tabular}{ll}
+\textbf{[Seed]} & \src{notes/poset_jks_research_note.tex}\\
+\textbf{[Glob]} & \src{notes/global_module_operations_plethlog.md} (Proof I)\\
+\textbf{[FPM]} & \src{notes/fixed_point_mobius_identity.md} (Proof II)\\
+\textbf{[AudChar]} & \src{notes/audit_character_identity_proof.md}\\
+\textbf{[Lit]} & \src{notes/literature_novelty_jks_maps.md}\\
+\textbf{[AudLit]} & \src{notes/audit_literature_novelty_jks_maps.md}\\
+\textbf{[S]} & \src{notes/conjecture_s_splitting_cycles_span.md}\\
+\textbf{[AudS]} & \src{notes/audit_conjecture_s.md}\\
+\textbf{[Cone]} & \src{notes/cone_lune_lie_theory.md}\\
+\textbf{[Bn]} & \src{notes/cyclic_compatible_posets_bn.md}\\
+\textbf{[AudBn]} & \src{notes/audit_cyclic_compatible_posets_bn.md}\\
+\textbf{[Repro]} & \src{notes/reproduce_character_identity_n_le_5.md}\\
+\textbf{[N7]} & \src{notes/n7_character_sweep_and_homology_crosscheck.md}
+\end{tabular}
+\end{center}
+Equation names such as (mainconj), (characterconj) and (restrictionlemma)
+refer to the labels of the seed note.
+
+\paragraph{The seed note's own computations.} The seed note reports
+computations for $n\le5$, some $n=6$ examples and values of $b_n$. They are
+not used as evidence anywhere below. Wherever a computation is quoted, it is
+the repository's own reproduction, with its script.
+
+\section{Objects and conventions}\label{sec:setup}
+
+Let $P$ be a poset on $[n]$. These conventions are those of [Seed], [Repro]
+and [AudChar, S1].
+
+\begin{itemize}
+\item \emph{Order-preserving partitions.} A set partition $\pi$ of $[n]$ is
+  order-preserving if the quotient digraph $P/\pi$ is acyclic. These form a
+  lattice $\OP(P)$ under refinement, with bottom $\hat0$ the discrete
+  partition and top $\hat1$ the one-block partition. Write $\widehat{\OP(P)}$
+  for its proper part, and
+  \[
+  H_P=\widetilde H_{n-3}(\Delta(\widehat{\OP(P)});\mathbb C).
+  \]
+  For a finite bounded poset $L$, $\mu(L)$ means $\mu_L(\hat0,\hat1)$.
+\item \emph{Words.} A word $w=w_1\cdots w_n$ is the permutation
+  $i\mapsto w_i$. Let $\gamma=(1\,2\,\cdots\,n)$. Then $(w\gamma^j)_i=w_{i+j}$
+  (indices mod $n$), so right multiplication rotates positions. For
+  $g\in S_n$, $(gw)_i=g(w_i)$, so left multiplication relabels letters.
+\item \emph{Cyclic classes.} $\Lin(P)\subseteq S_n$ is the set of linear
+  extensions. A cyclic class is a right coset $wC_n$ that meets $\Lin(P)$,
+  and $e_C(P)=|\Cyc(P)|$ is the number of them. An element $g\in\Aut(P)$
+  fixes a class $C$ with rotation $r=r_g(C)\in\mathbb Z/n$ iff $gw=w\gamma^r$
+  for one, equivalently every, $w\in C$. This means $g(w_i)=w_{i+r}$.
+\item \emph{The Lie side.} Fix a primitive $n$th root of unity $\zeta$, and
+  let $e_\zeta=\frac1n\sum_j\zeta^{-j}\gamma^j$. Then
+  \[
+  \PLie(P)=\operatorname{span}\{we_\zeta:w\in\Lin(P)\}\subseteq\mathbb C[S_n],
+  \]
+  with $\Aut(P)$ acting by left multiplication.
+\item \emph{Components.} ``Union of components'' means a union of connected
+  components of the comparability graph of $P$. For $B\subseteq[n]$, $P|_B$
+  is the induced subposet.
+\end{itemize}
+
+\paragraph{Cited inputs.} The main theorem uses exactly the following
+external results.
+\begin{enumerate}[label=(\Alph*)]
+\item\label{in:JS} \st{cited} Jen\v{c}a--Sarkoci~\cite{JencaSarkoci},
+  Thm~4.5 (arXiv:1112.5782v2 numbering): for $n\ge3$,
+  $\Delta(\widehat{\OP(P)})\simeq\bigvee^{e_C(P)}S^{n-3}$. The hypothesis
+  is only that $P$ is finite with $n\ge3$; it need not be connected
+  ([Lit, \S2.1--2.2]). Their order congruences are the partitions with
+  acyclic quotient (their Thm~3.3, after Cz\'edli--Lenkehegyi), and their
+  $e_C$ is ours ([Lit, \S2.2]).
+\item\label{in:Hall} \st{cited} P.~Hall's theorem: for a finite bounded
+  poset $L$, $\mu_L(\hat0,\hat1)=\widetilde\chi(\Delta(\overline L))$, where
+  $\overline L$ is the proper part. See Stanley, \emph{EC1}, 2nd ed.,
+  Prop.~3.8.5 (number not re-checked).
+\item\label{in:Hopf} \st{cited} The Hopf trace formula: for a simplicial
+  self-map $f$ of a finite complex,
+  $\sum_i(-1)^i\operatorname{tr}(f\mid C_i)=\sum_i(-1)^i\operatorname{tr}(f\mid H_i)$.
+  It also holds for the augmented complex and reduced homology. See
+  Munkres, \emph{Elements of Algebraic Topology}, Thm~22.1 (number not
+  re-checked).
+\end{enumerate}
+Proof~II (Remark~\ref{rem:proofII}) also uses Crapo's complementation
+theorem~\cite{Crapo}. Proof~I does not use it.
+
+\section{The theorem}\label{sec:theorem}
+
+\begin{theorem}[Poset JKS theorem]\label{thm:main}
+Assume \ref{in:JS}--\ref{in:Hopf}. Let $P$ be a finite poset on $n\ge3$
+points. Then for every $g\in\Aut(P)$
+\begin{equation}\label{eq:characterconj}
+(-1)^{n-3}\mu(\OP(P)^g)=\sgn(g)\sum_{\substack{C\in\Cyc(P)\\gC=C}}\zeta^{r_g(C)},
+\end{equation}
+which is the seed note's (characterconj). Consequently
+\begin{equation}\label{eq:mainiso}
+H_P\;\cong\;\sgn\otimes\PLie(P)\qquad\text{as }\Aut(P)\text{-modules}.
+\end{equation}
+Moreover, if $g$ has order $o$, then
+\begin{equation}\label{eq:closed}
+\sgn(g)(-1)^{n-3}\mu(\OP(P)^g)\;=\;\sum_{gC=C}\zeta^{r_g(C)}
+\;=\;\mu(o)\sum_{x\in F(P,g)}e_C\bigl(P|_{B_0(x)}\bigr).
+\end{equation}
+Here $\mu(o)$ is the number-theoretic M\"obius function, and $F(P,g)$ is
+the set of partitions of $[n]$ into exactly $o$ blocks such that each block
+is a union of components and $g$ permutes the blocks cyclically. $B_0(x)$ is
+any one block of $x$. $F(P,g)$ is empty unless $\langle g\rangle$ acts
+freely on the set of components.
+\end{theorem}
+
+\noindent\textbf{Status.} \st{proven}, \st{audited}. Proved independently in
+[Glob, \S2, Thm~2.8] (Proof~I) and [FPM] (Proof~II). Both proofs were
+audited in [AudChar], with verdict \emph{PROOF HOLDS} for each and no
+mathematical error. \st{computed}: \eqref{eq:characterconj} holds for all
+unlabeled posets with $n\le7$, and the right-hand equality of
+\eqref{eq:closed} has been checked through $n=10$ examples
+(\S\ref{sec:computations}).
+
+\begin{remark}[What kind of isomorphism]\label{rem:abstract}
+\eqref{eq:mainiso} is an abstract isomorphism: two representations of a
+finite group over $\mathbb C$ with the same character are isomorphic. The
+seed note's conjecture asks for a \emph{natural} isomorphism. Neither proof
+gives one, and neither claims to ([AudChar, \S5]). Choosing an isomorphism
+for one poset in each $S_n$-orbit and transporting it by relabelling gives
+isomorphisms compatible with relabelling, which is all that
+\S\ref{sec:global} needs. Nothing more canonical follows. A natural
+isomorphism stays open (\S\ref{sec:open}).
+\end{remark}
+
+The proof below is Proof~I of [Glob, \S2], in the form re-derived in
+[AudChar, \S1.1--1.2], with the two expository slips of [AudChar, \S2]
+fixed. Slip~(a) is fixed by Lemma~\ref{lem:small}; slip~(b) is fixed in the
+proof of Proposition~\ref{prop:Mside}.
+
+\subsection{The two characters}
+
+\begin{lemma}[eq.\ (homchar); {[Glob, Thm~2.8]}, {[FPM, \S1]}, {[AudChar, S5]}]
+\label{lem:homchar}
+Assume \ref{in:JS}--\ref{in:Hopf} and $n\ge3$. For $g\in\Aut(P)$,
+$\operatorname{tr}(g\mid H_P)=(-1)^{n-3}\mu(\OP(P)^g)$. \st{proven}
+\end{lemma}
+
+\begin{proof}
+$g$ acts on $\OP(P)$ by order automorphisms and so acts simplicially on
+$\Delta=\Delta(\widehat{\OP(P)})$. An order automorphism of a finite chain is
+the identity. So a chain that $g$ maps to itself is fixed pointwise, with its
+orientation. Hence $\operatorname{tr}(g\mid C_i)$ counts the $g$-fixed
+$i$-chains, which are the $i$-chains of the proper part of
+$L^g=\OP(P)^g$. Note that $\hat0,\hat1\in L^g$. Apply \ref{in:Hopf} on the
+augmented complex, with the empty simplex in degree $-1$. Then
+$\sum_i(-1)^i\operatorname{tr}(g\mid\widetilde H_i(\Delta))
+=\widetilde\chi(\Delta(\overline{L^g}))=\mu(L^g)$ by \ref{in:Hall}. By
+\ref{in:JS}, only $i=n-3$ survives.
+\end{proof}
+
+\begin{lemma}[eq.\ (liechar); {[AudChar, S1]}]\label{lem:liechar}
+$\operatorname{tr}(g\mid\PLie(P))=\sum_{gC=C}\zeta^{r_g(C)}$. \st{proven}
+\end{lemma}
+
+\begin{proof}
+$\gamma e_\zeta=\frac1n\sum_j\zeta^{-j}\gamma^{j+1}=\zeta e_\zeta$, so
+$w\gamma^je_\zeta=\zeta^jwe_\zeta$. The vector $we_\zeta$ is supported on the
+coset $wC_n$, with all coefficients nonzero, and distinct cosets are disjoint.
+So choosing one $w_C\in C$ for each class gives a basis
+$\{w_Ce_\zeta\}_{C\in\Cyc(P)}$ of $\PLie(P)$; in particular
+$\dim\PLie(P)=e_C(P)$. Since $g\Lin(P)=\Lin(P)$, $g$ permutes the classes.
+A non-fixed class contributes $0$ to the trace. If $gw_C=w_C\gamma^r$, then
+$g\cdot w_Ce_\zeta=\zeta^rw_Ce_\zeta$. The rotation $r$ does not depend on
+the representative: for $w'=w\gamma^j$, $gw'=w'\gamma^r$.
+\end{proof}
+
+\begin{remark}[$\zeta$ conventions]
+Both sides of \eqref{eq:closed} are integers. The Lie side reduces to a
+Ramanujan sum $\sum_{s\in(\mathbb Z/o)^\times}\omega^s=\mu(o)$, which is the
+same for every primitive $\omega$ and under $r\mapsto-r$. So the choice of
+$\zeta$ and the direction of rotation do not matter ([AudChar, S2]).
+\end{remark}
+
+\subsection{The M\"obius side: Weisner's theorem on the orbit partition}
+
+Fix $g\in\Aut(P)$ of order $o$. Put $L=\OP(P)$, and let $O_g$ be the
+partition of $[n]$ into $\langle g\rangle$-orbits. Let $X(P,g)$ be the set of
+partitions of $[n]$ whose blocks are unions of components and are permuted
+transitively by $g$. Order $X(P,g)$ by refinement; it always contains
+$\hat1$.
+
+\begin{lemma}[{[Glob, Lemma~2.1]}]\label{lem:orbitquot}
+Let a finite group $K$ act on a poset $R$ by automorphisms. Then the quotient
+digraph of $R$ by the $K$-orbits is acyclic. \st{proven}
+\end{lemma}
+
+\begin{proof}
+Suppose the orbit quotient has a cycle $X_1\to\cdots\to X_r\to X_1$. Lift it
+to $a_i<k_ia_{i+1}$ with $a_i\in X_i$, $k_i\in K$ and $a_{r+1}=a_1$. Applying
+$k_1$, then $k_1k_2$, and so on, gives
+$a_1<k_1a_2<k_1k_2a_3<\cdots<ka_1$ for some $k\in K$. Then
+$a_1<ka_1<k^2a_1<\cdots<k^{|K|}a_1=a_1$, a contradiction.
+\end{proof}
+
+\begin{lemma}[{[Glob, Lemma~2.2]}, {[AudChar, I2--I4]}]\label{lem:lattice}
+\st{proven}
+\begin{enumerate}[label=(\roman*)]
+\item $L$ is a lattice whose meet is the partition meet.
+\item $L^g$ is a lattice containing $\hat0$, $\hat1$ and $O_g$.
+\item For $x\in L^g$, the join of $x$ and $O_g$ in $L^g$ is their partition
+  join. Its blocks are the $\langle g\rangle$-orbits of blocks of $x$.
+\item $\{x\in L^g:x\vee O_g=\hat1\}=X(P,g)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Suppose $P/(x\wedge y)$ had a cycle. Its image in $P/x$ is a closed walk
+whose steps are ``$<$'' or ``$=$''. Since $P/x$ is acyclic, every step is
+``$=$''. The same holds in $P/y$, so the cycle lies in one block of
+$x\wedge y$, a contradiction. A finite meet-semilattice with a top element is
+a lattice.
+
+(ii) $g$ acts on $L$ by lattice automorphisms, so $L^g$ is closed under the
+meet and the join of $L$. $O_g$ is $g$-fixed, and it is order-preserving by
+Lemma~\ref{lem:orbitquot} with $K=\langle g\rangle$ acting on $P$.
+
+(iii) $\langle g\rangle$ acts on the poset $P/x$. The partition join
+$x\vee_\Pi O_g$ has as blocks the unions $\bigcup_jg^jB$ of $x$-blocks $B$.
+Its quotient is the orbit quotient of $P/x$, which is acyclic by
+Lemma~\ref{lem:orbitquot}. So the partition join is in $L^g$. Every upper
+bound of $x$ and $O_g$ in $L^g$ lies above it.
+
+(iv) If $x\vee O_g=\hat1$, then $\langle g\rangle$ is transitive on the blocks
+of $x$. A poset with a transitive group of automorphisms is an antichain:
+$B<g^kB$ would give $B<g^{k|g|}B=B$. So $P/x$ has no relations, and every
+block of $x$ is a union of components. Conversely, every $x\in X(P,g)$ is
+order-preserving (its quotient is an antichain), is $g$-fixed, and has join
+$\hat1$ with $O_g$ by (iii).
+\end{proof}
+
+\begin{lemma}[Weisner; {[Glob, Lemma~2.3]}]\label{lem:weisner}
+In a finite lattice $M$ with $a\ne\hat0$,
+$\sum_{x:\,x\vee a=\hat1}\mu(\hat0,x)=0$. \st{proven}
+\end{lemma}
+
+\begin{proof}
+Expand $\delta(x\vee a,\hat1)=\sum_{y\ge x\vee a}\mu(y,\hat1)$. Then
+\[
+\sum_x\mu(\hat0,x)\sum_{y\ge x,\,y\ge a}\mu(y,\hat1)
+=\sum_{y\ge a}\mu(y,\hat1)\sum_{x\le y}\mu(\hat0,x)
+=\sum_{y\ge a}\mu(y,\hat1)\,\delta(y,\hat0)=0,
+\]
+since $a\ne\hat0$.
+\end{proof}
+
+We apply Weisner's theorem in $M=L^g$ with $a=O_g$. This needs the join of
+$L^g$ itself, and Lemma~\ref{lem:lattice}(iii) shows that it equals the
+partition join here ([AudChar, I3, \S4]).
+
+\begin{lemma}[{[Glob, Lemma~2.4]}, {[AudChar, I6, S8]}]\label{lem:interval}
+Let $x\in X(P,g)$ have $m$ blocks, let $B_0$ be one block, and let
+$h=g^m|_{B_0}\in\Aut(P|_{B_0})$. Put $k=|B_0|=n/m$. \st{proven}
+\begin{enumerate}[label=(\roman*)]
+\item $[\hat0,x]_{L^g}\cong\OP(P|_{B_0})^h$.
+\item $(-1)^{n-3}\sgn(g)=(-1)^{k-3}\sgn(h)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) There are no relations between blocks of $x$. So $\pi\le x$ is
+order-preserving iff each restriction $\pi|_B$ is, and
+$[\hat0,x]_L\cong\prod_B\OP(P|_B)$. $g$ permutes the factors cyclically, so a
+$g$-fixed element is determined by its $B_0$-component, which must be
+$g^m$-fixed. Conversely, an $h$-fixed $\sigma\in\OP(P|_{B_0})$ extends to
+$\bigcup_{j<m}g^j\sigma$, which is consistent because $g^m\sigma=\sigma$.
+
+(ii) Each cycle of $g$ meets $B_0$ in exactly one cycle of $h$ and is $m$
+times as long. So $g$ and $h$ have the same number $c$ of cycles, and
+$\sgn(g)=(-1)^{n-c}$, $\sgn(h)=(-1)^{k-c}$.
+\end{proof}
+
+For any finite poset $Q$ on $|Q|\ge1$ points and $h\in\Aut(Q)$, put
+\[
+\widetilde M(Q,h)=(-1)^{|Q|-3}\sgn(h)\,\mu(\OP(Q)^h).
+\]
+
+\begin{lemma}[Base case; fixes slip (a) of {[AudChar, \S2]}]\label{lem:small}
+Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $Q$,
+$\widetilde M(Q,1)=e_C(Q)$. \st{proven}
+\end{lemma}
+
+\begin{proof}
+For $|Q|\ge3$, by \ref{in:Hall} and \ref{in:JS},
+$\mu(\OP(Q))=\widetilde\chi(\bigvee^{e_C(Q)}S^{|Q|-3})=(-1)^{|Q|-3}e_C(Q)$.
+For $|Q|\le2$, \ref{in:JS} says nothing, and we compute by hand
+([AudChar, S7]). If $|Q|=1$, then $\OP(Q)$ has one element, so $\mu=1$ and
+$\widetilde M=(-1)^{-2}=1=e_C(Q)$. If $|Q|=2$, then whether $Q$ is a chain or
+an antichain, $\OP(Q)=\{\hat0<\hat1\}$, so $\mu=-1$ and
+$\widetilde M=(-1)^{-1}(-1)=1$. Also $e_C(Q)=1$: the two words on two letters
+form one rotation class.
+\end{proof}
+
+\begin{proposition}[M\"obius side; {[Glob, Prop.~2.5]}, {[AudChar, I7--I11]}]
+\label{prop:Mside}
+Assume \ref{in:JS}--\ref{in:Hall}. For every finite poset $P$ and every
+$g\in\Aut(P)$ of order $o$,
+\[
+\widetilde M(P,g)=\mu(o)\sum_{x\in F(P,g)}e_C\bigl(P|_{B_0(x)}\bigr).
+\]
+\st{proven}
+\end{proposition}
+
+\begin{proof}
+For $x\in X(P,g)$ with $m=m(x)$ blocks, let $B_0(x)$ be one block and
+$h_x=g^{m}|_{B_0(x)}$. Different choices of block give isomorphic pairs
+$(P|_{B_0},h_x)$, since $g^j$ conjugates one to the other. $\widetilde M$ is
+an invariant of such isomorphism classes ([AudChar, I8]).
+
+\emph{The recursion.} Suppose $g\ne1$. Then $O_g\ne\hat0$. By
+Lemma~\ref{lem:lattice}(iv), Weisner's theorem in $L^g$ with $a=O_g$ reads
+$\sum_{x\in X(P,g)}\mu_{L^g}(\hat0,x)=0$. Multiply by $(-1)^{n-3}\sgn(g)$ and
+use Lemma~\ref{lem:interval} term by term:
+\begin{equation}\label{eq:W}
+\sum_{x\in X(P,g)}\widetilde M\bigl(P|_{B_0(x)},h_x\bigr)=0\qquad(g\ne1).\tag{W}
+\end{equation}
+This holds for every size $n\ge2$. It uses Lemmas
+\ref{lem:orbitquot}--\ref{lem:interval} only, and not \ref{in:JS}.
+
+\emph{M\"obius inversion on $X(P,g)$.} For $x\in X(P,g)$, the map
+$y\mapsto\{g^jD:D\in y,\ 0\le j<m(x)\}$ is a bijection from
+$X(P|_{B_0(x)},h_x)$ onto $\{z\in X(P,g):z\le x\}$. Its inverse takes the
+blocks of $z$ that lie inside $B_0(x)$. $h_x$ is transitive on these because
+the stabiliser of $B_0(x)$ in $\langle g\rangle$ is $\langle g^{m(x)}\rangle$.
+The bijection matches the pairs (block, induced automorphism) up to
+isomorphism: if $y\mapsto z$, then $m(z)=m(x)m(y)$ and
+$h_z=h_x^{m(y)}|_{D}$ for the block $D\subseteq B_0(x)$ of $z$
+([AudChar, I7]). Put $f(z)=\widetilde M(P|_{B_0(z)},h_z)$. Then for every
+$x\in X(P,g)$,
+\[
+\sum_{z\le x}f(z)=\Phi(x):=[h_x=1]\;e_C\bigl(P|_{B_0(x)}\bigr).
+\]
+If $h_x\ne1$, this is \eqref{eq:W} for the pair $(P|_{B_0(x)},h_x)$,
+transported by the bijection. If $h_x=1$, then $X(P|_{B_0(x)},1)=\{\hat1\}$,
+since a trivial group is transitive only on a single block. So
+$\{z\le x\}=\{x\}$, and $f(x)=\widetilde M(P|_{B_0(x)},1)=e_C(P|_{B_0(x)})$
+by Lemma~\ref{lem:small}. M\"obius inversion on the finite poset $X(P,g)$
+gives
+\[
+\widetilde M(P,g)=f(\hat1)=\sum_{x\in X(P,g)}\mu_X(x,\hat1)\,\Phi(x).
+\]
+
+\emph{Which $x$ contribute} (fixes slip (b)). Let $x\in X(P,g)$ have $m$
+blocks. The image of $\langle g\rangle$ acting on the blocks of $x$ is
+transitive and cyclic, so it is a cyclic group of order $m$ generated by the
+image of $g$. Hence $m\mid o$. If $h_x=1$, then $g^m$ fixes $B_0(x)$
+pointwise, and so, conjugating by powers of $g$, it fixes every block
+pointwise. So $g^m=1$ and $o\mid m$. Hence $h_x=1$ forces $m=o$. Conversely,
+$m=o$ gives $g^m=1$ and $h_x=1$. So $\Phi(x)\ne0$ only for
+$x\in F(P,g)=\{x\in X(P,g):m(x)=o\}$. If some component $T$ had a nontrivial
+stabiliser $g^j$ with $0<j<o$, then every $x\in X(P,g)$ would have
+$g^jB=B$ for the block $B\supseteq T$. Then $m(x)\le j<o$, so $F(P,g)$ would
+be empty. Hence $F(P,g)=\emptyset$ unless $\langle g\rangle$ acts freely on
+the components.
+
+\emph{The M\"obius value.} Let $x\in F(P,g)$. $\langle g\rangle\cong\mathbb Z/o$
+acts freely and transitively on the $o$ blocks of $x$. The elements of
+$[x,\hat1]_X$ are the coarsenings of $x$ that are $g$-invariant; transitivity
+is then automatic. Such a coarsening is determined by the set $H$ of group
+elements carrying $B_0(x)$ into its own block, and $H$ is a subgroup: if
+$b\in H$, then $H+b$ indexes the block containing $g^bB_0$, which is the
+block of $B_0$, so $H+b=H$. So $[x,\hat1]_X$ is isomorphic to the subgroup
+lattice of $\mathbb Z/o$, i.e.\ the divisor lattice of $o$, and
+$\mu_X(x,\hat1)=\mu(o)$. Summing over $x\in F(P,g)$ proves the claim.
+\end{proof}
+
+\subsection{The Lie side: cutting the circle into $g$-translates}
+
+\begin{lemma}[{[FPM, Lemma~6a]}; {[Glob, Lemma~2.6]}]\label{lem:rot}
+Let $w\in\Lin(P)$ and $0\le j<n$. Then $w\gamma^j\in\Lin(P)$ iff the prefix
+$\{w_1,\dots,w_j\}$ is a union of components. \st{proven}
+\end{lemma}
+
+\begin{proof}
+Let $A=\{w_1,\dots,w_j\}$. If $A$ is a union of components, no relation joins
+$A$ to its complement, so the rotated word is a linear extension. Conversely,
+take $a\in A$ and $b\notin A$. In $w$, $a$ precedes $b$, so $b\not<a$. In
+$w\gamma^j$, $b$ precedes $a$, so $a\not<b$.
+\end{proof}
+
+\begin{proposition}[Lie side; {[Glob, Prop.~2.7]}, {[AudChar, S3--S4]}]
+\label{prop:Lside}
+For every finite poset $P$ and every $g\in\Aut(P)$ of order $o$,
+\[
+\sum_{gC=C}\zeta^{r_g(C)}=\mu(o)\sum_{x\in F(P,g)}e_C\bigl(P|_{B_0(x)}\bigr).
+\]
+\st{proven}
+\end{proposition}
+
+\begin{proof}
+If $g=1$, both sides are $e_C(P)$, since $F(P,1)=\{\hat1\}$. Let $g\ne1$, and
+fix a reference point $\rho\in[n]$. For $x\in F(P,g)$, let $B_0(x)$ be the
+block containing $\rho$.
+
+\emph{Step 0.} Let $C$ be $g$-fixed with rotation $r$. Then $g(w_i)=w_{i+r}$
+for $w\in C$, so $g$ is conjugate in $S_n$ to $\gamma^r$, and every cycle of
+$g$ has length $n/\gcd(n,r)$. Hence $o=n/\gcd(n,r)$. Put $k=\gcd(n,r)=n/o$.
+
+\emph{Step 1: cut sets are $k$-periodic.} For $w\in C\cap\Lin(P)$, let
+$K(w)=\{j\in\mathbb Z/n:w\gamma^j\in\Lin(P)\}$. Then $|K(w)|=|C\cap\Lin(P)|$.
+If $w\gamma^j\in\Lin(P)$, then $g(w\gamma^j)=w\gamma^{j+r}\in\Lin(P)$. So
+$K(w)$ is invariant under $+r$, hence under the subgroup $k\mathbb Z/n\mathbb Z$
+that $r$ generates. In particular $K(w)$ is a union of cosets of
+$k\mathbb Z/n\mathbb Z$, each of size $o$.
+
+\emph{Step 2: from $C$ to partitions.} Fix $w\in C\cap\Lin(P)$ and
+$s\in K(w)$. For $i\in\mathbb Z/o$ let $A_{s+ik}$ be the set of letters in
+positions $s+ik+1,\dots,s+(i+1)k$. The word $w\gamma^{s+ik}$ is a linear
+extension whose length-$k$ prefix is $A_{s+ik}$, and $w\gamma^{s+(i+1)k}$ is
+a linear extension too. By Lemma~\ref{lem:rot}, $A_{s+ik}$ is a union of
+components. Since $g$ shifts positions by $r$, it maps $A_t$ to $A_{t+r}$, so
+it permutes the $o$ sets $A_{s+ik}$ cyclically, and transitively because
+$r/k$ is a unit mod $o$. So $x_s=\{A_{s+ik}\}_i\in F(P,g)$. Since $o\ge2$, the
+arcs are proper, so $x_s=x_{s'}$ iff $s\equiv s'\pmod k$. Call
+$(C,x)$ \emph{compatible} if $x=x_s$ for some $s\in K(w)$. Each $g$-fixed
+$C$ has exactly $|K(w)|/o\ge1$ compatible partitions.
+
+\emph{Step 3: a bijection.} Given a compatible pair $(C,x)$, read off:
+\begin{itemize}[nosep]
+\item $u$: the word on the arc that carries $B_0(x)$, read from its starting
+  cut. Then $u\in\Lin(P|_{B_0(x)})$.
+\item $q\in(\mathbb Z/o)^\times$: the next arc carries $g^qB_0(x)$. Since $g$
+  moves arcs forward by $r/k$ steps, $q=(r/k)^{-1}\bmod o$.
+\end{itemize}
+Conversely, given $x\in F(P,g)$, $u\in\Lin(P|_{B_0(x)})$ and
+$q\in(\mathbb Z/o)^\times$, put
+$W=u\cdot g^qu\cdot g^{2q}u\cdots g^{(o-1)q}u$, where $g^ju$ is $u$ with $g^j$
+applied to each letter. The blocks $g^{jq}B_0$ are disjoint unions of
+components that cover $[n]$, and each piece is a linear extension of its
+block. So $W\in\Lin(P)$. The map $g$ sends the piece at index $j$ to the
+piece at index $j+q^{-1}$, so $gW=W\gamma^{kq^{-1}}$. Its class is
+$g$-fixed, with $r=kq^{-1}$, and $(\text{class of }W,x)$ is compatible (take
+$s=0$). The two constructions are mutually inverse. Hence compatible pairs
+$(C,x)$ correspond bijectively to triples $(x,u,q)$.
+
+\emph{Step 4: the count.} Under the bijection, the cuts of $C$ inside one arc
+are the cuts of $u$ in $P|_{B_0}$, by Lemma~\ref{lem:rot}. So
+$|K(w)|/o=|K_{B_0}(u)|$, where $K_{B_0}(u)$ is the cut set of $u$ in
+$P|_{B_0}$. Let $\omega=\zeta^k$, a primitive $o$th root of unity. Then
+$\zeta^r=\omega^{q^{-1}}$, and
+\[
+\sum_{gC=C}\zeta^{r_g(C)}
+=\sum_{(C,x)}\frac{\zeta^{r(C)}}{|K(w)|/o}
+=\sum_{x\in F}\;\sum_{u\in\Lin(P|_{B_0(x)})}\frac{1}{|K_{B_0}(u)|}
+\sum_{q\in(\mathbb Z/o)^\times}\omega^{q^{-1}}
+=\mu(o)\sum_{x\in F}e_C\bigl(P|_{B_0(x)}\bigr).
+\]
+The middle step uses the fact that each class $C_0$ of $P|_{B_0}$ contains
+exactly $|K_{B_0}(u)|$ linear extensions $u$. The last step is the
+Ramanujan sum $\sum_{q\in(\mathbb Z/o)^\times}\omega^q=\mu(o)$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{thm:main}}
+
+By Propositions~\ref{prop:Mside} and~\ref{prop:Lside},
+$\sgn(g)(-1)^{n-3}\mu(\OP(P)^g)=\widetilde M(P,g)=\sum_{gC=C}\zeta^{r_g(C)}$,
+which is \eqref{eq:closed}. Multiplying by $\sgn(g)$ gives
+\eqref{eq:characterconj}. By Lemmas~\ref{lem:homchar} and~\ref{lem:liechar},
+the left side of \eqref{eq:characterconj} is the character of $H_P$, and the
+right side is the character of $\sgn\otimes\PLie(P)$. Representations of a
+finite group over $\mathbb C$ are determined by their characters, which
+gives \eqref{eq:mainiso}. \qed
+
+\begin{remark}[Proof II, by Crapo complementation; {[FPM]}, {[AudChar, \S1.3]}]
+\label{rem:proofII}
+\st{proven} given \ref{in:JS}--\ref{in:Hopf} and Crapo's complementation
+theorem~\cite{Crapo} (\st{cited}; theorem number not checked). \st{audited}.
+Instead of the full orbit partition, take $z\in L^g$ to merge a single
+$\langle g\rangle$-orbit of maximal length. This is order-preserving because
+orbits are antichains ([FPM, Lemma~2]). Crapo's theorem expands
+$\mu(L^g)$ over the complements $z^\perp$ of $z$ in $L^g$.
+\begin{itemize}[nosep]
+\item If the cycles of $g$ have unequal lengths, then $z$ has no complement,
+  so $\mu(L^g)=0$ ([FPM, Prop.~4]). By Step~0 above, no class is fixed
+  either.
+\item If $g$ has type $d^k$ with $k\ge2$, then $z^\perp=\{y_T:T\in\mathcal T\}$
+  is an antichain. Here $\mathcal T$ is the set of unions of components $T$
+  through a fixed point $c_0$ with $P=T\sqcup gT\sqcup\dots\sqcup g^{d-1}T$.
+  So $\mu(L^g)=\mu(d)\sum_{T\in\mathcal T}\mu(\OP(T))$ ([FPM, Prop.~5]).
+\item The Lie side is a weighted bijection: the number of $g$-fixed classes
+  with rotation $r$ is $\sum_{T\in\mathcal T}e_C(T)$ if $\gcd(n,r)=k$, and
+  $0$ otherwise ([FPM, Prop.~6]).
+\end{itemize}
+Proof~I's $F(P,g)$ is $\{y_T\}$, and its $\mu(o)$ is $\mu(d)$, so the two
+closed formulas agree ([AudChar, \S3]). The proofs share the Lie-side
+convention, eq.~(homchar) and the use of \ref{in:JS}. They are independent
+only on the M\"obius side ([AudChar, R4]). In the unequal-length case, the
+Bj\"orner--Walker homotopy complementation formula (\st{cited}) also shows
+that the proper part of $L^g$ is contractible. The identity does not need
+this.
+\end{remark}
+
+\subsection{Consequences}
+
+\begin{corollary}[Connected posets; {[Glob, \S3.1]}, {[FPM, Cor.~7]}]
+\label{cor:connected}
+If $P$ is connected and $n\ge3$, then $\mu(\OP(P)^g)=0$ for all $g\ne1$, and
+$H_P\cong\PLie(P)\cong\mathbb C[\Lin P]$ is a free $\Aut(P)$-module of rank
+$|\Lin P|/|\Aut P|$. \st{proven}, \st{audited} ([AudChar, II7]).
+\end{corollary}
+
+\begin{proof}
+A single component cannot be permuted freely by $g\ne1$, so
+$F(P,g)=\emptyset$. Every class meets $\Lin(P)$ exactly once by
+Lemma~\ref{lem:rot}, and $\Aut(P)$ acts freely on $\Lin(P)$ ($gw=w$ forces
+$g=1$). A free module twisted by $\sgn$ is free.
+\end{proof}
+
+This covers ordinal sums $P\oplus Q$ of nonempty posets, products of
+connected posets, crowns, and substitutions into a connected poset with at
+least two elements ([Glob, \S3.1]). Root-of-unity phases occur only for
+automorphisms that permute components freely.
+
+\begin{corollary}[Examples; {[FPM, \S6.1--6.2]}]\label{cor:examples}
+\st{proven}
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Antichain.} For $g$ of type $d^k$,
+  $\mu(\Pi_n^g)=(-1)^{k-1}\mu(d)\,d^{k-1}(k-1)!$, and $\mu(\Pi_n^g)=0$ for
+  every other $g\ne1$. This is the classical fixed-point computation behind
+  JKS. Theorem~\ref{thm:main} for the antichain is classical
+  JKS~\cite{Stanley82,Hanlon81,Joyal86}, via Klyachko's
+  $\Lie_n\cong\Ind_{C_n}^{S_n}\zeta$~\cite{Klyachko}.
+\item \emph{Three disjoint $2$-chains, $g$ cycling them.} Here
+  $\chi_{H_P}(g)=-1$. This is the seed note's $n=6$ example. It is now
+  proved, and it is also \st{computed} by direct homology
+  (\S\ref{sec:computations}).
+\item \emph{$m$ equal chains of length $\ell$, $g$ an $m$-cycle on them.}
+  $\chi_{H_P}(g)=(-1)^{(m-1)\ell}\mu(m)$.
+\end{enumerate}
+\end{corollary}
+
+\begin{corollary}[$e_C$ over components; {[Glob, \S3.3]}]\label{cor:eC}
+Let $K$ be the set of components of $P$. Then
+$e_C(P)=\sum_{\pi\in\Pi(K)}(-1)^{|\pi|-1}(|\pi|-1)!\prod_{T\in\pi}|\Lin(P|_T)|$.
+\st{proven}; \st{computed} for all $405$ posets with $n\le6$. Not
+independently audited.
+\end{corollary}
+
+\section{Correction: the restricted image identity is false}
+\label{sec:correction}
+
+The seed note, section ``Embedding into the classical JKS module'', fixes a
+classical JKS isomorphism
+$J:\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn\to\Lie_n$ and states that
+the conjecture follows from
+\begin{equation}\label{eq:RL}
+J(H_P\otimes\sgn)=\operatorname{span}\{we_\zeta:w\in\Lin(P)\}=W_Pe_\zeta,
+\qquad W_P=\mathbb C\{\Lin(P)\}.\tag{restrictionlemma}
+\end{equation}
+Its ``Desired restricted JKS lemma'' and its ``second formulation''
+$J(H_P\otimes\sgn)=W_P\kappa_n$, with a Klyachko idempotent $\kappa_n$, make
+the same claim. Here $H_P\subseteq\widetilde H_{n-3}(\overline{\Pi_n})$ via
+the injective inclusion (homembed).
+
+\textbf{All of these are false.} The conjecture itself is unaffected: it is
+now Theorem~\ref{thm:main}, proved by characters, not by
+\eqref{eq:RL}.
+
+\begin{lemma}[Lemma B; {[Lit, \S3.3]}, {[AudLit, row 1]}]\label{lem:op}
+$\OP(P)=\OP(P^{\mathrm{op}})$, so $H_P=H_{P^{\mathrm{op}}}$ as subspaces of
+$\widetilde H_{n-3}(\overline{\Pi_n})$. \st{proven}, \st{audited}
+\end{lemma}
+
+\begin{proof}
+$\pi$ is order-preserving iff $P/\pi$ is acyclic. Reversing every edge
+preserves acyclicity.
+\end{proof}
+
+\begin{proposition}[Prop.~C; {[Lit, \S3.3]}, {[AudLit, row 2]}]\label{prop:C}
+Let $n\ge3$, and let $C$ be the chain $1<2<\cdots<n$. No linear map
+$J:\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn\to\mathbb C[S_n]$
+satisfies \eqref{eq:RL} for both $C$ and $C^{\mathrm{op}}$. \st{proven},
+\st{audited}
+\end{proposition}
+
+\begin{proof}
+$\OP(C)$ is Boolean, so $H_C$ is one-dimensional, and $H_C=H_{C^{\rm op}}$ by
+Lemma~\ref{lem:op}. So \eqref{eq:RL} would force
+$\mathbb C\,(12\cdots n)e_\zeta=\mathbb C\,(n\cdots21)e_\zeta$. The vector
+$we_\zeta$ is nonzero and supported on the coset $wC_n$. Every rotation of
+$12\cdots n$ has at most one descent, while $n\cdots21$ has $n-1\ge2$. So
+the two cosets are disjoint, and the two lines differ.
+\end{proof}
+
+Prop.~C refutes exactly the statement the seed note makes: one $J$, chosen
+first, for all $P$ ([AudLit, \S1.1]). Choosing $J$ after $P$ does not help,
+as long as $J$ is $S_n$-equivariant. The next proposition uses the splitting
+cycles $\rho_w$ and the signed shuffle relations of Prop.~$\Phi$
+(\S\ref{sec:basis}).
+
+\begin{proposition}[Prop.~C$'$; {[AudLit, \S1.2]}]\label{prop:Cprime}
+Assume the signed shuffle relation $\sum_{u\in1\shuf 2\cdots n}\sgn(u)\rho_u=0$
+(part $\Phi(\Leftarrow)$ of Prop.~\ref{prop:Phi}). Let $n\ge3$, $w\in S_n$,
+and let $P_w$ be the chain $w_1<\cdots<w_n$. Then no $S_n$-equivariant
+linear map $J:\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn\to\mathbb C[S_n]e_\zeta$
+satisfies $J(H_{P_w}\otimes\sgn)=\mathbb C\,we_\zeta$. \st{proven} given that
+relation, which is \st{computed} exactly at chain level for $n\le6$ and
+\st{cited} from Wachs for all $n$.
+\end{proposition}
+
+\begin{proof}
+$H_{P_w}=\mathbb C\rho_w$, so $J(\rho_w\otimes1)=c\,we_\zeta$ with $c\ne0$. Let
+$y=\sum_{u\in1\shuf2\cdots n}uw^{-1}$. Then
+$y\cdot(\rho_w\otimes1)=\pm\sum_u\sgn(u)\rho_u\otimes1=0$. By equivariance,
+$0=c\,y\,we_\zeta=c\,(1\shuf2\cdots n)e_\zeta$. In
+$(1\shuf2\cdots n)e_\zeta=\frac1n\sum_u\sum_j\zeta^{-j}u\gamma^j$, the
+identity word arises only from $u=12\cdots n$ (with $j=0$) and
+$u=23\cdots n1=\gamma$ (with $j=n-1$). Its coefficient is
+$(1+\zeta)/n\ne0$, since $\zeta\ne-1$ for $n\ge3$. Contradiction.
+\end{proof}
+
+\begin{remark}[Variants; {[AudLit, \S1.2--1.4]}]
+\begin{itemize}[nosep]
+\item Without the sign twist the same argument works with
+  $y=\sum_u\sgn(u)uw^{-1}$; the coefficient becomes
+  $(1+(-1)^{n-1}\zeta)/n\ne0$. \st{proven}.
+\item For $\kappa_n=\frac1n\sum_\sigma\zeta^{\operatorname{maj}\sigma}\sigma$,
+  the fixed-$J$ version fails for all $n\ge3$: $\kappa_n$ and $w_0\kappa_n$
+  are never proportional. \st{proven}. The $P$-dependent version needs
+  $\Sh_n\kappa_n\ne0$, which is \st{computed} only for $n\le5$.
+\item \emph{Not refuted:} an $\Aut(P)$-equivariant $J_P$ with
+  $J_P(H_P\otimes\sgn)=W_Pe_\zeta$. Its existence is \emph{equivalent} to
+  \eqref{eq:mainiso}, by semisimplicity ([AudLit, \S1.3]), so it is true by
+  Theorem~\ref{thm:main}. It does not, however, reduce anything.
+\item The obstruction is structural. The annihilator of $\rho_w$ is
+  $\Sh_n w^{-1}$, while that of $we_\zeta$ is
+  $\mathbb C[S_n](1-e_\zeta)w^{-1}$, and these differ because
+  $\Sh_ne_\zeta\ne0$.
+\end{itemize}
+\end{remark}
+
+\paragraph{What replaces \eqref{eq:RL}.} The correct restricted image
+statement uses the target $\mathbb C[S_n]/\Sh_n\cong\Lie_n^*$ in place of
+$\mathbb C[S_n]e_\zeta$. It is
+$\Phi(H_P\otimes\sgn)=(W_P+\Sh_n)/\Sh_n$ ([Lit, \S3.4, (S1)]), which is
+Theorem~\ref{thm:S} below. Composing with right multiplication by the adjoint
+Dynkin element $\theta_n^*$, whose kernel is exactly $\Sh_n$ ([Lit, \S3.3]),
+gives a version inside $\mathbb C[S_n]$: $J(H_P\otimes\sgn)=W_P\theta_n^*$.
+
+\section{An explicit basis: splitting cycles of linear extensions
+(formerly Conjecture S)}\label{sec:basis}
+
+\subsection{Splitting cycles and shuffles}
+
+For $w\in S_n$, the cuts between consecutive letters of $w$ give interval
+partitions forming a Boolean lattice $\Pi_w\subseteq\Pi_n$. Its proper part is
+an $(n-3)$-sphere. The \emph{splitting cycle} $\rho_w$ is its fundamental
+cycle, normalised as in Wachs~\cite{Wachs}: the chain whose $k$-block
+partition is $w_1|\cdots|w_{k-1}|\text{rest}$ has coefficient $+1$. Let
+$\Sh_n\subseteq\mathbb C[S_n]$ be the span of the proper shuffles $u\shuf v$
+($u,v$ nonempty with complementary letter sets), and let
+$W_P=\mathbb C\{\Lin(P)\}$.
+
+\begin{proposition}[Prop.~$\Phi$; {[Lit, \S3.2]}, {[AudLit, rows 10--12]}]
+\label{prop:Phi}
+The map $\rho_\sigma\otimes1\mapsto\sgn(\sigma)\sigma+\Sh_n$ is a
+well-defined $S_n$-isomorphism
+$\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn\to\mathbb C[S_n]/\Sh_n$.
+Equivalently, $\sum_\sigma a_\sigma\rho_\sigma=0$ iff
+$\sum_\sigma a_\sigma\sgn(\sigma)\sigma\in\Sh_n$.
+\end{proposition}
+
+\noindent\textbf{Status.} \st{cited} for general $n$: it is the dual of
+Wachs's comb correspondence (Wachs 1998, Lemma~3.1 and Thms~4.2--4.3,
+\emph{preprint} numbering) combined with Ree's theorem
+$\Lie_n^\perp=\Sh_n$~\cite{Ree,Reutenauer}. The dualisation was re-derived
+in [AudLit, \S2.2], and the Wachs statements were checked against the
+preprint, not re-proved. \st{computed} and hence \st{proven} outright for
+$n\le6$, by exact chain-level computation with no use of Wachs
+([AudLit, \S2.1]). As a statement it was not found in this form in the
+literature ([Lit, \S3.2]). Write $\Phi(\Leftarrow)$ for well-definedness and
+$\Phi(\Rightarrow)$ for injectivity. Given Wachs's basis theorem,
+$\Phi(\Rightarrow)$ follows from $\Phi(\Leftarrow)$ by counting dimensions
+([AudS, \S C.1]).
+
+\begin{lemma}[Lemma D; {[Lit, \S3.4]}, {[AudLit, row 13]}]\label{lem:D}
+For $w\in\Lin(P)$, every partition in $\Pi_w$ is order-preserving for $P$.
+Hence $\rho_w\in H_P$. \st{proven}, \st{audited}
+\end{lemma}
+
+\begin{proof}
+Cutting $w$ into consecutive segments gives the kernel of an isotone
+surjection $P\to[k]$, whose quotient is acyclic. Since $\Delta(\widehat{\OP(P)})$
+has no $(n-2)$-simplices, $H_P$ is the space of top cycles, and $\rho_w$ is
+one.
+\end{proof}
+
+\subsection{The theorem}
+
+Fix a component $P_1$ of $P$, the \emph{base component}. For $w\in\Lin(P)$,
+call a prefix of $w$ a \emph{union-prefix} if its letter set is a union of
+components. The \emph{blocks} of $w$ are the segments between consecutive
+union-prefixes. Let $B_P$ be the set of $w\in\Lin(P)$ whose first block
+contains $P_1$. Let
+\[
+R_P=\operatorname{span}\{s\shuf t:\ s\in\Lin(P|_S),\ t\in\Lin(P|_{[n]\setminus S}),\ S\text{ a nonempty proper union of components}\}.
+\]
+Every word of such an $s\shuf t$ lies in $\Lin(P)$, so $R_P\subseteq W_P\cap\Sh_n$.
+
+\begin{theorem}[{[S, Thms~A, B, C, Cor.~5.5]}]\label{thm:S}
+Let $P$ be a finite poset with any base component.
+\begin{enumerate}[label=(\alph*)]
+\item \emph{(Theorem A.)} $B_P$ is linearly independent modulo $\Sh_n$, and
+  $|B_P|=e_C(P)$. For connected $P$, $W_P\cap\Sh_n=0$: no nonzero
+  combination of linear extensions of a connected poset is a sum of proper
+  shuffles.
+\item \emph{(Theorem B.)} $W_P=\operatorname{span}(B_P)\oplus R_P$, and
+  $W_P\cap\Sh_n=R_P$, of dimension $|\Lin P|-e_C(P)$.
+\item \emph{(Theorem C, formerly Conjecture S.)} If $n\ge3$, then
+  $\{\rho_w:w\in B_P\}$ is a basis of $H_P$. In particular
+  $\operatorname{span}\{\rho_w:w\in\Lin(P)\}=H_P$. The relations are exactly
+  $\sum a_w\rho_w=0\iff\sum a_w\sgn(w)w\in R_P$.
+\item \emph{(Cor.~5.5.)} If $n\ge3$, then $H_P\otimes\sgn\cong\mathbb C[\Lin P]/R_P$
+  as $\Aut(P)$-modules, via $\rho_w\otimes1\mapsto\sgn(w)w$.
+\end{enumerate}
+\end{theorem}
+
+\noindent\textbf{Status} (from the independent audit [AudS], verdict
+\emph{PROOF HOLDS}, with no gaps):
+\begin{itemize}[nosep]
+\item (a), (b): \st{proven}, \st{audited}. These are pure word
+  combinatorics, with no dependence on Prop.~$\Phi$ or on \ref{in:JS}.
+\item (c), basis and spanning: \st{proven} given $\Phi(\Rightarrow)$,
+  Lemma~\ref{lem:D} and \ref{in:JS}; \st{audited}. The kernel statement also
+  needs $\Phi(\Leftarrow)$ on the generators of $R_P$.
+\item (d): \st{proven} given (c) and $\Phi(\Leftarrow)$ on the generators of
+  $R_P$; \st{audited}.
+\item \st{computed} at chain level, with no use of $\Phi$ or \ref{in:JS},
+  for every poset with $3\le n\le6$: (c) and (d) in full, signs and
+  equivariance included ([AudS, \S C.2]).
+\item If Prop.~$\Phi$ were to fail for some $n\ge7$, then (a) and (b) would
+  stand, and (c) and (d) would revert to \st{conjectured} for that $n$
+  ([AudS, \S C.1]). $\Phi$ is \st{cited} for $n\ge7$, as stated above.
+\end{itemize}
+
+\paragraph{The key tool ([S, Lemma~1]).} For letters $a\ne x$, define
+$E_{a,x}:\mathbb C[S_A]\to\mathbb C[S_{A\setminus x}]$ on words by
+$E_{a,x}(w)=+(w\setminus x)$ if $x$ immediately precedes $a$,
+$-(w\setminus x)$ if $x$ immediately follows $a$, and $0$ otherwise. Then
+$E_{a,x}(\Sh_A)\subseteq\Sh_{A\setminus x}$. Indeed, $E_{a,x}$ is the adjoint
+of the Lie substitution $a\mapsto[x,a]$; [S] also gives a direct case
+analysis that does not use Ree's theorem. \st{proven}, \st{audited}.
+
+\begin{proof}[Proof sketch of (a), following {[S, \S4]}]
+Induct on $n$. Let $X=\sum_{w\in B_P}c_ww\in\Sh_n$, and extend $c$ by $0$ to
+all words. Take any $w\in\Lin(P)$ with adjacent letters $x=w_i$,
+$a=w_{i+1}$, and contract: $Q=P/\{a,x\}$ is a poset, and $E_{a,x}(X)$ lies in
+$\Sh$ and is supported on $B_Q$ ([S, Lemmas~2, 5]). By induction
+$E_{a,x}(X)=0$. Reading off the coefficient of $w\setminus x$ gives
+$c(w)=c(w')$, where $w'$ is $w$ with $x$ and $a$ swapped, if $x\parallel a$;
+and $c(w)=0$ if $x<_Pa$. Adjacent incomparable swaps connect $\Lin(P)$, so
+$c$ is constant on $\Lin(P)$. It vanishes at some word: a word outside $B_P$
+if $P$ is disconnected, or a word with a cover relation adjacent if $P$ is
+connected. So $c\equiv0$. Finally, $|B_P|=e_C(P)$ because each cyclic class
+consists of the rotations of the block sequence, and exactly one rotation
+puts the block containing $P_1$ first ([S, Lemma~4]).
+\end{proof}
+
+(b) follows from (a) and a straightening argument modulo $R_P$
+([S, Lemma~6]). (c) follows because, by $\Phi(\Rightarrow)$ and (a), the
+$e_C(P)$ cycles $\rho_w$, $w\in B_P$, are independent. They lie in $H_P$ by
+Lemma~\ref{lem:D}, and $\dim H_P=e_C(P)$ by \ref{in:JS}.
+
+\begin{remark}[Relation to Theorem~\ref{thm:main}]
+For connected $P$, Theorem~\ref{thm:S}(c) gives a second, independent proof
+of \eqref{eq:mainiso}, with an explicit equivariant isomorphism
+$\rho_w\otimes1\mapsto\sgn(w)\,we_\zeta$ ([AudLit, row 19]; [S, \S6]). For
+disconnected $P$ it gives the explicit model
+$H_P\otimes\sgn\cong\mathbb C[\Lin P]/R_P$. Theorem~\ref{thm:main} then says
+that this is abstractly isomorphic to
+$\PLie(P)\cong\mathbb C[\Lin P]/(W_P\cap\mathbb C[S_n](1-e_\zeta))$. No
+explicit or natural isomorphism between the two quotients is known for
+disconnected $P$ (\S\ref{sec:open}).
+\end{remark}
+
+\begin{remark}[Novelty of Theorem~\ref{thm:S}]
+For the antichain, (a) is the classical fact that words beginning with a
+fixed letter are a basis of $\mathbb C[S_n]/\Sh_n$ (Radford; Reutenauer,
+Ch.~6). For general $P$, no prior statement of (a) or (b) was found
+([AudS, \S F]; [S, \S7]). That is not a proof of novelty; the result may be
+folklore.
+\end{remark}
+
+\begin{remark}[Cone/lune form; \textbf{not audited}; {[Cone]}]
+[Cone] restates Theorem~\ref{thm:S}(b)--(c) in the language of
+Aguiar--Mahajan's top-lunes. Let $\Gamma_{C_P}$ be the span of the chambers
+of the order cone $C_P$, and let $\mathrm{Lune}$ be the span of the
+non-singleton top-lunes. Then
+$\Gamma_{C_P}\cap\mathrm{Lune}=\operatorname{span}\{\text{top-lunes}\subseteq C_P\}$
+([Cone, Thm~4.1]). [Cone, Lemma~E, Thm~5.2] also proves, for every real
+central arrangement, that the chambers of a \emph{pointed} top-cone are
+linearly independent modulo top-lunes. For the braid arrangement this is the
+connected case of Theorem~\ref{thm:S}(a), with a geometric proof. The
+general-cone form of Conjecture~S is [Cone, Conjecture~G], \st{conjectured}
+and \st{computed} for every top-cone of $A_2,A_3,A_4,B_2,B_3$ and on
+samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}, Ex.~10.9:
+``non-singleton top-cone'' should read ``non-pointed top-cone''. These
+results are \st{proven} in [Cone] but have \emph{not} been independently
+audited. They are recorded here only as a remark.
+\end{remark}
+
+\section{The global module and $b_n$}\label{sec:global}
+
+Let $\HH_n=\bigoplus_{P\text{ on }[n]}H_P$ and
+$V_n=\bigoplus_{P\text{ on }[n]}\PLie(P)$, both made into $S_n$-modules by
+relabelling. Let $B_n$ be the set of labelled posets on $[n]$ having some
+rotation $L_c=(c+1,\dots,n,1,\dots,c)$ of $12\cdots n$ as a linear
+extension, and $b_n=|B_n|$ ([Bn, \S1]). $C_n=\langle\gamma\rangle$ acts on
+$B_n$ by relabelling. Let $a_n$ be the number of naturally labelled posets on
+$[n]$, and $A(x)=1+\sum_{n\ge1}a_nx^n$.
+
+\begin{proposition}[{[AudBn, \S A, \S C]}]\label{prop:Ind}
+$V_n\cong\Ind_{C_n}^{S_n}(\zeta\otimes\mathbb C[B_n])$ as $S_n$-modules.
+\st{proven}, unconditionally; \st{audited} by a second read ([AudBn, \S C]).
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{lem:liechar}, choosing a representative $w_O$ in each right
+coset $O=wC_n$ makes $\{w_Oe_\zeta\}$ a basis of $\PLie(P)$, indexed by the
+$O$ with $O\cap\Lin(P)\ne\emptyset$. For $\tau\in S_n$ we have
+$\tau w_O=w_{\tau O}\gamma^j$ for some $j$, so $\tau$ maps the basis vector of
+$(P,O)$ to $\zeta^j$ times that of $(\tau P,\tau O)$. So $V_n$ is monomial on
+$X=\{(P,O):O\cap\Lin(P)\ne\emptyset\}$. The projection $(P,O)\mapsto O$ onto
+$S_n/C_n$ is equivariant and the base is transitive, so $V_n$ is induced from
+the stabiliser $C_n$ of $O_0=C_n$ acting on its fibre. The fibre is
+$\{P:\text{some }\gamma^j=L_j\in\Lin(P)\}=B_n$. With $w_{O_0}=\mathrm{id}$,
+$\gamma^j$ acts on it by $\zeta^j$ times relabelling.
+\end{proof}
+
+\begin{corollary}[eq.\ (globalind); {[Glob, \S1(a)]}, {[AudChar, R3]}]
+\label{cor:globalind}
+Assume \ref{in:JS}--\ref{in:Hopf}. Then
+$\HH_n\cong\sgn\otimes V_n\cong\sgn\otimes\Ind_{C_n}^{S_n}(\zeta\otimes\mathbb C[B_n])$,
+which is the seed note's (globalind). \st{proven}, \st{audited}.
+\end{corollary}
+
+\begin{proof}
+On both sides the summands over one $S_n$-orbit of posets form
+$\Ind_{\Aut P}^{S_n}$ of a single summand. Apply \eqref{eq:mainiso} for one
+$P$ in each orbit, and use
+$\Ind_G(\sgn|_G\otimes M)\cong\sgn\otimes\Ind_GM$. Only $\Aut(P)$-equivariance
+is used, not naturality ([AudBn, \S C]).
+\end{proof}
+
+\begin{theorem}[{[Bn, \S3]}, {[AudBn]}]\label{thm:bn}
+$b_n=n[x^n]\log A(x)$; equivalently $na_n=\sum_{k=1}^nb_ka_{n-k}$.
+\st{proven}, \st{audited}.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+For $P\in B_n$, let $C(P)=\{c:L_c\in\Lin(P)\}\ne\emptyset$. The arcs of the
+circle $1\to2\to\cdots\to n\to1$ between consecutive points of $C(P)$ are
+mutually incomparable, and $P$ restricted to each arc is irreducible with
+respect to the arc order (it does not split as an incomparable prefix and
+suffix). This gives a bijection between $B_n$ and the \emph{cyclic
+factorizations} of size $n$: a nonempty set of cuts on the circle together
+with an irreducible poset on each arc ([Bn, Thm]). By the unique
+factorization of naturally labelled posets into irreducibles,
+$A=1/(1-I)$, where $I$ counts irreducibles ([Bn, Lemma~2]). Hence cyclic
+factorizations are counted by $n[x^n]\log\frac1{1-I}=n[x^n]\log A$
+([Bn, Lemma~3]).
+\end{proof}
+
+\begin{proposition}[{[Bn, Props.~1--3]}, {[Glob, \S1(b)]}]\label{prop:frob}
+\st{proven}. Parts (a)--(c) are \st{audited} in [AudBn]. Part (d) applies
+$\omega$ to (c) ([Glob, \S1(b)]); it is elementary and \st{computed}, but it
+has had no separate audit.
+\begin{enumerate}[label=(\alph*)]
+\item $\sum_{P\text{ on }[n]}e_C(P)=(n-1)!\,b_n=\dim V_n$.
+\item $\#\mathrm{Fix}(\gamma^k\text{ on }B_n)=b_{\gcd(k,n)}$. The antichain
+  is the only $\gamma$-fixed poset, and $b_p\equiv1\pmod p$ for $p$ prime.
+\item $\ch V_n=\frac1n\sum_{d\mid n}\mu(d)\,b_{n/d}\,p_d^{n/d}$ and
+  $\sum_n\ch V_n=\sum_{d\ge1}\frac{\mu(d)}d\log A(p_d)$. This is the seed
+  note's (plethlog). It is the \emph{untwisted} series.
+\item With Corollary~\ref{cor:globalind}, the outer twist is
+  $\otimes\,\sgn$, i.e.\ $\omega$ on symmetric functions, and
+  \[
+  \ch\HH_n=\frac1n\sum_{d\mid n}(-1)^{n-n/d}\mu(d)\,b_{n/d}\,p_d^{n/d},
+  \]
+  which is the seed note's (frob) exactly as printed. The twisted generating
+  function is
+  $\sum_n\ch\HH_n=\sum_d\frac{\mu(d)}d\log A\bigl((-1)^{d-1}p_d\bigr)$.
+\end{enumerate}
+\end{proposition}
+
+The sign in (d) is \st{computed} by direct homology, with no use of
+Theorem~\ref{thm:main}: the character of $\HH_n$ equals the twisted (frob) on
+every class of $S_n$ for $n\le6$. At $n=6$ the twist is decisive. On class
+$(6)$, $\HH_6$ has $-1$ where the untwisted formula gives $+1$; on class
+$(2,2,2)$ it has $+128$ where the untwisted formula gives $-128$
+([Glob, \S1(c)]).
+
+\begin{corollary}[Prime degree]\label{cor:prime}
+For $p$ prime,
+$\HH_p\cong\frac{b_p-1}{p}\,\mathbb C[S_p]\oplus(\sgn\otimes\Lie_p)$. For
+example, $\HH_3\cong5\operatorname{Reg}\oplus(\sgn\otimes\Lie_3)$ and
+$\HH_5\cong312\operatorname{Reg}\oplus(\sgn\otimes\Lie_5)$. \st{proven},
+given \ref{in:JS}--\ref{in:Hopf}.
+\end{corollary}
+
+\begin{proof}
+By Prop.~\ref{prop:frob}(b), $B_p$ consists of the antichain, which is
+fixed, and $(b_p-1)/p$ free $C_p$-orbits. A free orbit contributes
+$\Ind_{C_p}^{S_p}(\zeta\otimes\mathbb C[C_p])\cong\mathbb C[S_p]$, and the
+antichain contributes $\Ind_{C_p}^{S_p}\zeta\cong\Lie_p$~\cite{Klyachko}.
+Twist by $\sgn$ (Cor.~\ref{cor:globalind}), and note that
+$\sgn\otimes\mathbb C[S_p]\cong\mathbb C[S_p]$. The values $b_3=16$ and
+$b_5=1561$ are \st{computed} ([Bn]).
+\end{proof}
+
+[Bn, \S4] had recorded this decomposition as conditional on (globalind);
+Corollary~\ref{cor:globalind} removes the condition. The deduction is made
+here, from the cited results.
+
+\begin{remark}[Why a plethystic logarithm; {[Glob, \S4]}; \textbf{not
+independently audited}]
+Let $\mathbf Q$ be the species of pairs $(P,\ell)$ with $\ell\in\Lin(P)$, with
+product given by disjoint union and concatenation, and coproduct given by
+restriction. It is a connected cocommutative Hopf monoid, and $S_n$ acts
+freely on $\mathbf Q[n]$, so its cycle index is $A(p_1)$.
+Cartier--Milnor--Moore and PBW for species (\st{cited}: Aguiar--Mahajan,
+\emph{Monoidal Functors, Species and Hopf Algebras}, Ch.~11; theorem
+numbers not re-checked) give
+$\ch\operatorname{Prim}(\mathbf Q)=\operatorname{Log}A(p_1)$. So
+$\operatorname{Prim}(\mathbf Q)[n]\cong V_n$ as $S_n$-modules. This explains
+the shape of (plethlog), and it gives $V_n$ a Lie bracket, the commutator
+in $\mathbf Q$. The isomorphism is not graded by posets: the primitives are
+not $P$-homogeneous already at $n=2$. \st{proven} modulo the cited theorems,
+and \st{computed} for $n\le4$, in [Glob]. The audit [AudChar] covered only
+[Glob, \S2]; this part has had no independent audit.
+\end{remark}
+
+\section{Computational record}\label{sec:computations}
+
+All scripts are plain Python~3 in \src{compute/}. They are run from that
+directory, and archived outputs are in \src{compute/output/}. Each script
+exits with status $0$ iff its checks pass, and each has positive controls
+(deliberately wrong variants that must fail). The exact commands are in
+\src{compute/README.md}. Ranks are taken modulo a large prime, and they are
+used only in directions that are valid over $\mathbb Q$ (rank$_p\le$
+rank$_{\mathbb Q}$, or a sandwich between two equal bounds).
+
+{\small
+\begin{longtable}{>{\raggedright}p{0.36\textwidth}>{\raggedright}p{0.22\textwidth}>{\raggedright}p{0.17\textwidth}p{0.13\textwidth}}
+\textbf{What was checked} & \textbf{Script} & \textbf{Range} & \textbf{Source}\\\hline
+\endhead
+Character identity \eqref{eq:characterconj}, exact in $\mathbb Z[\zeta]$; trace on $\PLie(P)$ computed in $\mathbb C[S_n]$; seed note's $n=6$ examples &
+\src{poset_jks_check.py} & all posets $n\le6$ ($758$ pairs at $n=6$) & [Repro]\\
+Character identity at $n=7$ & \src{n7_sweep.py} & all $2045$ posets, $4804$ pairs & [N7]\\
+Trace of $g$ on $\ker\partial_{n-3}$ by direct homology vs.\ $(-1)^{n-3}\mu(\OP(P)^g)$ (no M\"obius, no Lefschetz) &
+\src{equivariant_homology.py} & every pair $n=4,5,6,7$ & [N7]\\
+Steps of Proof I (T1--T5); $\HH_n$ vs.\ (frob) by direct homology; primitives of $\mathbf Q$; $e_\zeta$-bracket test &
+\src{poset_lie_structure.py} & $n\le6$ (+ $n=7,8$ examples); $\mathbf Q$: $n\le4$; bracket: $n\le5$ & [Glob]\\
+Every lemma of Proof II &
+\src{fixed_point_mobius.py} & all posets $n\le6$; $194$ families at $n=7,8,9$ & [FPM]\\
+Independent audit of both proofs (checks A--F, H: closed formula, Weisner, Crapo, direct homology) &
+\src{audit_character_identity.py} & all posets $n\le6$; $19$ families at $n=7,8,9$; one family at $n=10$ & [AudChar]\\
+Prop.~$\Phi$ (chain level), Prop.~C, $\kappa_n$, Conjecture~S ranks, Lemma~D &
+\src{splitting_cycles.py} & $\Phi$: $n\le5$; S: $n\le6$ & [Lit]\\
+Audit: $\Phi$ at chain level; Conjecture~S at chain level; $\mu(\OP(P)^g)=0$ for connected $P$; Prop.~C$'$ coefficient; Ex.~10.9 &
+\src{audit_jks_maps.py} & $n\le6$ (Prop.~C, $\kappa_n$, Ex.~10.9: $n\le5$) & [AudLit]\\
+Contraction lemma; $W_P\cap\Sh_n=R_P$; first-block basis; $\rho$-independence &
+\src{conjecture_s.py} & $n\le6$ archived; $n\le7$ run, not archived; $\rho$: $n\le5$ & [S]\\
+Audit of Theorem~\ref{thm:S}: all lemmas; Thms A, B for every base component; chain-level (c), (d) without $\Phi$ or \ref{in:JS} &
+\src{audit_conjecture_s.py} & $n\le6$ & [AudS]\\
+$a_n$, $b_n=|B_n|$, $b_n=n[x^n]\log A$, $\sum e_C=(n-1)!b_n$, $C_n$-action on $B_n$ &
+\src{cyclic_posets.py} & $n\le7$ ($a_8$, $b_8$ via Lemma~1(c)) & [Bn]\\
+Independent audit of the above; character of $V_n$ &
+\src{audit_cyclic_posets.py} & $n\le6$ (\texttt{--b8}: $n\le8$) & [AudBn]\\
+$V_n\cong\Ind_{C_n}^{S_n}(\zeta\otimes\mathbb C[B_n])$ by direct linear algebra in $\mathbb C[S_n]$ &
+\src{second_read_globalind.py} & $n\le5$ & [AudBn, \S C]\\
+Lune form of Conjecture~S; pointed cones; Conjecture~G on other arrangements &
+\src{cone_lie.py} & $A_2,A_3,A_4,B_2,B_3$; samples of $D_4,B_4$ & [Cone]\\
+\end{longtable}
+}
+
+\noindent Notes on the record:
+\begin{itemize}[nosep]
+\item No check in the table failed.
+\item At $n=7$ the identity barely tests the refinement. For prime $n$,
+  everything beyond Jen\v{c}a--Sarkoci and classical JKS is the vanishing
+  $\mu(\OP(P)^g)=0$, and the sign factor is tested on a non-antichain poset
+  only when $n$ is even and not a power of $2$ ([N7, \S2], \st{proven}). The
+  $n=8,9,10$ families in [AudChar] were chosen to exercise the phases.
+\item The $n=7$ run of \src{conjecture_s.py} is reported in [S] but was not
+  archived, and the audit [AudS] did not re-run it (UNCHECKED).
+\end{itemize}
+
+\section{Open problems and unchecked items}\label{sec:open}
+
+\begin{enumerate}
+\item \textbf{A natural isomorphism.} Theorem~\ref{thm:main} is a character
+  identity. Find an explicit $\Aut(P)$-isomorphism
+  $H_P\otimes\sgn\to\PLie(P)$ that is natural for some useful class of maps
+  between posets. For connected $P$ one is known
+  ($\rho_w\otimes1\mapsto\sgn(w)we_\zeta$, Theorem~\ref{thm:S}). For
+  disconnected $P$ the problem is an explicit isomorphism
+  $\mathbb C[\Lin P]/R_P\cong\mathbb C[\Lin P]/(W_P\cap\mathbb C[S_n](1-e_\zeta))\otimes\sgn$.
+  By Prop.~\ref{prop:Cprime}, it cannot be induced by an $S_n$-equivariant
+  map into $\mathbb C[S_n]e_\zeta$.
+\item \textbf{Bracket, cooperad, Hopf-monoid structure.} The commutator of
+  concatenations does \emph{not} descend to
+  $\PLie(P)\otimes\PLie(Q)\to\PLie(P+Q)$ in the $e_\zeta$ model, even for
+  antichains (\st{computed}, [Glob, \S3.4]). $\operatorname{Prim}(\mathbf Q)$
+  carries a bracket, but it is not graded by posets. Open, and
+  \st{conjectured} in [Glob, \S3.4, \S4.3]:
+  \begin{itemize}[nosep]
+  \item a poset cooperad on $\mathbb C[S_n]/\Sh_n$ via deconcatenation;
+  \item a filtration of $\mathbf Q$ whose associated graded primitives are
+    $\bigoplus_P\PLie(P)$, $P$-homogeneously;
+  \item a ``local PBW'' $\mathbb C[\Lin P]\cong\operatorname{Sym}$ over
+    components of the $\PLie(P|_T)$.
+  \end{itemize}
+\item \textbf{A $\Phi$-free proof of Theorem~\ref{thm:S}(c).} Run the
+  induction of Theorem~\ref{thm:S}(a) directly on chains, by making precise
+  the heuristic that $E_{a,x}$ is the $\Phi$-image of taking the link at the
+  atom $\pi_{a,x}$ ([AudS, \S E.4]). This would remove the dependence on the
+  cited Wachs statements for $n\ge7$.
+\item \textbf{Cone/lune generalization.} [Cone, Conjecture~G]: the general
+  form of Conjecture~S for every top-cone of every real central arrangement.
+  The results of [Cone] themselves still await an independent audit.
+\item \textbf{Items the audits list as UNCHECKED.}
+  \begin{itemize}[nosep]
+  \item Exact theorem numbers: Crapo's theorem; Hall (EC1 Prop.~3.8.5); the
+    Hopf trace formula (Munkres Thm~22.1); Weisner (EC1 Cor.~3.9.3); Ree
+    (Reutenauer Thm~3.1); Cartier--Milnor--Moore/PBW for species.
+  \item Jen\v{c}a--Sarkoci: the identification of order congruences with
+    acyclic-quotient partitions was taken from [Lit, \S2.1--2.2], not
+    re-read in the paper ([AudChar, S6]). Journal page numbers were not
+    re-checked against the arXiv numbering.
+  \item Wachs 1998 and Aguiar--Mahajan \emph{Topics}: numbering checked
+    against preprint or preliminary versions only; the journal and print
+    numbering is UNCHECKABLE so far ([AudLit, \S5]).
+  \item $\Sh_n\kappa_n\ne0$ for $n\ge6$, and hence the $P$-dependent
+    $\kappa_n$-version of Prop.~C$'$ ([AudLit, rows 8, 30]).
+  \item [AudLit, rows 24, 28, 29]: the conjectured restriction isomorphism
+    of [Lit, \S2.3]; the labelling-dependent count of $W_Pe_\zeta=W_{P^{\rm op}}e_\zeta$;
+    and $\dim W_P\kappa_n=e_C(P)$.
+  \item The $n=7$ run of \src{conjecture_s.py} (not archived, not re-run).
+  \item [Glob, \S\S3--4] (operations, $\mathbf Q$, primitives) has had no
+    independent audit.
+  \end{itemize}
+\item \textbf{Novelty.} The literature search of [Lit, \S1] found no prior
+  statement, proof or refutation of the conjecture, and no group action or
+  Lie module attached to the homology of $\OP(P)$. Of the few papers citing
+  Jen\v{c}a--Sarkoci, none studies a group action. [AudS, \S F] found no prior
+  statement of Theorem~\ref{thm:S}(a)--(b) for general $P$. Neither search is
+  exhaustive, and neither is a proof of novelty. Before publication, experts
+  should be asked (e.g.\ on poset topology, free Lie algebras and
+  arrangements) whether these results are folklore.
+\item \textbf{The seed note's broader questions.} Its question about a
+  ``primitive or Lie functor on posets'', and the moonshine-motivated search
+  for an extra grading, are untouched.
+\end{enumerate}
+
+\begin{thebibliography}{99}
+
+\bibitem{JencaSarkoci}
+G.~Jen\v{c}a and P.~Sarkoci,
+\emph{Linear extensions and order-preserving poset partitions},
+J. Combin. Theory Ser.~A \textbf{122} (2014), 28--38,
+doi:10.1016/j.jcta.2013.09.010; arXiv:1112.5782. Numbering used here is that
+of arXiv v2.
+
+\bibitem{Crapo}
+H.~H.~Crapo, \emph{The M\"obius function of a lattice},
+J. Combin. Theory \textbf{1} (1966), 126--131.
+
+\bibitem{Wachs}
+M.~L.~Wachs,
+\emph{On the (co)homology of the partition lattice and the free Lie algebra},
+Discrete Math. \textbf{193} (1998), 287--319. Theorem numbers cited here are
+those of the preprint (Dec.~1994, revised Jan.~1996).
+
+\bibitem{Ree}
+R.~Ree, \emph{Lie elements and an algebra associated with shuffles},
+Ann. of Math. \textbf{68} (1958), 210--220.
+
+\bibitem{Reutenauer}
+C.~Reutenauer, \emph{Free Lie Algebras}, LMS Monographs~7, Oxford, 1993.
+
+\bibitem{Klyachko}
+A.~A.~Klyachko, \emph{Lie elements in the tensor algebra},
+Sibirsk. Mat. Zh. \textbf{15} (1974), no.~6, 1296--1304; English transl.
+Siberian Math. J. \textbf{15} (1974), 914--920, doi:10.1007/BF00966559.
+
+\bibitem{Stanley82}
+R.~P.~Stanley, \emph{Some aspects of groups acting on finite posets},
+J. Combin. Theory Ser.~A \textbf{32} (1982), 132--161.
+
+\bibitem{Hanlon81}
+P.~Hanlon, \emph{The fixed-point partition lattices},
+Pacific J. Math. \textbf{96} (1981), 319--341.
+
+\bibitem{Joyal86}
+A.~Joyal, \emph{Foncteurs analytiques et esp\`eces de structures},
+in: Combinatoire \'enum\'erative, LNM~1234, Springer, 1986, 126--159.
+
+\bibitem{AguiarMahajan}
+M.~Aguiar and S.~Mahajan, \emph{Topics in Hyperplane Arrangements},
+Math. Surveys Monogr.~226, AMS, 2017; and \emph{Bimonoids for Hyperplane
+Arrangements}, Encyclopedia Math. Appl.~173, CUP, 2020.
+
+\end{thebibliography}
+
+\noindent The bibliographic details of \cite{Stanley82,Hanlon81,Joyal86} are
+as given in [Lit, \S5], marked there as ``from memory; verify''.
+
+\end{document}
