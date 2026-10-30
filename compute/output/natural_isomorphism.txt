@@ -1,0 +1,39 @@
+[ext] n=1: 1 posets (0 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 1/1: True
+[ext] n=2: 2 posets (1 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 2/2: True
+[ext] n=3: 5 posets (2 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 5/5: True
+[ext] n=4: 16 posets (6 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 16/16: True
+[ext] n=5: 63 posets (19 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 63/63: True
+[ext] n=6: 318 posets (80 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 318/318: True
+[wit] n=3: (P,S,s,t) cases with |t|>=2: 7; coefficient of u in (s ш t) e_zeta equals 1/n: 7/7: True
+[wit] n=4: (P,S,s,t) cases with |t|>=2: 65; coefficient of u in (s ш t) e_zeta equals 1/n: 65/65: True
+[wit] n=5: (P,S,s,t) cases with |t|>=2: 566; coefficient of u in (s ш t) e_zeta equals 1/n: 566/566: True
+[wit] n=6: (P,S,s,t) cases with |t|>=2: 5467; coefficient of u in (s ш t) e_zeta equals 1/n: 5467/5467: True
+[lie] n=2: rank of Lie_n e_zeta = 1, (n-1)! = 1: True
+[lie] n=3: rank of Lie_n e_zeta = 2, (n-1)! = 2: True
+[lie] n=4: rank of Lie_n e_zeta = 6, (n-1)! = 6: True
+[lie] n=5: rank of Lie_n e_zeta = 24, (n-1)! = 24: True
+[lie] n=6: rank of Lie_n e_zeta = 120, (n-1)! = 120: True
+[sum] n=2: disconnected posets 1: Aut-equivariant 1/1; control: phi_0 alone non-equivariant 0/0; sum_i phi_i invertible 1/1; size-weighted invertible 1/1: True
+[sum] n=3: disconnected posets 2: Aut-equivariant 2/2; control: phi_0 alone non-equivariant 1/1; sum_i phi_i invertible 2/2; size-weighted invertible 2/2: True
+[sum] n=4: disconnected posets 6: Aut-equivariant 6/6; control: phi_0 alone non-equivariant 2/2; sum_i phi_i invertible 6/6; size-weighted invertible 6/6: True
+[sum] n=5: disconnected posets 19: Aut-equivariant 19/19; control: phi_0 alone non-equivariant 2/2; sum_i phi_i invertible 19/19; size-weighted invertible 19/19: True
+[sum] n=6: disconnected posets 80: sum_i phi_i invertible 80/80; size-weighted invertible 80/80: True
+[psi] n=2: 2 posets (1 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 2/2: True
+[psi] n=3: 5 posets (2 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 5/5: True
+[psi] n=4: 16 posets (6 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 16/16: True
+[psi] n=5: 63 posets (19 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 63/63: True
+[psi] n=6: 318 posets (80 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 318/318: True
+[wgt] n=2: random admissible weights: independent 4/4; lam=1 (inadmissible): rank drops for 1/1 disconnected P, incl. the antichain (control): True: True
+[wgt] n=3: random admissible weights: independent 10/10; lam=1 (inadmissible): rank drops for 2/2 disconnected P, incl. the antichain (control): True: True
+[wgt] n=4: random admissible weights: independent 32/32; lam=1 (inadmissible): rank drops for 5/6 disconnected P, incl. the antichain (control): True: True
+[wgt] n=5: random admissible weights: independent 126/126; lam=1 (inadmissible): rank drops for 16/19 disconnected P, incl. the antichain (control): True: True
+[wgt] n=6: random admissible weights: independent 636/636; lam=1 (inadmissible): rank drops for 63/80 disconnected P, incl. the antichain (control): True: True
+[dyn] n=2: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
+[dyn] n=3: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
+[dyn] n=4: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
+[dyn] n=5: antichain: sum_i phi_i(x) = c * (x theta_n^* e_zeta) for all words x: True, c = 1
+[cop] n=2: pairs (P,Q) 1: do NOT descend to L: restriction 1/1, deconcatenation 1/1, cobracket 0/1; cobracket descends <=> (P,Q connected, |P|=|Q|) 1/1 (1 such pairs); control: cobracket descends on M 1/1: True
+[cop] n=3: pairs (P,Q) 4: do NOT descend to L: restriction 4/4, deconcatenation 4/4, cobracket 4/4; cobracket descends <=> (P,Q connected, |P|=|Q|) 4/4 (0 such pairs); control: cobracket descends on M 4/4: True
+[cop] n=4: pairs (P,Q) 14: do NOT descend to L: restriction 14/14, deconcatenation 14/14, cobracket 13/14; cobracket descends <=> (P,Q connected, |P|=|Q|) 14/14 (1 such pairs); control: cobracket descends on M 14/14: True
+[cop] n=5: pairs (P,Q) 52: do NOT descend to L: restriction 52/52, deconcatenation 52/52, cobracket 52/52; cobracket descends <=> (P,Q connected, |P|=|Q|) 52/52 (0 such pairs); control: cobracket descends on M 52/52: True
+ALL CHECKS PASSED

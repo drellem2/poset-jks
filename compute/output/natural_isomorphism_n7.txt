@@ -1,0 +1,14 @@
+[ext] n=1: 1 posets (0 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 1/1: True
+[ext] n=2: 2 posets (1 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 2/2: True
+[ext] n=3: 5 posets (2 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 5/5: True
+[ext] n=4: 16 posets (6 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 16/16: True
+[ext] n=5: 63 posets (19 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 63/63: True
+[ext] n=6: 318 posets (80 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 318/318: True
+[ext] n=7: 2045 posets (395 disconnected): R_P e_zeta = 0 <=> (connected or n<=2): 2045/2045: True
+[psi] n=2: 2 posets (1 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 2/2: True
+[psi] n=3: 5 posets (2 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 5/5: True
+[psi] n=4: 16 posets (6 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 16/16: True
+[psi] n=5: 63 posets (19 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 63/63: True
+[psi] n=6: 318 posets (80 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 318/318: True
+[psi] n=7: 2045 posets (395 disconnected): truncation map psi_P: L_P -> M_P is an isomorphism: 2045/2045: True
+ALL CHECKS PASSED
