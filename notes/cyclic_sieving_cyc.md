@@ -15,12 +15,23 @@ are line labels in that output.
 of automorphisms. NO for a single polynomial that serves every cyclic
 subgroup of Aut(P).**
 
+The YES for the rotation, and for every Springer-regular element, is **not
+new**. Once Cyc(P) is viewed as an S_k-set (or a ∏_i S_{k_i}-set), it is an
+instance of the regular-element CSP for fake degrees of permutation
+modules: Westbury 2016 Cor. 2.6 for the long cycle, and in general Sagan's
+survey Thm 8.2 or [RSW] Thm 8.2 applied orbit by orbit ([PACSC]). The same
+holds for the G(r,1,k) version of §4. What was not found in the literature
+searched for [PACSC] is: the closed form (★), Theorem B(ii) at roots of
+unity that are not regular eigenvalues, Theorem C beyond regular elements,
+and the A_4 obstruction. "Not found" is a search result, not a proof of
+novelty; see §10 for what was not read.
+
 | Question | Answer |
 |---|---|
-| A q-analogue X(q), X(1) = e_C(P), sieving the rotation σ of T^{⊔k} | **YES, PROVEN** for every T and k (Theorem C, Corollary T). X_P is the *fake-degree polynomial* of Cyc(P) as an S_k-set. It has nonnegative integer coefficients (Theorem A), and for T^{⊔k} it has the closed form (★) below, which uses only the numbers c_j = e_C(T^{⊔j}). COMPUTED on all 23 posets T^{⊔k} with \|P\| ≤ 8 (`[tk-sigma]`, `[tk-closed]`). |
-| Which other g does the same polynomial serve? | Let g permute the isomorphic copies of the components, with trivial maps between copies, so g lies in W = ∏_T S_{k_T}. Then X_P sieves ⟨g⟩ **iff** the condition of Theorem C holds. Sufficiency is PROVEN. Necessity is PROVEN for one clause and COMPUTED for the other; the criterion matched all 249 tested classes (`[tk-W]`, `[sweep-W]`). Every Springer-regular element of W qualifies: powers of the k-cycle, and the (k−1)-cycle. |
-| Automorphisms that also act inside components | Let g lie in a group G = ∏_T ⟨c_T⟩ ≀ S_{k_T}. The fake-degree polynomial of G sieves ⟨g⟩ for every Springer-regular g: **COMPUTED** on all 3148 regular conjugacy classes, n ≤ 7 (`[sweep-springer]`), and **CITED** (Springer's theorem). |
-| One X for all of Aut(P) at once | **NO.** The smallest obstruction is the 4-element antichain A_4 (`[obst]`). A transposition and a double transposition both have order 2. They fix 0 and 2 classes respectively, so no single X can take both values at q = −1. No P with n ≤ 3 is an obstruction. |
+| A q-analogue X(q), X(1) = e_C(P), sieving the rotation σ of T^{⊔k} | **YES, PROVEN** for every T and k (Theorem C, Corollary T); **KNOWN** as an instance of Westbury 2016 Cor. 2.6 ([PACSC]). X_P is the *fake-degree polynomial* of Cyc(P) as an S_k-set. It has nonnegative integer coefficients (Theorem A), and for T^{⊔k} it has the closed form (★) below, which uses only the numbers c_j = e_C(T^{⊔j}). COMPUTED on all 23 posets T^{⊔k} with \|P\| ≤ 8 (`[tk-sigma]`, `[tk-closed]`). |
+| Which other g does the same polynomial serve? | Let g permute the isomorphic copies of the components, with trivial maps between copies, so g lies in W = ∏_T S_{k_T}. Then X_P sieves ⟨g⟩ **iff** the condition of Theorem C holds. Sufficiency is PROVEN. Necessity of (b) is PROVEN; necessity of (a) is PROVEN when gcd(k_i) = 1 and OPEN otherwise. The criterion matched the CSP on all 206 distinct tested classes (`[tk-W]`, `[sweep-W]`; see Theorem C for the count), but clause (a) is the only failing clause in just 6 of them. Every Springer-regular element of W qualifies: powers of the k-cycle, and the (k−1)-cycle (KNOWN: Sagan Thm 8.2, [RSW] Thm 8.2). Beyond regular elements the criterion was not found in the literature searched ([PACSC]). |
+| Automorphisms that also act inside components | Let g lie in a group G = ∏_T ⟨c_T⟩ ≀ S_{k_T}. The fake-degree polynomial of G sieves ⟨g⟩ for every Springer-regular g: **PROVEN given [RSW] Thm 8.2 (CITED)**, and **KNOWN** as an instance of it and of Sagan Thm 8.2 ([PACSC]). Also **COMPUTED** on all 3148 regular conjugacy classes, n ≤ 7 (`[sweep-springer]`), which is a check of a theorem. |
+| One X for all of Aut(P) at once | **NO.** The smallest obstruction is the 4-element antichain A_4 (`[obst]`; not found in the literature searched, [PACSC]). A transposition and a double transposition both have order 2. They fix 0 and 2 classes respectively, so no single X can take both values at q = −1. No P with n ≤ 3 is an obstruction. |
 | A P where no polynomial with nonnegative coefficients fits the data of one ⟨g⟩ | **None exists, for any P and g.** The fixed-point data of any action of a cyclic group C_N is matched by a unique X mod q^N − 1 with nonnegative integer coefficients: its coefficients are the multiplicities of the characters of C_N in the permutation representation. The real question is therefore whether a *natural* X exists. |
 | Natural candidates other than the fake degree | **All fail** (`[tk-cand]`, `[sweep-cand2]`). The candidates were maj and inv on the canonical representatives B_P, maj on the lex-minimal representatives, a q-version of the block (cumulant) formula for e_C, and the product of the pattern factor with maj_T(q)^k. On the 23 rotations σ, each sieves at most 5. On the 15 non-free (P, g) with n ≤ 7, each sieves at most 4. |
 
@@ -72,18 +83,38 @@ whose cycles all have length n/gcd(n, r). Now let g = (1; π). An element x
 in a copy lying on a π-cycle of length ℓ satisfies g^ℓ(x) = x, because the
 cycle product is trivial. Its g-cycle therefore has length ℓ. ∎
 
-**Proposition 2 (PROVEN from [LE, §4] and [FPM]; COMPUTED 23/23,
-`[tk-formula]`).** Let P = T^{⊔k}, let c_j = e_C(T^{⊔j}), and let w ∈ S_k
-have every cycle of length d (so d | k). Then
+**Proposition 2 (PROVEN; COMPUTED 23/23, `[tk-formula]`).** Let
+P = T^{⊔k}, let c_j = e_C(T^{⊔j}), and let w ∈ S_k have every cycle of
+length d (so d | k). Then
 
   F(w) = φ(d) · d^{k/d − 1} · c_{k/d}.
 
-*Proof.* By [LE, §4] ("Fixed classes and Burnside"), F(g) = φ(o(g)) S(g).
-Here S(g) is the sum of e_C(P|_{B_0}) over the partitions of the components
-into o(g) unions B_0, …, B_{o−1} that g permutes cyclically. For w there
-are d^{k/d − 1} such partitions. The block B_0 holds the copy containing
-P_1 and one copy from each of the other k/d − 1 cycles, chosen in d ways
-each. Each B_0 is a copy of T^{⊔k/d}. ∎
+*Proof.* (Self-contained, following [AUD] §1.) Let w fix a class C. For
+L ∈ C we have wL = Lγ^r, and r does not depend on L, since
+w(Lγ^t) = (Lγ^t)γ^r. Now γ^r is conjugate to w, so it has order d, and
+r = s·n/d with gcd(s, d) = 1. This accounts for the factor φ(d).
+
+Cut L into d blocks of length n/d. Then w maps block j to block j + s. Let
+b(x) be the block of x. If x < y in one component, then b(x) ≤ b(y), and
+applying w^t gives (b(x) + ts mod d) ≤ (b(y) + ts mod d) for every t. If
+b(x) < b(y), choose t with b(y) + ts ≡ 0 mod d; this contradicts the
+inequality. So b is constant on components, and each block of L is a union
+of components holding one copy from each cycle of w.
+
+Conversely, let u be a linear extension of such a union and
+s′ = s^{−1} mod d. Then u w^{s′}(u) w^{2s′}(u) ⋯ is a linear extension of
+P whose class is fixed by w. Fix s. The lifts of a linear extension of the
+quotient T^{⊔k/d} correspond to a choice of one copy per cycle, which gives
+d^{k/d} lifts. Rotation by one block permutes them in orbits of size d, so
+each class over a given class of the quotient is counted d times. Hence
+F(w) = φ(d) · d^{k/d−1} · c_{k/d}. ∎
+
+The same argument gives the multi-type form F(w_d) = φ(d) d^{#cycles − 1}
+e_C(one copy per cycle), which [AUD] checks on all 206 classes conjugate
+into W. Proposition 2 also follows from the fixed-class formula
+F(g) = φ(o(g)) S(g) of [LE, §4] and [FPM]. There S(g) sums e_C(P|_{B_0})
+over the partitions of the components into o(g) unions B_0, …, B_{o−1} that
+g permutes cyclically, and for w there are d^{k/d − 1} such partitions.
 
 By Proposition F of [LE], c_j = e(T)^j · e_C(C_m^{⊔j}) with m = |T|.
 
@@ -112,6 +143,11 @@ with generators in degrees 1, …, k_i for each i, so its Hilbert series is
 representation, so X_P(1) = dim C[Cyc P] = e_C(P), and R_0 is the trivial
 representation. ∎
 
+Theorem A is **standard** ([PACSC]): X_P is the fake degree of the
+permutation representation C[Cyc P]. For one type it is Westbury's
+fd(Z(X)) (Westbury 2016 §2.2), and orbit by orbit it is Σ_x Hilb(A^{W_x}; q),
+the polynomial of [RSW] Thm 8.2.
+
 For P = T^{⊔k}, only the w of Lemma 1 contribute. There are
 k!/(d^{k/d}(k/d)!) such w for each d | k, so Proposition 2 gives the closed
 form
@@ -119,7 +155,10 @@ form
   (★)  X_{T^{⊔k}}(q) = Σ_{d | k} (φ(d)/d) · (c_{k/d}/(k/d)!) · (q; q)_k / (1 − q^d)^{k/d}.
 
 It depends only on the numbers c_j = e_C(T^{⊔j}), j | k (`[tk-closed]`,
-23/23). For k = 2 it reads X = ((c_2 + c_1) + (c_2 − c_1) q)/2.
+23/23). For k = 2 it reads X = ((c_2 + c_1) + (c_2 − c_1) q)/2. (★) is
+Westbury's fd(Z(X)) with the cycle index made explicit by Lemma 1 and
+Proposition 2. As a formula in the c_j it was not found in the literature
+searched ([PACSC]).
 
 For the antichain A_k, (★) is the fake degree of S_k/C_k. By
 Kraśkiewicz–Weyman and RSK it equals Σ_{w ∈ S_k, maj w ≡ 0 (mod k)} q^{maj(w^{−1})}.
@@ -157,6 +196,15 @@ and at q = ζ this equals e^{k/e}(k/e)!, because ∏_{a=1}^{e−1}(1 − ζ^a) =
 The class of w_e has |W| / ∏_i e^{k_i/e}(k_i/e)! elements. So
 X_P(ζ) = F(w_e). ∎
 
+Prior art ([PACSC]). Part (i) is **Springer's theorem**: w_e is regular
+in W with regular eigenvalue ζ, and Springer's evaluation ([RSW] Thm 8.1,
+from [Sp74] Prop. 4.5) gives X_P(ζ) = F(w_e). Part (ii) follows the same
+way when ζ is a regular eigenvalue of W (e divides k_i or k_i − 1 for
+every i), since then F vanishes on the regular element of order e by
+Lemma 1. When ζ is not a regular eigenvalue of W, for example k = 5 and
+e = 3, part (ii) was not found in the literature searched. It rests on the
+support of F (Lemma 1).
+
 **Theorem C (CSP for W).** Let g ∈ Aut(P) be conjugate into W, and let
 N = o(g). Suppose that for every divisor e > 1 of N:
 - (a) e ≤ max k_i, and
@@ -164,9 +212,19 @@ N = o(g). Suppose that for every divisor e > 1 of N:
   length e.
 
 Then (Cyc(P), ⟨g⟩, X_P) is a CSP (**PROVEN**). Conversely, if (b) fails,
-the CSP fails (**PROVEN**). If (a) fails, the CSP failed in every computed
-case (**COMPUTED** on 249 classes, n ≤ 7 and T^{⊔k} with n ≤ 8; necessity
-of (a) is **OPEN** in general).
+the CSP fails (**PROVEN**). If (a) fails and gcd(k_i) = 1, the CSP fails
+(**PROVEN**, Proposition 3 below). If (a) fails and gcd(k_i) > 1, necessity
+is **OPEN**; the CSP failed in every computed case.
+
+The criterion agrees with the CSP on all **206 distinct** classes conjugate
+into W that were computed (**COMPUTED**): 171 with n ≤ 7 (`[sweep-W]`) and
+35 more among the T^{⊔k} with n = 8. The output lines `[tk-W]` (78 classes,
+T^{⊔k} with n ≤ 8) and `[sweep-W]` (171) sum to 249, but the 43 classes of
+T^{⊔k} with n ≤ 7 appear in both ([AUD] §3). Clause (a) fails in only 8 of
+the 206 classes, and it is the *only* failing clause in just 6 of them
+([AUD] §3): A_5 with copy-cycle type (2, 3); A_7 with (2, 5) and (3, 4);
+A_5 ⊔ C_2 with (2, 3), (1); A_3 ⊔ C_2 ⊔ C_2 with (3), (2); A_8 with (3, 5).
+The CSP fails in all 8.
 
 *Proof.* Take j and let e = o(g^j) > 1. Then ω^j is a primitive e-th root
 of unity, and ⟨g^j⟩ = ⟨g^{N/e}⟩.
@@ -183,7 +241,49 @@ Proposition 2. (For several types, F(w_e) > 0 because w_e fixes the class
 of the concatenation u g(u) ⋯ g^{e−1}(u), where u is a linear extension of
 one copy from each cycle.) ∎
 
-**Corollary T (PROVEN).** For P = T^{⊔k} and σ the rotation of the copies,
+Prior art ([PACSC]). When every power g^j ≠ 1 is regular, Theorem C is the
+regular-element CSP (Sagan Thm 8.2, [RSW] Thm 8.2). The criterion also
+reaches non-regular g, such as cycle type (6, 2) on A_8. There the powers
+whose order divides every k_i are regular and Springer handles them, but
+the other powers need Theorem B(ii) at a non-regular ζ. No source searched
+gives a CSP for the fake degree at a non-regular element, or an iff
+criterion. Theorem C beyond regular elements was therefore not found in the
+literature searched.
+
+**Proposition 3 (PROVEN, [AUD] §3).** If gcd(k_i) = 1, clause (a) of
+Theorem C is necessary.
+
+*Proof.* Let e | N with e > max k_i. By Lemma 1, only cycle types whose
+parts all equal a common d dividing every k_i have F ≠ 0. Here d = 1, so
+
+  X_P = e_C(P) · ∏_i [k_i]_q! / k_i!.
+
+Since e > k_i, no factor [j]_ζ with j ≤ k_i vanishes at a primitive e-th
+root ζ, so X_P(ζ) ≠ 0. But g^{N/e} has order e > max k_i, so its cycles on
+the copies are not all of length e, and F(g^{N/e}) = 0 by Lemma 1. ∎
+
+This covers 2 of the 6 informative classes above (A_5 ⊔ C_2 and
+A_3 ⊔ C_2 ⊔ C_2). Two facts constrain a proof in the remaining case
+gcd(k_i) > 1 ([AUD] §3; both PROVEN):
+- *The bad e are never prime powers.* An element of ∏ S_{k_i} whose order
+  is divisible by ℓ^b has a cycle of length divisible by ℓ^b, so
+  ℓ^b ≤ max k_i. Hence every e that violates (a) makes 1 − ζ_e a unit, and
+  norm arguments alone cannot finish the proof.
+- *(★) alone does not force nonvanishing.* Put y = ∏ e(T_i)^{k_i/g} with
+  g = gcd(k_i). By Proposition F of [LE], X_P depends on the T_i only
+  through their sizes m_i and through y. For two types with k = (4, 4) and
+  e = 6, X_P(ζ_6) as a polynomial in y has a real root with 0 < y < 1 for
+  every (m_1, m_2) ∈ [3]². So a proof must use y ≥ 1.
+
+Symbolic evidence (**COMPUTED**, [AUD] `[neca]`): X_P mod Φ_e, with y as an
+indeterminate, has no common root y ≥ 1 (Sturm count) for a single type
+with k = 3, …, 16 and |T| = 1, …, 6 (84 pairs (k, m), 690 triples
+(k, m, e)), and for two types with gcd(k_1, k_2) > 1, k_1 + k_2 ≤ 10 and
+m_i ≤ 3 (81 cases, 207 bad e). So the CSP fails whenever (a) fails, for
+every T of these sizes. These figures are [AUD]'s and were not re-derived
+here.
+
+**Corollary T (PROVEN; KNOWN as an instance, [PACSC]).** For P = T^{⊔k} and σ the rotation of the copies,
 (Cyc(P), ⟨σ⟩, X_P) is a CSP, with X_P given by (★) and X_P(1) = e_C(P).
 The same polynomial sieves:
 - every subgroup ⟨σ^j⟩;
@@ -199,8 +299,17 @@ For a regular element of order e, the powers of order e' divide e. If
 e' | k_i, they have type e'^{k_i/e'}. Otherwise they fall under
 Theorem B(ii). ∎
 
+Corollary T is **not new** ([PACSC]). For σ it is an instance of Westbury
+2016 Cor. 2.6 (X a permutation representation of S_r, P = fd(Z(X)), c the
+long cycle), with X = Cyc(T^{⊔k}). Its restriction to ⟨σ^j⟩ is [RSW]
+Remark 2.3. For every regular element of W it is an instance of Sagan's
+survey Thm 8.2 (attributed there to Westbury, from Springer), with
+V = C[Cyc P] and B = Cyc(P), or of [RSW] Thm 8.2 applied orbit by orbit.
+In type A the regular elements are the powers of the k-cycle and of the
+(k−1)-cycle ([RSW] p. 39; Sagan Prop. 6.2).
+
 The criterion of Theorem C is wider than regularity. In A_8, g of cycle
-type (6, 2) is not regular in any reflection subgroup of S_8, and ⟨g⟩ does
+type (6, 2) is not regular in S_8 (= W = G here), and ⟨g⟩ does
 not act freely: F(g^3) = 48. Yet X_P sieves ⟨g⟩ (`[tk-nonreg-nonfree]`).
 It is the only non-regular, non-free class among the T^{⊔k} with n ≤ 8.
 
@@ -211,7 +320,7 @@ X_{C_m^{⊔k}}(q) · Σ_{x ∈ [e(T)]^k} q^{maj x} also sieves σ (23/23,
 under rotation. It agrees with X_P mod q^k − 1, but not as a polynomial.
 The naive product X_{C_m^{⊔k}}(q) · maj_T(q)^k sieves only 12/23.
 
-## 4. Automorphisms acting inside components (COMPUTED, CITED)
+## 4. Automorphisms acting inside components (PROVEN given [RSW] Thm 8.2; COMPUTED)
 
 Choose a cyclic subgroup ⟨c_i⟩ ⊆ Aut(T_i) of order r_i, and put
 G = ∏_i ⟨c_i⟩ ≀ S_{k_i}, a product of the complex reflection groups
@@ -222,10 +331,29 @@ G(r_i, 1, k_i) acting on V. Replace the definition of §3 by
 Only h with every cycle product trivial fix a class, by the argument of
 Lemma 1. Each such h contributes r^{−#cycles}/z_λ per cycle type λ. Theorem
 A goes through unchanged, by Shephard–Todd–Chevalley, so X_P^G ∈ N[q].
-Springer's theorem on regular elements [Sp74], in the CSP form of [RSW,
-Thm 8.2] (stated there for coset spaces W/W′), then predicts that X_P^G
-sieves ⟨g⟩ for every g regular in G. For connected P this reduces to
-(e(P)/r)[r]_q, the free action.
+**Proposition 4 (PROVEN given [RSW] Thm 8.2, CITED; KNOWN as an
+instance, [PACSC]).** X_P^G sieves ⟨g⟩ for every g whose normal form
+(below) is regular in G.
+
+[RSW] Thm 8.2 (JCTA 108 (2004) p. 37, §8, checked in the published paper
+by [AUD] §4 and [PACSC] §1) reads: for c regular of order n in a finite
+(complex) reflection group W, C = ⟨c⟩ and any subgroup W′ ≤ W, the triple
+(W/W′, Hilb(A^{W′}; q), C) is a CSP, where A is the coinvariant algebra. It
+is Springer's theorem on regular elements [Sp74] in CSP form.
+
+*Proof.* ([AUD] §4.) Cyc(P) is a disjoint union of G-orbits G/G_x. By
+Molien and Shephard–Todd–Chevalley, as in Theorem A,
+X_P^G = Σ_orbits Σ_t ⟨Ind_{G_x}^G 1, A_t⟩ q^t = Σ_orbits Hilb(A^{G_x}; q).
+Replacing V by V* changes nothing, because F(h) = F(h^{−1}). [RSW] Thm 8.2
+applies to each orbit, and a disjoint union of CSPs for the same cyclic
+group is a CSP. Finally g and its normal form are conjugate in Aut(P), so
+they have the same fixed-point data. ∎
+
+This is an instance of known results: ∏ G(r_i, 1, k_i) is a finite complex
+reflection group, so Sagan's survey Thm 8.2 applies directly to
+V = C[Cyc P], and [RSW] Cors. 8.5–8.6 treat C_m ≀ S_N explicitly
+([PACSC]). For connected P, X_P^G reduces to (e(P)/r)[r]_q, the free
+action.
 
 COMPUTED (`[sweep-springer]`): for every unlabeled P with n ≤ 7 and
 Aut(P) ≠ 1, take every conjugacy class of g ≠ 1. Write g in normal form,
@@ -243,10 +371,10 @@ reflecting hyperplanes (`is_regular`).
 | 7 | 1315 | 2637 | 122 | 2637 | 95 |
 
 So X^G sieves all 3148 regular classes. Every non-regular class with n ≤ 7
-acts freely on Cyc(P), and X^G still sieves 114 of these 155. The exact
-statement number in [RSW] was not checked against the paper. For G ≠ W this
-section rests on the citation and the computation. Theorems A–C need
-neither.
+acts freely on Cyc(P), and X^G still sieves 114 of these 155. The regular
+count is a check of Proposition 4, not independent evidence for it. For
+G ≠ W this section rests on the citation of [RSW] Thm 8.2. Theorems A–C do
+not use it.
 
 ## 5. Data: P = T^{⊔k}, |P| ≤ 8
 
@@ -300,6 +428,20 @@ disconnected (P, g) with n ≤ 7 (`[sweep-cand2]`). There are 874 classes
 where ⟨g⟩ acts freely; there the only requirement is that X be
 equidistributed mod N. There are 15 classes where it does not act freely,
 which is the informative case.
+
+The maj and inv candidates depend on a labelling of P, and inv(B_P) also
+depends on the base component. The labellings used are these. For σ on
+T^{⊔k}, P is the disjoint union of k copies of T with consecutive labels
+(`disjoint_copies`). For the sweep, P is the labelled representative of its
+isomorphism class given by `n7_sweep.canonical_fast` (the relabelling with
+least relation code). In both cases the natural labelling is position in
+the lexicographically first linear extension w_0 of that labelled P
+(`natural_relabel`). B_P takes from each class the rotation whose first
+block contains the component of w_0[0], the element with natural label 0
+(`base_reps`). Under a different canonical form, [AUD] §5 gets inv(B_P) on
+1/15 non-free and 815/874 free classes, against 3/15 and 814/874 below. All
+other counts in the table were reproduced exactly by [AUD], and every
+candidate fails under both labellings.
 
 | candidate | sieves σ (of 23) | non-free, n ≤ 7 (of 15) | free, n ≤ 7 (of 874) |
 |---|---|---|---|
@@ -355,8 +497,13 @@ All of these pass (`[ctl-*]`):
    For A_k this would be a statistic on (k−1)! classes that is
    equidistributed with maj(w^{−1}) over {w : maj w ≡ 0 (mod k)}. The
    statistics of §6 fail. **OPEN.**
-2. Is the condition e ≤ max k_i in Theorem C necessary in general?
-   **OPEN.** It is necessary in all 249 computed cases.
+2. Is the condition e ≤ max k_i in Theorem C necessary when
+   gcd(k_i) > 1? **OPEN.** It is PROVEN necessary when gcd(k_i) = 1
+   (Proposition 3). Among the 206 computed classes it is the sole failing
+   clause in only 6, and the CSP fails in all of them. The symbolic check
+   of [AUD] `[neca]` (single type, k ≤ 16, |T| ≤ 6; two types,
+   k_1 + k_2 ≤ 10, m_i ≤ 3) finds no counterexample. A proof must use
+   y ≥ 1 (see after Proposition 3).
 3. Prove §4 independently of [RSW, Thm 8.2], by evaluation as in
    Theorem B. **OPEN.**
 
@@ -370,14 +517,36 @@ All of these pass (`[ctl-*]`):
   Aut(P) at once (Proposition O′).
 - The fixed-class formula F(g) = φ(o(g)) S(g) of [LE, §4] and [FPM] is
   re-confirmed, in its closed form for T^{⊔k}, on all 23 cases.
+- Corrections from the audit [AUD] (F1–F6) are applied in this version:
+  the class count 249 → 206 and the sole-(a) count 6 (F1); Proposition 3
+  and the facts after it (F2); [RSW] Thm 8.2 checked and Proposition 4
+  (F3); the labelling of §6 (F4); "not regular in S_8 (= W = G)" (F5); the
+  self-contained proof of Proposition 2 (F6).
+- Prior art ([PACSC]). KNOWN: Theorem A (standard), Theorem B(i)
+  (Springer), Corollary T and Proposition 4 (instances of Westbury 2016
+  Cor. 2.6, Sagan Thm 8.2, [RSW] Thm 8.2). Not found in the literature
+  searched: (★) as a formula in the c_j, Theorem B(ii) at non-regular ζ,
+  Theorem C beyond regular elements, and the A_4 obstruction of
+  Proposition O′. The search did not read the Lehrer–Springer eigenspace
+  theory (Lehrer–Taylor, *Unitary Reflection Groups*, Ch. 11; Lehrer–Michel
+  2003). It is the most likely place for prior art on B(ii) and Theorem C.
+  Sagan theorem numbers are those of the arXiv version (arXiv:1008.0790);
+  the published LMS version was not opened.
 
 ## References
 
 [LE] = `notes/linear_extensions.md`; [Thm] = `notes/poset_jks_theorem.tex`;
 [FPM] = `notes/fixed_point_mobius_identity.md`; [RSW] = V. Reiner,
 D. Stanton, D. White, *The cyclic sieving phenomenon*, JCTA 108 (2004)
-17–50 (Thm 8.2 as cited by secondary sources; not checked against the
-paper); [Sp74] = T. A. Springer, *Regular elements of finite reflection
+17–50 (Thm 8.2 on p. 37, §8, checked in the published paper by [AUD] and
+[PACSC]); [AUD] = `notes/audit_cyclic_sieving_cyc.md`; [PACSC] =
+`notes/prior_art_cyclic_sieving_cyc.md`; Westbury 2016 = B. Westbury,
+*Invariant tensors and the cyclic sieving phenomenon*, Electron. J.
+Combin. 23(4) (2016) #P4.25; Sagan = B. Sagan, *The cyclic sieving
+phenomenon: a survey*, Surveys in Combinatorics 2011, LMS Lecture Note Ser.
+392 (2011) 183–234 (theorem numbers from arXiv:1008.0790); Lehrer–Taylor =
+G. Lehrer, D. Taylor, *Unitary Reflection Groups*, CUP 2009 (not read);
+Lehrer–Michel 2003 (not read; as listed in [PACSC]); [Sp74] = T. A. Springer, *Regular elements of finite reflection
 groups*, Invent. Math. 25 (1974) 159–198; Kraśkiewicz–Weyman = W.
 Kraśkiewicz, J. Weyman, *Algebra of coinvariants and the action of a
 Coxeter element*, Bayreuth. Math. Schr. 63 (2001) 265–284; Chevalley =
