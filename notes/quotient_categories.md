@@ -17,8 +17,9 @@ of spheres given by a natural invariant?
    - **Complementation (C)**, in Route C (`notes/lean_js_route.md` §3). Meet-closure, a
      complement condition and the upper-interval axiom (Q2) give homology concentration
      for OP(P) with no convexity at all (§1.5). **This is the part of the quotient idea
-     that does real work:** it is a genuinely non-convex, lattice-level mechanism, and the
-     repo uses it. It does not reverse STOP, because (C) is Björner–Walker
+     that does real work in the repo:** it is a genuinely non-convex, lattice-level
+     mechanism, but it is known in substance (Björner–Walker's Π_n recurrence; dually
+     Kratzer–Thévenaz). It does not reverse STOP, because (C) is Björner–Walker
      complementation, one of the three known mechanisms that the reversal test of §4
      excludes.
 2. **The bare interval axioms force nothing** (§2.3).
@@ -60,6 +61,8 @@ Abbreviations:
 - [JSR] = `notes/lean_js_route.md` (Route C); [AudJSR] = `notes/audit_lean_js_route.md`.
 - [AudQC] = `notes/audit_quotient_categories.md`, the audit of this note; its
   computations are `compute/audit_quotient_categories.py`.
+- [AudC] = `notes/audit_complementation_axiom.md`, the audit of axiom (C) in §1.5; its
+  computations are `compute/audit_complementation_axiom.py`.
 - [OM] = `notes/oriented_matroid_cones.md`.
 - [MO] = `notes/mo17370_wedges_of_spheres.md`.
 - [PATE] = `notes/prior_art_theorem_e.md`.
@@ -206,36 +209,88 @@ is false for the repo as a whole. The abstract form is:
 
 **Axiom (C) (complementation).** For every object X with Q̄(X) ≠ ∅ there is a t ∈ Q̄(X)
 such that:
-- its complements in Q(X) form an antichain;
-- every complement is an atom a;
+- every complement of t in Q(X) is an atom a;
 - [a, 1̂] ≅ Q(X/a) for an object X/a of the class.
 
-**Claim (PROVEN, given Björner–Walker's homotopy complementation formula, European J.
-Combin. 4 (1983), CITED from memory as in [JSR]).** In a class satisfying (Q1), (Q2) and
-(C), every Q̄(X) is a wedge of spheres. The wedge is pure when all the X/a have the same
-length.
+The earlier version also asked that the complements form an antichain. That clause is
+**redundant**: distinct atoms are incomparable, so it follows from the atom clause
+(`notes/audit_complementation_axiom.md` ([AudC]) §1.3). Björner–Walker's formula does need
+an antichain; the atom clause supplies it. Co(t) = ∅ is allowed: then L̄ is contractible,
+the empty wedge ([AudC] §1.2), so (C) is weaker than it looks.
 
-*Proof.* Björner–Walker give L̄ ≃ ⋁_{a ⊥ t} Σ(Δ(0̂, a) ∗ Δ(a, 1̂)). For an atom a,
-Δ(0̂, a) = ∅, so the summand is Σ Q̄(X/a). Induct on the length, with Σ∅ = S^0. ∎
+**Heredity is built in, and it is necessary.** (C) is required for *every* object, and X/a
+must again be an object, so (C) holds at every level of the recursion. Without that it
+proves nothing: for L = R̂ × 2, with R̂ the face lattice of the 6-vertex RP² with 0̂, 1̂
+adjoined, t = (1̂, 0) has the single complement (0̂, 1), an atom with [a, 1̂] ≅ R̂, but
+(C) fails in R̂, and L̄ has 2-torsion ([AudC] §1.2, CHECKED). (Q1) is used only as "Q(X) is a finite lattice", and
+(Q2) only at the atoms a ∈ Co(t), which (C) already states ([AudC] §1.4).
+
+**Claim (PROVEN, given Björner–Walker's homotopy complementation formula, European J.
+Combin. 4 (1983); the statement was checked in four secondary sources, [AudC] §1.1; the
+original was not read).** In a class of finite lattices satisfying (C), every Q̄(X) is a
+wedge of spheres.
+
+*Proof.* Björner–Walker give L̄ ≃ ⋁_{a ⊥ t} Σ(Δ(0̂, a) ∗ Δ(a, 1̂)) when Co(t) is an
+antichain. For an atom a, Δ(0̂, a) = ∅, so the summand is Σ Q̄(X/a). Induct on the length,
+with Σ∅ = S^0. ∎
+
+**Purity.** The earlier version said "the wedge is pure when all the X/a have the same
+length". That **FAILS as stated** ([AudC] §1.5, CHECKED): let M = B_3 ∪ {p} with
+0̂ < p < 1̂ and p incomparable to the rest, so M̄ ≃ S^1 ∨ S^0, and L = M × 2. Every upper
+interval of L satisfies (C), t = (1̂_M, 0) has the single complement (0̂, 1) with
+[a, 1̂] ≅ M, so the top-level condition holds trivially, but L̄ ≃ ΣM̄ ≃ S^2 ∨ S^1. The
+non-purity comes from one level down. Unwinding the recursion, the spheres are indexed by
+complement chains 0̂ ⋖ a_1 < … < a_k ⋖ 1̂ (each a_i an atom of the successive upper
+interval that complements that interval's witness t), and each has dimension k − 1. So the
+correct statement is (PROVEN by the same induction):
+
+> The wedge is pure, of dimension ℓ(Q(X)) − 2, when every Q(Y) in the class is graded,
+> and more generally it is pure when all the X/a have the same length at every level of
+> the recursion. The top-level condition alone is not enough.
+
+L(A_4) shows the graded hypothesis matters: it is a wedge of four S^0, all of one
+dimension, but below ℓ − 2 = 1 ([AudC] §2.2).
+
+**Prior art (search result, [AudC] §3): KNOWN IN SUBSTANCE.** The induction "the
+complements of t are atoms; recurse on [a, 1̂]" is Björner–Walker's own argument for Π_n
+(t = {n} | rest, complements the atoms {i, n}, so Π̄_n ≃ ⋁_{n−1} ΣΠ̄_{n−1}), as attributed
+by Živaljević. Its dual, with coatom complements of an abelian minimal normal subgroup, is
+the Kratzer–Thévenaz argument for solvable groups (CITED via Wachs 2007 §1.4; the paper was
+not read). The search did not find (C) stated as a class-level axiom under any name; that
+packaging is the only part not located.
 
 **Where (C) holds.**
 - **OP(P):** proved in [JSR]; COMPUTED in [AudQC] `[CMP]` on all 959 pairs (P, a minimal)
   with n ≤ 5: meet-closure, complements of π_a = the atoms π_ab, and
   |[π_ab, 1̂]| = |OP(P/π_ab)|. Control: in Π_4, t = 01|23 has the non-atom complements
-  02|13 and 03|12.
-- **Π_n:** by hand, t = {n} | rest.
-- **Subgroup lattices, at the top level only:** [AudQC] `[CMP]` finds such a t in L(A_4),
-  L(S_4) (e.g. t = A_4, whose complements are the six transposition subgroups) and L(A_5).
+  02|13 and 03|12. OP(P) is graded, so the wedge is pure.
+- **Π_n:** by hand, t = {n} | rest (the Björner–Walker example above).
+- **Subgroup lattices:** see the remark below.
 
-**This is the part of the quotient idea that does real work.** (C) is stated at the level
-of the quotient lattice, uses (Q2) essentially, and gives sphericity without convexity.
+**Remark (subgroup lattices, CHECKED in [AudC] §2).** For the ten groups C_2², S_3, D_8,
+Q_8, C_2³, A_4, D_12, S_4, A_5 and S_5, (C) holds on every interval of L(G) of length ≥ 2
+(for S_4, t = A_4 at the top, with the six transposition subgroups as complements; for
+A_5, t = D_10). So the claim applies hereditarily and every interval of these L(G) is a
+wedge; the predicted wedges match direct homology at every prime computed. For
+PSL(2,7), (C) holds on every interval except [1, G]. There, no element of L̄ has an
+antichain of complements, so no Björner–Walker formula applies in primal, dual or mixed
+form. L̄(PSL(2,7)) is nonetheless a non-pure wedge, ⋁_{48} S^1 ∨ ⋁_{48} S^2
+(Kramarev–Lokutsievskiy, arXiv 0911.4136; our Betti numbers agree), so this is a failure
+of the mechanism, not of the wedge property. This is a census of eleven small groups. It
+gives no evidence either way on Shareshian's conjecture, beyond showing that (C) cannot
+prove it in general.
+
+**What (C) contributes here.** (C) is stated at the level of the quotient lattice and gives
+sphericity without convexity, and the repo uses it in Route C. The mechanism is not new:
+it is the Björner–Walker induction above.
 **Why it does not reverse STOP:**
 1. (C) is complementation, one of the three known mechanisms named in §3 (Björner–Walker,
    Kozlov, Arone–Brantner). The reversal test of §4 asks for a mechanism outside these
    three, so (C) passes the note's own test for *not* reversing.
 2. Its use for OP(P) is Route C itself, already in the repo.
 3. For G-sets, the induction needs (C) on every interval (H, K) of L(G), not just at the
-   top. That is exactly where Shareshian's problem lives (§2.3).
+   top. That is exactly where Shareshian's problem lives (§2.3), and it fails at
+   [1, PSL(2,7)] (remark above).
 
 Whether (C) reaches lattices where complementation is not already known to work was not
 explored (OPEN).
@@ -608,9 +663,10 @@ arXiv:1801.01491, Thm 5.10, Lemma 5.17).
     complementation (C), in Route C (§1.5). Both are known mechanisms, and neither is
     supplied by the interval axioms. With (R1) the framework *is* the cone framework of
     [GT] (§1.4).
-  - Axiom (C) is the part of the quotient idea that does real work: a non-convex,
-    lattice-level axiom that uses (Q2) essentially. It does not reverse the verdict,
-    because it is Björner–Walker complementation, which the reversal test below excludes.
+  - Axiom (C) is the part of the quotient idea that does real work in the repo: a
+    non-convex, lattice-level axiom. The mechanism is known in substance (§1.5). It does
+    not reverse the verdict, because it is Björner–Walker complementation, which the
+    reversal test below excludes.
   - The categorical axioms proper ((Q1)–(Q3), i.e. (R2) without (R1)) are the
     Vallette/Schmitt interval axioms (§3). Read abstractly, with a single fiber allowed,
     they hold for every finite lattice and force nothing (RP², §2.3). With partition-type
