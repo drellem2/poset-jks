@@ -230,7 +230,8 @@ theorem actSetoid_orbit_pow (m : ℕ) : actSetoid g (orbitSetoid (g ^ m)) = orbi
     exact ⟨k, pow_symm_comm _ _⟩
 
 theorem actSetoid_joinOrbit_pow {s : Setoid α} (hs : actSetoid g s = s) (m : ℕ) :
-    actSetoid g (joinOrbit (g ^ m) (actSetoid_pow hs m)) = joinOrbit (g ^ m) (actSetoid_pow hs m) := by
+    actSetoid g (joinOrbit (g ^ m) (actSetoid_pow hs m)) =
+      joinOrbit (g ^ m) (actSetoid_pow hs m) := by
   ext a b
   rw [actSetoid_apply, joinOrbit_apply, joinOrbit_apply]
   simp only [toEquiv_pow, ← pow_mul]
@@ -586,5 +587,229 @@ theorem mu_eq_moebius_mul_sum (htop : IsX x) :
     linarith
 
 end Inversion
+
+/-! ### Proposition `prop:Mside` -/
+
+section Mside
+
+open scoped Classical
+
+variable {g : α ≃o α}
+
+local notation "σ" => g.toEquiv
+
+theorem Mt_eq_sum_Fset (p : α) :
+    Mt g = ArithmeticFunction.moebius (orderOf σ) * ∑ w ∈ Fset g p, (eC (Blk g w p) : ℤ) := by
+  have := Fintype.ofFinite (OPFixed α g)
+  have h := mu_eq_moebius_mul_sum (p := p) (isX_top (g := g))
+  rw [per_top, Nat.div_one] at h
+  have hF : (Fset g p).filter (· ≤ OPFixed.top g) = Fset g p :=
+    Finset.filter_true_of_mem fun w _ u v _ => trivial
+  rw [hF] at h
+  have hterm : ∀ w ∈ Fset g p, (-1) ^ (Fintype.card α + 1) *
+      ((Equiv.Perm.sign g.toEquiv : ℤˣ) : ℤ) * IncidenceAlgebra.mu ℤ (OPFixed.bot g) w =
+      (eC (Blk g w p) : ℤ) := by
+    intro w hw
+    obtain ⟨hwX, hwo⟩ := mem_Fset.1 hw
+    have hk : 0 < Fintype.card (Blk g w p) := Fintype.card_pos_iff.2 ⟨⟨p, w.1.refl p⟩⟩
+    rw [interval_sign hwX, mu_interval hwX]
+    change Mt (hres g w p) = _
+    rw [hres_eq_one hwo, Mt_one hk]
+  rw [Mt, muFixed, h, mul_left_comm, Finset.mul_sum, Finset.sum_congr rfl hterm]
+
+/-- The block of `w` through `p`, as a `Finset`. -/
+noncomputable def blkSet (w : OPFixed α g) (p : α) : Finset α := univ.filter fun a => w.1 p a
+
+theorem mem_blkSet {w : OPFixed α g} {p a : α} : a ∈ blkSet w p ↔ w.1 p a := by
+  simp [blkSet]
+
+theorem coe_pow_eq (j : ℕ) : ⇑(g ^ j) = ⇑(σ ^ j) := funext (coe_pow_aut j)
+
+theorem inF_blocksOf_blkSet {w : OPFixed α g} {p : α} (hw : w ∈ Fset g p) :
+    InF g (blocksOf g (blkSet w p)) := by
+  obtain ⟨hwX, hwo⟩ := mem_Fset.1 hw
+  have htop' : joinOrbit g w.2.2 = ⊤ := congrArg Subtype.val hwX
+  refine inF_blocksOf ⟨p, mem_blkSet.2 (w.1.refl p)⟩ ?_ ⟨?_, ?_⟩
+  · intro a b hab
+    rw [mem_blkSet, mem_blkSet]
+    have := rel_of_le_of_joinOrbit_eq_top w.2.2 w.2.1 htop' hab
+    exact ⟨fun h => w.1.trans h this, fun h => w.1.trans h (w.1.symm this)⟩
+  · intro i hi j hj hij
+    rw [Finset.disjoint_left]
+    intro u hu hu'
+    rw [coe_pow_eq] at hu hu'
+    obtain ⟨a, ha, rfl⟩ := mem_image.1 hu
+    obtain ⟨b, hb, hab⟩ := mem_image.1 hu'
+    rw [mem_blkSet] at ha hb
+    have h1 : w.1 ((σ ^ j) a) ((σ ^ i) a) := by
+      rw [← hab, rel_pow_of_fixed w.2.2]; exact w.1.trans (w.1.symm ha) hb
+    have h2 := (rel_pow_pow_iff (p := p) hwX a j i).1 h1
+    rw [hwo, orderOf_toEquiv] at h2
+    exact hij (Nat.ModEq.eq_of_lt_of_lt h2 hj hi).symm
+  · intro u
+    obtain ⟨⟨j, v⟩, hjv⟩ := blkMap_surjective (p := p) hwX u
+    refine ⟨j, by rw [← orderOf_toEquiv, ← hwo]; exact j.2, ?_⟩
+    rw [coe_pow_eq]
+    exact mem_image.2 ⟨v.1, mem_blkSet.2 v.2, hjv⟩
+
+theorem rel_iff_blk {w : OPFixed α g} {p : α} (hwX : IsX w) (u v : α) :
+    w.1 u v ↔ ∃ k : ℕ, w.1 p ((σ ^ k) u) ∧ w.1 p ((σ ^ k) v) := by
+  constructor
+  · intro huv
+    obtain ⟨k, hk⟩ := exists_pow_blk (p := p) hwX u
+    exact ⟨k, hk, w.1.trans hk ((rel_pow_of_fixed w.2.2 k u v).2 huv)⟩
+  · rintro ⟨k, hu, hv⟩
+    exact (rel_pow_of_fixed w.2.2 k u v).1 (w.1.trans (w.1.symm hu) hv)
+
+/-- The partition with the blocks of `x ∈ F(P,g)`. -/
+def setoidOfBlocks {x : Finset (Finset α)} (hx : InF g x) : Setoid α where
+  r u v := ∃ B ∈ x, u ∈ B ∧ v ∈ B
+  iseqv := by
+    obtain ⟨-, -, hdisj, hcov, -, -⟩ := hx
+    refine ⟨fun u => ?_, fun ⟨B, hB, hu, hv⟩ => ⟨B, hB, hv, hu⟩, ?_⟩
+    · obtain ⟨B, hB, hu⟩ := hcov u
+      exact ⟨B, hB, hu, hu⟩
+    · rintro u v w ⟨B, hB, hu, hv⟩ ⟨B', hB', hv', hw⟩
+      by_cases e : B = B'
+      · exact ⟨B, hB, hu, e ▸ hw⟩
+      · exact absurd (Finset.disjoint_left.1 (hdisj B hB B' hB' e) hv hv') id
+
+theorem eq_of_mem_blocks {x : Finset (Finset α)} (hx : InF g x) {B B' : Finset α} (hB : B ∈ x)
+    (hB' : B' ∈ x) {u : α} (hu : u ∈ B) (hu' : u ∈ B') : B = B' := by
+  by_contra e
+  exact Finset.disjoint_left.1 (hx.2.2.1 B hB B' hB' e) hu hu'
+
+theorem image_pow_mem {x : Finset (Finset α)} (hx : InF g x) {B : Finset α} (hB : B ∈ x)
+    (j : ℕ) : B.image ⇑(g ^ j) ∈ x := by
+  induction j with
+  | zero => rwa [coe_pow_zero, image_id]
+  | succ j ih =>
+    rw [coe_pow_succ, ← image_image]
+    exact hx.2.2.2.2.1 _ ih
+
+/-- `x ∈ F(P,g)` as an element of `OP(P)^g`. -/
+noncomputable def opOfBlocks {x : Finset (Finset α)} (hx : InF g x) : OPFixed α g :=
+  ⟨setoidOfBlocks hx,
+    isOrderPreserving_of_rel_of_le fun a b hab => by
+      obtain ⟨B, hB, ha⟩ := hx.2.2.2.1 a
+      exact ⟨B, hB, ha, ((hx.2.1 B hB).2 a b hab).1 ha⟩,
+    by
+      ext u v
+      rw [actSetoid_apply]
+      change (∃ B ∈ x, g.symm u ∈ B ∧ g.symm v ∈ B) ↔ ∃ B ∈ x, u ∈ B ∧ v ∈ B
+      constructor
+      · rintro ⟨B, hB, hu, hv⟩
+        refine ⟨B.image g, hx.2.2.2.2.1 B hB, ?_, ?_⟩
+        · exact mem_image.2 ⟨_, hu, g.apply_symm_apply u⟩
+        · exact mem_image.2 ⟨_, hv, g.apply_symm_apply v⟩
+      · rintro ⟨B, hB, hu, hv⟩
+        obtain ⟨B'', hB'', hu''⟩ := hx.2.2.2.1 (g.symm u)
+        have himg := hx.2.2.2.2.1 B'' hB''
+        have e : B''.image g = B :=
+          eq_of_mem_blocks hx himg hB (mem_image.2 ⟨_, hu'', g.apply_symm_apply u⟩) hu
+        rw [← e] at hv
+        obtain ⟨c, hc, hcv⟩ := mem_image.1 hv
+        refine ⟨B'', hB'', hu'', ?_⟩
+        rw [← hcv, g.symm_apply_apply]
+        exact hc⟩
+
+theorem opOfBlocks_mem_Fset {x : Finset (Finset α)} (hx : InF g x) (p : α) :
+    opOfBlocks hx ∈ Fset g p := by
+  have hX : IsX (opOfBlocks hx) := by
+    refine isX_iff.2 fun a b => ?_
+    obtain ⟨B, hB, ha⟩ := hx.2.2.2.1 a
+    obtain ⟨B', hB', hb⟩ := hx.2.2.2.1 b
+    obtain ⟨k, rfl⟩ := hx.2.2.2.2.2 B hB B' hB'
+    refine ⟨k, B.image ⇑(g ^ k), hB', ?_, hb⟩
+    rw [coe_pow_eq]
+    exact mem_image_of_mem _ ha
+  refine mem_Fset.2 ⟨hX, Nat.dvd_antisymm per_dvd_orderOf ?_⟩
+  obtain ⟨B, hB, hp⟩ := hx.2.2.2.1 p
+  set m := per g (opOfBlocks hx) p
+  have hm := per_pos g (opOfBlocks hx) p
+  obtain ⟨B1, hB1, hp1, hmp⟩ := per_spec g (opOfBlocks hx) p
+  have e1 : B1 = B := eq_of_mem_blocks hx hB1 hB hp1 hp
+  subst e1
+  have hsys := (blocksOf_of_inF hx hB1).2
+  rw [orderOf_toEquiv]
+  by_contra hdvd
+  have hlt : m < orderOf g := by
+    have := Nat.le_of_dvd (orderOf_pos_aut g)
+      (orderOf_toEquiv (g := g) ▸ per_dvd_orderOf (x := opOfBlocks hx) (p := p))
+    rcases this.lt_or_eq with h | h
+    · exact h
+    · exact absurd (h ▸ dvd_rfl) hdvd
+  have hd := hsys.1 m hlt 0 (orderOf_pos_aut g) hm.ne'
+  rw [coe_pow_zero, image_id, coe_pow_eq] at hd
+  exact Finset.disjoint_left.1 hd (mem_image_of_mem _ hp1) hmp
+
+theorem blkSet_opOfBlocks {x : Finset (Finset α)} (hx : InF g x) {B : Finset α} (hB : B ∈ x)
+    {p : α} (hp : p ∈ B) : blkSet (opOfBlocks hx) p = B := by
+  ext a
+  rw [mem_blkSet]
+  constructor
+  · rintro ⟨B', hB', hp', ha⟩
+    exact eq_of_mem_blocks hx hB' hB hp' hp ▸ ha
+  · intro ha
+    exact ⟨B, hB, hp, ha⟩
+
+/-- `e_C(P|_{B₀(w)})` for the block through `p`, as a subtype or as a `Finset`. -/
+theorem eC_blk_eq (w : OPFixed α g) (p : α) : eC (Blk g w p) = eC (blkSet w p) := by
+  refine eC_congr
+    { toEquiv := Equiv.subtypeEquivRight fun a => mem_blkSet.symm
+      map_rel_iff' := Iff.rfl }
+
+open Classical in
+/-- **Proposition `prop:Mside`** (the Möbius side of (closed)), homology-free: for `n ≥ 1`,
+`g ∈ Aut(P)` of order `o` and any choice `B₀(x)` of one block of each `x ∈ F(P,g)`,
+`M̃(P,g) = (-1)^{n-3} sgn(g) μ(OP(P)^g) = μ(o) ∑_{x ∈ F(P,g)} e_C(P|_{B₀(x)})`. -/
+theorem prop_Mside (h0 : 0 < Fintype.card α) (g : α ≃o α)
+    (B₀ : Finset (Finset α) → Finset α) (hB₀ : ∀ x, InF g x → B₀ x ∈ x) :
+    Mt g = ArithmeticFunction.moebius (orderOf g) *
+      ∑ x ∈ (univ : Finset (Finset (Finset α))).filter (InF g), (eC (B₀ x) : ℤ) := by
+  obtain ⟨p⟩ : Nonempty α := Fintype.card_pos_iff.1 h0
+  rw [Mt_eq_sum_Fset p, orderOf_toEquiv]
+  congr 1
+  refine Finset.sum_bij (fun w _ => blocksOf g (blkSet w p)) ?_ ?_ ?_ ?_
+  · intro w hw
+    exact mem_filter.2 ⟨mem_univ _, inF_blocksOf_blkSet hw⟩
+  · intro w hw w' hw' e
+    obtain ⟨hwX, hwo⟩ := mem_Fset.1 hw
+    obtain ⟨hwX', hwo'⟩ := mem_Fset.1 hw'
+    -- the block of `w` through `p` is a block of `w'`, hence `w'`'s block through `p`
+    have e' : blocksOf g (blkSet w p) = blocksOf g (blkSet w' p) := e
+    have hmem : blkSet w p ∈ blocksOf g (blkSet w' p) := e' ▸ self_mem_blocksOf g _
+    obtain ⟨j, hj, hjB⟩ := mem_image.1 hmem
+    have hp : p ∈ (blkSet w' p).image ⇑(g ^ j) := by
+      rw [hjB]; exact mem_blkSet.2 (w.1.refl p)
+    rw [coe_pow_eq] at hp
+    obtain ⟨a, ha, hap⟩ := mem_image.1 hp
+    have ha' : w'.1 p a := mem_blkSet.1 ha
+    have h1 : w'.1 a ((g.toEquiv ^ j) a) := by
+      have : (g.toEquiv ^ j) a = p := hap
+      rw [this]; exact w'.1.symm ha'
+    have h2 := (rel_pow_self_iff (p := p) hwX' a j).1 h1
+    rw [hwo', orderOf_toEquiv] at h2
+    have hj0 : j = 0 := Nat.eq_zero_of_dvd_of_lt h2 (mem_range.1 hj)
+    rw [hj0, coe_pow_zero, image_id] at hjB
+    apply Subtype.ext
+    ext u v
+    rw [rel_iff_blk (p := p) hwX, rel_iff_blk (p := p) hwX']
+    have hiff : ∀ c, w.1 p c ↔ w'.1 p c := fun c => by
+      rw [← mem_blkSet, ← mem_blkSet, hjB]
+    simp only [hiff]
+  · intro x hx
+    have hxF := (mem_filter.1 hx).2
+    obtain ⟨B, hB, hp⟩ := hxF.2.2.2.1 p
+    refine ⟨opOfBlocks hxF, opOfBlocks_mem_Fset hxF p, ?_⟩
+    show blocksOf g (blkSet (opOfBlocks hxF) p) = x
+    rw [blkSet_opOfBlocks hxF hB hp]
+    exact ((blocksOf_of_inF hxF hB).1).symm
+  · intro w hw
+    have hx := hB₀ _ (inF_blocksOf_blkSet hw)
+    obtain ⟨j, -, hj⟩ := mem_image.1 hx
+    rw [eC_blk_eq, ← hj, eC_image]
+
+end Mside
 
 end PosetJKS

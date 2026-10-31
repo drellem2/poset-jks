@@ -543,6 +543,28 @@ example : IncidenceAlgebra.mu ℤ (OPFixed.top (OrderIso.refl chain2.T)) (OPFixe
   intro hle
   exact hne (le_antisymm (fun _ _ _ => trivial) hle)
 
+/-! ### `M̃(P, g)` (`Mt`) and Theorem A, against `character_table.tsv` -/
+
+/-- `M̃(Q, 1) = (-1)^{n+1} sgn(1) μ(OP(Q)) = 1` for the 2-chain, from the definitions
+(table `n2_001`, `id`: `mu_OP_g = -1`, `e_C = 1`, `lhs = 1`). -/
+theorem Mt_chain2 : Mt (OrderIso.refl chain2.T) = 1 := by
+  have hs : Equiv.Perm.sign (OrderIso.refl chain2.T).toEquiv = 1 := Equiv.Perm.sign_one
+  rw [Mt, muFixed_chain2, hs, card_T]
+  norm_num
+
+/-- Mismatch control: the note's exponent `n - 3` taken in `ℕ` (`2 - 3 = 0`) would give the
+wrong sign at `n = 2`; `Mt` uses `n + 1`, which has the parity of `n - 3`. -/
+example : (-1 : ℤ) ^ (Fintype.card chain2.T - 3) * muFixed (OrderIso.refl chain2.T) = -1 := by
+  rw [muFixed_chain2, card_T]
+  norm_num
+
+/-- Theorem A on the 3-antichain: `μ(OP(Q)) = (-1)^2 e_C(Q) = 2` (table `n3_000`, `id`:
+`mu_OP_g = 2`, `e_C = 2`). -/
+example : muFixed (OrderIso.refl anti3.T) = 2 := by
+  have he : eC anti3.T = 2 := by rw [eC_eq]; decide +kernel
+  rw [show OrderIso.refl anti3.T = 1 from rfl, mu_OP_eq (by rw [card_T]; norm_num), card_T, he]
+  norm_num
+
 end Test
 
 /-! ### The chain complex: `∂ ∘ ∂ = 0`, and `∂_0` is the augmentation -/

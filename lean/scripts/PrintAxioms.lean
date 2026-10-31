@@ -54,9 +54,23 @@ import PosetJKS
 #print axioms PosetJKS.eC_congr
 #print axioms PosetJKS.eC_image
 
+-- lem:small (Theorem A, Proof W; `PosetJKS/MuOP.lean`), lem:interval(ii), prop:Mside (`Mside.lean`)
+#print axioms PosetJKS.mu_OP_eq
+#print axioms PosetJKS.weisner_dual
+#print axioms PosetJKS.mu_op_rec
+#print axioms PosetJKS.mu_pab_top
+#print axioms PosetJKS.eC_rec
+#print axioms PosetJKS.Mt_one
+#print axioms PosetJKS.interval_sign
+#print axioms PosetJKS.recursionW_signed
+#print axioms PosetJKS.sum_mu_below_eq_zero
+#print axioms PosetJKS.mu_eq_moebius_mul_sum
+#print axioms PosetJKS.prop_Mside
+
 -- Controls and counterexamples in `PosetJKS/Test.lean` (must not depend on `sorryAx`)
 #print axioms PosetJKS.Test.fixedClassSum_g3_prim
 #print axioms PosetJKS.Test.muFixed_chain2
+#print axioms PosetJKS.Test.Mt_chain2
 #print axioms PosetJKS.Test.not_op_chain3_02_1
 #print axioms PosetJKS.relabel_wEζ_of_rot
 #print axioms PosetJKS.bd_comp_bd

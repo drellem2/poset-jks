@@ -2,6 +2,7 @@ import PosetJKS.OrderComplex
 import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice
+import PosetJKS.Mside
 import PosetJKS.LieSide
 
 /-!
@@ -15,8 +16,10 @@ For a finite poset `P` on `n ≥ 3` points, a primitive `n`-th root of unity `ζ
 * (closed) `sgn(g)(-1)^{n-3} μ(OP(P)^g) = ∑_{gC=C} ζ^{r_g(C)} = μ(o) ∑_{x ∈ F(P,g)} e_C(P|_{B_0(x)})`.
 
 The note proves these assuming three cited inputs (Jenča–Sarkoci, P. Hall, Hopf trace
-formula). Here the cited inputs are *not* assumed: the main theorem is stated outright, with
-`sorry` proofs, and the two cited inputs that are expressible without topology are recorded as
+formula). Here the cited inputs are *not* assumed. (characterconj) and (closed) are proved
+without any of them: from Proposition `prop:Mside` (`prop_Mside`, which uses the homology-free
+proof of Lemma `lem:small`, `mu_OP_eq`) and Proposition `prop:Lside` (`prop_Lside`). (mainiso)
+is stated outright with a `sorry` proof, and the two cited inputs that are expressible without topology are recorded as
 separate `sorry`'d theorems (`jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`) so that a later
 proof can be assembled from them. No `axiom` is declared anywhere.
 -/
@@ -34,11 +37,36 @@ noncomputable def sgnC (g : α ≃o α) : ℂ := ((Equiv.Perm.sign g.toEquiv : �
 
 /-! ### Main theorem -/
 
-/-- (characterconj). -/
+/-- (characterconj). Proved from `prop_Mside` and `prop_Lside`; no topology or homology. -/
 theorem character_identity (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
     (hζ : IsPrimitiveRoot ζ (Fintype.card α)) (g : α ≃o α) :
     (-1 : ℂ) ^ (Fintype.card α - 3) * (muFixed g : ℂ) = sgnC g * fixedClassSum ζ g := by
-  sorry
+  classical
+  have h0 : 0 < Fintype.card α := by omega
+  -- any choice of one block of each `x ∈ F(P,g)`
+  let B₀ : Finset (Finset α) → Finset α := fun x => if h : x.Nonempty then h.choose else ∅
+  have hB₀ : ∀ x, InF g x → B₀ x ∈ x := by
+    intro x hx
+    have hne : x.Nonempty := Finset.card_pos.1 (hx.1 ▸ orderOf_pos_aut g)
+    simp only [B₀, dif_pos hne]
+    exact hne.choose_spec
+  -- Möbius side = Lie side
+  have hML : (Mt g : ℂ) = fixedClassSum ζ g := by
+    rw [prop_Lside h0 hζ g B₀ hB₀, prop_Mside h0 g B₀ hB₀]
+    push_cast
+    rfl
+  have hs : sgnC g * sgnC g = 1 := by
+    unfold sgnC
+    rw [← Int.cast_mul, ← Units.val_mul, Int.units_mul_self, Units.val_one, Int.cast_one]
+  obtain ⟨m, hm⟩ : ∃ m, Fintype.card α = m + 3 := ⟨_, (Nat.sub_add_cancel hn).symm⟩
+  rw [← hML, Mt]
+  push_cast
+  change _ = sgnC g * ((-1 : ℂ) ^ (Fintype.card α + 1) * sgnC g * (muFixed g : ℂ))
+  rw [hm, Nat.add_sub_cancel]
+  calc (-1 : ℂ) ^ m * (muFixed g : ℂ)
+      = (sgnC g * sgnC g) * ((-1) ^ m * (muFixed g : ℂ)) * ((-1) ^ 2) ^ 2 := by
+        rw [hs]; ring
+    _ = sgnC g * ((-1 : ℂ) ^ (m + 3 + 1) * sgnC g * (muFixed g : ℂ)) := by ring
 
 /-- (mainiso): `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules. A linear isomorphism
 `e : H_P ≃ PLie(P)` intertwines the `Aut(P)`-action on `H_P` with `sgn ⊗` (left multiplication
