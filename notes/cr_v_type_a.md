@@ -26,9 +26,11 @@ formula. It rests on two facts:
   (Lemma C).
 
 Tags:
-- **PROVEN**: proof given here, with inputs named. *Not yet independently
-  audited.* The steps a follow-up audit needs are numbered S1–S6 in §1, and
-  every later proof cites them by number.
+- **PROVEN**: proof given here, with inputs named. Independently audited in
+  `notes/audit_cr_v_type_a.md` ("[AudCVA]", mg-73141): Theorem TA-CR,
+  Lemma K_A, Lemma C and steps S0, S2, S4, S5 HOLD; the one FIXABLE remark
+  (§3, *Remarks*, 2nd bullet) has been corrected. The steps are numbered
+  S1–S6 in §1, and every later proof cites them by number.
 - **COMPUTED**: by `compute/cr_v_type_a.py` ("[CVA]"). This is new code that
   imports nothing from the other scripts.
 - **CITED**: from an audited note or the literature.
@@ -45,7 +47,8 @@ Tags:
 | K_A | **Lemma K_A.** If w ∈ M refines c = cl(Fix g), then every complement x of w in M is coarser than the component partition κ of P, and x ∨_M w is the partition join | **PROVEN** (§1, S5). This is the poset form of Lemma K of [CRV]. COMPUTED: every complement of every cl(Fix g^k), on every pair with n ≤ 7, is ≥ κ (0 failures) | S2, S4 |
 | C | **Lemma C** (cyclic actions). Let w be the orbit partition of ⟨σ^h⟩. A σ-stable x ≥ κ with x ∧ w = 0̂ and x ∨ w = 1̂ exists iff some s satisfies gcd(s, h) = 1, s divides the orbit length of every component, and ℓ/gcd(ℓ, h) = s for every cycle length ℓ of σ | **PROVEN** (§2). COMPUTED: matches the lattice on all 4,764 orbit-partition checks with n ≤ 7. 48 of them are complemented and 4,716 are not | — |
 | Ty | Every zero is a "fixed-space" zero, except (TA4). The witness is cl(Fix g^k) for some k ≥ 1 in cases W+1, W+2, W−1, W−2, W−3. In case W−4 it is an element coarser than κ ("inside L"). cl(Fix g) itself is complemented on 93 zero pairs with n ≤ 7 (79 W−4, 13 W−1, 1 W+2), so the exponent k matters | **PROVEN** (§3); count COMPUTED | — |
-| Rk | Status changes: [CRV] §6 "Type A: OPEN" is settled here; [PCV] row CR_V becomes a theorem on type A; the [PCV] count "5,063 lattices" is not reconciled with its archived log (§5) | report only (no other note edited) | — |
+| Rk | Status changes: [CRV] §6 "Type A: OPEN" is settled here; [PCV] row CR_V becomes a theorem on type A; the [PCV] count "5,063 lattices" is not reconciled with its archived log (§5) | applied to [CRV] and [PCV] after the audit; [AudCVA] §5 confirms 3,576 and finds 5,063 unsupported | — |
+| PA | Prior art ([PACVA] = `notes/prior_art_cr_v_type_a.md`) | "if" of TA-CR: KNOWN (Crapo 1966, Thm 3; EC1 Ex. 3.92). "Only if": NOT FOUND in the sources searched for any class containing OP(P)^τ (a search result, not a claim of novelty); for the antichain with g = +w it is KNOWN in substance (Stanley 1982, Remark after Lemma 7.1; Hanlon 1981, Lemma 2; EC1 Cor. 3.9.5), plus one elementary step. Lemma C: PARTLY KNOWN (h = 1, κ = 0̂ existence is Hanlon 1981, Lemma 6); the gcd criterion for σ^h and the κ-relative form NOT FOUND. Lemma K_A: NOT FOUND | CITED |
 
 **In one line.** On the braid arrangement the Crapo converse is a theorem. Each
 zero of χ_{C_P}(±τ) is witnessed by an orbit partition of a power of τ, by
@@ -321,8 +324,12 @@ and x ∨_M w = x ∨ w.
   (comp(P), g).
 - *Rows W+1 to W−3 are all-chambers obstructions, pulled back.* For W+2 and
   W−1, the witness is already uncomplemented in Π_n^τ (all chambers, κ = 0̂),
-  and S5 transports this to every cone. For W+1, W−2 and W−3, the obstruction
-  needs κ: on all chambers these rows do not occur.
+  and S5 transports this to every cone. For W−2 and W−3, the obstruction
+  needs κ: on all chambers these rows do not occur. Row W+1 does occur on all
+  chambers: on the antichain, +w is a W+1 zero exactly when w has two
+  distinct cycle lengths (e.g. +(0 1) on 3 points, where Π_3^{(01)} is the
+  chain 0̂ < 01|2 < 1̂), and Lemma C(ii) then fails with h = 1 even at κ = 0̂
+  ([AudCVA] §2, R1, corrected here). No proof uses this remark.
 - *The exponent matters.* cl(Fix g) itself is complemented on 93 zero pairs
   with n ≤ 7: 79 in row W−4, 13 in row W−1 and 1 in row W+2. Example: the antichain on 4 points with
   −(0)(1 2 3) gives a W−1 zero (Λ = {1, 3}), and cyc(τ²) is the witness. And
@@ -398,13 +405,16 @@ all passing:
 **Not run.**
 - No exhaustive sweep with n ≥ 8.
 - The branch "Λ = {m, 2m} with m odd and not squarefree, both lengths
-  present" (first at n = 9 + 18 = 27) is PROVEN only. The single-length
-  cases Λ = {9} and Λ = {18} of the same branch are COMPUTED above.
+  present" (first at n = 9 + 18 = 27) is not run by [CVA]. The single-length
+  cases Λ = {9} and Λ = {18} of the same branch are COMPUTED above. The
+  two-length case τ = (9)(18), n = 27, is COMPUTED by the independent code
+  of [AudCVA] §3 (exhaustive search: cyc(τ^6) is uncomplemented, with a
+  complemented control).
 
-## 5. Status changes and remarks on other notes (not applied)
+## 5. Status changes and remarks on other notes (applied after the audit [AudCVA])
 
 - **[CRV] §6, "Type A ... OPEN"**: settled by Theorem TA-CR (PROVEN here,
-  pending audit). The Verdict line "the rank-4 counterexample has the smallest
+  audited in [AudCVA]). The Verdict line "the rank-4 counterexample has the smallest
   possible rank" is unaffected. No counterexample lies in type A, in any rank.
 - **[PCV] Verdict row CR_V**: on cones of the braid arrangement it is a theorem
   (TA-CR). In general it remains refuted ([CRV]).
@@ -414,7 +424,8 @@ all passing:
   log `compute/output/per_cone_vanishing.txt` lists 20 + 96 + 478 + 2,982 =
   3,576 lattices for n = 3..6, of which 1,120 are −τ. [CVA] reproduces those
   per-n tallies exactly. The figure 5,063 could not be reconciled with the
-  log. It may count something else; this was not traced. The conclusion
+  log. [AudCVA] §5 recounts 3,576 independently and finds no count that
+  gives 5,063; [PCV] and [CRV] now print 3,576. The conclusion
   ("no counterexample") is unaffected.
 - No claim of another note was found to be wrong.
 
@@ -424,8 +435,11 @@ all passing:
   and H_4 is OPEN. Two ingredients carry over unchanged: S4 and S5 hold for
   any arrangement (they are [CRV] Lemmas F and K). Lemma C is specific to
   permutation actions, and the cone lattice of B_n is not a partition lattice.
-- **Audit.** Theorem TA-CR, Lemma C, S0, S2, S4 and S5 are PROVEN but not yet
-  independently audited.
+- **Audit.** Done: [AudCVA] finds Theorem TA-CR, Lemma K_A, Lemma C, S0, S2,
+  S4 and S5 HOLD.
+- **Observation CC** ([PACVA] §2.3; COMPUTED, not proven): on all 3,519 zeros
+  with n ≤ 7, 0̂ is not a meet of coatoms of M or 1̂ is not a join of atoms
+  (EC1 Cor. 3.9.5). Whether this holds for all n is OPEN.
 
 ## Reproduce
 
@@ -445,6 +459,8 @@ References:
 - [PCV] = `notes/per_cone_vanishing.md`;
 - [AudPCV] = `notes/audit_per_cone_vanishing.md`;
 - [CRV] = `notes/conjecture_cr_v.md` (audit: `notes/audit_conjecture_cr_v.md`);
+- [AudCVA] = `notes/audit_cr_v_type_a.md` (independent audit of this note);
+- [PACVA] = `notes/prior_art_cr_v_type_a.md`;
 - [VC] = `notes/vanishing_criterion.md`;
 - [GT] = `notes/general_theory.md`;
 - [FP] = `notes/fixed_point_formula.md`;

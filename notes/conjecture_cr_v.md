@@ -47,10 +47,12 @@ PROVEN claim below holds as stated),
 | K | If W ∈ M contains U, then the complements of W in M are exactly the g-stable flats X ⊆ L with X ∩ W = 0 and X + W in no hyperplane | **PROVEN** (§1); COMPUTED for W = cl(U) on every pair | F |
 | Ln | dim L = 1, any d. Then χ_V(g) = 0 iff L + U lies in a hyperplane, or U lies in no hyperplane, L ∩ U = 0 and c_0 = c_L. In the second case χ_V(g) = c_0 − c_L ≥ 0, where c_X counts the chambers of {H ∩ U : H ⊇ X} in \|V\| ∩ U | **PROVEN** (§2); χ = c_0 − c_L COMPUTED on every such pair. In d = 3 a zero of the second kind makes L uncomplemented (§4). In d = 4 it does not: 12 counterexample pairs of §5 have dim L = 1 | Formula Z of [VC], [GT] (pointed m = #chambers) |
 | R3 | For every central essential A in R^3 and every finite-order symmetry g, the fixed lattice L(A)^g has μ = 0 iff it has an uncomplemented element | **PROVEN** (§3), by a case analysis on the eigenvalues of g | — |
+| TA | **Type A.** CR_V holds for every cone C_P of the braid arrangement A_{n−1} (P a poset on [n], n ≥ 3) and every g = ±τ with g C_P = C_P, in every rank | **PROVEN** in [CVA] = `notes/cr_v_type_a.md` (Theorem TA-CR), with an explicit uncomplemented element for every zero; independently audited in [AudCVA] = `notes/audit_cr_v_type_a.md` (TA-CR, Lemmas K_A and C hold). CITED here (§6) | [CVA] |
 | Mod | Is Λ(V)^g modular whenever it is complemented? (If so, Knop's Lemma A.2 would settle CR_V.) | **No.** Complemented non-modular Λ(V)^g with μ ≠ 0 are common, e.g. 186 of the 266 nonvanishing pairs of A_3 (§5). The counterexample of §0 is complemented and not modular | COMPUTED |
 
 **In one line.** The Crapo converse holds on cone lattices in rank ≤ 3, for
-pointed cones, and for every zero in which L + Fix g lies in a hyperplane.
+pointed cones, for every zero in which L + Fix g lies in a hyperplane, and
+on every cone of the braid arrangement (row TA, [CVA], audited).
 It fails in rank 4. In R^4 a Formula-Z cancellation 1 − 1 = 0 sits on a
 complemented, non-modular 9-element lattice. That lattice is the 8-element
 complemented lattice with μ = 0 of [PAP] §3.2, with one coatom doubled.
@@ -525,13 +527,35 @@ All are confirmed by the second implementation (§0.4).
   - Cor. V zeros in every rank (Theorem Q);
   - the reduction of the line case to the trace condition of
     Proposition Ln(iv).
-- **Type A.** Whether CR_V holds on all cones of the braid arrangement is
-  OPEN. [PCV] Theorem TA settles the vanishing there, and [PCV] §3.6 gives
-  the obstruction for the (TA4) zeros. For the zeros where (TA1)–(TA3)
-  fail, no element was exhibited here. [PCV] found no counterexample with
-  n ≤ 6.
-- **Coxeter arrangements in rank 4.** No counterexample appears in A_4, or
-  in D_4 with all cones. B_4, F_4 and H_4 on all cones were not swept.
+- **Type A: PROVEN (audited).** CR_V holds on every cone of the braid
+  arrangement, in every rank: [CVA] Theorem TA-CR, independently audited
+  in [AudCVA] (Theorem TA-CR, Lemma K_A, Lemma C and steps S0, S2, S4, S5
+  hold). For P a poset on [n], n ≥ 3, and g = ετ with g C_P = C_P,
+  μ(OP(P)^τ) = 0 iff OP(P)^τ has an uncomplemented element. Every zero has
+  an explicit witness: cl(Fix g^k) for an explicit k (an orbit partition of
+  a power of τ, or cl(Fix g)), or the (TA4) element of [PCV] §3.6. The proof
+  rests on Lemma K_A (complements of elements below cl(Fix g) are coarser
+  than the component partition) and Lemma C (a gcd criterion for
+  complements of orbit partitions). COMPUTED in [CVA] and again by the
+  independent code of [AudCVA]: n ≤ 7 exhaustively (6,154 pairs, 3,519
+  zeros, 0 failures). So the counterexample of §0 has no type-A analogue.
+  - *Prior art* ([PACVA] = `notes/prior_art_cr_v_type_a.md`). The "if"
+    direction is Crapo's corollary (KNOWN: Crapo 1966, Thm 3; EC1
+    Ex. 3.92). The "only if" direction was NOT FOUND in the sources
+    searched for any class of lattices containing OP(P)^τ; this is the
+    result of a search, not a claim of novelty. For the antichain with
+    g = +w (all chambers) it is KNOWN in substance: Stanley 1982 (Remark
+    after Lemma 7.1), using Hanlon 1981 (Lemma 2) and EC1 Cor. 3.9.5, plus
+    one elementary step. Lemma C is PARTLY KNOWN: its h = 1, κ = 0̂
+    existence half is Hanlon's Lemma 6 construction; the gcd criterion for
+    powers σ^h and the κ-relative form were NOT FOUND.
+  - *Observation CC* ([PACVA] §2.3; COMPUTED, not proven). On all 3,519
+    zeros with n ≤ 7, 0̂ is not a meet of coatoms of OP(P)^τ, or 1̂ is not a
+    join of atoms, so each zero is already of EC1 Cor. 3.9.5 type. This is
+    stronger than having an uncomplemented element. Whether it holds for
+    all n is OPEN.
+- **Coxeter arrangements in rank 4.** No counterexample appears in A_4
+  (type A is now settled in every rank, above), or in D_4 with all cones. B_4, F_4 and H_4 on all cones were not swept.
 - **A minimal counterexample.** It is OPEN whether a rank-4 counterexample
   with fewer than 12 hyperplanes, or with a smaller Λ(V)^g, exists.
 
@@ -543,8 +567,11 @@ evidence counts kept. Its §4 states Theorems Q and K and its §5 the settled
 cases. The [PAP] item is not applied.
 
 - [PCV] Verdict row CR_V and §4: Conjecture CR_V is false (§0). Its
-  evidence ("no counterexample on 18,750 pairs and 5,063 lattices") is
-  correct as a count. It is also consistent with Theorem 3: 11,428 of the
+  evidence ("no counterexample on 18,750 pairs and 3,576 lattices") is
+  correct as a count. The lattice count was first printed as 5,063; that
+  figure has no support in the committed code or log of [PCV], and
+  [AudCVA] §5 recounts 3,576 independently (20 + 96 + 478 + 2,982 for
+  n = 3..6). [PCV] has been corrected. It is also consistent with Theorem 3: 11,428 of the
   [PCV] pairs have rank 3, where CR_V is a theorem, and in rank 4 [PCV]
   sampled only A_4, generic 5, B_4, D_4 and F_4.
 - [PCV] §5, "No proof of the converse of the Crapo obstruction is known,
@@ -596,6 +623,9 @@ References:
 - [PCV] = `notes/per_cone_vanishing.md`;
 - [AudPCV] = `notes/audit_per_cone_vanishing.md`;
 - [AudCRV] = `notes/audit_conjecture_cr_v.md` (independent audit of this note);
+- [CVA] = `notes/cr_v_type_a.md` (type A);
+- [AudCVA] = `notes/audit_cr_v_type_a.md` (independent audit of [CVA]);
+- [PACVA] = `notes/prior_art_cr_v_type_a.md`;
 - [PAP] = `notes/prior_art_per_cone_vanishing.md`;
 - [VC] = `notes/vanishing_criterion.md`;
 - [GT] = `notes/general_theory.md`;
