@@ -31,15 +31,15 @@ Tags:
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| M | **Lemma M.** For X ∈ Z\*(g), m_X(all chambers) = (−1)^{dim U} Σ_{Z ∈ L(A)^g, Z ⊇ X, Z ∩ U = 0} μ(Z, R^d) | **PROVEN** (§1); COMPUTED on every X ∈ Z\*(g) of every class of 11 arrangements (149 terms) | W″(c) of [AudW] on the localization at X; audited ([AudPCV] §1) |
-| Cr | **All chambers = Crapo relative to U.** χ_all(g) = (−1)^{dim U} Σ_{X ⊆ Z, X, Z ∈ Z\*(g)} μ(0, X) μ(Z, R^d). When U is a flat, Z\*(g) is the set of complements of U in L(A)^g, and this is Crapo's complementation theorem for the element U. If the complements form an antichain, m_X = (−1)^{dim U} μ(X, R^d) (Hanlon's case) | **PROVEN** (§1), given Lemma M; Crapo CITED. "Z\*(g) = complements" COMPUTED on all 83 classes with U a flat. Audited ([AudPCV] §2) | Formula Z, Lemma M |
-| Pal | **Lemma Pal.** An anti-automorphism t of a finite poset Q admits a linear extension w with t(w_i) = w_{n+1−i} iff t² = 1 and t has at most one fixed point | **PROVEN** (§2); audited with Lemmas Sh and E ([AudPCV] §3, §4) | — |
-| TA | **Type A, every cone, g = −τ.** Let n ≥ 3 and let τ be an anti-automorphism of the poset P, so that −τ preserves C_P. Then χ_{C_P}(−τ) ≠ 0 iff (TA1) the cycle lengths of τ lie in {m, 2m} for an odd squarefree m; (TA2) every component of P has a ⟨τ⟩-orbit of length m or 2m; (TA3) for every component K, K ∪ τ^m K contains at most one point of an odd cycle of τ; (TA4) if τ has both odd and even cycles, some odd cycle of τ does not consist of isolated points of P. There is an explicit positive formula for \|χ\| (§3) | **PROVEN** (§3); COMPUTED: the closed formula equals sgn(τ) μ(OP(P)^τ) on all 922 pairs with n ≤ 6, on 1,089 involution pairs with n = 7, on 2,736 random pairs with n = 8, 9, 12, and equals χ_V(g) from the face poset on all 1,992 pairs (V, −w) of A_3 and A_4 | CF of [FP] (audited), Hanlon's (H), Theorem A of [VC], Lemmas Pal, Sh, E. Audited ([AudPCV] §4) |
+| M | **Lemma M.** For X ∈ Z\*(g), m_X(all chambers) = (−1)^{dim U} Σ_{Z ∈ L(A)^g, Z ⊇ X, Z ∩ U = 0} μ(Z, R^d) | **PROVEN** (§1); COMPUTED on every X ∈ Z\*(g) of every class of 11 arrangements (149 terms) | W″(c) of [AudW] on the localization at X; audited ([AudPCV] §1). Prior art: not found in the literature searched ([PAPCV]) |
+| Cr | **All chambers = Crapo relative to U.** χ_all(g) = (−1)^{dim U} Σ_{X ⊆ Z, X, Z ∈ Z\*(g)} μ(0, X) μ(Z, R^d). When U is a flat, Z\*(g) is the set of complements of U in L(A)^g, and this is Crapo's complementation theorem for the element U. If the complements form an antichain, m_X = (−1)^{dim U} μ(X, R^d) (Hanlon's case) | **PROVEN** (§1), given Lemma M; Crapo CITED. "Z\*(g) = complements" COMPUTED on all 83 classes with U a flat. Audited ([AudPCV] §2). Prior art ([PAPCV] §2): for U a flat, (Cr) is Crapo's theorem (KNOWN); for U not a flat, it is the Björner–Walker split for the convex set Z\*(g), and the vanishing μ_{M∖Z\*}(0̂, 1̂) = 0 that Lemma M supplies was not found | Formula Z, Lemma M |
+| Pal | **Lemma Pal.** An anti-automorphism t of a finite poset Q admits a linear extension w with t(w_i) = w_{n+1−i} iff t² = 1 and t has at most one fixed point | **PROVEN** (§2); audited with Lemmas Sh and E ([AudPCV] §3, §4). **KNOWN in substance** ([PAPCV] §1): it is the existence of type-B linear extensions of Chow's B_n posets, stated for Reiner's signed posets; the proof of §2 is a reproof | Chow 2001; Reiner 1993 |
+| TA | **Type A, every cone, g = −τ.** Let n ≥ 3 and let τ be an anti-automorphism of the poset P, so that −τ preserves C_P. Then χ_{C_P}(−τ) ≠ 0 iff (TA1) the cycle lengths of τ lie in {m, 2m} for an odd squarefree m; (TA2) every component of P has a ⟨τ⟩-orbit of length m or 2m; (TA3) for every component K, K ∪ τ^m K contains at most one point of an odd cycle of τ; (TA4) if τ has both odd and even cycles, some odd cycle of τ does not consist of isolated points of P. There is an explicit positive formula for \|χ\| (§3) | **PROVEN** (§3); COMPUTED: the closed formula equals sgn(τ) μ(OP(P)^τ) on all 922 pairs with n ≤ 6, on 1,089 involution pairs with n = 7, on 2,736 random pairs with n = 8, 9, 12, and equals χ_V(g) from the face poset on all 1,992 pairs (V, −w) of A_3 and A_4 | CF of [FP] (audited), Hanlon's (H), Theorem A of [VC], Lemmas Pal, Sh, E. Audited ([AudPCV] §4). Prior art: not found in the literature searched ([PAPCV]) |
 | TA± | Together with [Thm, eq. closed] for g = +w: an exact per-cone criterion for every element of ±S_n on every cone of the braid arrangement | **PROVEN** (TA here; +w in [Thm], audited) | — |
 | TA-L | In type A, whether χ_V(g) = 0 depends only on (lin V, g); the sign of a nonzero χ_V(g) depends only on g | **PROVEN** (Cor. 3.5); audited, including (c) ([AudPCV] §5) | Theorem TA, [Thm] |
 | L′ | Neither holds in general. Vanishing is not a function of (lin V, g) on generic 4 planes in R^3 (1 key) and generic 5 hyperplanes in R^4 (4 keys). Both signs occur for one g in B_3, generic 4 in R^3, generic 5 in R^4, B_3 ∖ {z = 0}, the 12- and 13-line hexagon arrangements | **COMPUTED** (§4) | — |
-| CO | **Crapo obstruction.** If some element of Λ(V)^g has no complement in Λ(V)^g, then χ_V(g) = 0. In type A every zero from (TA4) is of this kind, with an explicit uncomplemented element | "if": **CITED** (Crapo). Type A element: **PROVEN** (§3.6), audited ([AudPCV] §6) | Crapo's complementation theorem |
-| CR_V | **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g has an element without a complement. This is a Crapo-type converse on the cone lattice; it implies the CR of [VC] in the cases where [VC]'s lattices are cone lattices | **CONJECTURED**; COMPUTED: no counterexample on 18,750 pairs (V, g) (§4), and on all 5,063 lattices OP(P)^{±τ} with n ≤ 6 (both automorphisms and anti-automorphisms) | — |
+| CO | **Crapo obstruction.** If some element of Λ(V)^g has no complement in Λ(V)^g, then χ_V(g) = 0. In type A every zero from (TA4) is of this kind, with an explicit uncomplemented element | "if": **CITED** (Crapo; stated verbatim in EC1 Ex. 3.92, [PAPCV] §3.1). Type A element: **PROVEN** (§3.6), audited ([AudPCV] §6) | Crapo's complementation theorem |
+| CR_V | **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g has an element without a complement. This is a Crapo-type converse on the cone lattice; it implies the CR of [VC] in the cases where [VC]'s lattices are cone lattices | **CONJECTURED**; COMPUTED: no counterexample on 18,750 pairs (V, g) (§4), and on all 5,063 lattices OP(P)^{±τ} with n ≤ 6 (both automorphisms and anti-automorphisms). Prior art: not found in the literature searched; the modular case is known (Knop, Lemma A.2), and the converse fails for general lattices (8-element example, [PAPCV] §3.2) | — |
 | D | The classification of zeros by arrangement (Cor. V / no nonzero μ / cancellation), including D_4, H_3, F_4 | **COMPUTED** (§4) | — |
 | B, D, H, F | An exact per-cone criterion for B_n (n ≥ 5), D_n, H_3, H_4, F_4 | **OPEN** (§5). On the data, no pair cancels in B_2–B_4, D_4 (with triality), H_3, so there PC(a) of [VC] is already an equivalence on every pair tested | — |
 
@@ -49,6 +49,36 @@ braid arrangement it is exactly the failure of four component conditions,
 and the surviving value is a signed count of connected permutations, so it
 never cancels further. In general, the conjectured criterion is: some element
 of Λ(V)^g has no complement.
+
+**Prior art** ([PAPCV] = `notes/prior_art_per_cone_vanishing.md`).
+- *Lemma Pal* is known in substance. After labelling the two points of each
+  t-orbit ±i and the fixed point 0 (adjoined if absent), (Q, t) is a B_n
+  poset in Chow's sense, and its t-palindromic extensions are the type-B
+  linear extensions. The "if" direction is the existence of one, which
+  follows from Chow's fundamental lemma for type-B P-partitions (Chow 2001,
+  Thm 2.1.4; secondary, via Kim–Searles 2026, Thm 2.8). For Reiner's signed
+  posets it is stated (Reiner 1993, Thm 3.3, as quoted by Csar 2014 §3.3).
+  The "only if" direction is folklore. The proof in §2 is a reproof, kept
+  because it is shorter than the translation. Al-Agha–Greechie 2001
+  (involutory linear extensions of involution posets) may state the lemma
+  verbatim; it could not be accessed, so this was not checked.
+- *Theorem Cr.* When U is a flat, (Cr) is Crapo's complementation theorem
+  (Crapo 1966, Thm 3; EC1 Ex. 3.92). When U is not a flat, Z\*(g) is a
+  convex subset of M = L(A)^g, and the Björner–Walker complementation
+  formula for convex subsets (Björner–Walker 1983, used as stated by
+  Gálvez-Carrillo–Kock–Tonks 2024) splits μ(M) as μ_{M∖Z\*}(0̂, 1̂) plus
+  the double sum of (Cr). So (Cr) is equivalent to μ_{M∖Z\*}(0̂, 1̂) = 0.
+  That vanishing, i.e. Lemma M, was not found in the literature searched.
+- *Theorem TA, Lemma M, Conjecture CR_V*: not found in the literature
+  searched ([PAPCV] §0). This is the result of a search, not a claim of
+  novelty.
+- *CR_V, known cases.* For a finite modular lattice, μ(0̂, z) ≠ 0 iff
+  [0̂, z] is complemented (Knop, arXiv:2209.10337, Lemma A.2), and this
+  applies to fixed sublattices Λ^g of a modular Λ (Knop, after (A.8)). The
+  lattices Λ(V)^g are not modular in general, so this does not cover CR_V.
+  For general finite lattices the converse of Crapo's corollary is false: the
+  smallest complemented lattice with μ(0̂, 1̂) = 0 has 8 elements ([PAPCV]
+  §3.2).
 
 ---
 
@@ -105,7 +135,10 @@ Remarks.
 - When U is not a flat, (Cr) is Crapo's formula for a "virtual" element: the
   subspace U is not in M, but "X ∩ U = 0" and "X + U in no hyperplane" still
   make sense. Crapo's theorem is pure lattice theory. Lemma M is geometric,
-  and it is what Formula Z adds.
+  and it is what Formula Z adds. Precisely ([PAPCV] §2): Z\* is convex in
+  M, and the Björner–Walker formula for a convex subset gives
+  μ(M) = μ_{M∖Z\*}(0̂, 1̂) + Σ_{X ≤ Z in Z\*} μ_M(0̂, X) μ_M(Z, R^d), so
+  (Cr) is equivalent to μ_{M∖Z\*}(0̂, 1̂) = 0.
 - Hanlon's case ([PA] §2.1): braid arrangement, w ∈ S_n. There U is the hinge
   flat, which is modular. Its complements form an antichain, and
   μ(X, R^d) = ±(m − 1)! for every complement. Stanley's modular factorization
@@ -143,6 +176,10 @@ t has at most one fixed point.
     anti-automorphism with at most one fixed point, and by induction Q′ has
     a palindromic extension w′.
   - Then x w′ t(x) is a palindromic linear extension of Q. ∎
+
+This is a reproof of a known fact: the "if" direction is the existence of
+type-B linear extensions of Chow's B_n posets, stated for Reiner's signed
+posets (see Prior art under the Verdict, and [PAPCV] §1).
 
 **Lemma Sh (shuffle; PROVEN).** Let Q = Q_1 ⊔ ⋯ ⊔ Q_r be a disjoint union of
 posets with no relations between the parts. Let t act on each Q_j as an
@@ -569,7 +606,10 @@ OP(P)^{±τ} with n ≤ 6 (type A, automorphisms and anti-automorphisms).
   obstruction is known, even for all chambers. There it says: μ(L(A)^g) = 0
   iff L(A)^g has an uncomplemented element. For general finite lattices the
   converse of Crapo's corollary is false: a lattice can have μ = 0 with every
-  element complemented. Any proof must therefore use the geometry of fixed
+  element complemented. The smallest such lattice has 8 elements ([PAPCV]
+  §3.2). The converse is known for finite modular lattices (Knop,
+  arXiv:2209.10337, Lemma A.2), including fixed sublattices of modular
+  lattices, but L(A)^g and Λ(V)^g are not modular in general. Any proof must therefore use the geometry of fixed
   lattices of arrangements. A proof for all chambers would also give the
   CR conjecture of [VC] (via Theorem S's top-lunes), but this implication
   was not written out.
@@ -622,7 +662,18 @@ References: [VC] = `notes/vanishing_criterion.md`; [PA] =
 `notes/audit_prop_w_prime.md`; [AudW2] = `notes/audit_theorem_w2.md`; [GT] =
 `notes/general_theory.md`; [FPM] = `notes/fixed_point_mobius_identity.md`;
 [Thm] = `notes/poset_jks_theorem.tex`; [AudPCV] =
-`notes/audit_per_cone_vanishing.md`. Crapo, *The Möbius function of a
+`notes/audit_per_cone_vanishing.md`; [PAPCV] =
+`notes/prior_art_per_cone_vanishing.md`. Crapo, *The Möbius function of a
 lattice*, J. Combin. Theory 1 (1966), used as stated in Stanley, *Some
-aspects of groups acting on finite posets*, JCTA 32 (1982), §7. Stanley,
-*Enumerative Combinatorics* vol. 2, §5.1 (exponential formula).
+aspects of groups acting on finite posets*, JCTA 32 (1982), §7, and in
+Stanley, *Enumerative Combinatorics* vol. 1, 2nd ed. ("EC1"), Ex. 3.92.
+Stanley, *Enumerative Combinatorics* vol. 2, §5.1 (exponential formula).
+Chow, *Noncommutative symmetric functions of type B*, PhD thesis, MIT
+(2001), Thm 2.1.4 (not accessed; via Kim–Searles, arXiv:2601.22926, Thm 2.8).
+Reiner, *Signed posets*, J. Combin. Theory Ser. A 62 (1993), Thm 3.3; Csar,
+arXiv:2311.06387, §3.3. Al-Agha–Greechie, *The involutory dimension of
+involution posets*, Order 18 (2001) (not accessed). Björner–Walker, *A
+homotopy complementation formula for partially ordered sets*, European J.
+Combin. 4 (1983) (not accessed; via Gálvez-Carrillo–Kock–Tonks,
+arXiv:2409.03742, §1). Knop, *Multiplicities and dimensions in enveloping
+tensor categories*, arXiv:2209.10337, App. A, Lemma A.2.
