@@ -29,8 +29,9 @@ The lattice structure is the one fixed in `notes/audit_per_cone_vanishing.md`
 Λ(V) is closed under the join of flats. The join in M is that join, and
 the meet is the largest element of M below the intersection.
 
-Tags: **PROVEN** (proof given here, inputs named; *not yet independently
-audited*),
+Tags: **PROVEN** (proof given here, inputs named; independently audited
+in `notes/audit_conjecture_cr_v.md` ("[AudCRV]"): REFUTATION HOLDS, and every
+PROVEN claim below holds as stated),
 **COMPUTED** (by `compute/conjecture_cr_v.py`, "[CR]"), **CITED**,
 **OPEN**, **REFUTED**.
 
@@ -38,7 +39,7 @@ audited*),
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| CR_V | χ_V(g) = 0 iff Λ(V)^g has an uncomplemented element | **REFUTED** (§0). A 12-hyperplane arrangement in R^4, g = diag(−1, −1, 1, 1) and a cone V with dim L = 2 give a 9-element Λ(V)^g with every element complemented and χ_V(g) = 0. Checked by hand (§0.2), by [CR] and by the independent code of `compute/audit2_vanishing_criterion.py` and `compute/per_cone_vanishing.py`. The same arrangement has 36 counterexample pairs (§5) | Formula Z of [VC] for the value 0 |
+| CR_V | χ_V(g) = 0 iff Λ(V)^g has an uncomplemented element | **REFUTED** (§0). A 12-hyperplane arrangement in R^4, g = diag(−1, −1, 1, 1) and a cone V with dim L = 2 give a 9-element Λ(V)^g with every element complemented and χ_V(g) = 0. Checked by hand (§0.2), by [CR] and by the independent code of `compute/audit2_vanishing_criterion.py` and `compute/per_cone_vanishing.py`. The same arrangement has 36 counterexample pairs (§5). Independently audited in [AudCRV]: the refutation holds, rebuilt from the definitions, with χ = 0 four ways and all 36 pairs reproduced | Formula Z of [VC] for the value 0 |
 | 3 | **Theorem 3.** CR_V holds for every pair (V, g) with d ≤ 3 | **PROVEN** (§4); COMPUTED on every rank-3 pair of §5. So the counterexample of §0 has the smallest possible rank | P, Ln, R3 |
 | P | Pointed V, any d: χ_V(g) = 0 iff U lies in a hyperplane, and then cl(U) has no complement. So CR_V holds for every pointed cone | **PROVEN** (§1); COMPUTED | Q, [VC] S1 |
 | Q | Any d: if L + U lies in a hyperplane (the "Cor. V" zeros of [VC]), then cl(L + U) and cl(U) have no complement in M | **PROVEN** (§1); COMPUTED | K |
@@ -171,7 +172,10 @@ trace on U.
   - for the other 24 (|M| = 10 and 11), the same, with Formula Z terms
     (μ, m) = (1, 2), (−1, 2).
 
-  This cross-check was a one-off run, not part of [CR].
+  This cross-check was a one-off run, not part of [CR]. A scripted
+  independent check of all 36 pairs now exists: parts [CX] and [R4] of
+  `compute/audit_conjecture_cr_v.py`, from [AudCRV] (§1 and §7 there). That
+  code shares nothing with [CR] or with `audit2_vanishing_criterion.py`.
 
 ### 0.5 Why rank 4
 
@@ -217,6 +221,12 @@ Also, cl(U) ∈ M and cl(L + U) ∈ M, and every g-stable flat inside L lies in 
   set of full dimension, and cl(U), cl(L + U) are g-stable.
 - When V is all chambers, M = L(A)^g.
 - Flats inside L lie in Λ(V) by [GT] Lemma 0.1(b). ∎
+
+*The case U = 0.* For a proper cone (V ≠ all chambers), U ≠ 0. Indeed,
+(a) with Y = R^d gives a nonzero fixed point in int |V|. (If U = 0, that
+average is 0, so 0 ∈ int |V| and V is all chambers.) So cl(U) = 0̂ never
+occurs in Lemma F or Theorem Q for a proper cone. When V is all chambers
+and U = 0, L + U = R^d lies in no hyperplane, and Theorem Q does not apply.
 
 *The meet with an element inside L.* For X ∈ M with X ⊆ L and any Y ∈ M,
 X ∧ Y = X ∩ Y. Indeed X ∩ Y is a g-stable flat inside L, so it lies in M.
@@ -301,6 +311,10 @@ U that lie in C = |V| ∩ U. Then:
 - A hyperplane h of U meeting int C in an open subset of h, with h ∉ B_L,
   meets some open B_L-chamber. Its intersection with the finitely many
   hyperplanes of B_L is nowhere dense in h. ∎
+
+*Case (iv) with dim U = 1.* Every trace H ∩ U is then {0}, so B_0 and B_L
+have no hyperplanes and c_0 = c_L = 1. So every pair of case (iv) with
+dim U = 1 is a zero. This is the "dim U = 1" branch of Theorem 3 (§4).
 
 So in the line case, CR_V says this: in case (iv), if every trace meeting
 int C is a trace of a hyperplane through L, then some element of M has no
@@ -521,7 +535,12 @@ All are confirmed by the second implementation (§0.4).
 - **A minimal counterexample.** It is OPEN whether a rank-4 counterexample
   with fewer than 12 hyperplanes, or with a smaller Λ(V)^g, exists.
 
-## 7. Corrections and remarks on other notes (not applied)
+## 7. Corrections and remarks on other notes
+
+The three [PCV] items below have been applied to [PCV]. Its Verdict row
+CR_V now reads REFUTED (rank 4) and points here and to [AudCRV], with the
+evidence counts kept. Its §4 states Theorems Q and K and its §5 the settled
+cases. The [PAP] item is not applied.
 
 - [PCV] Verdict row CR_V and §4: Conjecture CR_V is false (§0). Its
   evidence ("no counterexample on 18,750 pairs and 5,063 lattices") is
@@ -563,8 +582,10 @@ prints:
 - the complemented pairs, split into modular and non-modular;
 - the kinds of uncomplemented elements: cl(U), inside L, or other.
 
-The second-implementation check of §0.4 is not part of the script. It is
-the following loop, run once:
+The second-implementation check of §0.4 is not part of the script. A
+scripted independent check of the same 36 pairs is
+`python3 audit_conjecture_cr_v.py --r4` (and `--quick` for [CX]), from
+[AudCRV]. The original one-off check was the following loop:
 - build `audit2_vanishing_criterion.Arrangement(4, normals)`;
 - for each failing pair, form the cone from its facet constraints with
   `mask_of_constraints`;
@@ -574,6 +595,7 @@ the following loop, run once:
 References:
 - [PCV] = `notes/per_cone_vanishing.md`;
 - [AudPCV] = `notes/audit_per_cone_vanishing.md`;
+- [AudCRV] = `notes/audit_conjecture_cr_v.md` (independent audit of this note);
 - [PAP] = `notes/prior_art_per_cone_vanishing.md`;
 - [VC] = `notes/vanishing_criterion.md`;
 - [GT] = `notes/general_theory.md`;

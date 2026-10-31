@@ -234,6 +234,11 @@ only for X = R^d. So Z\*(g) ⊆ {R^d}, and:
 - χ_V(g) = 0 for every V other than all chambers;
 - χ_{all}(g) = μ(L(A)^g).
 
+The first clause is true but vacuous: a g with Fix g = 0 stabilizes no
+proper top-cone. If gV = V, the ⟨g⟩-average of a point of int |V| is a
+fixed point in int |V|, hence 0, so |V| = R^d and V is all chambers
+(`notes/audit_conjecture_cr_v.md` §6, R4).
+
 COMPUTED `[E]`. Examples:
 - −1, which preserves every central arrangement: μ(L(A)) ≠ 0, so χ(−1) ≠ 0
   on all chambers.
