@@ -437,9 +437,13 @@ all passing:
   permutation actions, and the cone lattice of B_n is not a partition lattice.
 - **Audit.** Done: [AudCVA] finds Theorem TA-CR, Lemma K_A, Lemma C, S0, S2,
   S4 and S5 HOLD.
-- **Observation CC** ([PACVA] §2.3; COMPUTED, not proven): on all 3,519 zeros
-  with n ≤ 7, 0̂ is not a meet of coatoms of M or 1̂ is not a join of atoms
-  (EC1 Cor. 3.9.5). Whether this holds for all n is OPEN.
+- **Observation CC** ([PACVA] §2.3): on every zero, 0̂ is not a meet of
+  coatoms of M or 1̂ is not a join of atoms (EC1 Cor. 3.9.5). Settled:
+  Theorem CC of `notes/observation_cc.md` proves it for every n (PROVEN,
+  independently audited in `notes/audit_observation_cc.md`: every step
+  HOLDS; COMPUTED there and in the audit for n ≤ 8). Its Corollary U gives a
+  second proof of the "only if" half of TA-CR, with the uniform
+  uncomplemented witnesses c ∧ D and O | Q. TA-CR is unaffected.
 
 ## Reproduce
 

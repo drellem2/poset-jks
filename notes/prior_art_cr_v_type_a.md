@@ -33,7 +33,7 @@ Verdicts are used as in `notes/prior_art_per_cone_vanishing.md` ("[PAPCV]"):
 | **Lemma C**, h = 1 and κ = 0̂, "(i) ⇒ (ii)": unequal cycle lengths leave cyc(σ) uncomplemented | **NOT FOUND as stated.** Hanlon's last paragraph of the proof of Lemma 6 classifies the complements of h, but it works inside the meet sublattice 𝓜 and assumes equal lengths. The vanishing for unequal lengths is proved through the meet of coatoms (Stanley's Remark), not through the hinge | Hanlon 1981 Lemma 6; Stanley 1982 Remark after Lemma 7.1 |
 | **Lemma C**, general h and κ: the condition gcd(s, h) = 1, s divides every λ_K, and ℓ/gcd(ℓ, h) = s | **NOT FOUND.** Every gcd in Hanlon is the gcd of the cycle lengths of σ, or the Π(x ∨ y) of his Lemma 9. None involves a power σ^h or a σ-stable lower bound κ. No source read considers complements of the orbit partition of a power of σ | Hanlon 1981 (grep "gcd", §0.3) |
 | **Lemma K_A** (fixed-point averaging; complements of w ≤ cl(Fix g) are ≥ κ) | **NOT FOUND** in the sources read. The averaging step itself (the ⟨g⟩-average of a point of a g-stable convex set is fixed) is standard. It was not searched for separately | — |
-| **Observation CC** (new, COMPUTED here, not claimed in [CVA]): every zero with n ≤ 7 is a zero of EC1 Cor. 3.9.5 type. That is, 0̂ is not a meet of coatoms of M, or 1̂ is not a join of atoms of M | **Not a literature claim**; recorded as a remark for [CVA] (§2.3). It holds on all 3,519 zeros of the 6,154 pairs with n ≤ 7, and fails on none of the 2,635 nonzero pairs. It is a strictly stronger property than "uncomplemented element": EC1 Ex. 3.28 (Rival's example) is a noncomplemented lattice that is atomic and coatomic | `compute/prior_art_cr_v_type_a.py`; EC1 Cor. 3.9.5, Ex. 3.28 |
+| **Observation CC** (new, first COMPUTED here, not claimed in [CVA]): every zero is a zero of EC1 Cor. 3.9.5 type. That is, 0̂ is not a meet of coatoms of M, or 1̂ is not a join of atoms of M | **Not a literature claim**; recorded as a remark for [CVA] (§2.3). **Now PROVEN for every n** (Theorem CC of `notes/observation_cc.md`), independently audited (`notes/audit_observation_cc.md`: every step HOLDS); its prior art is checked in `notes/prior_art_observation_cc.md`. It holds on all 3,519 zeros of the 6,154 pairs with n ≤ 7, and fails on none of the 2,635 nonzero pairs; n = 8 is added in those notes. It is a strictly stronger property than "uncomplemented element": EC1 Ex. 3.28 (Rival's example) is a noncomplemented lattice that is atomic and coatomic | `compute/prior_art_cr_v_type_a.py`; EC1 Cor. 3.9.5, Ex. 3.28 |
 
 **Bottom line.**
 - The "if" half of TA-CR is Crapo's corollary (KNOWN).
@@ -171,7 +171,11 @@ literature plus one elementary step.
   the coatoms of Π_n^π. It is easy to see (alternatively, this follows from
   [Hanlon, Lemma 2]) that x_π = 0̂ if and only if all cycles of π have the
   same length. Since in any (finite) lattice μ(0̂, 1̂) = 0 unless 0̂ is a meet
-  of coatoms …, Lemma 7.1 follows."
+  of coatoms …, Lemma 7.1 follows." Read literally, the middle sentence
+  does not hold for σ = (1234) (Π_4^σ = {0̂, 13|24, 1̂}, so x_σ = 13|24 ≠ 0̂);
+  the correct form (same squarefree length) is in the proof of Hanlon's
+  Lemma 4, and Lemma 7.1 is unaffected (`notes/prior_art_observation_cc.md`
+  §2.2). The next bullet uses only the correct form.
 - So μ(Π_n^w) = 0 iff x_w ≠ 0̂ or μ(o) = 0 for the common length o. In the
   second case Hanlon's Lemma 2 still applies: the type-b coatoms have prime
   period p | o. With Lemma 1, their meet with the type-a coatoms splits each
@@ -217,10 +221,13 @@ the total of zeros, 3,519, equals [CVA]'s.
   element" in general. EC1 Ex. 3.28 (Rival's lattice: a sub-meet-semilattice
   of B_6 with 1̂ adjoined) is atomic and coatomic but has the uncomplemented
   element {1, 2}.
-- **Status.** This is a COMPUTED pattern for n ≤ 7, not a theorem, and it is
-  not a claim of [CVA]. If it held for every n, TA-CR would follow from
-  Cor. 3.9.5 plus §2.2's step, with one uniform witness. That would be a
-  shorter route than table W, and a natural question for the [CVA] audit.
+- **Status.** First recorded here as a COMPUTED pattern for n ≤ 7 (not a
+  claim of [CVA]). It is now PROVEN for every n: Theorem CC of
+  `notes/observation_cc.md`, independently audited in
+  `notes/audit_observation_cc.md` (every step HOLDS; the n ≤ 7 counts above
+  are reproduced and n = 8 is added). Its Corollary U gives TA-CR's "only
+  if" half again, with the uniform witnesses c ∧ D and O | Q, by a shorter
+  route than table W.
 
 A bug found while writing the script, kept for the record: the first
 version treated the two-element lattice {0̂, 1̂} as having atom 0̂. It
@@ -262,8 +269,10 @@ FOUND.**
   for the all-chambers +w case. That case of TA-CR follows from it by §2.2.
 - Lemma C: credit the h = 1, κ = 0̂ existence half and the block-orbit
   structure (Steps 2 and 4) to Hanlon 1981, Lemmas 1 and 6.
-- The [CVA] audit could test Observation CC (§2.3) for n = 8 and try to prove
-  it. If it holds, every zero has the uniform witness ⋀ coatoms or ⋁ atoms.
+- Observation CC (§2.3): done. Proven for every n in
+  `notes/observation_cc.md` (Theorem CC), audited in
+  `notes/audit_observation_cc.md`; every zero has an uncomplemented witness
+  below ⋀ coatoms or above ⋁ atoms (c ∧ D or O | Q).
 - Baclawski–Björner 1981, "Fixed points and complements in finite
   lattices", should be read by someone with access before any novelty claim
   for TA-CR is made (§0.4).
