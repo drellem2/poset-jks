@@ -1,0 +1,5 @@
+4824
+[omega-des] HOLDS: Corollary Omega-des on 57075/57075 (natural labelling, T, m<=n), n<=6
+[ctl-des-nomerge] CONTROL refuted on 10454/57075: Omega-des without the -c merging
+[ctl-des-nodrop] CONTROL refuted on 23567/57075: Omega-des without dropping w with C_T(w) meeting Des(w)
+[] []
