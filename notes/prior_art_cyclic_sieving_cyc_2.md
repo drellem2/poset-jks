@@ -96,8 +96,10 @@ the role of clause (a) of Theorem C. When e > max k_i, a(e) = 0, so M = W.
 Then X_P(ζ) = ∏_i (ζ; ζ)_{k_i} · (1/|W|) Σ_w F(w)/det(1 − ζw), the
 definition evaluated at ζ. The prefactor is nonzero, and nothing forces
 the sum to vanish. This is the case a(e) = 0. For gcd(k_i) = 1 it is
-settled by [CSC] Proposition 3; for gcd(k_i) > 1 it is [CSC] §9 problem 2
-(OPEN). (Corrections F1–F3 of the audit
+settled by [CSC] Proposition 3; for gcd(k_i) > 1 it is
+`notes/cyclic_sieving_gcd.md` Theorem G and Corollary H (PROVEN; audit
+HOLDS, `notes/audit_cyclic_sieving_gcd.md`), which answer [CSC] §9
+problem 2. (Corrections F1–F3 of the audit
 `notes/audit_prior_art_cyclic_sieving_cyc_2.md` are applied in this
 paragraph and the one above.)
 

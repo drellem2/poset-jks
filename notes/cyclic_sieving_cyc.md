@@ -23,13 +23,14 @@ survey Thm 8.2 or [RSW] Thm 8.2 applied orbit by orbit ([PACSC]). The same
 holds for the G(r,1,k) version of §4. What was not found in the literature
 searched for [PACSC] and [PACSC2] is: the closed form (★), Theorem B(ii) at roots of
 unity that are not regular eigenvalues, Theorem C beyond regular elements,
-and the A_4 obstruction. "Not found" is a search result, not a proof of
+the necessity of its clause (a) when gcd(k_i) > 1 ([GCD], searched in
+[PAGCD]), and the A_4 obstruction. "Not found" is a search result, not a proof of
 novelty; see §10 for what was not read.
 
 | Question | Answer |
 |---|---|
 | A q-analogue X(q), X(1) = e_C(P), sieving the rotation σ of T^{⊔k} | **YES, PROVEN** for every T and k (Theorem C, Corollary T); **KNOWN** as an instance of Westbury 2016 Cor. 2.6 ([PACSC]). X_P is the *fake-degree polynomial* of Cyc(P) as an S_k-set. It has nonnegative integer coefficients (Theorem A), and for T^{⊔k} it has the closed form (★) below, which uses only the numbers c_j = e_C(T^{⊔j}). COMPUTED on all 23 posets T^{⊔k} with \|P\| ≤ 8 (`[tk-sigma]`, `[tk-closed]`). |
-| Which other g does the same polynomial serve? | Let g permute the isomorphic copies of the components, with trivial maps between copies, so g lies in W = ∏_T S_{k_T}. Then X_P sieves ⟨g⟩ **iff** the condition of Theorem C holds. Sufficiency is PROVEN. Necessity of (b) is PROVEN; necessity of (a) is PROVEN when gcd(k_i) = 1 and OPEN otherwise. The criterion matched the CSP on all 206 distinct tested classes (`[tk-W]`, `[sweep-W]`; see Theorem C for the count), but clause (a) is the only failing clause in just 6 of them. Every Springer-regular element of W qualifies: powers of the k-cycle, and the (k−1)-cycle (KNOWN: Sagan Thm 8.2, [RSW] Thm 8.2). Beyond regular elements the criterion was not found in the literature searched ([PACSC]). |
+| Which other g does the same polynomial serve? | Let g permute the isomorphic copies of the components, with trivial maps between copies, so g lies in W = ∏_T S_{k_T}. Then X_P sieves ⟨g⟩ **iff** the condition of Theorem C holds. Sufficiency is PROVEN. Necessity of (b) is PROVEN; necessity of (a) is PROVEN (Proposition 3 for gcd(k_i) = 1; [GCD] Corollary H for every gcd(k_i), audit HOLDS in [AUDG]). The criterion matched the CSP on all 206 distinct tested classes (`[tk-W]`, `[sweep-W]`; see Theorem C for the count), but clause (a) is the only failing clause in just 6 of them. Every Springer-regular element of W qualifies: powers of the k-cycle, and the (k−1)-cycle (KNOWN: Sagan Thm 8.2, [RSW] Thm 8.2). Beyond regular elements the criterion was not found in the literature searched ([PACSC]). |
 | Automorphisms that also act inside components | Let g lie in a group G = ∏_T ⟨c_T⟩ ≀ S_{k_T}. The fake-degree polynomial of G sieves ⟨g⟩ for every Springer-regular g: **PROVEN given [RSW] Thm 8.2 (CITED)**, and **KNOWN** as an instance of it and of Sagan Thm 8.2 ([PACSC]). Also **COMPUTED** on all 3148 regular conjugacy classes, n ≤ 7 (`[sweep-springer]`), which is a check of a theorem. |
 | One X for all of Aut(P) at once | **NO.** The smallest obstruction is the 4-element antichain A_4 (`[obst]`; not found in the literature searched, [PACSC]). A transposition and a double transposition both have order 2. They fix 0 and 2 classes respectively, so no single X can take both values at q = −1. No P with n ≤ 3 is an obstruction. |
 | A P where no polynomial with nonnegative coefficients fits the data of one ⟨g⟩ | **None exists, for any P and g.** The fixed-point data of any action of a cyclic group C_N is matched by a unique X mod q^N − 1 with nonnegative integer coefficients: its coefficients are the multiplicities of the characters of C_N in the permutation representation. The real question is therefore whether a *natural* X exists. |
@@ -219,9 +220,10 @@ N = o(g). Suppose that for every divisor e > 1 of N:
   length e.
 
 Then (Cyc(P), ⟨g⟩, X_P) is a CSP (**PROVEN**). Conversely, if (b) fails,
-the CSP fails (**PROVEN**). If (a) fails and gcd(k_i) = 1, the CSP fails
-(**PROVEN**, Proposition 3 below). If (a) fails and gcd(k_i) > 1, necessity
-is **OPEN**; the CSP failed in every computed case.
+the CSP fails (**PROVEN**). If (a) fails, the CSP fails (**PROVEN**:
+Proposition 3 below for gcd(k_i) = 1, and [GCD] Corollary H for every
+gcd(k_i); [GCD] HOLDS in the independent audit [AUDG], with no fixes).
+So X_P sieves ⟨g⟩ **if and only if** (a) and (b) hold.
 
 The criterion agrees with the CSP on all **206 distinct** classes conjugate
 into W that were computed (**COMPUTED**): 171 with n ≤ 7 (`[sweep-W]`) and
@@ -256,7 +258,23 @@ the other powers need Theorem B(ii) at a non-regular ζ, which is
 Springer's method at a non-regular ζ, not his theorem. No source searched
 gives a CSP for the fake degree at a non-regular element, or an iff
 criterion. Theorem C beyond regular elements was therefore not found in the
-literature searched.
+literature searched. The necessity of (a) when gcd(k_i) > 1 ([GCD]
+Corollary H) and the non-vanishing theorem behind it ([GCD] Theorem G) were
+also not found ([PAGCD]; a search result, not a proof of novelty). The
+iff statements in the literature have a different form: the
+Alexandersson–Amini criterion (quoted in [APRU] §1) characterises when
+f ∈ N[q] is a CSP polynomial for *some* C_n-action, not for a given one,
+and Stucky Thm 3.2 gives sufficient conditions at two families of regular
+elements, with necessity shown by one example ([PAGCD] §1.5). Three
+citations give context without changing a label ([PAGCD] Bottom line):
+(1) by Stanley's q-hook formula (as restated in [BKS] Thm 2.11), each
+irreducible fake degree of W is nonzero at ζ_e when e > max k_i, so the
+content of Theorem G is that the nonnegative sum X_P does not cancel
+(X_{A_3} = 1 + q³ at e = 6 shows it can); (2) by Lam–Leung's Main
+Theorem, positivity of the coefficients alone cannot rule out cancellation
+when e is not a prime power, which is every e that Corollary H needs;
+(3) [APRU] Cor. 27 is the nearest relative of the phase argument of
+Theorem G, a cancellation-free evaluation, but at regular roots of unity.
 
 **Proposition 3 (PROVEN, [AUD] §3).** If gcd(k_i) = 1, clause (a) of
 Theorem C is necessary.
@@ -271,8 +289,11 @@ root ζ, so X_P(ζ) ≠ 0. But g^{N/e} has order e > max k_i, so its cycles on
 the copies are not all of length e, and F(g^{N/e}) = 0 by Lemma 1. ∎
 
 This covers 2 of the 6 informative classes above (A_5 ⊔ C_2 and
-A_3 ⊔ C_2 ⊔ C_2). Two facts constrain a proof in the remaining case
-gcd(k_i) > 1 ([AUD] §3; both PROVEN):
+A_3 ⊔ C_2 ⊔ C_2). The case gcd(k_i) > 1 is [GCD] Corollary H (**PROVEN**;
+HOLDS in [AUDG]). It rests on [GCD] Theorem G: for e ≥ 6 and e > max k_i,
+X_P(e^{2πi/e}) ≠ 0, with the single exception P = A_3, e = 6, which never
+arises as a bad e because 6 is not an element order of S_3. Two facts
+shape that proof ([AUD] §3; both PROVEN):
 - *The bad e are never prime powers.* An element of ∏ S_{k_i} whose order
   is divisible by ℓ^b has a cycle of length divisible by ℓ^b, so
   ℓ^b ≤ max k_i. Hence every e that violates (a) makes 1 − ζ_e a unit, and
@@ -281,7 +302,9 @@ gcd(k_i) > 1 ([AUD] §3; both PROVEN):
   g = gcd(k_i). By Proposition F of [LE], X_P depends on the T_i only
   through their sizes m_i and through y. For two types with k = (4, 4) and
   e = 6, X_P(ζ_6) as a polynomial in y has a real root with 0 < y < 1 for
-  every (m_1, m_2) ∈ [3]². So a proof must use y ≥ 1.
+  every (m_1, m_2) ∈ [3]². So a proof must use y ≥ 1. ([GCD] uses it
+  exactly once, in its ratio bound Lemma 4; for m = (1, 2) the root is
+  y ≈ 0.02183, [GCD] `[yroot]`, re-derived in [AUDG] §3.)
 
 Symbolic evidence (**COMPUTED**, [AUD] `[neca]`): X_P mod Φ_e, with y as an
 indeterminate, has no common root y ≥ 1 (Sturm count) for a single type
@@ -289,7 +312,9 @@ with k = 3, …, 16 and |T| = 1, …, 6 (84 pairs (k, m), 690 triples
 (k, m, e)), and for two types with gcd(k_1, k_2) > 1, k_1 + k_2 ≤ 10 and
 m_i ≤ 3 (81 cases, 207 bad e). So the CSP fails whenever (a) fails, for
 every T of these sizes. These figures are [AUD]'s and were not re-derived
-here.
+here. [GCD] and [AUDG] add further exact mod-Φ_e checks, over different
+ranges, with the A_3 zero at e = 6 as the only zero found ([GCD] `[exact]`,
+[AUDG] §5).
 
 **Corollary T (PROVEN; KNOWN as an instance, [PACSC]).** For P = T^{⊔k} and σ the rotation of the copies,
 (Cyc(P), ⟨σ⟩, X_P) is a CSP, with X_P given by (★) and X_P(1) = e_C(P).
@@ -506,12 +531,14 @@ All of these pass (`[ctl-*]`):
    equidistributed with maj(w^{−1}) over {w : maj w ≡ 0 (mod k)}. The
    statistics of §6 fail. **OPEN.**
 2. Is the condition e ≤ max k_i in Theorem C necessary when
-   gcd(k_i) > 1? **OPEN.** It is PROVEN necessary when gcd(k_i) = 1
-   (Proposition 3). Among the 206 computed classes it is the sole failing
-   clause in only 6, and the CSP fails in all of them. The symbolic check
-   of [AUD] `[neca]` (single type, k ≤ 16, |T| ≤ 6; two types,
-   k_1 + k_2 ≤ 10, m_i ≤ 3) finds no counterexample. A proof must use
-   y ≥ 1 (see after Proposition 3).
+   gcd(k_i) > 1? **ANSWERED: YES (PROVEN)**, in
+   `notes/cyclic_sieving_gcd.md` ([GCD]), Corollary H, via Theorem G
+   (X_P(e^{2πi/e}) ≠ 0 for e ≥ 6, e > max k_i, except A_3 at e = 6). The
+   independent audit [AUDG] finds every claim HOLDS, with no fixes; it
+   re-verified the one computer-assisted step (Lemma 5, 490 triples) by a
+   different rigorous method. Theorem C is now an iff. Not found in the
+   literature searched ([PAGCD]; a search result, not a proof of
+   novelty).
 3. Prove §4 independently of [RSW, Thm 8.2], by evaluation as in
    Theorem B. **OPEN.**
 
@@ -535,7 +562,10 @@ All of these pass (`[ctl-*]`):
   Cor. 2.6, Sagan Thm 8.2, [RSW] Thm 8.2). Not found in the literature
   searched: (★) as a formula in the c_j, Theorem B(ii) at non-regular ζ,
   Theorem C beyond regular elements, and the A_4 obstruction of
-  Proposition O′. [PACSC2] read [Sp74] directly, and Lehrer–Michel 2003.
+  Proposition O′. [PAGCD]: Theorem G and the necessity of (a) for
+  gcd(k_i) > 1 ([GCD]) were not found; the iff form of Theorem C stays
+  PARTLY KNOWN (sufficiency at regular elements is Springer's theorem in
+  CSP form). [PACSC2] read [Sp74] directly, and Lehrer–Michel 2003.
   The method of Theorem B is Springer's; no statement of B(ii) at
   non-regular ζ, of Theorem C beyond regular elements, or of (★) was
   found. Lehrer–Taylor Ch. 11 (§6, 'Eigenvalues of pseudoregular
@@ -552,7 +582,17 @@ D. Stanton, D. White, *The cyclic sieving phenomenon*, JCTA 108 (2004)
 17–50 (Thm 8.2 on p. 37, §8, checked in the published paper by [AUD] and
 [PACSC]); [AUD] = `notes/audit_cyclic_sieving_cyc.md`; [PACSC] =
 `notes/prior_art_cyclic_sieving_cyc.md`; [PACSC2] =
-`notes/prior_art_cyclic_sieving_cyc_2.md`; [AUD2] =
+`notes/prior_art_cyclic_sieving_cyc_2.md`; [GCD] =
+`notes/cyclic_sieving_gcd.md`; [AUDG] = `notes/audit_cyclic_sieving_gcd.md`;
+[PAGCD] = `notes/prior_art_cyclic_sieving_gcd.md`; [APRU] = P.
+Alexandersson, S. Pfannerer, M. Rubey, J. Uhlin, *Skew characters and
+cyclic sieving*, Forum Math. Sigma (2021), arXiv:2004.01140; [BKS] = S.
+Billey, M. Konvalinka, J. Swanson, *Tableau posets and the fake degrees of
+coinvariant algebras*, Adv. Math. (2020), arXiv:1809.07386; Lam–Leung =
+T. Y. Lam, K. H. Leung, *On vanishing sums of roots of unity*, J. Algebra
+224 (2000) 91–109; Stucky = *Parity-unimodality and a cyclic
+sieving phenomenon for necklaces*, arXiv:1812.04578 (all read for
+[PAGCD]); [AUD2] =
 `notes/audit_prior_art_cyclic_sieving_cyc_2.md`; Westbury 2016 = B. Westbury,
 *Invariant tensors and the cyclic sieving phenomenon*, Electron. J.
 Combin. 23(4) (2016) #P4.25; Sagan = B. Sagan, *The cyclic sieving

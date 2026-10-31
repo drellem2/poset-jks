@@ -198,7 +198,9 @@ This covers 2 of the 6 informative classes.
   Consider two types with k = (4, 4) and e = 6. Then X_P(ζ_6), as a
   polynomial in y, has a real root with 0 < y < 1, for every (m_1, m_2)
   ∈ [3]². For example, with m = (1, 2) it is a root of
-  1048410y³ + 50y − 12 ≈ 0 at y ≈ 0.0225. So a proof must use y ≥ 1, the
+  1048410y³ + 50y − 12 ≈ 0 at y ≈ 0.02183 (corrected from "≈ 0.0225"
+  by `notes/cyclic_sieving_gcd.md` and re-derived in
+  `notes/audit_cyclic_sieving_gcd.md` §3; the root lies in (0, 1) either way). So a proof must use y ≥ 1, the
   actual size of the c_j.
 
 **Symbolic evidence (COMPUTED, [neca]).** For fixed sizes (m_i) and

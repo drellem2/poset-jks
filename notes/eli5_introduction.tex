@@ -1009,7 +1009,9 @@ unity where his theorem does not apply; the general form of that argument
 (Prop.~E there) was audited in
 \src{notes/audit_prior_art_cyclic_sieving_cyc_2.md}. No statement of the
 closed form, of Theorem~C beyond regular elements, or of the $A_4$
-obstruction was found. The Lehrer--Taylor book chapter on eigenspace theory
+obstruction was found. A further search
+(\src{notes/prior_art_cyclic_sieving_gcd.md}) did not find the necessity
+of clause~(a) when $\gcd(k_i)>1$, or the non-vanishing theorem behind it. The Lehrer--Taylor book chapter on eigenspace theory
 could not be obtained and was not read.}
 \begin{itemize}
 \item \PROVEN \emph{A closed form.} For $P=T^{\sqcup k}$, with
@@ -1022,17 +1024,26 @@ could not be obtained and was not read.}
   \footnote{\src{notes/cyclic_sieving_cyc.md}, \S3, formula~($\star$);
   audited (re-derived, and all $23$ posets $T^{\sqcup k}$ with $n\le8$
   reproduced).}
-\item \PROVEN \emph{Which elements of $W$ (Theorem~C).} For $g\in W$ of
-  order $N$, consider: (a) every divisor $e>1$ of $N$ is at most $\max k_i$;
-  (b) if such an $e$ divides every $k_i$, then $g^{N/e}$ moves the copies in
-  cycles all of length $e$. If (a) and (b) hold, $X_P$ sieves $g$. If (b)
-  fails, it does not. If (a) fails and $\gcd(k_i)=1$, it does not.
-  Whether (a) is necessary when $\gcd(k_i)>1$ is \textsf{open}; the
-  criterion matched the computation on all $206$ classes tested, but (a) was
-  the only failing clause in just $6$ of them.\footnote{%
+\item \PROVEN \emph{Exactly which elements of $W$ (Theorem~C).} For
+  $g\in W$ of order $N$, consider: (a) every divisor $e>1$ of $N$ is at
+  most $\max k_i$; (b) if such an $e$ divides every $k_i$, then $g^{N/e}$
+  moves the copies in cycles all of length $e$. Then $X_P$ sieves $g$
+  \emph{if and only if} (a) and (b) hold. The hard part is that (a) is
+  needed even when $\gcd(k_i)>1$. It comes from a non-vanishing theorem:
+  if $e\ge6$ and $e>\max k_i$, then $X_P(e^{2\pi i/e})\ne0$, with one
+  exception, the three-point antichain at $e=6$, where $X_P=1+q^3$. That
+  exception never matters, since no symmetry of three copies has
+  order~$6$.\footnote{%
   \src{notes/cyclic_sieving_cyc.md}, \S3, Theorem~C and Prop.~3; audited in
   \src{notes/audit_cyclic_sieving_cyc.md}, \S\S2--3 (which also supplied
-  the $\gcd(k_i)=1$ case and corrected the count of tested classes). For
+  the $\gcd(k_i)=1$ case and corrected the count of tested classes). The
+  case $\gcd(k_i)>1$ is \src{notes/cyclic_sieving_gcd.md}, Theorem~G and
+  Corollary~H; its independent audit
+  (\src{notes/audit_cyclic_sieving_gcd.md}) finds every claim holds, with
+  no fixes, and re-checks the one computer-assisted step ($490$ cases, exact
+  arithmetic) by a different method. The proof uses that every component
+  has at least one linear extension: for a formal value of that count below
+  $1$ the conclusion fails. For
   elements all of whose powers are regular, Theorem~C is the known
   phenomenon above; the part beyond regular elements is what was not
   found (its proof uses Springer's evaluation argument at non-regular roots
@@ -1078,8 +1089,7 @@ audit, with a remark that two of the counts depend on the labelling.}%
 outside type A; the Crapo-type converse on all chambers (conjectured) and
 the fate of the converse on cones (a refutation is claimed, audit pending);
 a canonical bracket or cooperad on the $e_\zeta$ model; a version of the
-Hopf-monoid picture for general arrangements; necessity of clause (a) in the
-cyclic sieving criterion when $\gcd(k_i)>1$; and a Lean formalization of anything beyond the
+Hopf-monoid picture for general arrangements; and a Lean formalization of anything beyond the
 poset theorem.
 
 \section{Status of the Lean formalization}\label{sec:lean}

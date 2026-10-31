@@ -32,14 +32,21 @@ X_P(ζ) ≠ 0, while F(g^{N/e}) = 0 by Lemma 1, so the CSP fails.
 | Computer-assisted step | One finite step: Lemma 5(iv) checks 490 triples (e, K, g) with exact rational arithmetic and interval bounds for sin (`[ineq]`). Everything else is by hand. |
 | Independent evidence | **COMPUTED.** Φ_e does not divide X_P for any of 2259 (type vector, y, e) triples and 548 single-type triples (`[exact]`). The B(ii) zeros serve as positive control: 2235/2235 detected. Brute-force CSP failure was confirmed on 6 classes of real posets (`[brute]`). |
 
-**Status change to file in [CSC]** (the PM files it; this note does not edit
-[CSC]):
+**Audit and prior art.** The independent audit
+`notes/audit_cyclic_sieving_gcd.md` finds every claim of this note HOLDS,
+with no fixes required; it re-verified Lemma 5(iv) by a different rigorous
+method (Chebyshev root brackets, no π and no Taylor series). The prior-art
+check `notes/prior_art_cyclic_sieving_gcd.md` did not find Theorem G or the
+necessity of (a) for gcd(k_i) > 1 in the sources read (a search result,
+not a proof of novelty); the iff form of Theorem C stays PARTLY KNOWN.
+
+**Status changes in [CSC]** (now applied there, after the audit):
 - §3, Theorem C: "If (a) fails and gcd(k_i) > 1, necessity is OPEN" becomes
   "If (a) fails, the CSP fails (PROVEN: Proposition 3 for gcd(k_i) = 1, and
   [GCD] Corollary H in general)."
 - Verdict table, row 2: "necessity of (a) is PROVEN when gcd(k_i) = 1 and
   OPEN otherwise" becomes "necessity of (a) is PROVEN ([GCD])".
-- §9, problem 2: OPEN becomes PROVEN ([GCD]), pending the independent audit.
+- §9, problem 2: OPEN becomes PROVEN ([GCD]); the audit HOLDS.
 - [PACSC2] §1, last paragraph: "for gcd(k_i) > 1 it is [CSC] §9 problem 2
   (OPEN)" becomes "for gcd(k_i) > 1 it is [GCD] Theorem G".
 - Small numerical correction to `notes/audit_cyclic_sieving_cyc.md` §3(ii).
