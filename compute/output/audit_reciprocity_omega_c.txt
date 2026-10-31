@@ -1,0 +1,30 @@
+[iso] iso classes by n: [1, 2, 5, 16, 63, 318, 2045] (A000112: 1,2,5,16,63,318,2045)
+[E] nonconvex example: True True midpoint in R_T: False
+[E] interior description: 700 sampled points of R_T (n=5, grid 1/4), claimed-interior vs eps-box test disagree on 0
+posets 2450, (P,T) pairs 3107, disconnected 503
+[omega]  Theorem Omega literal vs Moebius: bad 0 / 3107
+[R-surj] Theorem R (surjective literal):   bad 0 / 3107
+[R-all]  Theorem R (all maps, m<=n+1, n<=6): bad 0 / 555
+[Tdep]   OmegaBar literal depends on T: 0 posets
+[R1]     bad 0 / 5928325 (surjective weak map, T) cases
+[R2]     bad 0 / 2742962 (surjective strict map, T) cases
+[B+]     bad 0 / 3107
+[R']     bad 0 / 2449
+[dual]   bad 0 / 2450
+[S]      height<=2 posets 256, bad 0; bijection: 355653 maps checked, bad 0
+[S']     classification mismatches 0 (n>=2)
+[U]      non-unimodal h_C: 0
+[lower-D] strict maps, lower level sets with <= (dual form of R via star): bad 0 / 3107
+CONTROLS (each must be > 0):
+  [ctl-naive] strict + > anchoring: fails on 1160
+  [ctl-lower] strict, lower level sets, <: fails on 1160
+  [ctl-mixed] weak maps + D_T: fails on 3079
+  [ctl-plain] Stanley OmegaBar, no anchoring (per poset): fails on 503
+  [ctl-reverse] h(P*) = reverse h(P), trimmed (per poset): fails on 1875
+  [ctl-reverse_full] h(P*) = reverse h(P), length n+1 (per poset): fails on 2450
+  [ctl-pal_graded] pal iff all components graded (per poset, n>=2): fails on 151
+  [ctl-lam0] R2 under lambda_0 with isolated T ((map,T) cases): fails on 13488
+  [ctl-signbug] planted bug: drop (-1)^n (odd-n posets): fails on 2114
+  [ctl-shift-any] shift identity with a 3-chain: fails on 2193 / 2193
+  [ctl-any-lab] R2 under arbitrary natural labelling, n<=5: fails on 1166 / 1882 (labelling, T)
+ALL CLAIMS HOLD: True | ALL CONTROLS FIRE: True

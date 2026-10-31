@@ -1,0 +1,2 @@
+[two-comp] h_C(Q+T) = W_P - t W_Q W_T: bad 0 / 391 two-component posets, n <= 7
+[ctl-two-comp] same without the factor t: fails on 391 / 391
