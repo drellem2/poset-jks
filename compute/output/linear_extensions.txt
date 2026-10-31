@@ -1,0 +1,102 @@
+posets per n: [1, 2, 5, 16, 63, 318, 2045]
+== [csp] cyclic sieving
+  [ctl-rhoades] 2x2: e=2 order=2 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 2x3: e=5 order=6 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 2x4: e=14 order=8 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 3x3: e=42 order=9 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 2x5: e=42 order=10 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 3x4: e=462 order=12 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rhoades] 2x6: e=132 order=12 CSP(q-hook)=PASS  CSP(q * q-hook)=fails (control OK)
+  [ctl-rsw] C1+C1: e=2 CSP(q-binomial)=PASS
+  [ctl-rsw] C2+C1: e=3 CSP(q-binomial)=PASS
+  [ctl-rsw] C2+C2: e=6 CSP(q-binomial)=PASS
+  [ctl-rsw] C3+C2: e=10 CSP(q-binomial)=PASS
+  [ctl-rsw] C3+C3: e=20 CSP(q-binomial)=PASS
+  [ctl-rsw] C4+C2: e=15 CSP(q-binomial)=PASS
+  [ctl-rsw] C4+C3: e=35 CSP(q-binomial)=PASS
+  [staircase] shape (2, 1): e=2 promotion order=2 (n=3); CSP with q-hook: None
+  [staircase] shape (3, 2, 1): e=16 promotion order=12 (n=6); CSP with q-hook: None
+  [staircase] shape (4, 3, 2, 1): e=768 promotion order=20 (n=10); CSP with q-hook: None
+  [shifted-staircase] m=2: e=1 promotion order=1 (n=3)
+  [shifted-staircase] m=3: e=2 promotion order=2 (n=6)
+  [shifted-staircase] m=4: e=12 promotion order=10 (n=10)
+  [sweep] (Lin P, promotion, q^{-min maj} sum q^maj), C_n acting:
+    n=1: 1 posets; order does not divide n: 0, CSP holds: 1, CSP fails: 0
+    n=2: 2 posets; order does not divide n: 0, CSP holds: 2, CSP fails: 0
+    n=3: 5 posets; order does not divide n: 2, CSP holds: 3, CSP fails: 0
+    n=4: 16 posets; order does not divide n: 7, CSP holds: 6, CSP fails: 3
+    n=5: 63 posets; order does not divide n: 52, CSP holds: 11, CSP fails: 0
+    n=6: 318 posets; order does not divide n: 258, CSP holds: 18, CSP fails: 42
+    n=7: 2045 posets; order does not divide n: 1971, CSP holds: 70, CSP fails: 4
+    first CSP failures n=4: covers [(0, 2), (0, 3), (1, 2), (1, 3)]
+    first CSP failures n=4: covers [(0, 1), (1, 2), (1, 3)]
+    first CSP failures n=4: covers [(0, 2), (1, 2), (2, 3)]
+    first CSP failures n=6: covers [(0, 3), (1, 4), (1, 5), (2, 4), (2, 5)]
+    first CSP failures n=6: covers [(0, 3), (0, 4), (0, 5), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5)]
+    first CSP failures n=6: covers [(0, 1), (0, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5)]
+    first CSP failures n=7: covers [(0, 1), (1, 2), (1, 3), (2, 6), (3, 4), (4, 5), (4, 6)]
+    first CSP failures n=7: covers [(0, 1), (0, 2), (1, 5), (2, 3), (3, 4), (3, 5), (4, 6), (5, 6)]
+    first CSP failures n=7: covers [(0, 1), (0, 2), (1, 4), (2, 3), (2, 4), (3, 6), (4, 5), (5, 6)]
+  [union] disjoint-union CSP theorem checked on 45 disconnected posets (all components qualify): PASS
+== [promo] promotion vs rotation classes
+  [jdt] toggle form = jeu-de-taquin form on 405 posets (n <= 6)
+  [lemmaP] Lemma P checked on 503 disconnected posets
+  [corP2] Corollary P2 checked on 503 disconnected posets
+  [refine] disconnected posets whose components T all have promotion^|T| = id: 102, cyclic classes refine promotion orbits on all of them
+  [refine] disconnected posets with a component T where promotion^|T| != id: 401 (refinement still holds: 395, fails: 6)
+    refinement failure: n=6 covers [(0, 4), (0, 5), (1, 2), (1, 3)]
+    refinement failure: n=6 covers [(0, 5), (1, 5), (2, 3), (2, 4)]
+    refinement failure: n=6 covers [(0, 5), (1, 5), (2, 4), (3, 4)]
+  [propO] every promotion orbit meets {w : w_1 in P_1}, so #orbits <= e_C(P): 2450 posets
+  [count] disconnected posets: 503; with #promotion orbits <= e_C: 503
+  [orbit=class] posets where promotion orbits = cyclic classes: 13
+    n=1 covers []
+    n=2 covers []
+    n=2 covers [(0, 1)]
+    n=3 covers []
+    n=3 covers [(0, 1), (1, 2)]
+    n=4 covers []
+    n=4 covers [(0, 1), (1, 2), (2, 3)]
+    n=5 covers []
+    n=5 covers [(0, 1), (1, 2), (2, 3), (3, 4)]
+    n=6 covers []
+    n=6 covers [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5)]
+    n=7 covers []
+  [descend-PLie] disconnected posets on which promotion commutes with every cut rotation (= descends to PLie(P) = C[Lin P]/K_P): 6
+    n=2 covers []
+    n=3 covers []
+    n=4 covers []
+    n=5 covers []
+    n=6 covers []
+    n=7 covers []
+  [descend-R] disconnected posets, n <= 6, with promotion(R_P) inside R_P: 9 of 108
+    n=2 covers []
+    n=3 covers [(1, 2)]
+    n=4 covers [(0, 3), (1, 2)]
+    n=4 covers [(1, 2), (2, 3)]
+    n=5 covers [(0, 2), (1, 3), (3, 4)]
+    n=5 covers [(1, 2), (2, 3), (3, 4)]
+    n=6 covers [(0, 2), (1, 3), (2, 5), (3, 4)]
+    n=6 covers [(0, 2), (1, 3), (3, 4), (4, 5)]
+    n=6 covers [(1, 2), (2, 3), (3, 4), (4, 5)]
+== [count] counting identities
+  [std-rec] e(P) = sum_(a minimal) e(P - a): 2449 posets (control)
+  [JS-rec] e_C(P) = sum_b e_C(P/ab), every minimal a: 5928 (poset, a) pairs; wrong variant (covers dropped) accepted on 0 pairs that have a cover
+  [cumulant] e_C over components and e_C(P) = prod e(T) * e_C(chains): 2450 posets
+  [mu] mu(OP(P)) = (-1)^(n-1) e_C(P): 405 posets (n <= 6)
+  [weisner] sum_(x meet c = 0) (-1)^|x| e_C(Q_x) = 0: 43767 (poset, c) pairs (n <= 6 all c; n = 7 all c when |OP| <= 120, else c = 0^); c = 1^ control rejected 430 times
+== [burnside] fixed classes and orbit counts
+  [fixed] #{C: gC = C} = phi(o(g)) * sum_(x in F(P,g)) e_C(P|B0(x)): 17004 (P, g) pairs
+  [burnside] #Aut-orbits on Cyc(P) by Burnside from the closed formula; multiplicity of the trivial character in PLie(P) a nonnegative integer: 2450 posets (372 disconnected with Aut != 1)
+== [struct] structure of C[Lin P]/R_P
+  [rank] rank of Lie_n restricted to Lin P = e_C(P) on all 108 disconnected posets with n <= 6
+  [homog] R_P homogeneous for the statistic (number of the 108 posets):
+    restriction  : 108
+    blocks       : 5
+    des          : 0
+    maj          : 0
+    jumps        : 5
+    first letter : 0
+    random       : 1
+  [pieces] every restriction-graded piece has dimension e_C(disjoint chains of the component sizes): PASS
+FAILED CHECKS: 0
