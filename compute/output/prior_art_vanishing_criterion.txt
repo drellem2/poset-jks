@@ -1,0 +1,113 @@
+(H) Formula Z on all chambers, g = w in S_n, vs Hanlon's complements of the hinge
+  w=[2]: mu(Pi^w)=-1, #complements=1, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1]: mu(Pi^w)=-1, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[3]: mu(Pi^w)=-1, #complements=1, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1]: mu(Pi^w)=2, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[4]: mu(Pi^w)=0, #complements=1, mu(c,1) values=[0], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[3, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2]: mu(Pi^w)=2, #complements=2, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1, 1]: mu(Pi^w)=-6, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[5]: mu(Pi^w)=-1, #complements=1, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1, 1, 1]: mu(Pi^w)=24, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[6]: mu(Pi^w)=1, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 3]: mu(Pi^w)=3, #complements=3, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 2]: mu(Pi^w)=-8, #complements=4, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1, 1, 1, 1]: mu(Pi^w)=-120, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[7]: mu(Pi^w)=-1, #complements=1, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[6, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 3]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 3, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1, 1, 1, 1, 1]: mu(Pi^w)=720, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[8]: mu(Pi^w)=0, #complements=1, mu(c,1) values=[0], identity OK, Hanlon shape OK; control without meet condition: holds
+  w=[7, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[6, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[6, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 3]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[5, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 4]: mu(Pi^w)=0, #complements=4, mu(c,1) values=[0], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 3, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 2, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 2, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[4, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 3, 2]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 3, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2, 2, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 2, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[3, 1, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 2, 2]: mu(Pi^w)=48, #complements=8, mu(c,1) values=[-1], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 2, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 2, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[2, 1, 1, 1, 1, 1, 1]: mu(Pi^w)=0, #complements=0, mu(c,1) values=[], identity OK, Hanlon shape OK; control without meet condition: fails
+  w=[1, 1, 1, 1, 1, 1, 1, 1]: mu(Pi^w)=-5040, #complements=1, mu(c,1) values=[1], identity OK, Hanlon shape OK; control without meet condition: holds
+
+(D) -w: Theorem S (from Z*(-w)) vs rule (A-) vs the all-chambers rule
+  -w, w=[3]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[2, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[4]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[2, 2]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[2, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[5]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[4, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 2]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[2, 2, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[2, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[1, 1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[6]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[5, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[4, 2]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[4, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 3]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[3, 2, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 1, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[2, 2, 2]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[2, 2, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[2, 1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[1, 1, 1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[7]: Theorem S 1, rule (A-) 1, all chambers 1
+  -w, w=[6, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[5, 2]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[5, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[4, 3]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[4, 2, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[4, 1, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 3, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 2, 2]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 2, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[3, 1, 1, 1, 1]: Theorem S 0, rule (A-) 0, all chambers 0
+  -w, w=[2, 2, 2, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[2, 2, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[2, 1, 1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 0
+  -w, w=[1, 1, 1, 1, 1, 1, 1]: Theorem S 1, rule (A-) 1, all chambers 1
+
+-w classes nonzero on some cone but zero on all chambers: 9: [[2, 1], [2, 1, 1], [2, 2, 1], [2, 1, 1, 1], [2, 2, 1, 1], [2, 1, 1, 1, 1], [2, 2, 2, 1], [2, 2, 1, 1, 1], [2, 1, 1, 1, 1, 1]]
+
+ALL CHECKS PASSED
