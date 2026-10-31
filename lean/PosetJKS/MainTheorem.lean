@@ -20,10 +20,17 @@ For a finite poset `P` on `n ≥ 3` points, a primitive `n`-th root of unity `ζ
 The note proves these assuming three cited inputs (Jenča–Sarkoci, P. Hall, Hopf trace
 formula). Here the cited inputs are *not* assumed. (characterconj) and (closed) are proved
 without any of them: from Proposition `prop:Mside` (`prop_Mside`, which uses the homology-free
-proof of Lemma `lem:small`, `mu_OP_eq`) and Proposition `prop:Lside` (`prop_Lside`). (mainiso)
-is stated outright with a `sorry` proof, and the two cited inputs that are expressible without topology are recorded as
-separate `sorry`'d theorems (`jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`) so that a later
-proof can be assembled from them. No `axiom` is declared anywhere.
+proof of Lemma `lem:small`, `mu_OP_eq`) and Proposition `prop:Lside` (`prop_Lside`).
+
+P. Hall (`hall_mu_eq_reducedEuler`, `Hall.lean`) and the Hopf trace formula
+(`IsChainMap.hopf_trace`, `Hopf.lean`) are proved. (homchar) `trace_HP` is proved from the
+vanishing part of `jencaSarkoci_homology` (`trace_HP_of_vanishing`, `TraceHP.lean`), and
+(mainiso) `main_iso` from `trace_HP`, `trace_PLie` and `character_identity`, since equal
+characters imply isomorphic representations (`exists_iso_HP_PLie_of_trace`, `MainIso.lean`).
+
+The one remaining `sorry` is the proof of `jencaSarkoci_homology`, the homological content of
+Jenča–Sarkoci. `trace_HP` and `main_iso` depend on it, and nothing else in this file does.
+No `axiom` is declared anywhere.
 -/
 
 open Finset
@@ -111,7 +118,9 @@ theorem hall_mu_eq_reducedEuler (L : Type*) [PartialOrder L] [BoundedOrder L] [F
 /-! ### The two characters (intermediate statements of Proof I) -/
 
 /-- (homchar): `tr(g | H_P) = (-1)^{n-3} μ(OP(P)^g)`. The note derives it from Jenča–Sarkoci,
-P. Hall and the Hopf trace formula. -/
+P. Hall and the Hopf trace formula. Here it follows from the vanishing part of
+`jencaSarkoci_homology` by `trace_HP_of_vanishing`, whose proof uses P. Hall and the Hopf
+trace formula (both proved here). -/
 theorem trace_HP (hn : 3 ≤ Fintype.card α) (g : α ≃o α) :
     LinearMap.trace ℂ (HP α) (actHP g) = (-1 : ℂ) ^ (Fintype.card α - 3) * (muFixed g : ℂ) :=
   trace_HP_of_vanishing hn (jencaSarkoci_homology hn).1 g

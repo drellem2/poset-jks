@@ -8,7 +8,7 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
 * **Step 2 (M1, done)** proves Theorem S(a), S(b), Theorem Ψ and Corollary Ψ.1
   (`PLie(P) ≅ ℂ[Lin P]/R_P`, explicit and `Aut(P)`-equivariant, every finite poset with
   `n ≥ 1`). These are sorry-free and depend only on `propext`, `Classical.choice`, `Quot.sound`
-  (§5). The main theorem and its homological inputs are still `sorry` (§4).
+  (§5). At that step the main theorem and its homological inputs were still `sorry` (§4).
 * **Step 3 (M2, partial)** proves `trace_PLie` (Lemma `lem:liechar`). It also builds the
   homology-free Möbius-side infrastructure: the lattice facts about `OP(P)` and `OP(P)^g`,
   Weisner's theorem, the interval lemma and the recursion (W) (unsigned). `character_identity`
@@ -29,10 +29,23 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   identity (`character_identity`). So `character_identity` and `closed_formula` are proved and
   depend only on `propext`, `Classical.choice`, `Quot.sound`. Neither uses
   `jencaSarkoci_homology` or `hall_mu_eq_reducedEuler` (`scripts/CheckDeps.lean`, §5).
+* **Step 6 (M3b)** proves that two finite-dimensional representations of a finite group over a
+  field of characteristic zero with equal characters are isomorphic, and derives `main_iso` from
+  `trace_HP`, `trace_PLie` and `character_identity` (§4.2).
+* **Step 7 (M3a)** proves P. Hall's theorem (`hall_mu_eq_reducedEuler`, cited input B), the
+  Hopf trace formula for bounded complexes (cited input C), and `trace_HP` from the vanishing
+  part of `jencaSarkoci_homology` (§4.3).
+
+**Current status.** One `sorry` remains: the proof of `jencaSarkoci_homology` (cited input A,
+the homological content of Jenča–Sarkoci). Everything else is proved. Of the stated theorems,
+exactly `jencaSarkoci_homology`, `trace_HP` and `main_iso` depend on `sorryAx`, and
+`scripts/CheckDeps.lean` shows that the only cited input `trace_HP` and `main_iso` use is
+`jencaSarkoci_homology` (§4, §5). (characterconj) and (closed) are fully proved.
 
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
-* `lake build` succeeds. It reports 4 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
+* `lake build` succeeds. It reports 1 `sorry` warning (`MainTheorem.lean:102`,
+  `jencaSarkoci_homology`) and no errors.
 * No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
 
 ## Reproduce
@@ -40,9 +53,9 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 4 "declaration uses sorry"
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 1 "declaration uses sorry"
 lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
-lake env lean scripts/CheckDeps.lean       # which theorems use the cited inputs (A), (B); see §5
+lake env lean scripts/CheckDeps.lean       # which theorems use (A), (B) or trace_HP; see §5
 grep -rn "^  sorry" PosetJKS               # the sorry list below
 ```
 
@@ -63,10 +76,12 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/LieSide.lean` | `x ∈ F(P,g)` (`InF`, moved here unchanged from `MainTheorem.lean`); block systems `{g^j B : j < o}` and `InF` (`inF_blocksOf`, `blocksOf_of_inF`, `isBlockSys_pow`, `card_eq_of_isBlockSys`); words as concatenations of chunks `h^t u` (`eq_flatMap_of_rotate`, `rotate_mul_chunks`); the `B_P(x₀)` words of `g`-stable classes (`fixedB_struct`, `exists_fixedB`, `card_fiber`); Proposition `prop:Lside` (`prop_Lside`) (**all proved**) |
 | `PosetJKS/MuOP.lean` | Lemma `lem:small`, homology-free (Proof W): dual Weisner (`weisner_dual`); `π_a`, `π_ab` (`pa`, `pab`) and Lemma M; the quotient poset `P/π_ab` (`Contr`) and Lemma U (`mu_pab_top`); Lemma D (`mu_op_rec`); Lemma C, Jenča–Sarkoci's recursion `e_C(P) = ∑_b e_C(P/π_ab)` (`eC_rec`); Theorem A `μ(OP(P)) = (-1)^{n-1} e_C(P)` (`mu_OP_eq`) (**all proved**) |
 | `PosetJKS/Mside.lean` | `M̃(P,g)` (`Mt`), `M̃(P,1) = e_C(P)` (`Mt_one`); `ℤ/m × B₀ ≅ P` (`blkEquiv`) and Lemma `lem:interval`(ii) (`interval_sign`); the signed recursion (W) (`recursionW_signed`); the Möbius inversion on `X(P,g)` inside `OP(P)^g` (`sum_mu_below_eq_zero`, `sum_moebius_between`, `mu_eq_moebius_mul_sum`); `F(P,g)` as setoids vs `InF` (`opOfBlocks`, `inF_blocksOf_blkSet`); Proposition `prop:Mside` (`prop_Mside`) (**all proved**) |
-| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`; the rest `sorry`) |
+| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3); only `jencaSarkoci_homology` is `sorry`) |
+| `PosetJKS/CharacterIso.lean`, `MainIso.lean`, `CharacterIsoTest.lean` | step 6, see §4.2 |
+| `PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean` | step 7, see §4.3 |
 | `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
-| `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology` or `hall_mu_eq_reducedEuler` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
+| `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` or `trace_HP` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
 
 ## 1. Ingredient map: what Mathlib has, what must be built
 
@@ -79,11 +94,11 @@ work.
 |---|---|---|---|---|
 | **`OP(P)`** *(step 3: (i)–(iv) of `lem:lattice`, `lem:orbitquot`, `lem:interval`(i) done; see `OPLattice.lean`, `Interval.lean`)* | `Setoid` with `Setoid.completeLattice` (refinement order; `Setoid.bot_def`: `⊥` is `=`, `Setoid.top_def`), `Setoid.comap`, `Setoid.ker`, `Finpartition`, `Relation.ReflTransGen` | `IsOrderPreserving` (acyclic quotient), `OP`, `ProperOP`, `OPFixed`, `actSetoid`, `actProper : ProperOP ≃o ProperOP`; `isOrderPreserving_bot/top`; `OPFixed.bot_ne_top` | `OP(P)` is a lattice with meet the partition meet; `OP(P)^g` is a lattice containing `O_g`; joins with `O_g`; `{x : x ∨ O_g = 1̂} = X(P,g)` (note, Lemmas `lem:orbitquot`, `lem:lattice`) | 400–700 |
 | **Order complex, reduced homology** | `PreAbstractSimplicialComplex` / `AbstractSimplicialComplex` (faces only, no homology); `SSet`, `CategoryTheory.nerve`, `mem_nerve_nonDegenerate_iff_strictMono`; `AlternatingFaceMapComplex.obj`, `alternatingFaceMapComplex`, `SimplicialObject.Augmented`, `normalizedMooreComplex`; `AlgebraicTopology.singularHomologyFunctor`; `HomologicalComplex.eulerChar`, `homologyEulerChar` (definitions only). **Absent:** simplicial homology of a simplicial complex, the order complex of a poset, geometric realisation of a poset, wedges of spheres, homotopy types of complexes | hand-rolled augmented oriented chain complex on chains `Fin m ↪o L`: `Chains`, `face`, `bd`, `cycles`, `boundaries`, `redHom`; functoriality `chainMap`, `bd_chainMap`, `homMap` | `∂∘∂ = 0` (not needed for the statements; needed for every proof) ~60; optional bridge to `alternatingFaceMapComplex (nerve L)` (normalised) ~300+ | 60–400 |
-| **Möbius function, P. Hall** *(Weisner: done in step 3)* | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
-| **Hopf trace formula** | `LinearMap.trace`, `LinearMap.trace_restrict_eq_of_forall_mem` (PID file), `HomologicalComplex.eulerChar` (definition). **Absent:** Euler–Poincaré `χ(C) = χ(H)`, the Hopf trace formula, additivity of trace over `0 → U → V → V/U → 0` | — | Pure linear algebra on a bounded complex of finite-dimensional spaces with a chain endomorphism; specialise to `Chains`/`redHom`. Uses `LinearMap.trace_eq_matrix_trace` with an adapted basis | 300–500 |
+| **Möbius function, P. Hall** *(Weisner: done in step 3; Hall: done in step 7, §4.3)* | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
+| **Hopf trace formula** *(done in step 7, §4.3)* | `LinearMap.trace`, `LinearMap.trace_restrict_eq_of_forall_mem` (PID file), `HomologicalComplex.eulerChar` (definition). **Absent:** Euler–Poincaré `χ(C) = χ(H)`, the Hopf trace formula, additivity of trace over `0 → U → V → V/U → 0` | — | Pure linear algebra on a bounded complex of finite-dimensional spaces with a chain endomorphism; specialise to `Chains`/`redHom`. Uses `LinearMap.trace_eq_matrix_trace` with an adapted basis | 300–500 |
 | **Jenča–Sarkoci** (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C} S^{n-3}`) | Nothing usable: no homotopy types of finite complexes, no shellability or discrete Morse theory, no Quillen fibre lemma | statement of its homological content only: `jencaSarkoci_homology` (`H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)`) | The homotopy statement cannot be expressed in current Mathlib. The homological content needs a combinatorial acyclicity proof, e.g. a shelling or acyclic matching of `Δ(\widehat{OP(P)})`, or a formal transcription of the Jenča–Sarkoci argument. **This is the main obstacle of the topological route.** | 2000–5000+, research-level |
 | **`Lie(P) = span{w e_ζ}`** | `Finsupp`, `Finsupp.lmapDomain`, `Finsupp.linearCombination`, `MonoidAlgebra`, `FreeLieAlgebra`, `finRotate`, `Equiv.Perm.sign`, `IsPrimitiveRoot`, `IsPrimitiveRoot.pow_eq_one_iff_dvd`, `IsPrimitiveRoot.geom_sum_eq_zero`. **Absent:** shuffle algebra / shuffle product on `ℂ[S_n]`, Ree's theorem `Lie_n^⊥ = Sh_n`, Wachs's comb basis | `Word`, `Alg` (`ℂ[S_n]` as `Word α →₀ ℂ`), `rot`, `wEζ`, `PLie`, `shuffle`, `Sh`, `W`, `R`, `cyc`, `eC`, `classRot`, `fixedClassSum`, `prefixSet`, `restrict`, `IsCut` | basis `{w_C e_ζ}` of `PLie(P)` (Lemma `lem:liechar`) ~200; contraction operator `E_{a,x}` and `E_{a,x}(Sh) ⊆ Sh` (note's "key tool") ~300; Prop. Φ (Wachs + Ree), only for Theorem S(c),(d) ~1500+ | 500 (milestone) / +1500 (Φ) |
-| **`Aut(P)` actions, characters** | `α ≃o α` is a group (`RelIso` group instance, `Mathlib/Algebra/Order/Group/End.lean`), `orderOf`; `Representation`, `Representation.character`, `Representation.char_iso`, `FDRep.character`, `FDRep.char_iso`, `FDRep.char_orthonormal`, `FDRep.simple_iff_char_is_norm_one`, Maschke `MonoidAlgebra.Submodule.exists_isCompl`. **Absent:** "equal characters imply isomorphic" for finite groups over `ℂ` (only iso ⇒ equal characters, `char_iso`) | `relabel`, `relabel_mem_PLie`, `relabel_mem_W`, `relabel_mem_R` (all proved); `actPLie`, `actMP`, `actHP`, `actProper` | equal characters ⇒ isomorphic (Maschke + orthonormality; multiplicities read off by inner products) ~300–500 | 300–500 |
+| **`Aut(P)` actions, characters** *(equal characters ⇒ isomorphic: done in step 6, §4.2)* | `α ≃o α` is a group (`RelIso` group instance, `Mathlib/Algebra/Order/Group/End.lean`), `orderOf`; `Representation`, `Representation.character`, `Representation.char_iso`, `FDRep.character`, `FDRep.char_iso`, `FDRep.char_orthonormal`, `FDRep.simple_iff_char_is_norm_one`, Maschke `MonoidAlgebra.Submodule.exists_isCompl`. **Absent:** "equal characters imply isomorphic" for finite groups over `ℂ` (only iso ⇒ equal characters, `char_iso`) | `relabel`, `relabel_mem_PLie`, `relabel_mem_W`, `relabel_mem_R` (all proved); `actPLie`, `actMP`, `actHP`, `actProper` | equal characters ⇒ isomorphic (Maschke + orthonormality; multiplicities read off by inner products) ~300–500 | 300–500 |
 
 ## 2. Route comparison and recommendation
 
@@ -171,11 +186,11 @@ Common setup. The poset `P` is a finite type `α` with `[PartialOrder α]`, `[Fi
 | **(characterconj)** `(-1)^{n-3} μ(OP(P)^g) = sgn(g) ∑_{gC=C} ζ^{r_g(C)}`, `n ≥ 3` | `character_identity (hn : 3 ≤ n) (hζ) g` | hypotheses: `n ≥ 3` and `ζ` primitive, both from the note |
 | **(mainiso)** `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules | `main_iso hn hζ : ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ g x, (e (actHP g x) : Alg α) = sgnC g • relabel g (e x)` | equivariance is stated in the ambient `ℂ[S_n]`, so no action on the submodule `PLie` is needed in the statement |
 | **(closed)** `sgn(g)(-1)^{n-3}μ = ∑ ζ^{r} = μ(o) ∑_{x∈F(P,g)} e_C(P|_{B_0(x)})` | `closed_formula hn hζ g B₀ hB₀` | `x ∈ F(P,g)` is `InF g x`: `x` is a set of blocks forming a partition into `orderOf g` blocks, each a nonempty union of components, `g` maps blocks to blocks, transitively. `B₀` is an arbitrary choice of one block per `x` (`hB₀`). The note says "any one block"; the Lean form quantifies over all choices. `e_C(P|_B)` is `eC ↥B` with the induced order |
-| `tr(g|H_P) = (-1)^{n-3}μ(OP(P)^g)` (Lemma `lem:homchar`) | `trace_HP hn g` | the note proves it *from* (A)–(C). Here it is stated outright |
+| `tr(g|H_P) = (-1)^{n-3}μ(OP(P)^g)` (Lemma `lem:homchar`) | `trace_HP hn g` | the note proves it *from* (A)–(C). Here it is proved from the vanishing part of (A), with (B) and (C) proved (§4.3) |
 | `tr(g|PLie) = ∑ ζ^{r_g(C)}` (Lemma `lem:liechar`) | `trace_PLie h0 hζ g` | `h0 : 0 < n`, the note's implicit `n ≥ 1` (§4) |
 | (A) Jenča–Sarkoci | `jencaSarkoci_homology hn`: `H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)` | homological content only (all that the proofs use); the homotopy-type statement is not expressible in Mathlib today |
 | (B) P. Hall | `hall_mu_eq_reducedEuler L (h : ⊥ ≠ ⊤)` | the hypothesis `0̂ ≠ 1̂` belongs to the *cited result*, not to the main theorem. It is needed: for a one-point `L`, `μ = 1` while `χ̃(∅) = -1` |
-| (C) Hopf trace formula | not stated in Lean yet | step 2 (linear algebra; see §1) |
+| (C) Hopf trace formula | `IsChainMap.hopf_trace` (`Hopf.lean`), for a bounded complex of finite-dimensional spaces | proved in step 7 (§4.3) |
 | `B_P` (first block contains the base component `P_1`) | `InB x₀ w`: `w ∈ Lin(P)` and `x₀` lies in every nonempty union-prefix of `w` | base component = component of the base point `x₀`. Union-prefixes are nested and are unions of components, so "first block ⊇ `P_1`" ⇔ "`x₀` ∈ every nonempty union-prefix" |
 | **Theorem S(a)** | `thmS_a x₀`: `B_P` independent mod `Sh_n`, `|B_P| = e_C(P)`, and `P` connected ⇒ `W_P ∩ Sh_n = 0` | connected: `IsConnectedPoset α` = nonempty and only `∅`, `univ` are unions of components |
 | **Theorem S(b)** | `thmS_b x₀`: `span B_P ⊔ R_P = W_P`, `span B_P ⊓ R_P = 0`, `W_P ⊓ Sh_n = R_P`, `dim R_P = |Lin P| − e_C(P)` | |
@@ -191,20 +206,22 @@ admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining
 `h0 : 0 < Fintype.card α` on `trace_PLie`, `corPsi_bijective` and `corPsi`. It is the note's
 implicit `n ≥ 1` (its objects use `1/n`), and the statements are false without it (§4).
 
-## 4. Sorries (4) and gaps
+## 4. Sorries (1) and gaps
 
-`sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`). No definition
+`sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`; a scan of all of
+`PosetJKS` that skips comments and docstrings finds the same single occurrence). No definition
 depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
 
-| # | Location | Theorem |
-|---|---|---|
-| 2 | `MainTheorem.lean:78` | `main_iso` |
-| 4 | `MainTheorem.lean:102` | `trace_HP` |
-| 6 | `MainTheorem.lean:118` | `jencaSarkoci_homology` (cited input A) |
-| 7 | `MainTheorem.lean:129` | `hall_mu_eq_reducedEuler` (cited input B) |
+| # | Location | Theorem | What it blocks |
+|---|---|---|---|
+| 6 | `MainTheorem.lean:105` | `jencaSarkoci_homology` (cited input A) | `trace_HP` (its vanishing part, via `trace_HP_of_vanishing`) and hence `main_iso`. Nothing else: (characterconj) and (closed) do not use it (§5) |
 
-Numbering as in step 1. #5 `trace_PLie` is closed in step 3 (§4.1). #3 `closed_formula` has no
-`sorry` of its own since step 4: its second conjunct is `prop_Lside` (closed), and its first
+Numbering as in step 1. #2 `main_iso` is closed in step 6 (§4.2), from `trace_HP`. #4
+`trace_HP` and #7 `hall_mu_eq_reducedEuler` are closed in step 7 (§4.3); `trace_HP` uses the
+first conjunct of `jencaSarkoci_homology` (vanishing outside degree `n - 3`), and the second
+conjunct (`dim H_P = e_C(P)`) is used by no proof in `PosetJKS` (the only use of
+`jencaSarkoci_homology` there is `(jencaSarkoci_homology hn).1` in `trace_HP`). #5
+`trace_PLie` is closed in step 3 (§4.1). #3 `closed_formula` has no `sorry` of its own since step 4: its second conjunct is `prop_Lside` (closed), and its first
 conjunct is `character_identity` multiplied by `sgn(g)` (`sgn(g)² = 1`). #1
 `character_identity` is closed in step 5, from `prop_Mside` and `prop_Lside` (§4.1). So both are
 sorry-free; neither uses the cited inputs (A), (B) (§5).
@@ -212,8 +229,8 @@ sorry-free; neither uses the cited inputs (A), (B) (§5).
 The five M1 sorries of step 1 (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`,
 `corPsi_equivariant`) are closed. `corPsi` follows from the last two.
 
-**Statement changes.** None in step 5: the types of `character_identity` and `closed_formula`
-are unchanged, and no hypothesis was added. None in step 4. `InF` moved from `MainTheorem.lean` to `LieSide.lean`
+**Statement changes.** None in steps 6 and 7 (§4.2, §4.3). None in step 5: the types of
+`character_identity` and `closed_formula` are unchanged, and no hypothesis was added. None in step 4. `InF` moved from `MainTheorem.lean` to `LieSide.lean`
 with the same body, so the type of `closed_formula` is unchanged.
 
 **Statement changes in step 2.** Following `AUDIT_FAITHFULNESS.md` §1.1, three statements
@@ -403,7 +420,7 @@ Gaps and deliberate modelling choices:
 
 ### 4.2 M3b: equal characters imply isomorphic, and (mainiso) from the characters
 
-`main_iso` is proved from `trace_HP` (still `sorry`), `trace_PLie` and `character_identity`.
+`main_iso` is proved from `trace_HP` (still `sorry` at this step; closed in §4.3), `trace_PLie` and `character_identity`.
 Sorry count 4 → 3 (`trace_HP`, `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`). No
 statement changed and no hypothesis was added. The one other edit to `MainTheorem.lean` is
 needed because Lean has no forward references: `main_iso` (docstring and statement
@@ -467,8 +484,8 @@ the only `sorry` under `main_iso` is the one in `trace_HP`. Once `trace_HP` is p
 `jencaSarkoci_homology`, `main_iso` depends on `jencaSarkoci_homology` alone.
 
 The earlier parts of this file (the status lines, the §1 row "Aut(P) actions, characters", and
-the §4 table entry for `main_iso` at its old line) were written before this step. The table
-entry is now closed.
+the §4 table entry for `main_iso` at its old line) were written before this step. They have
+since been brought up to date with steps 6 and 7.
 
 ### 4.3 M3a: P. Hall, the Hopf trace formula, and `trace_HP`
 
@@ -536,7 +553,7 @@ So the only open dependency of `trace_HP` is `jencaSarkoci_homology`.
 'PosetJKS.trace_HP' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
 'PosetJKS.trace_PLie' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
-'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.thmS_a' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.thmS_b' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.thmPsi' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -596,30 +613,58 @@ So the only open dependency of `trace_HP` is `jencaSarkoci_homology`.
 'PosetJKS.bd_zero_single' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.corPsi_bijective_false' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.trace_PLie_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Representation.nonempty_equiv_of_character_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Representation.nonempty_equiv_iff_character_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Representation.exists_linearEquiv_of_trace_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.exists_iso_HP_PLie_of_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.CharacterIsoTest.trivSgn_equiv_permRep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.CharacterIsoTest.not_triv2_equiv_permRep' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.CharacterIsoTest.not_triv_equiv_sgn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.mu_eq_chainEuler' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.mu_bot_top_eq_chainSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.trace_eq_trace_restrict_add_trace_mapQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.IsChainMap.hopf_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.bd_comp_bd'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.trace_chainMap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.card_fixedChains' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.properOP_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.trace_HP_of_vanishing' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
-The M1 theorems (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`, `corPsi_equivariant`,
-`corPsi`), `trace_PLie`, the M2 infrastructure (step 3), `prop_Lside` with the Ramanujan sum
-and the `e_C` transport (step 4), and `mu_OP_eq`, `interval_sign`, `prop_Mside`,
-`character_identity` and `closed_formula` (step 5), with their supporting results,
-depend only on the three standard axioms (`isOrderPreserving_inf` does not even use
-`Classical.choice`). The remaining
-stated theorems (`main_iso`, `trace_HP` and the two cited inputs) also depend on `sorryAx`,
-from the visible `sorry`s in §4. The definitions are `sorry`-free.
+Every listed declaration depends only on `propext`, `Classical.choice`, `Quot.sound`
+(`isOrderPreserving_inf` does not even use `Classical.choice`), except three, which also depend
+on `sorryAx`: `jencaSarkoci_homology` (the one visible `sorry`, §4), `trace_HP` and `main_iso`.
+In particular the M1 theorems, `trace_PLie`, `prop_Lside`, `mu_OP_eq`, `prop_Mside`,
+`character_identity`, `closed_formula`, the general lemma `nonempty_equiv_of_character_eq` and
+`exists_iso_HP_PLie_of_trace` (step 6), and `hall_mu_eq_reducedEuler`,
+`IsChainMap.hopf_trace` and `trace_HP_of_vanishing` (step 7) are `sorry`-free. The definitions
+are `sorry`-free.
 
-`sorryAx` stands for every `sorry`, so `#print axioms` alone cannot show that
-`character_identity` avoids the two cited inputs in particular. `scripts/CheckDeps.lean`
-walks the constants used by a declaration's type and value, transitively:
+`sorryAx` stands for every `sorry`, so `#print axioms` alone cannot show which `sorry` a
+theorem uses. `scripts/CheckDeps.lean` walks the constants used by a declaration's type and
+value, transitively, and reports which of `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`
+and `trace_HP` occur:
 
 ```
 PosetJKS.checkDepsControlJS: 16398 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology]
-PosetJKS.checkDepsControlHall: 6757 constants; cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]
+PosetJKS.checkDepsControlHall: 13334 constants; cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]
 PosetJKS.mu_OP_eq: 15365 constants; cited inputs used: []
 PosetJKS.prop_Mside: 18419 constants; cited inputs used: []
 PosetJKS.character_identity: 23406 constants; cited inputs used: []
 PosetJKS.closed_formula: 23408 constants; cited inputs used: []
-PosetJKS.main_iso: 15772 constants; cited inputs used: []
+PosetJKS.main_iso: 30199 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
+PosetJKS.exists_iso_HP_PLie_of_trace: 24937 constants; cited inputs used: []
+Representation.nonempty_equiv_of_character_eq: 17940 constants; cited inputs used: []
+PosetJKS.hall_mu_eq_reducedEuler: 13252 constants; cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]
+PosetJKS.trace_HP_of_vanishing: 22538 constants; cited inputs used: []
+PosetJKS.trace_HP: 22736 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
 ```
 
 The two controls (defined in the script, each using one cited input) are detected.
-`main_iso` is listed only as a further data point: it is a `sorry`, so it uses nothing.
+`character_identity`, `closed_formula`, `mu_OP_eq` and `prop_Mside` use none of the three.
+`trace_HP` and `main_iso` use `jencaSarkoci_homology` and not `hall_mu_eq_reducedEuler`
+(the Hall step inside `trace_HP_of_vanishing` goes through `mu_bot_top_eq_chainSum`
+directly). Since `jencaSarkoci_homology` is the only `sorry`, it is the only thing `trace_HP`
+and `main_iso` wait on. A proof of its first conjunct alone (vanishing of `H̃_d` for
+`d ≠ n-3`), passed to `trace_HP_of_vanishing`, would make both `sorry`-free; the second
+conjunct (`dim H_P = e_C(P)`) is needed only to close `jencaSarkoci_homology` as stated.
