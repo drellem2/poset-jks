@@ -105,3 +105,12 @@ import PosetJKS
 #print axioms PosetJKS.face_insertAt_succAbove
 #print axioms PosetJKS.bd_single_insertAt
 #print axioms PosetJKS.Test.redHom_antichain2_ne
+
+-- Route C, slice S2: Lemma K (`PosetJKS/ConeRetract.lean`) and its controls
+#print axioms PosetJKS.ConeRetraction.bd_s_add_s_bd_eq
+#print axioms PosetJKS.ConeRetraction.bd_s_add_s_bd_of_hcount_eq_zero
+#print axioms PosetJKS.ConeRetraction.bd_s_add_s_bd
+#print axioms PosetJKS.ConeRetraction.exact_of_retract
+#print axioms PosetJKS.Test.isEmpty_coneRetraction_antichain2
+#print axioms PosetJKS.Test.isEmpty_coneRetraction_antichain2'
+#print axioms PosetJKS.Test.redHom_V_subsingleton
