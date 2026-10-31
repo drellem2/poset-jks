@@ -17,10 +17,29 @@ Combinatorics* vol. 1, 2nd ed.; [Sta05] = R. P. Stanley, *Some remarks on
 sign-balanced and maj-balanced posets*, Adv. Appl. Math. 34 (2005) 880–902,
 arXiv:math/0211113.
 
+Audits and prior art: [AudLS] = `notes/audit_linext_statistics.md` (the
+independent audit of this note); [H] = `notes/h_vector_omega_c.md`
+(Theorem H, the h-vector of Ω_C); [AudH] = `notes/audit_h_vector_omega_c.md`
+(its independent audit); [PA] = `notes/prior_art_linext_statistics.md` (the
+prior-art check of Theorem Ω, Corollary Ω-des and Theorem H). Inside [PA]:
+[DMR] = Develin–Macauley–Reiner, *Toric partial orders*, arXiv:1211.4247;
+[AGRR] = Adin–Gessel–Reiner–Roichman, *Cyclic quasi-symmetric functions*,
+arXiv:1811.05440; [Pet] = T. K. Petersen, *Cyclic descents and
+P-partitions*, arXiv:math/0405479; [ARR] = Adin–Reiner–Roichman, *On cyclic
+descents for tableaux*, arXiv:1710.06664.
+
+**Audit status.** [AudLS] re-derived every proof and recomputed every
+number with independent code. Theorem Ω, Corollary Ω-des, the three
+refutations (§1.3, §3, §4) and Propositions 3, 3′ and 4 all HOLD, and no
+claim fails. These are tagged **PROVEN + audited** below. Not covered by
+the audit: Proposition 1 (KNOWN, EC1), §5, §6 and the B_P control counts
+708 and 811 of §2.2.
+
 ## Verdict
 
 **The machinery gives one identity that we did not find in the literature,
-Theorem Ω. Everything else it gives about statistics is P-partition theory
+Theorem Ω (with its descent expansion, Corollary Ω-des, and its h-vector,
+Theorem H of [H]). Everything else it gives about statistics is P-partition theory
 we already know, or follows from the word combinatorics of disjoint unions.**
 The argument has three parts.
 
@@ -39,9 +58,13 @@ The argument has three parts.
    - Read from 0̂ (the face numbers), it gives Stanley's order polynomial and
      the des-distribution on Lin P (§1, KNOWN).
    - Read from 1̂ (the Möbius values μ(π, 1̂)), it gives a "cyclic order
-     polynomial" Ω_C(P, m) (Theorem Ω, §2, PROVEN, NOT FOUND). Its leading
-     coefficient is e_C(P)/n!, and it is a P-partition refinement of the
-     basis count |B_P| = e_C(P).
+     polynomial" Ω_C(P, m) (Theorem Ω, §2, PROVEN + audited, NOT FOUND for
+     general P). Its leading coefficient is e_C(P)/n!, and it is a
+     P-partition refinement of the basis count |B_P| = e_C(P).
+   - Its h-vector is the cyclic-descent distribution on the rotation
+     classes of Lin P, under a separated natural labelling (Theorem H of
+     [H], PROVEN + audited in [AudH], NOT FOUND for general P). So it is
+     nonnegative.
 3. *The four leads.*
    - Kraskiewicz–Weyman: only the dimension-level statement survives, and
      only for prime n, by a folklore rotation lemma (§3).
@@ -54,15 +77,16 @@ The argument has three parts.
 |---|---|---|---|
 | 1 | Face numbers of C_P: w_k = Σ_{\|π\|=k} e(Q_π), so Ω(P,m) = Σ_π e(Q_π) C(m,\|π\|) = Σ_{w∈Lin P} C(m+n−1−des w, n) | PROVEN; COMPUTED n ≤ 7 `[faces]` | KNOWN (EC1 §3.15) |
 | 1′ | Euler step of [GT] Thm 2 = Lemma W = Ω(P,−1) = (−1)^n[P antichain] | PROVEN ([ME]) | KNOWN (Stanley reciprocity at m = 1; already noted in [ME]) |
-| 2 | **Theorem Ω**: Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f: P→[m] order-preserving, every upper level set that is a nonempty union of components contains T} | **PROVEN**; COMPUTED n ≤ 6, m ≤ 3, every T `[omegaC-f]` | NOT FOUND (general P); KNOWN for the antichain (§2.3) |
-| 2′ | Descent expansion of Ω_C (Corollary Ω-des) | PROVEN; COMPUTED: all natural labellings for n ≤ 5, canonical labelling for n ≤ 7 `[omegaC-des]` | NOT FOUND |
-| 2″ | h-vector of Ω_C is nonnegative | COMPUTED n ≤ 7 `[omegaC-h]`; OPEN | — |
-| 3 | maj(w_2⋯w_n w_1) ≡ maj(w) − cdes(w) (mod n), so for **n prime**, #{u ∈ Lin(P)C_n : maj u ≡ r} = e_C(P) = dim PLie(P) for every r | PROVEN; COMPUTED n ≤ 7 `[maj-rot]`, `[maj-rot-closure]`; fails for composite n | KNOWN IN SUBSTANCE (folklore rotation lemma) |
-| 3′ | P disconnected and gcd(component sizes) = 1 ⇒ maj is equidistributed mod n on Lin P | PROVEN; COMPUTED 485 posets `[maj-equi]` | KNOWN IN SUBSTANCE (MacMahon–Stanley factorisation) |
-| 4 | \|I(P)\| = \|[n; m]_{q=−1}\| ∏ \|I(T_i)\| for P = ⊔ T_i; so two odd components ⇒ sign-balanced | PROVEN; COMPUTED 503 posets `[sign-union]` | KNOWN IN SUBSTANCE (MacMahon inv-shuffle at q = −1); not found stated in [Sta05] |
-| ✗ | (−1)^{n−1} χ_P(−1) = e(P) with χ_P(t) = Σ_{π∈OP} μ(0̂,π) t^{\|π\|−1} | **FALSE**: holds on 6 of 2449 posets (the antichains) `[chi-full]` | — |
-| ✗ | #{w ∈ Lin P : maj w ≡ 1 (mod n)} = e_C(P) (KW at dimension level, on Lin P) | **FALSE** on 2443 of 2449 `[maj-KW-dim]` | — |
-| ✗ | \|I(P)\| = e_C(P) = \|μ(OP(P))\| | **FALSE** on 2443 of 2449 `[sign-ctl-eC]` | — |
+| 2 | **Theorem Ω**: Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f: P→[m] order-preserving, every upper level set that is a nonempty union of components contains T} | **PROVEN + audited** ([AudLS] §1); COMPUTED n ≤ 6, m ≤ 3, every T `[omegaC-f]`; recomputed in [AudLS] as an identity of polynomials, all 405 posets n ≤ 6, every T | NOT FOUND (general P; [PA]). It is not a toric order polynomial of [DMR]/[AGRR] (leading coefficient, and numerically). KNOWN for the antichain ([Pet] Prop. 1.1, credited there to Fulman; §2.3) |
+| 2′ | Descent expansion of Ω_C (Corollary Ω-des) | **PROVEN + audited** ([AudLS] §2); COMPUTED: all natural labellings for n ≤ 5, canonical labelling for n ≤ 7 `[omegaC-des]`; all natural labellings for n ≤ 6 in [AudLS] | NOT FOUND ([PA]) |
+| 2″ | h-vector of Ω_C: under a separated natural labelling, h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0 (**Theorem H** of [H]) | **PROVEN + audited** ([H] §2, [AudH]); COMPUTED n ≤ 7 `[omegaC-h]` and in [H], [AudH], [PA] | NOT FOUND (general P; [PA]). KNOWN for the antichain ([Pet] Prop. 1.1, after Fulman). The statistic is Cellini's cyclic descent number. h_C is not an [ARR] cyclic-descent-extension distribution |
+| 2‴ | The quasisymmetric lift K_C(P) of Ω_C is F-positive | COMPUTED n ≤ 7 ([PA] §3); OPEN | NOT FOUND ([PA]) |
+| 3 | maj(w_2⋯w_n w_1) ≡ maj(w) − cdes(w) (mod n), so for **n prime**, #{u ∈ Lin(P)C_n : maj u ≡ r} = e_C(P) = dim PLie(P) for every r | **PROVEN + audited** ([AudLS] §4); COMPUTED n ≤ 7 `[maj-rot]`, `[maj-rot-closure]`; fails for composite n | KNOWN IN SUBSTANCE (folklore rotation lemma) |
+| 3′ | P disconnected and gcd(component sizes) = 1 ⇒ maj is equidistributed mod n on Lin P | **PROVEN + audited** ([AudLS] §4); COMPUTED 485 posets `[maj-equi]` | KNOWN IN SUBSTANCE (MacMahon–Stanley factorisation) |
+| 4 | \|I(P)\| = \|[n; m]_{q=−1}\| ∏ \|I(T_i)\| for P = ⊔ T_i; so two odd components ⇒ sign-balanced | **PROVEN + audited** ([AudLS] §4); COMPUTED 503 posets `[sign-union]` | KNOWN IN SUBSTANCE (MacMahon inv-shuffle at q = −1); not found stated in [Sta05] |
+| ✗ | (−1)^{n−1} χ_P(−1) = e(P) with χ_P(t) = Σ_{π∈OP} μ(0̂,π) t^{\|π\|−1} | **FALSE**: holds on 6 of 2449 posets (the antichains) `[chi-full]`. Refutation audited ([AudLS] §3; recomputed for n ≤ 6) | — |
+| ✗ | #{w ∈ Lin P : maj w ≡ 1 (mod n)} = e_C(P) (KW at dimension level, on Lin P) | **FALSE** on 2443 of 2449 `[maj-KW-dim]`. Refutation audited ([AudLS] §3) | — |
+| ✗ | \|I(P)\| = e_C(P) = \|μ(OP(P))\| | **FALSE** on 2443 of 2449 `[sign-ctl-eC]`. Refutation audited ([AudLS] §3) | — |
 | ✗ | Descent-algebra / Garsia–Reutenauer action on PLie(P) | PROVEN: PLie(P) is an S_n-module iff PLie(P) = Lie_n iff e_C(P) = (n−1)!; otherwise there is nothing for the descent algebra to act on (§5) | — |
 
 ## 0. Conventions
@@ -140,7 +164,8 @@ For a finite poset P on n ≥ 1 points define the **cyclic order polynomial**
 
   Ω_C(P, m) := Σ_{π ∈ OP(P)} (−1)^{|π|−1} μ_{OP(P)}(π, 1̂) C(m, |π|).
 
-**Theorem Ω (PROVEN; COMPUTED `[omegaC-mu]`, `[omegaC-f]`).** Fix a
+**Theorem Ω (PROVEN + audited in [AudLS] §1; COMPUTED `[omegaC-mu]`,
+`[omegaC-f]`).** Fix a
 component T of P. For every m ≥ 0,
 
   Ω_C(P, m) = Σ_{π∈OP(P)} e_C(Q_π) C(m, |π|)
@@ -177,8 +202,12 @@ In particular:
 4. *One rotation per class.* The cyclic class of u is {u γ^j : j a cut}
    ([LE] §0; [Thm] Lemma `lem:rot`). As in the proof of [GT] Lemma 1.3, the
    class corresponds to the cyclic sequence of the irreducible pieces of u,
-   and rotating at a cut rotates that sequence. The pieces have pairwise
-   disjoint letter sets. So exactly one member of the class has the piece
+   and rotating at a cut rotates that sequence. (Two-line argument, from
+   [AudLS] §1: the old piece boundaries are cuts of the rotated word,
+   being differences of nested unions of components; and a cut of the
+   rotated word strictly inside a piece would give, after adding or
+   removing the moved pieces, a cut of u strictly inside that piece.) The
+   pieces have pairwise disjoint letter sets. So exactly one member of the class has the piece
    containing T_σ as its last piece. Hence
 
      e_C(Q_σ) = #{u ∈ Lin Q_σ : the last piece of u contains T_σ}.
@@ -195,9 +224,10 @@ In particular:
 
 ### 2.2 Descent expansion
 
-**Corollary Ω-des (PROVEN; COMPUTED `[omegaC-des]`: every component T, all
-natural labellings for n ≤ 5, the canonical labelling for n ≤ 7, 3666
-cases).** Fix a natural labelling and a component T. For w ∈ Lin P, let
+**Corollary Ω-des (PROVEN + audited in [AudLS] §2; COMPUTED
+`[omegaC-des]`: every component T, all natural labellings for n ≤ 5, the
+canonical labelling for n ≤ 7, 3666 cases; [AudLS] checked every natural
+labelling for n ≤ 6, 57,075 cases).** Fix a natural labelling and a component T. For w ∈ Lin P, let
 C_T(w) be the set of cuts p ∈ [1, n−1] of w with T ⊆ {w_1, …, w_p}, and put
 c = |C_T(w)|. Then
 
@@ -226,9 +256,27 @@ P = {0<2} ⊔ {1<4} ⊔ {3} with T = {1, 4} (unit test
 forms a class of size one, yet w = 01423 is not in B_P. The reason is that
 a fibre boundary of f and a cut of w are different things. Ω_C is
 intrinsic, so its h-vector h_C(P) is a poset invariant that refines e_C(P).
-It is nonnegative on all 2450 posets with n ≤ 7 `[omegaC-h]`. A proof of
-nonnegativity, and a single statistic on e_C(P) objects that realises it,
-are **OPEN**.
+It is nonnegative on all 2450 posets with n ≤ 7 `[omegaC-h]`.
+
+*Update: Theorem H.* Nonnegativity, with a statistic that realises it, is
+now **Theorem H** of [H] (PROVEN + audited in [AudH]). Call a natural
+labelling *separated* if every minimal element of a non-singleton component
+has a smaller label than every maximal element of a non-singleton
+component; such labellings always exist. Under a separated labelling, for
+n ≥ 2,
+
+  Ω_C(P, m) = Σ_{κ ∈ Cyc(P)} C(m + n − cdes(κ), n),
+
+so h_C(P)_j = #{κ ∈ Cyc(P) : cdes κ = j + 1} ≥ 0. Here Cyc(P) is the set
+of rotation classes of Lin P, and cdes is constant on a class. The B_P
+failures above are explained in [H] §3: the representative must be a
+rotation broken at a descent junction, and under the labelling λ_0 of [H]
+the last-piece B_P, with T the component of the largest label, is one
+([H] Prop. B, audited). That B_P (fixed by label, last piece) is not the
+B_P of [LE] §0 (first block contains an arbitrary base component): for the
+latter, des fails to realise h_C under λ_0 on 41 of 554 (poset, base)
+pairs with n ≤ 6 ([AudH] §5). The F-positivity of the quasisymmetric lift of
+Ω_C, which is stronger, is COMPUTED for n ≤ 7 and **OPEN** ([PA] §3).
 
 Small values of the h-vector h_C (its entries sum to e_C):
 
@@ -255,20 +303,25 @@ This is a classical identity. It follows from the Stirling expansion of
 power sums together with (k−1)! = |μ_{Π_k}|. **KNOWN**. It is also the
 dimension-level shadow of B_{A_n} = {words starting with 1}.
 
-*Prior art for general P.* **NOT FOUND**. We searched for the Möbius
-function of OP(P) (order congruences) together with order polynomials and
-P-partitions. We found Jenča–Sarkoci (arXiv:1112.5782), which has μ and the
-sphere count but no polynomial, and standard order-polynomial material. We
-checked two nearby theories at abstract level only:
-- Develin–Macauley–Reiner, *Toric partial orders* (arXiv:1211.4247). Their
-  toric equivalence flips sources to sinks and changes P, which is not our
-  rotation at cuts.
-- T. K. Petersen, *Cyclic descents and P-partitions* (arXiv:math/0405479).
-  Its cyclic P-partitions build Cellini's cyclic Eulerian algebra on S_n,
-  not a cut-rotation quotient for general P.
+*Antichain, attribution.* [PA] finds the antichain case in [Pet]
+Prop. 1.1 (credited there to Fulman): the bijection S_n/C_n ↔ S_{n−1}
+that puts n last is the antichain case of the T-anchoring in Theorem Ω.
 
-Neither paper was read in full. Whether Ω_C coincides with a toric order
-polynomial of DMR is **OPEN**, and it is the first thing to check.
+*Prior art for general P.* **NOT FOUND** (a search result, [PA]). We
+searched for the Möbius function of OP(P) (order congruences) together with
+order polynomials and P-partitions. We found Jenča–Sarkoci
+(arXiv:1112.5782), which has μ and the sphere count but no polynomial, and
+standard order-polynomial material. [PA] then read the toric and cyclic
+literature ([DMR] in full, [AGRR], [Pet], [ARR]):
+- Ω_C is **not** a toric order polynomial. [DMR] defines none; the toric
+  P-partitions of [AGRR] give order polynomials with leading coefficient
+  n·|L^tor|/n!, whereas Ω_C has e_C(P)/n!. Numerically, Ω_C(P, ·) is not
+  in the cone of toric order polynomials for any P with n ≤ 5 ([PA] §1).
+- Petersen's cyclic P-partitions build Cellini's cyclic Eulerian algebra on
+  S_n, not a cut-rotation quotient for general P.
+- Corollary Ω-des was not found: in [AGRR] every rotation counts, while in
+  Ω-des only rotations at cuts count, with cut positions forced to be
+  equalities.
 
 *Reciprocity.* We tested two natural guesses, and both fail:
 - (−1)^n Ω_C(P, −m) equals the strict version of the Theorem-Ω count on 212
@@ -289,7 +342,7 @@ is at the level of dimensions, dim PLie(P) = e_C(P).
 holds on only 6 of 2449 posets `[maj-KW-dim]`. For example, C_2 ⊔ C_1 has
 maj values {0, 1, 2} on Lin P but e_C = 2.
 
-**Proposition 3 (PROVEN; COMPUTED `[maj-rot]` on S_n, n ≤ 7, and
+**Proposition 3 (PROVEN + audited in [AudLS] §4; COMPUTED `[maj-rot]` on S_n, n ≤ 7, and
 `[maj-rot-closure]` on all 2449 posets).**
 - (a) For w ∈ S_n, maj(w_2 ⋯ w_n w_1) ≡ maj(w) − cdes(w) (mod n), and cdes
   is invariant under rotation.
@@ -313,7 +366,7 @@ is the usual step in proving that maj is equidistributed mod n. The only
 poset content in (b) is the orbit count e_C(P), which [LE] already has. (b)
 is a dimension count, not a KW multiplicity statement.
 
-**Proposition 3′ (PROVEN; COMPUTED `[maj-equi]`, 485 posets; control:
+**Proposition 3′ (PROVEN + audited in [AudLS] §4; COMPUTED `[maj-equi]`, 485 posets; control:
 fails on 1871 connected posets).** If P is disconnected with components of
 sizes m_1, …, m_k and gcd(m_i) = 1, then maj is equidistributed mod n on
 Lin P.
@@ -334,7 +387,7 @@ every CSP and does not come from PLie.
 
 ## 4. Lead 3: sign-imbalance
 
-**Proposition 4 (PROVEN; COMPUTED `[sign-union]`, all 503 disconnected
+**Proposition 4 (PROVEN + audited in [AudLS] §4; COMPUTED `[sign-union]`, all 503 disconnected
 posets with n ≤ 7).** Let P = T_1 ⊔ ⋯ ⊔ T_k with |T_i| = m_i. Then
 
   |I(P)| = |[n; m_1, …, m_k]_{q=−1}| · ∏_i |I(T_i)|.
@@ -417,15 +470,16 @@ linear extensions. **Verdict: no.**
    reads the machinery (μ on upper intervals of OP(P)) as a statistic, and
    it explains the most for the least: one line from Theorem A and Lemma U,
    plus the piece-rotation argument. Next steps, in order:
-   - (i) settle prior art against DMR's toric order polynomial and against
-     cyclic or toric P-partition theory (Petersen; Adin–Reiner–Roichman on
-     cyclic descent extensions);
-   - (ii) prove h_C(P) ≥ 0 by finding a statistic on e_C(P) objects (B_P,
-     or the classes) whose distribution is h_C. The naive des on B_P is
-     ruled out (§2.2);
-   - (iii) look for a reciprocity law.
+   - (i) prior art against toric and cyclic P-partition theory: **done**
+     ([PA]; NOT FOUND for general P, KNOWN for the antichain);
+   - (ii) h_C(P) ≥ 0 with a realising statistic: **done**, Theorem H of
+     [H] (cdes on the rotation classes, separated labelling), audited in
+     [AudH];
+   - (iii) look for a reciprocity law (OPEN);
+   - (iv) prove the F-positivity of the quasisymmetric lift K_C(P)
+     (COMPUTED n ≤ 7, OPEN; [PA] §3).
 
-   The proof above should get the independent audit that [ME] and [LE] got.
+   The independent audit is done: [AudLS] finds that the proof holds.
 2. **Nothing else is worth proving.** Props 1, 3, 3′ and 4 are correct and
    now verified, but they are KNOWN or KNOWN IN SUBSTANCE. They should be
    cited, not re-proved.

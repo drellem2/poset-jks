@@ -12,7 +12,17 @@ Tags: **PROVEN** means proved here; **COMPUTED** means checked by
 
 Sources: [LS] = `notes/linext_statistics.md`; [ME] = `notes/mu_op_elementary.md`;
 [AudME] = `notes/audit_mu_op_elementary.md`; [LE] = `notes/linear_extensions.md`;
+[AudLS] = `notes/audit_linext_statistics.md` (audit of [LS]);
+[AudH] = `notes/audit_h_vector_omega_c.md` (the independent audit of this
+note); [PA] = `notes/prior_art_linext_statistics.md` (prior-art check);
 EC1 = Stanley, *Enumerative Combinatorics* vol. 1, 2nd ed.
+
+**Audit status.** [AudH] re-derived every proof by hand and recomputed
+every claim with independent code (Ω_C from the Möbius recursion, all 2450
+posets with n ≤ 7). Theorem H, Lemmas 1 and 2, H′, Proposition B and
+Proposition D all HOLD, and nothing fails. They are tagged **PROVEN +
+audited** below. H″ stays OPEN. The two wording fixes of [AudH] §5 (the
+Dependence paragraph, and the B_P naming caveat in §3) are applied.
 
 ## Verdict
 
@@ -28,17 +38,19 @@ Here Cyc(P) is the set of cyclic classes of Lin P, and cdes is the number
 of cyclic descents of the cyclic word. cdes is constant on a class.
 
 Two consequences:
-- **h_C(P) ≥ 0 is PROVEN** (Theorem H).
+- **h_C(P) ≥ 0 is PROVEN + audited** (Theorem H; [AudH]).
 - The distribution of cdes on Cyc(P) is the same for every separated
   labelling, because h_C(P) is defined without a labelling.
 
 | # | Statement | Status |
 |---|---|---|
-| H | Separated labelling, n ≥ 2: h_C(P)_j = #{κ ∈ Cyc(P) : cdes κ = j + 1}. Equivalently, the statistic is min_{w∈κ} des(w) | **PROVEN** (§2); COMPUTED on all 2450 posets n ≤ 7 against the Möbius definition `[sep-cdes]`, `[sep-mindes]`, and on every separated labelling for n ≤ 6 (4443 labelled posets) `[sep-all]` |
-| L1 | Per-class lemma: if a class is not all-ascent, its rotations contribute exactly C(m+n−1−min des, n) to the descent expansion of Ω_C, for every component T | **PROVEN** (§2.2); COMPUTED on 2 457 467 (class, T, m) cases `[perclass]` |
-| H′ | Any natural labelling with no all-ascent class: min-des on Cyc(P) realises h_C | **PROVEN** (same proof); COMPUTED on 5182 labelled posets n ≤ 6 `[mindes-all]` |
-| H″ | Converse of H′: an all-ascent class makes min-des fail | COMPUTED on all 48 such labelled posets n ≤ 6 `[ctl-mindes-asc]`; **OPEN** in general |
-| B | Under the labelling λ_0 (§3), des on B_P realises h_C. Here B_P is the set of rotations whose last piece contains the component of label n − 1; the first-piece convention (piece of label 0 first) also works | **PROVEN** (§3); COMPUTED on 2450 posets `[lambda0-BP]` |
+| H | Separated labelling, n ≥ 2: h_C(P)_j = #{κ ∈ Cyc(P) : cdes κ = j + 1}. Equivalently, the statistic is min_{w∈κ} des(w) | **PROVEN + audited** (§2; [AudH]); COMPUTED on all 2450 posets n ≤ 7 against the Möbius definition `[sep-cdes]`, `[sep-mindes]`, and on every separated labelling for n ≤ 6 (4443 labelled posets) `[sep-all]` |
+| L1 | Per-class lemma: if a class is not all-ascent, its rotations contribute exactly C(m+n−1−min des, n) to the descent expansion of Ω_C, for every component T | **PROVEN + audited** (§2.2; [AudH] §2); COMPUTED on 2 457 467 (class, T, m) cases `[perclass]` |
+| L2 | Separated labelling ⇒ first ≤ last in every piece, no all-ascent class, min-des = cdes − 1; separated labellings exist (λ_0) | **PROVEN + audited** (§2.3; [AudH] §3) |
+| D | Descent expansion of Ω_C from the Möbius definition (= Cor. Ω-des of [LS]) | **PROVEN + audited** (§1; [AudH] §1) |
+| H′ | Any natural labelling with no all-ascent class: min-des on Cyc(P) realises h_C | **PROVEN + audited** (same proof; [AudH]); COMPUTED on 5182 labelled posets n ≤ 6 `[mindes-all]` |
+| H″ | Converse of H′: an all-ascent class makes min-des fail | COMPUTED on all 48 such labelled posets n ≤ 6 `[ctl-mindes-asc]`, confirmed in [AudH]; **OPEN** in general |
+| B | Under the labelling λ_0 (§3), des on B_P realises h_C. Here B_P is the set of rotations whose last piece contains the component of label n − 1; the first-piece convention (piece of label 0 first) also works. This B_P is fixed by label and is not [LE]'s B_P (§3) | **PROVEN + audited** (§3; [AudH] §4); COMPUTED on 2450 posets `[lambda0-BP]` |
 | ✗ | cdes − 1 for an arbitrary natural labelling | **FALSE**: refuted on 787 of 5230 labelled posets n ≤ 6 `[ctl-cdes-any]` (positive control) |
 | ✗ | des on B_P (last or first convention) for an arbitrary separated labelling | **FALSE**: refuted on 346 of 4443 `[ctl-BP-last]`, `[ctl-BP-first]` |
 | ✗ | des on all of Lin P | **FALSE** on exactly the 503 disconnected posets `[ctl-lin]` |
@@ -49,13 +61,12 @@ be broken at a descent junction (§3). Lead 3, a shelling, was not needed
 for nonnegativity. Whether Theorem H comes from a shelling of the upper
 intervals of OP(P) is **OPEN**.
 
-**Dependence.** The proof uses two inputs:
-- Lemma U and Theorem A of [ME], both audited in [AudME];
-- Theorem Ω of [LS] §2.1 (PROVEN, audit pending).
-
-So that Theorem H does not rest on that audit, §1 reproves the part of
-Theorem Ω that we use, starting from the Möbius definition. All
-computations compute Ω_C from the Möbius sum, not from Theorem Ω.
+**Dependence.** The proof uses only Lemma U and Theorem A of [ME], both
+audited in [AudME]. §1 reproves the part of Theorem Ω of [LS] §2.1 that
+we use, starting from the Möbius definition, so Proposition D and Theorem H
+do not need Theorem Ω ([AudH] §1). Theorem Ω is in any case PROVEN +
+audited ([AudLS] §1). All computations compute Ω_C from the Möbius sum, not
+from Theorem Ω.
 
 ## 0. Conventions
 
@@ -147,7 +158,8 @@ misses T iff T ⊆ {w_1, …, w_p}. Put
 Then the condition of Step 4 says that f(w_p) = f(w_{p+1}) for every
 p ∈ C_T(w).
 
-**Proposition D (PROVEN; this is Corollary Ω-des of [LS]).** For every
+**Proposition D (PROVEN + audited in [AudH] §1; this is Corollary Ω-des of
+[LS], itself audited in [AudLS] §2).** For every
 natural labelling and every component T,
 
   Ω_C(P, m) = Σ_{w ∈ Lin P} N_T(w, m),
@@ -163,7 +175,9 @@ sequences. ∎
 
 ### 2.1 Statement
 
-**Theorem H (PROVEN; COMPUTED `[sep-cdes]`, `[sep-mindes]`, `[sep-all]`).**
+**Theorem H (PROVEN + audited in [AudH]; COMPUTED `[sep-cdes]`,
+`[sep-mindes]`, `[sep-all]`; recomputed in [AudH] and, from the ideal-chain
+count, in [PA] §2).**
 Let n ≥ 2, and let P carry a separated natural labelling. Then no class is
 all-ascent, min_{w∈κ} des(w) = cdes(κ) − 1 for every κ ∈ Cyc(P), and
 
@@ -177,7 +191,7 @@ h_C(P)_j = #{κ : min_{w∈κ} des w = j} (H′).
 
 ### 2.2 The per-class lemma
 
-**Lemma 1 (PROVEN; COMPUTED `[perclass]`).** Fix any natural labelling and
+**Lemma 1 (PROVEN + audited in [AudH] §2; COMPUTED `[perclass]`).** Fix any natural labelling and
 any component T. Let κ be a class that is not all-ascent, and put
 stat(κ) = min_{w∈κ} des(w). Then
 
@@ -209,7 +223,7 @@ the representative carrying the contribution moves.
 
 ### 2.3 Separated labellings
 
-**Lemma 2 (PROVEN).** Let n ≥ 2. Suppose the labelling is separated:
+**Lemma 2 (PROVEN + audited in [AudH] §3).** Let n ≥ 2. Suppose the labelling is separated:
 x < y whenever x is minimal and y is maximal, each in a non-singleton
 component. Then:
 - (a) every piece c of every w ∈ Lin P has first(c) ≤ last(c);
@@ -250,7 +264,7 @@ on Lin P.
 
 | P | h_C | e_C | e |
 |---|---|---|---|
-| A_n (antichain) | Eulerian numbers A(n−1, ·) (n ≤ 5, unit test) | (n−1)! | A(n, ·) |
+| A_n (antichain) | Eulerian numbers A(n−1, ·) (n ≤ 5, unit test; n ≤ 7 in [AudH]) | (n−1)! | A(n, ·) |
 | connected P | des-distribution on Lin P (Stanley) | e(P) | the same |
 | C_2 ⊔ C_1 | 1, 1 | 2 | 1, 2 |
 | C_2 ⊔ C_2 | 1, 3, 1 | 5 | 1, 4, 1 |
@@ -260,7 +274,9 @@ on Lin P.
 - *Antichain.* Every labelling is separated. Cyc(A_n) is the set of cyclic
   permutations, and cdes − 1 on it is the Eulerian distribution of S_{n−1}.
   This is the known identity Σ_k S(n, k)(k − 1)! C(m, k) = Σ_{j≤m} j^{n−1}
-  of [LS] §2.3.
+  of [LS] §2.3. Theorem H for A_n is **KNOWN**: [Pet] Prop. 1.1 (credited
+  there to Fulman) gives Σ_{π∈S_n} t^{cdes π} = n A_{n−1}(t), by the same
+  "put the anchor last" bijection ([PA] §2).
 - *Connected P.* A separated labelling has w_1 < w_n for every w, so
   cdes − 1 = des and Theorem H is Stanley's theorem.
 - *h_0 = 1 always*, since Ω_C(P, 1) = 1: the constant map is the only map
@@ -282,6 +298,17 @@ but the other classes could in principle compensate.
 
 ## 3. Why des on B_P failed, and when it works
 
+*Naming caveat ([AudH] §5).* In this note B_P is fixed by label: the
+rotations whose last piece contains the component T of label n − 1 (or, in
+the first-piece convention, whose first piece contains the component of
+label 0). It is a different set from the B_P of [LE] §0 and §4, the words
+whose first block contains an arbitrary base component P_1. Proposition B
+below does **not** hold for [LE]'s B_P: under λ_0, des on the words whose
+first piece contains a given component B fails to realise h_C on 41 of the
+554 pairs (poset, B) with 2 ≤ n ≤ 6 ([AudH] §5,
+`[ctl-BP-first arbitrary base, lambda0]`). The smallest case is the
+antichain on {0, 1} with B = {1}: B_P = {10} has des 1, but h_C = (1).
+
 B_P chooses, in each class, the rotation R_0 whose last piece contains T.
 By §0, des(R_0) = d + jd − δ_s. That equals stat(κ) exactly when the junction
 J_s, which wraps from T's piece back to the first piece, is a descent. When
@@ -294,7 +321,8 @@ separated. The class {3|0142, 0142|3} has cdes = 2. B_P takes 30142, with
 des 2, but stat = 1, which is des(01423). The junction 2 → 3 out of T's
 piece is an ascent.
 
-**Proposition B (PROVEN; COMPUTED `[lambda0-BP]`, 2450 posets).** Under
+**Proposition B (PROVEN + audited in [AudH] §4; COMPUTED `[lambda0-BP]`,
+2450 posets).** Under
 λ_0, des on B_P realises h_C(P). Here T is the component containing label
 n − 1, put in the last piece. So does des on the rotations whose first
 piece contains label 0.
@@ -332,8 +360,23 @@ is all-ascent.
 - *Adin–Reiner–Roichman.* This is not a cyclic descent extension in their
   sense, since C_n does not act on Cyc(P). It is the classical cyclic
   descent number of a cyclic word. The labelling hypothesis plays the role
-  that their non-Escher condition plays. Prior art is being checked
-  separately and was not searched here.
+  that their non-Escher condition plays. [PA] §2 confirms this: an [ARR]
+  cyclic extension lives on Lin P, which has e(P) ≠ e_C(P) elements when P
+  is disconnected, and the cdes distribution that [ARR] Lemma 2.4 forces
+  equals n·t·h_C(t) on only 6 of 2449 posets (the antichains).
+- *Prior art ([PA], a search result).* Theorem H for general P is **NOT
+  FOUND** in [DMR], [AGRR], [Pet] or [ARR]: none of them considers the
+  cut-rotation classes Cyc(P). The statistic is Cellini's cyclic descent
+  number ([Pet] §1.1; [AGRR] (1.1); [ARR] (1.1)). The antichain case is
+  **KNOWN** ([Pet] Prop. 1.1, after Fulman). Ω_C is not a toric order
+  polynomial ([PA] §1). Here [DMR] = Develin–Macauley–Reiner,
+  arXiv:1211.4247; [AGRR] = Adin–Gessel–Reiner–Roichman, arXiv:1811.05440;
+  [Pet] = Petersen, arXiv:math/0405479; [ARR] = Adin–Reiner–Roichman,
+  arXiv:1710.06664.
+- *Quasisymmetric lift.* K_C(P), the sum of x^f over the maps f counted by
+  Theorem Ω, is F-positive in Gessel's fundamental basis on all 2450
+  posets with n ≤ 7. That is stronger than Theorem H. It is COMPUTED and
+  **OPEN** ([PA] §3), and was not found in the literature.
 - *Labelling invariance (corollary).* For n ≥ 2, the distribution of cdes
   on Cyc(P) is the same for every separated natural labelling. Separation
   is needed: the positive control above shows the distribution changes

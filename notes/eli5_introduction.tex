@@ -59,7 +59,9 @@ oriented matroids. It describes the fixed-point formula for the characters
 that appear, says what is known about when those characters vanish, compares
 the picture with six neighbouring theories, and says what the
 generalization does and does not buy, including what it says about
-promotion and cyclic sieving on linear extensions. The poset theorem is
+promotion and cyclic sieving on linear extensions, and the one new
+refined count it gives: a cyclic order polynomial whose $h$-vector counts
+rotation classes of linear extensions by cyclic descents. The poset theorem is
 now fully formalized in Lean. It is a summary. The proofs are in
 the notes files named in the footnotes.
 \end{abstract}
@@ -998,6 +1000,96 @@ both families is $C_1\sqcup C_1$, where $n=2$ and that identification is
 not available.\footnote{\src{notes/promotion_on_R_P.md}, Verdict table,
 with \src{notes/linear_extensions.md}, Prop.~D.}
 
+\subsection{What the theory says about counting linear extensions}
+
+The counting question of the previous subsection has one positive answer, at the level of
+\emph{refined} counts. Recall Stanley's \emph{order polynomial}:
+$\Omega(P,m)$ is the number of order-preserving maps $f:P\to\{1,\dots,m\}$
+(so $i<_Pj$ implies $f(i)\le f(j)$). Fix a natural labelling ($i<_Pj$
+implies $i<j$). Then
+\[
+\Omega(P,m)=\sum_{w\in\Lin(P)}\binom{m+n-1-\operatorname{des}(w)}{n},
+\]
+where $\operatorname{des}(w)$ is the number of descents of the word $w$. So
+the order polynomial knows $|\Lin(P)|$ (its leading coefficient is
+$|\Lin(P)|/n!$) and the descent distribution on $\Lin(P)$.\CITED{} The
+notes check that the face numbers of the cone $C_P$ are exactly this
+classical information.\footnote{\src{notes/linext_statistics.md}, \S1,
+Prop.~1; Stanley, \emph{Enumerative Combinatorics} vol.~1, \S3.15.}
+
+Reading $\OP(P)$ from the top instead of the bottom gives something new.
+Define the \emph{cyclic order polynomial}
+\[
+\Omega_C(P,m)=\sum_{\pi\in\OP(P)}\bigl|\mu(\pi,\hat1)\bigr|\binom{m}{|\pi|},
+\]
+where $|\pi|$ is the number of blocks.
+
+\begin{theorem}[Theorem $\Omega$]\label{thm:omega}\PROVEN
+Fix a connected component $T$ of $P$. Then $\Omega_C(P,m)$ is the number of
+order-preserving maps $f:P\to\{1,\dots,m\}$ such that every nonempty set
+$\{x: f(x)\ge v\}$ that is a union of components of $P$ contains $T$. Its
+leading coefficient is $e_C(P)/n!$, and for connected $P$ it is the order
+polynomial $\Omega(P,m)$.\footnote{\src{notes/linext_statistics.md},
+\S2.1; audited in \src{notes/audit_linext_statistics.md} (it holds; the
+audit re-derived the proof and checked the identity as polynomials on all
+$405$ posets with $n\le6$). The count does not depend on $T$.}
+\end{theorem}
+
+Its $h$-vector, the analogue of the descent distribution, is a count of
+rotation classes. Call a natural labelling \emph{separated} if every
+minimal element of a connected component with at least two points has a
+smaller label than every maximal element of such a component; separated
+labellings always exist. The \emph{cyclic descents} of a word are its
+descents together with position $n$ if $w_n>w_1$; their number does not
+change when the word is rotated.
+
+\begin{theorem}[Theorem H]\label{thm:H}\PROVEN
+Let $n\ge2$ and choose a separated natural labelling. Then
+\[
+\Omega_C(P,m)=\sum_{\kappa}\binom{m+n-\operatorname{cdes}(\kappa)}{n},
+\]
+the sum running over the $e_C(P)$ rotation classes $\kappa$ of words that
+contain a linear extension, where $\operatorname{cdes}(\kappa)$ is the
+number of cyclic descents. In particular the $h$-vector of $\Omega_C$ is
+the distribution of $\operatorname{cdes}-1$ on those classes, so it is
+nonnegative and sums to $e_C(P)$.\footnote{\src{notes/h_vector_omega_c.md},
+\S2; audited in \src{notes/audit_h_vector_omega_c.md} (it holds, with two
+wording fixes, applied). Checked by computer, from the M\"obius
+definition, on all $2450$ posets with $n\le7$. Without separation the
+statement can fail.}
+\end{theorem}
+
+\begin{example}
+Take $P$ to be $1<2$ together with an isolated point $3$, the second poset
+of Figure~\ref{fig:n3}; its labelling is separated. All five set
+partitions are order-preserving, with $|\mu(\pi,\hat1)|=1$ for $\hat1$ and
+for the three two-block partitions, and $e_C(P)=2$ for the bottom. So
+$\Omega_C(P,m)=m+3\binom m2+2\binom m3$, which is $5$ at $m=2$. Directly:
+of the six order-preserving maps to $\{1,2\}$, only $f(1)=f(2)=1$, $f(3)=2$
+violates the condition with $T=\{1,2\}$, since its top level set $\{3\}$ is
+a component that misses $T$. The rotation classes are $\{123,312\}$, with
+one cyclic descent, and $\{132\}$, with two. Theorem~H gives
+$\binom{m+2}3+\binom{m+1}3$, which is again $5$ at $m=2$.
+\end{example}
+
+For the antichain, Theorem~H says that the cyclic descents of cyclic
+permutations follow the Eulerian distribution of $S_{n-1}$; this case is
+known (Petersen, after Fulman).\footnote{Prior art, from
+\src{notes/prior_art_linext_statistics.md}, Verdict table: the antichain
+case is T.~K.~Petersen, \emph{Cyclic descents and $P$-partitions},
+Prop.~1.1, credited there to Fulman. The statistic is Cellini's cyclic
+descent number. $\Omega_C$ is not a toric order polynomial in the sense of
+Develin--Macauley--Reiner or Adin--Gessel--Reiner--Roichman, and its
+$h$-vector is not a cyclic-descent-extension distribution in the sense of
+Adin--Reiner--Roichman.}\KNOWN{} For general $P$, the searches recorded in
+the notes did not find Theorem~$\Omega$, its descent expansion, or
+Theorem~H. A stronger statement, that a quasisymmetric lift of
+$\Omega_C$ expands positively in Gessel's fundamental basis, holds by
+computer for $n\le7$ and is open.\footnote{\src{notes/prior_art_linext_statistics.md},
+\S3.}\OPEN{} So the Lie theory does not give a new way to compute
+$|\Lin(P)|$, but its M\"obius function does give a new refined count of
+the rotation classes it is built on.
+
 \subsection{Cyclic sieving on rotation classes}
 
 Rotation and symmetry also meet in a second way. Write $\mathrm{Cyc}(P)$
@@ -1182,6 +1274,8 @@ with Mathlib.
 \src{notes/conjecture_cr_v.md} & refutation of CR$_V$ in rank 4 (audited)\\
 \src{notes/linear_extensions.md} & promotion, cyclic sieving, counting\\
 \src{notes/promotion_on_R_P.md} & when promotion acts on $\mathbb C[\Lin P]/R_P$\\
+\src{notes/linext_statistics.md} & statistics of $\Lin P$; Theorem $\Omega$ (audited)\\
+\src{notes/h_vector_omega_c.md} & Theorem H: the $h$-vector of $\Omega_C$ (audited)\\
 \src{notes/cyclic_sieving_cyc.md} & cyclic sieving on rotation classes\\
 \src{notes/moonshine_scoping.md} & the moonshine scoping (audited, narrower space)\\
 \src{notes/moonshine_residual.md} & the residual moonshine items (not yet audited)\\

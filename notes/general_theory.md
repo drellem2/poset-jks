@@ -115,6 +115,28 @@ nothing that (a) does not already contain. The new results are these.
      (Arone 2015, Ex. 1.4; Arone–Brantner 2021, Example after Thm 5.10; Donau 2012),
      and Theorem E generalizes it. Theorem E for general pointed cones, the poset case
      for other connected P, and Theorem S were NOT FOUND.
+7. **Linear-extension statistics: Theorem Ω and Theorem H (PROVEN, independently
+   audited).** Read from 1̂, the rank grading of OP(P) gives a *cyclic order
+   polynomial* Ω_C(P, m) := Σ_{π∈OP(P)} |μ(π, 1̂)| C(m, |π|).
+   - Theorem Ω (`notes/linext_statistics.md` §2.1, audited in
+     `notes/audit_linext_statistics.md`, holds): for any component T of P,
+     Ω_C(P, m) counts the order-preserving maps f : P → [m] such that every
+     nonempty upper level set of f that is a union of components contains T. Its
+     leading coefficient is e_C(P)/n!, and Ω_C = Ω (Stanley's order polynomial) for
+     connected P. Its descent expansion, Corollary Ω-des, is audited too.
+   - Theorem H (`notes/h_vector_omega_c.md` §2, audited in
+     `notes/audit_h_vector_omega_c.md`, holds): under a separated natural
+     labelling, the h-vector of Ω_C is the distribution of the cyclic descent
+     number on the rotation classes of Lin P, so h_C(P) ≥ 0 and Σ h_C = e_C(P).
+   - Prior art (`notes/prior_art_linext_statistics.md`, a search result): Theorem Ω,
+     Corollary Ω-des and Theorem H were NOT FOUND for general P; Ω_C is not a toric
+     order polynomial (Develin–Macauley–Reiner; Adin–Gessel–Reiner–Roichman). The
+     antichain case of Theorem H is KNOWN (Petersen, Prop. 1.1, credited to Fulman),
+     and the statistic is Cellini's cyclic descent number. F-positivity of the
+     quasisymmetric lift of Ω_C is COMPUTED (n ≤ 7) and OPEN.
+   - The other statistic leads (Kraskiewicz–Weyman, χ(−1), sign-imbalance, descent
+     algebra) give only known results or audited refutations
+     (`notes/linext_statistics.md` Verdict).
 
 **Recommendation (§5).** Pursue (a). Its central statement, Theorem G\*
 ("the chamber cycles of V span H̃_{d−2}(Λ(V))", and its consequences
@@ -1192,6 +1214,9 @@ would carry Theorems 6–8.
 | Theorem S (same note, §3.1): V pointed, G any finite group ⇒ Σ^u Δ(Λ̄(V)) ≃_G ⋁_{[C]} G_+ ∧_{G_C} S^{U_C}; consequences (S1)–(S4) | PROVEN; independently audited (holds), except (S4) for e_H = 3, which is proved in the audit (§4.2) and not independently checked. Prior art: NOT FOUND; same shape as Arone 2015 Thm 1.2 / Arone–Brantner 2021 Thm 5.10 for partition complexes under Young subgroups (a different object) | as for Theorem E |
 | Question E♯ (desuspension of Theorem S when every dim Fix(G_C) ≥ 2) | OPEN | — |
 | OM version: Theorems 1, 2, C (G\*) for T-convex sets of every simple oriented matroid (`notes/oriented_matroid_cones.md`) | PROVEN (C given Brown); independently audited in `notes/audit_oriented_matroid_cones.md` (hold); COMPUTED on realizable and non-realizable OMs of ranks 3 and 4 | Brown (CITED, re-checked; LRB-general); OM combinatorics; Hall; for the homotopy form of Thm 1 with r ≥ 5, shellability (BLSWZ Prop. 4.3.2, CITED) |
+| *Linear-extension statistics.* Theorem Ω (`notes/linext_statistics.md` §2.1): Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f : P → [m] order-preserving, every nonempty upper level set that is a union of components contains T}; Corollary Ω-des | PROVEN; independently audited in `notes/audit_linext_statistics.md` (holds); COMPUTED n ≤ 6 as polynomials. Prior art (`notes/prior_art_linext_statistics.md`): NOT FOUND for general P, not a toric order polynomial; antichain KNOWN (Petersen Prop. 1.1, after Fulman) | Lemma U and Theorem A of `notes/mu_op_elementary.md`; Stanley's fundamental lemma for Ω-des |
+| Theorem H (`notes/h_vector_omega_c.md` §2): separated natural labelling, n ≥ 2 ⇒ h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0; with Lemmas 1–2, H′, Props. B and D | PROVEN; independently audited in `notes/audit_h_vector_omega_c.md` (holds; wording fixes applied); COMPUTED on all 2450 posets n ≤ 7. Prior art: NOT FOUND for general P; antichain KNOWN (Petersen Prop. 1.1, after Fulman); the statistic is Cellini's cdes; not an Adin–Reiner–Roichman cyclic descent extension | Lemma U and Theorem A of `notes/mu_op_elementary.md` only |
+| H″ (all-ascent class ⇒ min-des fails); reciprocity for Ω_C; F-positivity of the quasisymmetric lift K_C(P) | OPEN (H″ and F-positivity COMPUTED, n ≤ 6 and n ≤ 7) | — |
 | (b1), (b2), comodernism | CONJECTURED | — |
 
 Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not
