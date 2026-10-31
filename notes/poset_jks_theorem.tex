@@ -57,7 +57,8 @@ it at a disconnected poset on $n\ge3$ points. The seed note's
 proposed route through a ``restricted JKS image identity'' is false, and we
 record the counterexample. An explicit basis of $H_P$ by splitting cycles of
 linear extensions (formerly ``Conjecture~S'') is proved, conditional on a
-cited theorem of Wachs. The global module and the count $b_n$ are settled. We
+cited theorem of Wachs or, by a second route, on Brown's theorem on left
+regular bands. The global module and the count $b_n$ are settled. We
 end with a table of computer checks and a list of open problems. The seed
 note is not modified. Every statement here carries its epistemic status and
 the notes file it comes from.
@@ -697,7 +698,8 @@ and let $P_w$ be the chain $w_1<\cdots<w_n$. Then no $S_n$-equivariant
 linear map $J:\widetilde H_{n-3}(\overline{\Pi_n})\otimes\sgn\to\mathbb C[S_n]e_\zeta$
 satisfies $J(H_{P_w}\otimes\sgn)=\mathbb C\,we_\zeta$. \st{proven} given that
 relation, which is \st{computed} exactly at chain level for $n\le6$ and
-\st{cited} from Wachs for all $n$.
+\st{cited} from Wachs for all $n$; it is also \st{proven} for all $n$
+given Brown (\S\ref{sec:open}, item~3).
 \end{proposition}
 
 \begin{proof}
@@ -773,7 +775,8 @@ $n\le6$, by exact chain-level computation with no use of Wachs
 literature ([Lit, \S3.2]). Write $\Phi(\Leftarrow)$ for well-definedness and
 $\Phi(\Rightarrow)$ for injectivity. Given Wachs's basis theorem,
 $\Phi(\Rightarrow)$ follows from $\Phi(\Leftarrow)$ by counting dimensions
-([AudS, \S C.1]).
+([AudS, \S C.1]). Independently of Wachs and Ree, Prop.~$\Phi$ is also
+\st{proven} for every $n$ given Brown's theorem (\S\ref{sec:open}, item~3).
 
 \begin{lemma}[Lemma D; {[Lit, \S3.4]}, {[AudLit, row 13]}]\label{lem:D}
 For $w\in\Lin(P)$, every partition in $\Pi_w$ is order-preserving for $P$.
@@ -832,7 +835,8 @@ Let $P$ be a finite poset with any base component.
   equivariance included ([AudS, \S C.2]).
 \item If Prop.~$\Phi$ were to fail for some $n\ge7$, then (a) and (b) would
   stand, and (c) and (d) would revert to \st{conjectured} for that $n$
-  ([AudS, \S C.1]). $\Phi$ is \st{cited} for $n\ge7$, as stated above.
+  ([AudS, \S C.1]). $\Phi$ is \st{cited} for $n\ge7$, and \st{proven} for
+  every $n$ given Brown (\S\ref{sec:open}, item~3), as stated above.
 \end{itemize}
 
 \paragraph{The key tool ([S, Lemma~1]).} For letters $a\ne x$, define
@@ -899,9 +903,12 @@ proves, for every finite real central \emph{essential} arrangement, that the
 chambers of a \emph{pointed} top-cone are linearly independent modulo
 top-lunes (\st{proven}, \st{audited} [AudCone, rows~7--9, \S B.5]). For the braid arrangement this is the
 connected case of Theorem~\ref{thm:S}(a), with a geometric proof. The
-general-cone form of Conjecture~S is [Cone, Conjecture~G], \st{conjectured}
-and \st{computed} for every top-cone of $A_2,A_3,A_4,B_2,B_3$ and on
-samples. [Cone] also corrects Aguiar--Mahajan, \emph{Topics}~\cite{AguiarMahajan}, Ex.~10.9:
+general-cone form of Conjecture~S is [Cone, Conjecture~G], \st{computed}
+for every top-cone of $A_2,A_3,A_4,B_2,B_3$ and on samples. Its parts
+(G1)--(G3) are now \st{proven} given Brown's theorem, Hall's theorem and
+standard cell facts, and \st{audited} (\src{notes/audit_theorem_c.md}); part
+(G4), in Aguiar--Mahajan's literal form, is open
+(\S\ref{sec:open}, item~4). [Cone] also corrects Aguiar--Mahajan, \emph{Topics}~\cite{AguiarMahajan}, Ex.~10.9:
 ``non-singleton top-cone'' should read ``non-pointed top-cone''
 ([AudCone, row~16]). These results are recorded here only as a remark.
 \end{remark}
@@ -1430,11 +1437,21 @@ Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theo
   \item a ``local PBW'' $\mathbb C[\Lin P]\cong\operatorname{Sym}$ over
     components of the $\PLie(P|_T)$.
   \end{itemize}
-\item \textbf{A $\Phi$-free proof of Theorem~\ref{thm:S}(c).} Run the
-  induction of Theorem~\ref{thm:S}(a) directly on chains, by making precise
-  the heuristic that $E_{a,x}$ is the $\Phi$-image of taking the link at the
-  atom $\pi_{a,x}$ ([AudS, \S E.4]). This would remove the dependence on the
-  cited Wachs statements for $n\ge7$.
+\item \textbf{Dependence of Theorem~\ref{thm:S}(c)--(d) on Wachs for
+  $n\ge7$: resolved.} In the braid arrangement, Prop.~B of
+  \src{notes/audit_general_theory_cones.md}, \S C (the kernel of
+  $C\mapsto\rho_C$ is the span of the non-singleton lunes, which is $\Sh_n$)
+  is Prop.~$\Phi$ for every $n$, up to a global sign $c_n=\pm1$ depending
+  only on $n$ (\src{notes/audit_theorem_c.md}, \S\S C.2--C.3; \st{proven}).
+  Prop.~B uses Brown's theorem (item~4), Folkman's theorem and the cell
+  facts, and neither Wachs's comb basis nor Ree's theorem. So Prop.~$\Phi$,
+  in both directions, is \st{proven} for every $n$ given Brown, and
+  Theorem~\ref{thm:S}(c)--(d) no longer depend on the cited Wachs
+  statements. This derivation is the audit's own and has not had a second
+  independent audit. A direct chain-level proof remains of interest: run the
+  induction of Theorem~\ref{thm:S}(a) on chains, by making precise the
+  heuristic that $E_{a,x}$ is the $\Phi$-image of taking the link at the
+  atom $\pi_{a,x}$ ([AudS, \S E.4]).
 \item \textbf{Cone/lune generalization.} [Cone, Conjecture~G]: the general
   form of Conjecture~S for every top-cone of every real central arrangement.
   The proven results of [Cone] have been independently audited in [AudCone]
