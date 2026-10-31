@@ -1,0 +1,15 @@
+  [CTL] B_3 proper part: Betti [(1, 1)] (want [(1, 1)]), core size 6 (want 6) ok
+  [CTL] chain proper part: Betti [] (want []), core size 1 (want 1) ok
+  [CTL] 8-element complemented lattice, mu = 0: Betti [], core size 1 ok
+  [CTL] crown (S^1, no beat points): Betti [(1, 1)], core size 4 ok
+  [TA] n = 3: cumulative pairs 14, zeros 5 (acyclic 5, Stong core a point 5), nonzeros 9 (homology in one degree: 9); tau = id: 6/6 have Betti e_C(P) in degree n - 3
+  [TA] n = 4: cumulative pairs 64, zeros 27 (acyclic 27, Stong core a point 27), nonzeros 37 (homology in one degree: 37); tau = id: 23/23 have Betti e_C(P) in degree n - 3
+  [TA] n = 5: cumulative pairs 238, zeros 126 (acyclic 126, Stong core a point 126), nonzeros 112 (homology in one degree: 112); tau = id: 87/87 have Betti e_C(P) in degree n - 3
+  [TA] n = 6: cumulative pairs 1104, zeros 607 (acyclic 607, Stong core a point 607), nonzeros 497 (homology in one degree: 497); tau = id: 406/406 have Betti e_C(P) in degree n - 3
+  [R4] R^4 C6 x C4: 12 hyperplanes, 38400 pairs (class reps), 60 zeros
+  [R4] CR_V counterexample pairs (mu = 0, all complemented): 36
+       |Lambda(V)^g| = 9: 12 pairs, reduced Betti (), Stong core size 1
+       |Lambda(V)^g| = 10: 12 pairs, reduced Betti (), Stong core size 1
+       |Lambda(V)^g| = 11: 12 pairs, reduced Betti (), Stong core size 1
+  [R4] zeros with an uncomplemented element: 24, of which certified contractible by the Stong core: 24
+ALL CHECKS PASSED
