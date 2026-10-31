@@ -1,0 +1,42 @@
+== [CTL] positive controls ==
+  A3 all chambers, chi at e,(12),(12)(34),(123),(1234): [Fraction(6, 1), Fraction(0, 1), Fraction(-2, 1), Fraction(0, 1), Fraction(0, 1)]
+  A2 all chambers, chi at e,(12),(123): [Fraction(2, 1), Fraction(0, 1), Fraction(-1, 1)]
+  A2, g = -s12, all chambers: chi = 0  Formula Z terms [(0, 1, 1), (1, -1, 1)]  fixed chambers 2
+  B2 reflection, all chambers: chi = -1
+  B3 Coxeter element (order 6 ), values on all stable cones: {Fraction(0, 1)}
+  A2 (+-S3): pairs 30, chi != 0 24, complemented 24 (non-modular 0), CR_V counterexamples 0
+  A3 (+-S4): pairs 300, chi != 0 266, complemented 266 (non-modular 186), CR_V counterexamples 0
+  B2: pairs 45, chi != 0 41, complemented 41 (non-modular 0), CR_V counterexamples 0
+  B3: pairs 1106, chi != 0 998, complemented 998 (non-modular 862), CR_V counterexamples 0
+  homology trace equals (-1)^d mu(Lambda^g) on all chambers of A3, B3, every class
+== [CX] the counterexample of section 0 ==
+  hyperplanes 12 faces 2037 chambers 346 flats 145 |G| = 24
+  |V| = 88 chambers; S_max = [(2, -1), (3, 1)] dim L = 2
+  M = Lambda(V)^g has 9 elements:
+     dim0 span[]
+     dim1 span[[-3, 1, 0, 0]]
+     dim1 span[[0, 0, 1, 0]]
+     dim1 span[[0, 0, 0, 1]]
+     dim2 span[[-3, 1, 0, 0], [0, 0, 0, 1]]
+     dim2 span[[1, 2, 0, 0], [0, 0, 0, 1]]
+     dim2 span[[-3, 1, 0, 0], [0, 0, 1, 0]]
+     dim2 span[[-2, 3, 0, 0], [0, 0, 0, 1]]
+     dim4 span[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+     complements of dim0 span[] -> ['dim4 span[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]'] 
+     complements of dim1 span[[-3, 1, 0, 0]] -> ['dim2 span[[1, 2, 0, 0], [0, 0, 0, 1]]', 'dim2 span[[-2, 3, 0, 0], [0, 0, 0, 1]]'] 
+     complements of dim1 span[[0, 0, 1, 0]] -> ['dim1 span[[0, 0, 0, 1]]', 'dim2 span[[-3, 1, 0, 0], [0, 0, 0, 1]]', 'dim2 span[[1, 2, 0, 0], [0, 0, 0, 1]]'] ...
+     complements of dim1 span[[0, 0, 0, 1]] -> ['dim1 span[[0, 0, 1, 0]]', 'dim2 span[[-3, 1, 0, 0], [0, 0, 1, 0]]'] 
+     complements of dim2 span[[-3, 1, 0, 0], [0, 0, 0, 1]] -> ['dim1 span[[0, 0, 1, 0]]'] 
+     complements of dim2 span[[1, 2, 0, 0], [0, 0, 0, 1]] -> ['dim1 span[[-3, 1, 0, 0]]', 'dim1 span[[0, 0, 1, 0]]', 'dim2 span[[-3, 1, 0, 0], [0, 0, 1, 0]]'] 
+     complements of dim2 span[[-3, 1, 0, 0], [0, 0, 1, 0]] -> ['dim1 span[[0, 0, 0, 1]]', 'dim2 span[[1, 2, 0, 0], [0, 0, 0, 1]]', 'dim2 span[[-2, 3, 0, 0], [0, 0, 0, 1]]'] 
+     complements of dim2 span[[-2, 3, 0, 0], [0, 0, 0, 1]] -> ['dim1 span[[-3, 1, 0, 0]]', 'dim1 span[[0, 0, 1, 0]]', 'dim2 span[[-3, 1, 0, 0], [0, 0, 1, 0]]'] 
+     complements of dim4 span[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] -> ['dim0 span[]'] 
+  mu(M) = 0  det g = 1  chi(def) = 0
+  Formula Z: terms (dim X, mu, m_X) = [(0, 1, 1), (1, -1, 1)]  sum = 0
+  Theorem CF (fixed chambers of localizations) = 0
+  order complex of proper part of Lambda(V) (|Lambda(V)| = 127): dim H_2 = 72, trace of g = 0
+  (2.2): (-1)^d det g #V^g = 2  RHS = 2
+  fixed-face Lefschetz numbers f_g(Y) agree with (2.1) on all 9 Y
+  #V^g = 2 ; U lies in a hyperplane: False ; dim L cap U = 1
+ALL CHECKS PASSED
+EXIT 0
