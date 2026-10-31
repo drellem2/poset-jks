@@ -1,0 +1,25 @@
+[posets] OK counts [1, 2, 5, 16, 63, 318, 2045], total 2450
+[pairs] 2450 posets, 3107 pairs (P, T) (every component), 200336 classes in all
+[literal=chain] OK K_C,T by literal map enumeration = chain-of-ideals DP on 555 pairs, n <= 6
+[gessel] OK connected P: K = sum_w F_Des(w) on 1947 posets
+[T-dep] K_C,T depends on T for 492 of 2450 posets; by n: [0, 0, 1, 4, 18, 75, 394]
+[spec] OK principal specialisation (m = 0..n+1) independent of T on all 2450 posets
+[lamT] OK lambda_T natural, separated, (E*_T) on 3107 pairs
+[RT] OK each class has exactly one rotation with T in the last piece
+[thmQ-lamT] OK K_C,T = sum_kappa F_Des R_T(kappa) under lambda_T on 3107 pairs
+[F+] OK K_C,T F-positive with coefficient sum #Cyc(P), 3107 pairs
+[size] OK |Des R_T| = cdes - 1 under lambda_T (n >= 2)
+[H-spec] OK K_C,T(1^m) = sum_kappa C(m+n-cdes, n) under lambda_T (n >= 2)
+[ctl-anyrep] CONTROL refuted on 783 of 3107 pairs: Des of lexicographically first rotation under lambda_T
+[ctl-mindes-id] CONTROL refuted on 782 of 3107 pairs: lex-first min-des rotation under the generation labelling
+[LT-lin] L_T(P) is Lin of a poset (labelling-free) for 2257 of 3107 pairs
+[thmQ-iff] OK (i) <=> (ii) <=> (iii) <=> (E*_T) on 8267 labelled pairs n <= 6; (i) holds on 5894, fails on 2373
+[ctl-Ebroken] CONTROL refuted on 808 of 8267 labelled pairs: (E*_T) without the isolated-T clause disagrees with (i)
+[ctl-anylab] CONTROL refuted on 2373 of 8267 labelled pairs: (i) for an arbitrary natural labelling
+[propD-qsym] OK K_C,T = sum_w G_T(w) on 8267 labelled pairs
+[G_T-word] OK G_T(w) = anchored maps with Stanley word w, every w, 687 labelled pairs n <= 5
+[perclass-sep] separated labelled pairs 6996: some class not a single F on 1805; classes 317680, not single F 23117, of which with a negative coefficient 23117
+[ctl-perclass] CONTROL refuted on 1805 of 6996 separated labelled pairs: per-class contribution a single F
+[bij] OK anchored <=> Stanley word in L_T, under lambda_T, all maps into [3], 8600 maps, 128 pairs n <= 5
+[ctl-bij] CONTROL refuted on 16 of 16 pairs with (E*_T) false for the generation labelling: bijection B (1998 maps)
+RESULT ALL OK

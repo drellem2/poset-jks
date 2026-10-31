@@ -1,0 +1,1 @@
+[rot-choice] disconnected posets n <= 7: 503 (K depends on T for 492; >= 2 isolated points: 88). Some natural labelling admits, for every T, a choice of one rotation per class summing to K_C,T: 503 (separated: 503); some labelling satisfies (E*_T) for every T: 415; among posets with >= 2 isolated points: rotation choice 88, all (E*_T) 0
