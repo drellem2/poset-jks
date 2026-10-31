@@ -401,6 +401,75 @@ Gaps and deliberate modelling choices:
   `AUDIT_FAITHFULNESS.md`. Its one defect (`trace_PLie`, `corPsi_bijective`, `corPsi` false at
   `n = 0`) is fixed by `h0` (above).
 
+### 4.2 M3b: equal characters imply isomorphic, and (mainiso) from the characters
+
+`main_iso` is proved from `trace_HP` (still `sorry`), `trace_PLie` and `character_identity`.
+Sorry count 4 → 3 (`trace_HP`, `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`). No
+statement changed and no hypothesis was added. The one other edit to `MainTheorem.lean` is
+needed because Lean has no forward references: `main_iso` (docstring and statement
+byte-identical) now comes after `trace_PLie`, so that its proof can cite `trace_HP`.
+
+| File | Contents |
+|---|---|
+| `PosetJKS/CharacterIso.lean` | general (imports only Mathlib): for a finite group `G` and a field `k` of characteristic zero, two finite-dimensional representations with equal characters are isomorphic (`Representation.nonempty_equiv_of_character_eq`). Also the iff with Mathlib's `char_iso` (`nonempty_equiv_iff_character_eq`), the unbundled form `∃ e : V ≃ₗ[k] W, ∀ g x, e (ρ g x) = σ g (e x)` (`exists_linearEquiv_of_trace_eq`), the character of `V × W` (`char_prod`), `Equiv.prodCongr`, and `V ≅ S × T` for complementary subrepresentations (`Subrepresentation.prodEquivOfIsCompl`) (**all proved**) |
+| `PosetJKS/MainIso.lean` | functoriality of `homMap` (`homMap_refl`, `homMap_trans`), `actProper_one`, `actProper_mul`, `H_P` finite-dimensional (`finiteDimensional_HP`); `H_P` and `sgn ⊗ PLie(P)` as representations of `Aut(P)` (`repHP`, `repSgnPLie`); `tr(g \| sgn ⊗ PLie) = sgn(g) ∑_{gC=C} ζ^{r_g(C)}` (`trace_repSgnPLie`); (mainiso) from `tr(g \| H_P) = sgn(g) ∑_{gC=C} ζ^{r_g(C)}` (`exists_iso_HP_PLie_of_trace`) (**all proved**) |
+| `PosetJKS/CharacterIsoTest.lean` | controls on `S_2` (below) |
+
+**Proof of the general lemma.** Mathlib has the parts at the level of `Representation`:
+`card_inv_mul_sum_char_mul_char_eq_finrank` (`|G|⁻¹ ∑ χ_σ(g) χ_τ(g⁻¹) = dim Hom_G(τ, σ)`), and
+Maschke in the form `IsSemisimpleRepresentation` (complements of subrepresentations). The plan
+of §1 was to decompose into irreducibles and read off multiplicities by `char_orthonormal`. The
+proof instead runs by induction on `dim V`, with no decomposition, no orthonormality and no
+algebraic closedness:
+
+* Let `S ⊆ V` be a nonzero subrepresentation of least dimension (`Nat.find`).
+* `dim Hom_G(S, W) = dim Hom_G(S, V)` because the characters agree, and this is `≥ 1` (the
+  inclusion). Let `f : S → W` be a nonzero `G`-map.
+* `ker f`, viewed inside `V`, is a subrepresentation of dimension `< dim S`, so it is `0`
+  (minimality). So `f` is injective and `S ≅ f(S)`.
+* By Maschke, `V ≅ S × S'` and `W ≅ f(S) × T'`. Characters are additive (`char_prod`), so
+  `χ_{S'} = χ_{T'}`. Also `dim S' < dim V`, and induction gives `S' ≅ T'`.
+* If `dim V = 0`, then `dim W = χ_W(1) = χ_V(1) = 0`, and any linear equivalence intertwines.
+
+Characteristic zero is used twice: to make `|G|` invertible, and to read the dimensions as
+natural numbers from their images in `k`.
+
+**(mainiso).** `actHP` and `g ↦ sgn(g) · actPLie ζ g` are monoid homomorphisms `Aut(P) →
+End(-)`. For `actHP` this needs `actProper (g h) = actProper h ≫ actProper g` and the functoriality
+of `chainMap` and `homMap`. For the sign this needs `(g h).toEquiv = g.toEquiv * h.toEquiv`
+(definitional) and `Perm.sign_mul`. `Aut(P)` is finite: it injects into `Perm α`. `H_P` is
+finite-dimensional: chains are finitely supported functions on the finite type `Fin m ↪o
+ProperOP α`. Without this, `LinearMap.trace` would be `0` by convention, and `trace_HP` would
+say nothing about `H_P`. The characters agree:
+`tr(g | H_P) = (-1)^{n-3} μ(OP(P)^g)` (`trace_HP`) `= sgn(g) ∑_{gC=C} ζ^{r_g(C)}`
+(`character_identity`) `= tr(g | sgn ⊗ PLie(P))` (`trace_repSgnPLie`, from `trace_actPLie`).
+The isomorphism `e` from `exists_linearEquiv_of_trace_eq` satisfies
+`e (actHP g x) = sgn(g) • actPLie ζ g (e x)`. Coerced to `Alg α`, this is the equation in
+`main_iso`, by definition of `actPLie`.
+
+**Controls** (`CharacterIsoTest.lean`, `G = S_2`, over `ℂ`). There are three 2-dimensional
+representations: the permutation representation on `Fin 2 → ℂ` (character `(2, 0)`), trivial ⊕
+sign on `ℂ × ℂ` (`(2, 0)`), and trivial on `Fin 2 → ℂ` (`(2, 2)`). The characters are computed
+in Lean by matrix traces. The lemma gives `trivial ⊕ sign ≅ permutation`
+(`trivSgn_equiv_permRep`). The modules are different, so the isomorphism is not an identity.
+Trivial `≇` permutation (`not_triv2_equiv_permRep`): same module, same dimension, different
+characters. `trivial ≇ sign` on `ℂ` (`not_triv_equiv_sgn`). So the lemma's conclusion is not
+automatic for representations of equal dimension, and the hypothesis does real work.
+
+**Axioms and dependencies.** `#print axioms` (in `scripts/PrintAxioms.lean`):
+`nonempty_equiv_of_character_eq`, `nonempty_equiv_iff_character_eq`,
+`exists_linearEquiv_of_trace_eq`, `exists_iso_HP_PLie_of_trace` and the three controls depend
+only on `propext`, `Classical.choice`, `Quot.sound`. `main_iso` depends on those and `sorryAx`.
+`scripts/CheckDeps.lean`, which now also tracks `trace_HP`: `main_iso` uses `trace_HP`, and
+not `jencaSarkoci_homology` or `hall_mu_eq_reducedEuler` directly.
+`exists_iso_HP_PLie_of_trace` and `nonempty_equiv_of_character_eq` use none of the three. So
+the only `sorry` under `main_iso` is the one in `trace_HP`. Once `trace_HP` is proved from
+`jencaSarkoci_homology`, `main_iso` depends on `jencaSarkoci_homology` alone.
+
+The earlier parts of this file (the status lines, the §1 row "Aut(P) actions, characters", and
+the §4 table entry for `main_iso` at its old line) were written before this step. The table
+entry is now closed.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```

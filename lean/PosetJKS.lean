@@ -11,5 +11,8 @@ import PosetJKS.Mside
 import PosetJKS.RamanujanSum
 import PosetJKS.ECTransport
 import PosetJKS.LieSide
+import PosetJKS.CharacterIso
+import PosetJKS.MainIso
 import PosetJKS.MainTheorem
 import PosetJKS.Test
+import PosetJKS.CharacterIsoTest

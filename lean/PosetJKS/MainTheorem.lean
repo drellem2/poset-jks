@@ -4,6 +4,7 @@ import PosetJKS.LieTrace
 import PosetJKS.OPLattice
 import PosetJKS.Mside
 import PosetJKS.LieSide
+import PosetJKS.MainIso
 
 /-!
 # The poset JKS theorem (Theorem `thm:main` of `notes/poset_jks_theorem.tex`)
@@ -68,15 +69,6 @@ theorem character_identity (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
         rw [hs]; ring
     _ = sgnC g * ((-1 : ℂ) ^ (m + 3 + 1) * sgnC g * (muFixed g : ℂ)) := by ring
 
-/-- (mainiso): `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules. A linear isomorphism
-`e : H_P ≃ PLie(P)` intertwines the `Aut(P)`-action on `H_P` with `sgn ⊗` (left multiplication
-on `PLie(P)`): `e (g · x) = sgn(g) · g · e(x)`. -/
-theorem main_iso (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
-    (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
-    ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ (g : α ≃o α) (x : HP α),
-      (e (actHP g x) : Alg α) = sgnC g • relabel g.toEquiv (e x) := by
-  sorry
-
 open Classical in
 /-- (closed). `B₀` is any choice of one block of each `x ∈ F(P,g)`; `e_C(P|_B)` is `e_C` of the
 induced subposet on `B`. -/
@@ -106,6 +98,16 @@ theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot 
     (g : α ≃o α) :
     LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g :=
   trace_actPLie h0 hζ.pow_eq_one g
+
+/-- (mainiso): `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules. A linear isomorphism
+`e : H_P ≃ PLie(P)` intertwines the `Aut(P)`-action on `H_P` with `sgn ⊗` (left multiplication
+on `PLie(P)`): `e (g · x) = sgn(g) · g · e(x)`. -/
+theorem main_iso (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
+    (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
+    ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ (g : α ≃o α) (x : HP α),
+      (e (actHP g x) : Alg α) = sgnC g • relabel g.toEquiv (e x) := by
+  exact exists_iso_HP_PLie_of_trace (by omega) hζ fun g =>
+    (trace_HP hn g).trans (character_identity hn hζ g)
 
 /-! ### Cited inputs, in the form the proofs use them (not assumed; `sorry`'d) -/
 

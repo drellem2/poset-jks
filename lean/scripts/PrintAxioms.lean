@@ -77,3 +77,10 @@ import PosetJKS
 #print axioms PosetJKS.bd_zero_single
 #print axioms PosetJKS.Test.corPsi_bijective_false
 #print axioms PosetJKS.Test.trace_PLie_false
+#print axioms Representation.nonempty_equiv_of_character_eq
+#print axioms Representation.nonempty_equiv_iff_character_eq
+#print axioms Representation.exists_linearEquiv_of_trace_eq
+#print axioms PosetJKS.exists_iso_HP_PLie_of_trace
+#print axioms PosetJKS.CharacterIsoTest.trivSgn_equiv_permRep
+#print axioms PosetJKS.CharacterIsoTest.not_triv2_equiv_permRep
+#print axioms PosetJKS.CharacterIsoTest.not_triv_equiv_sgn
