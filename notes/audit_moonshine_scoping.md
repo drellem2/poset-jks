@@ -355,3 +355,14 @@ The archived output is `compute/output/audit_moonshine_scoping.txt`.
 - Y. Yang, Transformation formulas for generalized Dedekind eta functions,
   Bull. London Math. Soc. 36 (2004).
 - D. Zagier, Quantum modular forms, Clay Math. Proc. 11 (2010).
+
+## Follow-up
+
+Items 6(d), 8, 7 and 1 of §3 are taken up in `notes/moonshine_residual.md`
+(mg-be1f9). In summary:
+- 6(d): no general obstruction exists, but every natural class tested is
+  excluded from meromorphy on H;
+- 8: excluded for cuspidal shadows;
+- 7: the shifted quadrant and the binary tree are excluded, and N^k is
+  excluded on groups with one cusp class but open on groups with several;
+- 1: computed, and generic.

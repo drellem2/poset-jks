@@ -1,0 +1,57 @@
+== [U] ==
+[U] ok   rooted trees R = x Exp(R): [1, 1, 2, 4, 9, 20, 48, 115, 286, 719, 1842] (A000081)
+[U] ok   oriented trees T = R_o - R_o^2, R_o = x Exp(2 R_o): [1, 1, 3, 8, 27, 91, 350, 1376, 5743, 24635, 108968] (A000238)
+[U] ok   series-parallel posets Exp(C) - 1: [1, 2, 5, 15, 48, 167, 602, 2256, 8660, 33958, 135292] (A003430)
+[U] ok   brute force: connected posets with <= 1 lower cover per element [1, 1, 2, 4, 9, 20]
+[U] ok   brute force: Hasse diagram a tree [1, 1, 3, 8, 27, 91] = oriented trees
+[U] ok   brute force: connected N-free [1, 1, 3, 9, 30, 103] = connected SP
+[U] ok   brute force: Hasse diagram a cycle [0, 0, 0, 2, 2, 7] = dihedral Burnside count
+[U] ok   rooted trees R: sum u_n x^n = 0.8855 <= 1.0 at x = 0.33689
+[U] ok   connected SP C: sum u_n x^n = 0.4148 <= 1.15 at x = 0.21547
+[U] ok   T_n <= R_o,n <= n T_n (same radius, n <= 120)
+[U] ok   R_o: sum at x = 0.17635 is 0.4457 <= 1/2
+[U] ok   alpha(rooted trees) at n = 40, 80, 120: -1.5089, -1.5034, -1.5020 -> -1.5
+[U] ok   alpha(oriented trees) at n = 40, 80, 120: -2.5225, -2.5089, -2.5054 -> -2.5
+[U] ok   alpha(connected SP) at n = 40, 80, 120: -1.5296, -1.5138, -1.5090 -> -1.5
+[U] ok   alpha(necklace control (log type)) at n = 40, 80, 120: -0.9963, -1.0002, -1.0001 -> -1.0
+[U] ok   cycle-Hasse u_n = (1/2n) sum phi(n/d) 2^d - 2 + Refl_n/(2n), 0 <= Refl_n <= n 2^(n/2+1) (4 <= n <= 14)
+[U] ok   n u_n 2^-n at n = 10, 14, 18: [0.5859, 0.5306, 0.51] -> 1/2 (log coefficient m = 1/2, not an integer)
+== [E] ==
+[E] ok   1/E_6 = prod (1-q^n)^(-u_n), u = [504, 143388, 51180024] ...
+[E] ok   u_n > 0 for n <= 150
+[E] ok   |n u_n e^(-2 pi n) - 1| <= 1.36 e^(-pi n) for n <= 10 (simple pole at q = e^(-2 pi), log coefficient m = 1; next poles at |q| = e^(-pi))
+[E] ok   u_n <= 2^((10n-1)^2) / (20n)! <= #connected unlabeled posets on 20n points (n <= 150; margin at n = 1: 10.9 bits)
+[E] ok   2^((10n-1)^2)/(20n)! > 2 e^(2 pi n) for n < 2000 (and the gap grows)
+== [S] ==
+[S] ok   shifted quadrant = prod (1-q^n)^(-ceil(n/2)) through q^16: [1, 1, 2, 4, 7, 12, 21, 34, 56, 90]...
+[S] ok   negative control: floor(n/2) exponents disagree
+[S] ok   y^3 Dlog F(iy) at y = 0.01, 0.003: 0.004950, 0.004877 -> zeta(3)/(2 pi)^3 = 0.004846 (Lemma D violated)
+== [B] ==
+[B] ok   binary tree: recursion = direct search through q^8: [1, 1, 3, 8, 24, 72, 229, 740, 2460]
+[B] ok   B_m(1/4): B_1 = 2.0000, B_2 = 2.3431, sup over m < 60 = 2.467401 < 2.70
+[B] ok   partial sum of B at 1/4 (q^200) = 2.3423 <= sup B_m(1/4)
+[B] ok   alpha(binary tree) at n = 50, 100, 200: -1.4935, -1.4966, -1.4982 -> -3/2
+== [G] ==
+[G] ok   F = prod_j (1 + f/2^j): every q-coefficient > 0 (n <= 200)
+[G] ok   F(gamma tau) = F(tau) for gamma = [[1,0],[2,1]] at tau = (-0.5+0.5j): 9.690741e-01-1.747865e-34j vs 9.690741e-01+1.747865e-34j
+[G] ok   log a_n / sqrt(n) at n = 50, 100, 200: [13.102, 16.543, 20.445] (increasing: not weakly holomorphic)
+      log a_n / n^(2/3) at n = 50, 100, 200: [6.826, 7.679, 8.454] (saddle-point prediction 3 (pi^4/(4 log 2))^(1/3) ~ 12.4)
+== [T] ==
+[T] ok   Lie_4: (12)(34), (13)(24): dim 6, 3 joint eigenlines, weight 0.0; S-, T- and Gamma(2)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 1.0000
+      joint eigenlines (s, r): mult  (0, 1/2): 2, (1/2, 0): 2, (1/2, 1/2): 2
+[T] ok   Lie_4: (1234), (13)(24): dim 6, 4 joint eigenlines, weight -0.5; S-, T- and Gamma(4)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 1.4142
+      joint eigenlines (s, r): mult  (0, 0): 1, (1/4, 1/2): 2, (1/2, 0): 1, (3/4, 1/2): 2
+[T] ok   Lie_5: (12345), (12345)^2: dim 24, 5 joint eigenlines, weight -2.0; S-, T- and Gamma(5)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 1.0000
+      joint eigenlines (s, r): mult  (0, 0): 4, (1/5, 2/5): 5, (2/5, 4/5): 5, (3/5, 1/5): 5, (4/5, 3/5): 5
+[T] ok         negative control: S-partner (h, g) fails
+[T] ok   Lie_6: (123)(456), (14)(25)(36): dim 120, 6 joint eigenlines, weight -9.0; S-, T- and Gamma(6)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 33.2929
+      joint eigenlines (s, r): mult  (0, 0): 18, (0, 1/2): 20, (1/3, 0): 19, (1/3, 1/2): 22, (2/3, 0): 19, (2/3, 1/2): 22
+[T] ok   Lie_6: (12)(34)(56), (135)(246): dim 120, 6 joint eigenlines, weight -9.0; S-, T- and Gamma(6)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 0.0300
+      joint eigenlines (s, r): mult  (0, 0): 18, (0, 1/3): 19, (0, 2/3): 19, (1/2, 0): 20, (1/2, 1/3): 22, (1/2, 2/3): 22
+[T] ok   2+2: swap, swap: dim 5, 2 joint eigenlines, weight -1.0; S-, T- and Gamma(2)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 1.0000
+      joint eigenlines (s, r): mult  (0, 0): 2, (1/2, 1/2): 3
+[T] ok   bowtie: (12), (34): dim 4, 4 joint eigenlines, weight -0.5; S-, T- and Gamma(2)-laws hold, |T-mult| = |Gamma(N)-mult| = 1, S-constant 1.0000
+      joint eigenlines (s, r): mult  (0, 0): 1, (0, 1/2): 1, (1/2, 0): 1, (1/2, 1/2): 1
+[T] ok   negative control: one eigenline (1/3, 1/4) without its conjugate fails the S-law
+[T] ok   a conjugate pair of eigenlines is -e(s(r-1)/2)/g_(r,s) (Siegel function)
+42/42 checks passed
