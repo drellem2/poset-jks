@@ -1,0 +1,45 @@
+observation_cc.py: n = 3..8, budget 5400s, jobs 2; posets [1, 1, 2, 5, 16, 63, 318, 2045, 16999]
+[CTL] controls
+  Pi_4^(1, 2, 3, 0): |M| = 3, mu = 0, CC = True  ok
+  Pi_4^(0, 1, 2, 3): |M| = 15, mu = -6, CC = False  ok
+  injected fault (c := 0 in Prop. A's predicate), n <= 5: ZL fails on 112 zeros (must be > 0)  ok
+[EXTRA] targeted pairs of cr_v_type_a.py (n = 8, 9, 18)
+  antichain 8, +(4,4)         [W+2]: |M| = 16, mu = 0, row W+2, LOW = True, HIGH = False, c^D != 0: True  ok
+  antichain 8, -(4,4)         [W-1, k=2]: |M| = 16, mu = 0, row W-1, LOW = True, HIGH = False, c^D != 0: True  ok
+  four 2-chains, +(4,4) free  [W+2]: |M| = 12, mu = 0, row W+2, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 8, +(8)           [W+2]: |M| = 4, mu = 0, row W+2, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 8, -(8)           [W-1, k=2]: |M| = 4, mu = 0, row W-1, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 9, +(9)           [W+2]: |M| = 3, mu = 0, row W+2, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 9, -(9)           [W-1, m=9, k=6]: |M| = 3, mu = 0, row W-1, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 9, +(3,3,3)       [nonzero]: |M| = 42, mu = -18, row nonzero, LOW = False, HIGH = False, c^D != 0: False  ok
+  antichain 9, -(3,3,3)       [nonzero]: |M| = 42, mu = -18, row nonzero, LOW = False, HIGH = False, c^D != 0: False  ok
+  antichain 18, +(18)         [W+2]: |M| = 6, mu = 0, row W+2, LOW = True, HIGH = True, c^D != 0: True  ok
+  antichain 18, -(18)         [W-1, m=9, k=6]: |M| = 6, mu = 0, row W-1, LOW = True, HIGH = True, c^D != 0: True  ok
+  nine 2-chains, -(18) anti   [W-1, m=9, k=6]: |M| = 6, mu = 0, row W-1, LOW = True, HIGH = True, c^D != 0: True  ok
+  nine 2-chains, -(6,6,6)     [nonzero, case IIa]: |M| = 180, mu = 18, row nonzero, LOW = False, HIGH = False, c^D != 0: False  ok
+[TA] Observation CC and its proof steps on every pair (P, +-t), up to isomorphism
+  n=3: posets 5/5; pairs 14, zeros 5; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 0, high-only 0, both 5; c^D != 0 on 3 pairs (0 of them W-4)  [0.0s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, True, True, True): 3, ('W-4', True, True, True, True): 2}
+  n=4: posets 16/16; pairs 50, zeros 22; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 0, high-only 0, both 22; c^D != 0 on 20 pairs (0 of them W-4)  [0.0s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, True, True, True): 15, ('W+2', True, True, True, True): 1, ('W-1', True, True, True, True): 3, ('W-3', True, True, True, True): 1, ('W-4', True, True, True, True): 2}
+  n=5: posets 63/63; pairs 174, zeros 99; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 4, high-only 3, both 92; c^D != 0 on 89 pairs (0 of them W-4)  [0.1s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, False, True, True): 4, ('W+1', True, True, True, False): 3, ('W+1', True, True, True, True): 73, ('W-1', True, True, False, True): 4, ('W-1', True, True, True, True): 3, ('W-3', True, True, True, True): 2, ('W-4', False, True, True, True): 3, ('W-4', True, True, True, True): 7}
+  n=6: posets 318/318; pairs 866, zeros 481; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 64, high-only 3, both 414; c^D != 0 on 471 pairs (0 of them W-4)  [0.6s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, False, True, True): 55, ('W+1', True, True, True, False): 16, ('W+1', True, True, True, True): 361, ('W-1', True, True, False, True): 6, ('W-1', True, True, True, True): 17, ('W-2', True, True, True, True): 2, ('W-3', True, False, True, True): 9, ('W-3', True, True, True, True): 5, ('W-4', False, True, True, True): 3, ('W-4', True, True, True, True): 7}
+    n=7: 2000/2045 posets, 21s
+  n=7: posets 2045/2045; pairs 5050, zeros 2912; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 558, high-only 36, both 2318; c^D != 0 on 2857 pairs (0 of them W-4)  [21.6s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, False, True, True): 533, ('W+1', True, True, True, False): 75, ('W+1', True, True, True, True): 2150, ('W-1', True, False, True, True): 6, ('W-1', True, True, False, True): 30, ('W-1', True, True, True, True): 33, ('W-3', True, False, True, True): 19, ('W-3', True, True, True, True): 11, ('W-4', False, True, True, True): 36, ('W-4', True, True, True, True): 19}
+    n=8: 2000/16999 posets, 437s
+    n=8: 4000/16999 posets, 744s
+    n=8: 6000/16999 posets, 952s
+    n=8: 8000/16999 posets, 1098s
+    n=8: 10000/16999 posets, 1317s
+    n=8: 12000/16999 posets, 1446s
+    n=8: 14000/16999 posets, 1549s
+    n=8: 16000/16999 posets, 1672s
+  n=8: posets 16999/16999; pairs 39174, zeros 21658; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, U fails 0, ZL fails 0, W4 fails 0; sides low-only 5852, high-only 36, both 15770; c^D != 0 on 21603 pairs (0 of them W-4)  [1701.6s]
+         zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms): {('W+1', True, False, True, True): 5637, ('W+1', True, True, True, False): 432, ('W+1', True, True, True, True): 15059, ('W+2', True, False, True, True): 1, ('W+2', True, True, False, True): 1, ('W+2', True, True, True, True): 1, ('W-1', True, False, False, True): 9, ('W-1', True, False, True, True): 33, ('W-1', True, True, False, True): 63, ('W-1', True, True, True, False): 4, ('W-1', True, True, True, True): 164, ('W-3', True, False, True, True): 172, ('W-3', True, True, True, True): 27, ('W-4', False, True, True, True): 36, ('W-4', True, True, True, True): 19}
+  total: {'pairs': 45328, 'zeros': 25177, 'cc_mismatch': 0, 'cd_fail': 0, 'ck_fail': 0, 'a_fail': 0, 'u_fail': 0, 'zl_fail': 0, 'w4_fail': 0, 'low_only': 6478, 'high_only': 78, 'both': 18621, 'pred_true': 25043, 'pred_zero_W4': 0}
+  zeros by (row, LOW, HIGH, W >= meet coatoms, W <= join atoms), all n: {('W+1', True, False, True, True): 6229, ('W+1', True, True, True, False): 526, ('W+1', True, True, True, True): 17661, ('W+2', True, False, True, True): 1, ('W+2', True, True, False, True): 1, ('W+2', True, True, True, True): 2, ('W-1', True, False, False, True): 9, ('W-1', True, False, True, True): 39, ('W-1', True, True, False, True): 103, ('W-1', True, True, True, False): 4, ('W-1', True, True, True, True): 220, ('W-2', True, True, True, True): 2, ('W-3', True, False, True, True): 200, ('W-3', True, True, True, True): 46, ('W-4', False, True, True, True): 78, ('W-4', True, True, True, True): 56}
+total 1727.5s
+ALL CHECKS PASSED
