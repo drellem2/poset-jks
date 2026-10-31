@@ -1,0 +1,49 @@
+[posets] counts [1, 2, 5, 16, 63, 318, 2045] total 2450
+[disconnected posets] 503
+[B: lambda0 first-piece] cases=2449 failures=0 OK
+[B: lambda0 last-piece] cases=2449 failures=0 OK
+[D: sum_w N_T = Omega_C] cases=97535 failures=0 OK
+[H': mindes dist = h] cases=7905 failures=0 OK
+[H: cdes-1 dist = h] cases=7166 failures=0 OK
+[H: mindes=cdes-1 classwise] cases=7166 failures=0 OK
+[H: no all-ascent] cases=7166 failures=0 OK
+[L1: per-class] cases=6828529 failures=0 OK
+[Om(1)=1] cases=2450 failures=0 OK
+[Thm-Omega brute (maps)] cases=511 failures=0 OK
+[antichain Eulerian] cases=7 failures=0 OK
+[cdes-class-const] cases=458012 failures=0 OK
+[ctl-BP-first arbitrary base, lambda0 [CONTROL]] cases=554 failures=41 REFUTED (good)
+[ctl-BP-first separated [CONTROL]] cases=4443 failures=346 REFUTED (good)
+[ctl-BP-last separated [CONTROL]] cases=4443 failures=346 REFUTED (good)
+[ctl-H'' mindes with all-ascent [CONTROL]] cases=48 failures=48 REFUTED (good)
+[ctl-cdes-any [CONTROL]] cases=7953 failures=787 REFUTED (good)
+[ctl-lin des on Lin P [CONTROL]] cases=7953 failures=2917 REFUTED (good)
+[h>=0] cases=2450 failures=0 OK
+[has all-ascent n<=6] cases=48 failures=0 
+[labelled n<=6] cases=5231 failures=0 
+[labelled n=7-lab] cases=2723 failures=0 
+[lambda0-natural+separated] cases=2450 failures=0 OK
+[lin: connected, every labelling, des = h] cases=5036 failures=0 OK
+[lin: des on Lin P = h iff connected] cases=2449 failures=0 OK
+[mu-sign] cases=831020 failures=0 OK
+[separated n<=6] cases=4443 failures=0 
+[separated n=7-lab] cases=2723 failures=0 
+[signed=abs] cases=2450 failures=0 OK
+[sum h = e_C] cases=2450 failures=0 OK
+[table A4] cases=1 failures=0 OK
+[table C2+C1] cases=1 failures=0 OK
+[table C2+C2] cases=1 failures=0 OK
+[table C3+C1] cases=1 failures=0 OK
+  example ctl-lin des on Lin P [CONTROL] (0, 0)
+  example ctl-BP-first arbitrary base, lambda0 [CONTROL] ((0, 0), 2)
+  example ctl-lin des on Lin P [CONTROL] (0, 0, 0)
+  example ctl-BP-first arbitrary base, lambda0 [CONTROL] ((0, 0, 0), 2)
+  example ctl-BP-last separated [CONTROL] (0, 1, 0, 0)
+  example ctl-BP-first separated [CONTROL] (0, 0, 0, 4)
+  example ctl-BP-first separated [CONTROL] (0, 0, 0, 5)
+  example ctl-BP-last separated [CONTROL] (0, 1, 0, 1)
+  example ctl-cdes-any [CONTROL] (0, 1, 0, 4)
+  example ctl-cdes-any [CONTROL] (0, 1, 0, 5)
+  example ctl-H'' mindes with all-ascent [CONTROL] (0, 1, 0, 0, 8)
+  example ctl-H'' mindes with all-ascent [CONTROL] (0, 1, 0, 0, 9)
+EXIT 0
