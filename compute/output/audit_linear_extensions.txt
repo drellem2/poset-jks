@@ -1,0 +1,46 @@
+[gen] unlabelled posets by n: [1, 2, 5, 16, 63, 318, 2045]
+      total 2450 disconnected 503
+[jdt] jdt == toggles on all 2450 posets: True
+[P] Lemma P on 503 disconnected posets, 1417710 (w, split) pairs: True
+[P1] True [P2] True
+[R] hypothesis holds on 102 ; refinement on all of them: True
+    hypothesis fails on 401 ; refinement fails on 6
+      n=6 rels=[(0, 4), (1, 4), (2, 5), (3, 5)]
+      n=6 rels=[(0, 5), (1, 5), (2, 3), (2, 4)]
+      n=6 rels=[(0, 2), (0, 3), (1, 4), (1, 5)]
+      n=7 rels=[(1, 5), (2, 5), (3, 6), (4, 6)]
+      n=7 rels=[(1, 6), (2, 6), (3, 4), (3, 5)]
+      n=7 rels=[(1, 3), (1, 4), (2, 5), (2, 6)]
+[O] Proposition O on all 2450 posets, every base component: True
+[E] orbits == classes iff chain or antichain: True ( 13 posets with equality )
+[D] eigen-relation: True ; descends iff connected or antichain: True ( 6 disconnected posets where it descends )
+[F] Proposition F on 2450 posets: True ; cumulant formula: True
+[RSW] fixed patterns = q-multinomial at roots of unity: True ( 255 compositions )
+[U] fixed-point product formula on all 503 : True
+    qualifying: 45 ; CSP holds: True ; X == shifted maj: True
+[sweep] n=3 posets=5 order-not-dividing=2 hold=3 fail=0
+[sweep] n=4 posets=16 order-not-dividing=7 hold=6 fail=3
+[sweep] n=5 posets=63 order-not-dividing=52 hold=11 fail=0
+[sweep] n=6 posets=318 order-not-dividing=258 hold=18 fail=42
+[sweep] n=7 posets=2045 order-not-dividing=1971 hold=70 fail=4
+        n=4 failures: [[(0, 2), (0, 3), (1, 2), (1, 3)], [(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)], [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]]
+[rh] (2, 2): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (3, 3): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (4, 4): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (3, 3, 3): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (5, 5): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (4, 4, 4): q-hook == shifted maj True, CSP True, q*X rejected True
+[rh] (6, 6): q-hook == shifted maj True, CSP True, q*X rejected True
+[stair] promotion orders: {'(3,2,1)': 12, '(4,3,2,1)': 20, 'shifted 3': 1, 'shifted 6': 2, 'shifted 10': 10}
+[M] Theorem M on 108 disconnected posets n <= 6 : True
+[homog] {'restriction tuple': 108, 'number of blocks': 5, 'jumps': 5, 'random colouring': 2} of 108
+        every natural labelling, n <= 5: {'des': 0, 'maj': 0, 'tested': 603}
+[descR] partial(R_P) <= R_P on 9 : [[1, 1], [1, 2], [2, 2], [1, 3], [2, 3], [1, 4], [3, 3], [2, 4], [1, 5]]
+        e_C(C2+C2+C2) = 74
+[table] A3 (6, 2, 2, [3, 3], True)
+[table] C2+C1 (3, 2, 1, [3], True)
+[table] C2+C2 (6, 5, 2, [2, 4], True)
+[table] C2+C2+C2 (90, 74, 16, [3, 3, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], True)
+[table] (2x2)+C1 (10, 8, 2, [5, 5], True)
+[table] V+V (80, 76, 8, [4, 4, 12, 12, 12, 12, 12, 12], False)
+[table] 2x3 (5, 5, 2, [2, 3], True)
