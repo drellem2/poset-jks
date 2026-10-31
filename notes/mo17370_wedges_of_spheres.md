@@ -19,8 +19,21 @@ sgn ⊗ Lie(P):
   This is Theorem TA-CR together with a cited theorem of Kozlov (1998, Thm 2.4), which
   generalizes Björner 1981, Thm 3.3. The case of unequal cycle lengths was already
   recorded in `notes/fixed_point_mobius_identity.md`, Consequence (iii).
-- **(E2)** A candidate theorem, **OPEN**: for connected P, the order complex is
-  Aut(P)-homotopy equivalent to a wedge of spheres that Aut(P) permutes freely.
+- **(E2)** Theorem E, **PROVEN and independently audited** (§3; proof in
+  `notes/theorem_e_equivariant_wedge.md`, audit in `notes/audit_theorem_e.md`): for a
+  pointed cone and a group acting freely on its chambers, the order complex is
+  G-homotopy equivalent to a wedge of spheres that G permutes freely. For connected P
+  this says the order complex is Aut(P)-homotopy equivalent to such a wedge, and its top
+  homology is a free ℤ[Aut P]-module. The case of the claw (where OP(P) = Π_n) is
+  KNOWN (Arone; Arone–Brantner; Donau); for general pointed cones and for other
+  connected P it was not found in the sources read (a search result,
+  `notes/prior_art_theorem_e.md`).
+
+So, as far as the audit supports it, the verdict changes in one respect: we now also
+have an *equivariant* homotopy type, for pointed cones with a free action. It does not
+answer the MO question either. Its mechanism is the same convexity-plus-fiber-lemma
+mechanism, run on each fixed-point set (a known technique, Thévenaz–Webb), and it does
+not reach the case where the representation is not free (§3).
 
 This is a note, not a post. Nothing here has been sent to MathOverflow.
 
@@ -322,7 +335,8 @@ sets, by the Lefschetz/Hopf identity. For an order-preserving g, the fixed subco
 Δ(L̄)^g equals Δ(L̄^g), because g fixes a chain setwise only if it fixes it pointwise
 (`notes/audit_literature_novelty_jks_maps.md` row 21; [Thm] eq. homchar). The character
 value χ(g) is ± the reduced Euler characteristic of that fixed subcomplex. This gives
-one consequence, (E1) in §2.5, and suggests one candidate, (E2) in §3, which is OPEN.
+one consequence, (E1) in §2.5, and suggested one candidate, (E2) in §3, which is now
+Theorem E, PROVEN and audited.
 
 **Does the equivariant structure realize the wedge equivariantly, with G permuting the
 spheres? In general, no.** Example: P = antichain on 3 points, G = S_3.
@@ -434,13 +448,39 @@ an inequality bounds them.
 Δ(L̄). Its only link to the wedge is the count e_C(P), and that count is an input to
 Theorem G, not a consequence of it.
 
-## 3. The candidate equivariant statement (E2), OPEN
+## 3. The equivariant statement (E2): Theorem E, PROVEN and audited
+
+**Status (updated).** Candidate Theorem E below is now **PROVEN** in
+`notes/theorem_e_equivariant_wedge.md`, for every rank d ≥ 2 (not only d ≥ 3), and
+**independently audited** in `notes/audit_theorem_e.md`, which finds that Theorem E,
+its lemmas, the poset case and Theorem S all hold. Every gap (i)–(v) listed below is
+closed there:
+- (i) no equivariant homeomorphism is needed: the ordinary fiber lemma is applied to
+  each fixed subposet (Lemma F);
+- (ii) Thévenaz–Webb was re-read, and the equivariant Whitehead theorem was checked in
+  May, CBMS 91, Cor. I.3.3;
+- (iii) d = 3 by a tree-lifting argument, d = 2 directly;
+- (iv) the prior-art check is `notes/prior_art_theorem_e.md`. Theorem E for general
+  pointed cones: NOT FOUND. Poset case for the claw K_n (OP(K_n) = Π_n,
+  Aut = Σ_{n−1}): KNOWN (Arone 2015, Ex. 1.4; Arone–Brantner 2021, Example after
+  Thm 5.10; Donau 2012), and Theorem E generalizes it. Poset case for every other
+  connected P: NOT FOUND. These are search results, not proofs of novelty;
+- (v) the audit is done.
+
+Without freeness, the proof note gives **Theorem S** (PROVEN, audited): after one
+unreduced suspension, Δ(Λ̄(V)) is G-equivalent to a wedge of representation spheres
+indexed by the chambers. Theorem S was NOT FOUND in the sources read; the same shape
+occurs for partition complexes under Young subgroups (Arone 2015, Thm 1.2;
+Arone–Brantner 2021, Thm 5.10). Whether it desuspends is **OPEN** (Question E♯ of the
+proof note). The text below is the original sketch, kept as the record of what was
+asked.
+
 
 The equivariant structure gives one thing that the MO answers and the sources read lack:
 a candidate *equivariant* homotopy type. It covers only the case where the representation
 is free.
 
-**Candidate Theorem E.** Assume:
+**Candidate Theorem E** (original statement; now proven for d ≥ 2). Assume:
 - A is a finite real central essential arrangement of rank d ≥ 3.
 - V is a *pointed* top-cone.
 - G is a finite group of linear maps preserving A and V that acts *freely* on the
@@ -489,7 +529,8 @@ free ℤG-module.
      *Transformation Groups*, II.2.7; from memory, not re-read) gives W ≃_G X.
    - Combined with step 1: W ≃_G Δ(Λ̄(V)).
 
-**What remains to prove.**
+**What remained to prove** (all closed in `notes/theorem_e_equivariant_wedge.md`; see
+the status block above).
 - (i) The equivariant homeomorphism in step 1, and a G-CW structure on X. Use the
   barycentric subdivision.
 - (ii) A re-read of Thévenaz–Webb and of the equivariant Whitehead theorem, with exact
@@ -502,10 +543,11 @@ free ℤG-module.
   Nothing was searched for this note.
 - (v) An independent audit.
 
-**Status: OPEN** (a proof sketch, unaudited, with no prior-art search).
+**Status: PROVEN and audited** (was: OPEN, a proof sketch). See the status block at
+the top of this section.
 
-**What Theorem E would and would not explain.**
-- It would explain the wedge *and* the free action at once, from convexity plus a free
+**What Theorem E does and does not explain.**
+- It explains the wedge *and* the free action at once, from convexity plus a free
   action on chambers.
 - It does **not** reach the interesting representation theory. That appears exactly
   when P is disconnected (the cone is not pointed) and Lie(P) is not free. There, §2.4
@@ -599,4 +641,4 @@ core; the [R4] sweep is most of it). Output archived in
 | Vanishing criteria, TA-CR | No by themselves. With Kozlov 1998 Thm 2.4 (CITED, read): fixed subcomplexes contractible on every type-A zero (E1) | A known explanation in new clothing; identifies the contractible branch of Hatcher's "metatheorem" on fixed subcomplexes (the wedge branch is OPEN) |
 | CR_V rank-4 refutation | No. Its fixed subcomplex is a tree (contractible; §2.6, §5) | Nothing for MO. CR_V^top is not refuted (OPEN) |
 | Theorem G | No | Nothing |
-| Candidate Theorem E (pointed cones, free action) | Would give a G-homotopy type | A candidate equivariant explanation. **OPEN** |
+| Theorem E (pointed cones, free action; `notes/theorem_e_equivariant_wedge.md`) | **Yes**, a G-homotopy type. PROVEN, audited (`notes/audit_theorem_e.md`) | An equivariant form of the convexity explanation, by a known technique (Thévenaz–Webb). KNOWN for the claw (Π_n with Σ_{n−1}); NOT FOUND for general pointed cones or other connected P (search result). Not free: Theorem S (PROVEN, audited); desuspension (Question E♯) **OPEN** |

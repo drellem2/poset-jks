@@ -102,7 +102,10 @@ abbreviations used below are:
 \textbf{[AudBn]} & \src{notes/audit_cyclic_compatible_posets_bn.md}\\
 \textbf{[Repro]} & \src{notes/reproduce_character_identity_n_le_5.md}\\
 \textbf{[N7]} & \src{notes/n7_character_sweep_and_homology_crosscheck.md}\\
-\textbf{[Cit]} & \src{notes/citation_check.md}
+\textbf{[Cit]} & \src{notes/citation_check.md}\\
+\textbf{[TE]} & \src{notes/theorem_e_equivariant_wedge.md}\\
+\textbf{[AudTE]} & \src{notes/audit_theorem_e.md}\\
+\textbf{[PATE]} & \src{notes/prior_art_theorem_e.md}
 \end{tabular}
 \end{center}
 Equation names such as (mainconj), (characterconj) and (restrictionlemma)
@@ -638,6 +641,41 @@ $e_C(P)=\sum_{\pi\in\Pi(K)}(-1)^{|\pi|-1}(|\pi|-1)!\prod_{T\in\pi}|\Lin(P|_T)|$.
 \st{proven}; \st{computed} for all $405$ posets with $n\le6$. Not
 independently audited.
 \end{corollary}
+
+\begin{remark}[Freeness over $\mathbb Z$ and the equivariant wedge; {[TE,
+\S2.5]}, {[AudTE, \S3.5]}]\label{rem:Zfree}
+Let $P$ be connected with $n\ge3$ elements and $L=\OP(P)$. Then
+$\widetilde H_{n-3}(\Delta(\overline L);\mathbb Z)$ is a free
+$\mathbb Z[\Aut P]$-module of rank $|\Lin P|/|\Aut P|$, and the order complex
+is an $\Aut(P)$-equivariant wedge:
+\[
+\Delta(\overline L)\simeq_{\Aut P}\Aut(P)_+\wedge
+\bigvee^{|\Lin P|/|\Aut P|}S^{n-3},
+\]
+an $\Aut(P)$-homotopy equivalence (a map that is a homotopy equivalence on
+the fixed points of every subgroup) with a wedge of spheres that $\Aut(P)$ permutes freely. So the
+$\mathbb C$-statement of Corollary~\ref{cor:connected} holds integrally and at
+the level of spaces. \st{proven}, \st{audited} ([AudTE]: it holds).
+
+This is the braid case of Theorem~E of [TE]: for a pointed top-cone $V$ of a
+finite real central essential arrangement and a finite group acting freely on
+the chambers of $V$, the order complex of the proper part of the lattice of
+supports is an equivariant free wedge. Here $V=C_P$ is pointed because $P$
+is connected. Connectedness is used only there: $\Aut(P)$ acts freely on
+$\Lin P$ for every finite $P$. Step~1 of the proof is the equivariant fiber
+lemma technique of Th\'evenaz--Webb~\cite{ThevenazWebb} (restated in
+Bj\"orner--Wachs--Welker, Cor.~7.2); the equivariant Whitehead theorem is
+used in the form of~\cite[Cor.~I.3.3]{May96}.
+
+\emph{Prior art} ([PATE]; a search result, not a proof of novelty). For the
+claw $K_n$ (one minimum below $n-1$ maximal elements) and its dual,
+$\OP(K_n)=\Pi_n$ and $\Aut(K_n)=S_{n-1}$, and the statement is the known
+$S_{n-1}$-equivariant splitting
+$|\overline{\Pi_n}|\simeq_{S_{n-1}}S_{n-1,+}\wedge S^{n-3}$
+\cite[Ex.~1.4]{Arone15}, \cite[Example after Thm~5.10]{AroneBrantner},
+\cite{Donau}. The remark generalizes this case. For every other connected $P$
+it was not found in the sources read.
+\end{remark}
 
 \section{Correction: the restricted image identity is false}
 \label{sec:correction}
@@ -1571,6 +1609,27 @@ in: Combinatoire \'enum\'erative, LNM~1234, Springer, 1986, 126--159.
 M.~Aguiar and S.~Mahajan, \emph{Topics in Hyperplane Arrangements},
 Math. Surveys Monogr.~226, AMS, 2017; and \emph{Bimonoids for Hyperplane
 Arrangements}, Encyclopedia Math. Appl.~173, CUP, 2020.
+
+\bibitem{ThevenazWebb}
+J.~Th\'evenaz and P.~J.~Webb, \emph{Homotopy equivalence of posets with a
+group action}, J. Combin. Theory Ser.~A \textbf{56} (1991), 173--181.
+
+\bibitem{May96}
+J.~P.~May et al., \emph{Equivariant Homotopy and Cohomology Theory}, CBMS
+Regional Conf. Ser. Math.~91, AMS, 1996.
+
+\bibitem{Arone15}
+G.~Z.~Arone, \emph{A branching rule for partition complexes},
+arXiv:1508.05086.
+
+\bibitem{AroneBrantner}
+G.~Z.~Arone and D.~L.~B.~Brantner, \emph{The action of Young subgroups on
+the partition complex}, Publ. Math. IH\'ES \textbf{133} (2021), 47--156;
+arXiv:1801.01491.
+
+\bibitem{Donau}
+R.~Donau, \emph{A nice acyclic matching on the nerve of the partition
+lattice}, arXiv:1204.2693.
 
 \end{thebibliography}
 

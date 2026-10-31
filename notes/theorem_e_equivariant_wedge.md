@@ -2,7 +2,8 @@
 
 **Verdict.** Candidate Theorem E of `notes/mo17370_wedges_of_spheres.md` §3 is
 **PROVEN** below, for every rank d ≥ 2 (d = 2 and d = 3 included), given standard cited
-inputs. The proof closes all the gaps that §3 marked:
+inputs, and independently **AUDITED** ([Aud]: it holds). The proof closes all the gaps
+that §3 marked:
 - Step 1 needs no equivariant homeomorphism. It applies the ordinary Quillen fiber lemma
   to each fixed subposet, using the restricted arrangement on Fix(H). This is exactly how
   Thévenaz–Webb prove their Theorem 1, which we re-read.
@@ -21,9 +22,33 @@ Both hypotheses are necessary:
 - **Pointedness is necessary**, even when G acts freely on the chambers (Π̄_4 with S_4,
   and the poset of two 2-chains with its swap).
 
-**Poset case (PROVEN).** For P connected with n ≥ 3 elements,
+**Poset case (PROVEN, AUDITED).** For P connected with n ≥ 3 elements,
 Δ(L̄) ≃_{Aut P} Aut(P)_+ ∧ ⋁^{e(P)/|Aut P|} S^{n−3}, where e(P) = |Lin P|. In particular
 H̃_{n−3}(Δ(L̄); ℤ) is a free ℤ[Aut P]-module. [Thm] has this only over ℂ.
+
+**Audit status.** Independently audited in [Aud] = `notes/audit_theorem_e.md`, with its
+own code. Theorem E (all d ≥ 2), Lemma F, Corollaries F1 and F2, the poset corollary,
+Theorem S and (S1)–(S4) **HOLD**. The audit's fixable items R1 (§2.3 wording), R2
+(Theorem S step 5 wording) and R3 (the Π̄_4 example of §3.3) are applied below, as are
+its optional items (May's statement of (W); the "⇐" step of Lemma F(c)). The audit also
+proves the case e_H = 3 of (S4) by a planar-collapse argument ([Aud, §4.2]). That proof
+has **not been independently checked**, so it is recorded as "proved in the audit, not
+independently checked", not as audited.
+
+**Prior art** ([PA] = `notes/prior_art_theorem_e.md`; all verdicts are search results,
+not proofs of novelty).
+- Theorem E for general pointed cones: **NOT FOUND**.
+- The poset corollary for the claw K_n (one minimum below n − 1 maximal elements, and its
+  dual) is **KNOWN**. There OP(K_n) = Π_n and Aut(K_n) = Σ_{n−1}, and the corollary reads
+  |Π̄_n| ≃_{Σ_{n−1}} Σ_{n−1,+} ∧ S^{n−3}: Arone 2015, Examples 1.4; Arone–Brantner 2021,
+  the Example after Thm 5.10; Donau 2012. The poset corollary **generalizes** this known
+  case. For every other connected P it is **NOT FOUND**.
+- Theorem S: **NOT FOUND**. The same shape (a G-equivalence, after an unreduced
+  suspension, to a wedge of induced representation spheres) occurs for partition
+  complexes under Young subgroups: Arone 2015, Thm 1.2; Arone–Brantner 2021, Thm 5.10.
+  Those are a different object and do not contain Theorem S ([PA, §2.2]).
+- Step 1 (Corollary F1) is the known technique of Thévenaz–Webb 1991, Thm 1, restated as
+  Björner–Wachs–Welker 2005, Cor. 7.2. The fiber computation, Lemma F, was not found.
 
 Tags:
 - **PROVEN**: a proof is given here; the cited inputs are named.
@@ -31,9 +56,11 @@ Tags:
 - **COMPUTED**: checked by `compute/theorem_e_equivariant_wedge.py` (see Reproduce). The
   output is archived in `compute/output/theorem_e_equivariant_wedge.txt`.
 - **OPEN**: not proved.
+- **AUDITED**: re-derived by the independent audit [Aud].
 
 Abbreviations: [GT] = `notes/general_theory.md`, [MO] = `notes/mo17370_wedges_of_spheres.md`,
-[Thm] = `notes/poset_jks_theorem.tex`, [TW] = Thévenaz–Webb (below).
+[Thm] = `notes/poset_jks_theorem.tex`, [TW] = Thévenaz–Webb (below),
+[Aud] = `notes/audit_theorem_e.md`, [PA] = `notes/prior_art_theorem_e.md`.
 
 ---
 
@@ -73,8 +100,11 @@ permutes the chambers" when the action on chambers is free.
   G-equivariant cellular map. Then φ is a G-homotopy equivalence iff φ^H : X^H → Y^H is a
   homotopy equivalence for every subgroup H ≤ G.
   - **CITED.** The statement was re-read in [TW]. Bredon and tom Dieck were *not* re-read.
-  - Every map we feed into (W) is made cellular by construction. We never invoke
-    equivariant cellular approximation.
+    The audit re-read it in J. P. May et al., *Equivariant homotopy and cohomology
+    theory*, CBMS Regional Conf. Ser. Math. 91 (AMS 1996), Ch. I, Thm 3.2 and
+    **Cor. 3.3** ([Aud, §2]). There cellularity is *not* a hypothesis.
+  - Every map we feed into (W) is in fact cellular, but by May's statement this is not
+    needed.
 - **[TW] Thévenaz–Webb**, *Homotopy equivalence of posets with a group action*, J. Combin.
   Theory Ser. A 56 (1991) 173–181.
   - **CITED, re-read** in the open-access typescript on EPFL Infoscience (record 130437).
@@ -106,7 +136,7 @@ permutes the chambers" when the action on chambers is free.
 
 ## 1. The fixed-point lemma
 
-**Lemma F (PROVEN).** Let V be pointed and H ≤ G, and put U = Fix(H).
+**Lemma F (PROVEN, AUDITED).** Let V be pointed and H ≤ G, and put U = Fix(H).
 - (a) A face F of A is H-stable (hF = F for all h ∈ H) iff F ∩ U ≠ ∅.
 - (b) F ↦ F ∩ U is an order isomorphism from the H-stable faces of A onto the faces of the
   restricted arrangement A^U = {h ∩ U : h ∈ A, h ⊉ U} in U. A^U is essential in U.
@@ -131,8 +161,10 @@ permutes the chambers" when the action on chambers is free.
   ⋂_{h ∈ A} h = 0.
 - (c), the poset. Put K_Y = |V| ∩ Y ∩ U. It is a closed convex cone, a union of faces of
   A^U (because |V| and Y are unions of faces of A), and pointed (because |V| is). By (b),
-  𝓕(Y)^H is isomorphic to the poset of nonzero faces of A^U contained in K_Y. By (C)
-  applied in U, Δ(𝓕(Y)^H) ≅ K_Y ∩ S.
+  𝓕(Y)^H is isomorphic to the poset of nonzero faces of A^U contained in K_Y. (For an
+  H-stable F, F ⊆ |V| ∩ Y iff F ∩ U ⊆ K_Y. For "⇐": F ∩ U ≠ ∅ meets the union of faces
+  |V| ∩ Y, so F lies in it ([Aud, §1.1]).) K_Y ∩ S is a subcomplex of the regular CW
+  sphere S(U) given by A^U, so by (C) applied in U, Δ(𝓕(Y)^H) ≅ K_Y ∩ S.
 - (c), contractibility. K_Y ≠ 0: take 0 ≠ x ∈ |V| ∩ Y, which exists because
   dim(|V| ∩ Y) = dim Y ≥ 1 ([GT, Lemma 0.1(a)]). Its H-average is H-fixed and lies in
   |V| ∩ Y. It is nonzero, because a sum of vectors of a pointed cone vanishes only if
@@ -144,7 +176,7 @@ The averaging trick and the convexity in §3 of [MO] are the heart of this. Lemm
 the written-out form of [MO] gap (i). It replaces the equivariant homeomorphism
 |Δ(face poset)| ≅ |V| ∩ Y ∩ S by a non-equivariant homeomorphism applied once for each H.
 
-**Corollary F1 (PROVEN; pointed V, any finite G).** Δ(f) : X → T is a G-homotopy
+**Corollary F1 (PROVEN, AUDITED; pointed V, any finite G).** Δ(f) : X → T is a G-homotopy
 equivalence.
 
 *Proof.* Fix H ≤ G and Y ∈ Λ̄(V)^H. The fiber of f^H : Q′^H → Λ̄(V)^H over Y is
@@ -152,7 +184,7 @@ equivalence.
 span ⊆ Y, since Y ≠ ℝ^d. It is contractible, so (Q) makes f^H a homotopy equivalence.
 Since X^H = Δ(Q′^H) and T^H = Δ(Λ̄(V)^H) (admissibility), (W) applies. ∎
 
-**Corollary F2 (PROVEN; pointed V).** Let H ≤ G fix no chamber of V. Then T^H is
+**Corollary F2 (PROVEN, AUDITED; pointed V).** Let H ≤ G fix no chamber of V. Then T^H is
 nonempty and contractible.
 
 *Proof.* Q′^H is the poset of all H-stable faces ≠ O of V, because no chamber is
@@ -166,8 +198,8 @@ sketch in [MO §3] and the "fixed sets for EVERY subgroup" requirement.
 
 ## 2. Theorem E
 
-**Theorem E (PROVEN, given (Q), (W), (C) and the Hurewicz and Whitehead theorems).** Let V
-be a pointed top-cone of a finite real central essential arrangement of rank d ≥ 2. Let
+**Theorem E (PROVEN, AUDITED; given (Q), (W), (C) and the Hurewicz and Whitehead
+theorems).** Let V be a pointed top-cone of a finite real central essential arrangement of rank d ≥ 2. Let
 G be a finite group of linear maps preserving A and V that acts freely on the chambers
 of V. Then
 
@@ -253,8 +285,9 @@ argue combinatorially.
 - **A G-invariant spanning tree.** Let Γ = T_1/G, a finite connected graph, and choose a
   spanning tree τ̄ of Γ. Lift τ̄ to a tree τ ⊆ T_1 through *, edge by edge away from [*]:
   - an edge of τ̄ from p to q (p ≠ q, p nearer the root) is a free orbit of edges;
-  - exactly one edge of that orbit is incident to the chosen lift of p, because G acts
-    freely on that orbit and on the vertex orbit of p (or p = [*]).
+  - choose an edge of that orbit incident to the chosen lift of p. If p ≠ [*] it is
+    unique, because G acts freely on that orbit and on the vertex orbit of p. If p = [*],
+    all |G| edges of the orbit meet *, and any one of them will do ([Aud, §3.3, R1]).
 
   τ contains * and exactly one vertex of each free vertex orbit.
 - The translates gτ meet pairwise only in *: if v ∈ gτ ∩ τ, v ≠ *, then v and g^{-1}v
@@ -278,12 +311,14 @@ T is the set of rays of A in |V|; there are #V + 1 of them, because V is pointed
 (Concretely, G is 1 or a reflection of order 2. For the reflection, #V must be even, and
 x_0 is the middle ray.)
 
-### 2.5 The poset case (PROVEN)
+### 2.5 The poset case (PROVEN, AUDITED)
 
 Let P be connected with n ≥ 3 elements, let A be the braid arrangement essentialized in
 ℝ^n/ℝ·1 (so d = n − 1), let V = C_P, and let G = Aut(P) act by permuting coordinates.
 - V is pointed, because lin C_P = ℝ·1 ([MO §3]).
-- G acts freely on Lin P ([Thm], cor:connected). This is also COMPUTED for every case
+- G acts freely on Lin P ([Thm], cor:connected). In fact Aut(P) acts freely on Lin P for
+  *every* finite P (σ·L = L forces σ to be an automorphism of a chain), so connectedness
+  is used only for pointedness ([Aud, §3.5]). This is also COMPUTED for every case
   below by an assertion in the script.
 - Λ(C_P) ≅ OP(P)^op equivariantly: a flat is a set partition, and Aut(P) permutes blocks.
   The order complex of the opposite poset is the same complex.
@@ -293,8 +328,16 @@ So Theorem E gives
   Δ(L̄) ≃_{Aut P} Aut(P)_+ ∧ ⋁^{e(P)/|Aut P|} S^{n−3},
 
 and H̃_{n−3}(Δ(L̄); ℤ) is a free ℤ[Aut P]-module. [Thm, cor:connected] states this over ℂ
-only. The integral statement is new here, as far as this repo goes, and it is a direct
-consequence of §2.1.
+only. The integral statement is a direct consequence of §2.1.
+
+**Prior art ([PA, §2]).** For the claw K_n (and its dual), OP(K_n) = Π_n and
+Aut(K_n) = Σ_{n−1} acts simply transitively on the (n − 1)! linear extensions, so the
+statement reads |Π̄_n| ≃_{Σ_{n−1}} Σ_{n−1,+} ∧ S^{n−3}. This is **KNOWN**: Arone 2015,
+Examples 1.4 (where it is called well known); Arone–Brantner 2021, the Example after
+Thm 5.10; Donau 2012. The claw and its dual are the only connected posets with
+OP(P) = Π_n ([PA, §2.2]). So the poset corollary **generalizes** this known case. For
+every other connected P, neither the homotopy statement nor the integral freeness was
+found in the sources read (NOT FOUND, a search result).
 
 ### 2.6 Computations (COMPUTED)
 
@@ -325,12 +368,16 @@ For a chamber C, let p_C be a G_C-fixed point in the interior of C (an average).
 be the G_C-representation ℝ^d / ℝ p_C, and S^{U_C} its one-point compactification, a
 (d − 1)-sphere with G_C acting.
 
-**Theorem S (PROVEN, given (Q), (W), (C); V pointed, G any finite group preserving A and
-V).** Let Σ^u denote unreduced suspension. Then
+**Theorem S (PROVEN, AUDITED; given (Q), (W), (C); V pointed, G any finite group
+preserving A and V).** Let Σ^u denote unreduced suspension. Then
 
   Σ^u Δ(Λ̄(V)) ≃_G ⋁_{[C] ∈ V/G} G_+ ∧_{G_C} S^{U_C},
 
 a wedge of representation spheres indexed by the chambers, with G permuting them.
+
+*Prior art ([PA, §1.1]).* NOT FOUND (a search result). The same shape occurs for the
+partition complex under Young subgroups (Arone 2015, Thm 1.2; Arone–Brantner 2021,
+Thm 5.10), a different object; neither statement contains the other ([PA, §2.2]).
 
 *Proof.*
 1. **Reduction to X.** Δ(f) : X → T is a G-homotopy equivalence (Corollary F1, which
@@ -354,7 +401,8 @@ a wedge of representation spheres indexed by the chambers, with G permuting them
    - g carries the summand of C to that of gC;
    - so K/X ≅_G ⋁_{[C]} G_+ ∧_{G_C} Σ^u ∂_C.
 5. **∂_C ≅_{G_C} S(U_C), the unit sphere.** This is the only place where an equivariant
-   homeomorphism is needed. It concerns a single closed chamber, a simplicial-type cone.
+   homeomorphism is needed. It concerns a single closed chamber. (Chambers of a general
+   arrangement need not be simplicial, and nothing below uses that they are; [Aud, R2].)
    - Fix a G-invariant inner product and a G_C-invariant linear form φ > 0 on C̄ ∖ 0
      (an average).
    - For a nonzero face F ≤ C̄, put b(F) := β/φ(β), where β is the sum of the unit
@@ -369,7 +417,7 @@ a wedge of representation spheres indexed by the chambers, with G permuting them
      ker φ ≅ U_C as G_C-representations.
    - Finally Σ^u S(U) ≅ S^U. ∎
 
-**Consequences (PROVEN).**
+**Consequences (PROVEN, AUDITED, except (S4) for e_H = 3; see there).**
 - (S1) H̃_*(T^H; ℤ) ≅ ℤ^{m_H}, concentrated in degree e_H − 2, for every H ≤ G. Indeed
   (S^{U_C})^H = S^{U_C^H} has dimension e_H − 1 when H ≤ G_C, and dim U_C^H = e_H − 1
   because p_C ∈ Fix(H). Also H̃_{j+1}(Σ^u Y) = H̃_j(Y).
@@ -386,7 +434,10 @@ a wedge of representation spheres indexed by the chambers, with G permuting them
   - ≃ ⋁^{m_H} S^{e_H−2} if e_H ≥ 4. Reason: K^H = X^H ∪ (m_H cones on ∂_C^H ≅ S^{e_H−2}),
     so π_1(X^H) = π_1(K^H) = 1, and then Hurewicz and Whitehead apply;
   - for e_H ≤ 2, clear from dimension;
-  - for e_H = 3 with m_H ≥ 1, **OPEN** (homology known).
+  - for e_H = 3 with m_H ≥ 1: T^H ≃ ⋁^{m_H} S^1, by a planar-collapse argument
+    (X^H is a 2-dimensional straight-line complex in a plane, so it collapses to a
+    graph). This is **proved in the audit ([Aud, §4.2]), not independently checked**.
+    Until it is, this case is not audited; the homology is known by (S1).
 
 ### 3.2 Non-free counterexamples (PROVEN by hand; COMPUTED)
 
@@ -433,8 +484,11 @@ cancellation of real representations. Is
   so freely, on chambers.
   - T ≃ ⋁^6 S^1 ([GT, Thm 1]: m = 3! = 6).
   - |S_4| = 24 does not divide 6, so no free wedge is possible.
-  - COMPUTED: on 6 subgroups H ≠ 1, T^H is not acyclic. For example, for a
-    transposition, H̃_1(T^H) = ℤ^2.
+  - COMPUTED: on 6 subgroups H ≠ 1, T^H is not acyclic. These are the three
+    ⟨double transposition⟩ and V_4, where T^H has three components, so
+    H̃_0(T^H) = ℤ^2, and A_4 and S_4, where T^H = ∅. For a transposition, T^H is a tree
+    with 5 vertices, hence contractible. (This corrects an earlier wrong instance;
+    [Aud, §5, R3].)
 - **P = two 2-chains {a < b} ⊔ {c < d}** (n = 4, d = 3) with the swap g = (ac)(bd).
   - g acts freely on the 6 linear extensions, and C_P is not pointed.
   - m(C_P) = e_C(P) = 5. This is COMPUTED as Betti numbers (0, 0, 5) and agrees with
@@ -457,14 +511,16 @@ general equivariant question for non-pointed cones stays **OPEN** ([MO §3]).
 | (iii) low rank | d = 3 by tree lifting (§2.3), d = 2 directly (§2.4) | PROVEN |
 | Free ℤG-module (step 3) | chamber basis (§2.1); needed, since stably free ≠ free in general | PROVEN |
 | Fixed sets for every H | Corollary F2; COMPUTED on 1,199 type-A and 446 B_3 pairs | PROVEN, COMPUTED |
-| (iv) literature | one web search, nothing matching found; not a novelty claim | OPEN |
-| (v) audit | see §5 | OPEN |
+| (iv) literature | [PA]: Theorem E for general pointed cones and Theorem S NOT FOUND; poset corollary KNOWN for the claw K_n (Arone 2015, Ex. 1.4; Arone–Brantner 2021, Ex. after Thm 5.10; Donau 2012), NOT FOUND for other connected P; Step 1 is the Thévenaz–Webb / BWW Cor. 7.2 technique | done (search result) |
+| (v) audit | [Aud]: everything HOLDS; R1–R3 applied; (S4) e_H = 3 proved in [Aud, §4.2], not independently checked | AUDITED |
 
 ---
 
 ## 5. Audit targets
 
-An independent audit should aim at these points, in order of risk.
+These were the targets of the audit, now done in [Aud], which finds every item HOLDS
+(with the wording fixes R1–R3 applied above). They are kept as the record of what was
+checked.
 1. **Lemma F(b)–(c)**: the H-stable faces ↔ faces of A^U correspondence, the order
    isomorphism (closure step), and the use of (C) for a pointed cone in a possibly
    smaller subspace U.

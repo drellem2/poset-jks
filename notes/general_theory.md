@@ -99,6 +99,22 @@ nothing that (a) does not already contain. The new results are these.
      span{top-lunes ⊆ C_P}. This single subspace identity is what links
      (b) to (a) on the braid arrangement; the coproduct, the bracket and the
      PBW decomposition have no stated counterpart in (a).
+6. **Theorem E and Theorem S (equivariant homotopy types; PROVEN, independently
+   audited).** Proved in `notes/theorem_e_equivariant_wedge.md`, audited in
+   `notes/audit_theorem_e.md` (holds).
+   - Theorem E: if V is pointed and a finite group G preserving A and V acts freely on
+     the chambers of V, then Δ(Λ̄(V)) is G-homotopy equivalent to a wedge of #V spheres
+     S^{d−2} that G permutes freely, and H̃_{d−2} is a free ℤG-module. For connected P
+     this gives the Aut(P)-equivariant wedge and freeness over ℤ[Aut P].
+   - Theorem S: for any finite G (V pointed), one unreduced suspension of Δ(Λ̄(V)) is
+     G-equivalent to a wedge of representation spheres indexed by the chambers. Its
+     consequence (S4) for e_H = 3 is proved in the audit and not independently checked.
+   - Question E♯, whether Theorem S desuspends, is **OPEN**.
+   - Prior art (`notes/prior_art_theorem_e.md`, a search result): the poset case is
+     KNOWN for the claw K_n, where it is the Σ_{n−1}-equivariant splitting of Π_n
+     (Arone 2015, Ex. 1.4; Arone–Brantner 2021, Example after Thm 5.10; Donau 2012),
+     and Theorem E generalizes it. Theorem E for general pointed cones, the poset case
+     for other connected P, and Theorem S were NOT FOUND.
 
 **Recommendation (§5).** Pursue (a). Its central statement, Theorem G\*
 ("the chamber cycles of V span H̃_{d−2}(Λ(V))", and its consequences
@@ -109,7 +125,7 @@ g ∈ Stab_W(V), the general analogue of [Thm, eq. closed].
 
 | Framework | Status after this note | Rank |
 |---|---|---|
-| (a) cones of real arrangements | General theorems 1–2, Prop. 3 and Theorem G\* proven (G\* given Brown). G\* carries all of the poset JKS content beyond J–S. | **1** |
+| (a) cones of real arrangements | General theorems 1–2, Prop. 3 and Theorem G\* proven (G\* given Brown). G\* carries all of the poset JKS content beyond J–S. Equivariant homotopy types: Theorem E (free action on chambers of a pointed cone) and Theorem S (any finite group, after one suspension) PROVEN and audited (§6); Question E♯ OPEN. | **1** |
 | (b) species / Hopf monoids | Settled for posets (Thms 6–8). What remains is the extension to general arrangements (Aguiar–Mahajan bimonoids) and a cooperad. | 2 |
 | (c) congruence lattices / closure systems | No general lattice statement survives. The lattices that matter are the Λ(V) of (a). An oriented-matroid version (Theorems 1, 2 and C for T-convex sets of every simple oriented matroid) is the only lattice-level generalization; it is PROVEN and independently audited (§6). | 3 |
 
@@ -1172,6 +1188,9 @@ would carry Theorems 6–8.
 | Fixed-point formula: EZ, EZ′, CF for μ(Λ(V)^g), any finite-order symmetry g (`notes/fixed_point_formula.md`) | PROVEN; independently audited in `notes/audit_fixed_point_formula.md` (hold, with fixes applied); COMPUTED on 7,200 pairs (V, g); KNOWN for V = all chambers, NOT FOUND for proper cones (`notes/novelty_fixed_point_formula.md`) | cell facts of §0, Lemmas 0.1–0.2, Hopf trace formula; Thm 1 and G\* for the module form |
 | Weisner recursion, Props. W and W′ (`notes/fixed_point_formula.md` §4) | PROVEN; W audited in `notes/audit_fixed_point_formula.md`, W′ in `notes/audit_prop_w_prime.md`; exactness (Thm W″) PROVEN in `notes/audit_prop_w_prime.md`, independently audited in `notes/audit_theorem_w2.md` | Weisner; Thm 1 for W″ |
 | Exact criterion for χ_V(g) ≢ 0 | OPEN | — |
+| Theorem E (equivariant wedge; `notes/theorem_e_equivariant_wedge.md`): V pointed, G finite preserving A and V and acting freely on chambers ⇒ Δ(Λ̄(V)) ≃_G G_+ ∧ ⋁^{#V/\|G\|} S^{d−2}, H̃_{d−2} free over ℤG; poset case: for connected P, H̃_{n−3}(Δ(L̄); ℤ) free over ℤ[Aut P] | PROVEN, all d ≥ 2; independently audited in `notes/audit_theorem_e.md` (holds; wording fixes R1–R3 applied); COMPUTED on 1,199 type-A and 446 B_3 pairs. Prior art (`notes/prior_art_theorem_e.md`): NOT FOUND for general pointed cones; poset case KNOWN for the claw K_n (Π_n with Σ_{n−1}: Arone 2015 Ex. 1.4, Arone–Brantner 2021 Ex. after Thm 5.10, Donau 2012), which it generalizes; NOT FOUND for other connected P | Thm 1 (pointed case); cell facts of §0; Lemma 0.2; Quillen fiber lemma; equivariant Whitehead (May, CBMS 91, Cor. I.3.3, re-read in the audit); Step 1 is the Thévenaz–Webb / BWW Cor. 7.2 technique |
+| Theorem S (same note, §3.1): V pointed, G any finite group ⇒ Σ^u Δ(Λ̄(V)) ≃_G ⋁_{[C]} G_+ ∧_{G_C} S^{U_C}; consequences (S1)–(S4) | PROVEN; independently audited (holds), except (S4) for e_H = 3, which is proved in the audit (§4.2) and not independently checked. Prior art: NOT FOUND; same shape as Arone 2015 Thm 1.2 / Arone–Brantner 2021 Thm 5.10 for partition complexes under Young subgroups (a different object) | as for Theorem E |
+| Question E♯ (desuspension of Theorem S when every dim Fix(G_C) ≥ 2) | OPEN | — |
 | OM version: Theorems 1, 2, C (G\*) for T-convex sets of every simple oriented matroid (`notes/oriented_matroid_cones.md`) | PROVEN (C given Brown); independently audited in `notes/audit_oriented_matroid_cones.md` (hold); COMPUTED on realizable and non-realizable OMs of ranks 3 and 4 | Brown (CITED, re-checked; LRB-general); OM combinatorics; Hall; for the homotopy form of Thm 1 with r ≥ 5, shellability (BLSWZ Prop. 4.3.2, CITED) |
 | (b1), (b2), comodernism | CONJECTURED | — |
 
