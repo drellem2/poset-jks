@@ -25,6 +25,7 @@ Tags:
 - **COMPUTED**: checked by `compute/per_cone_vanishing.py` (see Reproduce).
 - **CITED**.
 - **CONJECTURED**.
+- **REFUTED**: shown false, with a counterexample in the note cited.
 - **OPEN**.
 
 ## Verdict
@@ -39,7 +40,7 @@ Tags:
 | TA-L | In type A, whether χ_V(g) = 0 depends only on (lin V, g); the sign of a nonzero χ_V(g) depends only on g | **PROVEN** (Cor. 3.5); audited, including (c) ([AudPCV] §5) | Theorem TA, [Thm] |
 | L′ | Neither holds in general. Vanishing is not a function of (lin V, g) on generic 4 planes in R^3 (1 key) and generic 5 hyperplanes in R^4 (4 keys). Both signs occur for one g in B_3, generic 4 in R^3, generic 5 in R^4, B_3 ∖ {z = 0}, the 12- and 13-line hexagon arrangements | **COMPUTED** (§4) | — |
 | CO | **Crapo obstruction.** If some element of Λ(V)^g has no complement in Λ(V)^g, then χ_V(g) = 0. In type A every zero from (TA4) is of this kind, with an explicit uncomplemented element | "if": **CITED** (Crapo; stated verbatim in EC1 Ex. 3.92, [PAPCV] §3.1). Type A element: **PROVEN** (§3.6), audited ([AudPCV] §6) | Crapo's complementation theorem |
-| CR_V | **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g has an element without a complement. This is a Crapo-type converse on the cone lattice; it implies the CR of [VC] in the cases where [VC]'s lattices are cone lattices | **CONJECTURED**; COMPUTED: no counterexample on 18,750 pairs (V, g) (§4), and on all 5,063 lattices OP(P)^{±τ} with n ≤ 6 (both automorphisms and anti-automorphisms). Prior art: not found in the literature searched; the modular case is known (Knop, Lemma A.2), and the converse fails for general lattices (8-element example, [PAPCV] §3.2) | — |
+| CR_V | **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g has an element without a complement. This is a Crapo-type converse on the cone lattice; it implies the CR of [VC] in the cases where [VC]'s lattices are cone lattices | **REFUTED (rank 4)** in [CRV] = `notes/conjecture_cr_v.md` §0: a 12-hyperplane arrangement in R^4 with a 9-element, complemented, non-modular Λ(V)^g and χ_V(g) = 0; independently audited in [AudCRV] = `notes/audit_conjecture_cr_v.md` (refutation holds). PROVEN there for d ≤ 3, for pointed cones, and for the Cor. V zeros of [VC]. COMPUTED here: no counterexample on 18,750 pairs (V, g) (§4), and on all 5,063 lattices OP(P)^{±τ} with n ≤ 6 (both automorphisms and anti-automorphisms); these counts are correct as counts, and the rank-4 pairs sampled here do not include the counterexample. Prior art: not found in the literature searched; the modular case is known (Knop, Lemma A.2), and the converse fails for general lattices (8-element example, [PAPCV] §3.2) | — |
 | D | The classification of zeros by arrangement (Cor. V / no nonzero μ / cancellation), including D_4, H_3, F_4 | **COMPUTED** (§4) | — |
 | B, D, H, F | An exact per-cone criterion for B_n (n ≥ 5), D_n, H_3, H_4, F_4 | **OPEN** (§5). On the data, no pair cancels in B_2–B_4, D_4 (with triality), H_3, so there PC(a) of [VC] is already an equivalence on every pair tested | — |
 
@@ -535,8 +536,13 @@ in general *not* intersection: Λ(V) need not be closed under intersection
 intersection X_{03|12} is not; [AudPCV] §6, F6). So if some element has no
 complement in Λ(V)^g, μ(Λ(V)^g) = 0 and χ_V(g) = 0 (Crapo).
 
-**Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g contains an element without a
-complement.
+**Conjecture CR_V (REFUTED in rank 4, [CRV] §0; audited in [AudCRV]).**
+χ_V(g) = 0 iff Λ(V)^g contains an element without a complement.
+
+It is false in rank 4 and PROVEN in rank ≤ 3 and for pointed cones ([CRV]
+Theorems 3 and P). [CRV] Theorem Q shows that the Cor. V zeros of [VC] are
+Crapo zeros, with the explicit uncomplemented elements cl(L + U) and cl(U),
+and [CRV] Lemma K extends Theorem Cr(a) from all chambers to every cone.
 
 This would give an exact per-cone criterion that does not pass through the
 signed sum. CR of [VC] (for the lattices [0, X] in L(A)^g, X ∈ Z\*(g)) is the
@@ -582,6 +588,10 @@ rows agree with [VC] §7. The F_4 row (two cancelling pairs, all chambers,
 the two classes of order 6 with (dim Fix g^k) = (1,2,1,4)) also agrees.
 Totals: 18,750 pairs; CR_V holds on all, and on all 5,063 lattices
 OP(P)^{±τ} with n ≤ 6 (type A, automorphisms and anti-automorphisms).
+These counts are correct as counts. They are consistent with [CRV]: 11,428
+of these pairs have rank 3, where CR_V is a theorem, and the rank-4 rows
+(A_4, generic 5, B_4, D_4, F_4) do not contain the counterexample of [CRV]
+§0.
 
 **Classification (scope item 1).**
 - *Type A*: exactly Theorem TA, (TA1)–(TA3) holding and (TA4) failing.
@@ -602,9 +612,13 @@ OP(P)^{±τ} with n ≤ 6 (type A, automorphisms and anti-automorphisms).
 
 ## 5. What remains open
 
-- **CR_V in general (CONJECTURED).** No proof of the converse of the Crapo
-  obstruction is known, even for all chambers. There it says: μ(L(A)^g) = 0
-  iff L(A)^g has an uncomplemented element. For general finite lattices the
+- **CR_V in general (REFUTED in rank 4).** [CRV] §0 gives a counterexample
+  in R^4 (audited in [AudCRV]). [CRV] proves CR_V in rank ≤ 3 (Theorem 3),
+  including all chambers there (Lemma R3), and for pointed cones in every
+  rank (Theorem P). An exact per-cone criterion in rank ≥ 4 is again
+  **OPEN** ([CRV] §6). The remarks below are the original motivation. On
+  all chambers CR_V says: μ(L(A)^g) = 0 iff L(A)^g has an uncomplemented
+  element. For general finite lattices the
   converse of Crapo's corollary is false: a lattice can have μ = 0 with every
   element complemented. The smallest such lattice has 8 elements ([PAPCV]
   §3.2). The converse is known for finite modular lattices (Knop,
@@ -634,7 +648,8 @@ OP(P)^{±τ} with n ≤ 6 (type A, automorphisms and anti-automorphisms).
   (all m_X = 1) do not pair off. The resolution in type A goes through CF and
   Lemma E (§3.5).
 - [VC] Verdict row PC″ can point here: type A is settled (Theorem TA), and
-  the general case is reduced to Conjecture CR_V.
+  the general case is reduced to Conjecture CR_V (since refuted in rank 4,
+  [CRV]).
 - [PA] §2.2 ("whether Formula Z on all chambers … can be derived from
   Crapo's theorem was not checked"): Theorem Cr. Given Lemma M, Formula Z on
   all chambers is Crapo's theorem when U is a flat. The identity [PA] asked
@@ -663,7 +678,8 @@ References: [VC] = `notes/vanishing_criterion.md`; [PA] =
 `notes/general_theory.md`; [FPM] = `notes/fixed_point_mobius_identity.md`;
 [Thm] = `notes/poset_jks_theorem.tex`; [AudPCV] =
 `notes/audit_per_cone_vanishing.md`; [PAPCV] =
-`notes/prior_art_per_cone_vanishing.md`. Crapo, *The Möbius function of a
+`notes/prior_art_per_cone_vanishing.md`; [CRV] = `notes/conjecture_cr_v.md`;
+[AudCRV] = `notes/audit_conjecture_cr_v.md`. Crapo, *The Möbius function of a
 lattice*, J. Combin. Theory 1 (1966), used as stated in Stanley, *Some
 aspects of groups acting on finite posets*, JCTA 32 (1982), §7, and in
 Stanley, *Enumerative Combinatorics* vol. 1, 2nd ed. ("EC1"), Ex. 3.92.

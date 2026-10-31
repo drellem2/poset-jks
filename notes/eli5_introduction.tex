@@ -40,7 +40,7 @@
 \newcommand{\OPEN}{\tagbox{OPEN}}
 \newcommand{\PARTIAL}{\tagbox{PROVEN\\NOT AUDITED}}
 \newcommand{\KNOWN}{\tagbox{KNOWN\\(INSTANCE)}}
-\newcommand{\PENDING}{\tagbox{CLAIMED\\AUDIT\\PENDING}}
+\newcommand{\REFUTED}{\tagbox{REFUTED\\AUDITED}}
 
 \title{Lie theory for posets and cones:\\ a gentle introduction}
 \author{}
@@ -79,8 +79,9 @@ notes file (and section) it comes from. The boxes mean:
 \item \textsf{CLASSICAL (CITED)}: a published result, stated as background.
 \item \textsf{KNOWN (INSTANCE)}: true and audited here, but it is a special
   case of a published theorem; the footnote names it.
-\item \textsf{CLAIMED / AUDIT PENDING}: a note claims it, and an independent
-  audit is in progress. It is not stated as a theorem.
+\item \textsf{REFUTED / AUDITED}: a conjecture that a source note shows to
+  be false by a counterexample, which an independent audit rebuilt and
+  confirmed.
 \item \textsf{COMPUTED}: checked by computer on the cases listed, not proved.
 \item \textsf{CONJECTURED} and \textsf{OPEN}: what they say.
 \end{itemize}
@@ -631,22 +632,29 @@ table, rows Lemma Pal. The exact ``iff'' form was not found stated.}
   then $\mu(0,X)=0$. On all chambers, the converse held for all 191 flats
   $X\in Z^*(g)$ tested.%
   \footnote{\src{notes/vanishing_criterion.md}, row CR.}
-\item \PENDING The Crapo-type converse on cones (Conjecture CR$_V$):
+\item \REFUTED The Crapo-type converse on cones (Conjecture CR$_V$):
   $\chi_V(g)=0$ if and only if $\Lambda(V)^g$ has an element
-  with no complement. No counterexample was found on the first $18{,}750$
-  pairs $(V,g)$ tested.\footnote{\src{notes/per_cone_vanishing.md}, row
+  with no complement. It is false in rank~$4$. No counterexample was found
+  on the first $18{,}750$ pairs $(V,g)$ tested.\footnote{\src{notes/per_cone_vanishing.md}, row
   CR$_V$ and \S4. A search found no statement of the conjecture. The
   converse is false for general finite lattices, and it is known for finite
   modular lattices (Knop), a class that does not contain the lattices
   $\Lambda(V)^g$ in general (\src{notes/prior_art_per_cone_vanishing.md},
-  Verdict table).} A later note \emph{claims} that the conjecture is false
-  in rank~$4$ (a $12$-hyperplane arrangement in $\mathbb R^4$ where a
-  cancellation $1-1=0$ in Formula~Z sits on a $9$-element lattice in which
-  every element has a complement) and true in rank at most~$3$ and for
-  pointed cones. That note has not been independently audited; an audit is
-  in progress, so none of this is stated here as a theorem.\footnote{%
-  \src{notes/conjecture_cr_v.md}, Verdict table; the note marks its own
-  proofs as not yet independently audited.}
+  Verdict table).} A later note gives a counterexample in rank~$4$: a
+  $12$-hyperplane arrangement in $\mathbb R^4$ where a cancellation $1-1=0$
+  in Formula~Z sits on a $9$-element lattice in which every element has a
+  complement.\footnote{%
+  \src{notes/conjecture_cr_v.md}, \S0 and Verdict table. Independently
+  audited in \src{notes/audit_conjecture_cr_v.md}: the refutation holds;
+  the counterexample was rebuilt from the definitions, and $\chi_V(g)=0$ was
+  confirmed in four independent ways.}
+\item \PROVEN The converse does hold in rank at most~$3$ and for pointed
+  cones in every rank: there $\chi_V(g)=0$ forces an element of
+  $\Lambda(V)^g$ with no complement. In every rank, each zero in which a
+  hyperplane contains $\lin V+\Fix g$ (a ``Cor.~V'' zero) comes with such an
+  element, explicitly.\footnote{\src{notes/conjecture_cr_v.md}, Theorems~3, P
+  and~Q; audited in \src{notes/audit_conjecture_cr_v.md} (all three
+  hold).}
 \item \PROVEN In type A, whether $\chi_V(g)=0$ depends only on
   $(\lin V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row TA-L
   (Cor.~3.5); audited in \src{notes/audit_per_cone_vanishing.md}.}
@@ -1081,13 +1089,14 @@ audit, with a remark that two of the counts depend on the labelling.}%
 \item \emph{The vanishing question.} The poset theorem alone does not
   suggest it. The cone theory answers ``nonzero on some cone'' exactly,
   answers ``nonzero on this cone'' in type A, and offers a
-  precise Crapo-type conjecture for the rest (on cones that conjecture is
-  claimed to fail in rank~$4$; audit pending).
+  precise Crapo-type conjecture for the rest. On cones that conjecture
+  fails in rank~$4$ and holds in rank at most~$3$ (both audited).
 \end{itemize}
 
 \paragraph{What is still open.} The exact per-cone vanishing criterion
 outside type A; the Crapo-type converse on all chambers (conjectured) and
-the fate of the converse on cones (a refutation is claimed, audit pending);
+the right per-cone criterion in rank~$\ge 4$, now that the converse on cones
+is refuted there;
 a canonical bracket or cooperad on the $e_\zeta$ model; a version of the
 Hopf-monoid picture for general arrangements; and a Lean formalization of anything beyond the
 poset theorem.
@@ -1145,7 +1154,7 @@ with Mathlib.
 \src{notes/fixed_point_formula.md} & characters on cones\\
 \src{notes/vanishing_criterion.md} & Formula Z, some-cone criterion, type A\\
 \src{notes/per_cone_vanishing.md} & per-cone vanishing, Crapo, Conjecture CR$_V$\\
-\src{notes/conjecture_cr_v.md} & claimed refutation of CR$_V$ (audit pending)\\
+\src{notes/conjecture_cr_v.md} & refutation of CR$_V$ in rank 4 (audited)\\
 \src{notes/linear_extensions.md} & promotion, cyclic sieving, counting\\
 \src{notes/promotion_on_R_P.md} & when promotion acts on $\mathbb C[\Lin P]/R_P$\\
 \src{notes/cyclic_sieving_cyc.md} & cyclic sieving on rotation classes\\
