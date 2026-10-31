@@ -1,0 +1,29 @@
+posets up to iso, 1<=n<=6: 405 (by n: [1, 2, 5, 16, 63, 318])
+[omega] HOLDS: Mobius side = direct count on 2775/2775 (P,T,m), n<=NMAX, m<=4
+[omega-poly] HOLDS: identity at m=0..max(n,4) on 3720/3720 (P,T,m): equal as polynomials
+[omega-sign] HOLDS: (-1)^{|pi|-1} mu(pi,1) = e_C(Q_pi) > 0 for every pi in OP(P), every P
+[omega-lead] HOLDS: coefficient of C(m,n) is e_C(P) (so leading coeff e_C/n!)
+[omega-Tindep] HOLDS: direct count independent of the component T
+[omega-antichain] HOLDS: antichain: Omega_C = sum_{j<=m} j^{n-1}
+[ctl-noT] CONTROL refuted on 774/2775: drop the T condition (count all order-preserving maps)
+[ctl-mu0] CONTROL refuted on 2181/2775: use |mu(0,pi)| instead of |mu(pi,1)|
+[ctl-max] CONTROL refuted on 483/2775: condition 'max f attained on T'
+[ctl-allsets] CONTROL refuted on 1602/2775: require T in EVERY nonempty upper level set
+[omega-des] HOLDS: Corollary Omega-des on 4015/4015 (natural labelling, T, m<=n), n<=5
+[ctl-des-nomerge] CONTROL refuted on 759/4015: Omega-des without the -c merging
+[ctl-des-nodrop] CONTROL refuted on 1662/4015: Omega-des without dropping w with C_T(w) meeting Des(w)
+[chi-refute] HOLDS: (-1)^(n-1) chi_P(-1) = e(P) holds on 5/404 posets (2<=n<=NMAX); antichains = 5
+[chi-restr] HOLDS: restricted sum over sigma >= kappa gives (-1)^n e(P) on every P (context)
+  (2449 posets with 2<=n<=7; antichains 6)
+[kw-refute] HOLDS: #{w in Lin P: maj = 1 mod n} = e_C(P) holds on only 6/2449
+[sgn-refute] HOLDS: |I(P)| = e_C(P) holds on only 6/2449
+[p3b] HOLDS: n prime: maj equidistributed on Lin(P)C_n with e_C per residue: 2115/2115
+[p3b-composite] CONTROL refuted on 211/334: Prop 3(b) at composite n in {4,6}
+[p3'] HOLDS: disconnected, gcd=1 => maj equidistributed mod n: 485/485
+[p3'-connected] CONTROL refuted on 1871/1946: maj equidistribution on connected P
+[p4] HOLDS: |I(P)| = |[n;m]_(-1)| prod |I(T_i)| on 503/503 disconnected P
+[p3a] HOLDS: maj(rotation) = maj - cdes mod n and cdes rotation-invariant: 5912/5912, n<=7
+[p3a-des] CONTROL refuted on 2956/5912: same with des in place of cdes
+[ex] C2+C1: Lin=[(0, 1, 2), (0, 2, 1), (2, 0, 1)], maj=[0, 2, 1], e_C=2
+[ex] C3: chi coefficients by |pi|: [(1, 1), (2, -1), (2, -1), (3, 1)]
+SUMMARY: 0 failed claims []; unrefuted controls []
