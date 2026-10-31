@@ -3,6 +3,7 @@ import PosetJKS.Words
 import PosetJKS.Bridge
 import PosetJKS.OrderComplex
 import PosetJKS.ChainTools
+import PosetJKS.ConeRetract
 import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice

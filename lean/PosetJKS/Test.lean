@@ -1,5 +1,6 @@
 import PosetJKS.MainTheorem
 import PosetJKS.ChainTools
+import PosetJKS.ConeRetract
 
 /-!
 # Positive controls for the definitions, and two counterexamples
@@ -721,6 +722,39 @@ theorem redHom_antichain2_ne : ¬ Subsingleton (redHom (Unit ⊕ Unit) 0) := by
       (Fin 1 ↪o Unit ⊕ Unit) →₀ ℂ) (ptChain (Sum.inl ())) at this
   erw [Finsupp.sub_apply, Finsupp.single_eq_same, Finsupp.single_apply, if_neg hne.symm] at this
   norm_num at this
+
+
+/-! Controls for Lemma K (`ConeRetract.lean`, Route C slice S2). -/
+
+/-- The two-point antichain fails the hypotheses of Lemma K directly: `p x ≤ x` forces
+`p x = x`, and then `p x ≤ t` forces `x = t` for both points. -/
+theorem isEmpty_coneRetraction_antichain2 : IsEmpty (ConeRetraction (Unit ⊕ Unit)) := by
+  refine ⟨fun K => ?_⟩
+  have hanti : ∀ a b : Unit ⊕ Unit, a ≤ b → a = b := by
+    rintro (⟨⟩ | ⟨⟩) (⟨⟩ | ⟨⟩) h <;> simp_all
+  have ht : ∀ x : Unit ⊕ Unit, x = K.t := fun x => by
+    have h1 := hanti _ _ (K.le_self x)
+    exact h1 ▸ hanti _ _ (K.le_t x)
+  exact Sum.inl_ne_inr ((ht (Sum.inl ())).trans (ht (Sum.inr ())).symm)
+
+/-- The same failure, forced by Lemma K: a cone retraction would make `H̃_0 = 0`, but
+`H̃_0 ≠ 0` (`redHom_antichain2_ne`). -/
+theorem isEmpty_coneRetraction_antichain2' : IsEmpty (ConeRetraction (Unit ⊕ Unit)) :=
+  ⟨fun K => redHom_antichain2_ne (K.exact_of_retract 0)⟩
+
+/-- A cone retraction that is not the identity: on `V = {⊥ < a, ⊥ < b}` (the cone over the
+two-point antichain), `t = ⊥` and `p ≡ ⊥`. -/
+def vRetraction : ConeRetraction (WithBot (Unit ⊕ Unit)) where
+  t := ⊥
+  p := fun _ => ⊥
+  monotone := fun _ _ _ => le_rfl
+  le_self := fun _ => bot_le
+  le_t := fun _ => le_rfl
+  eq_of_le := fun _ hx => (le_bot_iff.1 hx).symm
+
+/-- Lemma K on `V`: adding a cone point kills the `H̃_0` of the antichain. -/
+theorem redHom_V_subsingleton (d : ℕ) : Subsingleton (redHom (WithBot (Unit ⊕ Unit)) d) :=
+  vRetraction.exact_of_retract d
 
 end Test
 

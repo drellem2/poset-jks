@@ -39,6 +39,12 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   (`ChainTools.lean`: pushforward along order embeddings, vanishing criteria for `H̃_d` and
   their transport, chain insertion and its face lemmas), with a Mathlib API check (§4.4). The
   sorry count is unchanged.
+* **Step 9 (Route C, slice S2)** proves Lemma K of `notes/lean_js_route.md` §3.1, with the
+  signs as corrected by `notes/audit_lean_js_route.md` G1–G2 (`ConeRetract.lean`): a monotone
+  retraction `p ≤ id` of a poset `R` onto `R_{≤ t}` makes the augmented chain complex of `Δ(R)`
+  exact (`exact_of_retract`), through the exact homotopy identity (`bd_s_add_s_bd_eq`) and its
+  filtered form (`bd_s_add_s_bd`) (§4.5). The general `p` is done, so the fallback split S2a/S2b
+  was not needed. The sorry count is unchanged.
 
 **Current status.** One `sorry` remains: the proof of `jencaSarkoci_homology` (cited input A,
 the homological content of Jenča–Sarkoci). Everything else is proved. Of the stated theorems,
@@ -72,6 +78,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/Words.lean` | M1 core, on lists over a fixed type with an arbitrary relation `r`: shuffles `shq`, `ShL`, the contraction operator `E_{a,x}` and Lemma 1 (`map_E_ShL`); the contraction relation `rc` and Lemma 5 (`inBL_contract`); Theorem A (`eq_zero_of_inBL`) and Theorem Ψ (`eq_zero_of_eqL`) on lists; Lemma Ψ.0 (`eqL_classSum`); the measure `μ` (`muL`), the Lemma 6 step (`muL_lt_of_shuffle`) and Lemma 4 (`inBL_rotate_muL`, `rotate_eq_zero_of_inBL`) (**all proved**) |
 | `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
 | `PosetJKS/ChainTools.lean` | general chain tools (Route C, slice S1, `notes/lean_js_route.md` §6): pushforward along order embeddings (`chainMapEmb`, a chain map, injective, functorial; `chainMap` is the case of an automorphism); `H̃_d = 0` iff cycles are boundaries (`subsingleton_redHom_iff`), invariance under order isomorphisms (`subsingleton_redHom_congr`), vanishing for an empty poset; insertion of an element into a chain (`insertAt`, via `Fin.insertNth`) and its face lemmas (`face_insertAt_self`, `face_insertAt_succAbove`, `bd_single_insertAt`) (**all proved**) |
+| `PosetJKS/ConeRetract.lean` | Lemma K (Route C, slice S2, `notes/lean_js_route.md` §3.1): the data `ConeRetraction` (`t`, `p`); low/high elements of a chain (`nlow`, `hcount`, `low_iff`), `τ c` (`tau`), the chain `c ∪ {τ c}` (`cone`), the homotopy `s`; the exact homotopy identity (`bd_s_add_s_bd_eq`, `bd_s_add_s_bd_of_hcount_eq_zero`), the filtration `F` and its filtered form (`bd_s_add_s_bd`); exactness (`exact_of_retract`) (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`, split into `inB_coset_inj` and `exists_inB_coset`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
 | `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
@@ -84,7 +91,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3); only `jencaSarkoci_homology` is `sorry`) |
 | `PosetJKS/CharacterIso.lean`, `MainIso.lean`, `CharacterIsoTest.lean` | step 6, see §4.2 |
 | `PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean` | step 7, see §4.3 |
-| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); see `AUDIT_FAITHFULNESS.md` |
+| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); the Lemma K controls (`isEmpty_coneRetraction_antichain2`, `vRetraction`, `redHom_V_subsingleton`); see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 | `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` or `trace_HP` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
 
@@ -605,6 +612,57 @@ the pinned Mathlib and used in `ChainTools.lean`, so each one compiles):
 `H̃_0 ≠ 0`: `[a] - [b]` is a cycle and there are no 2-element chains. This shows that
 `subsingleton_redHom_iff` does not hold vacuously.
 
+### 4.5 S2 (Route C): Lemma K
+
+Slice S2 of `notes/lean_js_route.md` §6. New file `ConeRetract.lean` (imports `ChainTools.lean`
+and, for `bd_comp_bd'`, `TraceHP.lean`). Sorry count unchanged (1, `jencaSarkoci_homology`). No
+existing statement changed. The signs are those of the corrected §3.1, i.e. with
+`notes/audit_lean_js_route.md` G1–G2 applied. Lemma K is classical: at the homotopy level it is
+Quillen's order-homotopy lemma (Quillen 1978, Prop. 1.6), in the form of Björner 1995,
+Cor. 10.12. The proof formalized is the homology-level one of the note.
+
+**Statement.** `ConeRetraction R` packages `t : R` and `p : R → R` with `p` monotone,
+`p x ≤ x`, `p x ≤ t`, and `p x = x` for `x ≤ t`. `ConeRetraction.exact_of_retract K d :
+Subsingleton (redHom R d)` for every `d`. No finiteness of `R` is needed.
+
+**Contents.**
+
+* `nlow c` (the number of elements `≤ t`, i.e. `j = |c_≤|`) and `hcount c`. `low_iff`: the low
+  elements are exactly the positions `< nlow c`. How `nlow` and `hcount` change under faces and
+  insertions: `nlow_face`, `hcount_face_le`, `hcount_face_of_not_le`, `hcount_insertAt`.
+* `hval c` (the least high element `h = c_j`, or `t`) and `tau c = p (hval c)`. `le_tau` and
+  `tau_lt`: `τ c` lies above the low part and strictly below the high part.
+  `tau_mem_range_iff`: if `τ c = c_i`, then `i + 1 = nlow c`, so `τ c` is at position
+  `j' = j − 1` (audit G1). `tau_face`: deleting any element other than `h` leaves `τ` unchanged.
+* `cone c h = insertAt c (τ c) ⟨nlow c, _⟩ _` for `τ c ∉ c`. `s m` is the linear extension of
+  `c ↦ (−1)^{nlow c} [cone c]` (`τ c ∉ c`) and `c ↦ 0` (`τ c ∈ c`). `cone_face`:
+  `cone (c ∖ c_i) = (cone c) ∖ c_i` for `c_i ≠ h`, with the position re-indexed by `predAbove`.
+* `bd_s_term_eq_zero`: for `τ c ∉ c` and `c_i ≠ h`, the two terms indexed by `c_i` cancel.
+  `s_single_face_tau`: for `τ c = c_{j'}`, `s (c ∖ c_{j'}) = (−1)^{j'} [c]`, and the face
+  removing `c_{j'}` has sign `(−1)^{j'}`, so the product is `+[c]` (audit G1).
+* `bd_s_add_s_bd_eq` (the exact identity, audit G2), for `c` with a high element `h = c_j`:
+
+      (∂s + s∂)(c) − c = −[face (cone c) (j+1)] + (−1)^j s(c ∖ h)     if τ c ∉ c,
+      (∂s + s∂)(c) − c = (−1)^j s(c ∖ h)                              if τ c ∈ c.
+
+  `face (cone c) (j+1)` is `(c ∖ h) ∪ τ c`. `bd_s_add_s_bd_of_hcount_eq_zero`: with no high
+  element, `(∂s + s∂)(c) = c`.
+* `F m k`: the span of the `m`-element chains with at most `k` high elements. It is stable
+  under `bd` and `s` (`bd_mem_F`, `s_mem_F`) and is everything for `k = m` (`mem_F_self`).
+  `bd_s_add_s_bd`: `(∂s + s∂)(c) − c ∈ F (hcount c − 1)`. Hence `homotopy_mem_F`
+  (`∂s + s∂ − id` maps `F (k+1)` into `F k`) and `homotopy_F_zero` (`∂s + s∂ = id` on `F 0`).
+* `exact_F`: a cycle in `F k` is a boundary, by induction on `k` (§3.1, "Exactness"):
+  `z − ∂(s z) ∈ F (k−1)` is again a cycle. `exact_of_retract` is the case `k = d + 1`.
+
+**Controls** (`Test.lean`). Negative: on the two-point antichain `Unit ⊕ Unit` the hypotheses
+fail (`isEmpty_coneRetraction_antichain2`, directly: `p x ≤ x` forces `p x = x`, and then
+`p x ≤ t` forces both points to equal `t`), and its `redHom 0` is nonzero
+(`redHom_antichain2_ne`, from S1). `isEmpty_coneRetraction_antichain2'` derives the same failure
+from Lemma K and `redHom_antichain2_ne`. Positive: on the cone `V = {⊥ < a, ⊥ < b}` over that
+antichain, `t = ⊥`, `p ≡ ⊥` is a cone retraction other than the identity (`vRetraction`), and
+Lemma K gives `H̃_d(Δ(V)) = 0` for every `d` (`redHom_V_subsingleton`). So the hypotheses are
+satisfiable and not vacuous.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```
@@ -698,6 +756,13 @@ the pinned Mathlib and used in `ChainTools.lean`, so each one compiles):
 'PosetJKS.face_insertAt_succAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.bd_single_insertAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.redHom_antichain2_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.ConeRetraction.bd_s_add_s_bd_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.ConeRetraction.bd_s_add_s_bd_of_hcount_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.ConeRetraction.bd_s_add_s_bd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.ConeRetraction.exact_of_retract' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.isEmpty_coneRetraction_antichain2' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.isEmpty_coneRetraction_antichain2'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.redHom_V_subsingleton' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 Every listed declaration depends only on `propext`, `Classical.choice`, `Quot.sound`
@@ -706,7 +771,8 @@ on `sorryAx`: `jencaSarkoci_homology` (the one visible `sorry`, §4), `trace_HP`
 In particular the M1 theorems, `trace_PLie`, `prop_Lside`, `mu_OP_eq`, `prop_Mside`,
 `character_identity`, `closed_formula`, the general lemma `nonempty_equiv_of_character_eq` and
 `exists_iso_HP_PLie_of_trace` (step 6), and `hall_mu_eq_reducedEuler`,
-`IsChainMap.hopf_trace` and `trace_HP_of_vanishing` (step 7) are `sorry`-free. The definitions
+`IsChainMap.hopf_trace` and `trace_HP_of_vanishing` (step 7), and Lemma K
+(`exact_of_retract`, step 9) are `sorry`-free. The definitions
 are `sorry`-free.
 
 `sorryAx` stands for every `sorry`, so `#print axioms` alone cannot show which `sorry` a
