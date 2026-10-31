@@ -61,7 +61,7 @@ theorem sum_primitiveRoots_eq_moebius {ω : R} {o : ℕ} (hω : IsPrimitiveRoot 
     (fun n _ => sum_divisors_sum_primitiveRoots n) o ho
   rw [← hinv]
   rw [sum_eq_single (o, 1)]
-  · show (ArithmeticFunction.moebius o : R) * _ = _
+  · dsimp only
     rw [sum_nthRootsFinset_one IsPrimitiveRoot.one one_pos]
     simp
   · rintro ⟨a, b⟩ hab hne

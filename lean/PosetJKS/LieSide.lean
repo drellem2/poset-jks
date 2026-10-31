@@ -327,4 +327,346 @@ lemma mem_chunks {h : α ≃o α} {o : ℕ} {u : List α} {a : α} :
 
 end Lists
 
+/-! ### The `B_P(x₀)` words of the `g`-stable classes -/
+
+section Words
+
+variable (g : α ≃o α) (x₀ : α)
+
+lemma toL_trans_aut (w : Word α) : toL (w.trans g.toEquiv) = (toL w).map g := by
+  simp only [toL, List.map_ofFn]; rfl
+
+lemma mem_toL (w : Word α) (a : α) : a ∈ toL w := List.mem_ofFn.2 ⟨w.symm a, by simp⟩
+
+open Classical in
+/-- The words of `B_P(x₀)` whose cyclic class is `g`-stable (one per `g`-stable class). -/
+noncomputable def fixedB : Finset (Word α) :=
+  univ.filter fun w => InB x₀ w ∧ (coset w).image (fun z => z.trans g.toEquiv) = coset w
+
+/-- `r = r_g(C)` for the class `C` of `w`. -/
+noncomputable def rotOf (w : Word α) : ℕ := classRot g (coset w)
+
+/-- `k = gcd(r, n)`, the length of the first chunk. -/
+noncomputable def kOf (w : Word α) : ℕ := Nat.gcd (rotOf g w) (Fintype.card α)
+
+/-- `s = r / k`, a unit modulo `o`. -/
+noncomputable def sOf (w : Word α) : ℕ := rotOf g w / kOf g w
+
+/-- The first chunk `{w_1, …, w_k}`. -/
+noncomputable def blockOf (w : Word α) : Finset α := prefixSet w (kOf g w)
+
+/-- The units modulo `o`, as residues `0 ≤ s < o`. -/
+def unitsMod (o : ℕ) : Finset ℕ := (range o).filter (·.Coprime o)
+
+variable {g x₀}
+
+lemma mem_fixedB {w : Word α} :
+    w ∈ fixedB g x₀ ↔ InB x₀ w ∧ (coset w).image (fun z => z.trans g.toEquiv) = coset w := by
+  classical
+  simp only [fixedB, Finset.mem_filter, Finset.mem_univ, true_and]
+
+lemma fixedB_spec {w : Word α} (hw : w ∈ fixedB g x₀) :
+    rotOf g w < Fintype.card α ∧ w.trans g.toEquiv = rot w (rotOf g w) := by
+  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
+  obtain ⟨hB, hfix⟩ := mem_fixedB.1 hw
+  exact classRot_spec h0 g (classOf hB.1).2 hfix (self_mem_coset h0 w)
+
+/-- The structure of a word `w ∈ B_P(x₀)` with `g w = w γ^r`: with `k = gcd(r, n)`, `s = r/k`
+and `h = g^{s⁻¹ mod o}`: `o k = n`, `s` is a unit mod `o`, the first chunk `A` is a union of
+components through `x₀` with `{g^j A} ∈ F(P,g)`, `w_1 ⋯ w_k ∈ B_{P|_A}(x₀)`, and `w` is the
+concatenation of the chunks `h^t (w_1 ⋯ w_k)`. -/
+theorem fixedB_struct {w : Word α} (hw : w ∈ fixedB g x₀) :
+    0 < kOf g w ∧ orderOf g * kOf g w = Fintype.card α ∧ rotOf g w = sOf g w * kOf g w ∧
+    sOf g w ∈ unitsMod (orderOf g) ∧ (blockOf g w).card = kOf g w ∧ x₀ ∈ blockOf g w ∧
+    InF g (blocksOf g (blockOf g w)) ∧ (toL w).take (kOf g w) ∈ BL (blockOf g w) x₀ ∧
+    toL w = chunks (g ^ invMod (sOf g w) (orderOf g)) (orderOf g) ((toL w).take (kOf g w)) := by
+  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
+  obtain ⟨hB, -⟩ := mem_fixedB.1 hw
+  obtain ⟨hrn, hrot⟩ := fixedB_spec hw
+  have hW : (toL w).map g = (toL w).rotate (rotOf g w) := by
+    rw [← toL_trans_aut, hrot, toL_rot]
+  have hlen : (toL w).length = Fintype.card α := length_toL w
+  have hk0 : 0 < kOf g w := Nat.gcd_pos_of_pos_right _ h0
+  have hkn : kOf g w ∣ Fintype.card α := Nat.gcd_dvd_right _ _
+  have hkr : kOf g w ∣ rotOf g w := Nat.gcd_dvd_left _ _
+  have hrs : rotOf g w = sOf g w * kOf g w := (Nat.div_mul_cancel hkr).symm
+  have hcop : (sOf g w).Coprime (Fintype.card α / kOf g w) := Nat.coprime_div_gcd_div_gcd hk0
+  -- `g^j = 1` iff `n/k ∣ j`, so `o = n/k`
+  have hpow1 : ∀ j, g ^ j = 1 ↔ Fintype.card α / kOf g w ∣ j := by
+    intro j
+    have e1 : g ^ j = 1 ↔ (toL w).map ⇑(g ^ j) = toL w := by
+      constructor
+      · intro h; rw [h]; exact List.map_id _
+      · intro h
+        rw [← toL_trans_aut] at h
+        have h' := toL_injective h
+        refine RelIso.ext fun a => ?_
+        have := DFunLike.congr_fun h' (w.symm a)
+        simpa using this
+    rw [e1, map_pow_eq_rotate hW, List.Nodup.rotate_eq_self_iff (isWordOn_toL w).1, hlen]
+    have hne : toL w ≠ [] := by
+      intro h; have := congrArg List.length h; rw [hlen] at this; simp at this; omega
+    simp only [hne, or_false]
+    rw [← Nat.dvd_iff_mod_eq_zero, hrs]
+    conv_lhs => rw [← Nat.mul_div_cancel' hkn]
+    rw [show j * (sOf g w * kOf g w) = kOf g w * (j * sOf g w) by ring,
+      Nat.mul_dvd_mul_iff_left hk0, Nat.Coprime.dvd_mul_right hcop.symm]
+  have hord : orderOf g = Fintype.card α / kOf g w :=
+    Nat.dvd_antisymm (orderOf_dvd_of_pow_eq_one ((hpow1 _).2 dvd_rfl))
+      ((hpow1 _).1 (pow_orderOf_eq_one g))
+  have hok : orderOf g * kOf g w = Fintype.card α := by
+    rw [hord]; exact Nat.div_mul_cancel hkn
+  have ho : 0 < orderOf g := orderOf_pos_aut g
+  have hcop' : (sOf g w).Coprime (orderOf g) := hord ▸ hcop
+  have hso : sOf g w ∈ unitsMod (orderOf g) := mem_filter.2 ⟨mem_range.2 (by
+    rw [hord]; exact Nat.div_lt_div_of_lt_of_dvd hkn hrn), hcop'⟩
+  -- the step `h = g^{s'}` moves each chunk to the next
+  have hh : (g ^ invMod (sOf g w) (orderOf g)) ^ orderOf g = 1 := by
+    rw [← pow_mul, mul_comm, pow_mul, pow_orderOf_eq_one, one_pow]
+  have hrotk : (toL w).rotate (kOf g w) =
+      (toL w).map ⇑(g ^ invMod (sOf g w) (orderOf g)) := by
+    rw [map_pow_eq_rotate hW, ← List.rotate_mod (toL w) (_ * rotOf g w),
+      ← List.rotate_mod (toL w) (kOf g w), hlen]
+    congr 1
+    have := Nat.ModEq.mul_right' (kOf g w) (mul_invMod ho hcop')
+    rw [hok, one_mul] at this
+    rw [hrs, show invMod (sOf g w) (orderOf g) * (sOf g w * kOf g w) =
+      sOf g w * invMod (sOf g w) (orderOf g) * kOf g w by ring]
+    exact this.symm
+  have hrec := eq_flatMap_of_rotate (by rw [hlen, hok]) hrotk
+  -- the first chunk
+  have hA : blockOf g w = ((toL w).take (kOf g w)).toFinset := prefixSet_eq w _
+  have hkle : kOf g w ≤ Fintype.card α := Nat.le_of_dvd h0 hkn
+  have hcardA : (blockOf g w).card = kOf g w := card_prefixSet w hkle
+  have hAU : IsUnionOfComponents (blockOf g w) := by
+    rcases hkle.lt_or_eq with hlt | heq
+    · have hlin' : IsLinExt α (rot w (kOf g w)) := by
+        have : rot w (kOf g w) = w.trans (g ^ invMod (sOf g w) (orderOf g)).toEquiv :=
+          toL_injective (by rw [toL_rot, toL_trans_aut]; exact hrotk)
+        rw [this]; exact isLinExt_trans _ hB.1
+      exact ((isLinExt_rot_iff hB.1 hlt).1 hlin').2
+    · have : blockOf g w = univ := Finset.eq_univ_of_card _ (hcardA.trans heq)
+      intro a b _; rw [this]; simp
+  have hx₀ : x₀ ∈ blockOf g w := hB.2 _ hk0 hkle hAU
+  have hBh : IsBlockSys (g ^ invMod (sOf g w) (orderOf g)) (orderOf g) (blockOf g w) := by
+    refine ⟨fun i hi j hj hij => ?_, fun a => ?_⟩
+    · have hnd := (isWordOn_toL w).1
+      rw [hrec, List.nodup_flatMap] at hnd
+      have hd := hnd.2.forall (fun _ _ h => List.Disjoint.symm h) (List.mem_range.2 hi)
+        (List.mem_range.2 hj) hij
+      rw [hA, ← L.toFinset_map, ← L.toFinset_map]
+      exact List.disjoint_toFinset_iff_disjoint.2 hd
+    · have := mem_toL w a
+      rw [hrec, ← chunks, mem_chunks] at this
+      obtain ⟨t, ht, hat⟩ := this
+      exact ⟨t, ht, by rw [hA, ← L.toFinset_map]; exact List.mem_toFinset.2 hat⟩
+  have hBg : IsBlockSys g (orderOf g) (blockOf g w) := by
+    have := isBlockSys_pow ho hh hBh hcop'
+    rwa [pow_invMod_pow (pow_orderOf_eq_one g) ho hcop'] at this
+  have hBL : (toL w).take (kOf g w) ∈ BL (blockOf g w) x₀ := by
+    have hIn := (inB_iff x₀ w).1 hB
+    refine mem_BL.2 ⟨⟨⟨(isWordOn_toL w).1.sublist (List.take_sublist _ _), hA.symm⟩,
+      hIn.1.2.sublist (List.take_sublist _ _)⟩, ?_⟩
+    intro p q hpq hp hU
+    refine hIn.2 p (q ++ (toL w).drop (kOf g w))
+      (by rw [← List.append_assoc, ← hpq, List.take_append_drop]) hp ?_
+    have hpA : ∀ c ∈ p.toFinset, c ∈ blockOf g w := by
+      intro c hc
+      rw [hA, List.mem_toFinset, hpq]
+      exact List.mem_append_left _ (List.mem_toFinset.1 hc)
+    intro a _ b _ hab
+    constructor
+    · intro ha
+      have haA := hpA a ha
+      exact (hU a haA b ((hAU a b hab.le).1 haA) hab).1 ha
+    · intro hb
+      have hbA := hpA b hb
+      exact (hU a ((hAU a b hab.le).2 hbA) b hbA hab).2 hb
+  exact ⟨hk0, hok, hrs, hso, hcardA, hx₀, inF_blocksOf ⟨x₀, hx₀⟩ hAU hBg, hBL, hrec⟩
+
+/-- The inverse construction: for `x ∈ F(P,g)`, its block `B ∋ x₀`, a unit `s` mod `o` and
+`u ∈ B_{P|_B}(x₀)`, the concatenation of the chunks `(g^{s⁻¹})^t u` is a word of `B_P(x₀)` in a
+`g`-stable class, with data `(x, s, u)`. -/
+theorem exists_fixedB {x : Finset (Finset α)} (hx : InF g x) {B : Finset α} (hBx : B ∈ x)
+    (hx₀ : x₀ ∈ B) {s : ℕ} (hs : s ∈ unitsMod (orderOf g)) {u : List α} (hu : u ∈ BL B x₀) :
+    ∃ w ∈ fixedB g x₀, blockOf g w = B ∧ sOf g w = s ∧ (toL w).take B.card = u := by
+  have h0 : 0 < Fintype.card α := Fintype.card_pos_iff.2 ⟨x₀⟩
+  have ho : 0 < orderOf g := orderOf_pos_aut g
+  obtain ⟨-, hBg⟩ := blocksOf_of_inF hx hBx
+  have hBU := (hx.2.1 B hBx).2
+  obtain ⟨hsr, hsc⟩ := mem_filter.1 hs
+  have hso := mem_range.1 hsr
+  have hh : (g ^ invMod s (orderOf g)) ^ orderOf g = 1 := by
+    rw [← pow_mul, mul_comm, pow_mul, pow_orderOf_eq_one, one_pow]
+  have hBh := isBlockSys_pow ho (pow_orderOf_eq_one g) hBg (coprime_invMod ho hsc)
+  have hu' := mem_BL.1 hu
+  have hwu : IsWordOn B u := hu'.1.1
+  have hlen : u.length = B.card := by rw [← hwu.2, List.toFinset_card_of_nodup hwu.1]
+  have hmem : ∀ t a, a ∈ u.map ⇑((g ^ invMod s (orderOf g)) ^ t) ↔
+      a ∈ B.image ⇑((g ^ invMod s (orderOf g)) ^ t) := by
+    intro t a; rw [← List.mem_toFinset, L.toFinset_map, hwu.2]
+  have hMnd : (chunks (g ^ invMod s (orderOf g)) (orderOf g) u).Nodup := by
+    rw [chunks, List.nodup_flatMap]
+    refine ⟨fun t _ => hwu.1.map ((g ^ invMod s (orderOf g)) ^ t).injective, ?_⟩
+    refine List.pairwise_lt_range.imp_of_mem fun {i j} hi hj hij => ?_
+    intro a hai haj
+    exact Finset.disjoint_left.1 (hBh.1 i (List.mem_range.1 hi) j (List.mem_range.1 hj) hij.ne)
+      ((hmem i a).1 hai) ((hmem j a).1 haj)
+  have hMall : ∀ a, a ∈ chunks (g ^ invMod s (orderOf g)) (orderOf g) u := by
+    intro a
+    obtain ⟨t, ht, ha⟩ := hBh.2 a
+    exact mem_chunks.2 ⟨t, ht, (hmem t a).2 ha⟩
+  obtain ⟨w, hw⟩ := exists_toL (α := α) ⟨hMnd, by ext a; simp [hMall a]⟩
+  have hn : Fintype.card α = orderOf g * B.card := card_eq_of_isBlockSys hBg
+  have hk0 : 0 < B.card := card_pos.2 ⟨x₀, hx₀⟩
+  have hskn : s * B.card < Fintype.card α := by
+    rw [hn]; exact Nat.mul_lt_mul_of_pos_right hso hk0
+  have hrotw : w.trans g.toEquiv = rot w (s * B.card) := by
+    apply toL_injective
+    rw [toL_trans_aut, toL_rot, hw, ← hlen, rotate_mul_chunks ho hh,
+      pow_invMod_pow (pow_orderOf_eq_one g) ho hsc]
+  have hMapp := chunks_eq_append (g ^ invMod s (orderOf g)) ho u
+  have hInB : InB x₀ w := by
+    rw [inB_iff, hw]
+    refine ⟨⟨⟨hMnd, by ext a; simp [hMall a]⟩, ?_⟩, ?_⟩
+    · rw [chunks, List.pairwise_flatMap]
+      refine ⟨fun t _ => ?_, ?_⟩
+      · rw [List.pairwise_map]
+        exact hu'.1.2.imp fun {a b} hab hlt =>
+          hab (((g ^ invMod s (orderOf g)) ^ t).lt_iff_lt.1 hlt)
+      · refine List.pairwise_lt_range.imp_of_mem fun {i j} hi hj hij => ?_
+        intro a ha b hb hba
+        have hUi := isUnionOfComponents_image ((g ^ invMod s (orderOf g)) ^ i) hBU
+        have hbi : b ∈ B.image ⇑((g ^ invMod s (orderOf g)) ^ i) :=
+          (hUi b a hba.le).2 ((hmem i a).1 ha)
+        exact Finset.disjoint_left.1
+          (hBh.1 i (List.mem_range.1 hi) j (List.mem_range.1 hj) hij.ne) hbi ((hmem j b).1 hb)
+    · intro p q hpq hp hU
+      have hpM : p <+: chunks (g ^ invMod s (orderOf g)) (orderOf g) u := by
+        rw [hpq]; exact List.prefix_append _ _
+      have huM : u <+: chunks (g ^ invMod s (orderOf g)) (orderOf g) u := by
+        rw [hMapp]; exact List.prefix_append _ _
+      rcases le_or_gt p.length u.length with hle | hlt
+      · obtain ⟨t, ht⟩ := List.prefix_of_prefix_length_le hpM huM hle
+        exact hu'.2 p t ht.symm hp fun a _ b _ hab => hU a (mem_univ _) b (mem_univ _) hab
+      · exact (List.prefix_of_prefix_length_le huM hpM hlt.le).subset
+          ((L.mem_of_isWordOn hwu).2 hx₀)
+  have hfix : (coset w).image (fun z => z.trans g.toEquiv) = coset w := by
+    rw [coset_image_trans, hrotw]
+    exact coset_eq_of_mem h0 (mem_image.2 ⟨_, mem_range.2 hskn, rfl⟩)
+  have hwT : w ∈ fixedB g x₀ := mem_fixedB.2 ⟨hInB, hfix⟩
+  have hr : rotOf g w = s * B.card := by
+    obtain ⟨hlt, hrot'⟩ := fixedB_spec hwT
+    exact rot_injective hlt hskn (hrot'.symm.trans hrotw)
+  have hk : kOf g w = B.card := by
+    rw [kOf, hr, hn, Nat.gcd_mul_right, Nat.Coprime.gcd_eq_one hsc, one_mul]
+  have hsw : sOf g w = s := by rw [sOf, hr, hk, Nat.mul_div_cancel _ hk0]
+  have htake : (toL w).take B.card = u := by rw [hw, hMapp, List.take_left' hlen]
+  refine ⟨w, hwT, ?_, hsw, htake⟩
+  rw [blockOf, hk, prefixSet_eq, htake, hwu.2]
+
+/-- For `w` with data `x`, the first chunk is the block of `x` through `x₀`. -/
+lemma blockOf_eq {w : Word α} (hw : w ∈ fixedB g x₀) {x : Finset (Finset α)} (hx : InF g x)
+    (hwx : blocksOf g (blockOf g w) = x) {B : Finset α} (hBx : B ∈ x) (hx₀ : x₀ ∈ B) :
+    blockOf g w = B := by
+  obtain ⟨-, -, -, -, -, hx₀', -⟩ := fixedB_struct hw
+  by_contra hne
+  have hmem : blockOf g w ∈ x := hwx ▸ self_mem_blocksOf g _
+  exact Finset.disjoint_left.1 (hx.2.2.1 _ hmem B hBx hne) hx₀' hx₀
+
+open Classical in
+/-- The fibre of `w ↦ (x(w), s(w))` over `(x, s)` is in bijection with `B_{P|_B}(x₀)`, `B` the
+block of `x` through `x₀`, and on it `r = s |B|`. -/
+theorem card_fiber {x : Finset (Finset α)} (hx : InF g x) {B : Finset α} (hBx : B ∈ x)
+    (hx₀ : x₀ ∈ B) {s : ℕ} (hs : s ∈ unitsMod (orderOf g)) :
+    ((fixedB g x₀).filter fun w => (blocksOf g (blockOf g w), sOf g w) = (x, s)).card =
+      (BL B x₀).card ∧
+    ∀ w ∈ (fixedB g x₀).filter (fun w => (blocksOf g (blockOf g w), sOf g w) = (x, s)),
+      rotOf g w = s * B.card := by
+  have hdata : ∀ w ∈ (fixedB g x₀).filter
+      (fun w => (blocksOf g (blockOf g w), sOf g w) = (x, s)),
+      w ∈ fixedB g x₀ ∧ blockOf g w = B ∧ kOf g w = B.card ∧ sOf g w = s := by
+    intro w hw
+    obtain ⟨hwT, hp⟩ := mem_filter.1 hw
+    obtain ⟨h1, h2⟩ := Prod.ext_iff.1 hp
+    have hb := blockOf_eq hwT hx h1 hBx hx₀
+    obtain ⟨-, -, -, -, hcard, -⟩ := fixedB_struct hwT
+    exact ⟨hwT, hb, by rw [← hcard, hb], h2⟩
+  refine ⟨Finset.card_bij (fun w _ => (toL w).take B.card) ?_ ?_ ?_, ?_⟩
+  · intro w hw
+    obtain ⟨hwT, hb, hk, -⟩ := hdata w hw
+    obtain ⟨-, -, -, -, -, -, -, hBL, -⟩ := fixedB_struct hwT
+    rwa [hk, hb] at hBL
+  · intro w₁ hw₁ w₂ hw₂ h
+    obtain ⟨hT₁, -, hk₁, hs₁⟩ := hdata w₁ hw₁
+    obtain ⟨hT₂, -, hk₂, hs₂⟩ := hdata w₂ hw₂
+    obtain ⟨-, -, -, -, -, -, -, -, hrec₁⟩ := fixedB_struct hT₁
+    obtain ⟨-, -, -, -, -, -, -, -, hrec₂⟩ := fixedB_struct hT₂
+    rw [hk₁, hs₁] at hrec₁
+    rw [hk₂, hs₂] at hrec₂
+    apply toL_injective
+    rw [hrec₁, hrec₂]
+    exact congrArg _ h
+  · intro u hu
+    obtain ⟨w, hwT, hb, hsw, htake⟩ := exists_fixedB hx hBx hx₀ hs hu
+    refine ⟨w, mem_filter.2 ⟨hwT, ?_⟩, htake⟩
+    rw [hb, hsw, ← (blocksOf_of_inF hx hBx).1]
+  · intro w hw
+    obtain ⟨hwT, -, hk, hs'⟩ := hdata w hw
+    obtain ⟨-, -, hrs, -⟩ := fixedB_struct hwT
+    rw [hrs, hk, hs']
+
+end Words
+
+/-! ### Proposition `prop:Lside` -/
+
+open Classical in
+/-- **Proposition `prop:Lside`** (the Lie side of (closed)): for `n ≥ 1`, a primitive `n`-th
+root of unity `ζ`, `g ∈ Aut(P)` of order `o` and any choice `B₀(x)` of one block of each
+`x ∈ F(P,g)`, `∑_{gC=C} ζ^{r_g(C)} = μ(o) ∑_{x ∈ F(P,g)} e_C(P|_{B₀(x)})`. -/
+theorem prop_Lside (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α))
+    (g : α ≃o α) (B₀ : Finset (Finset α) → Finset α) (hB₀ : ∀ x, InF g x → B₀ x ∈ x) :
+    fixedClassSum ζ g =
+      (ArithmeticFunction.moebius (orderOf g) : ℂ) *
+        ∑ x ∈ (univ : Finset (Finset (Finset α))).filter (InF g), (eC (B₀ x) : ℂ) := by
+  obtain ⟨x₀⟩ : Nonempty α := Fintype.card_pos_iff.1 h0
+  have ho : 0 < orderOf g := orderOf_pos_aut g
+  -- one `B_P(x₀)` word per `g`-stable class
+  have step1 : fixedClassSum ζ g = ∑ w ∈ fixedB g x₀, ζ ^ rotOf g w := by
+    unfold fixedClassSum
+    symm
+    refine Finset.sum_nbij coset ?_ ?_ ?_ ?_
+    · intro w hw
+      obtain ⟨hB, hfix⟩ := mem_fixedB.1 hw
+      exact mem_filter.2 ⟨(classOf hB.1).2, hfix⟩
+    · intro w hw w' hw' h
+      exact inB_coset_inj x₀ (mem_fixedB.1 hw).1 (mem_fixedB.1 hw').1 h
+    · intro C hC
+      obtain ⟨hC, hfix⟩ := mem_filter.1 hC
+      obtain ⟨w, hw, rfl⟩ := exists_inB_coset x₀ hC
+      exact ⟨w, mem_fixedB.2 ⟨hw, hfix⟩, rfl⟩
+    · intro w _; rfl
+  rw [step1, ← Finset.sum_fiberwise_of_maps_to
+    (t := ((univ : Finset (Finset (Finset α))).filter (InF g)) ×ˢ unitsMod (orderOf g))
+    (g := fun w => (blocksOf g (blockOf g w), sOf g w)), Finset.sum_product, Finset.mul_sum]
+  · refine Finset.sum_congr rfl fun x hx => ?_
+    have hxF := (mem_filter.1 hx).2
+    obtain ⟨B, hBx, hx₀⟩ := hxF.2.2.2.1 x₀
+    have hn := card_eq_of_isBlockSys (blocksOf_of_inF hxF hBx).2
+    obtain ⟨j, hj⟩ := hxF.2.2.2.2.2 (B₀ x) (hB₀ x hxF) B hBx
+    have heC : eC B = eC (B₀ x) := by rw [hj, eC_image]
+    have hprim : IsPrimitiveRoot (ζ ^ B.card) (orderOf g) := hζ.pow h0 (by rw [hn, mul_comm])
+    calc ∑ s ∈ unitsMod (orderOf g), ∑ w ∈ (fixedB g x₀).filter
+            (fun w => (blocksOf g (blockOf g w), sOf g w) = (x, s)), ζ ^ rotOf g w
+        = ∑ s ∈ unitsMod (orderOf g), (eC (B₀ x) : ℂ) * (ζ ^ B.card) ^ s := by
+          refine Finset.sum_congr rfl fun s hs => ?_
+          obtain ⟨hc, hr⟩ := card_fiber hxF hBx hx₀ hs
+          rw [Finset.sum_congr rfl fun w hw => by rw [hr w hw], sum_const, hc, card_BL hx₀,
+            heC, nsmul_eq_mul, ← pow_mul, mul_comm s]
+      _ = (ArithmeticFunction.moebius (orderOf g) : ℂ) * (eC (B₀ x) : ℂ) := by
+          rw [← Finset.mul_sum, unitsMod, sum_pow_coprime_eq_moebius hprim ho, mul_comm]
+  · intro w hw
+    obtain ⟨-, -, -, hso, -, -, hxF, -⟩ := fixedB_struct hw
+    exact mem_product.2 ⟨mem_filter.2 ⟨mem_univ _, hxF⟩, hso⟩
+
 end PosetJKS

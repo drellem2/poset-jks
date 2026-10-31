@@ -40,6 +40,20 @@ import PosetJKS
 #print axioms PosetJKS.mu_interval
 #print axioms PosetJKS.recursionW
 
+-- prop:Lside (`PosetJKS/LieSide.lean`) and its general inputs (`RamanujanSum.lean`, `ECTransport.lean`)
+#print axioms PosetJKS.prop_Lside
+#print axioms PosetJKS.fixedB_struct
+#print axioms PosetJKS.exists_fixedB
+#print axioms PosetJKS.card_fiber
+#print axioms PosetJKS.inF_blocksOf
+#print axioms PosetJKS.blocksOf_of_inF
+#print axioms PosetJKS.sum_primitiveRoots_eq_moebius
+#print axioms PosetJKS.sum_pow_coprime_eq_moebius
+#print axioms PosetJKS.L.inBL_map
+#print axioms PosetJKS.card_BL
+#print axioms PosetJKS.eC_congr
+#print axioms PosetJKS.eC_image
+
 -- Controls and counterexamples in `PosetJKS/Test.lean` (must not depend on `sorryAx`)
 #print axioms PosetJKS.Test.fixedClassSum_g3_prim
 #print axioms PosetJKS.Test.muFixed_chain2

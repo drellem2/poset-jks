@@ -15,10 +15,16 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   and `closed_formula` stay `sorry`. They are **not** homology-free: their `g = 1` case is
   the base case `μ(OP(Q)) = (-1)^{|Q|-3} e_C(Q)`, which the note obtains from Jenča–Sarkoci and
   Hall (§2, §4.1).
+* **Step 4 (M2b)** proves Proposition `prop:Lside`, the Lie side of (closed):
+  `∑_{gC=C} ζ^{r_g(C)} = μ(o) ∑_{x ∈ F(P,g)} e_C(P|_{B₀(x)})` (`prop_Lside`, for `n ≥ 1`), by
+  the weight-free route of §4.1. It builds two general inputs in their own files: the Ramanujan
+  sum at `1` (`RamanujanSum.lean`) and the invariance of `e_C` under order isomorphisms
+  (`ECTransport.lean`). `closed_formula` is now proved from `character_identity` and
+  `prop_Lside`; it has no `sorry` of its own but still depends on `character_identity`.
 
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
-* `lake build` succeeds. It reports 6 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
+* `lake build` succeeds. It reports 5 `sorry` warnings, all in `MainTheorem.lean`, and no errors.
 * No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
 
 ## Reproduce
@@ -26,7 +32,7 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 6 "declaration uses sorry"
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 5 "declaration uses sorry"
 lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
 grep -rn "^  sorry" PosetJKS               # the sorry list below
 ```
@@ -39,11 +45,14 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/OrderComplex.lean` | oriented chains of the order complex (`Chains`, `bd`), reduced homology `redHom`; order-preserving partitions (`IsOrderPreserving`, `OP`, `ProperOP`); `H_P` (`HP`); the `Aut(P)` action on the proper part and on `H_P` (`actProper`, `actHP`); the fixed lattice `OP(P)^g` and `μ(OP(P)^g)` (`muFixed`) (**all proved**) |
 | `PosetJKS/Words.lean` | M1 core, on lists over a fixed type with an arbitrary relation `r`: shuffles `shq`, `ShL`, the contraction operator `E_{a,x}` and Lemma 1 (`map_E_ShL`); the contraction relation `rc` and Lemma 5 (`inBL_contract`); Theorem A (`eq_zero_of_inBL`) and Theorem Ψ (`eq_zero_of_eqL`) on lists; Lemma Ψ.0 (`eqL_classSum`); the measure `μ` (`muL`), the Lemma 6 step (`muL_lt_of_shuffle`) and Lemma 4 (`inBL_rotate_muL`, `rotate_eq_zero_of_inBL`) (**all proved**) |
 | `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
-| `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
+| `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`, split into `inB_coset_inj` and `exists_inB_coset`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
 | `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
 | `PosetJKS/Interval.lean` | M2: `μ` is invariant under interval isomorphisms (`mu_eq_of_interval`); the block `B₀` through a point, its period `m` and `h = g^m|_{B₀}` (`Blk`, `per`, `hres`); Lemma `lem:interval`(i) (`mu_interval`); the recursion (W), unsigned (`recursionW`) (**all proved**) |
-| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (statements `sorry`) |
+| `PosetJKS/RamanujanSum.lean` | general (imports only Mathlib): `∑_{ξ^n=1} ξ = [n = 1]`; the primitive `o`-th roots of unity sum to `μ(o)` (`sum_primitiveRoots_eq_moebius`), and `∑_{s<o, (s,o)=1} ω^s = μ(o)` for `ω` primitive (`sum_pow_coprime_eq_moebius`) (**all proved**) |
+| `PosetJKS/ECTransport.lean` | `B_P` on lists transported along injective relation-preserving maps (`L.inBL_map`); `B_{P|_A}(x₀)` as a finite set of lists (`BL`), `|B_{P|_A}(x₀)| = e_C(P|_A)` (`card_BL`); `e_C` invariant under order isomorphisms (`eC_congr`), `e_C(P|_{φB}) = e_C(P|_B)` for `φ ∈ Aut(P)` (`eC_image`) (**all proved**) |
+| `PosetJKS/LieSide.lean` | `x ∈ F(P,g)` (`InF`, moved here unchanged from `MainTheorem.lean`); block systems `{g^j B : j < o}` and `InF` (`inF_blocksOf`, `blocksOf_of_inF`, `isBlockSys_pow`, `card_eq_of_isBlockSys`); words as concatenations of chunks `h^t u` (`eq_flatMap_of_rotate`, `rotate_mul_chunks`); the `B_P(x₀)` words of `g`-stable classes (`fixedB_struct`, `exists_fixedB`, `card_fiber`); Proposition `prop:Lside` (`prop_Lside`) (**all proved**) |
+| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`closed_formula` proved from `character_identity` and `prop_Lside`; the rest `sorry`) |
 | `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/`, `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 
@@ -167,7 +176,7 @@ admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining
 `h0 : 0 < Fintype.card α` on `trace_PLie`, `corPsi_bijective` and `corPsi`. It is the note's
 implicit `n ≥ 1` (its objects use `1/n`), and the statements are false without it (§4).
 
-## 4. Sorries (6) and gaps
+## 4. Sorries (5) and gaps
 
 `sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`). No definition
 depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
@@ -176,15 +185,21 @@ depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no
 |---|---|---|
 | 1 | `MainTheorem.lean:40` | `character_identity` |
 | 2 | `MainTheorem.lean:49` | `main_iso` |
-| 3 | `MainTheorem.lean:72` | `closed_formula` |
-| 4 | `MainTheorem.lean:80` | `trace_HP` |
-| 6 | `MainTheorem.lean:96` | `jencaSarkoci_homology` (cited input A) |
-| 7 | `MainTheorem.lean:107` | `hall_mu_eq_reducedEuler` (cited input B) |
+| 4 | `MainTheorem.lean:74` | `trace_HP` |
+| 6 | `MainTheorem.lean:90` | `jencaSarkoci_homology` (cited input A) |
+| 7 | `MainTheorem.lean:101` | `hall_mu_eq_reducedEuler` (cited input B) |
 
-Numbering as in step 1. #5 `trace_PLie` is closed in step 3 (§4.1).
+(#1 `character_identity` is at `MainTheorem.lean:41`, #2 `main_iso` at `MainTheorem.lean:50`.)
+Numbering as in step 1. #5 `trace_PLie` is closed in step 3 (§4.1). #3 `closed_formula` has no
+`sorry` of its own since step 4: its second conjunct is `prop_Lside` (closed), and its first
+conjunct is `character_identity` multiplied by `sgn(g)` (`sgn(g)² = 1`). So `#print axioms
+closed_formula` still lists `sorryAx`, through `character_identity` only (§4.1).
 
 The five M1 sorries of step 1 (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`,
 `corPsi_equivariant`) are closed. `corPsi` follows from the last two.
+
+**Statement changes.** None in step 4. `InF` moved from `MainTheorem.lean` to `LieSide.lean`
+with the same body, so the type of `closed_formula` is unchanged.
 
 **Statement changes in step 2.** Following `AUDIT_FAITHFULNESS.md` §1.1, three statements
 gained the hypothesis `h0 : 0 < Fintype.card α`. Nothing else in any statement changed.
@@ -253,7 +268,7 @@ Möbius side (homology-free parts). Deviations from the note's route:
   (`recursionW`). The sign identity `lem:interval`(ii), `(-1)^{n-3} sgn(g) = (-1)^{k-3} sgn(h)`,
   is not formalized.
 
-Remaining for `character_identity` and `closed_formula`:
+Remaining for `character_identity` (and through it the first conjunct of `closed_formula`):
 
 1. `lem:interval`(ii), the cycle-count sign identity.
 2. The Möbius inversion of `prop:Mside`: the bijection `X(P|_{B₀(x)}, h_x) ≅ {z ∈ X(P,g) : z ≤ x}`
@@ -261,17 +276,41 @@ Remaining for `character_identity` and `closed_formula`:
    for `x ∈ F(P,g)`, so `μ_X(x, 1̂) = μ(o)`.
 3. **The base case `lem:small` for `|Q| ≥ 3`**: needs Hall (`hall_mu_eq_reducedEuler`) and the
    Euler-characteristic content of `jencaSarkoci_homology` (or a new elementary proof). This
-   blocks #1 and #3 independently of items 1, 2 and 4.
-4. `prop:Lside` (homology-free, the second conjunct of `closed_formula`). A route that avoids
-   the note's weights `1/|K(w)|`: by Lemma 4 (`card_inB`) each class has exactly one word in
-   `B_P(x₀)`. A `g`-fixed class with rotation `r` then corresponds to its `B_P` word `w`. With
-   `k = gcd(n, r)`, the first `k` letters of `w` form the block of an `x ∈ F(P,g)` through
-   `x₀`, and they are a word of `B_{P|_{A_0}}(x₀)`. `r/k` is a unit mod `o`. Together this gives
-   a bijection {fixed classes} ≅ `∐_{x ∈ F} B_{P|_{B₀(x)}}(x₀) × (ℤ/o)^×` with
-   `ζ^r = (ζ^k)^{r/k}`, and the Ramanujan sum `∑_{s ∈ (ℤ/o)^×} ω^s = μ(o)`. Mathlib has no
-   lemma "sum of primitive `o`-th roots `= μ(o)`"; it follows from `∑_{ω^o = 1} ω = [o = 1]` by
-   Möbius inversion. Matching the statement's arbitrary choice `B₀` also needs `e_C` to be
-   invariant under order isomorphisms (`g^j : P|_{B} ≅ P|_{g^j B}`).
+   blocks #1 (and so the first conjunct of #3) independently of items 1 and 2.
+4. ~~`prop:Lside`~~ **done in step 4** (`prop_Lside`, see below).
+
+**How `prop:Lside` is proved (step 4)** (`LieSide.lean`). The route avoids the note's weights
+`1/|K(w)|`. Fix `x₀`.
+
+* By Lemma 4 (`inB_coset_inj`, `exists_inB_coset`) each class contains exactly one word of
+  `B_P(x₀)`, so `∑_{gC=C} ζ^{r_g(C)}` is a sum over the set `fixedB` of words `w ∈ B_P(x₀)`
+  whose class is `g`-stable, `g w = w γ^r` with `r = r_g(C) < n`.
+* For such `w` let `k = gcd(r, n)` and `s = r/k` (`fixedB_struct`). Since `g^j w = w γ^{jr}` and
+  rotations of a word of distinct letters are distinct, `g^j = 1` iff `n/k ∣ j`, so `o = n/k`
+  and `s` is a unit mod `o`. With `s s' ≡ 1 (mod o)` and `h = g^{s'}`, `w γ^k = h w`, and then
+  `w` is the concatenation of the chunks `h^t (w_1 ⋯ w_k)`, `t < o` (`eq_flatMap_of_rotate`).
+  The first chunk `A` is a union of components, because `w` and `w γ^k = h w` are both linear
+  extensions (`isLinExt_rot_iff`). It contains `x₀` (definition of `B_P`). The sets `h^t A`
+  partition the ground set, hence so do the `g^j A`, `j < o` (`isBlockSys_pow`), and
+  `x(w) = {g^j A : j < o} ∈ F(P,g)` (`inF_blocksOf`). The first chunk `w_1 ⋯ w_k` lies in
+  `B_{P|_A}(x₀)`.
+* Conversely (`exists_fixedB`), for `x ∈ F(P,g)`, its block `B ∋ x₀`, a unit `s` and
+  `u ∈ B_{P|_B}(x₀)`, the concatenation of the chunks `h^t u` is a word on the ground set
+  (`blocksOf_of_inF` gives the block system). It is a linear extension, since the blocks are
+  pairwise incomparable unions of components. It lies in `B_P(x₀)` (a union-prefix is either a
+  union-prefix of `u` or contains `u`), and `g w = w γ^{s|B|}` (`rotate_mul_chunks`). Its data is
+  `(x, s, u)`.
+* So the fibre of `w ↦ (x(w), s(w))` over `(x, s)` is in bijection with `B_{P|_B}(x₀)`, and on
+  it `r = s|B|` (`card_fiber`). With `|P| = o|B|` (`card_eq_of_isBlockSys`), `ζ^{|B|}` is a
+  primitive `o`-th root of unity, and the Ramanujan sum gives
+  `∑_{s ∈ (ℤ/o)^×} (ζ^{|B|})^s = μ(o)` (`sum_pow_coprime_eq_moebius`). Finally
+  `|B_{P|_B}(x₀)| = e_C(P|_B)` (`card_BL`), and `e_C(P|_B) = e_C(P|_{B₀(x)})` since
+  `B = g^j B₀(x)` (`eC_image`).
+
+`prop_Lside` has the hypothesis `0 < Fintype.card α` (the note's `n ≥ 1`). It is false at
+`n = 0` (checked by hand, not in `Test.lean`): there `Cyc(P)` is `{∅}`, so the left side is
+`1`, while `F(P,1)` is empty. The new definitions (`fixedB`, `blocksOf`, `BL`, `chunks`, `invMod`, `unitsMod`, …) occur only in the
+proof. No stated theorem's type depends on them.
 
 Gaps and deliberate modelling choices:
 
@@ -326,6 +365,18 @@ Gaps and deliberate modelling choices:
 'PosetJKS.mu_eq_of_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.mu_interval' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.recursionW' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.prop_Lside' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.fixedB_struct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.exists_fixedB' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.card_fiber' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.inF_blocksOf' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.blocksOf_of_inF' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.sum_primitiveRoots_eq_moebius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.sum_pow_coprime_eq_moebius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.L.inBL_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.card_BL' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.eC_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.eC_image' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.fixedClassSum_g3_prim' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.muFixed_chain2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.not_op_chain3_02_1' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -337,8 +388,10 @@ Gaps and deliberate modelling choices:
 ```
 
 The M1 theorems (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`, `corPsi_equivariant`,
-`corPsi`), `trace_PLie` and the M2 infrastructure (step 3), with their supporting results,
+`corPsi`), `trace_PLie`, the M2 infrastructure (step 3) and `prop_Lside` with the Ramanujan sum
+and the `e_C` transport (step 4), with their supporting results,
 depend only on the three standard axioms (`isOrderPreserving_inf` does not even use
 `Classical.choice`). The remaining
-stated theorems also depend on `sorryAx`, from the visible `sorry`s in §4. The definitions are
+stated theorems also depend on `sorryAx`, from the visible `sorry`s in §4 (`closed_formula`
+through `character_identity`). The definitions are
 `sorry`-free.

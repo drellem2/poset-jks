@@ -2,6 +2,7 @@ import PosetJKS.OrderComplex
 import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice
+import PosetJKS.LieSide
 
 /-!
 # The poset JKS theorem (Theorem `thm:main` of `notes/poset_jks_theorem.tex`)
@@ -48,17 +49,6 @@ theorem main_iso (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
       (e (actHP g x) : Alg α) = sgnC g • relabel g.toEquiv (e x) := by
   sorry
 
-/-- `x ∈ F(P,g)` (with `o` the order of `g`): `x` is a partition of the ground set into exactly
-`o` blocks, each block a union of components, and `g` permutes the blocks cyclically (maps
-blocks to blocks, transitively). A partition is given by its set of blocks. -/
-def InF (g : α ≃o α) (x : Finset (Finset α)) : Prop :=
-  x.card = orderOf g ∧
-  (∀ B ∈ x, B.Nonempty ∧ IsUnionOfComponents B) ∧
-  (∀ B ∈ x, ∀ B' ∈ x, B ≠ B' → Disjoint B B') ∧
-  (∀ a : α, ∃ B ∈ x, a ∈ B) ∧
-  (∀ B ∈ x, B.image g ∈ x) ∧
-  (∀ B ∈ x, ∀ B' ∈ x, ∃ k : ℕ, B' = B.image (g ^ k))
-
 open Classical in
 /-- (closed). `B₀` is any choice of one block of each `x ∈ F(P,g)`; `e_C(P|_B)` is `e_C` of the
 induced subposet on `B`. -/
@@ -69,7 +59,11 @@ theorem closed_formula (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
     fixedClassSum ζ g =
       (ArithmeticFunction.moebius (orderOf g) : ℂ) *
         ∑ x ∈ (univ : Finset (Finset (Finset α))).filter (InF g), (eC (B₀ x) : ℂ) := by
-  sorry
+  refine ⟨?_, prop_Lside (by omega) hζ g B₀ hB₀⟩
+  have hs : sgnC g * sgnC g = 1 := by
+    unfold sgnC
+    rw [← Int.cast_mul, ← Units.val_mul, Int.units_mul_self, Units.val_one, Int.cast_one]
+  rw [mul_assoc, character_identity hn hζ g, ← mul_assoc, hs, one_mul]
 
 /-! ### The two characters (intermediate statements of Proof I) -/
 

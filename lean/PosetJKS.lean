@@ -6,5 +6,8 @@ import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice
 import PosetJKS.Interval
+import PosetJKS.RamanujanSum
+import PosetJKS.ECTransport
+import PosetJKS.LieSide
 import PosetJKS.MainTheorem
 import PosetJKS.Test
