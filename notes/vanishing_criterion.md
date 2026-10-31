@@ -31,18 +31,18 @@ Tags:
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| Z | **Formula Z.** χ_V(g) = Σ_{X ∈ Z\*(V,g)} μ_{L(A)^g}(0, X) · m_X(V). Here Z\*(V,g) is the set of g-stable flats X ⊆ L with X ∩ U = 0 such that no hyperplane contains X + U. m_X(V) ≥ 1 is the bottom multiplicity of the cone \|V\| ∩ U for the arrangement {H ∩ U : H ⊇ X}. Also μ_{L(A)^g}(0, X) = χ^{full}_{A^X}(g\|_X), with g\|_X fixed-point-free | **PROVEN** (§2); independently audited in [AudVC]: holds (one-line rank-0 gap at X = R^d, closed in §2 step 1); COMPUTED on all 2,762 pairs, and on 6,266 pairs by [AudVC] | W″ (audited) applied to every localization; Möbius inversion |
-| S | **Some-cone criterion.** χ_V(g) ≠ 0 for some g-stable top-cone V iff some X ∈ Z\*(g) has μ_{L(A)^g}(0, X) ≠ 0. Here Z\*(g) is the set of g-stable flats X with X ∩ Fix g = 0 such that no hyperplane contains X + Fix g. For a minimal such X, a g-stable top-lune with lineality X has χ = μ(0, X) | **PROVEN** (§3); independently audited in [AudVC]: holds; COMPUTED on every class of every type, with the witness cone checked | Formula Z, Lemma F of [FP] |
-| S1 | Pointed V: χ_V(g) = #V^g. Some pointed cone has χ ≠ 0 iff Fix(g) lies in no hyperplane | **PROVEN** (§3.1), audited in [AudVC] (holds); COMPUTED `[P]` | [FP] Cor. P, Lemma F |
-| S2 | Fix(g) = 0: χ_V(g) = 0 for every V other than all chambers. Some cone has χ ≠ 0 iff μ(L(A)^g) ≠ 0 | **PROVEN** (§3.1), audited in [AudVC] (holds); COMPUTED `[E]` | Formula Z |
-| S3 | g an involution: some cone has χ ≠ 0 iff some flat X in the (−1)-eigenspace of g has X + Fix(g) in no hyperplane. For a reflection s_α whose mirror α^⊥ is a hyperplane of A: iff the line Rα is a flat | **PROVEN** (§3.1), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version of the reflection clause; COMPUTED `[I]` | Theorem S, Rota's sign theorem |
-| V | Cor. V of [FP] is the case "a hyperplane contains L + Fix g". Under it Z\*(V,g) = ∅. On pointed cones every zero is of this kind | **PROVEN** (§3.1), audited in [AudVC] (holds) | Formula Z |
-| A | **Type A, all of ±S_n.** For g = ±w acting on the braid arrangement of A_{n−1} (n ≥ 3), some cone has χ ≠ 0 iff ⟨g⟩ acts freely on {±e_1, …, ±e_n} and μ(ord g) ≠ 0. For +w this is the known rule "all cycles of one length o, μ(o) ≠ 0". For −w it reads: the cycle lengths of w lie in {m, 2m} for one odd squarefree m | **PROVEN** (§4); independently audited in [AudVC]: holds; COMPUTED for all ±w with n ≤ 8 and five classes with n = 9 | Theorem S, μ(Π_n^σ) ([FPM] (ii); Hanlon) |
-| PC | Per cone: χ_V(g) ≠ 0 implies that Z\*(V,g) carries a nonzero μ. The converse holds whenever the nonzero μ(0, X), X ∈ Z\*(g), all have one sign: for g ∈ S_n, for Fix g = 0, for reflections whose mirror is a hyperplane of A | **PROVEN** (§5), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version (−s_12 on A_2 is a reflection whose mirror is not in A, and it cancels) | Formula Z, Theorem A |
-| PC′ | The converse fails in general: there are 26 cancelling pairs. These are −w for w an involution with a fixed point (A_2–A_5), and the two F_4 classes of order 6 with dim Fix = (1, 2, 1, 4) on all chambers | **COMPUTED** (§5) | — |
+| Z | **Formula Z.** χ_V(g) = Σ_{X ∈ Z\*(V,g)} μ_{L(A)^g}(0, X) · m_X(V). Here Z\*(V,g) is the set of g-stable flats X ⊆ L with X ∩ U = 0 such that no hyperplane contains X + U. m_X(V) ≥ 1 is the bottom multiplicity of the cone \|V\| ∩ U for the arrangement {H ∩ U : H ⊇ X}. Also μ_{L(A)^g}(0, X) = χ^{full}_{A^X}(g\|_X), with g\|_X fixed-point-free | **PROVEN** (§2); independently audited in [AudVC]: holds (one-line rank-0 gap at X = R^d, closed in §2 step 1); audited again in [AudVC2]: holds; COMPUTED on all 2,762 pairs, on 6,266 pairs by [AudVC], and on 1,272 pairs of 11 arrangements (6 not Coxeter) by [AudVC2] | W″ (audited) applied to every localization; Möbius inversion |
+| S | **Some-cone criterion.** χ_V(g) ≠ 0 for some g-stable top-cone V iff some X ∈ Z\*(g) has μ_{L(A)^g}(0, X) ≠ 0. Here Z\*(g) is the set of g-stable flats X with X ∩ Fix g = 0 such that no hyperplane contains X + Fix g. For a minimal such X, a g-stable top-lune with lineality X has χ = μ(0, X) | **PROVEN** (§3); independently audited in [AudVC] and [AudVC2]: holds ([AudVC2]: every g-fixed chamber K of A_X gives χ_{V♯} = μ(0, X)); COMPUTED on every class of every type, with the witness cone checked | Formula Z, Lemma F of [FP] |
+| S1 | Pointed V: χ_V(g) = #V^g. Some pointed cone has χ ≠ 0 iff Fix(g) lies in no hyperplane | **PROVEN** (§3.1), audited in [AudVC] and [AudVC2] (holds); COMPUTED `[P]` | [FP] Cor. P, Lemma F |
+| S2 | Fix(g) = 0: χ_V(g) = 0 for every V other than all chambers. Some cone has χ ≠ 0 iff μ(L(A)^g) ≠ 0 | **PROVEN** (§3.1), audited in [AudVC] and [AudVC2] (holds); COMPUTED `[E]` | Formula Z |
+| S3 | g an involution: some cone has χ ≠ 0 iff some flat X in the (−1)-eigenspace of g has X + Fix(g) in no hyperplane. For a reflection s_α whose mirror is a hyperplane of A: iff the line Rα = ker(s_α + 1) is a flat | **PROVEN** (§3.1), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version of the reflection clause; audited again in [AudVC2]: holds, the mirror hypothesis is needed in both directions, and Rα must be read as ker(s_α + 1) for reflections that are not orthogonal (fix in §3.1); COMPUTED `[I]` | Theorem S, Rota's sign theorem |
+| V | Cor. V of [FP] is the case "a hyperplane contains L + Fix g". Under it Z\*(V,g) = ∅. On pointed cones every zero is of this kind | **PROVEN** (§3.1), audited in [AudVC] and [AudVC2] (holds) | Formula Z |
+| A | **Type A, all of ±S_n.** For g = ±w acting on the braid arrangement of A_{n−1} (n ≥ 3), some cone has χ ≠ 0 iff ⟨g⟩ acts freely on {±e_1, …, ±e_n} and μ(ord g) ≠ 0. For +w this is the known rule "all cycles of one length o, μ(o) ≠ 0". For −w it reads: the cycle lengths of w lie in {m, 2m} for one odd squarefree m | **PROVEN** (§4); independently audited in [AudVC] and [AudVC2]: holds ([AudVC2] re-checks all 126 classes with n ≤ 8 by separate code); COMPUTED for all ±w with n ≤ 8 and five classes with n = 9 | Theorem S, μ(Π_n^σ) ([FPM] (ii); Hanlon) |
+| PC | Per cone: χ_V(g) ≠ 0 implies that Z\*(V,g) carries a nonzero μ. The converse holds whenever the nonzero μ(0, X), X ∈ Z\*(g), all have one sign: for g ∈ S_n, for Fix g = 0, for reflections whose mirror is a hyperplane of A | **PROVEN** (§5), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version (−s_12 on A_2 is a reflection whose mirror is not in A, and it cancels); audited again in [AudVC2]: holds, with further examples of the need for the mirror hypothesis | Formula Z, Theorem A |
+| PC′ | The converse fails in general: there are 26 cancelling pairs. These are −w for w an involution with a fixed point (A_2–A_5), and the two F_4 classes of order 6 with dim Fix = (1, 2, 1, 4) on all chambers. Off the Coxeter data, cancellation is common ([AudVC2]; §5) | **COMPUTED** (§5); confirmed in [AudVC2] | — |
 | PC″ | An exact per-cone criterion beyond "the sum of Formula Z is ≠ 0" | **OPEN** | — |
 | R | Springer regularity is neither necessary nor sufficient for "χ ≠ 0 on some cone": the Coxeter element of B_3 vanishes on every cone, and a reflection of B_2 does not | **PROVEN** by hand (§6), given Theorem S; audited in [AudVC] (holds); COMPUTED for every class | Theorem S |
-| CR | For X ∈ Z\*(g): if [0, X] in L(A)^g has an element with no complement, then μ(0, X) = 0 (Crapo). The converse holds on all 191 X tested (16 with μ = 0) | "if": **PROVEN** (CITED Crapo); "only if": **CONJECTURED**, COMPUTED | Crapo's complementation theorem |
+| CR | For X ∈ Z\*(g): if [0, X] in L(A)^g has an element with no complement, then μ(0, X) = 0 (Crapo). The converse holds on all 191 X tested (16 with μ = 0) | "if": **PROVEN** (CITED Crapo); "only if": **CONJECTURED**, COMPUTED; no counterexample on the arrangements of [AudVC2] | Crapo's complementation theorem |
 | T | The classes vanishing on every cone, by type (§7). This reproduces the table of [FP] §5 for A_4, A_5, B_2, B_3, B_4, D_4 and H_3, and adds F_4 and the classes outside W | **COMPUTED** | — |
 
 [AudVC] is `notes/audit_vanishing_criterion.md`, the independent audit of
@@ -50,6 +50,16 @@ the PROVEN claims. It finds that no proven formula is wrong. It found two
 statements about reflections (S3, PC(c)) that were missing the hypothesis
 "the mirror is a hyperplane of A", and one rank-0 gap in the proof of Z.
 All three are fixed below, with the fixes marked.
+
+[AudVC2] is `notes/audit2_vanishing_criterion.md`, a second independent
+audit, written without reading [AudVC]. It finds that Formula Z, Theorem S
+(with the top-lune realization), S1–S3, Cor. V and Theorem A hold. Its exact
+checks cover 1,272 pairs on 11 arrangements, six of them not reflection
+arrangements, several with groups acting by maps that are not orthogonal in
+the given coordinates. It raises two points of wording, both fixed below
+(S3 in §3.1, the pair convention in §7), and finds cancellation (PC′) on
+five of its six non-Coxeter arrangements (§5). Neither audit re-checks H_3,
+F_4 or D_4.
 
 **In one line.** Which g vanish on every cone is decided by the g-stable flats
 X that meet Fix(g) only in 0 and are "transverse" to it, and by the Möbius
@@ -244,8 +254,15 @@ X + U in no hyperplane.
 - Let s_α be a reflection whose mirror α^⊥ is a hyperplane of A, for
   example s_α ∈ W with A the reflection arrangement of W. Then E = Rα, and
   U = α^⊥ is a hyperplane, so X = 0 is excluded. A flat X ⊆ Rα, X ≠ 0, is
-  X = Rα, and X + U = R^d. So s_α is nonzero on some cone iff Rα is a flat,
-  that is, iff the roots orthogonal to α span α^⊥. (Fix after [AudVC]: without the mirror
+  X = Rα, and X + U = R^d. So s_α is nonzero on some cone iff Rα is a flat.
+  Here Rα means the line ker(s_α + 1), and α^⊥ means the mirror
+  ker(s_α − 1); this reading is needed when s_α is not orthogonal in the
+  given coordinates (for instance the hexagon arrangements of [AudVC2],
+  written in lattice coordinates). For an orthogonal reflection and A the
+  reflection arrangement of a root system, "Rα is a flat" says that the
+  roots orthogonal to α span α^⊥. For a non-orthogonal reflection that
+  form applies only after passing to a ⟨s_α⟩-invariant inner product.
+  (Fix after [AudVC2] §6.1.) (Fix after [AudVC]: without the mirror
   hypothesis this fails. For A = {x = 0, y = 0} and s(x, y) = (y, x), Rα is
   not a flat, yet s fixes a chamber, so χ = 1 on that pointed cone.)
 - This fails for every reflection of A_{n−1}, n ≥ 3 (the roots ⊥ e_1 − e_2
@@ -418,6 +435,14 @@ In B_2–B_4, D_4 (with triality) and H_3, no pair cancels in the full
 enumeration, although some classes there are not sign-coherent. So in
 those types (a) is an equivalence on every pair tested (COMPUTED).
 
+**Cancellation off the Coxeter data ([AudVC2] §5, COMPUTED there).** The
+restriction of cancellation to type A and F_4 (here and in §7) is a property
+of the reflection arrangements tested, not of cancellation. [AudVC2] finds
+cancelling pairs on five of its six non-Coxeter arrangements: generic 4
+planes in R^3 (4 pairs), generic 5 hyperplanes in R^4 (9), B_3 ∖ {z = 0}
+(9), A_3 minus one plane (3) and the 12-line hexagon arrangement (12). The
+13-line hexagon arrangement has none.
+
 **Open (PC″).** Characterize cancellation, that is, give an exact per-cone
 criterion that does not pass through the signed sum (Z). The output lists
 the terms (dim X, μ(0, X), m_X) of the first cancelling pairs of each type.
@@ -472,8 +497,22 @@ H_3), no imports from other scripts. G is the symmetry group used:
 - W(D_4) ⋊ S_3 (order 1,152, the triality extension) for D_4;
 - W otherwise (−1 ∈ W).
 
-Pairs are (V, g) with V a W-orbit representative of the top-cones, and g a
-representative of a conjugacy class of Stab_G(V). The numbers differ from
+Pairs, for the fully enumerated types, are of two kinds:
+- (V, g) with V a W-orbit representative of the top-cones (one per orbit;
+  the counts do not depend on the choice) and g a representative of a conjugacy class of Stab_G(V), conjugacy taken inside
+  Stab_G(V);
+- the witness top-lunes of Theorem S: for each conjugacy class of G, with g
+  the code's representative, and each minimal X ∈ Z\*(g) with μ(0, X) ≠ 0,
+  the pair (V♯, g) for one g-fixed chamber K of A_X. These are added whether
+  or not (V♯, g) already occurs among the first kind.
+
+The witness counts are 5, 7, 8, 21, 5, 9, 21, 27, 7 for A_2–A_5, B_2–B_4,
+D_4, H_3 (and 32 for F_4). Without them the pair totals are those of the
+first kind alone, for example 14, 49, 172 for A_2–A_4 and 15, 84 for B_2,
+B_3, as recomputed in [AudVC2] §5. The columns "χ ≠ 0" and "zero …" count
+pairs of both kinds; every witness pair is nonzero, so only the columns
+"pairs" and "χ ≠ 0" depend on the convention. (Fix after [AudVC2] §6.2,
+which found the convention underspecified.) The numbers differ from
 [FP] §5, which counts elements, not classes. F_4 is sampled: all chambers,
 12 random g-stable cones per class (constraints from a g-stable face,
 closed under ⟨g⟩, seed 1) and the witness top-lunes.
@@ -504,7 +543,8 @@ Summed over orbits of L:
 - On pointed cones (dim L = 0) every zero is a Cor. V zero, as S1 predicts.
 - "Z\*(V) carries no nonzero μ" zeros occur only for dim L ≥ 2.
 - Cancellations occur only on non-pointed cones in type A, and only on all
-  chambers in F_4.
+  chambers in F_4. This is a property of these Coxeter data only:
+  cancellation is common on non-Coxeter arrangements (§5, [AudVC2]).
 
 **Classes vanishing on every cone** (by Theorem S; the same classes as the
 full enumeration). Labels: cycle type for A (− for −w), signed cycle type
@@ -568,4 +608,6 @@ References: [FP] = `notes/fixed_point_formula.md`; [GT] =
 `notes/audit_fixed_point_formula.md`; [AudW] =
 `notes/audit_prop_w_prime.md`; [AudW2] = `notes/audit_theorem_w2.md`;
 [NovFP] = `notes/novelty_fixed_point_formula.md`; [AudVC] =
-`notes/audit_vanishing_criterion.md` (the independent audit of this note).
+`notes/audit_vanishing_criterion.md` (the independent audit of this note);
+[AudVC2] = `notes/audit2_vanishing_criterion.md` (the second independent
+audit).
