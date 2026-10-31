@@ -1,0 +1,517 @@
+== controls
+[CTL] PASS: N5 with Co(t) = {a<b} (not an antichain): naive BW sum {} != actual {0: 1}; the instrument refuses the case
+[CTL] PASS: Pi_4, t=01|23: complements [[[0, 2], [1, 3]], [[0, 2], [1], [3]], [[0, 3], [1, 2]], [[0], [1, 2], [3]], [[0, 3], [1], [2]], [[0], [1, 3], [2]]] include non-atoms
+[CTL] PASS: RP^2 face lattice: mod 2 {1: 1, 2: 1}, mod 3 {} differ (torsion detected)
+[CTL] PASS: RP^2 face lattice: no (C)-certificate, primal or dual
+[CTL] PASS: RP^2-hat x 2: (C) holds at the top (t=(1,0), Co(t) = one atom) but not hereditarily; L-bar has mod 2 {2: 1, 3: 1}, mod 3 {} -> torsion, not a wedge
+[CTL] PASS: Pi_3: certificate predicts {0: 2}
+[CTL] PASS: Pi_4: certificate predicts {1: 6}
+[CTL] PASS: Pi_5: certificate predicts {2: 24}
+== corpus
+OP(P): 84 posets with 3 <= n <= 5
+== [BW] formula vs direct homology
+[BW] PASS: 51216 (interval, z, p) cases with Co(z) an antichain: prediction = direct homology in all but 0; 3920 (interval, z) skipped (Co(z) not an antichain)
+== [CERT] (C)-certified lattices
+[CERT] PASS: Pi_3: |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; (C)-certificate predicts {0: 2}
+[CERT] PASS: Pi_3: |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; dual (C)-certificate predicts {0: 2}
+[CERT] PASS: Pi_4: |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: Pi_4: |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: Pi_5: |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: Pi_5: |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; dual (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 1)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 1)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; dual (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; dual (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=5 l=2 betti={0: 2} torsion-free(seen)=True; dual (C)-certificate predicts {0: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: OP([]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; dual (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 3), (1, 2)]): |L|=14 l=3 betti={1: 5} torsion-free(seen)=True; (C)-certificate predicts {1: 5}
+[CERT] PASS: OP([(0, 3), (1, 2)]): |L|=14 l=3 betti={1: 5} torsion-free(seen)=True; dual (C)-certificate predicts {1: 5}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2)]): |L|=14 l=3 betti={1: 5} torsion-free(seen)=True; (C)-certificate predicts {1: 5}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2)]): |L|=14 l=3 betti={1: 5} torsion-free(seen)=True; dual (C)-certificate predicts {1: 5}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; dual (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3)]): |L|=13 l=3 betti={1: 4} torsion-free(seen)=True; (C)-certificate predicts {1: 4}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3)]): |L|=13 l=3 betti={1: 4} torsion-free(seen)=True; dual (C)-certificate predicts {1: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]): |L|=10 l=3 betti={1: 2} torsion-free(seen)=True; (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]): |L|=10 l=3 betti={1: 2} torsion-free(seen)=True; dual (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 3), (1, 3), (2, 3)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 3), (1, 3), (2, 3)]): |L|=15 l=3 betti={1: 6} torsion-free(seen)=True; dual (C)-certificate predicts {1: 6}
+[CERT] PASS: OP([(0, 1), (0, 3), (1, 3), (2, 3)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 1), (0, 3), (1, 3), (2, 3)]): |L|=12 l=3 betti={1: 3} torsion-free(seen)=True; dual (C)-certificate predicts {1: 3}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 3), (2, 3)]): |L|=11 l=3 betti={1: 2} torsion-free(seen)=True; (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 3), (2, 3)]): |L|=11 l=3 betti={1: 2} torsion-free(seen)=True; dual (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=10 l=3 betti={1: 2} torsion-free(seen)=True; (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=10 l=3 betti={1: 2} torsion-free(seen)=True; dual (C)-certificate predicts {1: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: OP([]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 2), (1, 2)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 3), (1, 2)]): |L|=49 l=4 betti={2: 20} torsion-free(seen)=True; (C)-certificate predicts {2: 20}
+[CERT] PASS: OP([(0, 3), (1, 2)]): |L|=49 l=4 betti={2: 20} torsion-free(seen)=True; dual (C)-certificate predicts {2: 20}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2)]): |L|=49 l=4 betti={2: 20} torsion-free(seen)=True; (C)-certificate predicts {2: 20}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2)]): |L|=49 l=4 betti={2: 20} torsion-free(seen)=True; dual (C)-certificate predicts {2: 20}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; dual (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; dual (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3)]): |L|=46 l=4 betti={2: 16} torsion-free(seen)=True; (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3)]): |L|=46 l=4 betti={2: 16} torsion-free(seen)=True; dual (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 2), (0, 4), (1, 2), (1, 3)]): |L|=45 l=4 betti={2: 16} torsion-free(seen)=True; (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 2), (0, 4), (1, 2), (1, 3)]): |L|=45 l=4 betti={2: 16} torsion-free(seen)=True; dual (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3)]): |L|=43 l=4 betti={2: 14} torsion-free(seen)=True; (C)-certificate predicts {2: 14}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3)]): |L|=43 l=4 betti={2: 14} torsion-free(seen)=True; dual (C)-certificate predicts {2: 14}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)]): |L|=40 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)]): |L|=40 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)]): |L|=30 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)]): |L|=30 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 3), (1, 3), (2, 3)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 3), (1, 3), (2, 3)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 3), (1, 3), (2, 3)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 3), (1, 3), (2, 3)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 3), (2, 3)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 3), (2, 3)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 4), (1, 3), (2, 3)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 4), (1, 3), (2, 3)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; dual (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (2, 3)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (2, 3)]): |L|=47 l=4 betti={2: 18} torsion-free(seen)=True; dual (C)-certificate predicts {2: 18}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (2, 3)]): |L|=41 l=4 betti={2: 11} torsion-free(seen)=True; (C)-certificate predicts {2: 11}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (2, 3)]): |L|=41 l=4 betti={2: 11} torsion-free(seen)=True; dual (C)-certificate predicts {2: 11}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (2, 3)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (2, 3)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 4), (1, 2), (1, 3), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 4), (1, 2), (1, 3), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; dual (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; dual (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=33 l=4 betti={2: 7} torsion-free(seen)=True; (C)-certificate predicts {2: 7}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=33 l=4 betti={2: 7} torsion-free(seen)=True; dual (C)-certificate predicts {2: 7}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (2, 3)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 4), (2, 3)]): |L|=45 l=4 betti={2: 16} torsion-free(seen)=True; (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 4), (2, 3)]): |L|=45 l=4 betti={2: 16} torsion-free(seen)=True; dual (C)-certificate predicts {2: 16}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 4), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 4), (2, 3)]): |L|=37 l=4 betti={2: 9} torsion-free(seen)=True; dual (C)-certificate predicts {2: 9}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 4), (2, 3)]): |L|=33 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 4), (2, 3)]): |L|=33 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=43 l=4 betti={2: 14} torsion-free(seen)=True; (C)-certificate predicts {2: 14}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=43 l=4 betti={2: 14} torsion-free(seen)=True; dual (C)-certificate predicts {2: 14}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=33 l=4 betti={2: 7} torsion-free(seen)=True; (C)-certificate predicts {2: 7}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=33 l=4 betti={2: 7} torsion-free(seen)=True; dual (C)-certificate predicts {2: 7}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=36 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=31 l=4 betti={2: 5} torsion-free(seen)=True; (C)-certificate predicts {2: 5}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3)]): |L|=31 l=4 betti={2: 5} torsion-free(seen)=True; dual (C)-certificate predicts {2: 5}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3)]): |L|=31 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3)]): |L|=31 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3)]): |L|=24 l=4 betti={2: 3} torsion-free(seen)=True; (C)-certificate predicts {2: 3}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3)]): |L|=24 l=4 betti={2: 3} torsion-free(seen)=True; dual (C)-certificate predicts {2: 3}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=40 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=40 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=31 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=31 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=25 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=25 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=20 l=4 betti={2: 2} torsion-free(seen)=True; (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4)]): |L|=20 l=4 betti={2: 2} torsion-free(seen)=True; dual (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 4), (1, 4), (2, 4), (3, 4)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 4), (1, 4), (2, 4), (3, 4)]): |L|=52 l=4 betti={2: 24} torsion-free(seen)=True; dual (C)-certificate predicts {2: 24}
+[CERT] PASS: OP([(0, 1), (0, 4), (1, 4), (2, 4), (3, 4)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 4), (1, 4), (2, 4), (3, 4)]): |L|=42 l=4 betti={2: 12} torsion-free(seen)=True; dual (C)-certificate predicts {2: 12}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 4), (1, 4), (2, 4), (3, 4)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 4), (1, 4), (2, 4), (3, 4)]): |L|=39 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 4), (2, 4), (3, 4)]): |L|=38 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 2), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 2), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=35 l=4 betti={2: 8} torsion-free(seen)=True; dual (C)-certificate predicts {2: 8}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=33 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=33 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=31 l=4 betti={2: 5} torsion-free(seen)=True; (C)-certificate predicts {2: 5}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=31 l=4 betti={2: 5} torsion-free(seen)=True; dual (C)-certificate predicts {2: 5}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 4), (2, 4), (3, 4)]): |L|=27 l=4 betti={2: 3} torsion-free(seen)=True; (C)-certificate predicts {2: 3}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]): |L|=28 l=4 betti={2: 4} torsion-free(seen)=True; dual (C)-certificate predicts {2: 4}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]): |L|=22 l=4 betti={2: 2} torsion-free(seen)=True; (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 4), (3, 4)]): |L|=22 l=4 betti={2: 2} torsion-free(seen)=True; dual (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=30 l=4 betti={2: 6} torsion-free(seen)=True; (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=30 l=4 betti={2: 6} torsion-free(seen)=True; dual (C)-certificate predicts {2: 6}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=24 l=4 betti={2: 3} torsion-free(seen)=True; (C)-certificate predicts {2: 3}
+[CERT] PASS: OP([(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=24 l=4 betti={2: 3} torsion-free(seen)=True; dual (C)-certificate predicts {2: 3}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=22 l=4 betti={2: 2} torsion-free(seen)=True; (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=22 l=4 betti={2: 2} torsion-free(seen)=True; dual (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=20 l=4 betti={2: 2} torsion-free(seen)=True; (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=20 l=4 betti={2: 2} torsion-free(seen)=True; dual (C)-certificate predicts {2: 2}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=16 l=4 betti={2: 1} torsion-free(seen)=True; (C)-certificate predicts {2: 1}
+[CERT] PASS: OP([(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]): |L|=16 l=4 betti={2: 1} torsion-free(seen)=True; dual (C)-certificate predicts {2: 1}
+[CERT] info: 150/150 random lattices carry a primal certificate
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=8 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=9 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=15 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=15 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=14 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=14 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=15 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=15 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=17 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=17 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=8 l=4 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 2} torsion-free(seen)=True; (C)-certificate predicts {1: 2}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 2} torsion-free(seen)=True; dual (C)-certificate predicts {1: 2}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=14 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=14 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=13 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=13 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=11 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 3} torsion-free(seen)=True; (C)-certificate predicts {1: 3}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 3} torsion-free(seen)=True; dual (C)-certificate predicts {1: 3}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=8 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=15 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=15 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=7 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=22 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=22 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=11 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=3 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=3 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=5 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=5 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=8 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=14 l=5 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=14 l=5 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=13 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=9 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=10 l=4 betti={1: 1} torsion-free(seen)=True; dual (C)-certificate predicts {1: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=7 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=4 l=2 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 2} torsion-free(seen)=True; (C)-certificate predicts {1: 2}
+[CERT] PASS: rand: |L|=12 l=4 betti={1: 2} torsion-free(seen)=True; dual (C)-certificate predicts {1: 2}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=6 l=3 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=14 l=4 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=14 l=4 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=5 l=3 betti={0: 1} torsion-free(seen)=True; dual (C)-certificate predicts {0: 1}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; (C)-certificate predicts {}
+[CERT] PASS: rand: |L|=3 l=2 betti={} torsion-free(seen)=True; dual (C)-certificate predicts {}
+== [PURE] purity clause
+[PURE] PASS: (B3 + point) x 2, |L|=18: every upper interval satisfies (C); t=(1,0) has the single atom complement (0,1), so 'all X/a have the same length' holds; yet L-bar has Betti {1: 1, 2: 1} (= certificate {2: 1, 1: 1}): a non-pure wedge S^1 v S^2
+[PURE] PASS: in [a,1] = M every (C)-witness t' has complements of unequal upper length [[1, 2], [1, 2], [1, 2]]: the hereditary hypothesis fails one level down, exactly where the non-purity enters
+== [GRP] subgroup lattices
+[GRP] C2xC2 (|G|=4, 5 subgroups, solvable=True): L-bar Betti {0: 2}; (C) at top True (|t| in [2]), dual at top True; recursive cert True {0: 2}, dual cert True {0: 2}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/1, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: C2xC2: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] S3 (|G|=6, 6 subgroups, solvable=True): L-bar Betti {0: 3}; (C) at top True (|t| in [2, 3]), dual at top True; recursive cert True {0: 3}, dual cert True {0: 3}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/1, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: S3: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] D8 (|G|=8, 10 subgroups, solvable=True): L-bar Betti {}; (C) at top True (|t| in [2, 4]), dual at top True; recursive cert True {}, dual cert True {}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/9, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: D8: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] Q8 (|G|=8, 6 subgroups, solvable=True): L-bar Betti {}; (C) at top True (|t| in [2, 4]), dual at top True; recursive cert True {}, dual cert True {}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/5, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: Q8: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] C2^3 (|G|=8, 16 subgroups, solvable=True): L-bar Betti {1: 8}; (C) at top True (|t| in [4]), dual at top True; recursive cert True {1: 8}, dual cert True {1: 8}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/15, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: C2^3: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] A4 (|G|=12, 10 subgroups, solvable=True): L-bar Betti {0: 4}; (C) at top True (|t| in [2, 4]), dual at top True; recursive cert True {0: 4}, dual cert True {0: 4}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/5, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: A4: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] D12 (|G|=12, 16 subgroups, solvable=True): L-bar Betti {1: 6}; (C) at top True (|t| in [4, 6]), dual at top True; recursive cert True {1: 6}, dual cert True {1: 6}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/15, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: D12: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] S4 (|G|=24, 30 subgroups, solvable=True): L-bar Betti {1: 12}; (C) at top True (|t| in [8, 12]), dual at top True; recursive cert True {1: 12}, dual cert True {1: 12}; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 0 (|K| in []); intervals failing (C): 0/54, failing dual: 0, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[GRP] PASS: S4: dual (coatom) certificate exists and predicts the homology (Kratzer-Thevenaz mechanism)
+[GRP] A5 (|G|=60, 59 subgroups, solvable=False): L-bar Betti {1: 60}; (C) at top True (|t| in [10]), dual at top False; recursive cert True {1: 60}, dual cert False ; upper intervals [H,G] failing (C): 0 (|H| in []); lower intervals [1,K] failing dual (C): 1 (|K| in [60]); intervals failing (C): 0/78, failing dual: 1, failing both: 0; intervals with no mixed certificate: 0; intervals with p-torsion (p=2,3,5): 0
+[BW] PASS: 960 (interval, z, p) cases with Co(z) an antichain: prediction = direct homology in all but 0; 193 (interval, z) skipped (Co(z) not an antichain)
+== [GRP+] larger groups: certificate census
+[GRP+] S5: L-bar(G) reduced Betti over GF(p), p in (2, 3, 5, 2147483647, 7): [{2: 60}, {2: 60}, {2: 60}, {2: 60}, {2: 60}]
+[GRP+] PASS: S5: (C)-certificate prediction {2: 60} = direct homology
+[GRP+] S5: elements z of L-bar(G) with Co(z) an antichain: 1 (|z| in [60])
+[GRP+] S5 (|G|=120, 156 subgroups): intervals of length>=2: 588; failing (C): 0; failing dual: 12; no mixed certificate: 0 (|H|,|K| types []); top: (C) cert True {2: 60}, mixed cert True {2: 60}
+[GRP+] PSL(2,7): L-bar(G) reduced Betti over GF(p), p in (2, 3, 5, 2147483647, 7): [{1: 48, 2: 48}, {1: 48, 2: 48}, {1: 48, 2: 48}, {1: 48, 2: 48}, {1: 48, 2: 48}]
+[GRP+] PSL(2,7): elements z of L-bar(G) with Co(z) an antichain: 0 (|z| in [])
+[GRP+] PSL(2,7) (|G|=168, 179 subgroups): intervals of length>=2: 703; failing (C): 1; failing dual: 1; no mixed certificate: 1 (|H|,|K| types [(1, 168)]); top: (C) cert False , mixed cert False 
+== done: 0 failure(s)
