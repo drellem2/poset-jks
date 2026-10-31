@@ -137,6 +137,14 @@ nothing that (a) does not already contain. The new results are these.
      `notes/qsym_refinement_omega_c.md`, audited in
      `notes/audit_qsym_refinement_omega_c.md`); KNOWN IN SUBSTANCE
      (Gessel–Stanley fundamental lemma, anchor labelled last).
+   - Theorem R (`notes/reciprocity_omega_c.md` §2, audited in
+     `notes/audit_reciprocity_omega_c.md`, holds): (−1)^n Ω_C(P, −m) counts the
+     strictly order-preserving maps under the strict anchoring D_T (no T-free
+     union of components U with min f(U) ≥ max f(P ∖ U)). Its polynomial side is
+     KNOWN IN SUBSTANCE (EC1 Lemma 3.15.9 word by word; Grinberg–Reiner
+     Prop. 7.1.7(iii) + 5.2.19); the D_T reading (Lemma R2) is NOT FOUND
+     (`notes/prior_art_reciprocity_omega_c.md`). Also PROVEN + audited there:
+     ★, Ω_C(P*) = Ω_C(P) (KNOWN IN SUBSTANCE for connected P).
    - The other statistic leads (Kraskiewicz–Weyman, χ(−1), sign-imbalance, descent
      algebra) give only known results or audited refutations
      (`notes/linext_statistics.md` Verdict).
@@ -1220,7 +1228,9 @@ would carry Theorems 6–8.
 | *Linear-extension statistics.* Theorem Ω (`notes/linext_statistics.md` §2.1): Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f : P → [m] order-preserving, every nonempty upper level set that is a union of components contains T}; Corollary Ω-des | PROVEN; independently audited in `notes/audit_linext_statistics.md` (holds); COMPUTED n ≤ 6 as polynomials. Prior art (`notes/prior_art_linext_statistics.md`): NOT FOUND for general P, not a toric order polynomial; antichain KNOWN (Petersen Prop. 1.1, after Fulman) | Lemma U and Theorem A of `notes/mu_op_elementary.md`; Stanley's fundamental lemma for Ω-des |
 | Theorem H (`notes/h_vector_omega_c.md` §2): separated natural labelling, n ≥ 2 ⇒ h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0; with Lemmas 1–2, H′, Props. B and D | PROVEN; independently audited in `notes/audit_h_vector_omega_c.md` (holds; wording fixes applied); COMPUTED on all 2450 posets n ≤ 7. Prior art: NOT FOUND for general P; antichain KNOWN (Petersen Prop. 1.1, after Fulman); the statistic is Cellini's cdes; not an Adin–Reiner–Roichman cyclic descent extension | Lemma U and Theorem A of `notes/mu_op_elementary.md` only |
 | F-positivity of the quasisymmetric lift K_{C,T}(P), every T (Theorem Q, `notes/qsym_refinement_omega_c.md`) | PROVEN (Theorem Q); independently audited in `notes/audit_qsym_refinement_omega_c.md` (holds); COMPUTED n ≤ 7. KNOWN IN SUBSTANCE (Gessel–Stanley); the criterion (E*_T) NOT FOUND | Stanley–Gessel fundamental lemma; [H] §0–1 |
-| H″ (all-ascent class ⇒ min-des fails); reciprocity for Ω_C | OPEN (H″ COMPUTED, n ≤ 6) | — |
+| Theorem R (`notes/reciprocity_omega_c.md` §2): (−1)^n Ω_C(P, −m) = #{f : P → [m] strictly order-preserving, no T-free union of components U with min f(U) ≥ max f(P ∖ U)}, every T; with Lemmas R1, R2, R′, B⁺, E (Ehrhart for the non-convex anchored region), S (height ≤ 2 ⇒ h_C palindromic), and h_C(Q ⊔ T) = W_P − t W_Q W_T | PROVEN; independently audited in `notes/audit_reciprocity_omega_c.md` (holds; lower-level-set wording fixed); COMPUTED n ≤ 7. Prior art (`notes/prior_art_reciprocity_omega_c.md`): polynomial side KNOWN IN SUBSTANCE (EC1 Lemma 3.15.9; Grinberg–Reiner Prop. 7.1.7(iii) + 5.2.19); the D_T reading (Lemma R2) NOT FOUND | Theorem Ω; Stanley's weak and strict word bijections |
+| ★: Ω_C(P*, m) = Ω_C(P, m) (`notes/reciprocity_omega_c.md` §4) | PROVEN (one line); independently audited (holds); COMPUTED n ≤ 7. KNOWN IN SUBSTANCE for connected P | `notes/mu_op_elementary.md` §0 (acyclic quotient digraph) |
+| H″ (all-ascent class ⇒ min-des fails); S′ "only if" for disconnected P (palindromic h_C ⇒ height ≤ 2 or connected graded; connected case KNOWN, EC1 Cor. 3.15.18(b)); unimodality U of h_C (connected case = open unimodality of naturally labelled W_P; h_C not real-rooted, Stembridge n = 17) | OPEN (H″ COMPUTED, n ≤ 6; S′, U COMPUTED, n ≤ 7) | — |
 | (b1), (b2), comodernism | CONJECTURED | — |
 
 Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not

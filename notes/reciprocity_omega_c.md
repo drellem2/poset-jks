@@ -5,16 +5,36 @@ cyclic order polynomial Ω_C(P, m), the analogue of Stanley's
 Ω(P, −m) = (−1)^n Ω̄(P, m). Also: is h_C(P*) related to the reverse of
 h_C(P), does an Ehrhart reading apply, and for which P is h_C palindromic?
 
-Tags: **PROVEN** means proved here. **COMPUTED** means checked by
+Tags: **PROVEN** means proved here. **PROVEN + audited** means, in
+addition, re-proved line by line and recomputed with independent code in
+[AudR]. **COMPUTED** means checked by
 `compute/reciprocity_omega_c.py`, with bracketed line labels from
 `compute/output/reciprocity_omega_c.txt`. **OPEN** means not settled.
-**KNOWN** means found in the literature.
+**KNOWN** means found in the literature; **KNOWN IN SUBSTANCE** means a
+special case or the same mechanism is in a source read; **NOT FOUND** is
+a search result ([PAR]), not a proof of novelty.
+
+**Audit and prior art.** Every claim of this note was independently
+audited in [AudR] = `notes/audit_reciprocity_omega_c.md`: Theorem R,
+Lemmas R1 and R2 (the isolated-T case included, under λ_T), R′, B⁺, ★, E
+and S all HOLD; no claim fails; one sentence of interpretation (lower level
+sets) was FIXABLE and is fixed below (§4). The literature was checked in
+[PAR] = `notes/prior_art_reciprocity_omega_c.md`. In short: the
+*polynomial* side of Theorem R is **KNOWN IN SUBSTANCE**, since Stanley's
+reciprocity holds word by word (EC1 Lemma 3.15.9; equivalently the QSym
+antipode, Grinberg–Reiner Prop. 7.1.7(iii) with Prop. 5.2.19) and so holds
+for the word set B_T. What was **NOT FOUND** is the *combinatorial*
+reading: the strict anchoring D_T and Lemma R2.
 
 Sources: [LS] = `notes/linext_statistics.md` (Theorem Ω, PROVEN + audited
 in [AudLS]); [HV] = `notes/h_vector_omega_c.md` (Theorem H, Proposition B,
 PROVEN + audited in [AudH]); [ME] = `notes/mu_op_elementary.md`;
 [PA] = `notes/prior_art_linext_statistics.md`; EC1 = Stanley,
-*Enumerative Combinatorics* vol. 1, 2nd ed.
+*Enumerative Combinatorics* vol. 1, 2nd ed.; [Q] =
+`notes/qsym_refinement_omega_c.md`; [AudR] =
+`notes/audit_reciprocity_omega_c.md`; [PAR] =
+`notes/prior_art_reciprocity_omega_c.md`; [GR] = Grinberg–Reiner, *Hopf
+algebras in combinatorics*, arXiv:1409.8356.
 
 ## Verdict
 
@@ -35,18 +55,21 @@ give Ω̄_C (Lemmas R1 and R2).
 
 | # | Statement | Status |
 |---|---|---|
-| R | (−1)^n Ω_C(P, −m) = Ω̄_C(P, m), for every P and every component T | **PROVEN** (§2); COMPUTED as a polynomial identity, by literal enumeration of strict maps, on all 3107 pairs (P, T) with n ≤ 7 `[recip]` |
-| R1 | Under λ_T: f is T-anchored iff the last piece of its weak Stanley word contains T | **PROVEN** (§1); COMPUTED on 5 928 326 (surjective map, T) cases, n ≤ 7 `[lemma-weak]` |
-| R2 | Under λ_T: f satisfies D_T iff the last piece of its strict Stanley word contains T | **PROVEN** (§1); COMPUTED on 2 742 963 cases, n ≤ 7 `[lemma-strict]` |
-| R′ | Ω̄_C(P, m) = Σ_{κ∈Cyc P} C(m + cdes κ − 1, n) for a separated labelling, n ≥ 2; generating function Σ_κ x^{n+1−cdes κ}/(1 − x)^{n+1} | **PROVEN** (§3, from R and Theorem H); COMPUTED on 2449 posets `[recip-cdes]` |
-| B⁺ | Under λ_T, for every component T (an isolated T included): h_C(P)_j = #{w ∈ B_T : des w = j}. This gives a second proof of h_C ≥ 0 and extends Prop. B of [HV] | **PROVEN** (§3, from R1 and Theorem Ω) |
-| ★ | Ω_C(P*, m) = Ω_C(P, m), so h_C(P*) = h_C(P) and Ω̄_C(P*, m) = Ω̄_C(P, m) | **PROVEN** (§4, one line); COMPUTED on 2450 posets `[dual]` |
-| E | R_T, the closed region of T-anchored points of the order polytope, is not convex in general. It satisfies Ehrhart–Macdonald reciprocity L_{R_T}(−t) = (−1)^n L_{R_T°}(t) | **PROVEN** (§5, interior identified, then R) |
-| S | n ≥ 2 and every component has height ≤ 2 (no 3-element chain) ⇒ Ω̄_C(P, m) = Ω_C(P, m − 1) and h_j = h_{n−2−j} | **PROVEN** (§6, explicit bijection); COMPUTED on 256 posets `[shift-h2]` |
-| S′ | n ≥ 2: h_C palindromic iff (P connected and graded) or (every component has height ≤ 2) | COMPUTED on all 2449 posets 2 ≤ n ≤ 7 `[pal-class]`. The connected case is KNOWN (Stanley). The "only if" for disconnected P is **OPEN** |
-| U | h_C(P) unimodal | COMPUTED: true on all 2450 posets n ≤ 7. **OPEN** in general |
+| R | (−1)^n Ω_C(P, −m) = Ω̄_C(P, m), for every P and every component T | **PROVEN + audited** (§2; [AudR] §1, recomputed on all 3107 (P, T), n ≤ 7, and by a literal count over all maps P → [m], n ≤ 6). Polynomial side KNOWN IN SUBSTANCE (EC1 Lemma 3.15.9; [GR] Prop. 7.1.7(iii) + 5.2.19); the D_T reading NOT FOUND ([PAR]); COMPUTED as a polynomial identity, by literal enumeration of strict maps, on all 3107 pairs (P, T) with n ≤ 7 `[recip]` |
+| R1 | Under λ_T: f is T-anchored iff the last piece of its weak Stanley word contains T | **PROVEN + audited** (§1; [AudR] §1, isolated T included). KNOWN IN SUBSTANCE (row F+ of [Q]: Gessel–Stanley with the anchor labelled last; [PAR]); COMPUTED on 5 928 326 (surjective map, T) cases, n ≤ 7 `[lemma-weak]` |
+| R2 | Under λ_T: f satisfies D_T iff the last piece of its strict Stanley word contains T | **PROVEN + audited** (§1; [AudR] §1, isolated T under λ_T included; fails under λ_0, as the control shows). NOT FOUND ([PAR]); COMPUTED on 2 742 963 cases, n ≤ 7 `[lemma-strict]` |
+| R′ | Ω̄_C(P, m) = Σ_{κ∈Cyc P} C(m + cdes κ − 1, n) for a separated labelling, n ≥ 2; generating function Σ_κ x^{n+1−cdes κ}/(1 − x)^{n+1} | **PROVEN + audited** (§3, from R and Theorem H; [AudR] §2); COMPUTED on 2449 posets `[recip-cdes]`. NOT FOUND for general P ([PAR]) |
+| B⁺ | Under λ_T, for every component T (an isolated T included): h_C(P)_j = #{w ∈ B_T : des w = j}. This gives a second proof of h_C ≥ 0 and extends Prop. B of [HV] | **PROVEN + audited** (§3, from R1 and Theorem Ω; [AudR] §2, 0 / 3107 bad) |
+| ★ | Ω_C(P*, m) = Ω_C(P, m), so h_C(P*) = h_C(P) and Ω̄_C(P*, m) = Ω̄_C(P, m) | **PROVEN + audited** (§4, one line; [AudR] §3); COMPUTED on 2450 posets `[dual]`. KNOWN IN SUBSTANCE (the connected case is the classical Ω(P*) = Ω(P); [PAR]) |
+| E | R_T, the closed region of T-anchored points of the order polytope, is not convex in general. It satisfies Ehrhart–Macdonald reciprocity L_{R_T}(−t) = (−1)^n L_{R_T°}(t) | **PROVEN + audited** (§5, interior identified, then R; [AudR] §4). Mechanism KNOWN IN SUBSTANCE (half-open decompositions, Beck–Sanyal §5.3); the statement for R_T NOT FOUND ([PAR]) |
+| S | n ≥ 2 and every component has height ≤ 2 (no 3-element chain) ⇒ Ω̄_C(P, m) = Ω_C(P, m − 1) and h_j = h_{n−2−j} | **PROVEN + audited** (§6, explicit bijection; [AudR] §5, checked map by map); COMPUTED on 256 posets `[shift-h2]`. Connected case and antichain KNOWN; general disconnected P NOT FOUND ([PAR]) |
+| S′ | n ≥ 2: h_C palindromic iff (P connected and graded) or (every component has height ≤ 2) | COMPUTED on all 2449 posets 2 ≤ n ≤ 7 `[pal-class]`, recomputed in [AudR]. The connected case is **KNOWN** (EC1 Cor. 3.15.18(b); Beck–Sanyal Ex. 6.27). The "only if" for disconnected P is **OPEN** |
+| U | h_C(P) unimodal | COMPUTED: true (and log-concave, [PAR]) on all 2450 posets n ≤ 7. **OPEN** in general. For connected P, h_C = W_P, so U contains the open unimodality question for W_P of naturally labelled posets (Neggers–Stanley, weak form; [PAR] §5) |
+| 2C | P = Q ⊔ T, Q and T connected ⇒ h_C(P)(t) = W_P(t) − t · W_Q(t) · W_T(t), W = des generating function of Lin under a natural labelling | **PROVEN + audited** ([PAR] §5; [AudR] §7, 0 bad / 391 two-component posets n ≤ 7); §6 below |
+| ✗ | h_C real-rooted | **FALSE** at n = 17: Stembridge's poset S (EC1 Fig. 3.88) is connected, so h_C(S) = W_S, which has non-real zeros ([PAR] §5). True for n ≤ 7. Unimodality is not refuted |
+| R_low | Lower-level-set form of D_T: Ω̄_C(P, m) = #{strict f : no T-free cluster U has max f(U) ≤ min f(P ∖ U)} | **PROVEN + audited**: the image of Theorem R for P* under ★ and f ↦ m + 1 − f ([AudR] §6, 0 / 3107 bad) |
 | ✗ | Naive transplant: strict maps with the Theorem Ω anchoring (> kept) | **FALSE** on 1160 of 3107 (P, T) `[ctl-naive]`. Smallest case: A_2 gives C(m + 1, 2), not C(m, 2) |
-| ✗ | Strict maps anchored on LOWER level sets (T in the bottom clump) | **FALSE** on 1160 of 3107 `[ctl-lower]` |
+| ✗ | Strict maps anchored on LOWER level sets with the strict inequality kept (forbid max f(U) < min f(P ∖ U)) | **FALSE** on 1160 of 3107 `[ctl-lower]`. The ≤ version is TRUE (row R_low) |
 | ✗ | Order-preserving maps with D_T (strictness moved to the anchoring only) | **FALSE** on 3079 of 3107 `[ctl-mixed]` |
 | ✗ | Stanley's Ω̄(P, m) with no anchoring | **FALSE** on exactly the 503 disconnected posets `[ctl-plain]` |
 | ✗ | h_C(P*) = reverse of h_C(P) | **FALSE** on 1875 of 2450 `[ctl-reverse]` |
@@ -57,9 +80,12 @@ give Ω̄_C (Lemmas R1 and R2).
 
 Answers to the three leads of the question:
 - *Strict maps with an anchoring condition:* yes (Theorem R). The dual
-  condition does **not** move to lower level sets: that version is
-  refuted (`[ctl-lower]`), and by ★ it counts the same thing as the naive
-  transplant on P*. What changes is the strictness of the anchoring inequality.
+  condition also moves to lower level sets, provided the inequality is ≤:
+  forbidding a T-free cluster U with max f(U) ≤ min f(P ∖ U) gives the
+  same count (row R_low, via ★ and f ↦ m + 1 − f). What fails is keeping
+  the strict inequality on lower level sets (`[ctl-lower]`); by ★ that
+  version counts the same thing as the naive transplant on P*. In both
+  forms, what changes is the strictness of the anchoring inequality.
 - *h-vector side:* h_C(P*) equals h_C(P), not its reverse (★). The reversal
   x^{n+1}·H(1/x), with H(x) = Σ_κ x^{cdes κ}, is the numerator of the
   generating function of Ω̄_C (R′). That is the analogue of Stanley's
@@ -132,7 +158,7 @@ Both correspondences are bijections onto pairs (w, sequence).
 
 ## 1. The two word lemmas
 
-**Lemma R1 (PROVEN; COMPUTED `[lemma-weak]`).** Let n ≥ 2, use λ_T, and let f
+**Lemma R1 (PROVEN + audited [AudR] §1; COMPUTED `[lemma-weak]`).** Let n ≥ 2, use λ_T, and let f
 be order-preserving. Then f is T-anchored iff w(f) ∈ B_T.
 
 *Proof.* Write w = w(f).
@@ -159,7 +185,7 @@ be order-preserving. Then f is T-anchored iff w(f) ∈ B_T.
   contradiction. So L consists of isolated points other than T. It is a
   T-free cluster with min f(L) = v > max f(P ∖ L), and f is not anchored. ∎
 
-**Lemma R2 (PROVEN; COMPUTED `[lemma-strict]`).** Let n ≥ 2, use λ_T, and let
+**Lemma R2 (PROVEN + audited [AudR] §1; COMPUTED `[lemma-strict]`).** Let n ≥ 2, use λ_T, and let
 f be strictly order-preserving. Then f satisfies D_T iff w̄(f) ∈ B_T.
 
 *Proof.* Write w̄ = w̄(f).
@@ -199,7 +225,7 @@ f be strictly order-preserving. Then f satisfies D_T iff w̄(f) ∈ B_T.
 
 ## 2. Theorem R
 
-**Theorem R (PROVEN; COMPUTED `[recip]`, 3107 pairs (P, T), n ≤ 7, as an
+**Theorem R (PROVEN + audited [AudR] §1; COMPUTED `[recip]`, 3107 pairs (P, T), n ≤ 7, as an
 identity of polynomials, with Ω̄_C enumerated literally and Ω_C taken from
 the Möbius definition).** For every finite poset P on n points and every
 component T,
@@ -229,6 +255,15 @@ restricted to the words of B_T. The only new input is that one set B_T of
 words serves both the weak and the strict side. That needs λ_T: under an
 arbitrary natural labelling R2 fails (`[ctl-lemma-any]`).
 
+*Prior art ([PAR] §1).* The polynomial identity is **KNOWN IN
+SUBSTANCE**: Stanley's reciprocity holds word by word (EC1 Lemma 3.15.9
+for one word, then Lemma 3.15.11), so it holds for any set of words, B_T
+included. In QSym language ps¹(f)(−m) = ps¹(S f)(m) ([GR] Prop. 7.1.7(iii))
+and S(F_w) = (−1)^n F_{w^opp} ([GR] Prop. 5.2.19), applied to K_C = Σ_{w∈B_T}
+F_{Des w} (row F+ of [Q]). What was **NOT FOUND** in any source read is the
+combinatorial reading of the right-hand side: the strict anchoring D_T,
+i.e. Lemma R2.
+
 *Sanity checks.*
 - Connected P: there is no T-free cluster, D_T is vacuous, and R is
   Stanley's reciprocity.
@@ -256,7 +291,7 @@ refuted.
 
 ## 3. Corollaries
 
-**R′ (PROVEN, from Theorem R and Theorem H of [HV]; COMPUTED
+**R′ (PROVEN + audited [AudR] §2, from Theorem R and Theorem H of [HV]; COMPUTED
 `[recip-cdes]`).** Let n ≥ 2 and use a separated labelling. Then
 
   Ω̄_C(P, m) = Σ_{κ∈Cyc(P)} C(m + cdes κ − 1, n),
@@ -264,12 +299,13 @@ refuted.
 
 *Proof.* Theorem H gives Ω_C(P, m) = Σ_κ C(m + n − cdes κ, n). Apply
 C(−y, n) = (−1)^n C(y + n − 1, n) with y = m − n + cdes κ. Since
-1 ≤ cdes κ ≤ n, the term C(m + c − 1, n) is nonzero exactly for
+1 ≤ cdes κ ≤ n − 1 (n distinct letters on a circle are not all cyclic
+descents; [AudR] §2), the term C(m + c − 1, n) is nonzero exactly for
 m ≥ n + 1 − c. That gives the generating function. ∎
 
 So Ω̄_C(P, m) = 0 for 0 ≤ m ≤ n − max cdes. For n ≥ 2, Ω̄_C(P, 1) = 0.
 
-**B⁺ (PROVEN, from Theorem Ω and Lemma R1).** For every component T, under λ_T,
+**B⁺ (PROVEN + audited [AudR] §2, from Theorem Ω and Lemma R1).** For every component T, under λ_T,
 
   Ω_C(P, m) = Σ_{w∈B_T} C(m + n − 1 − des w, n),
   so h_C(P)_j = #{w ∈ B_T : des w = j}.
@@ -283,7 +319,7 @@ whose weak word lies in B_T, with no reweighting.
 
 ## 4. Duality P ↔ P*
 
-**Proposition ★ (PROVEN; COMPUTED `[dual]`, 2450 posets).** Ω_C(P*, m) = Ω_C(P, m).
+**Proposition ★ (PROVEN + audited [AudR] §3; COMPUTED `[dual]`, 2450 posets).** Ω_C(P*, m) = Ω_C(P, m).
 
 *Proof.* A set partition π is in OP(P) iff the quotient digraph of P by π
 is acyclic ([ME] §0). Reversing every arrow preserves acyclicity, so
@@ -296,8 +332,20 @@ candidate "h_C(P*) is the reverse of h_C(P)" fails on 1875 of 2450 posets
 Through f ↦ m + 1 − f, ★ also gives a second form of Theorem Ω: Ω_C(P, m)
 equally counts the maps whose bottom clump contains T, that is, the maps
 in which every nonempty lower level set that is a union of components
-contains T. Their strict analogue is the `[ctl-lower]` control, which
-fails.
+contains T.
+
+The same move applies to Theorem R (**R_low**, PROVEN + audited, [AudR]
+§6). f ↦ m + 1 − f is a bijection between strict maps on P* and strict
+maps on P, and it turns "min f(U) ≥ max f(P ∖ U)" on P* into
+"max f(U) ≤ min f(P ∖ U)" on P. So by R for P* and ★,
+
+  Ω̄_C(P, m) = #{f : P → [m] strictly order-preserving : no T-free cluster
+      U has max f(U) ≤ min f(P ∖ U)}.
+
+So D_T does move to lower level sets, with ≤. Keeping the strict
+inequality instead (forbid max f(U) < min f(P ∖ U)) is the image of the
+naive transplant, and it fails (`[ctl-lower]`, 1160 of 3107; [AudR]
+recomputes it and also confirms the ≤ version, 0 / 3107 bad).
 
 ## 5. The Ehrhart reading
 
@@ -318,7 +366,7 @@ x_0 ≤ max(x_2, x_3). The points (x_0, x_1, x_2, x_3) = (1, 0, 0, 1) and
 (1, 0, 1, 0) lie in R_T, but their midpoint (1, 0, ½, ½) does not. (Found
 by a scan of n ≤ 5; this is the smallest instance found.)
 
-**Proposition E (PROVEN).** The interior of R_T in R^P is
+**Proposition E (PROVEN + audited [AudR] §4).** The interior of R_T in R^P is
 
   R_T° = {x : 0 < x < 1, x strictly order-preserving, and
           min_U x < max_{P∖U} x for every T-free cluster U}.
@@ -341,7 +389,8 @@ stay inside the cube. But now min_U > max_{P∖U}, so the perturbed point
 has left R_T, and x was not interior. ∎
 
 Macdonald reciprocity is classically proved for polytopes, and for
-polyhedral complexes that are manifolds with boundary. Here R_T is
+polyhedral complexes that are manifolds with boundary (Stanley 1974,
+Prop. 6.1, after Macdonald; [PAR] §3). Here R_T is
 non-convex, and we did not determine whether it is a ball. Proposition E
 plus Theorem R shows that the identity holds for R_T regardless. Whether
 R_T is always a PL ball is **OPEN**. That would give a topological proof
@@ -352,7 +401,7 @@ of Theorem R.
 h_C here is the trimmed vector. Write h_C(P)_j = #{κ : cdes κ = j + 1} under a
 separated labelling ([HV] Theorem H).
 
-**Proposition S (PROVEN; COMPUTED `[shift-h2]`, 256 posets).** Let n ≥ 2,
+**Proposition S (PROVEN + audited [AudR] §5; COMPUTED `[shift-h2]`, 256 posets).** Let n ≥ 2,
 and suppose every component of P has height ≤ 2, that is, no chain has 3
 elements. Then Ω̄_C(P, m) = Ω_C(P, m − 1). Equivalently, h_C(P)_j = h_C(P)_{n−2−j}
 for 0 ≤ j ≤ n − 2: the cdes distribution on Cyc(P) is symmetric under
@@ -399,8 +448,10 @@ allowed, plus a unit shift at the anchor, which is what the antichain needs.
 **S′ (COMPUTED `[pal-class]`, all 2449 posets 2 ≤ n ≤ 7; partly OPEN).** For
 n ≥ 2, h_C(P) is palindromic iff either P is connected and graded, or
 every component of P has height ≤ 2.
-- *Connected P:* h_C is Stanley's h-vector, and palindromic iff graded is
-  **KNOWN** (Stanley, EC1 §3.15).
+- *Connected P:* h_C is Stanley's h-vector W_P, and palindromic iff graded
+  is **KNOWN**: EC1 Cor. 3.15.18(b) (graded of length ℓ ⇔ Ω_P(−ℓ − m) = (−1)^n Ω_P(m)),
+  after Stanley's 1972 Memoir, Prop. 19.3; stated verbatim as Beck–Sanyal
+  Ex. 6.27 ([PAR] §4). (Not EC1 Thm 3.15.16, which concerns maj.)
 - *Disconnected P:* "if" is Proposition S. "Only if" (a component with a
   3-chain forces non-palindromic h_C) is **OPEN**. It holds for n ≤ 7
   (319 + 76 disconnected posets at n = 7, matching the prediction exactly).
@@ -412,34 +463,81 @@ every component of P has height ≤ 2.
 The data in the question fit this: C_2 ⊔ C_2 gives (1, 3, 1) and A_4 gives
 (1, 4, 1), both of height ≤ 2. C_3 ⊔ C_1 gives (1, 2) and has a 3-chain.
 
-*Unimodality (COMPUTED).* Every h_C(P) with n ≤ 7 is unimodal. **OPEN** in
-general; log-concavity was not checked.
+*Unimodality (COMPUTED).* Every h_C(P) with n ≤ 7 is unimodal
+(recomputed in [AudR] §8) and log-concave ([PAR] §5). **OPEN** in general, and
+not a realistic general target: for connected P, h_C = W_P, so U for all
+P contains the unimodality of W_P for every naturally labelled poset. That
+is the surviving weak form of the Neggers–Stanley conjecture, and it is
+open (proved for graded P, Reiner–Welker; for sign-graded P, Brändén; for
+width two, Alexandersson–Jal; [PAR] §5). A tractable form is relative: if
+W_K is unimodal for every component K, is h_C(P) unimodal?
+
+*Real-rootedness is FALSE ([PAR] §5).* h_C is real-rooted on all 2450
+posets with n ≤ 7, but not in general: Stembridge's 17-element naturally
+labelled poset S (EC1, solution to Ex. 3.165, Fig. 3.88) is connected, so
+h_C(S) = W_S, which has non-real zeros. This does not refute U: h_C(S) is
+unimodal and log-concave, as is h_C(S ⊔ X) for the small X tested in [PAR].
+
+**Two-component identity (PROVEN + audited; [PAR] §5, [AudR] §7).** Let
+P = Q ⊔ T with Q and T connected, and let W denote the descent generating
+function of the linear extensions under a natural labelling. Then
+
+  h_C(P)(t) = W_P(t) − t · W_Q(t) · W_T(t).
+
+*Proof sketch* (full proof in [PAR] §5). With two components the only
+T-free cluster is Q, so by Theorem Ω the non-anchored order-preserving maps
+are those with min f(Q) > max f(T). These are the P-partitions of the
+ordinal sum T ⊕ Q with T labelled above Q; their words are uv, u ∈ Lin T,
+v ∈ Lin Q, with a forced descent at the junction, so their h-numerator is
+t W_T W_Q. Subtract from Stanley's Ω(P, m), whose h-numerator is W_P. ∎
+
+COMPUTED: 0 bad on all 391 two-component posets with n ≤ 7 ([AudR] §7,
+recomputed independently; the control without the factor t fails on
+391 / 391), and on S ⊔ C_2 (n = 19, [PAR]). It gives
+h_C(C_m ⊔ C_n) = W(m ⊔ n) − t, the same shape as Brändén's W(m ⊔ n) − 1;
+the former is real-rooted for 1 ≤ m ≤ n ≤ 30 ([PAR], COMPUTED). Not found
+in the sources read. With three or more components the non-anchored maps
+need inclusion–exclusion over T-free clusters; that was not done.
 
 ## 7. Prior art (search result)
 
-- *Stanley reciprocity* (EC1 §3.15; Beck–Sanyal, *Combinatorial Reciprocity
-  Theorems*, AMS 2018) is the connected case of Theorem R, and its proof
-  template.
-- *Antichain.* Theorem R for A_n is the classical power-sum reciprocity
-  (§2). The antichain case of Theorem H is Petersen's Prop. 1.1 (after
-  Fulman), arXiv:math/0405479 ([PA] §2).
-- *Toric posets* (Develin–Macauley–Reiner, arXiv:1211.4247). [PA] §1
-  established that Ω_C is not a toric order polynomial, so any toric
-  reciprocity does not specialise to Theorem R.
-- *Search.* A web search on 2026-10-31 (queries: "reciprocity cyclic
-  P-partitions order polynomial disconnected poset cyclic descents strict";
-  "Develin Macauley Reiner toric order polynomial reciprocity") and the
-  earlier prior-art passes ([PA]) found no statement of Theorem R, of
-  Lemma R2, or of the strict anchoring D_T for general P. Stated as a
-  search result: **NOT FOUND**. The search was not exhaustive. Petersen's
-  cyclic P-partition paper was not re-read for a reciprocity section in
-  this pass.
+The full pass is [PAR] (`notes/prior_art_reciprocity_omega_c.md`), which
+supersedes the two-query search first recorded here. Its verdicts:
+
+- **Theorem R, polynomial side: KNOWN IN SUBSTANCE.** Stanley's
+  reciprocity is word by word (EC1 Lemma 3.15.9, Lemma 3.15.11), so it
+  holds for the word set B_T; equivalently the QSym antipode
+  ([GR] Prop. 7.1.7(iii) with Prop. 5.2.19) applied to K_C. The connected
+  case is Stanley's reciprocity (EC1 Cor. 3.15.12; Stanley 1974 Prop. 2.1;
+  Beck–Sanyal Thm 1.3.2); the antichain case is classical power-sum
+  reciprocity.
+- **Theorem R, the D_T reading (Lemma R2): NOT FOUND.** No source read has
+  a strict anchoring condition, or any reciprocity for a cyclic or anchored
+  order polynomial. Petersen's *Cyclic descents and P-partitions*
+  (arXiv:math/0405479) was read in full: it has no reciprocity section.
+  Develin–Macauley–Reiner (toric posets) and Adin–Gessel–Reiner–Roichman
+  (cyclic QSym) have no reciprocity statement either.
+- **R1: KNOWN IN SUBSTANCE** (row F+ of [Q]). **R′: NOT FOUND** for general P.
+- **★: KNOWN IN SUBSTANCE** (the connected case Ω(P*) = Ω(P) is classical).
+- **E:** mechanism KNOWN IN SUBSTANCE (half-open unimodular simplices,
+  Beck–Sanyal §5.3, §6.3); the statement for the non-convex R_T NOT FOUND.
+- **S:** connected case and antichain KNOWN (EC1 Lemma 3.15.17(b),
+  Cor. 3.15.18(b); Beck–Sanyal Ex. 6.28); general disconnected P NOT FOUND.
+- **S′:** connected case KNOWN (EC1 Cor. 3.15.18(b); Beck–Sanyal Ex. 6.27);
+  the "only if" for disconnected P NOT FOUND and OPEN.
+- **U:** connected case is the open unimodality of naturally labelled W_P
+  (§6). h_C is not real-rooted in general (Stembridge's poset, n = 17).
+- **Two-component identity:** not found in the sources read.
 
 ## 8. Open points
 
-- The "only if" of S′ for disconnected P.
-- Whether R_T is a PL ball (§5).
-- Unimodality of h_C.
+- The "only if" of S′ for disconnected P (COMPUTED n ≤ 7).
+- Whether R_T is a PL ball, or just a manifold with boundary, which would
+  suffice for Macdonald's theorem (§5).
+- Unimodality of h_C (COMPUTED n ≤ 7). Its connected case is the open
+  unimodality of naturally labelled W_P (§6), so the relative form "W_K
+  unimodal for each component K ⇒ h_C(P) unimodal" is the realistic target.
+- h_C for three or more components in terms of W-polynomials (§6).
 - A direct bijective proof of the T-independence of Ω̄_C, analogous to the
   clump rotation of [LS] Step 4 (here it follows only from Theorem R).
 

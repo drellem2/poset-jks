@@ -81,6 +81,8 @@ The argument has three parts.
 | 2′ | Descent expansion of Ω_C (Corollary Ω-des) | **PROVEN + audited** ([AudLS] §2); COMPUTED: all natural labellings for n ≤ 5, canonical labelling for n ≤ 7 `[omegaC-des]`; all natural labellings for n ≤ 6 in [AudLS] | NOT FOUND ([PA]) |
 | 2″ | h-vector of Ω_C: under a separated natural labelling, h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0 (**Theorem H** of [H]) | **PROVEN + audited** ([H] §2, [AudH]); COMPUTED n ≤ 7 `[omegaC-h]` and in [H], [AudH], [PA] | NOT FOUND (general P; [PA]). KNOWN for the antichain ([Pet] Prop. 1.1, after Fulman). The statistic is Cellini's cyclic descent number. h_C is not an [ARR] cyclic-descent-extension distribution |
 | 2‴ | The quasisymmetric lift K_{C,T}(P) of Ω_C is F-positive, for every component T | **PROVEN (Theorem Q)** + audited (Corollary F+ of `notes/qsym_refinement_omega_c.md`; `notes/audit_qsym_refinement_omega_c.md`); COMPUTED n ≤ 7 | **KNOWN IN SUBSTANCE (Gessel–Stanley)**: the fundamental lemma of P-partitions with the anchor labelled last. The criterion (E*_T) of Theorem Q is NOT FOUND, and elementary |
+| 2⁗ | **Theorem R** (reciprocity): (−1)^n Ω_C(P, −m) = #{f : P → [m] strictly order-preserving, no T-free union of components U has min f(U) ≥ max f(P ∖ U)} (the strict anchoring D_T), for every component T | **PROVEN + audited** (`notes/reciprocity_omega_c.md` §2, with Lemmas R1, R2, R′, B⁺, E, S; `notes/audit_reciprocity_omega_c.md`, all hold); COMPUTED on all 3107 (P, T), n ≤ 7 | Polynomial side **KNOWN IN SUBSTANCE**: Stanley's reciprocity is word by word (EC1 Lemma 3.15.9; Grinberg–Reiner Prop. 7.1.7(iii) + 5.2.19), so it applies to the word set B_T. The D_T reading (Lemma R2) **NOT FOUND** (`notes/prior_art_reciprocity_omega_c.md`) |
+| 2⁗′ | **★**: Ω_C(P*, m) = Ω_C(P, m), so h_C(P*) = h_C(P) | **PROVEN + audited** (`notes/reciprocity_omega_c.md` §4; audit §3); COMPUTED on 2450 posets | KNOWN IN SUBSTANCE (connected case: the classical Ω(P*) = Ω(P)) |
 | 3 | maj(w_2⋯w_n w_1) ≡ maj(w) − cdes(w) (mod n), so for **n prime**, #{u ∈ Lin(P)C_n : maj u ≡ r} = e_C(P) = dim PLie(P) for every r | **PROVEN + audited** ([AudLS] §4); COMPUTED n ≤ 7 `[maj-rot]`, `[maj-rot-closure]`; fails for composite n | KNOWN IN SUBSTANCE (folklore rotation lemma) |
 | 3′ | P disconnected and gcd(component sizes) = 1 ⇒ maj is equidistributed mod n on Lin P | **PROVEN + audited** ([AudLS] §4); COMPUTED 485 posets `[maj-equi]` | KNOWN IN SUBSTANCE (MacMahon–Stanley factorisation) |
 | 4 | \|I(P)\| = \|[n; m]_{q=−1}\| ∏ \|I(T_i)\| for P = ⊔ T_i; so two odd components ⇒ sign-balanced | **PROVEN + audited** ([AudLS] §4); COMPUTED 503 posets `[sign-union]` | KNOWN IN SUBSTANCE (MacMahon inv-shuffle at q = −1); not found stated in [Sta05] |
@@ -330,7 +332,23 @@ literature ([DMR] in full, [AGRR], [Pet], [ARR]):
   of 258 cases;
 - it equals Ω_C(P, m − 1) on 158 of 258 (n ≤ 5, m ≤ 3).
 
-A reciprocity law for Ω_C is **OPEN**.
+The reciprocity law is now **PROVEN + audited** (Theorem R of
+`notes/reciprocity_omega_c.md`, audited in
+`notes/audit_reciprocity_omega_c.md`): (−1)^n Ω_C(P, −m) counts the strictly
+order-preserving f : P → [m] such that no T-free union of components U has
+min f(U) ≥ max f(P ∖ U). The first guess fails because it keeps the strict
+inequality > of Theorem Ω; the anchoring must become ≥. The second holds
+exactly when every component has height ≤ 2 (Prop. S there). Also PROVEN +
+audited there: ★, Ω_C(P*, m) = Ω_C(P, m). Prior art
+(`notes/prior_art_reciprocity_omega_c.md`): the polynomial side of
+Theorem R is KNOWN IN SUBSTANCE (EC1 Lemma 3.15.9 word by word;
+Grinberg–Reiner Prop. 7.1.7(iii) + 5.2.19); the D_T reading (Lemma R2) is
+NOT FOUND. Still OPEN there: the "only if" of the palindromicity
+classification S′ for disconnected P (its connected case is KNOWN, EC1
+Cor. 3.15.18(b), Beck–Sanyal Ex. 6.27), and unimodality U of h_C (both
+COMPUTED n ≤ 7). For connected P, U is the open unimodality of W_P for
+naturally labelled P. h_C is not real-rooted in general (Stembridge's
+poset, n = 17, EC1 Fig. 3.88); unimodality is not refuted.
 
 ## 3. Lead 1: Kraskiewicz–Weyman and maj mod n
 
@@ -477,7 +495,9 @@ linear extensions. **Verdict: no.**
    - (ii) h_C(P) ≥ 0 with a realising statistic: **done**, Theorem H of
      [H] (cdes on the rotation classes, separated labelling), audited in
      [AudH];
-   - (iii) look for a reciprocity law (OPEN);
+   - (iii) look for a reciprocity law: **done**, Theorem R of
+     `notes/reciprocity_omega_c.md`, PROVEN + audited (polynomial side
+     KNOWN IN SUBSTANCE via EC1 Lemma 3.15.9; the D_T reading NOT FOUND);
    - (iv) prove the F-positivity of the quasisymmetric lift K_C(P):
      **done**, PROVEN (Theorem Q of `notes/qsym_refinement_omega_c.md`),
      audited; KNOWN IN SUBSTANCE (Gessel–Stanley).
