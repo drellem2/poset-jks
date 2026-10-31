@@ -274,7 +274,34 @@ counts made independently of h_C. s(K, m) is counted by backtracking over
 strict maps of each component, and cross-checked against a literal count over
 all maps in the unit tests. J is counted by brute force over subsets.
 
-RESULTS_PLACEHOLDER
+Results (`compute/output/palindromic_h_c.txt`, 200 s on one core; every
+line PASS):
+
+| Tag | Checked | Bad |
+|---|---|---|
+| `[agree]` (B⁺ for every T = Theorem H; = Möbius for n ≤ 7) | 19 448 | 0 |
+| `[h0]`, `[h1]` | 19 448 | 0 |
+| `[deg]`, `[top]` (L ≥ 2, i.e. all but the 7 antichains) | 19 441 | 0 |
+| `[next]` (L ≥ 3, all L_K = L) | 16 038 | 0 |
+| `[inj]` (connected K: s(K, L+1) ≥ J(K), = iff graded) | 16 458 | 0 |
+| `[gap]` (disconnected, with a 3-chain) | 2 637 | 0 |
+| `[pal-class]` (S′) | 19 448 | 0 |
+
+The 2 637 posets of `[gap]` split by which end pair breaks the symmetry:
+h_d ≥ 2 for 1 + 8 + 50 + 316 + 2241 = 2 616 of them (n = 4, …, 8), and
+h_d = 1 with h_{d−1} > h_1 for 1 + 3 + 17 = 21 (n = 6, 7, 8). In the second
+case the bound 2^{r−1} − 1 is attained at every n = 6, 7, 8. Palindromic
+disconnected posets: 1, 2, 5, 11, 29, 76, 229 for n = 2, …, 8. At n = 7 the
+counts 319 non-palindromic and 76 palindromic disconnected posets match [R].
+
+| Control | Refuted on |
+|---|---|
+| `[ctl-first]` | 2 450 / 2 990 disconnected |
+| `[ctl-h1-r]` | 2 990 / 2 990 |
+| `[ctl-next-L2]` | 96 / 96 |
+| `[ctl-next-mixed]` | 2 575 / 2 591 |
+| `[ctl-graded]` | 653 / 19 448 |
+
 
 Positive controls. Each control below fails somewhere, so the instrument can
 see a wrong statement:

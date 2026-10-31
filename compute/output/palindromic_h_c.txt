@@ -1,0 +1,54 @@
+PASS [agree] 19448/19448 posets
+PASS [h0] 19448/19448 posets
+PASS [h1] 19448/19448 posets
+PASS [deg] 19441/19441 posets
+PASS [top] 19441/19441 posets
+PASS [next] 16038/16038 posets
+PASS [inj] 16458/16458 posets
+PASS [gap] 2637/2637 posets
+PASS [pal-class] 19448/19448 posets
+PASS CONTROL refuted 2450/2990 [ctl-first]
+PASS CONTROL refuted 2990/2990 [ctl-h1-r]
+PASS CONTROL refuted 96/96 [ctl-next-L2]
+PASS CONTROL refuted 2575/2591 [ctl-next-mixed]
+PASS CONTROL refuted 653/19448 [ctl-graded]
+# posets per n: {2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045, 8: 16999}
+# disconnected with a 3-chain, by which end pair breaks the symmetry (n, case): count
+#   (4, 'top>=2'): 1
+#   (5, 'top>=2'): 8
+#   (6, 'next-gap'): 1
+#   (6, 'top>=2'): 50
+#   (7, 'next-gap'): 3
+#   (7, 'top>=2'): 316
+#   (8, 'next-gap'): 17
+#   (8, 'top>=2'): 2241
+# min over next-gap posets of (h_{d-1} - h_1) - (2^(r-1) - 1), by n: {6: 0, 7: 0, 8: 0}
+# first example of each case (n, relation, h_C):
+#   next-gap: (6, [(0, 2), (0, 4), (1, 3), (1, 5), (2, 4), (3, 5)], [1, 8, 9, 1])
+#   top>=2: (4, [(1, 2), (1, 3), (2, 3)], [1, 2])
+# palindromic counts (n, connected?, palindromic): count
+#   (2, 'conn', True): 1
+#   (2, 'disc', True): 1
+#   (3, 'conn', True): 3
+#   (3, 'disc', True): 2
+#   (4, 'conn', False): 2
+#   (4, 'conn', True): 8
+#   (4, 'disc', False): 1
+#   (4, 'disc', True): 5
+#   (5, 'conn', False): 19
+#   (5, 'conn', True): 25
+#   (5, 'disc', False): 8
+#   (5, 'disc', True): 11
+#   (6, 'conn', False): 155
+#   (6, 'conn', True): 83
+#   (6, 'disc', False): 51
+#   (6, 'disc', True): 29
+#   (7, 'conn', False): 1320
+#   (7, 'conn', True): 330
+#   (7, 'disc', False): 319
+#   (7, 'disc', True): 76
+#   (8, 'conn', False): 12974
+#   (8, 'conn', True): 1538
+#   (8, 'disc', False): 2258
+#   (8, 'disc', True): 229
+ALL PASS
