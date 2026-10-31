@@ -1,0 +1,14 @@
+[CTL] Pi_4^(1234): |L|=3 mu=0 x!=0:True ; Pi_4: mu=-6 x==0:True -> ok
+[CTL] H4 with r := 1 fails on 15 cycle types (must be > 0) -> ok
+n  types  H4-fail  S71-fail  literal-Remark-fail
+1      1        0         0  0
+2      2        0         0  0
+3      3        0         0  0
+4      5        0         0  1
+5      7        0         0  0
+6     11        0         0  0
+7     15        0         0  0
+8     22        0         0  2
+[LIT] cycle types where 'x = 0-hat iff all cycles have one length' fails: [(4,), (8,), (4, 4)]
+[LIT] all failures are equal lengths, non-squarefree: ok
+ALL CHECKS PASSED
