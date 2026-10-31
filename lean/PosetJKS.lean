@@ -5,6 +5,7 @@ import PosetJKS.OrderComplex
 import PosetJKS.ChainTools
 import PosetJKS.ConeRetract
 import PosetJKS.Complement
+import PosetJKS.JSHomology
 import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice

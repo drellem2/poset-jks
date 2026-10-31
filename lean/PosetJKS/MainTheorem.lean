@@ -6,6 +6,7 @@ import PosetJKS.Mside
 import PosetJKS.LieSide
 import PosetJKS.MainIso
 import PosetJKS.TraceHP
+import PosetJKS.JSHomology
 
 /-!
 # The poset JKS theorem (Theorem `thm:main` of `notes/poset_jks_theorem.tex`)
@@ -28,9 +29,12 @@ vanishing part of `jencaSarkoci_homology` (`trace_HP_of_vanishing`, `TraceHP.lea
 (mainiso) `main_iso` from `trace_HP`, `trace_PLie` and `character_identity`, since equal
 characters imply isomorphic representations (`exists_iso_HP_PLie_of_trace`, `MainIso.lean`).
 
-The one remaining `sorry` is the proof of `jencaSarkoci_homology`, the homological content of
-Jenča–Sarkoci. `trace_HP` and `main_iso` depend on it, and nothing else in this file does.
-No `axiom` is declared anywhere.
+`jencaSarkoci_homology`, the homological content of Jenča–Sarkoci, is proved by Route C
+(`notes/lean_js_route.md`): the vanishing (V) by induction on `n` from Lemma K and
+Proposition C at `π_a`, and `dim H_P = e_C(P)` from (V), `trace_HP_of_vanishing` at `g = 1` and
+`mu_OP_eq` (`jencaSarkoci_homology_aux`, `JSHomology.lean`). `trace_HP` and `main_iso` depend on
+it, and nothing else in this file does. Nothing is left unproved, and no `axiom` is declared
+anywhere.
 -/
 
 open Finset
@@ -93,16 +97,17 @@ theorem closed_formula (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
     rw [← Int.cast_mul, ← Units.val_mul, Int.units_mul_self, Units.val_one, Int.cast_one]
   rw [mul_assoc, character_identity hn hζ g, ← mul_assoc, hs, one_mul]
 
-/-! ### Cited inputs, in the form the proofs use them (not assumed; Jenča–Sarkoci is `sorry`'d,
-P. Hall is proved in `Hall.lean`) -/
+/-! ### Cited inputs, in the form the proofs use them (not assumed; Jenča–Sarkoci is proved in
+`JSHomology.lean`, P. Hall in `Hall.lean`) -/
 
 /-- Homological content of Jenča–Sarkoci, Thm 4.5 (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C(P)} S^{n-3}`
 for `n ≥ 3`): the reduced homology of the order complex vanishes outside degree `n - 3`, and
-`dim H_P = e_C(P)`. Only this consequence is used by Proofs I and II. -/
+`dim H_P = e_C(P)`. Only this consequence is used by Proofs I and II. Proved by Route C
+(`jencaSarkoci_homology_aux`). -/
 theorem jencaSarkoci_homology (hn : 3 ≤ Fintype.card α) :
     (∀ d, d ≠ Fintype.card α - 3 → Subsingleton (redHom (ProperOP α) d)) ∧
-    Module.finrank ℂ (HP α) = eC α := by
-  sorry
+    Module.finrank ℂ (HP α) = eC α :=
+  jencaSarkoci_homology_aux hn
 
 /-- P. Hall's theorem (Stanley EC1, Prop. 3.8.5/3.8.6): for a finite bounded poset `L` with
 `0̂ ≠ 1̂`, `μ_L(0̂, 1̂)` is the reduced Euler characteristic of the order complex of the proper

@@ -568,6 +568,22 @@ example : muFixed (OrderIso.refl anti3.T) = 2 := by
   rw [show OrderIso.refl anti3.T = 1 from rfl, mu_OP_eq (by rw [card_T]; norm_num), card_T, he]
   norm_num
 
+/-- Control for Theorem V (`JSHomology.lean`): on the 3-antichain `dim H_P = e_C = 2`
+(`jencaSarkoci_homology`), so `H̃_0 = H_P ≠ 0`. The hypothesis `d + 3 ≠ n` of
+`redHom_properOP_subsingleton` cannot be dropped. -/
+theorem jsHomology_control_anti3 :
+    Module.finrank ℂ (HP anti3.T) = 2 ∧ ¬ Subsingleton (redHom (ProperOP anti3.T) 0) := by
+  have he : eC anti3.T = 2 := by rw [eC_eq]; decide +kernel
+  have hd := (jencaSarkoci_homology (α := anti3.T) (by rw [card_T])).2
+  rw [he] at hd
+  refine ⟨hd, fun hs => ?_⟩
+  have : Subsingleton (HP anti3.T) := by
+    unfold HP
+    rw [card_T]
+    exact hs
+  rw [Module.finrank_zero_of_subsingleton] at hd
+  exact absurd hd (by norm_num)
+
 end Test
 
 /-! ### The chain complex: `∂ ∘ ∂ = 0`, and `∂_0` is the augmentation -/

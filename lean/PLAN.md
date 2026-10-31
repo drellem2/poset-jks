@@ -51,28 +51,35 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   in degree 0) give `H̃_d(Δ(L)) = 0`. At `π_a` (`a` minimal, `n ≥ 3`), `A` is the set of the
   `π_ab`, `L ∖ A` is a cone retraction by `x ↦ x ∧ π_a` (Lemma K), and `(π_ab, 1̂)` is the proper
   part of `OP(P/π_ab)` (`propC`, `propC_zero_pa`) (§4.6). The sorry count is unchanged.
+* **Step 11 (Route C, slice S4)** proves `jencaSarkoci_homology` (`JSHomology.lean`): Theorem V
+  of `notes/lean_js_route.md` §3.2, `H̃_d(Δ(\widehat{OP(P)})) = 0` for `d + 3 ≠ n`, by strong
+  induction on `n` with a minimal `a` and Proposition C (`vanish_aux`); and
+  `dim H_P = e_C(P)` from it by `trace_HP_of_vanishing` at `g = 1` and `mu_OP_eq` (`actHP_one`,
+  `finrank_HP`, §1 of the note) (§4.7). The sorry count goes from 1 to 0.
 
-**Current status.** One `sorry` remains: the proof of `jencaSarkoci_homology` (cited input A,
-the homological content of Jenča–Sarkoci). Everything else is proved. Of the stated theorems,
-exactly `jencaSarkoci_homology`, `trace_HP` and `main_iso` depend on `sorryAx`, and
-`scripts/CheckDeps.lean` shows that the only cited input `trace_HP` and `main_iso` use is
-`jencaSarkoci_homology` (§4, §5). (characterconj) and (closed) are fully proved.
+**Current status.** No `sorry` remains. Every stated theorem is proved, including the main
+theorem's three parts (characterconj), (mainiso), (closed) and all three cited inputs
+(Jenča–Sarkoci in its homological form, P. Hall, the Hopf trace formula). Every declaration
+listed by `scripts/PrintAxioms.lean` depends only on `propext`, `Classical.choice` and
+`Quot.sound`, with no `sorryAx` (§5). `scripts/CheckDeps.lean` still shows that `trace_HP` and
+`main_iso` are the theorems that use `jencaSarkoci_homology`, which is now a proved theorem
+(§4, §5).
 
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
-* `lake build` succeeds. It reports 1 `sorry` warning (`MainTheorem.lean:102`,
-  `jencaSarkoci_homology`) and no errors.
+* `lake build` succeeds, with no `sorry` warning and no errors.
 * No `axiom` declarations (`grep -rnw axiom PosetJKS scripts` finds only a comment).
+  `grep -rn sorry PosetJKS` finds nothing.
 
 ## Reproduce
 
 ```sh
 cd lean
 lake exe cache get                         # fetch prebuilt Mathlib
-lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect 1 "declaration uses sorry"
+lake build                                 # builds PosetJKS (and PosetJKS/Test.lean); expect no "declaration uses sorry"
 lake env lean scripts/PrintAxioms.lean     # the #print axioms table below (and of the Test.lean controls)
 lake env lean scripts/CheckDeps.lean       # which theorems use (A), (B) or trace_HP; see §5
-grep -rn "^  sorry" PosetJKS               # the sorry list below
+grep -rn "sorry" PosetJKS                  # expect no output
 ```
 
 ## Files
@@ -86,6 +93,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/ChainTools.lean` | general chain tools (Route C, slice S1, `notes/lean_js_route.md` §6): pushforward along order embeddings (`chainMapEmb`, a chain map, injective, functorial; `chainMap` is the case of an automorphism); `H̃_d = 0` iff cycles are boundaries (`subsingleton_redHom_iff`), invariance under order isomorphisms (`subsingleton_redHom_congr`), vanishing for an empty poset; insertion of an element into a chain (`insertAt`, via `Fin.insertNth`) and its face lemmas (`face_insertAt_self`, `face_insertAt_succAbove`, `bd_single_insertAt`) (**all proved**) |
 | `PosetJKS/ConeRetract.lean` | Lemma K (Route C, slice S2, `notes/lean_js_route.md` §3.1): the data `ConeRetraction` (`t`, `p`); low/high elements of a chain (`nlow`, `hcount`, `low_iff`), `τ c` (`tau`), the chain `c ∪ {τ c}` (`cone`), the homotopy `s`; the exact homotopy identity (`bd_s_add_s_bd_eq`, `bd_s_add_s_bd_of_hcount_eq_zero`), the filtration `F` and its filtered form (`bd_s_add_s_bd`); exactness (`exact_of_retract`) (**all proved**) |
 | `PosetJKS/Complement.lean` | The decomposition at `π_a` and Proposition C (Route C, slice S3, `notes/lean_js_route.md` §3.2): `consMap`/`strip` and the identities (iv)–(vi) (`strip_bd`, `mem_range_of_strip_eq_zero`, `strip_cons`, `strip_cons_of_ne`); Proposition C for a finite set of minimal elements (`propC_core`, `propC_succ`, `propC_zero`); at `π_a`: `Aset`, `Q`, `pab_minimal`, the cone retraction `coneQ` and `Q_acyclic`, Lemma U on the open interval (`upperIso`), and `propC`, `propC_zero_pa`, `redHom_zero_subsingleton` (**all proved**) |
+| `PosetJKS/JSHomology.lean` | The homological content of Jenča–Sarkoci (Route C, slice S4, `notes/lean_js_route.md` §1, §3.2): the proper part of `OP(P)` is empty for `n ≤ 2` (`isEmpty_properOP`); Theorem V, `H̃_d = 0` for `d + 3 ≠ n` (`vanish_aux`, `redHom_properOP_subsingleton`); `actHP 1 = id` (`actHP_one`); `dim H_P = e_C(P)` (`finrank_HP`); both together (`jencaSarkoci_homology_aux`) (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`, split into `inB_coset_inj` and `exists_inB_coset`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
 | `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
@@ -95,10 +103,10 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/LieSide.lean` | `x ∈ F(P,g)` (`InF`, moved here unchanged from `MainTheorem.lean`); block systems `{g^j B : j < o}` and `InF` (`inF_blocksOf`, `blocksOf_of_inF`, `isBlockSys_pow`, `card_eq_of_isBlockSys`); words as concatenations of chunks `h^t u` (`eq_flatMap_of_rotate`, `rotate_mul_chunks`); the `B_P(x₀)` words of `g`-stable classes (`fixedB_struct`, `exists_fixedB`, `card_fiber`); Proposition `prop:Lside` (`prop_Lside`) (**all proved**) |
 | `PosetJKS/MuOP.lean` | Lemma `lem:small`, homology-free (Proof W): dual Weisner (`weisner_dual`); `π_a`, `π_ab` (`pa`, `pab`) and Lemma M; the quotient poset `P/π_ab` (`Contr`) and Lemma U (`mu_pab_top`); Lemma D (`mu_op_rec`); Lemma C, Jenča–Sarkoci's recursion `e_C(P) = ∑_b e_C(P/π_ab)` (`eC_rec`); Theorem A `μ(OP(P)) = (-1)^{n-1} e_C(P)` (`mu_OP_eq`) (**all proved**) |
 | `PosetJKS/Mside.lean` | `M̃(P,g)` (`Mt`), `M̃(P,1) = e_C(P)` (`Mt_one`); `ℤ/m × B₀ ≅ P` (`blkEquiv`) and Lemma `lem:interval`(ii) (`interval_sign`); the signed recursion (W) (`recursionW_signed`); the Möbius inversion on `X(P,g)` inside `OP(P)^g` (`sum_mu_below_eq_zero`, `sum_moebius_between`, `mu_eq_moebius_mul_sum`); `F(P,g)` as setoids vs `InF` (`opOfBlocks`, `inF_blocksOf_blkSet`); Proposition `prop:Mside` (`prop_Mside`) (**all proved**) |
-| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3); only `jencaSarkoci_homology` is `sorry`) |
+| `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3), `jencaSarkoci_homology` from `jencaSarkoci_homology_aux` (§4.7); no `sorry`) |
 | `PosetJKS/CharacterIso.lean`, `MainIso.lean`, `CharacterIsoTest.lean` | step 6, see §4.2 |
 | `PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean` | step 7, see §4.3 |
-| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); the Lemma K controls (`isEmpty_coneRetraction_antichain2`, `vRetraction`, `redHom_V_subsingleton`); the Proposition C control (`propC_zero_control`); see `AUDIT_FAITHFULNESS.md` |
+| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); the Lemma K controls (`isEmpty_coneRetraction_antichain2`, `vRetraction`, `redHom_V_subsingleton`); the Proposition C control (`propC_zero_control`); the Theorem V control (`jsHomology_control_anti3`); see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 | `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` or `trace_HP` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
 
@@ -115,7 +123,7 @@ work.
 | **Order complex, reduced homology** | `PreAbstractSimplicialComplex` / `AbstractSimplicialComplex` (faces only, no homology); `SSet`, `CategoryTheory.nerve`, `mem_nerve_nonDegenerate_iff_strictMono`; `AlternatingFaceMapComplex.obj`, `alternatingFaceMapComplex`, `SimplicialObject.Augmented`, `normalizedMooreComplex`; `AlgebraicTopology.singularHomologyFunctor`; `HomologicalComplex.eulerChar`, `homologyEulerChar` (definitions only). **Absent:** simplicial homology of a simplicial complex, the order complex of a poset, geometric realisation of a poset, wedges of spheres, homotopy types of complexes | hand-rolled augmented oriented chain complex on chains `Fin m ↪o L`: `Chains`, `face`, `bd`, `cycles`, `boundaries`, `redHom`; functoriality `chainMap`, `bd_chainMap`, `homMap` | `∂∘∂ = 0` (not needed for the statements; needed for every proof) ~60; optional bridge to `alternatingFaceMapComplex (nerve L)` (normalised) ~300+ | 60–400 |
 | **Möbius function, P. Hall** *(Weisner: done in step 3; Hall: done in step 7, §4.3)* | `IncidenceAlgebra.mu`, `mu_apply`, `mu_eq_neg_sum_Ico_of_ne`, `mu_eq_neg_sum_Ioc_of_ne`, `mu_mul_zeta`, `mu_toDual`, `mu_prod_mu`, `IncidenceAlgebra.eulerChar`; `ArithmeticFunction.moebius` (number-theoretic `μ(o)`). **Absent:** P. Hall's chain-count theorem, Weisner's theorem, Crapo's complementation theorem | `muFixed g = mu ℤ 0̂ 1̂` on `OP(P)^g`; statement `hall_mu_eq_reducedEuler` | Hall (`μ = ∑ (-1)^k c_k` via `(ζ-1)` expansion in the incidence algebra) ~200–400; Weisner ~150–300 | 350–700 |
 | **Hopf trace formula** *(done in step 7, §4.3)* | `LinearMap.trace`, `LinearMap.trace_restrict_eq_of_forall_mem` (PID file), `HomologicalComplex.eulerChar` (definition). **Absent:** Euler–Poincaré `χ(C) = χ(H)`, the Hopf trace formula, additivity of trace over `0 → U → V → V/U → 0` | — | Pure linear algebra on a bounded complex of finite-dimensional spaces with a chain endomorphism; specialise to `Chains`/`redHom`. Uses `LinearMap.trace_eq_matrix_trace` with an adapted basis | 300–500 |
-| **Jenča–Sarkoci** (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C} S^{n-3}`) | Nothing usable: no homotopy types of finite complexes, no shellability or discrete Morse theory, no Quillen fibre lemma | statement of its homological content only: `jencaSarkoci_homology` (`H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)`) | The homotopy statement cannot be expressed in current Mathlib. The homological content needs a combinatorial acyclicity proof, e.g. a shelling or acyclic matching of `Δ(\widehat{OP(P)})`, or a formal transcription of the Jenča–Sarkoci argument. **This is the main obstacle of the topological route.** | 2000–5000+, research-level |
+| **Jenča–Sarkoci** (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C} S^{n-3}`) | Nothing usable: no homotopy types of finite complexes, no shellability or discrete Morse theory, no Quillen fibre lemma | *(steps 8–11: done by Route C, `notes/lean_js_route.md`)* its homological content `jencaSarkoci_homology` (`H̃_d = 0` for `d ≠ n-3`, `dim H_P = e_C(P)`), proved: chain tools (`ChainTools.lean`), Lemma K (`ConeRetract.lean`), Proposition C at `π_a` (`Complement.lean`), Theorem V and the dimension (`JSHomology.lean`) | Nothing for the homological content. The homotopy statement (a wedge of spheres) cannot be expressed in current Mathlib and is not attempted; only its homological content is used. Step 1 estimated 2000–5000+ lines for a shelling or matching proof; Route C took 1475 lines (282 + 568 + 488 + 137) | done |
 | **`Lie(P) = span{w e_ζ}`** | `Finsupp`, `Finsupp.lmapDomain`, `Finsupp.linearCombination`, `MonoidAlgebra`, `FreeLieAlgebra`, `finRotate`, `Equiv.Perm.sign`, `IsPrimitiveRoot`, `IsPrimitiveRoot.pow_eq_one_iff_dvd`, `IsPrimitiveRoot.geom_sum_eq_zero`. **Absent:** shuffle algebra / shuffle product on `ℂ[S_n]`, Ree's theorem `Lie_n^⊥ = Sh_n`, Wachs's comb basis | `Word`, `Alg` (`ℂ[S_n]` as `Word α →₀ ℂ`), `rot`, `wEζ`, `PLie`, `shuffle`, `Sh`, `W`, `R`, `cyc`, `eC`, `classRot`, `fixedClassSum`, `prefixSet`, `restrict`, `IsCut` | basis `{w_C e_ζ}` of `PLie(P)` (Lemma `lem:liechar`) ~200; contraction operator `E_{a,x}` and `E_{a,x}(Sh) ⊆ Sh` (note's "key tool") ~300; Prop. Φ (Wachs + Ree), only for Theorem S(c),(d) ~1500+ | 500 (milestone) / +1500 (Φ) |
 | **`Aut(P)` actions, characters** *(equal characters ⇒ isomorphic: done in step 6, §4.2)* | `α ≃o α` is a group (`RelIso` group instance, `Mathlib/Algebra/Order/Group/End.lean`), `orderOf`; `Representation`, `Representation.character`, `Representation.char_iso`, `FDRep.character`, `FDRep.char_iso`, `FDRep.char_orthonormal`, `FDRep.simple_iff_char_is_norm_one`, Maschke `MonoidAlgebra.Submodule.exists_isCompl`. **Absent:** "equal characters imply isomorphic" for finite groups over `ℂ` (only iso ⇒ equal characters, `char_iso`) | `relabel`, `relabel_mem_PLie`, `relabel_mem_W`, `relabel_mem_R` (all proved); `actPLie`, `actMP`, `actHP`, `actProper` | equal characters ⇒ isomorphic (Maschke + orthonormality; multiplicities read off by inner products) ~300–500 | 300–500 |
 
@@ -225,15 +233,11 @@ admissibility of `λ`, the choice data `x₀`, `rep`, `B₀` with their defining
 `h0 : 0 < Fintype.card α` on `trace_PLie`, `corPsi_bijective` and `corPsi`. It is the note's
 implicit `n ≥ 1` (its objects use `1/n`), and the statements are false without it (§4).
 
-## 4. Sorries (1) and gaps
+## 4. Sorries (0) and gaps
 
-`sorry` occurrences, all in theorem proofs (`grep -rn "^  sorry" PosetJKS`; a scan of all of
-`PosetJKS` that skips comments and docstrings finds the same single occurrence). No definition
-depends on a `sorry`: `#print axioms` on `actHP`, `actMP` and `muFixed` shows no `sorryAx`.
-
-| # | Location | Theorem | What it blocks |
-|---|---|---|---|
-| 6 | `MainTheorem.lean:105` | `jencaSarkoci_homology` (cited input A) | `trace_HP` (its vanishing part, via `trace_HP_of_vanishing`) and hence `main_iso`. Nothing else: (characterconj) and (closed) do not use it (§5) |
+There are no `sorry` occurrences (`grep -rn "sorry" PosetJKS` finds nothing), and no
+declaration listed in §5 depends on `sorryAx`. The last one, #6 `jencaSarkoci_homology` (cited
+input A), is closed in step 11 (§4.7) by Route C, with its statement unchanged.
 
 Numbering as in step 1. #2 `main_iso` is closed in step 6 (§4.2), from `trace_HP`. #4
 `trace_HP` and #7 `hall_mu_eq_reducedEuler` are closed in step 7 (§4.3); `trace_HP` uses the
@@ -248,7 +252,9 @@ sorry-free; neither uses the cited inputs (A), (B) (§5).
 The five M1 sorries of step 1 (`thmS_a`, `thmS_b`, `thmPsi`, `corPsi_bijective`,
 `corPsi_equivariant`) are closed. `corPsi` follows from the last two.
 
-**Statement changes.** None in steps 6 and 7 (§4.2, §4.3). None in step 5: the types of
+**Statement changes.** None in steps 8–11: the statements of `jencaSarkoci_homology`,
+`main_iso`, `trace_HP`, `character_identity` and every other existing theorem are unchanged
+(step 11 only replaced the proof of `jencaSarkoci_homology`). None in steps 6 and 7 (§4.2, §4.3). None in step 5: the types of
 `character_identity` and `closed_formula` are unchanged, and no hypothesis was added. None in step 4. `InF` moved from `MainTheorem.lean` to `LieSide.lean`
 with the same body, so the type of `closed_formula` is unchanged.
 
@@ -724,15 +730,44 @@ changed. The mathematics is §3.2 of the note as audited (`notes/audit_lean_js_r
 empty and `H̃_0 ≠ 0` (`redHom_antichain2_ne`). So the nonemptiness hypothesis of `propC_zero`
 cannot be dropped, and Proposition C is not vacuous in degree 0.
 
+### 4.7 S4 (Route C): Theorem V and `jencaSarkoci_homology`
+
+Slice S4 of `notes/lean_js_route.md` §6. New file `JSHomology.lean` (imports `Complement.lean`,
+`TraceHP.lean`, `MainIso.lean`); `MainTheorem.lean` imports it. Sorry count 1 → 0. No existing
+statement changed: `jencaSarkoci_homology` keeps its statement and its proof is now
+`jencaSarkoci_homology_aux hn`.
+
+* `isEmpty_properOP`: for `n ≤ 2` every partition is `0̂` or `1̂` (a partition `≠ 0̂` relates two
+  distinct points, and these are all the points), so the proper part is empty and
+  `subsingleton_redHom_of_isEmpty` applies.
+* `vanish_aux` (Theorem V): `∀ n β, |β| = n → ∀ d, d + 3 ≠ n → H̃_d(Δ(\widehat{OP(β)})) = 0`, by
+  strong induction on `n`, in the shape of `mu_OP_eq_aux`. For `n ≥ 3` take a minimal `a`
+  (`exists_minimal_of_wellFoundedLT`). For `d = m + 1`, `propC` with the induction hypothesis at
+  `n − 1` for each `Contr a b h` (`Contr.card_eq`; `m + 3 ≠ n − 1`). For `d = 0`, `d + 3 ≠ n`
+  forces `n ≥ 4` and `redHom_zero_subsingleton` applies. `redHom_properOP_subsingleton` is the
+  instance at `α`.
+* `actHP_one`: `actProper 1` is the identity (`actSetoid_one`), so `chainMap (actProper 1) = id`
+  (`Finsupp.lmapDomain_id`), and so is the induced map on the quotient `H_P`.
+* `finrank_HP` (§1 of the note): `trace_HP_of_vanishing hn hV 1` with `actHP_one`,
+  `LinearMap.trace_id` (`H_P` finite-dimensional, `finiteDimensional_HP`) and `mu_OP_eq` gives
+  `dim H_P = (-1)^{n-3} (-1)^{n-1} e_C(P) = e_C(P)`.
+* `jencaSarkoci_homology_aux`: the two conjuncts, in exactly the form of
+  `jencaSarkoci_homology` (`d ≠ n − 3 ↔ d + 3 ≠ n` for `n ≥ 3`).
+
+**Control** (`Test.lean`): `jsHomology_control_anti3`. On the 3-antichain,
+`dim H_P = e_C = 2` (from `jencaSarkoci_homology`, `e_C` evaluated by `decide +kernel`), so
+`H̃_0 = H_P ≠ 0`: Theorem V's hypothesis `d + 3 ≠ n` cannot be dropped, and the vanishing is not
+vacuous. This also checks the dimension conjunct against the direct count `e_C(anti3) = 2`.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```
 'PosetJKS.character_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
-'PosetJKS.main_iso' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.main_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.closed_formula' depends on axioms: [propext, Classical.choice, Quot.sound]
-'PosetJKS.trace_HP' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.trace_HP' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.trace_PLie' depends on axioms: [propext, Classical.choice, Quot.sound]
-'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'PosetJKS.jencaSarkoci_homology' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.hall_mu_eq_reducedEuler' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.thmS_a' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.thmS_b' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -834,43 +869,46 @@ cannot be dropped, and Proposition C is not vacuous in degree 0.
 'PosetJKS.propC_zero_pa' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.redHom_zero_subsingleton' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.propC_zero_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.vanish_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.actHP_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.finrank_HP' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.jencaSarkoci_homology_aux' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.jsHomology_control_anti3' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 Every listed declaration depends only on `propext`, `Classical.choice`, `Quot.sound`
-(`isOrderPreserving_inf` does not even use `Classical.choice`), except three, which also depend
-on `sorryAx`: `jencaSarkoci_homology` (the one visible `sorry`, §4), `trace_HP` and `main_iso`.
-In particular the M1 theorems, `trace_PLie`, `prop_Lside`, `mu_OP_eq`, `prop_Mside`,
-`character_identity`, `closed_formula`, the general lemma `nonempty_equiv_of_character_eq` and
-`exists_iso_HP_PLie_of_trace` (step 6), and `hall_mu_eq_reducedEuler`,
-`IsChainMap.hopf_trace` and `trace_HP_of_vanishing` (step 7), and Lemma K
-(`exact_of_retract`, step 9) are `sorry`-free. The definitions
-are `sorry`-free.
+(`isOrderPreserving_inf` does not even use `Classical.choice`). No declaration depends on
+`sorryAx`. In particular `main_iso`, `trace_HP` and `jencaSarkoci_homology` are `sorry`-free
+since step 11; before it, these three were exactly the ones listed with `sorryAx`, so the same
+script detects a `sorry` when there is one. The M1 theorems, `trace_PLie`, `prop_Lside`,
+`mu_OP_eq`, `prop_Mside`, `character_identity`, `closed_formula`, the general lemma
+`nonempty_equiv_of_character_eq` and `exists_iso_HP_PLie_of_trace` (step 6),
+`hall_mu_eq_reducedEuler`, `IsChainMap.hopf_trace` and `trace_HP_of_vanishing` (step 7), Lemma K
+(`exact_of_retract`, step 9), Proposition C (step 10) and Theorem V (`vanish_aux`, step 11) are
+all `sorry`-free. The definitions are `sorry`-free.
 
-`sorryAx` stands for every `sorry`, so `#print axioms` alone cannot show which `sorry` a
-theorem uses. `scripts/CheckDeps.lean` walks the constants used by a declaration's type and
-value, transitively, and reports which of `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler`
-and `trace_HP` occur:
+`scripts/CheckDeps.lean` walks the constants used by a declaration's type and value,
+transitively, and reports which of `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` and
+`trace_HP` occur:
 
 ```
-PosetJKS.checkDepsControlJS: 16398 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology]
+PosetJKS.checkDepsControlJS: 25235 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology]
 PosetJKS.checkDepsControlHall: 13334 constants; cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]
 PosetJKS.mu_OP_eq: 15365 constants; cited inputs used: []
 PosetJKS.prop_Mside: 18419 constants; cited inputs used: []
 PosetJKS.character_identity: 23406 constants; cited inputs used: []
 PosetJKS.closed_formula: 23408 constants; cited inputs used: []
-PosetJKS.main_iso: 30199 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
+PosetJKS.main_iso: 30522 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
 PosetJKS.exists_iso_HP_PLie_of_trace: 24937 constants; cited inputs used: []
 Representation.nonempty_equiv_of_character_eq: 17940 constants; cited inputs used: []
 PosetJKS.hall_mu_eq_reducedEuler: 13252 constants; cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]
 PosetJKS.trace_HP_of_vanishing: 22538 constants; cited inputs used: []
-PosetJKS.trace_HP: 22736 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
+PosetJKS.trace_HP: 25235 constants; cited inputs used: [PosetJKS.jencaSarkoci_homology, PosetJKS.trace_HP]
 ```
 
 The two controls (defined in the script, each using one cited input) are detected.
 `character_identity`, `closed_formula`, `mu_OP_eq` and `prop_Mside` use none of the three.
 `trace_HP` and `main_iso` use `jencaSarkoci_homology` and not `hall_mu_eq_reducedEuler`
 (the Hall step inside `trace_HP_of_vanishing` goes through `mu_bot_top_eq_chainSum`
-directly). Since `jencaSarkoci_homology` is the only `sorry`, it is the only thing `trace_HP`
-and `main_iso` wait on. A proof of its first conjunct alone (vanishing of `H̃_d` for
-`d ≠ n-3`), passed to `trace_HP_of_vanishing`, would make both `sorry`-free; the second
-conjunct (`dim H_P = e_C(P)`) is needed only to close `jencaSarkoci_homology` as stated.
+directly). Since step 11 `jencaSarkoci_homology` is proved (`jencaSarkoci_homology_aux`), so
+these dependencies are on a theorem, not on an assumption.

@@ -126,3 +126,10 @@ import PosetJKS
 #print axioms PosetJKS.propC_zero_pa
 #print axioms PosetJKS.redHom_zero_subsingleton
 #print axioms PosetJKS.Test.propC_zero_control
+
+-- Route C, slice S4 (`PosetJKS/JSHomology.lean`): Theorem V, `dim H_P = e_C(P)`, control
+#print axioms PosetJKS.vanish_aux
+#print axioms PosetJKS.actHP_one
+#print axioms PosetJKS.finrank_HP
+#print axioms PosetJKS.jencaSarkoci_homology_aux
+#print axioms PosetJKS.Test.jsHomology_control_anti3
