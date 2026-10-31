@@ -66,9 +66,12 @@ Every stated result has a box in the margin and a footnote naming the
 notes file (and section) it comes from. The boxes mean:
 \begin{itemize}
 \item \textsf{PROVEN / AUDITED}: the source note proves it, and an
-  independent audit, with its own code, re-derived the proof and found
-  that it holds. These are the only results stated as \emph{Theorems}. Some
-  of them rest on a cited published theorem; the footnote says which.
+  independent audit re-derived the proof (usually with its own code) and
+  found that it holds. These are the only results stated as
+  \emph{Theorems}. Some of them rest on a cited published theorem; the
+  footnote says which.
+\item \textsf{PROVEN / NOT AUDITED}: the source note gives a proof, but no
+  independent audit has checked it yet.
 \item \textsf{CLASSICAL (CITED)}: a published result, stated as background.
 \item \textsf{COMPUTED}: checked by computer on the cases listed, not proved.
 \item \textsf{CONJECTURED} and \textsf{OPEN}: what they say.
@@ -588,8 +591,10 @@ There is a positive closed formula for $|\chi_{C_P}(-\tau)|$. With Theorem~\ref{
 this decides vanishing for every element of $\pm S_n$ on every cone of the
 braid arrangement.\footnote{\src{notes/per_cone_vanishing.md}, \S3, Theorem~TA
 and row TA$\pm$. Audited in \src{notes/audit_per_cone_vanishing.md}:
-``holds with fixes''; the fixes are to proofs and do not change a result.
-(The status line inside the source note was written before that audit.)}
+``holds with fixes''; the fixes are to proofs and do not change a result,
+and they have been applied to the source note. A search found no statement
+of Theorem~TA in the literature
+(\src{notes/prior_art_per_cone_vanishing.md}, Verdict table).}
 \end{theorem}
 
 One ingredient is a small fact about linear extensions: an anti-automorphism
@@ -598,7 +603,11 @@ $t$ of a poset has a linear extension $w$ with $t(w_i)=w_{n+1-i}$ for all $i$
 one fixed point.\footnote{\src{notes/per_cone_vanishing.md}, \S2, Lemma~Pal;
 audited in \src{notes/audit_per_cone_vanishing.md} (holds; checked on all
 $6{,}847$ anti-automorphisms with $n\le7$).}\PROVEN{} These palindromic
-extensions are the chambers that $-t$ fixes.
+extensions are the chambers that $-t$ fixes. The lemma is known in
+substance: after relabelling, the palindromic extensions are the type-B
+linear extensions of a $B_n$ poset (Chow; Reiner for signed
+posets).\footnote{\src{notes/prior_art_per_cone_vanishing.md}, Verdict
+table, rows Lemma Pal. The exact ``iff'' form was not found stated.}
 
 \paragraph{What is open.}
 \begin{itemize}
@@ -614,7 +623,11 @@ extensions are the chambers that $-t$ fixes.
   \footnote{\src{notes/vanishing_criterion.md}, row CR.} On cones, the
   conjecture is: $\chi_V(g)=0$ if and only if $\Lambda(V)^g$ has an element
   with no complement. No counterexample was found on $18{,}750$ pairs
-  $(V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row CR$_V$ and \S4.}
+  $(V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row CR$_V$ and \S4.
+  A search found no statement of the conjecture. The converse is false for
+  general finite lattices, and it is known for finite modular lattices
+  (Knop), a class that does not contain the lattices $\Lambda(V)^g$ in
+  general (\src{notes/prior_art_per_cone_vanishing.md}, Verdict table).}
 \item \PROVEN In type A, whether $\chi_V(g)=0$ depends only on
   $(\lin V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row TA-L
   (Cor.~3.5); audited in \src{notes/audit_per_cone_vanishing.md}.}
@@ -635,8 +648,10 @@ Lehrer--Solomon describe the $S_n$-action on it as a sum of modules induced
 from centralizers. On all chambers, the cone character $\chi$ is the top
 Orlik--Solomon character twisted by $\det$ (Orlik--Solomon 1980,
 Thm.~4.8).\footnote{\src{notes/prior_art_vanishing_criterion.md}, Verdict
-table and \S0.3; \src{notes/novelty_fixed_point_formula.md}, \S4. Lehrer 1987
-and Orlik--Solomon 1980 were read only through secondary accounts.} The
+table, \S0.3 and \S1; \src{notes/novelty_fixed_point_formula.md}, \S4.
+Orlik--Solomon 1980, Thm.~4.8, was read in the source
+(\src{notes/prior_art_vanishing_criterion.md}, \S1). Lehrer 1987 and
+Lehrer--Solomon 1986 were read only through secondary accounts.} The
 analogy stops at cones. That theory concerns the whole complement, so it
 sees only all chambers. The cone theory decomposes the space spanned by
 chambers instead. For all chambers that decomposition matches the cohomology
@@ -650,9 +665,10 @@ the Lie module of the whole arrangement is a $W$-module, and Aguiar--Mahajan
 prove a JKS theorem for every arrangement, with the twist carried by an
 orientation space. This is the all-chambers case of Theorem~\ref{thm:G}.%
 \footnote{\src{notes/novelty_general_theory.md}, \S5.} Bishop, Douglass,
-Pfeiffer and R\"ohrle give a support condition for the top Orlik--Solomon
-component through cuspidal classes, for groups of rank at most $8$ and for
-all chambers only. The cone theory
+Pfeiffer and R\"ohrle give a necessary support condition for the top
+Orlik--Solomon component through cuspidal classes, for groups of rank at
+most $8$ and for all chambers only.\footnote{%
+\src{notes/prior_art_vanishing_criterion.md}, \S3.} The cone theory
 adds proper cones and symmetries outside $W$, such as $-w$ in type A. The
 type-A support rule does not generalize in the obvious way: Springer
 regularity is neither necessary nor sufficient for being nonzero on some
@@ -663,8 +679,8 @@ by hand given the some-cone criterion, audited in
 
 \paragraph{Aguiar--Mahajan: Hopf monoids, cones and lunes.} The vocabulary
 here (Tits product, top-lunes, Lie elements as $\Lune^\perp$) is
-Aguiar--Mahajan's. Their books contain no theory attached to a single cone,
-and one exercise needed correcting: an element is Lie iff its coefficient sum
+Aguiar--Mahajan's. In the parts of their books that were read we found no
+theory attached to a single cone, and one exercise needed correcting: an element is Lie iff its coefficient sum
 vanishes on every \emph{non-pointed} top-cone, not every non-singleton
 one.\footnote{\src{notes/cone_lune_lie_theory.md}, \S7, audited in
 \src{notes/audit_cone_lune_lie_theory.md};
@@ -771,17 +787,32 @@ n}\mu(d)p_d^{n/d}$: the single generator is replaced by the series of
 naturally labelled posets. Restricted to even permutations the sign twist
 disappears, so on $\Aut(P)\cap A_n$ the homology $H_P$ is simply $\PLie(P)$.
 
-\textbf{No modular forms have been produced.} This is a motivation, not a
-result. The point of the general theory, from this angle, is a precondition:
+\textbf{No poset-specific modular forms have been found.} This is a
+motivation, not a result. The point of the general theory, from this angle, is a precondition:
 before looking for an extra grading whose traces could be modular, one needs
 a Lie theory for posets that is coherent, with modules, characters,
 functoriality and global generating functions that fit together. The
 results above supply the modules, the characters and the global generating
 function. Functoriality is only partial: an isomorphism natural along order
-extensions exists exactly on connected posets, and the $e_\zeta$ model
-carries no canonical bracket.\footnote{\src{notes/poset_jks_theorem.tex},
-\S6, Theorem~6.8, and \S9, items 1--2.} The search for such a grading has not
-begun.\footnote{\src{notes/poset_jks_theorem.tex}, \S9, item~7.}\OPEN
+extensions exists exactly on connected posets, and no canonical bracket on
+the $e_\zeta$ model is known (the commutator of concatenations does not
+descend to it).\footnote{\src{notes/poset_jks_theorem.tex}, \S6,
+Theorem~6.8, and \S9, items 1--2.}
+
+A first scoping search for such a grading has been
+made.\footnote{\src{notes/moonshine_scoping.md}, Verdict table and \S4. The
+note says itself that its proofs have not been independently audited.}%
+\PARTIAL{} It tested four candidates: the global module $V_n$ graded by
+$n$, $g$-fixed $P$-partitions of a finite poset, $P$-partitions of some
+infinite posets, and a Fock space built on $\PLie(P)$. The only modularity
+it found comes from Frame shapes (eta products), which arise from the
+character of any rational representation of any finite group, so they say
+nothing specific about posets. The poset-specific series either grow too
+fast to converge anywhere ($V_n$) or are rational functions of $q$, and the
+note proves that neither kind can be modular. Restricting to the alternating
+group changes nothing. Its recommendation is to stop this line. Those
+proofs have \emph{not yet been independently audited}, so the
+recommendation is provisional.
 
 \subsection{A second measure: counting and structure of linear extensions}
 
@@ -800,15 +831,57 @@ structure? Here is where it touches them, in what the notes prove.
   extensions, and Lemma Pal says exactly when they exist.
 \end{itemize}
 
-\begin{question}
-Do these identities give anything new for counting $|\Lin(P)|$ itself, which
-is hard in general? The notes give no such application.
-\end{question}
+A separate note asks these questions directly, and compares rotation with
+\emph{promotion}, the classical cyclic action on linear extensions
+(Sch\"utzenberger; Stanley).\footnote{\src{notes/linear_extensions.md},
+\S\S1--5, audited in \src{notes/audit_linear_extensions.md}: ``holds with
+fixes''. The fixes change wording, scope and citations only, and no result.
+The statements here are the audit's corrected ones.}\PROVEN{} Write $T$ for
+the components of $P$ and $e(T)=|\Lin(T)|$.
+\begin{itemize}
+\item \emph{Counting.} $e_C(P)=\prod_Te(T)\cdot
+  e_C\bigl(\bigsqcup_TC_{|T|}\bigr)$, where $C_k$ is a $k$-element chain. So
+  $e_C$ carries no information beyond the $e(T)$ and the sizes of the
+  components, and for connected $P$ it is $e(P)$. The notes find no new
+  recursion or bound for $e(P)$.
+\item \emph{Promotion on disjoint unions.} Record a linear extension by the
+  word saying which component each letter comes from, together with its
+  restrictions to the components. Promotion rotates that word by one place
+  and promotes inside the component of the first letter.
+\item \emph{Orbits and classes.} The number of promotion orbits is at most
+  $e_C(P)$, for every $P$. If promotion of each component $T$ has order
+  dividing $|T|$, then each rotation class lies inside one promotion orbit;
+  without that hypothesis this can fail. Promotion orbits equal rotation
+  classes exactly when $P$ is a chain or an antichain.
+\item \emph{The Lie module does not see promotion.} Promotion descends to
+  $\PLie(P)$ exactly when $P$ is connected or an antichain.
+\item \emph{Cyclic sieving.} Promotion cyclic sieving is closed under
+  disjoint union. The new polynomial is the $q$-multinomial coefficient
+  of the component sizes times the product of the components' polynomials.
+  The proof uses a theorem of Reiner, Stanton and White
+  (cited).
+\item \emph{A canonical grading.} Let $R_P$ be the span of the lunes
+  inside $C_P$, so that $\mathbb C[\Lin P]/R_P\cong H_P\otimes\sgn$ by
+  Theorem~\ref{thm:G}. Then $\mathbb C[\Lin P]/R_P$ splits as
+  $\mathbb C\bigl[\prod_T\Lin T\bigr]\otimes Q$, where $Q$ is a shuffle
+  quotient that depends only on the sizes of the components; $\Aut(P)$ acts
+  diagonally.
+\end{itemize}
+None of these uses the homology $H_P$ or the Lie module in an essential
+way: they use only the combinatorics of cuts. Neither $H_P$ nor $\PLie(P)$
+carries a grading or a cyclic action that yields a $q$-analogue; we found
+none. By computer, the relations $R_P$ are homogeneous for descents or
+major index on none of the $108$ disconnected posets with $n\le6$ (one
+natural labelling each). Among the posets with $n\le7$ whose promotion
+has order dividing $n$, the major-index polynomial fails to be a cyclic
+sieving polynomial for $49$.%
+\footnote{\src{notes/linear_extensions.md}, Verdict table and \S3, as
+corrected by \src{notes/audit_linear_extensions.md}, F6--F7.}\COMPUTED
 
 \begin{question}
-The theory uses one cyclic action on words, rotation. Is there a link with
-other cyclic actions on linear extensions, such as promotion? This is not
-studied in the notes.
+The notes find no new way to count $|\Lin(P)|$, which is hard in general. Is
+there an application of the Lie theory to counting that does not reduce to
+the components?
 \end{question}
 
 \subsection{What the general theory buys over the poset theorem}
@@ -827,8 +900,8 @@ studied in the notes.
   Summary item 4.}
 \item \emph{The vanishing question.} The poset theorem alone does not
   suggest it. The cone theory answers ``nonzero on some cone'' exactly,
-  answers ``nonzero on this cone'' in type A, and reduces the rest to a
-  precise Crapo-type conjecture.
+  answers ``nonzero on this cone'' in type A, and offers a
+  precise Crapo-type conjecture for the rest.
 \end{itemize}
 
 \paragraph{What is still open.} The exact per-cone vanishing criterion
@@ -869,6 +942,8 @@ general arrangements; and the formalization below.
 \src{notes/fixed_point_formula.md} & characters on cones\\
 \src{notes/vanishing_criterion.md} & Formula Z, some-cone criterion, type A\\
 \src{notes/per_cone_vanishing.md} & per-cone vanishing, Crapo, Conjecture CR$_V$\\
+\src{notes/linear_extensions.md} & promotion, cyclic sieving, counting\\
+\src{notes/moonshine_scoping.md} & the moonshine scoping (not yet audited)\\
 \src{notes/prior_art_vanishing_criterion.md} & what was searched and found\\
 \src{notes/novelty_*.md} & the same, for the other results\\
 \src{notes/citation_check.md} & cited statements checked against sources\\
