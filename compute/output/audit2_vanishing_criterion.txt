@@ -1,0 +1,86 @@
+Second audit of notes/vanishing_criterion.md (exact arithmetic)
+
+Theorem A by set partitions, Z*(g) by linear algebra, mu by direct recursion:
+  n=3: 6 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 5
+    nonzero: +(3,), -(3,), -(2, 1), +(1, 1, 1), -(1, 1, 1)
+  n=4: 10 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 5
+    nonzero: +(2, 2), -(2, 2), -(2, 1, 1), +(1, 1, 1, 1), -(1, 1, 1, 1)
+  n=5: 14 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 6
+    nonzero: +(5,), -(5,), -(2, 2, 1), -(2, 1, 1, 1), +(1, 1, 1, 1, 1), -(1, 1, 1, 1, 1)
+  n=6: 22 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 10
+    nonzero: +(6,), -(6,), +(3, 3), -(3, 3), +(2, 2, 2), -(2, 2, 2), -(2, 2, 1, 1), -(2, 1, 1, 1, 1), +(1, 1, 1, 1, 1, 1), -(1, 1, 1, 1, 1, 1)
+  n=7: 30 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 7
+  n=8: 44 classes +-w, rule = S-criterion = free-action form on all; nonzero on some cone: 7
+  total classes: 126
+
+Coxeter controls and non-Coxeter probes (Z, S, top-lunes, mu=chi^full, S3, PC):
+  [A2] simplicial=True
+  A2: d=2, |A|=3, flats=5, faces=13, chambers=6, top-cones=19, orbits=5, |G|=12, |W|=6
+    pairs=14 (Z holds on all; chi!=0: 9; zero by Cor.V: 2; zero, no nonzero mu: 1; zero by cancellation: 2); sign-coherent pairs with PC(b) checked: 11; m_X terms: 13
+    classes=6: Theorem S holds on all; top-lunes checked: 11; mu=chi^full checked: 4; involution classes (S3): 3; vanishing on every cone: 1
+    reflection classes: 1 with mirror in A (S3 clause and PC(c) hold), 1 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False)]
+    Crapo on Z*(g) (summed over classes): X tested 6, mu = 0: 0, uncomplemented: 0, mu = 0 but all complemented (converse fails): 0
+  [A3] simplicial=True
+  A3: d=3, |A|=6, flats=15, faces=75, chambers=24, top-cones=219, orbits=16, |G|=48, |W|=24
+    pairs=49 (Z holds on all; chi!=0: 28; zero by Cor.V: 13; zero, no nonzero mu: 6; zero by cancellation: 2); sign-coherent pairs with PC(b) checked: 37; m_X terms: 40
+    classes=10: Theorem S holds on all; top-lunes checked: 41; mu=chi^full checked: 9; involution classes (S3): 5; vanishing on every cone: 5
+    reflection classes: 1 with mirror in A (S3 clause and PC(c) hold), 1 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False)]
+    Crapo on Z*(g) (summed over classes): X tested 11, mu = 0: 2, uncomplemented: 2, mu = 0 but all complemented (converse fails): 0
+  [B2] simplicial=True
+  B2: d=2, |A|=4, flats=6, faces=17, chambers=8, top-cones=33, orbits=7, |G|=8, |W|=8
+    pairs=15 (Z holds on all; chi!=0: 13; zero by Cor.V: 2; zero, no nonzero mu: 0; zero by cancellation: 0); sign-coherent pairs with PC(b) checked: 15; m_X terms: 13
+    classes=5: Theorem S holds on all; top-lunes checked: 14; mu=chi^full checked: 4; involution classes (S3): 3; vanishing on every cone: 0
+    reflection classes: 2 with mirror in A (S3 clause and PC(c) hold), 0 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = []
+    Crapo on Z*(g) (summed over classes): X tested 5, mu = 0: 0, uncomplemented: 0, mu = 0 but all complemented (converse fails): 0
+  [B3] simplicial=True
+  B3: d=3, |A|=9, flats=24, faces=147, chambers=48, top-cones=941, orbits=35, |G|=48, |W|=48
+    pairs=84 (Z holds on all; chi!=0: 55; zero by Cor.V: 27; zero, no nonzero mu: 2; zero by cancellation: 0); sign-coherent pairs with PC(b) checked: 78; m_X terms: 60
+    classes=10: Theorem S holds on all; top-lunes checked: 70; mu=chi^full checked: 10; involution classes (S3): 5; vanishing on every cone: 2
+    reflection classes: 2 with mirror in A (S3 clause and PC(c) hold), 0 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = []
+    Crapo on Z*(g) (summed over classes): X tested 11, mu = 0: 1, uncomplemented: 1, mu = 0 but all complemented (converse fails): 0
+  [generic 4 in R^3] simplicial=False
+  generic 4 in R^3: d=3, |A|=4, flats=12, faces=51, chambers=14, top-cones=71, orbits=7, |G|=48, |W|=48
+    pairs=31 (Z holds on all; chi!=0: 26; zero by Cor.V: 0; zero, no nonzero mu: 1; zero by cancellation: 4); sign-coherent pairs with PC(b) checked: 17; m_X terms: 40
+    classes=10: Theorem S holds on all; top-lunes checked: 34; mu=chi^full checked: 8; involution classes (S3): 5; vanishing on every cone: 1
+    reflection classes: 0 with mirror in A (S3 clause and PC(c) hold), 2 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False), (False, True, True)]
+    Crapo on Z*(g) (summed over classes): X tested 14, mu = 0: 1, uncomplemented: 1, mu = 0 but all complemented (converse fails): 0
+  [B3-minus-{z=0} (8 planes)] simplicial=True
+  B3-minus-{z=0} (8 planes): d=3, |A|=8, flats=21, faces=123, chambers=40, top-cones=635, orbits=59, |G|=16, |W|=16
+    pairs=119 (Z holds on all; chi!=0: 78; zero by Cor.V: 27; zero, no nonzero mu: 5; zero by cancellation: 9); sign-coherent pairs with PC(b) checked: 94; m_X terms: 101
+    classes=10: Theorem S holds on all; top-lunes checked: 61; mu=chi^full checked: 9; involution classes (S3): 7; vanishing on every cone: 4
+    reflection classes: 2 with mirror in A (S3 clause and PC(c) hold), 1 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False)]
+    Crapo on Z*(g) (summed over classes): X tested 11, mu = 0: 1, uncomplemented: 1, mu = 0 but all complemented (converse fails): 0
+  [A3 minus one plane] simplicial=False
+  A3 minus one plane: d=3, |A|=5, flats=13, faces=59, chambers=18, top-cones=121, orbits=24, |G|=8, |W|=8
+    pairs=53 (Z holds on all; chi!=0: 44; zero by Cor.V: 5; zero, no nonzero mu: 1; zero by cancellation: 3); sign-coherent pairs with PC(b) checked: 49; m_X terms: 56
+    classes=8: Theorem S holds on all; top-lunes checked: 41; mu=chi^full checked: 8; involution classes (S3): 7; vanishing on every cone: 1
+    reflection classes: 1 with mirror in A (S3 clause and PC(c) hold), 2 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(False, True, True), (False, True, True)]
+    Crapo on Z*(g) (summed over classes): X tested 12, mu = 0: 0, uncomplemented: 0, mu = 0 but all complemented (converse fails): 0
+  [hexagon 12 lines] simplicial=True
+  hexagon 12 lines: d=3, |A|=12, flats=36, faces=255, chambers=84, top-cones=3283, orbits=178, |G|=24, |W|=24
+    pairs=294 (Z holds on all; chi!=0: 207; zero by Cor.V: 68; zero, no nonzero mu: 7; zero by cancellation: 12); sign-coherent pairs with PC(b) checked: 247; m_X terms: 241
+    classes=12: Theorem S holds on all; top-lunes checked: 113; mu=chi^full checked: 12; involution classes (S3): 7; vanishing on every cone: 6
+    reflection classes: 2 with mirror in A (S3 clause and PC(c) hold), 1 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False)]
+    Crapo on Z*(g) (summed over classes): X tested 14, mu = 0: 2, uncomplemented: 2, mu = 0 but all complemented (converse fails): 0
+  [hexagon 13 lines (with z=0)] simplicial=True
+  hexagon 13 lines (with z=0): d=3, |A|=13, flats=40, faces=291, chambers=96, top-cones=4509, orbits=240, |G|=24, |W|=24
+    pairs=381 (Z holds on all; chi!=0: 280; zero by Cor.V: 101; zero, no nonzero mu: 0; zero by cancellation: 0); sign-coherent pairs with PC(b) checked: 360; m_X terms: 288
+    classes=12: Theorem S holds on all; top-lunes checked: 137; mu=chi^full checked: 15; involution classes (S3): 7; vanishing on every cone: 0
+    reflection classes: 3 with mirror in A (S3 clause and PC(c) hold), 0 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = []
+    Crapo on Z*(g) (summed over classes): X tested 16, mu = 0: 0, uncomplemented: 0, mu = 0 but all complemented (converse fails): 0
+  [A4] simplicial=True
+  A4: d=4, |A|=10, flats=52, faces=541, chambers=120, top-cones=4231, orbits=63, |G|=240, |W|=120
+    pairs=172 (Z holds on all; chi!=0: 75; zero by Cor.V: 72; zero, no nonzero mu: 15; zero by cancellation: 10); sign-coherent pairs with PC(b) checked: 151; m_X terms: 113
+    classes=14: Theorem S holds on all; top-lunes checked: 137; mu=chi^full checked: 13; involution classes (S3): 5; vanishing on every cone: 8
+    reflection classes: 1 with mirror in A (S3 clause and PC(c) hold), 0 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = []
+    Crapo on Z*(g) (summed over classes): X tested 15, mu = 0: 2, uncomplemented: 2, mu = 0 but all complemented (converse fails): 0
+  [generic 5 in R^4] simplicial=False
+  generic 5 in R^4: d=4, |A|=5, flats=27, faces=181, chambers=30, top-cones=231, orbits=10, |G|=240, |W|=240
+    pairs=60 (Z holds on all; chi!=0: 46; zero by Cor.V: 2; zero, no nonzero mu: 3; zero by cancellation: 9); sign-coherent pairs with PC(b) checked: 23; m_X terms: 78
+    classes=14: Theorem S holds on all; top-lunes checked: 68; mu=chi^full checked: 13; involution classes (S3): 5; vanishing on every cone: 2
+    reflection classes: 0 with mirror in A (S3 clause and PC(c) hold), 1 with mirror not in A: (line flat, nonzero on some cone, sign-coherent) = [(True, True, False)]
+    Crapo on Z*(g) (summed over classes): X tested 19, mu = 0: 0, uncomplemented: 0, mu = 0 but all complemented (converse fails): 0
+
+m_X(V) over all terms: all >= 1; max 35; terms with |V| cap U non-pointed: 285 (max m there 35)
+
+ALL CHECKS PASSED
