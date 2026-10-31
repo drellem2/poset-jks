@@ -52,7 +52,7 @@ Tags:
 | U | **Corollary U.** If c ∧ D ≠ 0̂, then c ∧ D has no complement in M. In row W−4, O \| Q has no complement in M. So every zero has the witness c ∧ D or O \| Q | **PROVEN** (§3). COMPUTED, n ≤ 8, 0 failures | A, B, [PACVA] §2.2 step |
 | X | **Exact form of the coatom predicate.** For g = −τ: c ∧ D ≠ 0̂ iff one of (TA1)–(TA3) fails | **PROVEN** (§3, Cor. X) | Z, A, Cor. 3.9.5, [PCV] TA |
 | W | The task's question: is the TA-CR witness W ≥ ⋀ coatoms, or ≤ ⋁ atoms? | **COMPUTED** (§4, n ≤ 8): W ≥ ⋀ coatoms on every zero of rows W+1, W−2, W−3, W−4, but not on 112 W−1 zeros and 1 W+2 zero. Not used in the proof, which goes through c instead (W ≤ c for rows W+1 to W−3) | — |
-| G | Side question: CC beyond type A | **COMPUTED** (§5). It fails on the rank-4 CR_V counterexample of [CRV] §0, as it must (that lattice is complemented with μ = 0). It holds on every zero of every rank-≤3 family tested (… see §5). Rank 4: see §5 | — |
+| G | Side question: CC beyond type A | **COMPUTED** (§5). It fails on the rank-4 CR_V counterexample of [CRV] §0, as it must (that lattice is complemented with μ = 0). It holds on all 1,120 zeros of the 12 rank-≤3 families. In rank 4 (7 families plus A4, 438 zeros), the only zeros without CC are the 36 complemented CR_V counterexamples. On all 141,393 pairs, a zero has CC iff it has an uncomplemented element | — |
 | Rk | Status changes for other notes (not applied here) | §6 | — |
 
 **In one line.** Every coatom of OP(P)^τ is coarser than comp(P) or than
@@ -379,7 +379,45 @@ odd points lie on cycles of length 9 > 3.
 
 ## 5. Side question: CC beyond type A (COMPUTED only)
 
-(FILL)
+[OCC] part [GEN] reuses the cone lattices Λ(V)^g of `compute/conjecture_cr_v.py`
+([CR]): every class representative g and every g-stable top-cone V of each
+family. It tests CC directly on the lattice (coatoms, atoms, meet and join
+from [CR]'s lattice routine). Controls: the 8-element complemented lattice
+with μ = 0 fails CC; a 4-element chain satisfies it; B_3 fails it. On every
+family, CC never holds on a nonzero pair. That is Cor. 3.9.5 on the data, a
+check of the code.
+
+| family | rank | pairs | zeros | zeros with CC | zeros without CC | of those, with an uncomplemented element |
+|---|---|---|---|---|---|---|
+| CR_V counterexample of [CRV] §0 (one pair of the C6 × C4 family below; not counted again in the total) | 4 | 1 | 1 | 0 | 1 | 0 |
+| A2, B2 | 2 | 75 | 10 | 10 | 0 | 0 |
+| A3, B3, generic 4, B3 minus {z=0}, A3 minus a plane, hexagon 12, hexagon 13, R^3 C6 × ⟨z↦−z⟩, R^3 D4 × ⟨z↦−z⟩, R^3 D6 | 3 | 17,884 | 1,110 | 1,110 | 0 | 0 |
+| A4 (type A, all cones) | 4 | 4,634 | 342 | 342 | 0 | 0 |
+| generic 5 in R^4; R^4 C5 × −1, C8, C3 × C3 × −1, C4 × −1, C12 | 4 | 45,684 | 30 | 30 | 0 | 0 |
+| R^4 C6 × C4 (the family of the counterexample) | 4 | 38,400 | 60 | 24 | 36 | 0 |
+| R^4 (C6 × C6) and the swap | 4 | 34,716 | 6 | 6 | 0 | 0 |
+| total | | 141,393 | 1,558 | 1,522 | 36 | 0 |
+
+(The five rank-4 families C5 × −1, C8, C3 × C3 × −1, C4 × −1 and C12 have
+no zeros, so they say nothing about CC beyond the code check.)
+
+Findings:
+- **The rank-4 counterexample.** CC fails there (LOW and HIGH both false),
+  as it must: the lattice is complemented with μ = 0, and CC would force an
+  uncomplemented element (Cor. U's step).
+- **Rank ≤ 3.** CC holds on all 1,120 zeros of the 12 rank-2 and rank-3 families. Since CR_V is
+  a theorem in rank ≤ 3 ([CRV] Theorem 3), this is consistent with "CC iff
+  CR_V obstruction" in rank ≤ 3. Whether CC holds on every rank-3 pair is
+  OPEN: it is COMPUTED here, not proven.
+- **Rank 4.** The only zeros without CC are the 36 CR_V counterexample pairs
+  of [CRV] §5, which are complemented. On every computed family, the zeros
+  with CC are exactly the zeros with an uncomplemented element (1,522 =
+  1,522). So in these data, CC is as strong as "uncomplemented element" on
+  cone lattices. Rival's example (EC1 Ex. 3.28) shows the two differ for
+  abstract lattices. No cone lattice with an uncomplemented element and no
+  CC was found.
+- **Not run here (UNRUN):** the rank-4 families "A4 minus one/two
+  hyperplanes" and "D4 with W(B4)" of [CR], and every rank ≥ 5 family.
 
 ## 6. Status changes for other notes (reported, not applied)
 
@@ -402,6 +440,9 @@ odd points lie on cycles of length 9 > 3.
   Lemma F. Lemma CK uses the partition structure of [κ, 1̂], and so does the
   arithmetic of Z±. For B_n and D_n, CC is OPEN. §5 records where it does
   and does not hold among the families computed.
+- **Is "CC iff uncomplemented element" true for all cone lattices?** It holds
+  on all 141,393 pairs of §5, and in type A it follows from Theorem CC and
+  TA-CR. OPEN in general. Even in rank 3 it is only COMPUTED.
 - **A zero-criterion-free proof.** Theorem CC still cites the nonvanishing
   halves of [Thm] and [PCV] TA. Corollary X shows that, for +w, the
   predicate c ∧ D ≠ 0̂ is exactly the zero set. A direct proof that
@@ -414,7 +455,7 @@ From `compute/` (plain Python 3, no third-party packages; `--jobs` sets the
 number of worker processes, the default is 1):
 
     python3 observation_cc.py --nmax 8 --budget 5400 --jobs 2 --no-gen > output/observation_cc.txt   # 29 min with 2 workers, ends "ALL CHECKS PASSED", exit 0
-    python3 observation_cc.py --nmax 3 --gen-r4 > output/observation_cc_gen_r4.txt                    # (FILL), side question incl. rank 4
+    python3 observation_cc.py --nmax 3 --gen-r4 > output/observation_cc_gen_r4.txt                    # 37 min, side question incl. rank 4
     python3 observation_cc.py --nmax 7 --no-gen                                                       # ~1 min, single process
     python3 -m unittest test_observation_cc                                                           # < 1 s
 

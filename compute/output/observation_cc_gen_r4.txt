@@ -1,0 +1,37 @@
+observation_cc.py: n = 3..3, budget 3000s, jobs 1; posets [1, 1, 2, 5]
+[CTL] controls
+  Pi_4^(1, 2, 3, 0): |M| = 3, mu = 0, CC = True  ok
+  Pi_4^(0, 1, 2, 3): |M| = 15, mu = -6, CC = False  ok
+  injected fault (c := 0 in Prop. A's predicate), n <= 5: ZL fails on 112 zeros (must be > 0)  ok
+[TA] Observation CC and its proof steps on every pair (P, +-t), up to isomorphism
+  n=3: posets 5/5; pairs 14, zeros 5; CC mismatches 0; CD fails 0, CK fails 0, A fails 0, ZL fails 0, W4 fails 0; sides low-only 0, high-only 0, both 5; c^D != 0 on 3 pairs (0 of them W-4)  [0.0s]
+         zeros by (row, LOW, HIGH): {('W+1', True, True): 3, ('W-4', True, True): 2}
+  total: {'pairs': 14, 'zeros': 5, 'cc_mismatch': 0, 'cd_fail': 0, 'ck_fail': 0, 'a_fail': 0, 'zl_fail': 0, 'w4_fail': 0, 'low_only': 0, 'high_only': 0, 'both': 5, 'pred_true': 3, 'pred_zero_W4': 0}
+  zeros by (row, LOW, HIGH), all n: {('W+1', True, True): 3, ('W-4', True, True): 2}
+[GEN] CC beyond type A (cone lattices Lambda(V)^g of conjecture_cr_v.py; COMPUTED only)
+  controls: 8-element complemented lattice mu = 0, CC = False (ok); 4-chain CC = True (ok); B_3 CC = False (ok)
+  CR_V counterexample: |Lambda(V)^g| = 9, mu = 0, uncomplemented 0, LOW = False, HIGH = False: CC fails on a zero (expected)  ok
+  A2 (d = 2, 3 hyperplanes): pairs 30, zeros 6, CC 6, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.0s]
+  A3 (d = 3, 6 hyperplanes): pairs 300, zeros 34, CC 34, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.2s]
+  B2 (d = 2, 4 hyperplanes): pairs 45, zeros 4, CC 4, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.0s]
+  B3 (d = 3, 9 hyperplanes): pairs 1106, zeros 108, CC 108, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [1.2s]
+  generic 4 in R^3 (d = 3, 4 hyperplanes): pairs 122, zeros 10, CC 10, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.1s]
+  B3 minus {z=0} (d = 3, 8 hyperplanes): pairs 832, zeros 124, CC 124, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.7s]
+  A3 minus a plane (d = 3, 5 hyperplanes): pairs 192, zeros 20, CC 20, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.1s]
+  hexagon 12 (d = 3, 12 hyperplanes): pairs 3780, zeros 308, CC 308, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [7.2s]
+  hexagon 13 (d = 3, 13 hyperplanes): pairs 5096, zeros 446, CC 446, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [11.2s]
+  R^3 C6 x <z->-z> (d = 3, 6 hyperplanes): pairs 396, zeros 6, CC 6, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.4s]
+  R^3 D4 x <z->-z> (d = 3, 12 hyperplanes): pairs 5634, zeros 46, CC 46, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [14.0s]
+  R^3 D6 (d = 3, 6 hyperplanes): pairs 426, zeros 8, CC 8, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.3s]
+  A4 (d = 4, 10 hyperplanes): pairs 4634, zeros 342, CC 342, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [22.1s]
+  generic 5 in R^4 (d = 4, 5 hyperplanes): pairs 382, zeros 30, CC 30, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [1.0s]
+  R^4 C5 (companion of Phi_5) x -1 (d = 4, 5 hyperplanes): pairs 240, zeros 0, CC 0, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [0.4s]
+  R^4 C8 (companion of Phi_8) (d = 4, 8 hyperplanes): pairs 3360, zeros 0, CC 0, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [19.0s]
+  R^4 C3 x C3 x -1 (d = 4, 9 hyperplanes): pairs 2898, zeros 0, CC 0, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [13.8s]
+  R^4 C4 (cyclic coordinates) x -1 (d = 4, 8 hyperplanes): pairs 3464, zeros 0, CC 0, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [18.8s]
+  R^4 C12 (companion of Phi_12) (d = 4, 12 hyperplanes): pairs 35340, zeros 0, CC 0, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [657.3s]
+  R^4 C6 x C4 (d = 4, 12 hyperplanes): pairs 38400, zeros 60, CC 24, CC with mu != 0 0, zeros without CC 36 (of which with an uncomplemented element 0), complemented zeros 36  [842.6s]
+  R^4 (C6 x C6) and the swap (d = 4, 12 hyperplanes): pairs 34716, zeros 6, CC 6, CC with mu != 0 0, zeros without CC 0 (of which with an uncomplemented element 0), complemented zeros 0  [612.6s]
+  total: {'pairs': 141393, 'zeros': 1558, 'cc': 1522, 'zeros_not_cc': 36, 'cc_nonzero': 0, 'unc_zero': 1522, 'zeros_not_cc_unc': 0, 'zeros_compl': 36}
+total 2223.4s
+ALL CHECKS PASSED
