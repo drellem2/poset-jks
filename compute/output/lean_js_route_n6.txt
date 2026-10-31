@@ -1,0 +1,14 @@
+posets per n: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318}
+total posets checked: 405; (P, a minimal) pairs: 915
+[M] holds on 405/405
+[Pz] holds on 405/405
+[inv] holds on 405/405
+[N] holds on 405/405
+[Qac] holds on 405/405
+[rel] holds on 405/405
+[JS] holds on 405/405
+control C1 fails (as it must) on 402 posets
+control C2 fails (as it must) on 79 posets
+control C3 fails (as it must) on 402 posets
+control C4 fails (as it must) on 397 posets
+ALL CHECKS PASS
