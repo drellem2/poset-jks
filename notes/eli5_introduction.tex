@@ -39,6 +39,8 @@
 \newcommand{\CONJ}{\tagbox{CONJEC-\\TURED}}
 \newcommand{\OPEN}{\tagbox{OPEN}}
 \newcommand{\PARTIAL}{\tagbox{PROVEN\\NOT AUDITED}}
+\newcommand{\KNOWN}{\tagbox{KNOWN\\(INSTANCE)}}
+\newcommand{\PENDING}{\tagbox{CLAIMED\\AUDIT\\PENDING}}
 
 \title{Lie theory for posets and cones:\\ a gentle introduction}
 \author{}
@@ -56,7 +58,9 @@ finite posets and then to cones of real hyperplane arrangements and of
 oriented matroids. It describes the fixed-point formula for the characters
 that appear, says what is known about when those characters vanish, compares
 the picture with six neighbouring theories, and says what the
-generalization does and does not buy. It is a summary. The proofs are in
+generalization does and does not buy, including what it says about
+promotion and cyclic sieving on linear extensions. The poset theorem is
+now fully formalized in Lean. It is a summary. The proofs are in
 the notes files named in the footnotes.
 \end{abstract}
 
@@ -73,6 +77,10 @@ notes file (and section) it comes from. The boxes mean:
 \item \textsf{PROVEN / NOT AUDITED}: the source note gives a proof, but no
   independent audit has checked it yet.
 \item \textsf{CLASSICAL (CITED)}: a published result, stated as background.
+\item \textsf{KNOWN (INSTANCE)}: true and audited here, but it is a special
+  case of a published theorem; the footnote names it.
+\item \textsf{CLAIMED / AUDIT PENDING}: a note claims it, and an independent
+  audit is in progress. It is not stated as a theorem.
 \item \textsf{COMPUTED}: checked by computer on the cases listed, not proved.
 \item \textsf{CONJECTURED} and \textsf{OPEN}: what they say.
 \end{itemize}
@@ -248,7 +256,8 @@ components, that $g$ permutes cyclically ($B_0(x)$ is any block).%
 independent proofs, both audited in
 \src{notes/audit_character_identity_proof.md} (``proof holds''). The proof
 uses Jen\v{c}a--Sarkoci, P.~Hall's theorem and the Hopf trace formula, all
-cited. The isomorphism is abstract (equal characters); an explicit
+cited; all three, and the theorem itself, are now proved in Lean
+(\S\ref{sec:lean}). The isomorphism is abstract (equal characters); an explicit
 choice-free isomorphism is in \S6 of the same file.}
 \end{theorem}
 
@@ -616,18 +625,28 @@ table, rows Lemma Pal. The exact ``iff'' form was not found stated.}
   Coxeter examples, cancellation is common.\footnote{Rows PC$'$ and PC$''$ of
   \src{notes/vanishing_criterion.md}, and rows B, D, H, F of
   \src{notes/per_cone_vanishing.md}.}
-\item \CONJ The Crapo-type converse. By Crapo's complementation theorem, if the
+\item \CONJ The Crapo-type converse on all chambers. By Crapo's
+  complementation theorem, if the
   interval $[0,X]$ of the fixed lattice has an element with no complement,
   then $\mu(0,X)=0$. On all chambers, the converse held for all 191 flats
   $X\in Z^*(g)$ tested.%
-  \footnote{\src{notes/vanishing_criterion.md}, row CR.} On cones, the
-  conjecture is: $\chi_V(g)=0$ if and only if $\Lambda(V)^g$ has an element
-  with no complement. No counterexample was found on $18{,}750$ pairs
-  $(V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row CR$_V$ and \S4.
-  A search found no statement of the conjecture. The converse is false for
-  general finite lattices, and it is known for finite modular lattices
-  (Knop), a class that does not contain the lattices $\Lambda(V)^g$ in
-  general (\src{notes/prior_art_per_cone_vanishing.md}, Verdict table).}
+  \footnote{\src{notes/vanishing_criterion.md}, row CR.}
+\item \PENDING The Crapo-type converse on cones (Conjecture CR$_V$):
+  $\chi_V(g)=0$ if and only if $\Lambda(V)^g$ has an element
+  with no complement. No counterexample was found on the first $18{,}750$
+  pairs $(V,g)$ tested.\footnote{\src{notes/per_cone_vanishing.md}, row
+  CR$_V$ and \S4. A search found no statement of the conjecture. The
+  converse is false for general finite lattices, and it is known for finite
+  modular lattices (Knop), a class that does not contain the lattices
+  $\Lambda(V)^g$ in general (\src{notes/prior_art_per_cone_vanishing.md},
+  Verdict table).} A later note \emph{claims} that the conjecture is false
+  in rank~$4$ (a $12$-hyperplane arrangement in $\mathbb R^4$ where a
+  cancellation $1-1=0$ in Formula~Z sits on a $9$-element lattice in which
+  every element has a complement) and true in rank at most~$3$ and for
+  pointed cones. That note has not been independently audited; an audit is
+  in progress, so none of this is stated here as a theorem.\footnote{%
+  \src{notes/conjecture_cr_v.md}, Verdict table; the note marks its own
+  proofs as not yet independently audited.}
 \item \PROVEN In type A, whether $\chi_V(g)=0$ depends only on
   $(\lin V,g)$.\footnote{\src{notes/per_cone_vanishing.md}, row TA-L
   (Cor.~3.5); audited in \src{notes/audit_per_cone_vanishing.md}.}
@@ -800,9 +819,8 @@ descend to it).\footnote{\src{notes/poset_jks_theorem.tex}, \S6,
 Theorem~6.8, and \S9, items 1--2.}
 
 A first scoping search for such a grading has been
-made.\footnote{\src{notes/moonshine_scoping.md}, Verdict table and \S4. The
-note says itself that its proofs have not been independently audited.}%
-\PARTIAL{} It tested four candidates: the global module $V_n$ graded by
+made.\footnote{\src{notes/moonshine_scoping.md}, Verdict table and \S4.} It
+tested four candidates: the global module $V_n$ graded by
 $n$, $g$-fixed $P$-partitions of a finite poset, $P$-partitions of some
 infinite posets, and a Fock space built on $\PLie(P)$. The only modularity
 it found comes from Frame shapes (eta products), which arise from the
@@ -810,9 +828,29 @@ character of any rational representation of any finite group, so they say
 nothing specific about posets. The poset-specific series either grow too
 fast to converge anywhere ($V_n$) or are rational functions of $q$, and the
 note proves that neither kind can be modular. Restricting to the alternating
-group changes nothing. Its recommendation is to stop this line. Those
-proofs have \emph{not yet been independently audited}, so the
-recommendation is provisional.
+group changes nothing. Its recommendation is to stop this line.
+
+An independent audit re-derived those proofs and found no error that
+reverses a verdict, but it confirmed the stop only on a \emph{narrower
+space} than the note claimed.\footnote{\src{notes/audit_moonshine_scoping.md},
+Verdict and \S1: ``stop holds on a narrower space''.}\PROVEN{} That space is
+exact modular transformation laws for graded traces built from the free poset
+Hopf monoid and its sub-Hopf monoids, from finite objects attached to a single
+poset together with the Fock spaces of $\PLie(P)$, and from $P$-partitions of
+three specific infinite posets. Three things were left open: mock modularity
+of the rational series, unlabelled series of certain component-closed classes
+of posets, and other infinite posets. The note's broader claim, that every
+natural grading falls into one of its cases, was not established.
+
+A follow-up note takes up those three open items and claims that the stop
+still holds: every natural class it tests is excluded, mock modularity is
+excluded for cuspidal shadows, and the one escape left is a multi-cusp case
+for $\mathbb N^k$ ($k\ge3$) that no moonshine formulation needs. That note
+has \emph{not} been independently audited.\footnote{%
+\src{notes/moonshine_residual.md}, Verdict table.}\PARTIAL{} So the honest
+summary is: the stop is audited on a stated space of candidates; outside that
+space it rests on unaudited arguments; and nothing found so far points to a
+poset-specific modular object.
 
 \subsection{A second measure: counting and structure of linear extensions}
 
@@ -870,7 +908,8 @@ the components of $P$ and $e(T)=|\Lin(T)|$.
 None of these uses the homology $H_P$ or the Lie module in an essential
 way: they use only the combinatorics of cuts. Neither $H_P$ nor $\PLie(P)$
 carries a grading or a cyclic action that yields a $q$-analogue; we found
-none. By computer, the relations $R_P$ are homogeneous for descents or
+none (promotion does act on $H_P\otimes\sgn$ in the two-chain case of
+Theorem~\ref{thm:promRP} below, but that gives no new $q$-analogue). By computer, the relations $R_P$ are homogeneous for descents or
 major index on none of the $108$ disconnected posets with $n\le6$ (one
 natural labelling each). Among the posets with $n\le7$ whose promotion
 has order dividing $n$, the major-index polynomial fails to be a cyclic
@@ -883,6 +922,119 @@ The notes find no new way to count $|\Lin(P)|$, which is hard in general. Is
 there an application of the Lie theory to counting that does not reduce to
 the components?
 \end{question}
+
+\paragraph{When does promotion act on the homology model?} The
+\emph{Lie module} bullet above says when promotion descends to $\PLie(P)$.
+The same question for the other model, $\mathbb C[\Lin P]/R_P$, is now
+settled.
+
+\begin{theorem}[promotion on $R_P$]\label{thm:promRP}\PROVEN
+Let $P$ be a disconnected finite poset. Then promotion maps $R_P$ into
+itself, and so acts on $\mathbb C[\Lin P]/R_P$, if and only if $P$ has
+exactly two connected components and both are chains.\footnote{%
+\src{notes/promotion_on_R_P.md}, \S2, Theorem~1. The ``if'' direction is
+in \src{notes/linear_extensions.md}, \S2. Audited in
+\src{notes/audit_promotion_on_R_P.md}: ``holds with fixes''; the fixes are
+about precision and wording, change no result, and have been applied to the
+source note. Also checked by computer on every disconnected poset with
+$n\le8$: $16$ of $2990$ have the property, exactly the two-chain ones. Not
+found in a brief search (four web searches, recorded in the audit, \S6).}
+\end{theorem}
+
+For the two-chain poset $C_a\sqcup C_b$ the reason is simple: $R_P$ is the
+line spanned by the sum of all linear extensions, and promotion only
+permutes them. For every other disconnected poset the note writes down one
+explicit generator $r$ of $R_P$ and one explicit Lie element that pairs to
+$1$ with (a graded piece of) the promoted vector but to $0$ with all of
+$R_P$; that certifies that promotion leaves $R_P$.
+
+Put together with the Lie-module bullet: for connected $P$ promotion acts
+on both models. For disconnected $P$ it acts on $\PLie(P)$ exactly when $P$
+is an antichain, and on $\mathbb C[\Lin P]/R_P$ exactly when $P$ is two
+chains. For $n\ge3$ the second model is $H_P\otimes\sgn$; the only poset in
+both families is $C_1\sqcup C_1$, where $n=2$ and that identification is
+not available.\footnote{\src{notes/promotion_on_R_P.md}, Verdict table,
+with \src{notes/linear_extensions.md}, Prop.~D.}
+
+\subsection{Cyclic sieving on rotation classes}
+
+Rotation and symmetry also meet in a second way. Write $\mathrm{Cyc}(P)$
+for the set of rotation classes of words that contain a linear extension,
+so $|\mathrm{Cyc}(P)|=e_C(P)$. Group the components of $P$ into isomorphism
+types, type $T_i$ occurring $k_i$ times. Permuting the copies of each type
+gives a group $W=\prod_iS_{k_i}$ of automorphisms of $P$, and it permutes
+$\mathrm{Cyc}(P)$. A polynomial $X(q)$ \emph{cyclically sieves} an element
+$g$ if, for every $j$, evaluating $X$ at the $j$th power of a primitive
+$o(g)$th root of unity gives the number of classes fixed by $g^j$. At $q=1$
+this is the count $X(1)=e_C(P)$.
+
+The natural candidate is the \emph{fake-degree polynomial} $X_P(q)$ of
+$\mathrm{Cyc}(P)$ as a $W$-set. It has nonnegative integer coefficients
+and $X_P(1)=e_C(P)$.\footnote{\src{notes/cyclic_sieving_cyc.md}, \S3,
+Theorem~A; audited in \src{notes/audit_cyclic_sieving_cyc.md} (``holds with
+fixes''; the fixes concern counting of the evidence, citations and wording,
+and change no theorem). Theorem~A is standard
+(\src{notes/prior_art_cyclic_sieving_cyc.md}, Verdict table).}\KNOWN
+
+\begin{theorem}[a known phenomenon that shows up here]\KNOWN
+Let $P=T^{\sqcup k}$ be $k$ copies of a connected poset $T$, and let
+$\sigma$ rotate the copies. Then $X_P$ cyclically sieves $\sigma$. More
+generally $X_P$ cyclically sieves every Springer-regular element of $W$.%
+\footnote{\src{notes/cyclic_sieving_cyc.md}, Verdict table and
+Corollary~T; audited in \src{notes/audit_cyclic_sieving_cyc.md}. This is an
+instance of a published theorem, not a new one: Westbury (2016), Cor.~2.6,
+for the rotation, and Reiner--Stanton--White, Thm.~8.2 (or Sagan's survey,
+Thm.~8.2) for regular elements, applied orbit by orbit
+(\src{notes/prior_art_cyclic_sieving_cyc.md}, Verdict table and \S1; the
+theorem number was checked in the published paper).}
+\end{theorem}
+
+What is particular to posets is what comes next. None of it was found in the
+literature searched, which is a search result and not a proof of
+novelty.\footnote{\src{notes/prior_art_cyclic_sieving_cyc.md}, Verdict
+table and ``Bottom line''. The note lists, as the most likely place for
+prior art, eigenspace theory for reflection groups (Lehrer--Springer), which
+was not read.}
+\begin{itemize}
+\item \PROVEN \emph{A closed form.} For $P=T^{\sqcup k}$, with
+  $c_j=e_C(T^{\sqcup j})$ and $\varphi$ Euler's function,
+  \[
+  X_P(q)=\sum_{d\mid k}\frac{\varphi(d)}{d}\cdot\frac{c_{k/d}}{(k/d)!}\cdot
+  \frac{(q;q)_k}{(1-q^d)^{k/d}}.
+  \]
+  For $k=2$ it reads $X_P=\bigl((c_2+c_1)+(c_2-c_1)q\bigr)/2$.%
+  \footnote{\src{notes/cyclic_sieving_cyc.md}, \S3, formula~($\star$);
+  audited (re-derived, and all $23$ posets $T^{\sqcup k}$ with $n\le8$
+  reproduced).}
+\item \PROVEN \emph{Which elements of $W$ (Theorem~C).} For $g\in W$ of
+  order $N$, consider: (a) every divisor $e>1$ of $N$ is at most $\max k_i$;
+  (b) if such an $e$ divides every $k_i$, then $g^{N/e}$ moves the copies in
+  cycles all of length $e$. If (a) and (b) hold, $X_P$ sieves $g$. If (b)
+  fails, it does not. If (a) fails and $\gcd(k_i)=1$, it does not.
+  Whether (a) is necessary when $\gcd(k_i)>1$ is \textsf{open}; the
+  criterion matched the computation on all $206$ classes tested, but (a) was
+  the only failing clause in just $6$ of them.\footnote{%
+  \src{notes/cyclic_sieving_cyc.md}, \S3, Theorem~C and Prop.~3; audited in
+  \src{notes/audit_cyclic_sieving_cyc.md}, \S\S2--3 (which also supplied
+  the $\gcd(k_i)=1$ case and corrected the count of tested classes). For
+  elements all of whose powers are regular, Theorem~C is the known
+  phenomenon above; the part beyond regular elements is what was not
+  found.}
+\item \PROVEN \emph{No single polynomial for all symmetries.} For the
+  four-point antichain $A_4$, a transposition fixes no class and a double
+  transposition fixes two, though both have order~$2$. A polynomial has
+  one value at $q=-1$, so no single $X$ serves every cyclic subgroup of
+  $\Aut(A_4)$. No poset with $n\le3$ is such an obstruction, and $A_4$ is
+  the only one with $n=4$.\footnote{\src{notes/cyclic_sieving_cyc.md},
+  Verdict table, Prop.~O$'$; audited (by hand, and every poset with
+  $n\le6$).}
+\end{itemize}
+Other natural candidates (major index or inversions on representatives, a
+$q$-version of the component formula for $e_C$) all fail to sieve.\footnote{%
+\src{notes/cyclic_sieving_cyc.md}, Verdict table, last row; reproduced in the
+audit, with a remark that two of the counts depend on the labelling.}%
+\COMPUTED
+
 
 \subsection{What the general theory buys over the poset theorem}
 
@@ -901,34 +1053,58 @@ the components?
 \item \emph{The vanishing question.} The poset theorem alone does not
   suggest it. The cone theory answers ``nonzero on some cone'' exactly,
   answers ``nonzero on this cone'' in type A, and offers a
-  precise Crapo-type conjecture for the rest.
+  precise Crapo-type conjecture for the rest (on cones that conjecture is
+  claimed to fail in rank~$4$; audit pending).
 \end{itemize}
 
 \paragraph{What is still open.} The exact per-cone vanishing criterion
-outside type A; the Crapo-type converses (conjectured); a canonical bracket
-or cooperad on the $e_\zeta$ model; a version of the Hopf-monoid picture for
-general arrangements; and the formalization below.
+outside type A; the Crapo-type converse on all chambers (conjectured) and
+the fate of the converse on cones (a refutation is claimed, audit pending);
+a canonical bracket or cooperad on the $e_\zeta$ model; a version of the
+Hopf-monoid picture for general arrangements; necessity of clause (a) in the
+cyclic sieving criterion; and a Lean formalization of anything beyond the
+poset theorem.
 
-\section{Status of the Lean formalization}
+\section{Status of the Lean formalization}\label{sec:lean}
 
+\emph{What ``formalized'' means.} Lean is a proof assistant: a program that
+accepts a definition or a proof only if every step follows, by its own small
+set of logical rules, from earlier steps. ``The poset theorem is formalized''
+means that its statement has been written out in Lean, using the Mathlib
+library, and a complete proof has been checked by the computer, down to the
+axioms. A proof can cheat in two ways: by leaving a hole marked
+\texttt{sorry}, or by assuming an extra axiom. So the check is that the
+build succeeds, that no \texttt{sorry} remains, and that Lean's own
+\texttt{\#print axioms} lists only the three standard axioms of Lean's
+logic. What the computer cannot check is whether the Lean statements say the
+same thing as the mathematics; that was reviewed separately, by comparing
+every definition and statement with the paper.
+
+\medskip
 \noindent\fbox{\parbox{0.96\linewidth}{\textbf{Lean status, as of 31 October
-2026} (from \src{lean/PLAN.md}, \S4.3). Lean~4 with Mathlib.
+2026} (from \src{lean/PLAN.md} and \src{notes/lean_verification.md}). Lean~4
+with Mathlib.
 \begin{itemize}
-\item \textbf{Sorry count: 1}, in \src{MainTheorem.lean}. It is
-  \texttt{jencaSarkoci\_homology}, the Jen\v{c}a--Sarkoci theorem (a cited
-  input), which is \emph{not yet formalized}.
-\item \textbf{Proved without sorry}: the character identity of
-  Theorem~\ref{thm:posetjks} and its closed formula, by a homology-free
-  route (they use only the standard axioms); the Lie-side trace; P.~Hall's
-  theorem; the Hopf trace formula; the trace of $g$ on $H_P$ from the
-  vanishing part of Jen\v{c}a--Sarkoci; ``equal characters imply
-  isomorphic''; and Theorems S(a), S(b), $\Psi$ and Cor.~$\Psi$.1 (the
-  explicit isomorphism $\PLie(P)\cong\mathbb C[\Lin P]/R_P$).
-\item The isomorphism $H_P\cong\sgn\otimes\PLie(P)$
-  (\texttt{main\_iso}) is proved from \texttt{jencaSarkoci\_homology}; it
-  uses no other unproved statement.
-\item The cone, oriented-matroid, fixed-point and vanishing theory is not
-  formalized.
+\item \textbf{Complete: no \texttt{sorry} remains.} Every stated theorem is
+  proved: the character identity of Theorem~\ref{thm:posetjks} and its
+  closed formula, and the isomorphism $H_P\cong\sgn\otimes\PLie(P)$
+  (\texttt{main\_iso}). The three inputs that the paper cites are proved
+  too: the Jen\v{c}a--Sarkoci theorem in its homological form, P.~Hall's
+  theorem, and the Hopf trace formula. So are Theorems S(a), S(b), $\Psi$
+  and Cor.~$\Psi$.1, the explicit isomorphism
+  $\PLie(P)\cong\mathbb C[\Lin P]/R_P$.
+\item \textbf{Standard axioms only.} Every result listed by
+  \texttt{\#print axioms} depends only on \texttt{propext},
+  \texttt{Classical.choice} and \texttt{Quot.sound}.
+\item \textbf{Independently confirmed.} A fresh clone of the repository was
+  built from scratch: the build succeeded, with no \texttt{sorry} and only
+  the standard axioms, and the statements are the ones the faithfulness
+  review checked, with one intended change (a hypothesis $n>0$ added to three
+  statements that were false for $n=0$, as the review proposed). Positive
+  controls (a deliberately planted \texttt{sorry}) were detected. Verdict:
+  \textsf{CONFIRMED}.
+\item The cone, oriented-matroid, fixed-point, vanishing, promotion and
+  cyclic sieving results are \emph{not} formalized.
 \end{itemize}}}
 
 \section*{Where to read more}
@@ -942,12 +1118,17 @@ general arrangements; and the formalization below.
 \src{notes/fixed_point_formula.md} & characters on cones\\
 \src{notes/vanishing_criterion.md} & Formula Z, some-cone criterion, type A\\
 \src{notes/per_cone_vanishing.md} & per-cone vanishing, Crapo, Conjecture CR$_V$\\
+\src{notes/conjecture_cr_v.md} & claimed refutation of CR$_V$ (audit pending)\\
 \src{notes/linear_extensions.md} & promotion, cyclic sieving, counting\\
-\src{notes/moonshine_scoping.md} & the moonshine scoping (not yet audited)\\
+\src{notes/promotion_on_R_P.md} & when promotion acts on $\mathbb C[\Lin P]/R_P$\\
+\src{notes/cyclic_sieving_cyc.md} & cyclic sieving on rotation classes\\
+\src{notes/moonshine_scoping.md} & the moonshine scoping (audited, narrower space)\\
+\src{notes/moonshine_residual.md} & the residual moonshine items (not yet audited)\\
 \src{notes/prior_art_vanishing_criterion.md} & what was searched and found\\
 \src{notes/novelty_*.md} & the same, for the other results\\
 \src{notes/citation_check.md} & cited statements checked against sources\\
-\src{lean/PLAN.md} & the formalization
+\src{lean/PLAN.md} & the formalization\\
+\src{notes/lean_verification.md} & its clean-checkout verification
 \end{tabular}
 \end{center}
 
