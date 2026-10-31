@@ -1,0 +1,22 @@
+[ctl-rank] crown+point: beta over Q = {0: 1, 1: 1} (expected {0: 1, 1: 1})
+[ctl-rank] S2+S1: beta over Q = {0: 1, 1: 1, 2: 1} (expected {0: 1, 1: 1, 2: 1})
+[ctl-rank] RP2: beta over Q = {} (expected {})
+[ctl-rank] RP2: beta mod 2 = {1: 1, 2: 1} (expected {1: 1, 2: 1})
+[gen] posets n = 1..6: [1, 2, 5, 16, 63, 318]
+[JS] holds on 405/405
+[M] holds on 405/405
+[Pz] holds on 405/405
+[K] holds on 405/405
+[Qac] holds on 405/405
+[U] holds on 405/405
+[rel] holds on 405/405
+pairs (P, a minimal), n >= 3: 911
+chains checked in [K]: 2474956
+[ctl_sign] fires on 402 posets
+[ctl_Q] fires on 402 posets
+[ctl_tau] fires on 381 posets
+n = 3: 5 posets, top Betti numbers [1, 2], top chain degree 0
+n = 4: 16 posets, top Betti numbers [1, 2, 3, 4, 5, 6], top chain degree 1
+n = 5: 63 posets, top Betti numbers [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14, 16, 18, 20, 24], top chain degree 2
+n = 6: 318 posets, top Betti numbers [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 32, 33, 35, 36, 37, 38, 40, 42, 44, 45, 48, 52, 54, 55, 56, 57, 60, 61, 64, 66, 70, 74, 76, 80, 84, 90, 100, 120], top chain degree 3
+ALL CHECKS PASS
