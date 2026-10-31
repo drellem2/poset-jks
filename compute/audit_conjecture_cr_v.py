@@ -18,15 +18,20 @@ Methods (chosen to differ from compute/conjecture_cr_v.py where possible):
 Usage:
     python3 audit_conjecture_cr_v.py            # everything (about 10-20 min)
     python3 audit_conjecture_cr_v.py --quick    # controls + counterexample
+    python3 audit_conjecture_cr_v.py --r3       # rank <= 3 sweep (~6 min)
+    python3 audit_conjecture_cr_v.py --r4       # rank 4
+    python3 audit_conjecture_cr_v.py --r3-random K   # random family K of random_rank3(7, 14), with progress
 """
 
 import sys
 import itertools
 import random
+import time
 from fractions import Fraction
 from math import gcd
 
 F = Fraction
+PROGRESS_SECONDS = 120
 
 
 # ---------------------------------------------------------------- linear algebra
@@ -433,6 +438,9 @@ class Pair:
         return all(s * dot(A.normals[e], x) >= 0 for e, s in self.smax.items())
 
 
+_RESTRICTION_CACHE = {}
+
+
 def restricted_cone_data(arr, smax, Xmask, Ubasis, want_interior_test=False):
     """For X in Z*: the arrangement B_X = {H cap U : H contains X} on U and the
     cone C = |V| cap U. Returns (m_X, number of chambers of B_X in C, B, cone)."""
@@ -451,7 +459,12 @@ def restricted_cone_data(arr, smax, Xmask, Ubasis, want_interior_test=False):
             key = p if p in traces else q
             traces[key].append(e)
     keys = list(traces)
-    B = Arrangement(keys, "restriction")
+    # B depends only on the trace normals, not on the cone: build it once per
+    # normal list (a pure memo of a deterministic constructor; for g = 1 and
+    # X = 0 it is A itself, and rebuilding it per pair dominated the 12-plane runs)
+    B = _RESTRICTION_CACHE.get(tuple(keys))
+    if B is None:
+        B = _RESTRICTION_CACHE[tuple(keys)] = Arrangement(keys, "restriction")
     cons = {}
     for e, s in smax.items():
         t = primitive([dot(arr.normals[e], b) for b in Ubasis])
@@ -908,13 +921,24 @@ def _perp(B):
     return nullspace([list(b) for b in B], 3)
 
 
-def sweep(A, gs, quiet=False, rank3_checks=False, cone_filter=None):
-    """All pairs (g in gs, g-stable top-cone V). Checks every proven statement."""
+def sweep(A, gs, quiet=False, rank3_checks=False, cone_filter=None, progress=False):
+    """All pairs (g in gs, g-stable top-cone V). Checks every proven statement.
+    With progress=True, prints one line per group element and at least one line
+    every PROGRESS_SECONDS while a group element is in progress."""
     res = dict(pairs=0, nonzero=0, zeros=0, compl=0, compl_nonmod=0, crv_cex=0, cex=[],
                P=0, Q=0, K=0, Ln_iv=0, Ln=0, R3=0, thm3_L=0, Z=0, CF=0, F=0, dimL2=0)
     cones = A.top_cones()
     d = A.d
-    for g in gs:
+    t0 = last = time.time()
+    if progress:
+        print("    [progress] %s: %d top-cones, %d group elements" % (A.name, len(cones), len(gs)))
+        sys.stdout.flush()
+    for gi, g in enumerate(gs):
+        if progress:
+            print("    [progress] g %d/%d, pairs so far %d, elapsed %.0f s"
+                  % (gi + 1, len(gs), res["pairs"], time.time() - t0))
+            sys.stdout.flush()
+            last = time.time()
         sym = Sym(A, g)
         p = sym.chamber_perm()
         U = sym.U
@@ -925,6 +949,11 @@ def sweep(A, gs, quiet=False, rank3_checks=False, cone_filter=None):
                 continue
             if cone_filter and not cone_filter(V):
                 continue
+            if progress and time.time() - last > PROGRESS_SECONDS:
+                print("    [progress]   g %d/%d, pairs so far %d, elapsed %.0f s"
+                      % (gi + 1, len(gs), res["pairs"], time.time() - t0))
+                sys.stdout.flush()
+                last = time.time()
             P = Pair(A, V, sym)
             res["pairs"] += 1
             chi = P.chi
@@ -1157,6 +1186,11 @@ def random_rank3(seed, count):
 def main():
     args = set(sys.argv[1:])
     quick = "--quick" in args
+    if "--r3-random" in sys.argv:
+        k = int(sys.argv[sys.argv.index("--r3-random") + 1])
+        rank3_random_family(k)
+        print("ALL CHECKS PASSED" if not FAILS else "FAILURES: %d" % len(FAILS))
+        sys.exit(1 if FAILS else 0)
     only = args & {"--r3", "--r4"}
     if not only:
         controls()
@@ -1191,6 +1225,22 @@ def rank3_sweep():
         for k, v in r.get("R3rows", {}).items():
             rows3[k] = rows3.get(k, 0) + v
     print("  rank<=3 totals:", tot, " R3 table rows exercised:", rows3)
+
+
+def rank3_random_family(k):
+    """Family k (1-based) of random_rank3(7, 14) alone, with progress lines, so the
+    random families can run as separate, separately time-bounded processes. Runs
+    exactly the checks of rank3_sweep() on that family."""
+    fams = random_rank3(7, 14)
+    name, normals, gens = fams[k - 1]
+    print("== [R<=3 random %d/%d] %s, %d planes ==" % (k, len(fams), name, len(normals)))
+    t0 = time.time()
+    A = Arrangement(normals, name)
+    G = group_closure(gens)
+    r = sweep(A, G, rank3_checks=True, progress=True)
+    print("  totals:", {key: r[key] for key in ("pairs", "zeros", "compl", "compl_nonmod", "crv_cex",
+                                                 "P", "Q", "K", "Ln", "Ln_iv", "R3", "thm3_L", "dimL2")},
+          " R3 table rows exercised:", r.get("R3rows", {}), " elapsed %.0f s" % (time.time() - t0))
 
 
 def rank4_sweep():

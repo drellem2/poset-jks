@@ -34,8 +34,8 @@ reading any other review of [CRV].
 | F | Lemma F | **HOLDS** | re-derived (§3); checked in the form used: every Y ∈ M with Y ⊄ L contains a nonzero g-fixed face of V whose span lies in cl(U) |
 | K | Lemma K, for every W ∈ M containing U | **HOLDS** | re-derived (§3); checked for **every** such W, not only W = cl(U) |
 | Ln | Proposition Ln (i)–(iv), including χ = c_0 − c_L and the trace criterion for c_0 = c_L | **HOLDS** | re-derived (§3); every dim L = 1 pair; c_X counted as the number of chambers of {H ∩ U : H ⊇ X} in \|V\| ∩ U, and the trace criterion decided by exact feasibility |
-| R3 | Lemma R3 (μ(L(A)^g) = 0 iff an uncomplemented element, rank 3), with the table of case (c) | **HOLDS** | re-derived row by row (§3); every group element of every completed rank-3 family (§7); every row's μ formula checked against (e, e′, a, p, λ) computed from the arrangement |
-| 3 | Theorem 3: CR_V for d ≤ 3 | **HOLDS** | re-derived case by case (§4); COMPUTED on 15,861 rank ≤ 3 pairs, 0 failures (13 random families UNRUN, §7) |
+| R3 | Lemma R3 (μ(L(A)^g) = 0 iff an uncomplemented element, rank 3), with the table of case (c) | **HOLDS** | re-derived row by row (§3); every group element of every rank-3 family (§7); every row's μ formula checked against (e, e′, a, p, λ) computed from the arrangement |
+| 3 | Theorem 3: CR_V for d ≤ 3 | **HOLDS** | re-derived case by case (§4); COMPUTED on 37,707 rank ≤ 3 pairs (all 30 families, §7), 0 failures |
 | Mod | "Complemented non-modular Λ(V)^g with μ ≠ 0 are common, e.g. 186 of the 266 nonvanishing pairs of A_3"; Knop's Lemma A.2 does not reach CR_V | **HOLDS, with exactly the stated scope.** A_3 (±S_4, class representatives, every g-stable cone): 300 pairs, 266 nonzero, all 266 complemented, 186 of them non-modular. B_3: 998 complemented, 862 non-modular, as in the note's table. Knop's lemma is about modular lattices, and the counterexample is not modular | §5 |
 
 ## 1. The counterexample
@@ -278,11 +278,11 @@ The rows exercised are given in §7.
   An open ray from 0 is either inside int_U C or inside ∂_U C, so the
   dichotomy is exhaustive. The proof is correct.
 
-COMPUTED ([Aud], §7). Every completed rank ≤ 3 pair satisfies CR_V:
-15,861 pairs, 1,804 zeros, 0 counterexamples. These include 1,968 pairs with
-dim L = 1 (98 under case (iv)) and 219 R3 instances. The Λ(V) = L(A) check
-for dim L = 2 and the Theorem 3 complement step ran on every completed pair,
-with no failure. This sweep corroborates the proof; it is not needed for it.
+COMPUTED ([Aud], §7). Every rank ≤ 3 pair of the sweep satisfies CR_V:
+37,707 pairs, 2,018 zeros, 0 counterexamples. These include 3,226 pairs with
+dim L = 1 (256 under case (iv)) and 329 R3 instances. The Λ(V) = L(A) check
+for dim L = 2 (620 pairs) and the Theorem 3 complement step (196 pairs) ran
+on every pair, with no failure. This sweep corroborates the proof; it is not needed for it.
 
 ## 5. Knop's modular lemma
 
@@ -336,8 +336,7 @@ g-stable top-cone, on these families:
 - A_3, B_3, B_3 ∖ {z = 0}, A_3 minus a plane, and x, y, z, x + y + z;
 - seven orbit arrangements under C_6 × ⟨z ↦ −z⟩, D_6 × ⟨z ↦ −z⟩,
   D_4 × ⟨z ↦ −z⟩, C_3 × ±1, D_3, C_4 × ⟨z ↦ −z⟩ and a D_6-hexagon type;
-- 14 random orbit arrangements (seed 7) with ≤ 12 planes, of which only the
-  first completed (see UNRUN below).
+- 14 random orbit arrangements (seed 7) with ≤ 12 planes.
 
 | family | d | n | pairs | zeros | complemented (non-modular) | P | Q | K | Ln (iv) | R3 |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -357,22 +356,40 @@ g-stable top-cone, on these families:
 | C_4 × ⟨z ↦ −z⟩ | 3 | 4 | 96 | 4 | 92 (64) | 48 | 0 | 109 | 32 (4) | 8 |
 | D_6-hexagon type | 3 | 13 | 7,284 | 174 | 7,110 (6,972) | 6,852 | 174 | 7,908 | 384 (0) | 12 |
 | random 1 (C_3, 3 planes) | 3 | 3 | 33 | 0 | 33 (0) | 12 | 0 | 33 | 12 (0) | 3 |
-| **total** | | | **15,861** | **1,804** | **14,057 (12,530)** | **13,202** | **1,602** | **19,654** | **1,968 (98)** | **219** |
+| *subtotal, first run* | | | *15,861* | *1,804* | *14,057 (12,530)* | *13,202* | *1,602* | *19,654* | *1,968 (98)* | *219* |
+| random 2 (C_6, 12 planes) | 3 | 12 | 6,348 | 12 | 6,336 (6,177) | 6,042 | 0 | 6,348 | 276 (12) | 6 |
+| random 3 (rot6z, 6 planes) | 3 | 6 | 354 | 0 | 354 (326) | 276 | 0 | 378 | 60 (0) | 6 |
+| random 4 (C_6, 6 planes) | 3 | 6 | 372 | 6 | 366 (325) | 288 | 0 | 372 | 66 (6) | 6 |
+| random 5 (rot6z, 3 planes) | 3 | 3 | 36 | 0 | 36 (0) | 12 | 0 | 45 | 12 (0) | 6 |
+| random 6 (D_4 × z, 6 planes) | 3 | 6 | 464 | 76 | 388 (296) | 288 | 50 | 631 | 128 (16) | 16 |
+| random 7 (D_4 × z, 4 planes) | 3 | 4 | 176 | 16 | 160 (84) | 80 | 0 | 207 | 64 (20) | 16 |
+| random 8 (C_3, 3 planes) | 3 | 3 | 33 | 0 | 33 (0) | 12 | 0 | 33 | 12 (0) | 3 |
+| random 9 (D_6 × z, 12 planes) | 3 | 12 | 13,104 | 84 | 13,020 (11,600) | 12,624 | 0 | 13,187 | 432 (84) | 24 |
+| random 10 (C_3, 6 planes) | 3 | 6 | 351 | 0 | 351 (325) | 276 | 0 | 351 | 60 (0) | 3 |
+| random 11 (C_4z, 4 planes) | 3 | 4 | 80 | 4 | 76 (63) | 40 | 0 | 82 | 28 (4) | 4 |
+| random 12 (C_2^3, 6 planes) | 3 | 6 | 456 | 16 | 440 (338) | 336 | 2 | 499 | 96 (16) | 8 |
+| random 13 (rot6z, 3 planes) | 3 | 3 | 36 | 0 | 36 (0) | 12 | 0 | 45 | 12 (0) | 6 |
+| random 14 (rot6z, 3 planes) | 3 | 3 | 36 | 0 | 36 (0) | 12 | 0 | 45 | 12 (0) | 6 |
+| **total** | | | **37,707** | **2,018** | **35,689 (32,064)** | **33,500** | **1,654** | **41,877** | **3,226 (256)** | **329** |
 
 CR_V counterexamples: 0 in every row. In every row, complemented = pairs −
 zeros, as Theorem 3 predicts.
 
-**UNRUN: random families 2–14 of `random_rank3(7, 14)`.** The run was stopped
-after 2 h 55 min, during random family 2 (a C_6-orbit of 12 planes). These
-13 families are not checked, and nothing here says they pass. They are:
-- C_6, 12 planes;
-- rot6z: 6 planes; 3 planes; 3 planes; 3 planes;
-- C_6, 6 planes;
-- D_4 × z: 6 planes; 4 planes;
-- C_3: 3 planes; 6 planes;
-- D_6 × z, 12 planes;
-- C_4z, 4 planes;
-- C_2^3, 6 planes.
+**Random families 2–14 (formerly UNRUN).** The first run was stopped after
+2 h 55 min, during random family 2. Its slowness came from
+`restricted_cone_data`, which rebuilt the restriction arrangement
+{H ∩ U : H ⊇ X} from scratch for every pair. For g = 1 and X = 0 that
+arrangement is A itself, at about 2.7 s per pair over 6,225 top-cones. The
+arrangement depends only on the trace normals, not on the cone, so it is now
+built once per normal list. No check changed. With the memo:
+- each of families 2–14 ran as its own process (`--r3-random K`), under a
+  30-minute bound, in 0–156 s;
+- the 11 families other than 2 and 9 gave identical totals with and without
+  the memo;
+- a single uninterrupted `--r3` run of all 30 families took 336 s. Its first
+  16 rows are identical to the stopped run, and its totals equal the table
+  above. The R3 table rows exercised are (e, e′) = (1, 1): 38, (1, 0): 22,
+  (0, 1): 37, (0, 0): 42.
 
 Seeds and groups are in `compute/output/audit_conjecture_cr_v_r3.txt` and in
 `random_rank3`. The verdict on Theorem 3 rests on the proof in §4, which this
@@ -411,7 +428,8 @@ rank-4 pair.
 From `compute/` (plain Python 3, no packages, single process):
 
     python3 audit_conjecture_cr_v.py --quick   # ~3 min: controls [CTL] and the counterexample [CX]
-    python3 audit_conjecture_cr_v.py --r3      # rank <= 3 sweep, every check of Sections 2-4 (> 3 h; the archived run was stopped, see Section 7)
+    python3 audit_conjecture_cr_v.py --r3      # ~6 min: rank <= 3 sweep, every check of Sections 2-4
+    python3 audit_conjecture_cr_v.py --r3-random K   # random family K of random_rank3(7, 14) alone, with progress lines
     python3 audit_conjecture_cr_v.py --r4      # ~5 min: C6 x C4 and A4, g != 1
     python3 -m unittest test_audit_conjecture_cr_v   # ~5 s
 

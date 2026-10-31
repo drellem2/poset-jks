@@ -15,9 +15,25 @@
   C4 x z->-z seeds (1,2,1)     d=3 n= 4 pairs     96 zeros    4 compl     92 (non-mod     64) CR_V cex   0 | P 48 Q 0 K 109 Ln 32 (iv 4) R3 8
   hexagon 12 type: D6 lines + axis seeds (1,0,1),(0,0,1),(1,2,0) d=3 n=13 pairs   7284 zeros  174 compl   7110 (non-mod   6972) CR_V cex   0 | P 6852 Q 174 K 7908 Ln 384 (iv 0) R3 12
   random C3 seeds [(1, -2, -2)] d=3 n= 3 pairs     33 zeros    0 compl     33 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 33 Ln 12 (iv 0) R3 3
-EXIT 143
-# Run stopped by SIGTERM (exit 143 above) after 2h55m, during the second random family.
-# Completed: the 16 fixed families and random family 1 of 14, with no FAIL line (check()
-# prints "FAIL:" at once on any failure). UNRUN: random families 2-14 of random_rank3(7, 14).
-# Totals over the completed rows: pairs 15861 zeros 1804 compl 14057 (non-mod 12530)
-# CR_V cex 0 | P 13202 Q 1602 K 19654 Ln 1968 (iv 98) R3 219
+  random C6 seeds [(2, -2, 2), (-1, -2, -2)] d=3 n=12 pairs   6348 zeros   12 compl   6336 (non-mod   6177) CR_V cex   0 | P 6042 Q 0 K 6348 Ln 276 (iv 12) R3 6
+  random rot6z seeds [(-2, -1, -2), (2, 1, -2)] d=3 n= 6 pairs    354 zeros    0 compl    354 (non-mod    326) CR_V cex   0 | P 276 Q 0 K 378 Ln 60 (iv 0) R3 6
+  random C6 seeds [(2, -2, 2)] d=3 n= 6 pairs    372 zeros    6 compl    366 (non-mod    325) CR_V cex   0 | P 288 Q 0 K 372 Ln 66 (iv 6) R3 6
+  random rot6z seeds [(-1, -2, 2)] d=3 n= 3 pairs     36 zeros    0 compl     36 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 45 Ln 12 (iv 0) R3 6
+  random D4xz seeds [(1, -1, 2), (-2, 2, 0)] d=3 n= 6 pairs    464 zeros   76 compl    388 (non-mod    296) CR_V cex   0 | P 288 Q 50 K 631 Ln 128 (iv 16) R3 16
+  random D4xz seeds [(2, 2, -1)] d=3 n= 4 pairs    176 zeros   16 compl    160 (non-mod     84) CR_V cex   0 | P 80 Q 0 K 207 Ln 64 (iv 20) R3 16
+  random C3 seeds [(2, -2, 2)] d=3 n= 3 pairs     33 zeros    0 compl     33 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 33 Ln 12 (iv 0) R3 3
+  random D6xz seeds [(1, 2, 1)] d=3 n=12 pairs  13104 zeros   84 compl  13020 (non-mod  11600) CR_V cex   0 | P 12624 Q 0 K 13187 Ln 432 (iv 84) R3 24
+  random C3 seeds [(2, 1, 0), (0, -1, -1)] d=3 n= 6 pairs    351 zeros    0 compl    351 (non-mod    325) CR_V cex   0 | P 276 Q 0 K 351 Ln 60 (iv 0) R3 3
+  random C4z seeds [(2, 0, 2)] d=3 n= 4 pairs     80 zeros    4 compl     76 (non-mod     63) CR_V cex   0 | P 40 Q 0 K 82 Ln 28 (iv 4) R3 4
+  random C2xC2xC2 seeds [(1, 0, 2), (-2, -2, 2)] d=3 n= 6 pairs    456 zeros   16 compl    440 (non-mod    338) CR_V cex   0 | P 336 Q 2 K 499 Ln 96 (iv 16) R3 8
+  random rot6z seeds [(0, -1, 1)] d=3 n= 3 pairs     36 zeros    0 compl     36 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 45 Ln 12 (iv 0) R3 6
+  random rot6z seeds [(-2, 2, 2)] d=3 n= 3 pairs     36 zeros    0 compl     36 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 45 Ln 12 (iv 0) R3 6
+  rank<=3 totals: {'pairs': 37707, 'zeros': 2018, 'P': 33500, 'Q': 1654, 'K': 41877, 'Ln': 3226, 'Ln_iv': 256, 'R3': 329, 'thm3_L': 196, 'dimL2': 620, 'crv_cex': 0}  R3 table rows exercised: {(1, 0): 22, (0, 1): 37, (1, 1): 38, (0, 0): 42}
+ALL CHECKS PASSED
+EXIT 0 after 336 s
+# Complete run (mg-86258). It replaces the earlier log, which was stopped after 2h55m
+# during random family 2 (that log is in git at commit 2dc923f). Its 16 completed rows
+# are identical to the first 16 rows above. The speed-up is a memo of the restriction
+# arrangement in restricted_cone_data(); per-family runs (--r3-random K, K = 2..14) gave
+# the same 13 rows, in 0-156 s each, and the 11 small families gave identical totals with
+# and without the memo.

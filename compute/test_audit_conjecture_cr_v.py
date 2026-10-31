@@ -120,5 +120,30 @@ class Counterexample(unittest.TestCase):
         self.assertEqual(Q.chi, -2)
 
 
+class SweepPlumbing(unittest.TestCase):
+    def test_restriction_cache_matches_fresh_build(self):
+        # the memo in restricted_cone_data must not change any value
+        nA, gA = M.braid(3)
+        A = M.Arrangement(nA, "A2")
+        one = M.Sym(A, [[F(int(i == j)) for j in range(2)] for i in range(2)])
+        V = A.top_cones()[3]
+        P = M.Pair(A, V, one)
+        M._RESTRICTION_CACHE.clear()
+        fresh = M.restricted_cone_data(A, P.smax, A.bottom, one.U)[:2]
+        self.assertEqual(len(M._RESTRICTION_CACHE), 1)
+        cached = M.restricted_cone_data(A, P.smax, A.bottom, one.U)[:2]
+        self.assertEqual(len(M._RESTRICTION_CACHE), 1)
+        self.assertEqual(fresh, cached)
+
+    def test_random_family_1_reproduces_archived_row(self):
+        # random family 1 of random_rank3(7, 14), archived in audit_conjecture_cr_v_r3.txt
+        name, normals, gens = M.random_rank3(7, 14)[0]
+        A = M.Arrangement(normals, name)
+        r = M.sweep(A, M.group_closure(gens), quiet=True, rank3_checks=True)
+        self.assertEqual((r["pairs"], r["zeros"], r["compl"], r["P"], r["K"], r["Ln"], r["R3"]),
+                         (33, 0, 33, 12, 33, 12, 3))
+        self.assertEqual(r["crv_cex"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
