@@ -1,0 +1,11 @@
+[CTL] 3-chain: n=3 |Pi_n|=5 #OP=4 all_OP=False |Aut|=1 e(P)=1 free=True orbits=1 -> OK
+[CTL] N-poset: n=4 |Pi_n|=15 #OP=14 all_OP=False |Aut|=1 e(P)=5 free=True orbits=5 -> OK
+[CLAW] K_3: n=3 |Pi_n|=5 #OP=5 all_OP=True |Aut|=2 e(P)=2 free=True orbits=1 -> OK
+[CLAW] K_4: n=4 |Pi_n|=15 #OP=15 all_OP=True |Aut|=6 e(P)=6 free=True orbits=1 -> OK
+[CLAW] K_5: n=5 |Pi_n|=52 #OP=52 all_OP=True |Aut|=24 e(P)=24 free=True orbits=1 -> OK
+[CLAW] K_6: n=6 |Pi_n|=203 #OP=203 all_OP=True |Aut|=120 e(P)=120 free=True orbits=1 -> OK
+[CLAW] K_7: n=7 |Pi_n|=877 #OP=877 all_OP=True |Aut|=720 e(P)=720 free=True orbits=1 -> OK
+[CLASS] n=3: connected labeled posets=12 with OP=Pi_n: 6 claw-or-dual: 6 mismatches=0 -> OK
+[CLASS] n=4: connected labeled posets=146 with OP=Pi_n: 8 claw-or-dual: 8 mismatches=0 -> OK
+[CLASS] n=5: connected labeled posets=3060 with OP=Pi_n: 10 claw-or-dual: 10 mismatches=0 -> OK
+ALL CHECKS PASS: True
