@@ -1,0 +1,8 @@
+BW n=3: pairs 7 (Z* nonempty 4, mu(M) != 0 1), failures 0
+BW n=4: pairs 33 (Z* nonempty 13, mu(M) != 0 7), failures 0
+BW n=5: pairs 171 (Z* nonempty 46, mu(M) != 0 1), failures 0
+BW n=6: pairs 1095 (Z* nonempty 371, mu(M) != 0 191), failures 0
+BW control n=4: shrink Z* by one element -> failures 4 (must be > 0)
+BW control n=5: shrink Z* by one element -> failures 1 (must be > 0)
+CL: smallest complemented lattice with mu = 0: 8 elements, 61 labelled copies, e.g. middle relations [(0, 4), (0, 5), (1, 3), (1, 4), (2, 3)]
+ALL CHECKS PASSED
