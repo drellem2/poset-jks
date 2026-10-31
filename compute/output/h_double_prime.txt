@@ -1,0 +1,22 @@
+posets: n=1: 1, n=2: 2, n=3: 5, n=4: 16, n=5: 63, n=6: 318, n=7: 2045
+INFO n=2: 2 labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=3: 7 labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=4: 40 labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=5: 357 labelled posets, 2 with an all-ascent class, 0.1s
+INFO n=6: 4824 labelled posets, 46 with an all-ascent class, 2.1s
+INFO n=7: 96428 labelled posets, 1032 with an all-ascent class, 119.4s
+PASS [hC-indep] Moebius h_C = cdes-1 distribution (separated labelling), 2449 posets n <= 7
+PASS [formula] h_C(x) = sum_non-aa x^mindes + sum_aa x^(d-1)(1-(1-x)^s), every natural labelling, 101658 labelled posets n <= 7
+PASS [moment] sum mindes - sum j h_j = #all-ascent classes, 101658 labelled posets n <= 7
+PASS [iff] min-des = h_C iff no all-ascent class, 101658 labelled posets (1080 with an all-ascent class) n <= 7
+PASS [aa-d] 1 <= d <= n - s and mindes = d on every all-ascent class, n <= 7
+PASS [aa-class] all-ascent class contributes C(m+n-d,n) - C(m+n-d-s,n-s), every T, m <= n+1, 195585 cases n <= 7
+INFO per n (labelled posets, with all-ascent class): n=2: 2, 0, n=3: 7, 0, n=4: 40, 0, n=5: 357, 2, n=6: 4824, 46, n=7: 96428, 1032
+INFO largest number of all-ascent classes in one labelling: 46
+PASS CONTROL [ctl-mindes-all] min-des realises h_C on every natural labelling, n <= 7 (refuted on 1080 of 101658)
+PASS CONTROL [ctl-formula-s1] (F) with (1-x)^(s-1), labellings with an all-ascent class, n <= 7 (refuted on 1080 of 1080)
+PASS CONTROL [ctl-formula-d] (F) with x^d in place of x^(d-1), labellings with an all-ascent class, n <= 7 (refuted on 1080 of 1080)
+PASS CONTROL [ctl-moment-0] sum mindes = sum j h_j, n <= 7 (refuted on 1080 of 101658)
+EXAMPLE first all-ascent labelling: n=5 rel=[(0, 1), (3, 4)] h_C=[1, 9, 9, 1] min-des=[1, 9, 8, 2] A=1
+INFO total time 121.7s
+ALL PASS
