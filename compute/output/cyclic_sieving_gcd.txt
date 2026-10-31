@@ -1,0 +1,59 @@
+[eC] PASS exponential formula = brute-force |Cyc| on 11 chain unions
+[eC] PASS e_C(C_2 + C_2) = 5 ([CSC] §0 correction), control value 6 rejected
+[brute] PASS pt^5: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 24 = |Cyc| = 24
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(3, 2)], N=6: CSP fails; e=6: F(g^1)=0, |X_P(zeta_e)|=6
+[brute] PASS pt^7: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 720 = |Cyc| = 720
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(5, 2)], N=10: CSP fails; e=10: F(g^1)=0, |X_P(zeta_e)|=49.8
+[brute] PASS pt^7: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 720 = |Cyc| = 720
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(4, 3)], N=12: CSP fails; e=12: F(g^1)=0, |X_P(zeta_e)|=131.6
+[brute] PASS pt^8: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 5040 = |Cyc| = 5040
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(5, 3)], N=15: CSP fails; e=15: F(g^1)=0, |X_P(zeta_e)|=1079
+[brute] PASS pt^3+C2^3: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 24864 = |Cyc| = 24864
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(3,), (2, 1)], N=6: CSP fails; e=6: F(g^1)=0, |X_P(zeta_e)|=8292
+[brute] PASS pt^2+C2^2: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 100 = |Cyc| = 100
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS V^2+pt^2: Molien X_P = closed form (Lemma 2), y = 2, X_P(1) = 3192 = |Cyc| = 3192
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS V^2: Molien X_P = closed form (Lemma 2), y = 2, X_P(1) = 76 = |Cyc| = 76
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS L^2+C2^2: Molien X_P = closed form (Lemma 2), y = 2, X_P(1) = 93864 = |Cyc| = 93864
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS pt^4+C2^2: Molien X_P = closed form (Lemma 2), y = 1, X_P(1) = 4200 = |Cyc| = 4200
+[brute] PASS    supp F within Lemma 1 types
+[brute] PASS    g of copy type [(3, 1), (2,)], N=6: CSP fails; e=6: F(g^1)=0, |X_P(zeta_e)|=909.3
+[brute] closed form matched on 10/10 posets; CSP failure at a bad e on 6 classes
+[brute] PASS control: closed form without phi(d) differs from Molien on A_5
+[phase] PASS Lemma 3 phase form = exact X_P(zeta_e) in 112/112 (k, m, y, e > max k)
+[phase] PASS control: dropping i^(K/d) gives a different value in 80/112
+[ratio] PASS A_d/A_1 <= (phi(d)/d) K mult_d(K)/mult_d(n) <= phi(d) K/d on 237/237 (k, m, d); max ratio/bound = 1.0000
+[ratio] PASS sub-steps: E_d <= e(Q_d) 237/237; prod k_i!/(k_i/d)! <= K!/(K/d)! 237/237; K E_1 >= e(Q) 157/157 (k, m)
+[ratio] PASS A_k antichain: A_d/A_1 = phi(d) exactly (k = 6)
+[ratio] PASS control: k=(4,4), m=(1,2), y=1/50: A_4/A_1 = 4.292 > bound 0.02727
+[ineq] PASS e >= 18: 2 sin(pi/18) <= 0.347296 < 0.3474; h(K) < 1 for K = 2..9 (max 0.7241), and h(K+2)/h(K) <= 1 for K >= 8
+[ineq] PASS e = 6: h6(K) = (5K/2) r^floor(K/4) < 1 for K = 36..39, r = 0.57736 > 1/sqrt3, h6(K+4)/h6(K) <= 1 there; so K_6 = 36
+[ineq] tail thresholds K_e (for K >= K_e the sum is < 1 by the tail bound): e=6: 36, e=7: 127, e=8: 55, e=9: 33, e=10: 23, e=11: 17, e=12: 13, e=13: 11, e=14: 9, e=15: 7, e=16: 4, e=17: 4
+[ineq] finite range: 490 triples (e, K, g) with 6 <= e <= 17, g | K, 2 <= g < e, K < K_e
+[ineq]   sum < 1 in all but 4: [(6, 3, 3), (6, 8, 4), (7, 12, 6), (8, 7, 7)]; largest non-exceptional upper bound = 0.750000
+[ineq] PASS exceptional set is exactly {(6,3,3), (6,8,4), (7,12,6), (8,7,7)}
+[ineq]   exceptional triples where e can violate (a) (e divides an element order): [(6, 8, 4)]
+[ineq] non-prime-power e in 6..17 (the only e that can violate (a) below 18): [6, 10, 12, 14, 15]
+[ineq] PASS control: no-phase sum for A_5, e = 6 is >= 4.0000 >= 1 (dominance alone fails)
+[ineq] PASS control: no-phase sum >= 1 in 11 triples of the finite range
+[exc] PASS (6,3,3): k=(3), m >= 2: sum <= 0.0667 < 1
+[exc] PASS (6,3,3), A_3: X = 1 + q^3 vanishes at zeta_6 -- the one genuine exception; 6 is not an element order of S_3
+[exc] PASS (6,8,4): k=(4,4), n >= 12: B_4 <= 0.02727, R_4/R_1 = 1/3, sum <= 0.00909 < 1
+[exc] PASS (7,12,6): k=(6,6), n >= 18: sum <= 0.00148 < 1
+[exc] PASS (8,7,7): k=(7), m >= 2: sum <= 8.92e-06 < 1
+[exc] PASS (8,7,7), A_7: A_1 = 1/7, A_7 = 6/7, A_1 R_1 - A_7 R_7 = -0.1913 != 0 (exactly: zero iff 6(20 - 14 sqrt2) = 1, false)
+[exc] PASS   and X_{A_7}(zeta_8) != 0 from the exact polynomial
+[exact] PASS Phi_e does not divide X_P for every bad e: 199 type vectors (<= 3 types, K <= 12, m <= 3, gcd >= 2), y in {1,2,7}, 2259 (vector, y, e) triples
+[exact] PASS control: Phi_e divides X_P in 2235/2235 B(ii) cases (the instrument detects zeros)
+[exact] PASS single type k = 3..20, m = 1, 2: Phi_e never divides X_P (548 (k, m, e))
+[yroot] PASS control: k=(4,4), m=(1,2), e=6: X_P(zeta_6) = 0 at y = 0.021831 < 1 (|X| = 6.28e-17 there vs 1.048e+06 at y = 1)
+[yroot] PASS   it is the root of 1048410y^3 + 50y - 12 found by [AUD]
+[summary] 0 failure(s)
