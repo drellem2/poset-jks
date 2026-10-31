@@ -17,9 +17,11 @@ gA = A and gV = V, U = Fix(g), L(A)^g the g-stable flats ordered by
 inclusion, and χ_V(g) = (−1)^d det(g) μ(Λ(V)^g).
 
 Tags:
-- **PROVEN**: a full proof is given here, with its inputs named. None of
-  the PROVEN claims of this note has been independently audited yet. Nothing
-  else should build on them until that is done.
+- **PROVEN**: a full proof is given here, with its inputs named. Every
+  PROVEN claim of this note is independently audited in [AudPCV] =
+  `notes/audit_per_cone_vanishing.md` (mg-58bc6), verdict HOLDS WITH FIXES:
+  all hold, and its corrections F1–F6 and the §3.7 slip are applied here
+  (mg-8d776).
 - **COMPUTED**: checked by `compute/per_cone_vanishing.py` (see Reproduce).
 - **CITED**.
 - **CONJECTURED**.
@@ -29,14 +31,14 @@ Tags:
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| M | **Lemma M.** For X ∈ Z\*(g), m_X(all chambers) = (−1)^{dim U} Σ_{Z ∈ L(A)^g, Z ⊇ X, Z ∩ U = 0} μ(Z, R^d) | **PROVEN** (§1); COMPUTED on every X ∈ Z\*(g) of every class of 11 arrangements (149 terms) | W″(c) of [AudW] on the localization at X |
-| Cr | **All chambers = Crapo relative to U.** χ_all(g) = (−1)^{dim U} Σ_{X ⊆ Z, X, Z ∈ Z\*(g)} μ(0, X) μ(Z, R^d). When U is a flat, Z\*(g) is the set of complements of U in L(A)^g, and this is Crapo's complementation theorem for the element U. If the complements form an antichain, m_X = (−1)^{dim U} μ(X, R^d) (Hanlon's case) | **PROVEN** (§1), given Lemma M; Crapo CITED. "Z\*(g) = complements" COMPUTED on all 83 classes with U a flat | Formula Z, Lemma M |
-| Pal | **Lemma Pal.** An anti-automorphism t of a finite poset Q admits a linear extension w with t(w_i) = w_{n+1−i} iff t² = 1 and t has at most one fixed point | **PROVEN** (§2) | — |
-| TA | **Type A, every cone, g = −τ.** Let n ≥ 3 and let τ be an anti-automorphism of the poset P, so that −τ preserves C_P. Then χ_{C_P}(−τ) ≠ 0 iff (TA1) the cycle lengths of τ lie in {m, 2m} for an odd squarefree m; (TA2) every component of P has a ⟨τ⟩-orbit of length m or 2m; (TA3) for every component K, K ∪ τ^m K contains at most one point of an odd cycle of τ; (TA4) if τ has both odd and even cycles, some odd cycle of τ does not consist of isolated points of P. There is an explicit positive formula for \|χ\| (§3) | **PROVEN** (§3); COMPUTED: the closed formula equals sgn(τ) μ(OP(P)^τ) on all 922 pairs with n ≤ 6, on 1,089 involution pairs with n = 7, on 2,736 random pairs with n = 8, 9, 12, and equals χ_V(g) from the face poset on all 1,992 pairs (V, −w) of A_3 and A_4 | CF of [FP] (audited), Hanlon's (H), Theorem A of [VC], Lemmas Pal, Sh, E |
+| M | **Lemma M.** For X ∈ Z\*(g), m_X(all chambers) = (−1)^{dim U} Σ_{Z ∈ L(A)^g, Z ⊇ X, Z ∩ U = 0} μ(Z, R^d) | **PROVEN** (§1); COMPUTED on every X ∈ Z\*(g) of every class of 11 arrangements (149 terms) | W″(c) of [AudW] on the localization at X; audited ([AudPCV] §1) |
+| Cr | **All chambers = Crapo relative to U.** χ_all(g) = (−1)^{dim U} Σ_{X ⊆ Z, X, Z ∈ Z\*(g)} μ(0, X) μ(Z, R^d). When U is a flat, Z\*(g) is the set of complements of U in L(A)^g, and this is Crapo's complementation theorem for the element U. If the complements form an antichain, m_X = (−1)^{dim U} μ(X, R^d) (Hanlon's case) | **PROVEN** (§1), given Lemma M; Crapo CITED. "Z\*(g) = complements" COMPUTED on all 83 classes with U a flat. Audited ([AudPCV] §2) | Formula Z, Lemma M |
+| Pal | **Lemma Pal.** An anti-automorphism t of a finite poset Q admits a linear extension w with t(w_i) = w_{n+1−i} iff t² = 1 and t has at most one fixed point | **PROVEN** (§2); audited with Lemmas Sh and E ([AudPCV] §3, §4) | — |
+| TA | **Type A, every cone, g = −τ.** Let n ≥ 3 and let τ be an anti-automorphism of the poset P, so that −τ preserves C_P. Then χ_{C_P}(−τ) ≠ 0 iff (TA1) the cycle lengths of τ lie in {m, 2m} for an odd squarefree m; (TA2) every component of P has a ⟨τ⟩-orbit of length m or 2m; (TA3) for every component K, K ∪ τ^m K contains at most one point of an odd cycle of τ; (TA4) if τ has both odd and even cycles, some odd cycle of τ does not consist of isolated points of P. There is an explicit positive formula for \|χ\| (§3) | **PROVEN** (§3); COMPUTED: the closed formula equals sgn(τ) μ(OP(P)^τ) on all 922 pairs with n ≤ 6, on 1,089 involution pairs with n = 7, on 2,736 random pairs with n = 8, 9, 12, and equals χ_V(g) from the face poset on all 1,992 pairs (V, −w) of A_3 and A_4 | CF of [FP] (audited), Hanlon's (H), Theorem A of [VC], Lemmas Pal, Sh, E. Audited ([AudPCV] §4) |
 | TA± | Together with [Thm, eq. closed] for g = +w: an exact per-cone criterion for every element of ±S_n on every cone of the braid arrangement | **PROVEN** (TA here; +w in [Thm], audited) | — |
-| TA-L | In type A, whether χ_V(g) = 0 depends only on (lin V, g); the sign of a nonzero χ_V(g) depends only on g | **PROVEN** (Cor. 3.5) | Theorem TA, [Thm] |
+| TA-L | In type A, whether χ_V(g) = 0 depends only on (lin V, g); the sign of a nonzero χ_V(g) depends only on g | **PROVEN** (Cor. 3.5); audited, including (c) ([AudPCV] §5) | Theorem TA, [Thm] |
 | L′ | Neither holds in general. Vanishing is not a function of (lin V, g) on generic 4 planes in R^3 (1 key) and generic 5 hyperplanes in R^4 (4 keys). Both signs occur for one g in B_3, generic 4 in R^3, generic 5 in R^4, B_3 ∖ {z = 0}, the 12- and 13-line hexagon arrangements | **COMPUTED** (§4) | — |
-| CO | **Crapo obstruction.** If some element of Λ(V)^g has no complement in Λ(V)^g, then χ_V(g) = 0. In type A every zero from (TA4) is of this kind, with an explicit uncomplemented element | "if": **CITED** (Crapo). Type A element: **PROVEN** (§3.6) | Crapo's complementation theorem |
+| CO | **Crapo obstruction.** If some element of Λ(V)^g has no complement in Λ(V)^g, then χ_V(g) = 0. In type A every zero from (TA4) is of this kind, with an explicit uncomplemented element | "if": **CITED** (Crapo). Type A element: **PROVEN** (§3.6), audited ([AudPCV] §6) | Crapo's complementation theorem |
 | CR_V | **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g has an element without a complement. This is a Crapo-type converse on the cone lattice; it implies the CR of [VC] in the cases where [VC]'s lattices are cone lattices | **CONJECTURED**; COMPUTED: no counterexample on 18,750 pairs (V, g) (§4), and on all 5,063 lattices OP(P)^{±τ} with n ≤ 6 (both automorphisms and anti-automorphisms) | — |
 | D | The classification of zeros by arrangement (Cor. V / no nonzero μ / cancellation), including D_4, H_3, F_4 | **COMPUTED** (§4) | — |
 | B, D, H, F | An exact per-cone criterion for B_n (n ≥ 5), D_n, H_3, H_4, F_4 | **OPEN** (§5). On the data, no pair cancels in B_2–B_4, D_4 (with triality), H_3, so there PC(a) of [VC] is already an equivalence on every pair tested | — |
@@ -61,6 +63,9 @@ X ∈ Z\*(g). Then
   m_X(all) = (−1)^{dim U} Σ_{Z ∈ L(A)^g, Z ⊇ X, Z ∩ U = 0} μ_{L(A)^g}(Z, R^d).
 
 *Proof.*
+- If X = R^d (possible only when U = 0), the only Z is R^d, and both sides
+  are 1 by the rank-0 convention of [VC] §2 step 1. Assume X ≠ R^d, so
+  A_X/X has rank codim X ≥ 1.
 - Apply W″(c) to (A_X/X, all chambers, ḡ), exactly as in [VC] §2 steps 1–4.
 - By [VC] §2 step 3, the index set is {Z ∈ L(A)^g : Z ⊇ X, Z ∩ U = 0}.
 - By step 4, the right side is m_X(all), since X ∈ Z\*(g).
@@ -80,7 +85,7 @@ M = L(A)^g. Then
 Moreover:
 - (a) If U is a flat, then U ∈ M, and Z\* is the set of complements of U in M.
   Since χ_all(g) = (−1)^d det(g) μ(M) = (−1)^{dim U} μ(M), (Cr) is then
-  Crapo's complementation theorem ([PA] §2.2; Crapo 1968, as stated in
+  Crapo's complementation theorem ([PA] §2.2; Crapo 1966, as stated in
   Stanley 1982, §7) for the element U of M.
 - (b) If no two elements of Z\* are comparable, then
   m_X(all) = (−1)^{dim U} μ_M(X, R^d) for every X ∈ Z\*.
@@ -197,7 +202,7 @@ F̃(S) = H(S)! · [|S ∩ ℱ| ≤ 1]. Then
     a set partition σ of S ∩ ℱ recording which marked units shared a
     ψ-block. Its weight is Π c(c-blocks) times Π_{β ∈ σ}(−1)^{|β|−1}(|β|−1)!.
   - This correspondence is bijective.
-  - Summing over σ for fixed c-blocks gives Σ_{σ ∈ Π(S ∩ ℱ)} μ(σ, 1̂), which
+  - Summing over σ for fixed c-blocks gives Σ_{σ ∈ Π(S ∩ ℱ)} μ(0̂, σ), which
     is 1 if |S ∩ ℱ| ≤ 1 and 0 otherwise.
   - So exp(ψ)(S) = [|S ∩ ℱ| ≤ 1] · Σ (partitions of S into c-blocks)
     = [|S ∩ ℱ| ≤ 1] · H(S)!, by (i).
@@ -353,7 +358,10 @@ with S_f ≠ ∅ has h_f ≥ 1.
 
 𝒯 ≠ ∅ means there is a unit without odd points, hence an even cycle. And
 "all F-units have h_f = 0" means every odd cycle consists of isolated
-points. So χ ≠ 0 iff (TA4), and the sign is μ(m)(−1)^{k−1}.
+points. Conversely, if an even cycle exists but 𝒯 = ∅, an even point lies in
+a block b(K) of an F-unit, together with an odd point p. Since τ^m p = p,
+K = τ^m K contains both points, so p is not isolated and (TA4) holds. So
+χ ≠ 0 iff (TA4), and the sign is μ(m)(−1)^{k−1}.
 
 **Case IIa: O = ∅, and some component has orbit length m.** Then S_{2m} is
 empty and ℱ = ∅. So
@@ -402,6 +410,31 @@ Theorem TA. ∎
   point. By (TA4), a fixed point of w then lies in a component of size ≥ 2
   only if χ ≠ 0.
 
+*Proof of (c).* Cancellation means χ = 0 while Z\*(C_P, −τ) carries a
+nonzero μ. Under (TA1)–(TA3), χ = 0 iff (TA4) fails (Theorem TA), and if
+(TA1) fails, Z\*(C_P, −τ) ⊆ Z\*(−τ) carries no nonzero μ (necessity part of
+the proof of (A−) in [VC] Theorem A). It remains to show: *if (TA1) holds
+and (TA2) or (TA3) fails, then no X ∈ Z\*(C_P, −τ) has μ(0, X) ≠ 0*
+([AudPCV] §5).
+- Let X = X_ρ ∈ Z\*(C_P, −τ) with μ(0, X) ≠ 0. By Hanlon, all τ̄-orbits of
+  blocks have one length ℓ.
+- ℓ is odd. If ℓ is even, the vector equal to (−1)^j on τ̄^j B, along one
+  orbit, is nonzero, lies in R^n_0, and lies in X ∩ U. This contradicts
+  X ∩ U = 0.
+- So ℓ | m, and every block B is τ^m-stable.
+- On a block B, every vector of X + U has x_i − x_j = u_i − u_j. Every
+  u ∈ U vanishes on odd points and satisfies u_{τ^e i} = (−1)^e u_i. So
+  "X + U in no hyperplane" forbids two odd points in one block, and two
+  points i ≠ τ^{2a} i in one block.
+- (TA3) holds: b(K) ⊆ B, since τ^m B = B, so b(K) has at most one odd point.
+- (TA2) holds: let K ⊆ B have orbit length s ∉ {m, 2m}, so s | 2m and
+  m ∤ s. Take x ∈ K. If x is odd, τ^s x ≠ x is a second odd point of
+  K ⊆ B. If x is even, τ^{2s} x ≠ x (as 2s < 2m) lies in K ⊆ B. Either way
+  this contradicts the previous bullet. ∎
+
+COMPUTED in [AudPCV]: on n ≤ 6, all 121 cancelling pairs have (TA4) as the
+failing condition, and every (TA4) zero has a nonzero μ on Z\*.
+
 The "sign-reversing involution" suggested in [VC] §5 is not what happens.
 In Formula Z the terms do not pair off. For example, −(1 2) on all chambers
 of A_4 has terms 2, 2, 2, −6 with all m_X = 1. CF regroups them into Lemma
@@ -449,15 +482,21 @@ All COMPUTED by `[TA]` and `[TAarr]`:
 - independently of the poset model, the closed formula equals χ_V(g)
   computed from the face poset of the braid arrangement, for every cone and
   every −w ∈ Stab(V), in A_3 and A_4 (1,992 pairs);
-- negative controls: dropping (TA4) misclassifies pairs already at n = 4,
-  and in Case IIb the ℓ = 2m correction of (3.5) is needed (tests).
+- negative controls: dropping (TA4) misclassifies pairs already at n = 3
+  (4 pairs, including the A_2 pair of §3.1; [AudPCV] §4), and in Case IIb the ℓ = 2m correction of (3.5) is needed (tests).
 
 ## 4. Data on all arrangements: classification and Conjecture CR_V
 
-**Crapo obstruction (CO; CITED).** Λ(V)^g is a finite lattice. It is
-bounded by 0 and R^d, and it is closed under intersection, since
-Λ(V) is ([GT] Lemma 0.1). So if some element has no complement in it,
-μ(Λ(V)^g) = 0 and χ_V(g) = 0 (Crapo).
+**Crapo obstruction (CO; CITED).** Λ(V)^g is a finite lattice, bounded by
+0 and R^d. Λ(V) is closed under the join of flats: if F, G are faces of V,
+then the composition F ∘ G is a face of V (x + εy ∈ |V| for x ∈ F, y ∈ G
+and small ε > 0), and its span is the smallest flat containing
+span F + span G. With bottom 0 it is a finite lattice. g acts on it by
+automorphisms, so Λ(V)^g is a lattice with the ambient join. Its meet is
+in general *not* intersection: Λ(V) need not be closed under intersection
+(P = {0 < 2, 1 < 3}: X_{03|1|2} and X_{12|0|3} are spans of faces, their
+intersection X_{03|12} is not; [AudPCV] §6, F6). So if some element has no
+complement in Λ(V)^g, μ(Λ(V)^g) = 0 and χ_V(g) = 0 (Crapo).
 
 **Conjecture CR_V.** χ_V(g) = 0 iff Λ(V)^g contains an element without a
 complement.
@@ -582,7 +621,8 @@ References: [VC] = `notes/vanishing_criterion.md`; [PA] =
 [AudFP] = `notes/audit_fixed_point_formula.md`; [AudW] =
 `notes/audit_prop_w_prime.md`; [AudW2] = `notes/audit_theorem_w2.md`; [GT] =
 `notes/general_theory.md`; [FPM] = `notes/fixed_point_mobius_identity.md`;
-[Thm] = `notes/poset_jks_theorem.tex`. Crapo, *The Möbius function of a
+[Thm] = `notes/poset_jks_theorem.tex`; [AudPCV] =
+`notes/audit_per_cone_vanishing.md`. Crapo, *The Möbius function of a
 lattice*, J. Combin. Theory 1 (1966), used as stated in Stanley, *Some
 aspects of groups acting on finite posets*, JCTA 32 (1982), §7. Stanley,
 *Enumerative Combinatorics* vol. 2, §5.1 (exponential formula).
