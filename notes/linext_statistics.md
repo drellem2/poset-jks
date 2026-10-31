@@ -343,11 +343,12 @@ audited there: ★, Ω_C(P*, m) = Ω_C(P, m). Prior art
 (`notes/prior_art_reciprocity_omega_c.md`): the polynomial side of
 Theorem R is KNOWN IN SUBSTANCE (EC1 Lemma 3.15.9 word by word;
 Grinberg–Reiner Prop. 7.1.7(iii) + 5.2.19); the D_T reading (Lemma R2) is
-NOT FOUND. Still OPEN there: the "only if" of the palindromicity
-classification S′ for disconnected P (its connected case is KNOWN, EC1
-Cor. 3.15.18(b), Beck–Sanyal Ex. 6.27), and unimodality U of h_C (both
-COMPUTED n ≤ 7). For connected P, U is the open unimodality of W_P for
-naturally labelled P. h_C is not real-rooted in general (Stembridge's
+NOT FOUND. The palindromicity classification S′ is PROVEN + audited
+(`notes/palindromic_h_c.md`, audited in `notes/audit_palindromic_h_c.md`):
+its connected case is KNOWN (EC1 Cor. 3.15.18(b), Beck–Sanyal Ex. 6.27),
+and the "only if" for disconnected P is proved there. Still OPEN:
+unimodality U of h_C (COMPUTED n ≤ 7). For connected P, U is the open
+unimodality of W_P for naturally labelled P. h_C is not real-rooted in general (Stembridge's
 poset, n = 17, EC1 Fig. 3.88); unimodality is not refuted.
 
 ## 3. Lead 1: Kraskiewicz–Weyman and maj mod n

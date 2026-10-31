@@ -34,7 +34,9 @@ PROVEN + audited in [AudH]); [ME] = `notes/mu_op_elementary.md`;
 `notes/qsym_refinement_omega_c.md`; [AudR] =
 `notes/audit_reciprocity_omega_c.md`; [PAR] =
 `notes/prior_art_reciprocity_omega_c.md`; [GR] = Grinberg–Reiner, *Hopf
-algebras in combinatorics*, arXiv:1409.8356.
+algebras in combinatorics*, arXiv:1409.8356; [PH] =
+`notes/palindromic_h_c.md` (Theorem S′, PROVEN + audited in
+`notes/audit_palindromic_h_c.md`).
 
 ## Verdict
 
@@ -63,7 +65,7 @@ give Ω̄_C (Lemmas R1 and R2).
 | ★ | Ω_C(P*, m) = Ω_C(P, m), so h_C(P*) = h_C(P) and Ω̄_C(P*, m) = Ω̄_C(P, m) | **PROVEN + audited** (§4, one line; [AudR] §3); COMPUTED on 2450 posets `[dual]`. KNOWN IN SUBSTANCE (the connected case is the classical Ω(P*) = Ω(P); [PAR]) |
 | E | R_T, the closed region of T-anchored points of the order polytope, is not convex in general. It satisfies Ehrhart–Macdonald reciprocity L_{R_T}(−t) = (−1)^n L_{R_T°}(t) | **PROVEN + audited** (§5, interior identified, then R; [AudR] §4). Mechanism KNOWN IN SUBSTANCE (half-open decompositions, Beck–Sanyal §5.3); the statement for R_T NOT FOUND ([PAR]) |
 | S | n ≥ 2 and every component has height ≤ 2 (no 3-element chain) ⇒ Ω̄_C(P, m) = Ω_C(P, m − 1) and h_j = h_{n−2−j} | **PROVEN + audited** (§6, explicit bijection; [AudR] §5, checked map by map); COMPUTED on 256 posets `[shift-h2]`. Connected case and antichain KNOWN; general disconnected P NOT FOUND ([PAR]) |
-| S′ | n ≥ 2: h_C palindromic iff (P connected and graded) or (every component has height ≤ 2) | COMPUTED on all 2449 posets 2 ≤ n ≤ 7 `[pal-class]`, recomputed in [AudR]. The connected case is **KNOWN** (EC1 Cor. 3.15.18(b); Beck–Sanyal Ex. 6.27). The "only if" for disconnected P is **OPEN** |
+| S′ | n ≥ 2: h_C palindromic iff (P connected and graded) or (every component has height ≤ 2) | COMPUTED on all 2449 posets 2 ≤ n ≤ 7 `[pal-class]`, recomputed in [AudR]. **PROVEN + audited** in [PH]. The connected case is **KNOWN** (EC1 Cor. 3.15.18(b); Beck–Sanyal Ex. 6.27). The "only if" for disconnected P is proved in [PH] (Theorem G, end coefficients) |
 | U | h_C(P) unimodal | COMPUTED: true (and log-concave, [PAR]) on all 2450 posets n ≤ 7. **OPEN** in general. For connected P, h_C = W_P, so U contains the open unimodality question for W_P of naturally labelled posets (Neggers–Stanley, weak form; [PAR] §5) |
 | 2C | P = Q ⊔ T, Q and T connected ⇒ h_C(P)(t) = W_P(t) − t · W_Q(t) · W_T(t), W = des generating function of Lin under a natural labelling | **PROVEN + audited** ([PAR] §5; [AudR] §7, 0 bad / 391 two-component posets n ≤ 7); §6 below |
 | ✗ | h_C real-rooted | **FALSE** at n = 17: Stembridge's poset S (EC1 Fig. 3.88) is connected, so h_C(S) = W_S, which has non-real zeros ([PAR] §5). True for n ≤ 7. Unimodality is not refuted |
@@ -445,7 +447,8 @@ This is the analogue of the rank-function bijection f ↦ f − ρ, which gives
 Stanley's Ω̄(P, m) = Ω(P, m − ℓ) for graded P. Here only rank 1 is
 allowed, plus a unit shift at the anchor, which is what the antichain needs.
 
-**S′ (COMPUTED `[pal-class]`, all 2449 posets 2 ≤ n ≤ 7; partly OPEN).** For
+**S′ (PROVEN + audited in [PH]; COMPUTED `[pal-class]`, all 2449 posets
+2 ≤ n ≤ 7).** For
 n ≥ 2, h_C(P) is palindromic iff either P is connected and graded, or
 every component of P has height ≤ 2.
 - *Connected P:* h_C is Stanley's h-vector W_P, and palindromic iff graded
@@ -453,8 +456,10 @@ every component of P has height ≤ 2.
   after Stanley's 1972 Memoir, Prop. 19.3; stated verbatim as Beck–Sanyal
   Ex. 6.27 ([PAR] §4). (Not EC1 Thm 3.15.16, which concerns maj.)
 - *Disconnected P:* "if" is Proposition S. "Only if" (a component with a
-  3-chain forces non-palindromic h_C) is **OPEN**. It holds for n ≤ 7
-  (319 + 76 disconnected posets at n = 7, matching the prediction exactly).
+  3-chain forces non-palindromic h_C) is **PROVEN + audited** in [PH]
+  (Theorem G: h_d ≥ 2, or h_d = 1 and h_{d−1} − h_1 ≥ 2^{r−1} − 1). It was
+  first COMPUTED for n ≤ 7 (319 + 76 disconnected posets at n = 7, matching
+  the prediction exactly).
 - Gradedness of the components is not the right condition
   (`[ctl-pal-graded]`): C_3 ⊔ C_1 gives (1, 2), and C_3 ⊔ C_3 gives
   (1, 8, 9, 1). No poset with a 3-chain (connected or not) has
@@ -524,14 +529,14 @@ supersedes the two-query search first recorded here. Its verdicts:
 - **S:** connected case and antichain KNOWN (EC1 Lemma 3.15.17(b),
   Cor. 3.15.18(b); Beck–Sanyal Ex. 6.28); general disconnected P NOT FOUND.
 - **S′:** connected case KNOWN (EC1 Cor. 3.15.18(b); Beck–Sanyal Ex. 6.27);
-  the "only if" for disconnected P NOT FOUND and OPEN.
+  the "only if" for disconnected P NOT FOUND; it is proved in [PH], so the
+  disconnected classification is new to these notes.
 - **U:** connected case is the open unimodality of naturally labelled W_P
   (§6). h_C is not real-rooted in general (Stembridge's poset, n = 17).
 - **Two-component identity:** not found in the sources read.
 
 ## 8. Open points
 
-- The "only if" of S′ for disconnected P (COMPUTED n ≤ 7).
 - Whether R_T is a PL ball, or just a manifold with boundary, which would
   suffice for Macdonald's theorem (§5).
 - Unimodality of h_C (COMPUTED n ≤ 7). Its connected case is the open

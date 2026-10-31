@@ -11,7 +11,9 @@ Tags: **PROVEN** means proved here. **COMPUTED** means checked by
 `compute/palindromic_h_c.py`; bracketed labels refer to the lines of
 `compute/output/palindromic_h_c.txt`. **KNOWN** means it is in the
 literature. **OPEN** means not settled. The claims tagged PROVEN in this
-note have **not yet been independently audited**.
+note (P0, E0, E1, E2, I, G and the assembly of S′) are **PROVEN + audited**
+in [AudP] = `notes/audit_palindromic_h_c.md`, which re-derived every proof
+and recomputed every claim with independent code; no fixes were needed.
 
 Sources: [R] = `notes/reciprocity_omega_c.md` (Theorem Ω, Theorem R,
 Lemma R2, Proposition B⁺, Proposition S, all PROVEN + audited in [AudR] =
@@ -21,8 +23,8 @@ Combinatorics* vol. 1, 2nd ed.
 
 ## Verdict
 
-**S′ is PROVEN for every number of components.** The "only if" for
-disconnected P reduces to two pairs of end coefficients, and no induction
+**S′ is PROVEN + audited ([AudP]) for every number of components.** The
+"only if" for disconnected P reduces to two pairs of end coefficients, and no induction
 on the number of components is needed. Let d = deg h_C. Then h_0 = 1 always.
 If P is disconnected and has a 3-element chain, then either h_d ≥ 2, or
 h_d = 1 and h_{d−1} − h_1 ≥ 2^{r−1} − 1 ≥ 1, where r is the number of
@@ -30,13 +32,13 @@ components. Either way h_d ≠ h_0 or h_{d−1} ≠ h_1, so h_C is not palindrom
 
 | # | Statement | Status |
 |---|---|---|
-| P0 | n ≥ 2, L = longest chain size: d = n − L when L ≥ 2, and h_C palindromic ⇔ Ω̄_C(P, m) = Ω_C(P, m − L + 1) for all m | **PROVEN** (§2); COMPUTED `[deg]` |
-| E0 | h_0 = 1 and h_1 = J(P) − 2^{r−1} − n, where J(P) is the number of order ideals | **PROVEN** (§1); COMPUTED `[h0]`, `[h1]` |
-| E1 | L ≥ 2: h_d = (L − 1)^i · ∏_{K non-singleton} s(K, L), where i is the number of isolated points and s(K, m) is the number of strictly order-preserving maps K → [m] | **PROVEN** (§2); COMPUTED `[top]` |
-| E2 | L ≥ 3 and every component has longest chain L: every strict map P → [L + 1] satisfies D_T, so h_{d−1} + (n + 1)h_d = ∏_K s(K, L + 1) | **PROVEN** (§3); COMPUTED `[next]` |
-| I | s(K, L_K + 1) ≥ J(K) for every finite poset K with longest chain L_K | **PROVEN** (§3, an explicit injection); COMPUTED `[inj]` (on connected K, with equality iff K is graded) |
-| G | r ≥ 2 and L ≥ 3 ⇒ h_d ≥ 2, or else h_d = 1 and h_{d−1} − h_1 = ∏_K s(K, L + 1) − ∏_K J(K) + 2^{r−1} − 1 ≥ 2^{r−1} − 1 ≥ 1 | **PROVEN** (§4); COMPUTED `[gap]` |
-| S′ | n ≥ 2: h_C palindromic ⇔ (P connected and graded) or (every component has height ≤ 2) | **PROVEN** (§5): disconnected "only if" by G; "if" for height ≤ 2 by Prop. S of [R]; connected case KNOWN (EC1 Cor. 3.15.18(b)). COMPUTED on all 19 448 posets with 2 ≤ n ≤ 8 `[pal-class]` |
+| P0 | n ≥ 2, L = longest chain size: d = n − L when L ≥ 2, and h_C palindromic ⇔ Ω̄_C(P, m) = Ω_C(P, m − L + 1) for all m | **PROVEN + audited** (§2); COMPUTED `[deg]` |
+| E0 | h_0 = 1 and h_1 = J(P) − 2^{r−1} − n, where J(P) is the number of order ideals | **PROVEN + audited** (§1); COMPUTED `[h0]`, `[h1]` |
+| E1 | L ≥ 2: h_d = (L − 1)^i · ∏_{K non-singleton} s(K, L), where i is the number of isolated points and s(K, m) is the number of strictly order-preserving maps K → [m] | **PROVEN + audited** (§2); COMPUTED `[top]` |
+| E2 | L ≥ 3 and every component has longest chain L: every strict map P → [L + 1] satisfies D_T, so h_{d−1} + (n + 1)h_d = ∏_K s(K, L + 1) | **PROVEN + audited** (§3); COMPUTED `[next]` |
+| I | s(K, L_K + 1) ≥ J(K) for every finite poset K with longest chain L_K | **PROVEN + audited** (§3, an explicit injection; K need not be connected); COMPUTED `[inj]` (on connected K, with equality iff K is graded) |
+| G | r ≥ 2 and L ≥ 3 ⇒ h_d ≥ 2, or else h_d = 1 and h_{d−1} − h_1 = ∏_K s(K, L + 1) − ∏_K J(K) + 2^{r−1} − 1 ≥ 2^{r−1} − 1 ≥ 1 | **PROVEN + audited** (§4); COMPUTED `[gap]` |
+| S′ | n ≥ 2: h_C palindromic ⇔ (P connected and graded) or (every component has height ≤ 2) | **PROVEN + audited** (§5, [AudP]): disconnected "only if" by G; "if" for height ≤ 2 by Prop. S of [R]; connected case KNOWN (EC1 Cor. 3.15.18(b)). COMPUTED on all 19 448 posets with 2 ≤ n ≤ 8 `[pal-class]` |
 | ✗ | "h_C palindromic iff every component is graded" | **FALSE** `[ctl-graded]`, e.g. C_3 ⊔ C_3 with h_C = (1, 8, 9, 1) |
 | ✗ | E0 without the factor 2^{r−1}, i.e. h_1 = J(P) − n − 1 | **FALSE** on every disconnected P `[ctl-h1-r]` |
 | ✗ | E2 with L = 2 | **FALSE** `[ctl-next-L2]`; e.g. C_2 ⊔ C_2 has 9 strict maps into [3], but only 8 satisfy D_T |
@@ -144,7 +146,10 @@ i.e. iff h_C is palindromic. Two polynomials in m that agree for all m ≥ 0
 are equal. ∎
 
 So in the reformulation of the question, the shift is forced: s = L − 1, the
-length of P. For a connected P this is Stanley's
+length of P. Precisely, a shift s with Ω̄_C(P, m) = Ω_C(P, m − s) for all m
+is unique if it exists: both sides are polynomials in m of degree n with the
+same leading coefficient, so comparing the coefficients of m^{n−1} determines
+s. P0 itself does not need this uniqueness. For a connected P this is Stanley's
 Ω̄(P, m) = Ω(P, m − ℓ). For height ≤ 2 it is Prop. S of [R]. For the
 antichain (L = 1) the shift is 1 (Prop. S), and P0 is not needed.
 
@@ -174,7 +179,7 @@ The claim also fails when a component has a shorter chain, because then its
 minimum can be large (`[ctl-next-mixed]`).
 
 **Lemma I (PROVEN; COMPUTED `[inj]`).** For every finite poset K with
-longest chain L_K, and every m ≥ L_K + 1, s(K, m) ≥ J(K).
+longest chain L_K (connected or not), and every m ≥ L_K + 1, s(K, m) ≥ J(K).
 
 *Proof.* Let δ(x) be the number of elements of a longest chain with top x.
 Then x < y implies δ(y) ≥ δ(x) + 1, and 1 ≤ δ ≤ L_K. Send an order-preserving
@@ -232,7 +237,7 @@ Remarks.
 
 ## 5. S′
 
-**Theorem S′ (PROVEN; COMPUTED `[pal-class]`, all 19 448 posets with
+**Theorem S′ (PROVEN + audited in [AudP]; COMPUTED `[pal-class]`, all 19 448 posets with
 2 ≤ n ≤ 8).** For n ≥ 2, h_C(P) is palindromic iff either P is connected
 and graded, or every component of P has height ≤ 2.
 
@@ -282,7 +287,7 @@ line PASS):
 | `[agree]` (B⁺ for every T = Theorem H; = Möbius for n ≤ 7) | 19 448 | 0 |
 | `[h0]`, `[h1]` | 19 448 | 0 |
 | `[deg]`, `[top]` (L ≥ 2, i.e. all but the 7 antichains) | 19 441 | 0 |
-| `[next]` (L ≥ 3, all L_K = L) | 16 038 | 0 |
+| `[next]` (L ≥ 3, all L_K = L, d ≥ 1) | 16 038 | 0 |
 | `[inj]` (connected K: s(K, L+1) ≥ J(K), = iff graded) | 16 458 | 0 |
 | `[gap]` (disconnected, with a 3-chain) | 2 637 | 0 |
 | `[pal-class]` (S′) | 19 448 | 0 |
@@ -293,6 +298,11 @@ h_d = 1 with h_{d−1} > h_1 for 1 + 3 + 17 = 21 (n = 6, 7, 8). In the second
 case the bound 2^{r−1} − 1 is attained at every n = 6, 7, 8. Palindromic
 disconnected posets: 1, 2, 5, 11, 29, 76, 229 for n = 2, …, 8. At n = 7 the
 counts 319 non-palindromic and 76 palindromic disconnected posets match [R].
+
+The `[next]` count leaves out the six chains C_3, …, C_8. They have L ≥ 3 and
+a single component with L_K = L, but d = 0, so h_{d−1} is not an entry. E2
+holds for them with h_{−1} = 0; including them gives 16 044, the count of
+[AudP].
 
 | Control | Refuted on |
 |---|---|
@@ -315,8 +325,8 @@ see a wrong statement:
 
 ## 7. Open points
 
-- **Audit.** E0, E1, E2, I, G, P0 and the assembly of S′ are PROVEN here,
-  but not yet independently audited.
+- **Audit.** Done: E0, E1, E2, I, G, P0 and the assembly of S′ all hold in
+  the independent audit [AudP], with no fixes needed.
 - s(K, L_K + 1) = J(K) iff K is graded, for connected K: COMPUTED `[inj]`,
   not proved here ("if" is the classical bijection g ↦ g + ρ). A proof would
   give a self-contained proof of the connected case of S′ by the same
