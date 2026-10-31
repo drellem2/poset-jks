@@ -36,9 +36,11 @@ partial def depClosure (env : Environment) (n : Name) : NameSet := Id.run do
 
 #eval show CoreM Unit from do
   let env ← getEnv
-  let cited := [``PosetJKS.jencaSarkoci_homology, ``PosetJKS.hall_mu_eq_reducedEuler]
+  let cited := [``PosetJKS.jencaSarkoci_homology, ``PosetJKS.hall_mu_eq_reducedEuler,
+    ``PosetJKS.trace_HP]
   for t in [``PosetJKS.checkDepsControlJS, ``PosetJKS.checkDepsControlHall, ``PosetJKS.mu_OP_eq, ``PosetJKS.prop_Mside, ``PosetJKS.character_identity,
-      ``PosetJKS.closed_formula, ``PosetJKS.main_iso] do
+      ``PosetJKS.closed_formula, ``PosetJKS.main_iso,
+      ``PosetJKS.exists_iso_HP_PLie_of_trace, ``Representation.nonempty_equiv_of_character_eq] do
     let s := depClosure env t
     let hits := cited.filter s.contains
     IO.println s!"{t}: {s.size} constants; cited inputs used: {hits}"
