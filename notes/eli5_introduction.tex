@@ -1102,7 +1102,19 @@ of Stanley's reciprocity, which holds one linear extension at a time;
 only its reading as this anchored count of strict maps was not found in
 the literature. So the Lie theory does not give a new way to compute
 $|\Lin(P)|$, but its M\"obius function does give a new refined count of
-the rotation classes it is built on.
+the rotation classes it is built on. One can also ask exactly when the $h$-vector of
+$\Omega_C$ reads the same backwards. Call $P$ \emph{graded} if all its
+maximal chains have the same number of elements. For $n\ge2$, the
+$h$-vector is palindromic if and only if either $P$ is connected and
+graded, or no component of $P$ contains a chain of three
+elements.\PROVEN\footnote{\src{notes/palindromic_h_c.md}, Theorem~S$'$;
+audited in \src{notes/audit_palindromic_h_c.md}. Checked by computer on all
+$19{,}448$ posets with $2\le n\le8$.} For connected $P$ this is classical,
+since there $\Omega_C$ is Stanley's order polynomial (Stanley,
+\emph{Enumerative Combinatorics} vol.~1, Cor.~3.15.18(b)). The case of
+disconnected $P$ is proved in these notes. Being graded component by
+component is not enough: two disjoint $3$-element chains give the
+$h$-vector $(1,8,9,1)$.
 
 \subsection{Cyclic sieving on rotation classes}
 
