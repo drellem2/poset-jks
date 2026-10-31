@@ -1,0 +1,75 @@
+== [ctl] controls
+  [ctl-rsw] q-multinomial sieves words of content m under rotation; perturbed X rejected: 9/9
+  [ctl-binom] fake degree engine on k-subsets of [k] gives [k; j]_q: 33/33
+  [ctl-kw] fake degree of S_k/C_k equals sum_(maj w = 0 mod k) q^maj(w^-1) (k <= 7), and the poset code reproduces it for the antichain (k <= 6): 11/11
+== [tk] P = T^(+k), k >= 2, |P| <= 8
+  [tk-allg] every class g != 1 of Aut(T^(+k)), |P| <= 8: (regular or not) x (<g> free on Cyc or not): reg/free 33 (X^G sieves 33), reg/nonfree 31 (X^G sieves 31), nonreg/free 49 (X^G sieves 25), nonreg/nonfree 1 (X^G sieves 1); no cyclic wreath subgroup contains g: 5 (free: 5)
+  [tk-W] classes g != 1 in W = S_k: X^W sieves <g> iff the criterion of Theorem C: 78/78
+  [tk-nonreg-nonfree] pt^8: g = (1, 0, 3, 4, 5, 6, 7, 2), component cycle lengths [2, 6], fix = [5040, 0, 0, 48, 0, 0], X^G sieves: True, canonical X mod q^N-1 = 848 + 832q + 848q^2 + 832q^3 + 848q^4 + 832q^5
+  [tk-table] T | |T| | k | n | e(T) | e_C(P) | |Cyc^{sigma^j}|, j=0..k-1 | X_P(q) mod q^k-1 | X_P(q)
+    pt | 1 | 2 | 2 | 1 | 1 | [1, 1] | 1 | 1
+    pt | 1 | 3 | 3 | 1 | 2 | [2, 2, 2] | 2 | 1 + q^3
+    pt | 1 | 4 | 4 | 1 | 6 | [6, 2, 2, 2] | 3 + q + q^2 + q^3 | 1 + q^2 + q^3 + 2q^4 + q^5
+    pt | 1 | 5 | 5 | 1 | 24 | [24, 4, 4, 4, 4] | 8 + 4q + 4q^2 + 4q^3 + 4q^4 | 1 + q^2 + 3q^3 + 4q^4 + 6q^5 + 4q^6 + 3q^7 + q^8 + q^10
+    pt | 1 | 6 | 6 | 1 | 120 | [120, 2, 6, 8, 6, 2] | 24 + 18q + 20q^2 + 20q^3 + 20q^4 + 18q^5 | 1 + 2q^2 + 5q^3 + 8q^4 + 11q^5 + 17q^6 + 16q^7 + 17q^8 + 15q^9 + 12q^10 + 7q^11 + 6q^12 + 2q^13 + q^14
+    pt | 1 | 7 | 7 | 1 | 720 | [720, 6, 6, 6, 6, 6, 6] | 108 + 102q + 102q^2 + 102q^3 + 102q^4 + 102q^5 + 102q^6 | 1 + 2q^2 + 7q^3 + 14q^4 + 25q^5 + 37q^6 + 53q^7 + 65q^8 + 75q^9 + 81q^10 + 81q^11 + 75q^12 + 65q^13 + 53q^14 + 37q^15 + 25q^16 + 14q^17 + 7q^18 + 2q^19 + q^21
+    pt | 1 | 8 | 8 | 1 | 5040 | [5040, 4, 8, 4, 48, 4, 8, 4] | 640 + 624q + 634q^2 + 624q^3 + 636q^4 + 624q^5 + 634q^6 + 624q^7 | 1 + 3q^2 + 9q^3 + 23q^4 + 42q^5 + 76q^6 + 119q^7 + 180q^8 + 240q^9 + 313q^10 + 374q^11 + 434q^12 + 464q^13 + 482q^14 + 464q^15 + 436q^16 + 375q^17 + 314q^18 + 240q^19 + 179q^20 + 118q^21 + 76q^22 + 41q^23 + 23q^24 + 9q^25 + 4q^26 + q^27
+    C2 | 2 | 2 | 4 | 1 | 5 | [5, 1] | 3 + 2q | 3 + 2q
+    C2 | 2 | 3 | 6 | 1 | 74 | [74, 2, 2] | 26 + 24q + 24q^2 | 13 + 24q + 24q^2 + 13q^3
+    C2 | 2 | 4 | 8 | 1 | 2118 | [2118, 2, 10, 2] | 533 + 527q + 531q^2 + 527q^3 | 90 + 263q + 442q^2 + 527q^3 + 443q^4 + 264q^5 + 89q^6
+    cov0<1,0<2 | 3 | 2 | 6 | 2 | 76 | [76, 2] | 39 + 37q | 39 + 37q
+    cov0<2,1<2 | 3 | 2 | 6 | 2 | 76 | [76, 2] | 39 + 37q | 39 + 37q
+    C3 | 3 | 2 | 6 | 1 | 19 | [19, 1] | 10 + 9q | 10 + 9q
+    cov0<1,0<2,0<3 | 4 | 2 | 8 | 6 | 2484 | [2484, 6] | 1245 + 1239q | 1245 + 1239q
+    cov0<3,1<2,1<3 | 4 | 2 | 8 | 5 | 1725 | [1725, 5] | 865 + 860q | 865 + 860q
+    cov0<2,0<3,1<2,1<3 | 4 | 2 | 8 | 4 | 1104 | [1104, 4] | 554 + 550q | 554 + 550q
+    cov0<1,1<2,1<3 | 4 | 2 | 8 | 2 | 276 | [276, 2] | 139 + 137q | 139 + 137q
+    cov0<1,0<2,2<3 | 4 | 2 | 8 | 3 | 621 | [621, 3] | 312 + 309q | 312 + 309q
+    cov0<3,1<3,2<3 | 4 | 2 | 8 | 6 | 2484 | [2484, 6] | 1245 + 1239q | 1245 + 1239q
+    cov0<1,0<2,1<3,2<3 | 4 | 2 | 8 | 2 | 276 | [276, 2] | 139 + 137q | 139 + 137q
+    cov0<3,1<2,2<3 | 4 | 2 | 8 | 3 | 621 | [621, 3] | 312 + 309q | 312 + 309q
+    cov0<2,1<2,2<3 | 4 | 2 | 8 | 2 | 276 | [276, 2] | 139 + 137q | 139 + 137q
+    C4 | 4 | 2 | 8 | 1 | 69 | [69, 1] | 35 + 34q | 35 + 34q
+  [tk-formula] |Cyc^(sigma^j)| = phi(d) d^(k/d-1) e_C(T^(+k/d)), d = k/gcd(j,k): 23/23
+  [tk-closed] fake degree = sum_(d|k) phi(d)/d c_(k/d)/(k/d)! (q;q)_k/(1-q^d)^(k/d): 23/23
+  [tk-sigma] fake degree X_P sieves <sigma> (and every <sigma^j>): 23/23; also sieves the (k-1)-cycle on 8 cases with k >= 3
+  [tk-pattern] X_(C_m^(+k))(q) * sum_(x in [e(T)]^k) q^maj(x) sieves <sigma>: 23/23; X_(C_m^(+k))(q) * maj_T(q)^k sieves: 12/23
+  [tk-cand] fake: sieves <sigma> on 23/23
+  [tk-cand] maj(B_P): sieves <sigma> on 4/23
+  [tk-cand] maj(B_P) shifted: sieves <sigma> on 4/23
+  [tk-cand] inv(B_P): sieves <sigma> on 4/23
+  [tk-cand] maj(lexmin): sieves <sigma> on 5/23
+  [tk-cand] block q-cumulant: sieves <sigma> on 4/23
+== [sweep] every unlabeled P with n <= 7 and Aut(P) != 1, one g per conjugacy class
+  [sweep-count] n | posets with Aut != 1 | classes g != 1 regular | non-regular | X^G sieves (regular) | X^G sieves (non-regular)
+    2 | 1 | 1 | 0 | 1 | 0
+    3 | 3 | 4 | 0 | 4 | 0
+    4 | 11 | 17 | 1 | 17 | 0
+    5 | 44 | 76 | 5 | 76 | 4
+    6 | 216 | 413 | 27 | 413 | 15
+    7 | 1315 | 2637 | 122 | 2637 | 95
+  [sweep-springer] X^G sieves every regular class: 3148/3148; non-regular classes where it still sieves: 114/155 (of which the action of <g> on Cyc(P) is free: 155); classes with no cyclic wreath subgroup containing g: 0
+  [sweep-cand] g-independent candidates; counts are (regular pass/regular, non-regular pass/non-regular) over disconnected P:
+    fake: 210/734, 95/155
+    maj(B_P): 548/734, 60/155
+    maj(B_P) shifted: 548/734, 60/155
+    inv(B_P): 701/734, 116/155
+    maj(lexmin): 501/734, 39/155
+    block q-cumulant: 298/734, 55/155
+  [sweep-W] g conjugate into W = prod S_(k_T) (trivial cycle products), g != 1: 171 classes; X^W sieves <g>: 157; agrees with the criterion of Theorem C (sieves iff criterion): 171/171
+  [sweep-cand2] disconnected P: (pairs where <g> is free, not free, g in W = prod S_k and W-regular) = (874, 15, 138); passes:
+    fake: free 290, not free 15, W-regular 138
+    maj(B_P): free 604, not free 4, W-regular 56
+    maj(B_P) shifted: free 604, not free 4, W-regular 56
+    inv(B_P): free 814, not free 3, W-regular 117
+    maj(lexmin): free 537, not free 3, W-regular 30
+    block q-cumulant: free 351, not free 2, W-regular 49
+  [sweep-firstfail] block q-cumulant: n=3 P=[] g=(1, 2, 0) fix=[2, 2, 2] X mod q^N-1 = 1 + q
+  [sweep-firstfail] fake: n=4 P=[] g=(0, 1, 3, 2) fix=[6, 0] X mod q^N-1 = 4 + 2q
+  [sweep-firstfail] inv(B_P): n=3 P=[] g=(1, 2, 0) fix=[2, 2, 2] X mod q^N-1 = 1 + q
+  [sweep-firstfail] maj(B_P): n=3 P=[] g=(0, 2, 1) fix=[2, 0] X mod q^N-1 = 2
+  [sweep-firstfail] maj(B_P) shifted: n=3 P=[] g=(0, 2, 1) fix=[2, 0] X mod q^N-1 = 2
+  [sweep-firstfail] maj(lexmin): n=3 P=[] g=(0, 2, 1) fix=[2, 0] X mod q^N-1 = 2
+== [obst] smallest P where two g of the same order have different fixed data
+  [obst] smallest n = 4: 1 poset(s) at this n; first P = [], conflicting data by order: {2: [(6, 0), (6, 2)]}
+FAILED CHECKS: 0
