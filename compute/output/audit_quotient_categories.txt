@@ -1,0 +1,83 @@
+[HOM] ok   S^1 boundary of triangle: {1:1}
+[HOM] ok   7-vertex torus: {1: 2, 2: 1} (mod 2) = {1: 2, 2: 1} (mod 3)
+[HOM] ok   RP^2_6: mod 2 {1: 1, 2: 1}, mod 3 {} (torsion detected)
+[HOM] ok   order complex of face poset of RP^2_6 agrees: {1: 1, 2: 1}, {}
+[HOM] ok   control: unsigned boundary of S^1 has rank 3 mod 3 (would give wrong Betti) - detects sign errors
+[NEG] ok   matching complex M_7 f-vector [21, 105, 105]
+[NEG] ok   M_7 reduced Betti mod 2 {2: 20}, mod 3 {1: 1, 2: 21}, mod 2^31-1 {2: 20}: H_1 has 3-torsion
+[NEG] ok   proper part of Q(7) (face poset): mod 2 {2: 20}, mod 3 {1: 1, 2: 21}
+[NEG] ok   control M_6: mod 2 {1: 16} = mod 3 {1: 16} (detector silent on torsion-free case)
+[NEG] ok   |[pi,1^]| = 27, |Q(6-set)| = 77: (Q2) fails
+[NEG] ok   composite of {01}{23}... then merging the two 2-blocks has a 4-element fiber (by inspection)
+[GSET] ok   L(A4): 10 subgroups, mu = 4, dim proper part = 1, reduced Betti mod 2,3,5,2^31-1 = [{0: 4}, {0: 4}, {0: 4}, {0: 4}]
+[GSET] ok   L(A4) is NOT Cohen-Macaulay: homology only in degree [0] < dim 1
+[GSET] ok   L(S4): 30 subgroups, mu = -12, dim proper part = 2, reduced Betti mod 2,3,5,2^31-1 = [{1: 12}, {1: 12}, {1: 12}, {1: 12}]
+[GSET] ok   L(S4) is NOT Cohen-Macaulay: homology only in degree [1] < dim 2
+[GSET] ok   L(A5): 59 subgroups, mu = -60, dim proper part = 2, reduced Betti mod 2,3,5,2^31-1 = [{1: 60}, {1: 60}, {1: 60}, {1: 60}]
+[GSET] ok   L(A5) is NOT Cohen-Macaulay: homology only in degree [1] < dim 2
+[GSET] ok   S_3: 6 left-invariant partitions of the regular S_3-set, 6 subgroups
+[GSET] ok   S_3: P -> block of e is an order isomorphism onto L(S_3)
+[GSET] ok   control: right cosets of a non-normal C_2 are not a left-invariant partition
+[GSET] ok   S_4: for every H of order 3,4,6,8, #G-invariant partitions of G/H = #{K >= H} (so (H,G) = proper part of Q(G/H))
+[INT] ok   face lattice of RP^2_6 with 0^,1^ adjoined (33 elements) is a lattice
+[INT] ok   its proper part: mod 2 {1: 1, 2: 1} vs mod 3 {}: not a wedge of spheres (torsion)
+[INT] ok   (Q1)-(Q3) with one fiber hold tautologically for the interval category (objects = intervals)
+[MIX] ok   Prop 2.1(a): Lambda(V) from points = description on 4071 mixed graphs (n<=4 all, n=5 sample)
+[MIX] ok   Prop 2.1(b),(c): homology only in degree n-c(G)-2, rank >= 1; pointed cases m = #V (2294); non-pointed with m < #V: 1777
+[MIX] ok   control: one edge on 3 vertices gives |Lambda| = 2 < |Pi_3| = 5
+[MIX] ok   control: replacing 'acyclic' by 'no 2-cycle' changes Lambda (9 vs 8) - instrument discriminates
+[MIX] ok   triangle with one arc: non-pointed, #V = 3, Betti {0: 2} (m = 2 < 3)
+[DDIV] ok   (n,d)=(4,2): Delta(Q) Betti {0: 2}; beta_(n-1)(S) = 2
+[DDIV] ok     pointed companion B_(n-1)(S): {0: 2}
+[DDIV] ok     all 3 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {0: 5}; beta_n(S) = 5
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {0: 5} = {0: 5}
+[DDIV] ok   (n,d)=(6,2): Delta(Q) Betti {1: 16}; beta_(n-1)(S) = 16
+[DDIV] ok     pointed companion B_(n-1)(S): {1: 16}
+[DDIV] ok     all 30 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {1: 61}; beta_n(S) = 61
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {1: 61} = {1: 61}
+[DDIV] ok     as printed, with Q_>pi (coarser): gives {1: 16, 2: 30, 0: 15} != {1: 61} (wrong)
+[DDIV] ok   (n,d)=(6,3): Delta(Q) Betti {0: 9}; beta_(n-1)(S) = 9
+[DDIV] ok     pointed companion B_(n-1)(S): {0: 9}
+[DDIV] ok     all 10 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {0: 19}; beta_n(S) = 19
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {0: 19} = {0: 19}
+[DDIV] ok   (n,d)=(8,2): Delta(Q) Betti {2: 272}; beta_(n-1)(S) = 272
+[DDIV] ok     pointed companion B_(n-1)(S): {2: 272}
+[DDIV] ok     all 378 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {2: 1385}; beta_n(S) = 1385
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {2: 1385} = {2: 1385}
+[DDIV] ok     as printed, with Q_>pi (coarser): gives {2: 692, 4: 630, 0: 63} != {2: 1385} (wrong)
+[DDIV] ok   (n,d)=(9,3): Delta(Q) Betti {1: 477}; beta_(n-1)(S) = 477
+[DDIV] ok     pointed companion B_(n-1)(S): {1: 477}
+[DDIV] ok     all 364 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {1: 1513}; beta_n(S) = 1513
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {1: 1513} = {1: 1513}
+[DDIV] ok     as printed, with Q_>pi (coarser): gives {1: 477, 2: 560, 0: 84} != {1: 1513} (wrong)
+[DDIV] ok   (n,d)=(8,4): Delta(Q) Betti {0: 34}; beta_(n-1)(S) = 34
+[DDIV] ok     pointed companion B_(n-1)(S): {0: 34}
+[DDIV] ok     all 35 pointed Quillen fibers acyclic (mod 2)
+[DDIV] ok     unpointed companion B_n(S): {0: 69}; beta_n(S) = 69
+[DDIV] ok     BWW with Q_<pi (finer): Delta(Q) + sum S^(k-2)*Delta(Q_<pi) gives {0: 69} = {0: 69}
+[DDIV] ok   control: unpointed fiber over 01|23 is S^0: {0: 1}
+[FIX] ok   naturally labelled posets n=1..5: [1, 2, 7, 40, 357]
+[FIX] ok   (R5): stable faces = pullbacks and orbit preorder acyclic on all 602 pairs (P, g != 1), n <= 5
+[FIX] ok   control: orbits of g^2 rejected on 478/478 pairs where g^2 has more orbits
+[CMP] ok   OP(P) is closed under the meet of Pi_n (n <= 5, all naturally labelled P)
+[CMP] ok   complementation axiom: complements (and meet-complements) of pi_a are exactly the atoms pi_ab, on 959 pairs (P, a minimal)
+[CMP] ok   for every such atom, |[pi_ab, 1^]| = |OP(P/pi_ab)| ((Q2) at the atoms)
+[CMP] ok   control: in Pi_4, complements of 01|23 = [((0,), (1, 2), (3,)), ((0,), (1, 3), (2,)), ((0, 2), (1,), (3,)), ((0, 2), (1, 3)), ((0, 3), (1,), (2,)), ((0, 3), (1, 2))]
+[CMP] ok   control: t = 01|23 in Pi_4 has non-atom complements [((0, 2), (1, 3)), ((0, 3), (1, 2))] (test discriminates)
+[CMP] info L(A4): orders of proper t whose complements are all atoms: [2, 4]
+[CMP] info L(S4): orders of proper t whose complements are all atoms: [8, 12]
+[CMP] info L(A5): orders of proper t whose complements are all atoms: [10]
+[VAL] ok   k=1: 3 posets share the labels (antichain on B, point c) at {B}|{c}
+[VAL] ok   k=2: 7 posets share the labels (antichain on B, point c) at {B}|{c}
+[VAL] ok   k=3: 15 posets share the labels (antichain on B, point c) at {B}|{c}
+[VAL] ok   k=4: 31 posets share the labels (antichain on B, point c) at {B}|{c}
+[VAL] ok   k=5: 63 posets share the labels (antichain on B, point c) at {B}|{c}
+[VAL] info a basic-set operad with restriction labels needs |P_2| >= 2^(k+1)-1 for every k: impossible for finite P_2
+
+FAILURES: none
+ALL CHECKS PASS: True
