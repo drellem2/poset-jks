@@ -80,7 +80,7 @@ The argument has three parts.
 | 2 | **Theorem Ω**: Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f: P→[m] order-preserving, every upper level set that is a nonempty union of components contains T} | **PROVEN + audited** ([AudLS] §1); COMPUTED n ≤ 6, m ≤ 3, every T `[omegaC-f]`; recomputed in [AudLS] as an identity of polynomials, all 405 posets n ≤ 6, every T | NOT FOUND (general P; [PA]). It is not a toric order polynomial of [DMR]/[AGRR] (leading coefficient, and numerically). KNOWN for the antichain ([Pet] Prop. 1.1, credited there to Fulman; §2.3) |
 | 2′ | Descent expansion of Ω_C (Corollary Ω-des) | **PROVEN + audited** ([AudLS] §2); COMPUTED: all natural labellings for n ≤ 5, canonical labelling for n ≤ 7 `[omegaC-des]`; all natural labellings for n ≤ 6 in [AudLS] | NOT FOUND ([PA]) |
 | 2″ | h-vector of Ω_C: under a separated natural labelling, h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0 (**Theorem H** of [H]) | **PROVEN + audited** ([H] §2, [AudH]); COMPUTED n ≤ 7 `[omegaC-h]` and in [H], [AudH], [PA] | NOT FOUND (general P; [PA]). KNOWN for the antichain ([Pet] Prop. 1.1, after Fulman). The statistic is Cellini's cyclic descent number. h_C is not an [ARR] cyclic-descent-extension distribution |
-| 2‴ | The quasisymmetric lift K_C(P) of Ω_C is F-positive | COMPUTED n ≤ 7 ([PA] §3); OPEN | NOT FOUND ([PA]) |
+| 2‴ | The quasisymmetric lift K_{C,T}(P) of Ω_C is F-positive, for every component T | **PROVEN (Theorem Q)** + audited (Corollary F+ of `notes/qsym_refinement_omega_c.md`; `notes/audit_qsym_refinement_omega_c.md`); COMPUTED n ≤ 7 | **KNOWN IN SUBSTANCE (Gessel–Stanley)**: the fundamental lemma of P-partitions with the anchor labelled last. The criterion (E*_T) of Theorem Q is NOT FOUND, and elementary |
 | 3 | maj(w_2⋯w_n w_1) ≡ maj(w) − cdes(w) (mod n), so for **n prime**, #{u ∈ Lin(P)C_n : maj u ≡ r} = e_C(P) = dim PLie(P) for every r | **PROVEN + audited** ([AudLS] §4); COMPUTED n ≤ 7 `[maj-rot]`, `[maj-rot-closure]`; fails for composite n | KNOWN IN SUBSTANCE (folklore rotation lemma) |
 | 3′ | P disconnected and gcd(component sizes) = 1 ⇒ maj is equidistributed mod n on Lin P | **PROVEN + audited** ([AudLS] §4); COMPUTED 485 posets `[maj-equi]` | KNOWN IN SUBSTANCE (MacMahon–Stanley factorisation) |
 | 4 | \|I(P)\| = \|[n; m]_{q=−1}\| ∏ \|I(T_i)\| for P = ⊔ T_i; so two odd components ⇒ sign-balanced | **PROVEN + audited** ([AudLS] §4); COMPUTED 503 posets `[sign-union]` | KNOWN IN SUBSTANCE (MacMahon inv-shuffle at q = −1); not found stated in [Sta05] |
@@ -276,7 +276,9 @@ the last-piece B_P, with T the component of the largest label, is one
 B_P of [LE] §0 (first block contains an arbitrary base component): for the
 latter, des fails to realise h_C under λ_0 on 41 of 554 (poset, base)
 pairs with n ≤ 6 ([AudH] §5). The F-positivity of the quasisymmetric lift of
-Ω_C, which is stronger, is COMPUTED for n ≤ 7 and **OPEN** ([PA] §3).
+Ω_C, which is stronger, is **PROVEN (Theorem Q)** and audited
+(`notes/qsym_refinement_omega_c.md`, `notes/audit_qsym_refinement_omega_c.md`);
+it is **KNOWN IN SUBSTANCE (Gessel–Stanley)**.
 
 Small values of the h-vector h_C (its entries sum to e_C):
 
@@ -476,8 +478,9 @@ linear extensions. **Verdict: no.**
      [H] (cdes on the rotation classes, separated labelling), audited in
      [AudH];
    - (iii) look for a reciprocity law (OPEN);
-   - (iv) prove the F-positivity of the quasisymmetric lift K_C(P)
-     (COMPUTED n ≤ 7, OPEN; [PA] §3).
+   - (iv) prove the F-positivity of the quasisymmetric lift K_C(P):
+     **done**, PROVEN (Theorem Q of `notes/qsym_refinement_omega_c.md`),
+     audited; KNOWN IN SUBSTANCE (Gessel–Stanley).
 
    The independent audit is done: [AudLS] finds that the proof holds.
 2. **Nothing else is worth proving.** Props 1, 3, 3′ and 4 are correct and

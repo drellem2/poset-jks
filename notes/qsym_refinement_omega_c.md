@@ -14,36 +14,59 @@ for an explicit set D(κ) attached to each cyclic class?
 Tags: **PROVEN** means proved here; **COMPUTED** means checked by
 `compute/qsym_refinement_omega_c.py`, with bracketed line labels from
 `compute/output/qsym_refinement_omega_c.txt`. **OPEN** means not settled.
+**PROVEN + audited** means the proof was re-derived and every count
+recomputed by independent code in [AudQ].
 
 Sources: [H] = `notes/h_vector_omega_c.md` (Theorem H); [AudH] =
 `notes/audit_h_vector_omega_c.md`; [PA] = `notes/prior_art_linext_statistics.md`;
-[LS] = `notes/linext_statistics.md`. This note uses only claims of [H] that
+[LS] = `notes/linext_statistics.md`; [AudQ] =
+`notes/audit_qsym_refinement_omega_c.md` (independent audit of this note:
+every PROVEN claim HOLDS, two wording fixes, both applied below). This note uses only claims of [H] that
 [AudH] marks HOLDS: [H] §0 (pieces, classes, junctions), [H] §1 Steps 1–5
 and Proposition D, Lemma 2(a) and Theorem H.
 
 ## Verdict
 
 **Yes, with a T-adapted labelling. The set D(κ) is the descent set of the
-rotation whose last piece contains T.** No rotation rule works for a
-labelling fixed independently of T. The per-class telescoping of Theorem H
-(Lemma 1) does not lift to the quasisymmetric level. The proof of the
-lifted statement is shorter than the proof of Theorem H, and it reproves
-Theorem H.
+rotation whose last piece contains T.** Under some labellings fixed in
+advance (for example C_2 ⊔ C_1 with the isolated point labelled 0, and T the
+isolated point), no choice of rotations works (§4.2). No rule D(κ) that
+ignores T, of any kind, can work when K_{C,T} depends on T (492 of 2450
+posets with n ≤ 7, row 0). But for n ≤ 7 every poset has some labelling,
+fixed in advance, under which a T-dependent choice of one rotation per
+class works for every T: COMPUTED on all 503 disconnected posets with
+n ≤ 7 ([AudQ] §2 `[rot-choice]`, by bipartite matching, not an explicit
+rule). The per-class telescoping of Theorem H (Lemma 1) does not lift to
+the quasisymmetric level. The proof of the lifted statement is shorter than
+the proof of Theorem H, and it reproves Theorem H for the labelling λ_T.
+
+**Prior art, split ([AudQ] §3).**
+- **F+ is KNOWN IN SUBSTANCE.** It is the Stanley–Gessel fundamental lemma
+  of P-partitions, K_P = Σ_{w∈Lin P} F_{Des w} cell by cell, once the
+  anchor's maxima are labelled last (λ_T): anchoring then becomes "the
+  Stanley word has T's piece last", a union of cells. This is the
+  "put n last" move of [Pet] Prop. 1.1, which is the antichain case. It is
+  an observation, not a new positivity theorem.
+- **The characterisation (i) ⇔ (E*_T) of Theorem Q is NOT FOUND.** It is
+  correct and elementary (§3.2, facts (a) and (b)). The other new content is
+  equally small: K_{C,T} depends on T while its specialisation does not
+  (row 0), and the Lemma 1 per-class contributions are not F-positive (✗1).
+- Both are search results, not proofs of absence.
 
 | # | Statement | Status |
 |---|---|---|
-| 0 | K_{C,T}(P) depends on T. So "K_C(P)" has to name T. Its principal specialisation does not depend on T: it is Ω_C(P, m) | **PROVEN** (§1, by example; specialisation by [H] §1); COMPUTED: depends on T for 492 of 2450 posets `[T-dep]`, specialisation equals the Möbius Ω_C on all 3107 (P, T) `[spec]` |
-| D_q | For every natural labelling and every T, K_{C,T}(P) = Σ_{w∈Lin P} G_T(w), where G_T(w) = [C_T(w) ∩ Des w = ∅] Σ_{S⊆C_T(w)} (−1)^{\|S\|} F_{Des(w)∪S} | **PROVEN** (§2); COMPUTED on 6996 separated labelled pairs `[propD-qsym]` |
-| **Q** | **Theorem Q.** For a natural labelling and a component T, the following are equivalent: (i) K_{C,T}(P) = Σ_{κ∈Cyc(P)} F_{Des R_T(κ)}, where R_T(κ) is the unique rotation in κ whose last piece contains T; (ii) every w whose last piece misses T has a descent at some cut after T's piece; (iii) in every such w, the junction leaving T's piece is a descent; (iv) the label condition (E*_T) of §3 | **PROVEN** (§3); COMPUTED on every natural labelling n ≤ 6 (8267 labelled pairs: (i) holds on 5894, fails on 2373, always exactly when (ii) holds) `[thmQ-iff]`, `[E*]` |
-| Q′ | For every P and T, the labelling λ_T (§3.3) is natural, separated and satisfies (E*_T). Under it, \|Des R_T(κ)\| = cdes(κ) − 1, so K_{C,T}(P) = Σ_κ F_{Des R_T(κ)} with \|Des R_T(κ)\| = cdes κ − 1 | **PROVEN** (§3.3); COMPUTED on all 3107 pairs (P, T), n ≤ 7 `[lamT]`, `[thmQ]` |
-| F+ | K_{C,T}(P) is F-positive for every finite P and every component T. The F-coefficients sum to e_C(P) | **PROVEN** (corollary of Q′); COMPUTED on all 3107 pairs n ≤ 7 `[Fpos-all-T]` |
-| H | Principal specialisation of Q′ is Theorem H for the labelling λ_T, proved without the telescoping Lemma 1 | **PROVEN** (§3.4) |
-| B | Bijective form: under (E*_T), an order-preserving f is T-anchored iff its Stanley word has T's piece last | **PROVEN** (§3.2); COMPUTED by listing every map into [3], n ≤ 5 (8600 maps) `[bij]` |
-| ✗1 | Lemma 1 lifted: under a separated labelling, each class contributes a single F_D to D_q | **FALSE**: fails for 1805 of 6996 separated labelled pairs. The class contribution is not even F-positive in those cases `[ctl-perclass-sep]`, `[ctl-perclass-Fpos]` (§4) |
-| ✗2 | One labelling for all T: under a fixed separated labelling, some choice of one rotation per class gives K_{C,T} for every T | **FALSE**, already for C_2 ⊔ C_1 (§4.2) |
-| ✗3 | D(κ) = Des of the lexicographically first min-des rotation under λ_0, any T | **FALSE**: 766 of 3107 pairs `[ctl-mindes]` (positive control) |
-| ✗4 | D(κ) = Des of an arbitrary rotation (the first one listed), under λ_T | **FALSE**: 766 of 3107 pairs `[ctl-anyrep]` (positive control) |
-| P | K_{C,T}(P) is not cyclically quasisymmetric ([PA] §1). It is an F-positive quasisymmetric function: the sub-sum of Gessel's K_P over the linear extensions with T's piece last. For the antichain it is K of A_{n−1} ⊕ 1 | **PROVEN** (§5); prior art in §5 |
+| 0 | K_{C,T}(P) depends on T. So "K_C(P)" has to name T. Its principal specialisation does not depend on T: it is Ω_C(P, m) | **PROVEN + audited** ([AudQ]) (§1, by example; specialisation by [H] §1); COMPUTED: depends on T for 492 of 2450 posets `[T-dep]`, specialisation equals the Möbius Ω_C on all 3107 (P, T) `[spec]` |
+| D_q | For every natural labelling and every T, K_{C,T}(P) = Σ_{w∈Lin P} G_T(w), where G_T(w) = [C_T(w) ∩ Des w = ∅] Σ_{S⊆C_T(w)} (−1)^{\|S\|} F_{Des(w)∪S} | **PROVEN + audited** ([AudQ]; KNOWN IN SUBSTANCE: cell decomposition + inclusion–exclusion) (§2); COMPUTED on 6996 separated labelled pairs `[propD-qsym]` |
+| **Q** | **Theorem Q.** For a natural labelling and a component T, the following are equivalent: (i) K_{C,T}(P) = Σ_{κ∈Cyc(P)} F_{Des R_T(κ)}, where R_T(κ) is the unique rotation in κ whose last piece contains T; (ii) every w whose last piece misses T has a descent at some cut after T's piece; (iii) in every such w, the junction leaving T's piece is a descent; (iv) the label condition (E*_T) of §3 | **PROVEN + audited** ([AudQ] §1) (§3); the characterisation (E*_T) is NOT FOUND in the literature, and elementary; COMPUTED on every natural labelling n ≤ 6 (8267 labelled pairs: (i) holds on 5894, fails on 2373, always exactly when (ii) holds) `[thmQ-iff]`, `[E*]` |
+| Q′ | For every P and T, the labelling λ_T (§3.3) is natural, separated and satisfies (E*_T). Under it, \|Des R_T(κ)\| = cdes(κ) − 1, so K_{C,T}(P) = Σ_κ F_{Des R_T(κ)} with \|Des R_T(κ)\| = cdes κ − 1 | **PROVEN + audited** ([AudQ]) (§3.3); COMPUTED on all 3107 pairs (P, T), n ≤ 7 `[lamT]`, `[thmQ]` |
+| F+ | K_{C,T}(P) is F-positive for every finite P and every component T. The F-coefficients sum to e_C(P) | **PROVEN + audited** ([AudQ]) (corollary of Q′); **KNOWN IN SUBSTANCE** (Stanley–Gessel fundamental lemma, anchor labelled last; Verdict); COMPUTED on all 3107 pairs n ≤ 7 `[Fpos-all-T]` |
+| H | Principal specialisation of Q′ is Theorem H for the labelling λ_T, proved without the telescoping Lemma 1 | **PROVEN + audited** ([AudQ]) (§3.4), for λ_T only; Theorem H for every separated labelling still needs [H]'s Lemma 1 |
+| B | Bijective form: under (E*_T), an order-preserving f is T-anchored iff its Stanley word has T's piece last | **PROVEN + audited** ([AudQ]) (§3.2); COMPUTED by listing every map into [3], n ≤ 5 (8600 maps) `[bij]` |
+| ✗1 | Lemma 1 lifted: under a separated labelling, each class contributes a single F_D to D_q | **FALSE** (refutation audited, [AudQ]): fails for 1805 of 6996 separated labelled pairs. The class contribution is not even F-positive in those cases `[ctl-perclass-sep]`, `[ctl-perclass-Fpos]` (§4) |
+| ✗2 | One labelling for all T: under every fixed separated labelling, some choice of one rotation per class gives K_{C,T} for every T | **FALSE** (refutation audited, [AudQ]): the identity labelling of C_2 ⊔ C_1 fails for T = {0} (§4.2). The weak form is all that is refuted: for n ≤ 7, every disconnected poset (503) has some fixed separated labelling admitting a T-dependent rotation choice for every T ([AudQ] `[rot-choice]`) |
+| ✗3 | D(κ) = Des of the lexicographically first min-des rotation under λ_0, any T | **FALSE** (audited, [AudQ]): 766 of 3107 pairs `[ctl-mindes]` (positive control) |
+| ✗4 | D(κ) = Des of an arbitrary rotation (the first one listed), under λ_T | **FALSE** (audited, [AudQ]): 766 of 3107 pairs `[ctl-anyrep]` (positive control) |
+| P | K_{C,T}(P) is not cyclically quasisymmetric ([PA] §1). It is an F-positive quasisymmetric function: the sub-sum of Gessel's K_P over the linear extensions with T's piece last. For the antichain it is K of A_{n−1} ⊕ 1 | **PROVEN + audited** ([AudQ]) (§5); prior art in §5 and the Verdict |
 
 ## 0. Conventions
 
@@ -275,12 +298,15 @@ So R_T(κ) is a min-des rotation of κ ([H] Lemma 1: min des = cdes − 1).
 It is the particular min-des rotation that is broken where T's piece ends.
 This makes precise the guess "Des of the min-des representative under a
 separated labelling". The representative and the labelling must both be
-tied to T. §4 shows that neither can be chosen independently of T.
+tied to T. §4 shows that, in general, neither can be chosen
+independently of T (for the representative, see the scope of §4.2).
 
-**Corollary F+ (PROVEN).** For every finite poset P and every component
-T, K_{C,T}(P) is F-positive, with Σ_J [F_J] K_{C,T}(P) = e_C(P).
+**Corollary F+ (PROVEN + audited).** For every finite poset P and every
+component T, K_{C,T}(P) is F-positive, with Σ_J [F_J] K_{C,T}(P) = e_C(P).
 
-This settles the OPEN item of [PA] §3, for every T.
+This settles the OPEN item of [PA] §3, for every T. It is KNOWN IN
+SUBSTANCE: the Stanley–Gessel fundamental lemma with the anchor labelled
+last (Verdict).
 
 ### 3.4 Specialisation recovers Theorem H
 
@@ -332,7 +358,7 @@ other 1805 pairs, some class does not contribute a single F. Of the 317 680
 classes, 23 117 do not contribute a single F, and every one of those 23 117
 contributions has a negative F-coefficient `[ctl-perclass-sep]`, `[ctl-perclass-Fpos]`.
 
-### 4.2 No rotation rule for a labelling fixed independently of T
+### 4.2 A fixed labelling with no rotation rule
 
 *Example (PROVEN; `test_no_rotation_rule_under_fixed_separated_labelling`).*
 Take C_2 ⊔ C_1, with 0 isolated and 1 < 2. This labelling is separated.
@@ -343,6 +369,22 @@ that picks one rotation per class, and F_{1} does not occur in K_{C,{0}}.
 So, for this labelling and T = {0}, no choice of D(κ) = Des(some rotation
 of κ) works. The labelling satisfies (E*_T) for T = {1, 2} but not for
 T = {0}.
+
+This refutes only "every fixed separated labelling admits a rotation rule
+for every T". It does not refute "some labelling, fixed in advance, admits
+one". For C_2 ⊔ C_1, label the isolated point 1 and the chain 0 < 2. Then
+(E*_T) holds for T = {1} (1 > 0) and for T = {0, 2} (2 > 1), so by
+Theorem Q, R_T works for both components under one labelling ([AudQ] §2).
+- (E*_T) can hold for every T at once only if P has at most one isolated
+  point: with two isolated points s, t, the isolated-T clause demands both
+  s > t and t > s.
+- COMPUTED in [AudQ] `[rot-choice]`, all 503 disconnected posets with
+  n ≤ 7: (E*_T) holds for every T under a single labelling on 415 of them,
+  and on none of the 88 with two or more isolated points. Yet on all 503,
+  some single separated natural labelling has the property that for every
+  T, some choice of one rotation per class sums to K_{C,T}. The choice
+  depends on T and is found by bipartite matching; it is not an explicit
+  rule.
 
 Controls, COMPUTED:
 - Des of the lexicographically first min-des rotation, under λ_0, fails
@@ -384,9 +426,12 @@ Controls, COMPUTED:
     T-anchored or cut-class enumerator. This note did one further search
     (cyclic descents, P-partitions, fundamental expansions of disconnected
     posets) and found nothing closer.
-  - Verdict: Theorem Q, Corollary F+ and the failure of the Lemma 1 lift
-    are **NOT FOUND**. Being a short consequence of Gessel–Stanley, they
-    should be presented as such.
+  - Verdict (split, after [AudQ] §3): Corollary F+ is **KNOWN IN
+    SUBSTANCE** (fundamental lemma with the anchor labelled last; the
+    general disconnected-P anchored version was not found stated). The
+    characterisation (i) ⇔ (E*_T) of Theorem Q, the T-dependence of
+    K_{C,T}, and the failure of the Lemma 1 lift are **NOT FOUND**, and
+    elementary.
 
 ## 6. Open points
 
@@ -394,9 +439,18 @@ Controls, COMPUTED:
   Σ_T K_{C,T}(P), with a natural F-expansion over Cyc(P) × components?
 - **OPEN.** Is K_{C,T}(P) = K_{P′} for some poset P′, as in the antichain
   case?
-- **OPEN.** Does some separated labelling fixed in advance admit a T-free
-  rule D(κ) that is *not* a rotation's descent set? §4.2 rules out rotation
-  rules only.
+- **Not open (closed by row 0; [AudQ]).** Could a separated labelling fixed
+  in advance admit a T-free rule D(κ) that is *not* a rotation's descent
+  set? No, whenever K_{C,T} depends on T. A T-free D(κ) gives a T-free sum
+  Σ_κ F_{D(κ)}, but by row 0, K_{C,T} depends on T for 492 of the 2450
+  posets with n ≤ 7. So on those posets no T-free rule of any kind exists,
+  under any labelling. The other 1958 posets are the 1947 connected ones,
+  where the question is trivial, and 11 disconnected ones on which K_{C,T}
+  happens not to depend on T.
+- **OPEN.** An *explicit* T-dependent rotation rule under a labelling fixed
+  in advance, for P with two or more isolated points. (With at most one
+  isolated point, a labelling satisfying every (E*_T) exists on all 415
+  such disconnected posets with n ≤ 7, [AudQ] `[rot-choice]`.)
 
 ## Reproduce
 

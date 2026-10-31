@@ -133,7 +133,10 @@ nothing that (a) does not already contain. The new results are these.
      order polynomial (Develin–Macauley–Reiner; Adin–Gessel–Reiner–Roichman). The
      antichain case of Theorem H is KNOWN (Petersen, Prop. 1.1, credited to Fulman),
      and the statistic is Cellini's cyclic descent number. F-positivity of the
-     quasisymmetric lift of Ω_C is COMPUTED (n ≤ 7) and OPEN.
+     quasisymmetric lift of Ω_C is PROVEN (Theorem Q,
+     `notes/qsym_refinement_omega_c.md`, audited in
+     `notes/audit_qsym_refinement_omega_c.md`); KNOWN IN SUBSTANCE
+     (Gessel–Stanley fundamental lemma, anchor labelled last).
    - The other statistic leads (Kraskiewicz–Weyman, χ(−1), sign-imbalance, descent
      algebra) give only known results or audited refutations
      (`notes/linext_statistics.md` Verdict).
@@ -1216,7 +1219,8 @@ would carry Theorems 6–8.
 | OM version: Theorems 1, 2, C (G\*) for T-convex sets of every simple oriented matroid (`notes/oriented_matroid_cones.md`) | PROVEN (C given Brown); independently audited in `notes/audit_oriented_matroid_cones.md` (hold); COMPUTED on realizable and non-realizable OMs of ranks 3 and 4 | Brown (CITED, re-checked; LRB-general); OM combinatorics; Hall; for the homotopy form of Thm 1 with r ≥ 5, shellability (BLSWZ Prop. 4.3.2, CITED) |
 | *Linear-extension statistics.* Theorem Ω (`notes/linext_statistics.md` §2.1): Σ_{π∈OP(P)} \|μ(π,1̂)\| C(m,\|π\|) = #{f : P → [m] order-preserving, every nonempty upper level set that is a union of components contains T}; Corollary Ω-des | PROVEN; independently audited in `notes/audit_linext_statistics.md` (holds); COMPUTED n ≤ 6 as polynomials. Prior art (`notes/prior_art_linext_statistics.md`): NOT FOUND for general P, not a toric order polynomial; antichain KNOWN (Petersen Prop. 1.1, after Fulman) | Lemma U and Theorem A of `notes/mu_op_elementary.md`; Stanley's fundamental lemma for Ω-des |
 | Theorem H (`notes/h_vector_omega_c.md` §2): separated natural labelling, n ≥ 2 ⇒ h_C(P)_j = #{rotation classes κ of Lin P : cdes κ = j + 1}, so h_C(P) ≥ 0; with Lemmas 1–2, H′, Props. B and D | PROVEN; independently audited in `notes/audit_h_vector_omega_c.md` (holds; wording fixes applied); COMPUTED on all 2450 posets n ≤ 7. Prior art: NOT FOUND for general P; antichain KNOWN (Petersen Prop. 1.1, after Fulman); the statistic is Cellini's cdes; not an Adin–Reiner–Roichman cyclic descent extension | Lemma U and Theorem A of `notes/mu_op_elementary.md` only |
-| H″ (all-ascent class ⇒ min-des fails); reciprocity for Ω_C; F-positivity of the quasisymmetric lift K_C(P) | OPEN (H″ and F-positivity COMPUTED, n ≤ 6 and n ≤ 7) | — |
+| F-positivity of the quasisymmetric lift K_{C,T}(P), every T (Theorem Q, `notes/qsym_refinement_omega_c.md`) | PROVEN (Theorem Q); independently audited in `notes/audit_qsym_refinement_omega_c.md` (holds); COMPUTED n ≤ 7. KNOWN IN SUBSTANCE (Gessel–Stanley); the criterion (E*_T) NOT FOUND | Stanley–Gessel fundamental lemma; [H] §0–1 |
+| H″ (all-ascent class ⇒ min-des fails); reciprocity for Ω_C | OPEN (H″ COMPUTED, n ≤ 6) | — |
 | (b1), (b2), comodernism | CONJECTURED | — |
 
 Re-checked against sources: BWW Thm 1.1 (preprint; published numbering not
