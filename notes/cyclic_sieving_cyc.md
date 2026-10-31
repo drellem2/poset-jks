@@ -21,7 +21,7 @@ instance of the regular-element CSP for fake degrees of permutation
 modules: Westbury 2016 Cor. 2.6 for the long cycle, and in general Sagan's
 survey Thm 8.2 or [RSW] Thm 8.2 applied orbit by orbit ([PACSC]). The same
 holds for the G(r,1,k) version of §4. What was not found in the literature
-searched for [PACSC] is: the closed form (★), Theorem B(ii) at roots of
+searched for [PACSC] and [PACSC2] is: the closed form (★), Theorem B(ii) at roots of
 unity that are not regular eigenvalues, Theorem C beyond regular elements,
 and the A_4 obstruction. "Not found" is a search result, not a proof of
 novelty; see §10 for what was not read.
@@ -198,12 +198,19 @@ X_P(ζ) = F(w_e). ∎
 
 Prior art ([PACSC]). Part (i) is **Springer's theorem**: w_e is regular
 in W with regular eigenvalue ζ, and Springer's evaluation ([RSW] Thm 8.1,
-from [Sp74] Prop. 4.5) gives X_P(ζ) = F(w_e). Part (ii) follows the same
-way when ζ is a regular eigenvalue of W (e divides k_i or k_i − 1 for
+from [Sp74] Prop. 4.5) gives X_P(ζ) = F(w_e). The proof above, in both
+parts, is Springer's evaluation argument: at q = ζ only the w whose
+ζ-eigenspace has the maximal dimension a(e) = Σ_i ⌊k_i/e⌋ ([Sp74]
+Thm 3.4(i)) survive, as in the proof of [Sp74] Prop. 4.5 (see also
+Lehrer–Michel 2003, proof of Thm 2.3). Part (ii) is that argument at a root
+of unity that need not be a regular eigenvalue, combined with Lemma 1
+([PACSC2] §1, Proposition E, audited in [AUD2]). Part (ii) also follows from
+Springer's theorem itself when ζ is a regular eigenvalue of W (e divides k_i or k_i − 1 for
 every i), since then F vanishes on the regular element of order e by
 Lemma 1. When ζ is not a regular eigenvalue of W, for example k = 5 and
-e = 3, part (ii) was not found in the literature searched. It rests on the
-support of F (Lemma 1).
+e = 3, part (ii) as a statement was not found in the literature searched
+([PACSC], [PACSC2]); its method is Springer's. It rests on the support of
+F (Lemma 1).
 
 **Theorem C (CSP for W).** Let g ∈ Aut(P) be conjugate into W, and let
 N = o(g). Suppose that for every divisor e > 1 of N:
@@ -241,11 +248,12 @@ Proposition 2. (For several types, F(w_e) > 0 because w_e fixes the class
 of the concatenation u g(u) ⋯ g^{e−1}(u), where u is a linear extension of
 one copy from each cycle.) ∎
 
-Prior art ([PACSC]). When every power g^j ≠ 1 is regular, Theorem C is the
+Prior art ([PACSC], [PACSC2]). When every power g^j ≠ 1 is regular, Theorem C is the
 regular-element CSP (Sagan Thm 8.2, [RSW] Thm 8.2). The criterion also
 reaches non-regular g, such as cycle type (6, 2) on A_8. There the powers
 whose order divides every k_i are regular and Springer handles them, but
-the other powers need Theorem B(ii) at a non-regular ζ. No source searched
+the other powers need Theorem B(ii) at a non-regular ζ, which is
+Springer's method at a non-regular ζ, not his theorem. No source searched
 gives a CSP for the fake degree at a non-regular element, or an iff
 criterion. Theorem C beyond regular elements was therefore not found in the
 literature searched.
@@ -527,9 +535,12 @@ All of these pass (`[ctl-*]`):
   Cor. 2.6, Sagan Thm 8.2, [RSW] Thm 8.2). Not found in the literature
   searched: (★) as a formula in the c_j, Theorem B(ii) at non-regular ζ,
   Theorem C beyond regular elements, and the A_4 obstruction of
-  Proposition O′. The search did not read the Lehrer–Springer eigenspace
-  theory (Lehrer–Taylor, *Unitary Reflection Groups*, Ch. 11; Lehrer–Michel
-  2003). It is the most likely place for prior art on B(ii) and Theorem C.
+  Proposition O′. [PACSC2] read [Sp74] directly, and Lehrer–Michel 2003.
+  The method of Theorem B is Springer's; no statement of B(ii) at
+  non-regular ζ, of Theorem C beyond regular elements, or of (★) was
+  found. Lehrer–Taylor Ch. 11 (§6, 'Eigenvalues of pseudoregular
+  elements') and Lehrer–Springer 1999 could not be obtained and remain
+  unread.
   Sagan theorem numbers are those of the arXiv version (arXiv:1008.0790);
   the published LMS version was not opened.
 
@@ -540,14 +551,21 @@ All of these pass (`[ctl-*]`):
 D. Stanton, D. White, *The cyclic sieving phenomenon*, JCTA 108 (2004)
 17–50 (Thm 8.2 on p. 37, §8, checked in the published paper by [AUD] and
 [PACSC]); [AUD] = `notes/audit_cyclic_sieving_cyc.md`; [PACSC] =
-`notes/prior_art_cyclic_sieving_cyc.md`; Westbury 2016 = B. Westbury,
+`notes/prior_art_cyclic_sieving_cyc.md`; [PACSC2] =
+`notes/prior_art_cyclic_sieving_cyc_2.md`; [AUD2] =
+`notes/audit_prior_art_cyclic_sieving_cyc_2.md`; Westbury 2016 = B. Westbury,
 *Invariant tensors and the cyclic sieving phenomenon*, Electron. J.
 Combin. 23(4) (2016) #P4.25; Sagan = B. Sagan, *The cyclic sieving
 phenomenon: a survey*, Surveys in Combinatorics 2011, LMS Lecture Note Ser.
 392 (2011) 183–234 (theorem numbers from arXiv:1008.0790); Lehrer–Taylor =
-G. Lehrer, D. Taylor, *Unitary Reflection Groups*, CUP 2009 (not read);
-Lehrer–Michel 2003 (not read; as listed in [PACSC]); [Sp74] = T. A. Springer, *Regular elements of finite reflection
-groups*, Invent. Math. 25 (1974) 159–198; Kraśkiewicz–Weyman = W.
+G. Lehrer, D. Taylor, *Unitary Reflection Groups*, CUP 2009 (not read;
+[PACSC2] §0.4); Lehrer–Michel 2003 = G. I. Lehrer, J. Michel, *Invariant
+theory and eigenspaces for unitary reflection groups*, C. R. Acad. Sci.
+Paris, Ser. I 336 (2003) 795–800 (read, [PACSC2]); [Sp74] = T. A.
+Springer, *Regular elements of finite reflection groups*, Invent. Math. 25
+(1974) 159–198 (read directly, [PACSC2]); Lehrer–Springer 1999 = G. I.
+Lehrer, T. A. Springer, *Reflection subquotients of unitary reflection
+groups*, Canad. J. Math. 51 (1999) 1175–1193 (not read; [PACSC2] §0.4); Kraśkiewicz–Weyman = W.
 Kraśkiewicz, J. Weyman, *Algebra of coinvariants and the action of a
 Coxeter element*, Bayreuth. Math. Schr. 63 (2001) 265–284; Chevalley =
 C. Chevalley, *Invariants of finite groups generated by reflections*, Amer.

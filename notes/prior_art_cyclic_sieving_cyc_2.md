@@ -85,16 +85,21 @@ cycle of w on the copies to have the same length d, with d dividing every
 k_i. Such a w lies in M only if a(e) = 0, or if e | d and Σ k_i/d = a(e).
 - In case (ii), e ≤ max k_i gives a(e) ≥ 1. Then e | d would force e to
   divide every k_i, so F vanishes on M and X_P(ζ) = 0.
-- In case (i), the elements of M ∩ supp F are exactly those of cycle type
-  (e^{k_i/e})_i, and the formula gives F(w_e).
+- In case (i), the elements of M ∩ supp F are contained in the class of
+  cycle type (e^{k_i/e})_i (they are equal iff F(w_e) ≠ 0), and the formula
+  gives F(w_e).
 
 This is the proof [CSC] already gives, in its own notation. [CSC] counts
 the orders of the zeros of T_λ(q) by hand instead of quoting [Sp74]
 Thm 3.4(i), which is legitimate for type A. Proposition E also explains
 the role of clause (a) of Theorem C. When e > max k_i, a(e) = 0, so M = W.
-Then X_P(ζ) is the full weighted sum (1/|W|) Σ_w F(w) ∏(1 − ζλ)^{−1}, and
-nothing forces it to vanish. This is the case left OPEN in [CSC] §9
-problem 2.
+Then X_P(ζ) = ∏_i (ζ; ζ)_{k_i} · (1/|W|) Σ_w F(w)/det(1 − ζw), the
+definition evaluated at ζ. The prefactor is nonzero, and nothing forces
+the sum to vanish. This is the case a(e) = 0. For gcd(k_i) = 1 it is
+settled by [CSC] Proposition 3; for gcd(k_i) > 1 it is [CSC] §9 problem 2
+(OPEN). (Corrections F1–F3 of the audit
+`notes/audit_prior_art_cyclic_sieving_cyc_2.md` are applied in this
+paragraph and the one above.)
 
 ## 2. What each source says
 
@@ -130,8 +135,8 @@ problem 2.
   theorems (Theorems 1.1, 1.2: N/C is a reflection group on a maximal
   eigenspace E, and the regularity criterion).
 - In the proof of Thm 3.1 the set {g : V(g, ζ) = E} is identified as a
-  coset g_0 C of the pointwise stabiliser C of E. That is the structure of
-  M in Proposition E at a non-regular ζ.
+  coset g_0 C of the pointwise stabiliser C of E. M in Proposition E at a
+  non-regular ζ is the union of such cosets over the conjugates of E.
 - There is no statement about fake degrees of a general module at ζ.
 
 **Stembridge 1989** (§§0–2 and §3 through Lemma 3.4 read).
