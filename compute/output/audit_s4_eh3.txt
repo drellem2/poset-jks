@@ -1,0 +1,23 @@
+[CTL] non-pointed half-space of B_3, H=1: pointed=False m=24 b1(T)=15 -> (S4) prediction must FAIL: fails, as it must
+[CTL] octahedral 2-sphere: certifier says 'not-certified' (must not be 'graph')
+[CTL] 2-simplex face poset: graph b0=1 b1=0 (must be graph, 1, 0)
+[CTL] crown: graph b0=1 b1=1 (must be graph, 1, 1)
+[CTL] subgroup counts S_3, S_4, W(B_3): (6, 30, 98) (must be (6, 30, 98))
+[B3] 940 proper top-cones, 778 pointed
+[B3] e_H=3 pairs: 778  pass: 778  FAIL: 0  (m_H>=1: 778, of which H!=1: 0; m_H=0: 0)
+[B3]   m_H>=1  max chain length of Q'^H = 2  (dim X^H = 1): 778 pairs
+[B3] dimension claim (m_H>=1 => X^H a graph) failures: 0
+[B4] 60200 proper top-cones, 54448 pointed, 20960 (cone, reflection) pairs with s(V) = V
+[B4] e_H=3 pairs: 20960  pass: 20960  FAIL: 0  (m_H>=1: 0, of which H!=1: 0; m_H=0: 20960)
+[B4]   m_H=0   max chain length of Q'^H = 3  (dim X^H = 2): 20960 pairs
+[B4] dimension claim (m_H>=1 => X^H a graph) failures: 0
+[A] n=3: 3 connected posets, 0.0s
+[A] n=4: 10 connected posets, 0.0s
+[A] n=5: 44 connected posets, 1.9s
+[A] n=6: 238 connected posets, 508.8s
+[A] e_H=3 pairs: 477  pass: 477  FAIL: 0  (m_H>=1: 53, of which H!=1: 43; m_H=0: 424)
+[A]   m_H=0   max chain length of Q'^H = 3  (dim X^H = 2): 424 pairs
+[A]   m_H>=1  max chain length of Q'^H = 2  (dim X^H = 1): 53 pairs
+[A] dimension claim (m_H>=1 => X^H a graph) failures: 0
+total 754.9s
+ALL CHECKS PASS: True
