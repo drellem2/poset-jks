@@ -24,7 +24,10 @@ Tags: [Thm] = `notes/poset_jks_theorem.tex`; [ME] = `notes/mu_op_elementary.md`;
 `notes/conjecture_s_splitting_cycles_span.md`; [JS] = Jenča–Sarkoci, JCTA 122 (2014),
 arXiv:1112.5782v2; [SW] = Schweig–Woodroofe, Adv. Math. 2017, arXiv:1604.03115;
 [BW] = Björner–Walker, *A homotopy complementation formula for partially ordered sets*,
-European J. Combin. 4 (1983) 11–19 (cited from memory, not re-read).
+European J. Combin. 4 (1983) 11–19 (cited from memory, not re-read); [Q] = Quillen,
+*Homotopy properties of the poset of nontrivial p-subgroups of a group*, Adv. Math. 28 (1978)
+101–128; [Bj] = Björner, *Topological methods*, Handbook of Combinatorics (1995), ch. 34
+([Q] and [Bj] as cited in `notes/audit_lean_js_route.md` §2, from memory, not re-read).
 
 Conventions are those of `lean/PosetJKS/OrderComplex.lean`. `Chains L m` is spanned by the
 `m`-element chains. `∂c = Σ_i (−1)^i (c minus its i-th element)`. The empty chain is in degree
@@ -133,8 +136,10 @@ This is the chain-level form of the step that `mu_op_rec` (Lemma D: dual Weisner
 performs on Möbius values. Fix a minimal `a`. The complements of the coatom-like element
 `π_a` are the atoms `π_ab`. Removing them leaves an acyclic subposet `Q` (Lemma K). Each
 atom contributes the suspension of its upper interval `(π_ab, 1̂) ≅ L̄(P/π_ab)` (Lemma U).
-Induction on `n` then gives (V). At the homotopy level this is the [BW] homotopy
-complementation formula. The complements of `π_a` form an antichain, and `Δ(0̂, π_ab) = ∅`.
+Induction on `n` then gives (V). At the homotopy level, Route C as a whole is the [BW] homotopy
+complementation formula. Lemma K alone is not [BW]: its homotopy form is Quillen's order-homotopy
+lemma ([Q] Prop. 1.6, the cone remark 1.5; in the form of [Bj] Cor. 10.12, a monotone `p ≤ id`
+makes `Δ(p(R))` a deformation retract of `Δ(R)`, and here `p(R) = R_{≤t}` is a cone). The complements of `π_a` form an antichain, and `Δ(0̂, π_ab) = ∅`.
 The homology-level proof below is self-contained and needs no topology.
 
 ## 3. Route C: statements and proofs
@@ -164,16 +169,32 @@ since faces do not add high elements.
 *Claim:* `(∂s + s∂)(c) − c ∈ F_{k−1}` for every chain `c` with `k` high elements, and
 `(∂s + s∂)(c) = c` when `k = 0`.
 
-- If `τ ∉ c`, then `∂s(c)` contains `+c` (the face at position `j`, with sign `(−1)^j (−1)^j`).
+- If `τ ∉ c`, then `∂s(c)` contains `+c` (the face at position `j` of `c ∪ {τ}`, with sign
+  `(−1)^j (−1)^j`).
   For every `x ∈ c` with `x ≠ h`, the face `(c ∖ x) ∪ τ` of `∂s(c)` cancels against `s` of the
   face `c ∖ x` of `∂c`. Both have `τ(c ∖ x) = τ`. The signs are those of the classical cone
   computation: for `x` at position `i < j` they are `(−1)^{j+i}` and `(−1)^{i+j−1}`, and for
   `i ≥ j` they are `(−1)^{j+i+1}` and `(−1)^{i+j}`. What remains is the two terms coming from
-  `x = h`, namely `±[(c ∖ h) ∪ τ(c)]` and `±s(c ∖ h)`. Both have `k − 1` high elements.
-- If `τ ∈ c`, then `s(c) = 0`. In `s(∂c)` the face removing `τ` (sign `(−1)^j`) returns
-  `(−1)^j (−1)^j c = c`. A face removing `x ∉ {τ, h}` keeps `τ(c ∖ x) = τ ∈ c ∖ x`, so `s`
-  kills it. The face removing `h` gives a term in `F_{k−1}`.
+  `x = h` (at position `j` of `c`, position `j + 1` of `c ∪ {τ}`), namely
+  `−[(c ∖ h) ∪ τ(c)]` (from `∂s(c)`, sign `(−1)^j (−1)^{j+1}`) and `(−1)^j s(c ∖ h)` (from
+  `s(∂c)`). Both lie in `F_{k−1}`.
+- If `τ ∈ c`, then `s(c) = 0`, and `τ = c_{j−1}`: since `τ ≤ t` and `τ` lies above `c_≤`, it is
+  the largest low element, at position `j' = j − 1` of `c` (so `j ≥ 1`). In `s(∂c)` the face
+  removing `τ` has sign `(−1)^{j'}`. The chain `c ∖ τ` has `j'` low elements and
+  `τ(c ∖ τ) = τ ∉ c ∖ τ`, so `s(c ∖ τ) = (−1)^{j'} [c]`. The product is `+c`. A face removing
+  `x ∉ {τ, h}` keeps `τ(c ∖ x) = τ ∈ c ∖ x`, so `s` kills it. The face removing `h` (position
+  `j`) gives `(−1)^j s(c ∖ h) ∈ F_{k−1}`.
 - If `k = 0`, there is no `h`, and the identity is exact.
+
+So, exactly, with `j = |c_≤|` and `h = c_j`:
+
+    (∂s + s∂)(c) − c = −[(c ∖ h) ∪ τ(c)] + (−1)^j s(c ∖ h)     if τ(c) ∉ c, k ≥ 1,
+    (∂s + s∂)(c) − c = (−1)^j s(c ∖ h)                         if τ(c) ∈ c, k ≥ 1,
+    (∂s + s∂)(c) − c = 0                                       if k = 0.
+
+Only membership in `F_{k−1}` is used below, but S2 should state these forms. (Signs corrected
+per `notes/audit_lean_js_route.md` G1–G2: an earlier version gave the `τ`-removing face in the
+case `τ ∈ c` the sign `(−1)^j`, which is off by one with `j = |c_≤|`; the product was right.)
 
 *Exactness.* Let `z ∈ F_k` be a cycle. Then `z − ∂(s z) = z − (∂s + s∂) z ∈ F_{k−1}`, and this
 is a cycle. By induction on `k`, it is a boundary, so `z` is a boundary. ∎
@@ -207,6 +228,13 @@ chains, which prepends `π_ab`.
   `(i+1)`-st element gives sign `(−1)^{i+1}`. Faces of chains without `π_ab` do not contain it.
 - (v) A chain `x` with `strip_b x = 0` for all `b` lies in the image of `C(Q)`, by (ii).
 - (vi) `strip_b ∘ cons_b = id`, and `strip_{b'} ∘ cons_b = 0` for `b' ≠ b`.
+
+*Remark (G4).* The strip maps give an isomorphism of complexes
+`C(L̄)/C(Q) ≅ ⊕_b C((π_ab, 1̂))[−1]` (differential negated, augmentation included), and `C(Q)` is
+exact by Lemma K. So `β_d(L̄) = Σ_b β_{d−1}((π_ab, 1̂))` for **every** `d ≥ 0`, with
+`β_{−1}(∅) = 1`. At `n = 3` this reads `β_0(L̄) = |A| = e_C(P)`. Proposition C is its vanishing
+half, which is all (V) needs; the Lean statement stays in `d ∈ ℕ`. (Checked in the all-`d ≥ 0`
+form by the audit's `[rel]` on all 911 pairs; this note's `[rel]` below checks `d ≥ 1`.)
 
 **Proposition C.** Let `d ≥ 1`. If `H̃_{d−1}((π_ab, 1̂)) = 0` for every `π_ab ∈ A`, then
 `H̃_d(L̄) = 0`. If every `(π_ab, 1̂)` is nonempty, then `H̃_0(L̄) = 0`.
@@ -304,7 +332,7 @@ which Lemma C is about 500 lines that Route C does not repeat) and `TraceHP.lean
 | 2. Discrete Morse | algebraic Morse lemma (weak form), patchwork theorem, [JS] Thm 3.8 matching and its acyclicity | yes ([JS] §3, Kozlov, Forman) | 2,000–3,500 | acyclicity of glued matchings; matching defined on all `Fin m ↪o L̄` at once |
 | 3. Euler + lower bound | Prop. Φ (Wachs, Ree), Thm S(c) | yes ([CS]) | 1,500+ | **does not prove (V)** (§2.3); off the critical path |
 | 4. Restatement | — | — | — | unfaithful (§2.4 (c)) or insufficient (§2.4 (b)) |
-| **C. Complementation at `π_a`** | chain-map/transport tools, Lemma K, the decomposition of §3.2, the induction | yes, §3 here (homotopy form: [BW]); computed for `n ≤ 6` | **1,100–1,700** | sign/index work in Lemma K (mitigated: exact signs fixed and checked by `[N]`); transport across `Contr` types (template: `mu_OP_eq_aux`) |
+| **C. Complementation at `π_a`** | chain-map/transport tools, Lemma K, the decomposition of §3.2, the induction | yes, §3 here (homotopy form: [BW] for the route, [Q]/[Bj] for Lemma K); computed for `n ≤ 6` | **1,100–1,700** | sign/index work in Lemma K (mitigated: exact signs fixed and checked by `[N]`); transport across `Contr` types (template: `mu_OP_eq_aux`) |
 
 ## 6. Recommendation and milestone slices
 
@@ -336,7 +364,10 @@ positive controls to `Test.lean`, in the style of the existing ones.
 - The data `t`, `p` with the hypotheses of §3.1, `hcount c` (the number of high elements),
   `tau c`, `s : Chains R m →ₗ Chains R (m+1)`, and the subcomplexes `F k`.
 - `bd_s_add_s_bd (c) : bd (s c) + s (bd c) - c ∈ F (hcount c - 1)`, with equality when
-  `hcount c = 0`. This is the sign-heavy core. Proceed by the two cases of §3.1, using S1's face lemmas.
+  `hcount c = 0`. This is the sign-heavy core. Proceed by the two cases of §3.1, using S1's face
+  lemmas, with the exact leftover terms displayed at the end of the Claim in §3.1. In the case
+  `τ c ∈ c`, index by the position `j'` of `τ c` in `c` (which is `|c_≤| − 1`, not `|c_≤|`):
+  the key lemma is `s (face c j') = (−1)^{j'} • c`, and the face removing it has sign `(−1)^{j'}`.
 - `exact_of_retract : ∀ d, Subsingleton (redHom R d)`, by induction on `k` (§3.1, "Exactness").
 - If this slice runs long, split it: S2a is the pure cone (`p ≡ t` on `R = (·, t]`, a sanity
   milestone), and S2b is the general `p`.
@@ -365,8 +396,8 @@ covers the sign identity but not the Lean-level indexing.
 
 ## 7. Not checked
 
-- [BW] and [SW] are cited from memory or from [Lit]. Neither was re-read. Route C does not
-  depend on them.
+- [BW], [SW], [Q] and [Bj] are cited from memory or from [Lit]. None was re-read, and theorem
+  numbers were not re-checked. Route C does not depend on them.
 - The Mathlib API names in S1 (`Fin.insertNth` and its `succAbove`/`predAbove` lemmas) were not
   grepped against the pinned Mathlib. No Mathlib checkout was available in the worktree.
 - The line estimates are estimates. Their only grounding is the table in §5.
