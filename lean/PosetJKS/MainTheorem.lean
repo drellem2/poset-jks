@@ -5,6 +5,7 @@ import PosetJKS.OPLattice
 import PosetJKS.Mside
 import PosetJKS.LieSide
 import PosetJKS.MainIso
+import PosetJKS.TraceHP
 
 /-!
 # The poset JKS theorem (Theorem `thm:main` of `notes/poset_jks_theorem.tex`)
@@ -85,31 +86,8 @@ theorem closed_formula (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
     rw [← Int.cast_mul, ← Units.val_mul, Int.units_mul_self, Units.val_one, Int.cast_one]
   rw [mul_assoc, character_identity hn hζ g, ← mul_assoc, hs, one_mul]
 
-/-! ### The two characters (intermediate statements of Proof I) -/
-
-/-- (homchar): `tr(g | H_P) = (-1)^{n-3} μ(OP(P)^g)`. The note derives it from Jenča–Sarkoci,
-P. Hall and the Hopf trace formula. -/
-theorem trace_HP (hn : 3 ≤ Fintype.card α) (g : α ≃o α) :
-    LinearMap.trace ℂ (HP α) (actHP g) = (-1 : ℂ) ^ (Fintype.card α - 3) * (muFixed g : ℂ) := by
-  sorry
-
-/-- (liechar): `tr(g | PLie(P)) = ∑_{gC=C} ζ^{r_g(C)}`. Elementary. -/
-theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α))
-    (g : α ≃o α) :
-    LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g :=
-  trace_actPLie h0 hζ.pow_eq_one g
-
-/-- (mainiso): `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules. A linear isomorphism
-`e : H_P ≃ PLie(P)` intertwines the `Aut(P)`-action on `H_P` with `sgn ⊗` (left multiplication
-on `PLie(P)`): `e (g · x) = sgn(g) · g · e(x)`. -/
-theorem main_iso (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
-    (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
-    ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ (g : α ≃o α) (x : HP α),
-      (e (actHP g x) : Alg α) = sgnC g • relabel g.toEquiv (e x) := by
-  exact exists_iso_HP_PLie_of_trace (by omega) hζ fun g =>
-    (trace_HP hn g).trans (character_identity hn hζ g)
-
-/-! ### Cited inputs, in the form the proofs use them (not assumed; `sorry`'d) -/
+/-! ### Cited inputs, in the form the proofs use them (not assumed; Jenča–Sarkoci is `sorry`'d,
+P. Hall is proved in `Hall.lean`) -/
 
 /-- Homological content of Jenča–Sarkoci, Thm 4.5 (`Δ(\widehat{OP(P)}) ≃ ⋁^{e_C(P)} S^{n-3}`
 for `n ≥ 3`): the reduced homology of the order complex vanishes outside degree `n - 3`, and
@@ -127,7 +105,31 @@ theorem hall_mu_eq_reducedEuler (L : Type*) [PartialOrder L] [BoundedOrder L] [F
     [DecidableEq L] [LocallyFiniteOrder L] (h : (⊥ : L) ≠ ⊤) :
     IncidenceAlgebra.mu ℤ (⊥ : L) ⊤ =
       ∑ m ∈ range (Fintype.card L + 1),
-        (-1 : ℤ) ^ (m + 1) * (Nat.card (Fin m ↪o {x : L // x ≠ ⊥ ∧ x ≠ ⊤}) : ℤ) := by
-  sorry
+        (-1 : ℤ) ^ (m + 1) * (Nat.card (Fin m ↪o {x : L // x ≠ ⊥ ∧ x ≠ ⊤}) : ℤ) :=
+  mu_bot_top_eq_chainSum L h
+
+/-! ### The two characters (intermediate statements of Proof I) -/
+
+/-- (homchar): `tr(g | H_P) = (-1)^{n-3} μ(OP(P)^g)`. The note derives it from Jenča–Sarkoci,
+P. Hall and the Hopf trace formula. -/
+theorem trace_HP (hn : 3 ≤ Fintype.card α) (g : α ≃o α) :
+    LinearMap.trace ℂ (HP α) (actHP g) = (-1 : ℂ) ^ (Fintype.card α - 3) * (muFixed g : ℂ) :=
+  trace_HP_of_vanishing hn (jencaSarkoci_homology hn).1 g
+
+/-- (liechar): `tr(g | PLie(P)) = ∑_{gC=C} ζ^{r_g(C)}`. Elementary. -/
+theorem trace_PLie (h0 : 0 < Fintype.card α) {ζ : ℂ} (hζ : IsPrimitiveRoot ζ (Fintype.card α))
+    (g : α ≃o α) :
+    LinearMap.trace ℂ (PLie α ζ) (actPLie ζ g) = fixedClassSum ζ g :=
+  trace_actPLie h0 hζ.pow_eq_one g
+
+/-- (mainiso): `H_P ≅ sgn ⊗ PLie(P)` as `Aut(P)`-modules. A linear isomorphism
+`e : H_P ≃ PLie(P)` intertwines the `Aut(P)`-action on `H_P` with `sgn ⊗` (left multiplication
+on `PLie(P)`): `e (g · x) = sgn(g) · g · e(x)`. -/
+theorem main_iso (hn : 3 ≤ Fintype.card α) {ζ : ℂ}
+    (hζ : IsPrimitiveRoot ζ (Fintype.card α)) :
+    ∃ e : HP α ≃ₗ[ℂ] PLie α ζ, ∀ (g : α ≃o α) (x : HP α),
+      (e (actHP g x) : Alg α) = sgnC g • relabel g.toEquiv (e x) := by
+  exact exists_iso_HP_PLie_of_trace (by omega) hζ fun g =>
+    (trace_HP hn g).trans (character_identity hn hζ g)
 
 end PosetJKS

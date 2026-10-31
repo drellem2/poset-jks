@@ -13,6 +13,9 @@ import PosetJKS.ECTransport
 import PosetJKS.LieSide
 import PosetJKS.CharacterIso
 import PosetJKS.MainIso
+import PosetJKS.Hall
+import PosetJKS.Hopf
+import PosetJKS.TraceHP
 import PosetJKS.MainTheorem
 import PosetJKS.Test
 import PosetJKS.CharacterIsoTest

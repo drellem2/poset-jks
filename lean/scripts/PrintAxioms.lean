@@ -84,3 +84,14 @@ import PosetJKS
 #print axioms PosetJKS.CharacterIsoTest.trivSgn_equiv_permRep
 #print axioms PosetJKS.CharacterIsoTest.not_triv2_equiv_permRep
 #print axioms PosetJKS.CharacterIsoTest.not_triv_equiv_sgn
+
+-- Third milestone, part a (`PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean`)
+#print axioms PosetJKS.mu_eq_chainEuler
+#print axioms PosetJKS.mu_bot_top_eq_chainSum
+#print axioms PosetJKS.trace_eq_trace_restrict_add_trace_mapQ
+#print axioms PosetJKS.IsChainMap.hopf_trace
+#print axioms PosetJKS.bd_comp_bd'
+#print axioms PosetJKS.trace_chainMap
+#print axioms PosetJKS.card_fixedChains
+#print axioms PosetJKS.properOP_nonempty
+#print axioms PosetJKS.trace_HP_of_vanishing

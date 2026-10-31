@@ -470,6 +470,63 @@ The earlier parts of this file (the status lines, the §1 row "Aut(P) actions, c
 the §4 table entry for `main_iso` at its old line) were written before this step. The table
 entry is now closed.
 
+### 4.3 M3a: P. Hall, the Hopf trace formula, and `trace_HP`
+
+Sorry count `3 → 1` after §4.2 (`4 → 2` on its own). Closed: `hall_mu_eq_reducedEuler`
+(cited input B, now a theorem) and `trace_HP` (Lemma `lem:homchar`). The one remaining
+`sorry` is `jencaSarkoci_homology`. With §4.2, `main_iso` now depends on it alone. No
+statement changed and no hypothesis was added. In `MainTheorem.lean` the two `sorry`s are
+replaced by calls. The "Cited inputs" section (statements unchanged) now comes before
+`trace_HP`, which uses `jencaSarkoci_homology`. The order is now: cited inputs, `trace_HP`,
+`trace_PLie`, `main_iso`.
+
+* **P. Hall** (`Hall.lean`, imports only Mathlib). An `m`-element chain of the open interval
+  `(x, y)` is a strictly increasing `Fin m → L` with values in `(x, y)` (`chainsIn x y m`).
+  Deleting the top element `z` gives `#chains_{m+1}(x, y) = ∑_{z ∈ (x,y)} #chains_m(x, z)`
+  (`card_chainsIn_succ`, via `Fin.init`/`Fin.snoc`). So the signed count
+  `∑_{m ≤ |L|} (-1)^{m+1} #chains_m(x, y)` satisfies Mathlib's recursion
+  `μ(x, y) = -∑_{x ≤ z < y} μ(x, z)`. This is the `(ζ - 1)` expansion read one step at a time,
+  and gives `mu_eq_chainEuler` by well-founded induction on `y`. Chains with more than `|L|`
+  elements do not exist, which closes the range. `mu_bot_top_eq_chainSum` is the statement of
+  `hall_mu_eq_reducedEuler`, with order embeddings `Fin m ↪o` proper part matched to
+  increasing tuples.
+* **Hopf trace formula** (`Hopf.lean`, imports only Mathlib). It starts from trace additivity
+  `tr f = tr(f|_W) + tr(f on V/W)` (`trace_eq_trace_restrict_add_trace_mapQ`). The proof takes
+  a complement `W'`, writes `f = ι_W p f + ι_{W'} q f`, cycles the traces, and uses
+  `V/W ≅ W'`. Then for any complex `d m : C_{m+1} → C_m` of finite-dimensional spaces with
+  `d ∘ d = 0`, a chain map `f` (`IsChainMap`) and `C_K = 0`:
+  `∑_{m ≤ K} (-1)^m tr(f|C_m) = tr(f | C_0/∂C_1) + ∑_{j<K} (-1)^{j+1} tr(f | H_j)`
+  (`IsChainMap.hopf_trace`), with `H_j = ker d_j / im d_{j+1}` built as in `redHom`. The proof
+  telescopes `tr(f|C_{m+1}) = R_{m+1} + tr(f|H_m) + R_m`, where `R_m = tr(f | im d_m)`.
+* **Specialisation** (`TraceHP.lean`). `Chains L m` is finite-dimensional for finite `L`.
+  `∂∘∂ = 0` is `bd_comp_bd'`, the proof of `Test.bd_comp_bd` restated outside the test file.
+  `homMap φ j` is by definition the Hopf homology map of `chainMap φ` (`homMap_eq`, `rfl`).
+  `tr(φ | C_m)` is the number of `φ`-fixed `m`-chains (`trace_chainMap`, from the basis of
+  chains). A chain of `\widehat{OP(P)}` is `g`-fixed iff each element is, so the fixed
+  `m`-chains are the `m`-chains of the proper part of `OP(P)^g` (`fixedChains_equiv`,
+  `card_fixedChains`). Hall on `OP(P)^g` is applied with the bounded order `0̂`, `1̂`
+  (`OPFixed.boundedOrder`, a local instance). It turns the alternating fixed-chain count into
+  `-μ(OP(P)^g)`.
+* **Degree `-1`.** `redHom` has no `H̃_{-1}`. Its role is played by the term
+  `tr(f | C_0/∂C_1)` of the Hopf formula, which vanishes because the proper part of `OP(P)` is
+  nonempty for `n ≥ 3`: it contains `π_a` for a minimal `a` (`properOP_nonempty`, `range_bd_zero`).
+* `trace_HP_of_vanishing hn hvan g` proves `tr(g | H_P) = (-1)^{n-3} μ(OP(P)^g)` from the
+  hypothesis `H̃_d = 0` for `d ≠ n-3` only. It uses no `sorry`, and the dimension part of
+  Jenča–Sarkoci is not needed. `trace_HP` is this theorem applied to
+  `(jencaSarkoci_homology hn).1`.
+
+`#print axioms`: `hall_mu_eq_reducedEuler`, `mu_bot_top_eq_chainSum`, `IsChainMap.hopf_trace`
+and `trace_HP_of_vanishing` depend only on `propext`, `Classical.choice`, `Quot.sound`.
+`trace_HP` adds `sorryAx`. `scripts/CheckDeps.lean`:
+
+```
+PosetJKS.hall_mu_eq_reducedEuler: … cited inputs used: [PosetJKS.hall_mu_eq_reducedEuler]   (itself)
+PosetJKS.trace_HP_of_vanishing: … cited inputs used: []
+PosetJKS.trace_HP: … cited inputs used: [PosetJKS.jencaSarkoci_homology]
+```
+
+So the only open dependency of `trace_HP` is `jencaSarkoci_homology`.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```
