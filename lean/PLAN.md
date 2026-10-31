@@ -65,6 +65,15 @@ listed by `scripts/PrintAxioms.lean` depends only on `propext`, `Classical.choic
 `main_iso` are the theorems that use `jencaSarkoci_homology`, which is now a proved theorem
 (§4, §5).
 
+**Independent verification (2026-10-31).** A fresh clone of `origin/main` at `b7df20e`
+was checked independently (`notes/lean_verification.md`). The verdict was CONFIRMED.
+`lake build` exits 0 with no `sorry`. All 112 `#print axioms` results are free of `sorryAx`,
+and `main_iso`, `character_identity`, `trace_HP` and `jencaSarkoci_homology` depend only on
+`propext`, `Classical.choice` and `Quot.sound`. A planted `sorry` and a planted grep match both
+fired. The statements and definitions are the ones `AUDIT_FAITHFULNESS.md` reviewed at `59391ac`,
+except that `trace_PLie`, `corPsi_bijective` and `corPsi` now carry `h0 : 0 < n`, which is
+the audit's own fix (its §1 status line).
+
 * Toolchain: `leanprover/lean4:v4.29.1`; Mathlib `v4.29.1`
   (rev `5e932f97dd25535344f80f9dd8da3aab83df0fe6`, pinned in `lake-manifest.json`).
 * `lake build` succeeds, with no `sorry` warning and no errors.

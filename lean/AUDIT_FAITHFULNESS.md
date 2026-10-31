@@ -33,6 +33,14 @@ with `notes/poset_jks_theorem.tex` (§2 conventions, Theorem `thm:main`, Lemmas 
 | `corPsi_equivariant` (`Milestone.lean:124`) | Corollary `cor:psi` | **FAITHFUL** |
 | `corPsi` (`Milestone.lean:130`) | Corollary `cor:psi` | **UNFAITHFUL**: inherits `corPsi_bijective` |
 
+**Status (2026-10-31): the three UNFAITHFUL rows are resolved by §1.1's suggested fix.** The
+verdicts above are the audit's, for the statements at `59391ac`, and are left as they were.
+Commit `ab4b48a` added `(h0 : 0 < Fintype.card α)` to `trace_PLie`, `corPsi_bijective` and
+`corPsi`, which is exactly the fix §1.1 proposes, and changed nothing else in these statements.
+`main_iso` and `closed_formula` discharge `h0` from `3 ≤ n`. The clean-checkout verification
+(`notes/lean_verification.md` §4) compared every audited statement and definition at `59391ac`
+with `origin/main` at `b7df20e`. This was the only change.
+
 ### 1.1 The defect: `n = 0`
 
 The note's Lemma `lem:liechar` and Corollary `cor:psi` say "every finite poset". At `n = 0` the
