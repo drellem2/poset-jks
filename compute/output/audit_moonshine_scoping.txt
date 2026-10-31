@@ -1,0 +1,64 @@
+[W] ok   a_n by own recursion = A006455 for n<=8: [1, 1, 2, 7, 40, 357, 4824, 96428, 2800472]
+[W] ok   b_n = n[x^n]log A: [1, 3, 16, 131, 1561, 26532, 637890, 21580043]
+[W] ok   c_n = <ch V_n, h_n>: [1, 1, 5, 32, 312, 4419, 91127, 2697489]
+[W] ok   c_n^- = <ch V_n, e_n>: [1, 2, 5, 32, 312, 4424, 91127, 2697489]
+[W] ok   c_n = c_n^- exactly when n != 2 mod 4 (n <= 8)
+[W] ok   A(q) = prod (1-q^n)^(-c_n) through q^8
+[W] ok   trace of 2^m on V_2m: [-1, -6, -128, -6288]
+[W] ok   d = 4: the d^m trace series is identically 0 (the note's '|trace| = d^(m-1) dim V_m' needs mu(d) != 0)
+[W] ok   a_n >= 2^(floor(n/2) ceil(n/2)), n <= 8
+[W] ok   dim V_n = (n-1)! b_n: [32, 786, 37464, 3183840]
+      c_n/a_n: [1.0, 0.5, 0.7143, 0.8, 0.8739, 0.916, 0.945, 0.9632]
+[H] ok   naturally labeled 2-chain matchings = involutions: [1, 1, 2, 4, 10, 26, 76, 232, 764]
+[H] ok   telephone ratios increase (superexponential)
+[H] ok   height <= 2 sub-monoid already >= 2^(n^2/4): [1, 1, 2, 6, 26, 158, 1330, 15414, 245578]
+[H] ok   a_{n,r} >= C(floor(n/2)ceil(n/2), r) for all n <= 8, r
+[P] ok   antichain4, (12)(34): brute force = prefix-sum formula to q^16 (|Lin Q| = 2, leading pole coeff 1/4)
+[P] ok   antichain4, 4-cycle (odd): brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/4)
+[P] ok   2+2, swap: brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/8)
+[P] ok   bowtie, (01)(23): brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/8)
+[P] ok   bowtie, (01): brute force = prefix-sum formula to q^16 (|Lin Q| = 2, leading pole coeff 1/12)
+[P] ok   3+3, swap (odd): brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/48)
+[P] ok   2+2+2, 3-cycle: brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/18)
+[P] ok   claw 1<{2,3,4}, 3-cycle: brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/4)
+[P] ok   crown 6, rotation: brute force = prefix-sum formula to q^16 (|Lin Q| = 1, leading pole coeff 1/18)
+[P] ok   negative control: suffix-sum variant disagrees on 2+2
+[P] ok   g = 1 on 2+2: leading coefficient e(P)/n! = 6/24
+[I] ok   chain_1 x N: brute force = prod (1-q^n)^-min(n,1) to q^12
+[I] ok   chain_1 x N times (q;q)^1 is constant polynomial [1]
+[I] ok   chain_2 x N: brute force = prod (1-q^n)^-min(n,2) to q^12
+[I] ok   chain_2 x N times (q;q)^2 is nonconstant polynomial [1, -1, 0, 0]
+[I] ok   chain_3 x N: brute force = prod (1-q^n)^-min(n,3) to q^12
+[I] ok   chain_3 x N times (q;q)^3 is nonconstant polynomial [1, -2, 0, 2, -1, 0, 0, 0, 0]
+[I] ok   N x N: brute force = MacMahon to q^12
+[I] ok   transpose-fixed (symmetric) pp: brute = product to q^12: [1, 1, 1, 2, 3, 4, 6, 8, 12, 16, 22, 29, 41]
+[I] ok   a_sym(N) >= pp(floor(N/4)) for N <= 80
+[I] ok   exponent Dirichlet series D(s) of the symmetric case has a pole at s=1 (residue ~ 0.375, predicted 3/8): Meinardus' single-pole hypothesis fails
+[D] ok   MacMahon: y^3 Dlog F(iy) at y=0.01: 0.009691 vs 2zeta(3)/(2pi)^3 = 0.009692
+[D] ok   MacMahon: y^3 Dlog F(iy) at y=0.003: 0.009692 vs 2zeta(3)/(2pi)^3 = 0.009692
+[D] ok   symmetric pp: y^3 Dlog F(iy) at y=0.001: 0.001227 vs zeta(3)/(4(2pi)^3) = 0.001212
+[D] ok   symmetric pp: y^3 Dlog F(iy) at y=0.0003: 0.001216 vs zeta(3)/(4(2pi)^3) = 0.001212
+[D] ok   y^3 E_2(iy) at y=0.01: -9.81e-03 (-> 0)
+[D] ok   y^3 E_2(iy) at y=0.003: -2.98e-03 (-> 0)
+[D] ok   control 1/(q;q): y^2 Dlog = 0.04088 (bounded, -> 1/24)
+[D] ok   control 1/(q;q): y^2 Dlog = 0.04143 (bounded, -> 1/24)
+[D] ok   chain_3 x N: y^3 Dlog -> 0 (3.69e-04); Lemma D silent
+[F] ok   Lie_5 at (5,): Frame shape {1: -1, 5: 5}
+[F] ok   Lie_6 at (2, 2, 2): Frame shape {1: -8, 2: 64}
+[F] ok   Lie_6 at (3, 3): Frame shape {1: -3, 3: 41}
+[F] ok   Lie_6 at (6,): Frame shape {1: 1, 2: -2, 3: -3, 6: 22}
+[F] ok   Lie_7 at (7,): Frame shape {1: -1, 7: 103}
+[F] ok   Lie_4..Lie_7, every class: Fock trace = prod (q^t;q^t)^(-r_t) to q^30
+[F] ok   odd g, sgn-twisted: t^r -> (2t)^r t^(-r) for odd t, even t fixed
+[F] ok   Lie_n restricted to S_{n-1} is the regular representation (n <= 9): the Reg(S_4) 'control' is Lie_5 itself
+[F] ok   Lie_5 shapes [{1: -1, 5: 5}, {1: 24}, {2: 12}, {2: 12}, {3: 8}, {4: 6}, {6: 4}]
+[F] ok   eta(5t)^5/eta(t) = sum_n sum_{d|n} (n/d | 5) d q^n through q^200
+[F] ok   negative control: sum_{d|n} (d|5) d fails
+[A] ok   Lie_5|A_5 = 3 + 3' + 2*4 + 2*5: {'1': 0.0, '3': 1.0, "3'": 1.0, '4': 2.0, '5': 2.0}
+[A] ok   q^1 coefficients phi vs 1-phi: 1.6180, -0.6180
+[A] ok   the two series are real (eigenvalues closed under inversion)
+      5a: [1, 1.618, 2.618, 4.2361, 6.8541, 11.0902, 16.3262]
+      5b: [1, -0.618, 0.382, -0.2361, 0.1459, -0.0902, 0.6738]
+[A] ok   on the whole of Lie_5 (rational character) 5a and 5b give equal series
+
+59/59 checks passed
