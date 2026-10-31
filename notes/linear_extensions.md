@@ -229,6 +229,9 @@ identification C[Lin P]/R_P ≅ H_P ⊗ sgn ([Thm] Thm `thm:S`(d)) needs
 n ≥ 3, so for C_1 ⊔ C_1 only the C[Lin P]/R_P side makes sense. The "if"
 direction is **PROVEN**: for two chains, R_P = C · Σ_{w ∈ Lin P} w, and ∂
 permutes Lin P. The "only if" direction is **CONJECTURED** beyond n ≤ 6.
+(Update: now **PROVEN** for all n in `notes/promotion_on_R_P.md`, Theorem 1:
+on disconnected P, ∂ preserves R_P iff P is a disjoint union of two chains.
+Audited in `notes/audit_promotion_on_R_P.md`.)
 Note that ∂ = γ does *not* preserve Sh_3 = R_{A_3}.
 
 *Equivariant bijection?* None exists in general, because the counts differ:
@@ -462,7 +465,8 @@ combinatorial meaning.
 ## 6. Open problems
 
 1. Does ∂(R_P) ⊆ R_P hold only for n ≤ 2, for connected P and for two chains
-   (§2)? **CONJECTURED**; computed for n ≤ 6.
+   (§2)? **CONJECTURED**; computed for n ≤ 6. (Update: settled, **PROVEN**
+   in `notes/promotion_on_R_P.md` Theorem 1, which also computes n ≤ 8.)
 2. Is there a q-analogue of e_C(P), for example a polynomial in q with
    X(1) = e_C(P), that sieves Aut(P) acting on Cyc(P), at least for
    P = T^{⊔k}? **OPEN.** Nothing in the theory points to one.

@@ -27,8 +27,8 @@ the two models. Let P be disconnected.
 | C[Lin P]/R_P (≅ H_P ⊗ sgn for n ≥ 3) | P is a disjoint union of two chains | Theorem 1 below |
 
 For connected P, K_P = R_P = 0 and ∂ acts on both models. The two families
-meet only in C_1 ⊔ C_1 (n = 2), where only the C[Lin P]/R_P side makes sense
-([LE] §2).
+meet only in C_1 ⊔ C_1 (n = 2), where the identification
+C[Lin P]/R_P ≅ H_P ⊗ sgn is not available: it needs n ≥ 3 ([LE] §2).
 
 Tags: [LE] = `notes/linear_extensions.md`; [Thm] =
 `notes/poset_jks_theorem.tex`. Ree's theorem, Lie_n = Sh_n^⊥ in C[S_n] under
@@ -66,13 +66,14 @@ gives w_1 < w_2 < ⋯ < w_m, so Q is a chain. This is the argument of
 not a chain. ∎
 
 **Lemma 2 (PROVEN, from Ree).** Let z ∈ [n], and let X ≠ 0 be a linear
-combination of words on [n] ∖ {z}. Then Xz ∉ Sh_n. More precisely, if a is a
+combination of words of length n − 1 that use each letter of [n] ∖ {z}
+exactly once, so that Xz ∈ C[S_n]. Then Xz ∉ Sh_n. More precisely, if a is a
 word with coefficient X(a) ≠ 0, then ρ(az) ∈ Lie_n and ⟨ρ(az), Xz⟩ = X(a).
 
 *Proof.* We have ρ(b_1 ⋯ b_m) = b_1 ρ(b_2 ⋯ b_m) − ρ(b_2 ⋯ b_m) b_1. The
 second term has words ending in b_1 ≠ b_m. So, by induction, the only word
 of ρ(b) that ends in b_m is b itself, with coefficient +1. Hence
-⟨ρ(az), uz⟩ = δ_{u,a} for every word u on [n] ∖ {z}. Since ρ(az) ∈ Lie_n is
+⟨ρ(az), uz⟩ = δ_{u,a} for every such word u on [n] ∖ {z}. Since ρ(az) ∈ Lie_n is
 orthogonal to Sh_n (Ree), Xz ∉ Sh_n. ∎
 
 (This is the familiar fact that the right-normed brackets ending in a fixed
