@@ -8,3 +8,4 @@
 __pycache__/
 .claude/
 *.toc
+!notes/eli5_introduction.pdf
