@@ -1438,8 +1438,40 @@ Independent audit of \S\ref{sec:natural}: Lemma~$\Psi$.0, contraction step, Theo
 \item \textbf{Cone/lune generalization.} [Cone, Conjecture~G]: the general
   form of Conjecture~S for every top-cone of every real central arrangement.
   The proven results of [Cone] have been independently audited in [AudCone]
-  (the pointed-cone theorem holds for essential arrangements); Conjecture~G
-  itself remains \st{conjectured}.
+  (the pointed-cone theorem holds for essential arrangements). Parts
+  (G1)--(G3) of Conjecture~G are now \st{proven} and \st{audited}. They form
+  Theorem~G$^*$ of \src{notes/general_theory.md}, \S1.5, which is Theorem~C
+  of \src{notes/audit_general_theory_cones.md}, \S C (not
+  Theorem~\ref{thm:S}(c) of this note). It was independently audited in
+  \src{notes/audit_theorem_c.md} (verdict: holds with fixes to proofs and
+  statements; no conclusion changes). Below, (i)--(iv) are the parts of
+  Theorem~C there.
+  \begin{itemize}[nosep]
+  \item \emph{Inputs.} Brown's description of the simple modules of a left
+    regular band algebra (\st{cited}, re-checked against the source), Hall's
+    theorem, and standard cell facts and homotopy lemmas, which
+    \src{notes/audit_theorem_c.md}, \S\S A--B, proves.
+  \item \emph{Hypotheses.} A finite real central arrangement (essential
+    without loss of generality), of rank $d\ge2$; $V$ any nonempty top-cone,
+    pointed or not. Over a field of characteristic $p$, multiplicities are
+    counted by ranks of idempotents, not by traces.
+  \item \emph{(G3)}, the chamber cycles $\rho_C$, $C\in V$, span
+    $\tilde H_{d-2}$, is (i). \emph{(G1)} is (iii), read with
+    non-singleton lunes (with singleton lunes the left side would be all
+    of $\Gamma_V$); it does not use Saliola. \emph{(G2)}: concentration in degree $d-2$
+    is the cone wedge theorem of \src{notes/general_theory.md} (Theorem~1,
+    audited), and $q(V)=m(V)=|\mu|$ is (ii).
+  \item \emph{Equivariant form} (iv):
+    $\tilde H_{d-2}\cong\det\otimes(\Gamma_V+\mathrm{Lune})/\mathrm{Lune}$
+    as $\mathrm{Stab}_G(V)$-modules, for every finite group $G$ of linear
+    maps preserving the arrangement. In the braid case it reproduces the
+    $\mathrm{sgn}$ twist of Theorem~\ref{thm:S}(d).
+  \item \emph{Still open.} (G4) as stated, that the particular
+    isomorphism of Aguiar--Mahajan, \emph{Topics}, Thm~14.32, restricts to
+    cones. It has not been tested or proved. The equivariant form above
+    uses a different isomorphism, $\Phi_A$ (Prop.~B of
+    \src{notes/audit_general_theory_cones.md}, \S C), instead.
+  \end{itemize}
 \item \textbf{Items the audits list as UNCHECKED.}
   \begin{itemize}[nosep]
   \item Checked in [Cit]: Hall (EC1 Prop.~3.8.5, in the form of
