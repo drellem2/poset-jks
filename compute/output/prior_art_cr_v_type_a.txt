@@ -1,0 +1,10 @@
+[CTL] Pi_4^(1, 2, 3, 0): |M| = 3, mu = 0, CC = True  ok
+[CTL] Pi_4^(0, 1, 2, 3): |M| = 15, mu = -6, CC = False  ok
+n=3: pairs 14, zeros 5, CC 5 (CC with mu != 0: 0; CC witness failures: 0), zeros not CC 0 (+w 0, -t 0); antichain +w pairs 3, mismatches 0; CC sides: coatom-meet only 0, atom-join only 0, both 5
+n=4: pairs 50, zeros 22, CC 22 (CC with mu != 0: 0; CC witness failures: 0), zeros not CC 0 (+w 0, -t 0); antichain +w pairs 5, mismatches 0; CC sides: coatom-meet only 0, atom-join only 0, both 22
+n=5: pairs 174, zeros 99, CC 99 (CC with mu != 0: 0; CC witness failures: 0), zeros not CC 0 (+w 0, -t 0); antichain +w pairs 7, mismatches 0; CC sides: coatom-meet only 4, atom-join only 3, both 92
+n=6: pairs 866, zeros 481, CC 481 (CC with mu != 0: 0; CC witness failures: 0), zeros not CC 0 (+w 0, -t 0); antichain +w pairs 11, mismatches 0; CC sides: coatom-meet only 64, atom-join only 3, both 414
+n=7: pairs 5050, zeros 2912, CC 2912 (CC with mu != 0: 0; CC witness failures: 0), zeros not CC 0 (+w 0, -t 0); antichain +w pairs 15, mismatches 0; CC sides: coatom-meet only 558, atom-join only 36, both 2318
+total: {'pairs': 6154, 'zeros': 3519, 'cc': 3519, 'cc_nonzero': 0, 'cc_wit_fail': 0, 'zeros_not_cc': 0, 'anti_pairs': 41, 'anti_mismatch': 0, 'low_only': 626, 'high_only': 42, 'both': 2851}
+total 45.4s
+ALL CHECKS PASSED
