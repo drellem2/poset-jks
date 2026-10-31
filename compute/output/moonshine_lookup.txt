@@ -1,0 +1,126 @@
+== candidate 1 ==
+b_n = n [x^n] log A (n >= 1)
+  terms: 1, 3, 16, 131, 1561, 26532, 637890, 21580043, 1021943455, 67359565683, 6143696950931, 771015707637344
+  OEIS: no match
+c_n = dim V_n^(S_n) (n >= 1)
+  terms: 1, 1, 5, 32, 312, 4419, 91127, 2697489, 113549271, 6735956412, 558517904630, 64251308967557
+  OEIS: no match
+c^-_n (sign-isotypic) (n >= 1)
+  terms: 1, 2, 5, 32, 312, 4424, 91127, 2697489, 113549271, 6735956724, 558517904630, 64251308967557
+  OEIS: no match
+c_n + c^-_n = dim V_n^(A_n) (n >= 1)
+  terms: 2, 3, 10, 64, 624, 8843, 182254, 5394978, 227098542, 13471913136, 1117035809260, 128502617935114
+  OEIS: no match
+== candidate 2 ==
+antichain 4, g of type (1, 1, 1, 1)
+  terms: 1, 4, 10, 20, 35, 56, 84, 120, 165, 220, 286, 364, 455, 560, 680, 816, 969, 1140, 1330, 1540
+  OEIS: A000292  Tetrahedral (or triangular pyramidal) numbers: a(n) = C(n+2,3) = n*(n+1)*(n+2)/6.
+antichain 4, g of type (3, 1)
+  terms: 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7
+  OEIS: A002264  Nonnegative integers repeated 3 times.
+  OEIS: A008620  Positive integers repeated three times.
+  OEIS: A032615  a(n) = floor(n/Pi).
+antichain 4, g of type (2, 2)
+  terms: 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0
+  OEIS: A142150  The nonnegative integers interleaved with 0's.
+  OEIS: A027656  Expansion of 1/(1-x^2)^2 (included only for completeness - the policy is always to omit the zeros from such se
+  OEIS: A380690  a(0) = 0; a(n) = the number of times a(n-1) has all digits in common with a previous term.
+2+2 (two 2-chains), g of type (1, 1, 1, 1)
+  terms: 1, 2, 5, 8, 14, 20, 30, 40, 55, 70, 91, 112, 140, 168, 204, 240, 285, 330, 385, 440
+  OEIS: A006918  a(n) = binomial(n+3, 3)/4 for odd n, n*(n+2)*(n+4)/24 for even n.
+2+2 (two 2-chains), g of type (2, 2)
+  terms: 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 5, 0, 5, 0
+  OEIS: no match
+bowtie 0,1 < 2,3, g of type (1, 1, 1, 1)
+  terms: 1, 2, 3, 6, 10, 14, 20, 28, 37, 48, 61, 76, 94, 114, 136, 162, 191, 222, 257, 296
+  OEIS: no match
+bowtie 0,1 < 2,3, g of type (2, 2)
+  terms: 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 5, 0, 5, 0
+  OEIS: no match
+2+2+2, g of type (1, 1, 1, 1, 1, 1)
+  terms: 1, 3, 9, 19, 39, 69, 119, 189, 294, 434, 630, 882, 1218, 1638, 2178, 2838, 3663, 4653, 5863, 7293
+  OEIS: A038163  G.f.: 1/((1-x)*(1-x^2))^3.
+2+2+2, g of type (2, 2, 1, 1)
+  terms: 1, 1, 3, 3, 7, 7, 13, 13, 22, 22, 34, 34, 50, 50, 70, 70, 95, 95, 125, 125
+  OEIS: A128498  Fourth column (m=3) of triangle A128494.
+2+2+2, g of type (3, 3)
+  terms: 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 3, 0, 0, 3, 0, 0, 4, 0
+  OEIS: A024164  Number of integer-sided triangles with sides a,b,c, a<b<c, a+b+c=n such that c - b = b - a.
+  OEIS: A307985  Number of integer-sided triangles with perimeter n and sides a, b, and c such that a <= b <= c and b|n.
+3+3, g of type (1, 1, 1, 1, 1, 1)
+  terms: 1, 2, 5, 10, 18, 30, 49, 74, 110, 158, 221, 302, 407, 536, 698, 896, 1136, 1424, 1770, 2176
+  OEIS: A117485  Expansion of x^9/((1-x)*(1-x^2)*(1-x^3))^2.
+Boolean lattice B_3, g of type (1, 1, 1, 1, 1, 1, 1, 1)
+  terms: 1, 1, 4, 7, 14, 23, 41, 63, 104, 152, 230, 327, 470, 647, 897, 1202, 1616, 2117, 2775, 3566
+  OEIS: A003404  Number of solid partitions of n supported on graph of cube.
+Boolean lattice B_3, g of type (2, 2, 1, 1, 1, 1)
+  terms: 1, 1, 2, 3, 6, 7, 11, 15, 22, 28, 38, 47, 64, 77, 99, 120, 152, 179, 221, 260
+  OEIS: A256976  G.f.: (1 + x^4 - x^5 - x^6 - x^10 - x^11 + x^12 + x^16)/Product_{i=1..8} (1 - x^i).
+Boolean lattice B_3, g of type (3, 3, 1, 1)
+  terms: 1, 1, 1, 1, 2, 2, 2, 3, 5, 5, 5, 6, 8, 8, 9, 11, 14, 14, 15, 17
+  OEIS: A029073  Expansion of 1/((1-x)*(1-x^4)*(1-x^7)*(1-x^8)).
+== candidate 3 ==
+chain_2 x N
+  terms: 1, 1, 3, 5, 10, 16, 29, 45, 75, 115, 181, 271, 413, 605, 895, 1291, 1866, 2648, 3760, 5260
+  OEIS: A000990  Number of plane partitions of n with at most two rows.
+chain_3 x N
+  terms: 1, 1, 3, 6, 12, 21, 40, 67, 117, 193, 319, 510, 818, 1274, 1983, 3032, 4610, 6915, 10324, 15235
+  OEIS: A000991  Number of 3-line partitions of n.
+N x N, transpose
+  terms: 1, 1, 1, 2, 3, 4, 6, 8, 12, 16, 22, 29, 41, 53, 71, 93, 125, 160, 211, 270
+  OEIS: A005987  Number of symmetric plane partitions of n.
+== candidate 4: Lie_5 ==
+eta_g, g of type (1, 1, 1, 1, 1), Frame shape 1^24 (coefficients of q^(1 + 1k), k = 0, 1, ...)
+  terms: 1, -24, 252, -1472, 4830, -6048, -16744, 84480, -113643, -115920, 534612, -370944, -577738, 401856, 1217160, 987136
+  OEIS: A000594  Ramanujan's tau function (or Ramanujan numbers, or tau numbers).
+Fock trace q^-1 T_g = 1/eta_g, type (1, 1, 1, 1, 1) (coefficients of q^(1k))
+  terms: 1, 24, 324, 3200, 25650, 176256, 1073720, 5930496, 30178575, 143184000, 639249300, 2705114880, 10914317934, 42189811200, 156883829400, 563116739584
+  OEIS: A006922  Expansion of 1/eta(q)^24; Fourier coefficients of T_{14}.
+eta_g, g of type (2, 1, 1, 1), Frame shape 2^12 (coefficients of q^(1 + 2k), k = 0, 1, ...)
+  terms: 1, -12, 54, -88, -99, 540, -418, -648, 594, 836, 1056, -4104, -209, 4104, -594, 4256
+  OEIS: A000735  Expansion of Product_{k>=1} (1 - x^k)^12.
+  OEIS: A209676  Expansion of f(x)^12 in powers of x where f() is a Ramanujan theta function.
+Fock trace q^-1 T_g = 1/eta_g, type (2, 1, 1, 1) (coefficients of q^(2k))
+  terms: 1, 12, 90, 520, 2535, 10908, 42614, 153960, 521235, 1669720, 5098938, 14931072, 42124380, 114945780, 304351020, 784087848
+  OEIS: A005758  Number of partitions of n into parts of 12 kinds.
+eta_g, g of type (2, 2, 1), Frame shape 2^12 (coefficients of q^(1 + 2k), k = 0, 1, ...)
+  terms: 1, -12, 54, -88, -99, 540, -418, -648, 594, 836, 1056, -4104, -209, 4104, -594, 4256
+  OEIS: A000735  Expansion of Product_{k>=1} (1 - x^k)^12.
+  OEIS: A209676  Expansion of f(x)^12 in powers of x where f() is a Ramanujan theta function.
+Fock trace q^-1 T_g = 1/eta_g, type (2, 2, 1) (coefficients of q^(2k))
+  terms: 1, 12, 90, 520, 2535, 10908, 42614, 153960, 521235, 1669720, 5098938, 14931072, 42124380, 114945780, 304351020, 784087848
+  OEIS: A005758  Number of partitions of n into parts of 12 kinds.
+eta_g, g of type (3, 1, 1), Frame shape 3^8 (coefficients of q^(1 + 3k), k = 0, 1, ...)
+  terms: 1, -8, 20, 0, -70, 64, 56, 0, -125, -160, 308, 0, 110, 0, -520, 0
+  OEIS: A000731  Expansion of Product (1 - x^k)^8 in powers of x.
+  OEIS: A161969  Expansion of f(q)^8 in powers of q where f() is a Ramanujan theta function.
+Fock trace q^-1 T_g = 1/eta_g, type (3, 1, 1) (coefficients of q^(3k))
+  terms: 1, 8, 44, 192, 726, 2464, 7704, 22528, 62337, 164560, 417140, 1020416, 2418710, 5573568, 12520744, 27484160
+  OEIS: A023007  Number of partitions of n into parts of 8 kinds.
+eta_g, g of type (3, 2), Frame shape 6^4 (coefficients of q^(1 + 6k), k = 0, 1, ...)
+  terms: 1, -4, 2, 8, -5, -4, -10, 8, 9, 0, 14, -16, -10, -4, 0, -8
+  OEIS: A000727  Expansion of Product_{k >= 1} (1 - x^k)^4.
+  OEIS: A187076  Coefficients of L-series for elliptic curve "144a1": y^2 = x^3 - 1.
+Fock trace q^-1 T_g = 1/eta_g, type (3, 2) (coefficients of q^(6k))
+  terms: 1, 4, 14, 40, 105, 252, 574, 1240, 2580, 5180, 10108, 19208, 35693, 64960, 116090, 203984
+  OEIS: A023003  Number of partitions of n into parts of 4 kinds.
+eta_g, g of type (4, 1), Frame shape 4^6 (coefficients of q^(1 + 4k), k = 0, 1, ...)
+  terms: 1, -6, 9, 10, -30, 0, 11, 42, 0, -70, 18, -54, 49, 90, 0, -22
+  OEIS: A000729  Expansion of Product_{k >= 1} (1 - x^k)^6.
+  OEIS: A209941  Expansion of f(x)^6 in powers of x where f() is a Ramanujan theta function.
+Fock trace q^-1 T_g = 1/eta_g, type (4, 1) (coefficients of q^(4k))
+  terms: 1, 6, 27, 98, 315, 918, 2492, 6372, 15525, 36280, 81816, 178794, 380051, 788004, 1597725, 3174210
+  OEIS: A023005  Number of partitions of n into parts of 6 kinds.
+eta_g, g of type (5,), Frame shape 1^-1 5^5 (coefficients of q^(1 + 1k), k = 0, 1, ...)
+  terms: 1, 1, 2, 3, 5, 2, 6, 5, 7, 5, 12, 6, 12, 6, 10, 11
+  OEIS: A053723  Number of 5-core partitions of n.
+  OEIS: A126833  Ramanujan numbers (A000594) read mod 25.
+  OEIS: A138512  Expansion of q * f(q^5)^5 / f(q) in powers of q where f() is a Ramanujan theta function.
+Fock trace q^-1 T_g = 1/eta_g, type (5,) (coefficients of q^(1k))
+  terms: 1, -1, -1, 0, 0, 6, -5, -4, 0, 0, 25, -20, -16, 0, 0, 84
+  OEIS: A109063  Expansion of eta(q)/eta(q^5)^5 in powers of q.
+LMFDB 1.12.a.a (dim 1): a_n for n < 100 EQUAL to eta(1tau)^24; Sturm bound for weight 12, Gamma0(1): 1
+LMFDB 4.6.a.a (dim 1): a_n for n < 100 EQUAL to eta(2tau)^12; Sturm bound for weight 6, Gamma0(4): 3
+LMFDB 9.4.a.a (dim 1): a_n for n < 100 EQUAL to eta(3tau)^8; Sturm bound for weight 4, Gamma0(9): 4
+LMFDB 16.3.c.a (dim 1): a_n for n < 100 EQUAL to eta(4tau)^6; Sturm bound for weight 3, Gamma0(16): 6
+LMFDB 36.2.a.a (dim 1): a_n for n < 100 EQUAL to eta(6tau)^4; Sturm bound for weight 2, Gamma0(36): 12
