@@ -1,0 +1,359 @@
+== controls for the eta-quotient detector ==
+  ok    pentagonal series sum (-1)^k q^(k(3k-1)/2): r = 1^1 (expect 1^1 = eta)
+  ok    theta_3 = sum q^(n^2): r = 1^-2 2^5 4^-2 (expect 1^-2 2^5 4^-2)
+  ok    theta_3: weight 1/2, level 4, holomorphic at cusps True (expect 1/2, 4, True)
+  ok    Delta = q prod (1-q^n)^24: tau(1..5) = 1, -24, 252, -1472, 4830, tau(11) = 534612
+  ok    Delta recovered as 1^24, weight 12, level 1
+  ok    Witt product (1-q)/(1-2q) = prod (1-q^n)^(-l_n), l_n = [1, 1, 2, 3, 6, 9, 18, 30, 56, 99, 186, 335] ... (A059966), n < 61
+  ok    rejects (1-q)/(1-2q): exponent support reaches t = 60 of window 60
+  ok    rejects sum q^(n^3): exponent support reaches t = 60 of window 60
+  ok    rejects MacMahon prod (1-q^n)^-n (r_t = -phi(t); found r_1..r_6 = [-1, -1, -2, -2, -4, -2])
+  [controls: 0.0s]
+== candidate 1: the Witt layer V_n = (+)_P Lie(P) ==
+  ok    brute-force a_n (n <= 6) = [1, 1, 2, 7, 40, 357, 4824] agrees with OEIS A006455
+  ok    b_n = n[x^n] log A: [1, 3, 16, 131, 1561, 26532, 637890, 21580043] ...
+  ok    dim V_n = (n-1)! b_n: [1, 3, 32, 786, 37464, 3183840] (n = 1..6; 32, 786, 37464, 3183840 as in global_module_operations_plethlog.md)
+  ok    n=1: sum over unlabeled P of dim Lie(P)^Aut(P) = 1 = c_n; sgn-isotypic 1 = c^-_n
+  ok    n=2: sum over unlabeled P of dim Lie(P)^Aut(P) = 1 = c_n; sgn-isotypic 2 = c^-_n
+  ok    n=3: sum over unlabeled P of dim Lie(P)^Aut(P) = 5 = c_n; sgn-isotypic 5 = c^-_n
+  ok    n=4: sum over unlabeled P of dim Lie(P)^Aut(P) = 32 = c_n; sgn-isotypic 32 = c^-_n
+  ok    n=5: sum over unlabeled P of dim Lie(P)^Aut(P) = 312 = c_n; sgn-isotypic 312 = c^-_n
+  ok    c_n >= 0 and c^-_n >= 0 for n <= 18
+  c_n   (S_n-invariants)        = [1, 1, 5, 32, 312, 4419, 91127, 2697489, 113549271, 6735956412, 558517904630, 64251308967557, 10187556768337400, 2213419526934086616, 655566407305701054967, 263474703564701192181742, 143108819413613573620978591, 104673287410033130760901732122]
+  c^-_n (sign-isotypic)         = [1, 2, 5, 32, 312, 4424, 91127, 2697489, 113549271, 6735956724, 558517904630, 64251308967557, 10187556768337400, 2213419526934177743, 655566407305701054967, 263474703564701192181742, 143108819413613573620978591, 104673287410033130761015281393]
+  c_n + c^-_n (A_n-invariants)  = [2, 3, 10, 64, 624, 8843, 182254, 5394978, 227098542, 13471913136, 1117035809260, 128502617935114, 20375113536674800, 4426839053868264359, 1311132814611402109934, 526949407129402384363484, 286217638827227147241957182, 209346574820066261521917013515]
+  ok    A(q) = sum a_n q^n = prod_n (1-q^n)^(-c_n) through q^18 (inverse Euler transform)
+  ok    a_n >= 2^(floor(n/2) ceil(n/2)) for n <= 18
+  a_(n+1) a_(n-1) / a_n^2 for n = 10..17: [1.4, 1.39, 1.38, 1.37, 1.36, 1.36, 1.35, 1.35]  (bounded away from 1: log a_n is convex, growth ~ 2^(n^2/4))
+  chi_(V_dm)(cycle type 1^m), m = 1..: [1, 3, 32, 786, 37464, 3183840, 459280800, 108763416720]
+  chi_(V_dm)(cycle type 2^m), m = 1..: [-1, -6, -128, -6288, -599424, -101882880, -29393971200, -13921717340160]
+  chi_(V_dm)(cycle type 3^m), m = 1..: [-1, -9, -288, -21222, -3034584, -773673120]
+  chi_(V_dm)(cycle type 5^m), m = 1..: [-1, -15, -800]
+  ok    detector on A(q): rejected (exponent support reaches t = 18 of window 18)
+  ok    detector on 1 + sum (c_n + c^-_n) q^n: rejected (exponent support reaches t = 18 of window 18)
+  [witt: 0.1s]
+== candidate 2: g-fixed P-partitions, g in Aut(P) cap A_n ==
+  antichain 4: |Aut| = 24, |Aut cap A_n| = 12
+  ok        g of type (1, 1, 1, 1): brute force = quotient formula through q^29
+      T_g = 1, 4, 10, 20, 35, 56, 84, 120, 165, 220, 286, 364, 455, 560, 680, 816, 969, 1140, 1330, 1540, 1771, 2024, 2300, 2600, 2925, 3276, 3654, 4060, 4495, 4960, 5456
+      orbit weights [1, 1, 1, 1]; |Lin(P/<g>)| = 24
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  ok        g of type (3, 1): brute force = quotient formula through q^29
+      T_g = 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11
+      orbit weights [1, 3]; |Lin(P/<g>)| = 2
+  ok          detector: not an eta quotient (exponent support reaches t = 29 of window 30)
+  ok        g of type (2, 2): brute force = quotient formula through q^29
+      T_g = 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16
+      orbit weights [2, 2]; |Lin(P/<g>)| = 2
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  2+2 (two 2-chains): |Aut| = 2, |Aut cap A_n| = 2
+  ok        g of type (1, 1, 1, 1): brute force = quotient formula through q^29
+      T_g = 1, 2, 5, 8, 14, 20, 30, 40, 55, 70, 91, 112, 140, 168, 204, 240, 285, 330, 385, 440, 506, 572, 650, 728, 819, 910, 1015, 1120, 1240, 1360, 1496
+      orbit weights [1, 1, 1, 1]; |Lin(P/<g>)| = 6
+  ok          detector: not an eta quotient (exponent support reaches t = 29 of window 30)
+  ok        g of type (2, 2): brute force = quotient formula through q^29
+      T_g = 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 5, 0, 5, 0, 6, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8
+      orbit weights [2, 2]; |Lin(P/<g>)| = 1
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  bowtie 0,1 < 2,3: |Aut| = 4, |Aut cap A_n| = 2
+  ok        g of type (1, 1, 1, 1): brute force = quotient formula through q^29
+      T_g = 1, 2, 3, 6, 10, 14, 20, 28, 37, 48, 61, 76, 94, 114, 136, 162, 191, 222, 257, 296, 338, 384, 434, 488, 547, 610, 677, 750, 828, 910, 998
+      orbit weights [1, 1, 1, 1]; |Lin(P/<g>)| = 4
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  ok        g of type (2, 2): brute force = quotient formula through q^29
+      T_g = 1, 0, 1, 0, 2, 0, 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 5, 0, 5, 0, 6, 0, 6, 0, 7, 0, 7, 0, 8, 0, 8
+      orbit weights [2, 2]; |Lin(P/<g>)| = 1
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  2+2+2: |Aut| = 6, |Aut cap A_n| = 6
+  ok        g of type (1, 1, 1, 1, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 3, 9, 19, 39, 69, 119, 189, 294, 434, 630, 882, 1218, 1638, 2178, 2838, 3663, 4653, 5863, 7293, 9009, 11011, 13377, 16107, 19292, 22932, 27132, 31892, 37332, 43452, 50388
+      orbit weights [1, 1, 1, 1, 1, 1]; |Lin(P/<g>)| = 90
+  ok          detector: not an eta quotient (exponent support reaches t = 29 of window 30)
+  ok        g of type (2, 2, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 1, 3, 3, 7, 7, 13, 13, 22, 22, 34, 34, 50, 50, 70, 70, 95, 95, 125, 125, 161, 161, 203, 203, 252, 252, 308, 308, 372, 372, 444
+      orbit weights [1, 1, 2, 2]; |Lin(P/<g>)| = 6
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  ok        g of type (3, 3): brute force = quotient formula through q^15
+      T_g = 1, 0, 0, 1, 0, 0, 2, 0, 0, 2, 0, 0, 3, 0, 0, 3, 0, 0, 4, 0, 0, 4, 0, 0, 5, 0, 0, 5, 0, 0, 6
+      orbit weights [3, 3]; |Lin(P/<g>)| = 1
+  ok          detector: not an eta quotient (exponent support reaches t = 21 of window 30)
+  3+3: |Aut| = 2, |Aut cap A_n| = 1
+  ok        g of type (1, 1, 1, 1, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 2, 5, 10, 18, 30, 49, 74, 110, 158, 221, 302, 407, 536, 698, 896, 1136, 1424, 1770, 2176, 2656, 3216, 3866, 4616, 5481, 6466, 7591, 8866, 10306, 11926, 13747
+      orbit weights [1, 1, 1, 1, 1, 1]; |Lin(P/<g>)| = 20
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  Boolean lattice B_3: |Aut| = 6, |Aut cap A_n| = 6
+  ok        g of type (1, 1, 1, 1, 1, 1, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 1, 4, 7, 14, 23, 41, 63, 104, 152, 230, 327, 470, 647, 897, 1202, 1616, 2117, 2775, 3566, 4580, 5787, 7301, 9092, 11298, 13885, 17028, 20688, 25076, 30154, 36172
+      orbit weights [1, 1, 1, 1, 1, 1, 1, 1]; |Lin(P/<g>)| = 48
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  ok        g of type (2, 2, 1, 1, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 1, 2, 3, 6, 7, 11, 15, 22, 28, 38, 47, 64, 77, 99, 120, 152, 179, 221, 260, 316, 367, 439, 506, 600, 685, 800, 910, 1056, 1190, 1368
+      orbit weights [1, 1, 2, 2, 1, 1]; |Lin(P/<g>)| = 5
+  ok          detector: not an eta quotient (exponent support reaches t = 29 of window 30)
+  ok        g of type (3, 3, 1, 1): brute force = quotient formula through q^15
+      T_g = 1, 1, 1, 1, 2, 2, 2, 3, 5, 5, 5, 6, 8, 8, 9, 11, 14, 14, 15, 17, 20, 21, 23, 26, 30, 31, 33, 36, 41, 43, 46
+      orbit weights [1, 3, 3, 1]; |Lin(P/<g>)| = 1
+  ok          detector: not an eta quotient (exponent support reaches t = 30 of window 30)
+  verdict input: every T_g is a rational function of q with poles only at roots of unity (Lemma R in the note), so none is modular.
+  [ppart: 0.4s]
+== candidate 3: P-partitions of infinite posets ==
+  ok    k.N, k=3, g of type (1, 1, 1) (even): T_g = q^(-3/24) / prod eta(lam tau); r = 1^-3, weight -3/2
+  ok    k.N, k=3, g of type (2, 1) (odd): T_g = q^(-3/24) / prod eta(lam tau); r = 1^-1 2^-1, weight -1
+  ok    k.N, k=3, g of type (3,) (even): T_g = q^(-3/24) / prod eta(lam tau); r = 3^-1, weight -1/2
+  ok    k.N, k=4, g of type (1, 1, 1, 1) (even): T_g = q^(-4/24) / prod eta(lam tau); r = 1^-4, weight -2
+  ok    k.N, k=4, g of type (2, 1, 1) (odd): T_g = q^(-4/24) / prod eta(lam tau); r = 1^-2 2^-1, weight -3/2
+  ok    k.N, k=4, g of type (2, 2) (even): T_g = q^(-4/24) / prod eta(lam tau); r = 2^-2, weight -1
+  ok    k.N, k=4, g of type (3, 1) (even): T_g = q^(-4/24) / prod eta(lam tau); r = 1^-1 3^-1, weight -1
+  ok    k.N, k=4, g of type (4,) (odd): T_g = q^(-4/24) / prod eta(lam tau); r = 4^-1, weight -1/2
+  ok    k.N, k=5, g of type (1, 1, 1, 1, 1) (even): T_g = q^(-5/24) / prod eta(lam tau); r = 1^-5, weight -5/2
+  ok    k.N, k=5, g of type (2, 1, 1, 1) (odd): T_g = q^(-5/24) / prod eta(lam tau); r = 1^-3 2^-1, weight -2
+  ok    k.N, k=5, g of type (2, 2, 1) (even): T_g = q^(-5/24) / prod eta(lam tau); r = 1^-1 2^-2, weight -3/2
+  ok    k.N, k=5, g of type (3, 1, 1) (even): T_g = q^(-5/24) / prod eta(lam tau); r = 1^-2 3^-1, weight -3/2
+  ok    k.N, k=5, g of type (3, 2) (odd): T_g = q^(-5/24) / prod eta(lam tau); r = 2^-1 3^-1, weight -1
+  ok    k.N, k=5, g of type (4, 1) (odd): T_g = q^(-5/24) / prod eta(lam tau); r = 1^-1 4^-1, weight -1
+  ok    k.N, k=5, g of type (5,) (even): T_g = q^(-5/24) / prod eta(lam tau); r = 5^-1, weight -1/2
+  ok    chain_1 x N: brute force = prod (1-q^n)^(-min(n,1)) through q^30
+  ok    chain_1 x N = N: 1/eta (control)
+  ok    chain_2 x N: brute force = prod (1-q^n)^(-min(n,2)) through q^17
+  ok    chain_2 x N: not an eta quotient (exponent support reaches t = 30 of window 30); times eta^2 it is a nonconstant polynomial
+  ok    chain_3 x N: brute force = prod (1-q^n)^(-min(n,3)) through q^17
+  ok    chain_3 x N: not an eta quotient (exponent support reaches t = 30 of window 30); times eta^3 it is a nonconstant polynomial
+  ok    N x N with the transpose: brute force symmetric plane partitions = prod (1-q^(2i-1))^-1 prod_(i<j) (1-q^(2(i+j-1)))^-1 through q^19
+      T_transpose = 1, 1, 1, 2, 3, 4, 6, 8, 12, 16, 22, 29, 41, 53, 71, 93, 125, 160, 211, 270, 354, 450, 581, 735, 948, 1191, 1517, 1902, 2414, 3008
+  ok    N x N, transpose: not an eta quotient (exponent support reaches t = 30 of window 30)
+  ok    N x N, identity (MacMahon): not an eta quotient (exponent support reaches t = 30 of window 30)
+  [infinite: 0.3s]
+== candidate 4: Fock space Sym(Lie(P) (x) tC[t]) and Frame shapes ==
+  antichain 4 (Lie_4): n = 4, |Aut| = 24
+  ok        (1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1) (even): dim 6, Frame shape 1^6; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^6: weight 3, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 1, 1) (odd): dim 6, Frame shape 2^3; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^3 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^3: weight 3/2, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 2): closed formula = cyclic-class trace for every power
+  ok        (2, 2) (even): dim 6, Frame shape 1^-2 2^4; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-2 2^4: weight 1, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  ok        (3, 1): closed formula = cyclic-class trace for every power
+  ok        (3, 1) (even): dim 6, Frame shape 3^2; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 3^2: weight 1, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  ok        (4,): closed formula = cyclic-class trace for every power
+  ok        (4,) (odd): dim 6, Frame shape 2^-1 4^2; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^-1 4^2 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^-1 4^2: weight 1/2, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  antichain 5 (Lie_5): n = 5, |Aut| = 120
+  ok        (1, 1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1, 1) (even): dim 24, Frame shape 1^24; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^24: weight 12, q-order 1, Gamma0 level 1, holomorphic at all cusps: True
+  ok        (2, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 1, 1, 1) (odd): dim 24, Frame shape 2^12; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^12 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^12: weight 6, q-order 1, Gamma0 level 4, holomorphic at all cusps: True
+  ok        (2, 2, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 2, 1) (even): dim 24, Frame shape 2^12; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 2^12: weight 6, q-order 1, Gamma0 level 4, holomorphic at all cusps: True
+  ok        (3, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (3, 1, 1) (even): dim 24, Frame shape 3^8; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 3^8: weight 4, q-order 1, Gamma0 level 9, holomorphic at all cusps: True
+  ok        (3, 2): closed formula = cyclic-class trace for every power
+  ok        (3, 2) (odd): dim 24, Frame shape 6^4; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 6^4 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 6^4: weight 2, q-order 1, Gamma0 level 36, holomorphic at all cusps: True
+  ok        (4, 1): closed formula = cyclic-class trace for every power
+  ok        (4, 1) (odd): dim 24, Frame shape 4^6; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 4^6 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 4^6: weight 3, q-order 1, Gamma0 level 16, holomorphic at all cusps: True
+  ok        (5,): closed formula = cyclic-class trace for every power
+  ok        (5,) (even): dim 24, Frame shape 1^-1 5^5; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-1 5^5: weight 2, q-order 1, Gamma0 level 5, holomorphic at all cusps: True
+  antichain 6 (Lie_6): n = 6, |Aut| = 720
+  ok        (1, 1, 1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1, 1, 1) (even): dim 120, Frame shape 1^120; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^120: weight 60, q-order 5, Gamma0 level 1, holomorphic at all cusps: True
+  ok        (2, 1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 1, 1, 1, 1) (odd): dim 120, Frame shape 2^60; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^60 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^60: weight 30, q-order 5, Gamma0 level 4, holomorphic at all cusps: True
+  ok        (2, 2, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 2, 1, 1) (even): dim 120, Frame shape 2^60; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 2^60: weight 30, q-order 5, Gamma0 level 4, holomorphic at all cusps: True
+  ok        (2, 2, 2): closed formula = cyclic-class trace for every power
+  ok        (2, 2, 2) (odd): dim 120, Frame shape 1^-8 2^64; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 1^8 2^56 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 1^-8 2^64: weight 28, q-order 5, Gamma0 level 2, holomorphic at all cusps: True
+  ok        (3, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (3, 1, 1, 1) (even): dim 120, Frame shape 3^40; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 3^40: weight 20, q-order 5, Gamma0 level 9, holomorphic at all cusps: True
+  ok        (3, 2, 1): closed formula = cyclic-class trace for every power
+  ok        (3, 2, 1) (odd): dim 120, Frame shape 6^20; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 6^20 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 6^20: weight 10, q-order 5, Gamma0 level 36, holomorphic at all cusps: True
+  ok        (3, 3): closed formula = cyclic-class trace for every power
+  ok        (3, 3) (even): dim 120, Frame shape 1^-3 3^41; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-3 3^41: weight 19, q-order 5, Gamma0 level 9, holomorphic at all cusps: True
+  ok        (4, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (4, 1, 1) (odd): dim 120, Frame shape 4^30; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 4^30 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 4^30: weight 15, q-order 5, Gamma0 level 16, holomorphic at all cusps: True
+  ok        (4, 2): closed formula = cyclic-class trace for every power
+  ok        (4, 2) (even): dim 120, Frame shape 4^30; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 4^30: weight 15, q-order 5, Gamma0 level 16, holomorphic at all cusps: True
+  ok        (5, 1): closed formula = cyclic-class trace for every power
+  ok        (5, 1) (even): dim 120, Frame shape 5^24; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 5^24: weight 12, q-order 5, Gamma0 level 5, holomorphic at all cusps: True
+  ok        (6,): closed formula = cyclic-class trace for every power
+  ok        (6,) (odd): dim 120, Frame shape 1^1 2^-2 3^-3 6^22; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 1^-1 2^-1 3^3 6^19 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 1^1 2^-2 3^-3 6^22: weight 9, q-order 5, Gamma0 level 18, holomorphic at all cusps: True
+  antichain 7 (Lie_7): n = 7, |Aut| = 5040
+  ok        (1, 1, 1, 1, 1, 1, 1) (even): dim 720, Frame shape 1^720; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^720: weight 360, q-order 30, Gamma0 level 1, holomorphic at all cusps: True
+  ok        (2, 1, 1, 1, 1, 1) (odd): dim 720, Frame shape 2^360; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^360 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^360: weight 180, q-order 30, Gamma0 level 2, holomorphic at all cusps: True
+  ok        (2, 2, 1, 1, 1) (even): dim 720, Frame shape 2^360; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 2^360: weight 180, q-order 30, Gamma0 level 2, holomorphic at all cusps: True
+  ok        (2, 2, 2, 1) (odd): dim 720, Frame shape 2^360; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^360 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^360: weight 180, q-order 30, Gamma0 level 2, holomorphic at all cusps: True
+  ok        (3, 1, 1, 1, 1) (even): dim 720, Frame shape 3^240; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 3^240: weight 120, q-order 30, Gamma0 level 3, holomorphic at all cusps: True
+  ok        (3, 2, 1, 1) (odd): dim 720, Frame shape 6^120; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 6^120 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 6^120: weight 60, q-order 30, Gamma0 level 6, holomorphic at all cusps: True
+  ok        (3, 2, 2) (even): dim 720, Frame shape 6^120; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 6^120: weight 60, q-order 30, Gamma0 level 6, holomorphic at all cusps: True
+  ok        (3, 3, 1) (even): dim 720, Frame shape 3^240; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 3^240: weight 120, q-order 30, Gamma0 level 3, holomorphic at all cusps: True
+  ok        (4, 1, 1, 1) (odd): dim 720, Frame shape 4^180; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 4^180 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 4^180: weight 90, q-order 30, Gamma0 level 8, holomorphic at all cusps: True
+  ok        (4, 2, 1) (even): dim 720, Frame shape 4^180; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 4^180: weight 90, q-order 30, Gamma0 level 8, holomorphic at all cusps: True
+  ok        (4, 3) (odd): dim 720, Frame shape 12^60; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 12^60 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 12^60: weight 30, q-order 30, Gamma0 level 24, holomorphic at all cusps: True
+  ok        (5, 1, 1) (even): dim 720, Frame shape 5^144; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 5^144: weight 72, q-order 30, Gamma0 level 5, holomorphic at all cusps: True
+  ok        (5, 2) (odd): dim 720, Frame shape 10^72; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 10^72 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 10^72: weight 36, q-order 30, Gamma0 level 10, holomorphic at all cusps: True
+  ok        (6, 1) (odd): dim 720, Frame shape 6^120; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 6^120 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 6^120: weight 60, q-order 30, Gamma0 level 6, holomorphic at all cusps: True
+  ok        (7,) (even): dim 720, Frame shape 1^-1 7^103; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-1 7^103: weight 51, q-order 30, Gamma0 level 7, holomorphic at all cusps: True
+  2+2: n = 4, |Aut| = 2
+  ok        (1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1) (even): dim 5, Frame shape 1^5; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^5: weight 5/2, q-order 5/24, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 2): closed formula = cyclic-class trace for every power
+  ok        (2, 2) (even): dim 5, Frame shape 1^-1 2^3; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-1 2^3: weight 1, q-order 5/24, Gamma0 level None, holomorphic at all cusps: None
+  2+2+2: n = 6, |Aut| = 6
+  ok        (1, 1, 1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1, 1, 1) (even): dim 74, Frame shape 1^74; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^74: weight 37, q-order 37/12, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 2, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 2, 1, 1) (even): dim 74, Frame shape 2^37; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 2^37: weight 37/2, q-order 37/12, Gamma0 level None, holomorphic at all cusps: None
+  ok        (3, 3): closed formula = cyclic-class trace for every power
+  ok        (3, 3) (even): dim 74, Frame shape 1^-1 3^25; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^-1 3^25: weight 12, q-order 37/12, Gamma0 level None, holomorphic at all cusps: None
+  1+1+2: n = 4, |Aut| = 2
+  ok        (1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1) (even): dim 6, Frame shape 1^6; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^6: weight 3, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 1, 1) (odd): dim 6, Frame shape 2^3; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^3 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^3: weight 3/2, q-order 1/4, Gamma0 level None, holomorphic at all cusps: None
+  bowtie (connected): n = 4, |Aut| = 4
+  ok        (1, 1, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (1, 1, 1, 1) (even): dim 4, Frame shape 1^4; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 1^4: weight 2, q-order 1/6, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 1, 1): closed formula = cyclic-class trace for every power
+  ok        (2, 1, 1) (odd): dim 4, Frame shape 2^2; Fock trace = 1/eta_g recovered by detector
+  ok          odd g: H_P Frame shape 2^2 = rule (odd t^r -> (2t)^r t^-r)
+      eta_g = 2^2: weight 1, q-order 1/6, Gamma0 level None, holomorphic at all cusps: None
+  ok        (2, 2): closed formula = cyclic-class trace for every power
+  ok        (2, 2) (even): dim 4, Frame shape 2^2; Fock trace = 1/eta_g recovered by detector
+  ok          even g: H_P and Lie(P) have the same Frame shape
+      eta_g = 2^2: weight 1, q-order 1/6, Gamma0 level None, holomorphic at all cusps: None
+  eta_g that are holomorphic modular forms on Gamma0(N) with integral weight:
+    antichain 5 (Lie_5), g of type (2, 1, 1, 1): 2^12, weight 6, level 4
+    antichain 5 (Lie_5), g of type (2, 2, 1): 2^12, weight 6, level 4
+    antichain 5 (Lie_5), g of type (3, 1, 1): 3^8, weight 4, level 9
+    antichain 5 (Lie_5), g of type (3, 2): 6^4, weight 2, level 36
+    antichain 5 (Lie_5), g of type (4, 1): 4^6, weight 3, level 16
+    antichain 5 (Lie_5), g of type (5,): 1^-1 5^5, weight 2, level 5
+    antichain 6 (Lie_6), g of type (2, 1, 1, 1, 1): 2^60, weight 30, level 4
+    antichain 6 (Lie_6), g of type (2, 2, 1, 1): 2^60, weight 30, level 4
+    antichain 6 (Lie_6), g of type (2, 2, 2): 1^-8 2^64, weight 28, level 2
+    antichain 6 (Lie_6), g of type (3, 1, 1, 1): 3^40, weight 20, level 9
+    antichain 6 (Lie_6), g of type (3, 2, 1): 6^20, weight 10, level 36
+    antichain 6 (Lie_6), g of type (3, 3): 1^-3 3^41, weight 19, level 9
+    antichain 6 (Lie_6), g of type (4, 1, 1): 4^30, weight 15, level 16
+    antichain 6 (Lie_6), g of type (4, 2): 4^30, weight 15, level 16
+    antichain 6 (Lie_6), g of type (5, 1): 5^24, weight 12, level 5
+    antichain 6 (Lie_6), g of type (6,): 1^1 2^-2 3^-3 6^22, weight 9, level 18
+    antichain 7 (Lie_7), g of type (2, 1, 1, 1, 1, 1): 2^360, weight 180, level 2
+    antichain 7 (Lie_7), g of type (2, 2, 1, 1, 1): 2^360, weight 180, level 2
+    antichain 7 (Lie_7), g of type (2, 2, 2, 1): 2^360, weight 180, level 2
+    antichain 7 (Lie_7), g of type (3, 1, 1, 1, 1): 3^240, weight 120, level 3
+    antichain 7 (Lie_7), g of type (3, 2, 1, 1): 6^120, weight 60, level 6
+    antichain 7 (Lie_7), g of type (3, 2, 2): 6^120, weight 60, level 6
+    antichain 7 (Lie_7), g of type (3, 3, 1): 3^240, weight 120, level 3
+    antichain 7 (Lie_7), g of type (4, 1, 1, 1): 4^180, weight 90, level 8
+    antichain 7 (Lie_7), g of type (4, 2, 1): 4^180, weight 90, level 8
+    antichain 7 (Lie_7), g of type (4, 3): 12^60, weight 30, level 24
+    antichain 7 (Lie_7), g of type (5, 1, 1): 5^144, weight 72, level 5
+    antichain 7 (Lie_7), g of type (5, 2): 10^72, weight 36, level 10
+    antichain 7 (Lie_7), g of type (6, 1): 6^120, weight 60, level 6
+    antichain 7 (Lie_7), g of type (7,): 1^-1 7^103, weight 51, level 7
+  ok    Lie_5, S_5, (1, 1, 1, 1, 1): eta_g = 1^24 is multiplicative through q^120
+  ok    Lie_5, S_5, (2, 1, 1, 1): eta_g = 2^12 is multiplicative through q^120
+  ok    Lie_5, S_5, (2, 2, 1): eta_g = 2^12 is multiplicative through q^120
+  ok    Lie_5, S_5, (3, 1, 1): eta_g = 3^8 is multiplicative through q^120
+  ok    Lie_5, S_5, (3, 2): eta_g = 6^4 is multiplicative through q^120
+  ok    Lie_5, S_5, (4, 1): eta_g = 4^6 is multiplicative through q^120
+  ok    Lie_5, S_5, (5,): eta_g = 1^-1 5^5 is multiplicative through q^120
+  ok    regular rep of S_4, 1: eta_g = 1^24 is multiplicative through q^120
+  ok    regular rep of S_4, 2: eta_g = 2^12 is multiplicative through q^120
+  ok    regular rep of S_4, 3: eta_g = 3^8 is multiplicative through q^120
+  ok    regular rep of S_4, 4: eta_g = 4^6 is multiplicative through q^120
+  ok    control: 1^20 2^2 (q-order 1, weight 11) is not multiplicative
+  ok    eta(5t)^5/eta(t) in M_2(Gamma0(5), (./5)) by Gordon-Hughes-Newman + Ligozat
+  ok    eta(5t)^5/eta(t) = sum_n (sum_(d|n) (n/d | 5) d) q^n through q^200; Sturm bound 1 -> PROVEN identity (given both sides in the space)
+  [fock: 0.6s]
+ALL CHECKS PASS: True
