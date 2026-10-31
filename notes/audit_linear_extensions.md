@@ -301,6 +301,25 @@ are for n ≤ 7 and among posets with ∂^n = id, as the §3.2 table does.
 (2010) 38–76. [RSW] is as above. [LE]'s "from memory; verify" caveat can be
 dropped for these three.
 
+## 9. Comparison with [LE] §8 (read after §§0–8 were written)
+
+[LE] §8 reports that every claim holds, after a re-proof from the
+statements and a separate computation for n ≤ 6. This audit agrees on
+every mathematical verdict. Differences:
+- [LE] §8 found none of F1–F7. They are not errors of mathematics, but each
+  is a statement, scope or citation that a reader would otherwise have to
+  repair.
+- [LE] §8 lists one gap, the dimension statement of Theorem M, and says the
+  last sentence of the proof closes it. Agreed (§8 above).
+- [LE] §8 covers n ≤ 6; this audit covers n ≤ 7 for Lemma P, P1, P2, R, O,
+  E, D and F, every choice of base component for O (all 2,450 posets), and
+  des/maj homogeneity over every natural labelling for n ≤ 5.
+- [LE] §8 does not identify which statement of [RSW] Theorem U uses; this
+  audit does (F4).
+- [LE] §8's further finding (∂ does not preserve R_P for m = (2,1,1)) is
+  consistent with [descR]: no poset with three or more components is among
+  the 9.
+
 ---
 
 ## Reproduce
