@@ -1,0 +1,30 @@
+[CTL] 5-chain proper part: core size 1 (expect 1)
+[CTL] B_3 proper part: core size 6 (expect 6), betti {1: 1} (expect {1: 1})
+[CTL] crown: core size 4 (expect 4)
+[CTL] Pi_4: |L| = 15 (15), mu = -6 (-6), core size 13 (>1), betti mod 2 {1: 6} (expect {1: 6})
+[CTL] Pi_4^(1234): |M| = 3 (3), mu = 0 (0), uncomplemented True (True)
+[CTL] RP^2: betti mod 2 {1: 1, 2: 1} (expect {1: 1, 2: 1}), mod large p {} (expect {})
+[R4] proper part 7 elements, 6 edges: [('a', 'B'), ('a', 'L'), ('b', 'L'), ('c', 'B'), ('c', 'C'), ('c', 'D')]
+[R4] lattice True, mu 0, uncomplemented element False, reduced betti {} (acyclic), Stong core ['D']
+[CTL] posets up to iso n=1..6: [1, 2, 5, 16, 63, 318] (A000112: 1, 2, 5, 16, 63, 318)
+[E1] n=3: pairs 14 (+w 9, -tau 5), zeros 5
+[E1] n=4: pairs 50 (+w 34, -tau 16), zeros 22
+[E1] n=5: pairs 174 (+w 144, -tau 30), zeros 99
+[E1] n=6: pairs 866 (+w 758, -tau 108), zeros 481
+[E1] pairs: 1104
+[E1] zeros: 607
+[E1] nonzeros: 497
+[E1] zero_core1: 607
+[E1] nonzero_core_not_point: 497
+[E1] unc: 607
+[E1] unc_core1: 607
+[E1] tacr_agree: 1104
+[E1] not_lattice: 0
+[E1] zero_betti_checked: 607
+[E1] zero_acyclic: 607
+[E1] nz_betti_checked: 497
+[E1] nz_single_deg: 497
+[E1] id_checked: 402
+[E1] id_conc: 402
+[E1] id_skipped: 0
+ALL CHECKS PASSED
