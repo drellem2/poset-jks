@@ -1,0 +1,105 @@
+A2         d=2 hyperplanes=3 chambers=6 top-cones=19 |G|=12 classes=6
+  cancellation: g of order 2, dim Fix 1, det -1, cone with dim L = 1; terms (dim X, mu, m_X) = [(1, -1, 1), (0, 1, 1)]
+  A2: reflection with mirror not in A: Rα flat=True, nonzero on some cone=True, Z*(g) = [1, 0] with mu [-1, 1]
+  pairs (class rep g, g-stable V): 30   chi!=0 24, Cor.V zeros 2, no nonzero mu 1, cancellations 3
+A3         d=3 hyperplanes=6 chambers=24 top-cones=219 |G|=48 classes=10
+  cancellation: g of order 2, dim Fix 1, det 1, cone with dim L = 2; terms (dim X, mu, m_X) = [(2, 2, 1), (1, -1, 1), (1, -1, 1)]
+  A3: reflection with mirror not in A: Rα flat=True, nonzero on some cone=True, Z*(g) = [1, 0] with mu [-1, 1]
+  pairs (class rep g, g-stable V): 300   chi!=0 266, Cor.V zeros 24, no nonzero mu 7, cancellations 3
+A4         d=4 hyperplanes=10 chambers=120 top-cones=4231 |G|=240 classes=14
+  cancellation: g of order 2, dim Fix 2, det 1, cone with dim L = 1; terms (dim X, mu, m_X) = [(1, -1, 1), (0, 1, 1)]
+  pairs (class rep g, g-stable V): 4634   chi!=0 4292, Cor.V zeros 268, no nonzero mu 34, cancellations 40
+B2         d=2 hyperplanes=4 chambers=8 top-cones=33 |G|=8 classes=5
+  pairs (class rep g, g-stable V): 45   chi!=0 41, Cor.V zeros 4, no nonzero mu 0, cancellations 0
+B3         d=3 hyperplanes=9 chambers=48 top-cones=941 |G|=48 classes=10
+  pairs (class rep g, g-stable V): 1106   chi!=0 998, Cor.V zeros 106, no nonzero mu 2, cancellations 0
+rank1      d=1 hyperplanes=1 chambers=2 top-cones=3 |G|=2 classes=2
+  pairs (class rep g, g-stable V): 4   chi!=0 4, Cor.V zeros 0, no nonzero mu 0, cancellations 0
+coord2     d=2 hyperplanes=2 chambers=4 top-cones=9 |G|=8 classes=5
+  coord2: reflection with mirror not in A: Rα flat=False, nonzero on some cone=True, Z*(g) = [0] with mu [1]
+  pairs (class rep g, g-stable V): 17   chi!=0 17, Cor.V zeros 0, no nonzero mu 0, cancellations 0
+tri2       d=2 hyperplanes=3 chambers=6 top-cones=19 |G|=4 classes=4
+  cancellation: g of order 2, dim Fix 1, det -1, cone with dim L = 1; terms (dim X, mu, m_X) = [(1, -1, 1), (0, 1, 1)]
+  tri2: reflection with mirror not in A: Rα flat=True, nonzero on some cone=True, Z*(g) = [1, 0] with mu [-1, 1]
+  pairs (class rep g, g-stable V): 28   chi!=0 22, Cor.V zeros 2, no nonzero mu 1, cancellations 3
+  tri2, V = {y >= 0}, s = (-x, y): chi_def = 0; Z*(V,s) terms (dim X, mu, m_X) = [(1, -1, 1), (0, 1, 1)]
+coordsum3  d=3 hyperplanes=4 chambers=14 top-cones=71 |G|=12 classes=6
+  cancellation: g of order 2, dim Fix 2, det -1, cone with dim L = 1; terms (dim X, mu, m_X) = [(1, -1, 1), (0, 1, 1)]
+  coordsum3: reflection with mirror not in A: Rα flat=True, nonzero on some cone=True, Z*(g) = [1, 0] with mu [-1, 1]
+  cancellation: g of order 3, dim Fix 1, det 1, cone with dim L = 2; terms (dim X, mu, m_X) = [(2, -1, 1), (0, 1, 1)]
+  pairs (class rep g, g-stable V): 102   chi!=0 96, Cor.V zeros 0, no nonzero mu 1, cancellations 5
+Theorem A by set partitions (no arrangement code, no formula (H)):
+  n=3: 5 set partitions; classes nonzero on some cone: (3) -(3) -(2,1) (1,1,1) -(1,1,1)
+  n=4: 15 set partitions; classes nonzero on some cone: (2,2) -(2,2) -(2,1,1) (1,1,1,1) -(1,1,1,1)
+  n=5: 52 set partitions; classes nonzero on some cone: (5) -(5) -(2,2,1) -(2,1,1,1) (1,1,1,1,1) -(1,1,1,1,1)
+  n=6: 203 set partitions; classes nonzero on some cone: (6) -(6) (3,3) -(3,3) (2,2,2) -(2,2,2) -(2,2,1,1) -(2,1,1,1,1) (1,1,1,1,1,1) -(1,1,1,1,1,1)
+  n=7: 877 set partitions; classes nonzero on some cone: (7) -(7) -(2,2,2,1) -(2,2,1,1,1) -(2,1,1,1,1,1) (1,1,1,1,1,1,1) -(1,1,1,1,1,1,1)
+  n=8: 4140 set partitions; classes nonzero on some cone: (2,2,2,2) -(2,2,2,2) -(2,2,2,1,1) -(2,2,1,1,1,1) -(2,1,1,1,1,1,1) (1,1,1,1,1,1,1,1) -(1,1,1,1,1,1,1,1)
+  n=9: -(6,3): |Z*(g)| = 4, nonzero on some cone: True
+  n=9: -(9): |Z*(g)| = 1, nonzero on some cone: False
+  n=9: -(3,3,3): |Z*(g)| = 1, nonzero on some cone: True
+  n=9: -(6,2,1): |Z*(g)| = 2, nonzero on some cone: False
+Section 6 and S2 examples (Coxeter elements, full cone, mu(L(A)^c)):
+  Coxeter element of A2: dim Fix = 0, mu(L(A)^c) = -1
+  Coxeter element of A3: dim Fix = 0, mu(L(A)^c) = 0
+  Coxeter element of A4: dim Fix = 0, mu(L(A)^c) = -1
+  Coxeter element of A5: dim Fix = 0, mu(L(A)^c) = 1
+  Coxeter element of B2: dim Fix = 0, mu(L(A)^c) = -1
+  Coxeter element of B3: dim Fix = 0, mu(L(A)^c) = 0
+  Coxeter element of B4: dim Fix = 0, mu(L(A)^c) = -1
+  Coxeter element of D4: dim Fix = 0, mu(L(A)^c) = 0
+  Coxeter element of F4: dim Fix = 0, mu(L(A)^c) = -1
+
+check                    checks    fails
+[A+coef]                     63        0
+[A-H]                       130        0
+[A-Zchar]                   130        0
+[A-part]                    130        0
+[A-root]                     30        0
+[B2s-Z*]                      1        0
+[B2s-full]                    1        0
+[B3c-chain]                   1        0
+[B3c-coxeter]                 1        0
+[B3c-cube]                    1        0
+[B3c-fix0]                    1        0
+[B3c-line]                    1        0
+[B3c-mu0]                     1        0
+[B3c-order]                   1        0
+[PCa]                      5760        0
+[PCb]                      5629        0
+[PCc-refl]                   10        0
+[S1]                       4472        0
+[S1zero=corV]              4472        0
+[S2]                         21        0
+[S3inE]                      42        0
+[S3mu]                       31        0
+[S3refl]                     10        0
+[S]                          62        0
+[Switness]                   49        0
+[Z]                        6266        0
+[Zfull]                      67        0
+[corV]                      406        0
+[cox-fix0]                    9        0
+[cox-vanish]                  1        0
+[down]                      877        0
+[linstable]                6266        0
+[loc]                      6708        0
+[m>=1]                     5947        0
+[ord]                        41        0
+[pos:Lie4]                    5        0
+[pos:|mu(L)|]                 3        0
+[sgn]                        62        0
+
+negative controls (wrong variants; each must fail at least once):
+  A-_drop_parity_condition     17 of     63 differ
+  A-_m_not_odd                  4 of     63 differ
+  PCc_without_mirror_hyp        4 of     15 differ
+  S3_without_mirror_hyp         1 of      5 differ
+  m_one                      5410 of   6266 differ
+  no_meet                    1498 of   6266 differ
+  no_transverse               527 of   6266 differ
+  nonminimal_witness           12 of     12 differ
+  ord_n2                        1 of      1 differ
+  unfixed_mu                   21 of   6266 differ
+
+ALL CHECKS PASSED

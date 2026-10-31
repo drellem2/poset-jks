@@ -31,22 +31,25 @@ Tags:
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| Z | **Formula Z.** χ_V(g) = Σ_{X ∈ Z\*(V,g)} μ_{L(A)^g}(0, X) · m_X(V). Here Z\*(V,g) is the set of g-stable flats X ⊆ L with X ∩ U = 0 such that no hyperplane contains X + U. m_X(V) ≥ 1 is the bottom multiplicity of the cone \|V\| ∩ U for the arrangement {H ∩ U : H ⊇ X}. Also μ_{L(A)^g}(0, X) = χ^{full}_{A^X}(g\|_X), with g\|_X fixed-point-free | **PROVEN** (§2); audit: [AudVC]; COMPUTED on all 2,762 pairs | W″ (audited) applied to every localization; Möbius inversion |
-| S | **Some-cone criterion.** χ_V(g) ≠ 0 for some g-stable top-cone V iff some X ∈ Z\*(g) has μ_{L(A)^g}(0, X) ≠ 0. Here Z\*(g) is the set of g-stable flats X with X ∩ Fix g = 0 such that no hyperplane contains X + Fix g. For a minimal such X, a g-stable top-lune with lineality X has χ = μ(0, X) | **PROVEN** (§3); audit: [AudVC]; COMPUTED on every class of every type, with the witness cone checked | Formula Z, Lemma F of [FP] |
-| S1 | Pointed V: χ_V(g) = #V^g. Some pointed cone has χ ≠ 0 iff Fix(g) lies in no hyperplane | **PROVEN** (§3.1); COMPUTED `[P]` | [FP] Cor. P, Lemma F |
-| S2 | Fix(g) = 0: χ_V(g) = 0 for every V other than all chambers. Some cone has χ ≠ 0 iff μ(L(A)^g) ≠ 0 | **PROVEN** (§3.1); COMPUTED `[E]` | Formula Z |
-| S3 | g an involution: some cone has χ ≠ 0 iff some flat X in the (−1)-eigenspace of g has X + Fix(g) in no hyperplane. For a reflection s_α: iff the line Rα is a flat | **PROVEN** (§3.1); COMPUTED `[I]` | Theorem S, Rota's sign theorem |
-| V | Cor. V of [FP] is the case "a hyperplane contains L + Fix g". Under it Z\*(V,g) = ∅ | **PROVEN** (§3.1) | Formula Z |
-| A | **Type A, all of ±S_n.** For g = ±w acting on the braid arrangement of A_{n−1} (n ≥ 3), some cone has χ ≠ 0 iff ⟨g⟩ acts freely on {±e_1, …, ±e_n} and μ(ord g) ≠ 0. For +w this is the known rule "all cycles of one length o, μ(o) ≠ 0". For −w it reads: the cycle lengths of w lie in {m, 2m} for one odd squarefree m | **PROVEN** (§4); audit: [AudVC]; COMPUTED for all ±w with n ≤ 8 and five classes with n = 9 | Theorem S, μ(Π_n^σ) ([FPM] (ii); Hanlon) |
-| PC | Per cone: χ_V(g) ≠ 0 implies that Z\*(V,g) carries a nonzero μ. The converse holds whenever the nonzero μ(0, X), X ∈ Z\*(g), all have one sign: for g ∈ S_n, for Fix g = 0, for reflections | **PROVEN** (§5) | Formula Z, Theorem A |
+| Z | **Formula Z.** χ_V(g) = Σ_{X ∈ Z\*(V,g)} μ_{L(A)^g}(0, X) · m_X(V). Here Z\*(V,g) is the set of g-stable flats X ⊆ L with X ∩ U = 0 such that no hyperplane contains X + U. m_X(V) ≥ 1 is the bottom multiplicity of the cone \|V\| ∩ U for the arrangement {H ∩ U : H ⊇ X}. Also μ_{L(A)^g}(0, X) = χ^{full}_{A^X}(g\|_X), with g\|_X fixed-point-free | **PROVEN** (§2); independently audited in [AudVC]: holds (one-line rank-0 gap at X = R^d, closed in §2 step 1); COMPUTED on all 2,762 pairs, and on 6,266 pairs by [AudVC] | W″ (audited) applied to every localization; Möbius inversion |
+| S | **Some-cone criterion.** χ_V(g) ≠ 0 for some g-stable top-cone V iff some X ∈ Z\*(g) has μ_{L(A)^g}(0, X) ≠ 0. Here Z\*(g) is the set of g-stable flats X with X ∩ Fix g = 0 such that no hyperplane contains X + Fix g. For a minimal such X, a g-stable top-lune with lineality X has χ = μ(0, X) | **PROVEN** (§3); independently audited in [AudVC]: holds; COMPUTED on every class of every type, with the witness cone checked | Formula Z, Lemma F of [FP] |
+| S1 | Pointed V: χ_V(g) = #V^g. Some pointed cone has χ ≠ 0 iff Fix(g) lies in no hyperplane | **PROVEN** (§3.1), audited in [AudVC] (holds); COMPUTED `[P]` | [FP] Cor. P, Lemma F |
+| S2 | Fix(g) = 0: χ_V(g) = 0 for every V other than all chambers. Some cone has χ ≠ 0 iff μ(L(A)^g) ≠ 0 | **PROVEN** (§3.1), audited in [AudVC] (holds); COMPUTED `[E]` | Formula Z |
+| S3 | g an involution: some cone has χ ≠ 0 iff some flat X in the (−1)-eigenspace of g has X + Fix(g) in no hyperplane. For a reflection s_α whose mirror α^⊥ is a hyperplane of A: iff the line Rα is a flat | **PROVEN** (§3.1), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version of the reflection clause; COMPUTED `[I]` | Theorem S, Rota's sign theorem |
+| V | Cor. V of [FP] is the case "a hyperplane contains L + Fix g". Under it Z\*(V,g) = ∅. On pointed cones every zero is of this kind | **PROVEN** (§3.1), audited in [AudVC] (holds) | Formula Z |
+| A | **Type A, all of ±S_n.** For g = ±w acting on the braid arrangement of A_{n−1} (n ≥ 3), some cone has χ ≠ 0 iff ⟨g⟩ acts freely on {±e_1, …, ±e_n} and μ(ord g) ≠ 0. For +w this is the known rule "all cycles of one length o, μ(o) ≠ 0". For −w it reads: the cycle lengths of w lie in {m, 2m} for one odd squarefree m | **PROVEN** (§4); independently audited in [AudVC]: holds; COMPUTED for all ±w with n ≤ 8 and five classes with n = 9 | Theorem S, μ(Π_n^σ) ([FPM] (ii); Hanlon) |
+| PC | Per cone: χ_V(g) ≠ 0 implies that Z\*(V,g) carries a nonzero μ. The converse holds whenever the nonzero μ(0, X), X ∈ Z\*(g), all have one sign: for g ∈ S_n, for Fix g = 0, for reflections whose mirror is a hyperplane of A | **PROVEN** (§5), audited in [AudVC]: holds with the mirror hypothesis, which [AudVC] found missing from the first version (−s_12 on A_2 is a reflection whose mirror is not in A, and it cancels) | Formula Z, Theorem A |
 | PC′ | The converse fails in general: there are 26 cancelling pairs. These are −w for w an involution with a fixed point (A_2–A_5), and the two F_4 classes of order 6 with dim Fix = (1, 2, 1, 4) on all chambers | **COMPUTED** (§5) | — |
 | PC″ | An exact per-cone criterion beyond "the sum of Formula Z is ≠ 0" | **OPEN** | — |
-| R | Springer regularity is neither necessary nor sufficient for "χ ≠ 0 on some cone": the Coxeter element of B_3 vanishes on every cone, and a reflection of B_2 does not | **PROVEN** by hand (§6), given Theorem S; COMPUTED for every class | Theorem S |
+| R | Springer regularity is neither necessary nor sufficient for "χ ≠ 0 on some cone": the Coxeter element of B_3 vanishes on every cone, and a reflection of B_2 does not | **PROVEN** by hand (§6), given Theorem S; audited in [AudVC] (holds); COMPUTED for every class | Theorem S |
 | CR | For X ∈ Z\*(g): if [0, X] in L(A)^g has an element with no complement, then μ(0, X) = 0 (Crapo). The converse holds on all 191 X tested (16 with μ = 0) | "if": **PROVEN** (CITED Crapo); "only if": **CONJECTURED**, COMPUTED | Crapo's complementation theorem |
 | T | The classes vanishing on every cone, by type (§7). This reproduces the table of [FP] §5 for A_4, A_5, B_2, B_3, B_4, D_4 and H_3, and adds F_4 and the classes outside W | **COMPUTED** | — |
 
 [AudVC] is `notes/audit_vanishing_criterion.md`, the independent audit of
-Z, S and A.
+the PROVEN claims. It finds that no proven formula is wrong. It found two
+statements about reflections (S3, PC(c)) that were missing the hypothesis
+"the mirror is a hyperplane of A", and one rank-0 gap in the proof of Z.
+All three are fixed below, with the fixes marked.
 
 **In one line.** Which g vanish on every cone is decided by the g-stable flats
 X that meet Fix(g) only in 0 and are "transverse" to it, and by the Möbius
@@ -109,7 +112,10 @@ essential arrangement in X) at g|_X, which has no nonzero fixed vector.
 *Proof.*
 1. *Localize.* Let X ∈ Z(V,g). Apply (W″c) to (A_X/X, V_X, ḡ). Its
    lineality flats are the Z/X with Z ∈ 𝓛, Z ⊇ X, and Z/X is ḡ-stable iff Z
-   is g-stable.
+   is g-stable. (W″) is stated for rank ≥ 1. The one rank-0 case is
+   X = R^d, which lies in Z(V,g) only if U = 0 and V is all chambers. There
+   the identity of step 5 reads χ_{V_{R^d}} = 1 = m_{R^d}(V), by the rank-0
+   conventions of [FP] §1 and [GT] §0. (Fix after [AudVC] §1.1.)
 2. *Fixed space of ḡ.* Fix(ḡ) = (U + X)/X. If gx − x ∈ X, then the average
    p = (1/o) Σ_k g^k x lies in U, and p − x ∈ X, because
    g^k x − x = Σ_{j<k} g^j(gx − x) and X is g-stable.
@@ -208,8 +214,9 @@ plane with μ = 5, and the top-lune of the plane has χ = 5 − 4 = 1, not 5.
 **S1 (pointed cones; PROVEN).** If L = 0, then Z\*(V, g) ⊆ {0} and (Z) reads
 χ_V(g) = [U in no hyperplane] m(V^U) = #V^g ([FP] Cor. P). So χ_V(g) ≠ 0
 iff g fixes a chamber of V. Some pointed cone has χ ≠ 0 iff U lies in no
-hyperplane: take V = a g-fixed chamber, by Lemma F. For g in a reflection
-group W with g ≠ 1, U is a proper flat (Steinberg), so this never happens.
+hyperplane: take V = a g-fixed chamber, by Lemma F. If A is the reflection
+arrangement of W and g ∈ W ∖ 1, then U is a proper flat (Steinberg), so this
+never happens.
 COMPUTED `[P]`.
 
 **S2 (Fix g = 0; PROVEN).** If U = 0, then X + U = X lies in no hyperplane
@@ -234,19 +241,26 @@ E = ker(g + 1).
 
 Hence an involution g is nonzero on some cone iff some flat X ⊆ E has
 X + U in no hyperplane.
-- For a reflection s_α, E = Rα. So s_α is nonzero on some cone iff Rα is a
-  flat, that is, iff the roots orthogonal to α span α^⊥.
+- Let s_α be a reflection whose mirror α^⊥ is a hyperplane of A, for
+  example s_α ∈ W with A the reflection arrangement of W. Then E = Rα, and
+  U = α^⊥ is a hyperplane, so X = 0 is excluded. A flat X ⊆ Rα, X ≠ 0, is
+  X = Rα, and X + U = R^d. So s_α is nonzero on some cone iff Rα is a flat,
+  that is, iff the roots orthogonal to α span α^⊥. (Fix after [AudVC]: without the mirror
+  hypothesis this fails. For A = {x = 0, y = 0} and s(x, y) = (y, x), Rα is
+  not a flat, yet s fixes a chamber, so χ = 1 on that pointed cone.)
 - This fails for every reflection of A_{n−1}, n ≥ 3 (the roots ⊥ e_1 − e_2
   span only n − 3 dimensions of the (n − 2)-dimensional α^⊥ in R^n_0).
 - It holds for every reflection of B_n, D_4, F_4 and H_3 (COMPUTED). For
   example, in B_n the roots ⊥ e_1 are ±e_j, ±e_j ± e_k (j, k ≥ 2), which
-  span e_1^⊥.
+  span e_1^⊥. The roots ⊥ e_1 − e_2 include e_1 + e_2 and ±e_j (j ≥ 3),
+  which span (e_1 − e_2)^⊥.
 - COMPUTED `[I]`: every X ∈ Z\*(g) of an involution has μ ≠ 0.
 
 **Cor. V of [FP] (PROVEN).** If a hyperplane H contains both L and U, then
 H ⊇ X + U for every X ⊆ L, so Z\*(V, g) = ∅ and χ_V(g) = 0. Conversely,
 χ_V(g) ≠ 0 forces L + U to lie in no hyperplane. On pointed cones every
-zero is of this kind (§7).
+zero is of this kind. This follows from S1, since m(V^U) ≥ 1, and the data
+of §7 agree.
 
 ## 4. Type A: all of ±S_n
 
@@ -376,7 +390,10 @@ block orbits, and (Z) can cancel (§5).
 - (c) Sign-coherent classes include:
   - every g ∈ S_n in type A (all coefficients μ(o), §4);
   - every g with Fix g = 0 (one term, S2);
-  - every reflection (Z\*(g) ⊆ {Rα});
+  - every reflection whose mirror is a hyperplane of A (Z\*(g) ⊆ {Rα}, as
+    in S3). The mirror hypothesis is needed: −s_12 on A_2 is a reflection
+    of R^3_0 whose mirror is not in A, and it cancels on all chambers
+    (below). (Fix after [AudVC] §5.)
   - every g whose Z\*(g) is a single flat.
 
 **Cancellation does occur (COMPUTED).** On 26 of the 2,762 pairs, Z\*(V, g)
@@ -416,8 +433,9 @@ observation on the listed examples only.
     regular). Fix c = 0, and c^3 = −1. The (−1)-eigenline ℓ = R(1, −1, 1)
     is the flat {x_1 = −x_2 = x_3}. The complementary c-stable plane
     x_1 − x_2 + x_3 = 0 is not a hyperplane of B_3, so it is not a flat.
-    So L(A)^c = {0, ℓ, R^3}, a chain, and μ = 0. By S2, c vanishes on every
-    cone.
+    It is the only c-stable plane, since c acts on it by a rotation of
+    order 6 with no real eigenvector. So L(A)^c = {0, ℓ, R^3}, a chain, and
+    μ = 0. By S2, c vanishes on every cone.
   - The same holds for the Coxeter elements of H_3 (fixed lattice
     0 < 5-fold axis < R^3) and of D_4 (COMPUTED).
   - *B_2, reflection s* (s(x, y) = (−x, y), not regular). Rα = x-axis is a
@@ -520,8 +538,8 @@ some cone, unlike in B_4 and D_4. For both F_4 classes of order 3 with
   For g = −w the rule is (A−).
 - `notes/general_theory.md` §5 lists this problem as open. It can point
   here.
-- No correction to an existing claim was found. The [FP] §5 vanishing table
-  is reproduced exactly.
+- No correction to an existing claim in another note was found. The [FP] §5
+  vanishing table is reproduced exactly.
 
 ## 9. Prior art
 
