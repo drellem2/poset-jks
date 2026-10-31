@@ -1,4 +1,5 @@
 import PosetJKS.MainTheorem
+import PosetJKS.ChainTools
 
 /-!
 # Positive controls for the definitions, and two counterexamples
@@ -683,6 +684,43 @@ theorem trace_PLie_false (ζ : ℂ) :
     simp [hr]
   rw [h0, map_zero, hfix]
   exact zero_ne_one
+
+end Test
+
+/-! ### Chain tools: a two-point antichain has `H̃_0 ≠ 0`
+
+Positive control for `subsingleton_redHom_iff`: on the antichain `Unit ⊕ Unit`, the difference
+of the two points is a `0`-cycle, and there are no 2-element chains, so it is not a boundary.
+(For the empty poset `subsingleton_redHom_of_isEmpty` gives vanishing in every degree.) -/
+
+namespace Test
+
+instance : IsEmpty (Fin 2 ↪o Unit ⊕ Unit) := ⟨fun c => by
+  have h : c 0 < c 1 := c.lt_iff_lt.2 (by decide)
+  rcases h0 : c 0 with u | u <;> rcases h1 : c 1 with v | v <;> rw [h0, h1] at h
+  · exact lt_irrefl u (Subsingleton.elim u v ▸ Sum.inl_lt_inl_iff.1 h)
+  · exact Sum.not_inl_lt_inr h
+  · exact Sum.not_inr_lt_inl h
+  · exact lt_irrefl u (Subsingleton.elim u v ▸ Sum.inr_lt_inr_iff.1 h)⟩
+
+theorem redHom_antichain2_ne : ¬ Subsingleton (redHom (Unit ⊕ Unit) 0) := by
+  rw [subsingleton_redHom_iff]
+  intro h
+  let z : Chains (Unit ⊕ Unit) 1 :=
+    Chains.single _ (ptChain (Sum.inl ())) - Chains.single _ (ptChain (Sum.inr ()))
+  have hz : bd _ 0 z = 0 := by
+    simp only [z, map_sub, bd_single_ptChain, sub_self]
+  obtain ⟨b, hb⟩ := h z hz
+  have hb0 : b = 0 := Subsingleton.elim (α := (Fin 2 ↪o Unit ⊕ Unit) →₀ ℂ) b 0
+  rw [hb0, map_zero] at hb
+  have hne : ptChain (Sum.inl () : Unit ⊕ Unit) ≠ ptChain (Sum.inr ()) :=
+    fun he => Sum.inl_ne_inr (ptChain_injective he)
+  have := congrArg (fun f : (Fin 1 ↪o Unit ⊕ Unit) →₀ ℂ => f (ptChain (Sum.inl ()))) hb
+  change (0 : (Fin 1 ↪o Unit ⊕ Unit) →₀ ℂ) (ptChain (Sum.inl ())) =
+    (Finsupp.single (ptChain (Sum.inl ())) (1 : ℂ) - Finsupp.single (ptChain (Sum.inr ())) 1 :
+      (Fin 1 ↪o Unit ⊕ Unit) →₀ ℂ) (ptChain (Sum.inl ())) at this
+  erw [Finsupp.sub_apply, Finsupp.single_eq_same, Finsupp.single_apply, if_neg hne.symm] at this
+  norm_num at this
 
 end Test
 

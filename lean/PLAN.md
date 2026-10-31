@@ -35,6 +35,10 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
 * **Step 7 (M3a)** proves P. Hall's theorem (`hall_mu_eq_reducedEuler`, cited input B), the
   Hopf trace formula for bounded complexes (cited input C), and `trace_HP` from the vanishing
   part of `jencaSarkoci_homology` (§4.3).
+* **Step 8 (Route C, slice S1)** adds the general chain tools of `notes/lean_js_route.md` §6
+  (`ChainTools.lean`: pushforward along order embeddings, vanishing criteria for `H̃_d` and
+  their transport, chain insertion and its face lemmas), with a Mathlib API check (§4.4). The
+  sorry count is unchanged.
 
 **Current status.** One `sorry` remains: the proof of `jencaSarkoci_homology` (cited input A,
 the homological content of Jenča–Sarkoci). Everything else is proved. Of the stated theorems,
@@ -67,6 +71,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/OrderComplex.lean` | oriented chains of the order complex (`Chains`, `bd`), reduced homology `redHom`; order-preserving partitions (`IsOrderPreserving`, `OP`, `ProperOP`); `H_P` (`HP`); the `Aut(P)` action on the proper part and on `H_P` (`actProper`, `actHP`); the fixed lattice `OP(P)^g` and `μ(OP(P)^g)` (`muFixed`) (**all proved**) |
 | `PosetJKS/Words.lean` | M1 core, on lists over a fixed type with an arbitrary relation `r`: shuffles `shq`, `ShL`, the contraction operator `E_{a,x}` and Lemma 1 (`map_E_ShL`); the contraction relation `rc` and Lemma 5 (`inBL_contract`); Theorem A (`eq_zero_of_inBL`) and Theorem Ψ (`eq_zero_of_eqL`) on lists; Lemma Ψ.0 (`eqL_classSum`); the measure `μ` (`muL`), the Lemma 6 step (`muL_lt_of_shuffle`) and Lemma 4 (`inBL_rotate_muL`, `rotate_eq_zero_of_inBL`) (**all proved**) |
 | `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
+| `PosetJKS/ChainTools.lean` | general chain tools (Route C, slice S1, `notes/lean_js_route.md` §6): pushforward along order embeddings (`chainMapEmb`, a chain map, injective, functorial; `chainMap` is the case of an automorphism); `H̃_d = 0` iff cycles are boundaries (`subsingleton_redHom_iff`), invariance under order isomorphisms (`subsingleton_redHom_congr`), vanishing for an empty poset; insertion of an element into a chain (`insertAt`, via `Fin.insertNth`) and its face lemmas (`face_insertAt_self`, `face_insertAt_succAbove`, `bd_single_insertAt`) (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`, split into `inB_coset_inj` and `exists_inB_coset`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
 | `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
@@ -79,7 +84,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3); only `jencaSarkoci_homology` is `sorry`) |
 | `PosetJKS/CharacterIso.lean`, `MainIso.lean`, `CharacterIsoTest.lean` | step 6, see §4.2 |
 | `PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean` | step 7, see §4.3 |
-| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), and two counterexamples at `n = 0`; see `AUDIT_FAITHFULNESS.md` |
+| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 | `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` or `trace_HP` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
 
@@ -544,6 +549,62 @@ PosetJKS.trace_HP: … cited inputs used: [PosetJKS.jencaSarkoci_homology]
 
 So the only open dependency of `trace_HP` is `jencaSarkoci_homology`.
 
+### 4.4 S1 (Route C): general chain tools
+
+Slice S1 of the route to `jencaSarkoci_homology` in `notes/lean_js_route.md` §6. New file
+`ChainTools.lean` (imports only `OrderComplex.lean`). Sorry count unchanged (1,
+`jencaSarkoci_homology`). No existing statement changed. `chainMap` is untouched;
+`chainMap_eq_chainMapEmb` identifies it with the new map (`rfl`).
+
+**Mathlib API check** (the names `notes/lean_js_route.md` §7 lists as not checked, grepped in
+the pinned Mathlib and used in `ChainTools.lean`, so each one compiles):
+
+* Present, as expected: `Fin.insertNth` (`Data/Fin/Tuple/Basic.lean`, dependent:
+  `insertNth (i : Fin (n+1)) (x : α i) (p : ∀ j, α (i.succAbove j))`; a non-dependent use
+  needs `(α := fun _ => L)` or a type ascription), `Fin.insertNth_apply_same`,
+  `Fin.insertNth_apply_succAbove`, `Fin.insertNth_eq_iff` (`g = insertNth p a f ↔ g p = a ∧
+  removeNth p g = f`), `Fin.removeNth`, `Fin.insertNth_self_removeNth`,
+  `Fin.insertNth_comp_succAbove`. In `Data/Fin/SuccPred.lean`: `Fin.succAbove_succAbove_predAbove`
+  (`(i.succAbove j).succAbove (j.predAbove i) = i`) and
+  `Fin.succAbove_succAbove_succAbove_predAbove` (the two ways of leaving holes at `i` and
+  `i.succAbove j`); these two are exactly what the re-indexing
+  `insertNth j t c ∘ (j.succAbove i).succAbove = insertNth (i.predAbove j) t (c ∘ i.succAbove)`
+  needs. Also `Fin.exists_succAbove_eq`, `Fin.lt_succAbove_iff_le_castSucc`,
+  `Fin.succAbove_lt_iff_castSucc_lt`, `Fin.strictMono_succAbove`,
+  `Fin.succAbove_of_castSucc_lt`, `Fin.succAbove_of_le_castSucc`, `Fin.succAboveOrderEmb`,
+  `Fin.sum_univ_succAbove` (the additive form of `Fin.prod_univ_succAbove`).
+* Absent: a strict-monotonicity lemma for `Fin.insertNth`. Mathlib has the order isomorphism
+  `Fin.insertNthOrderIso` and `Fin.insertNth_le_iff` (componentwise order on tuples), which are
+  about a different order. It is proved here (`strictMono_insertNth`, from betweenness).
+* Finsupp side: `Finsupp.lmapDomain`, `Finsupp.mapDomain_single`, `Finsupp.mapDomain_injective`,
+  `Finsupp.mapDomain_comp`, `Finsupp.mapDomain_id`; `Submodule.Quotient.subsingleton_iff`
+  (`Subsingleton (M ⧸ p) ↔ p = ⊤`). `Finsupp.lmapDomain_apply` does not rewrite through the
+  `Chains` wrapper (a `def`); the proofs `change` to `Finsupp.mapDomain` first.
+
+**Contents.**
+
+* `chainMapEmb f m`, for `f : L ↪o L'`: `bd_chainMapEmb` (a chain map),
+  `chainMapEmb_injective`, `chainMapEmb_comp_apply`, `chainMapEmb_symm_apply`.
+* `subsingleton_redHom_iff`, `subsingleton_redHom_of_orderIso`, `subsingleton_redHom_congr`,
+  `subsingleton_redHom_of_isEmpty` (with instances `IsEmpty (Fin (m+1) ↪o L)` and
+  `Subsingleton (Chains L (m+1))` for empty `L`).
+* `insertAt c t j h : Fin (m+1) ↪o L` for `c : Fin m ↪o L`, where `h` says that
+  `Fin.insertNth j t c` is strictly increasing. `strictMono_insertNth` supplies `h` from
+  betweenness (`c i < t` for `i.castSucc < j`, `t < c i` for `j ≤ i.castSucc`). Faces:
+  `face_insertAt_self` (`face (insertAt c t j h) j = c`) and `face_insertAt_succAbove`
+  (`face (insertAt c t j h) (j.succAbove i) = insertAt (face c i) t (i.predAbove j) _`). The
+  hypothesis for the inserted face is derived (`strictMono_insertNth_face`), not assumed.
+  `insertAt_face` writes any chain as an insertion into one of its faces.
+* `bd_single` (the boundary of a basis chain), `bd_single_insertAt`
+  (`∂[c ∪ t] = (-1)^j [c] + ∑_i (-1)^{j.succAbove i} [face c i ∪ t]`), its degree-0 case, and
+  the sign `neg_one_pow_succAbove` (`(-1)^i` below `j`, `-(-1)^i` from `j` on), which is the
+  case split of the cone computation in `notes/lean_js_route.md` §3.1.
+* `nilChain`, `ptChain` (one-element chains), `bd_single_ptChain`.
+
+**Control** (`Test.lean`): `redHom_antichain2_ne`. On the two-point antichain `Unit ⊕ Unit`,
+`H̃_0 ≠ 0`: `[a] - [b]` is a cycle and there are no 2-element chains. This shows that
+`subsingleton_redHom_iff` does not hold vacuously.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```
@@ -629,6 +690,14 @@ So the only open dependency of `trace_HP` is `jencaSarkoci_homology`.
 'PosetJKS.card_fixedChains' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.properOP_nonempty' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.trace_HP_of_vanishing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.bd_chainMapEmb' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.chainMapEmb_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.subsingleton_redHom_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.subsingleton_redHom_congr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.subsingleton_redHom_of_isEmpty' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.face_insertAt_succAbove' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.bd_single_insertAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.redHom_antichain2_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 Every listed declaration depends only on `propext`, `Classical.choice`, `Quot.sound`

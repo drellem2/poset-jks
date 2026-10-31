@@ -95,3 +95,13 @@ import PosetJKS
 #print axioms PosetJKS.card_fixedChains
 #print axioms PosetJKS.properOP_nonempty
 #print axioms PosetJKS.trace_HP_of_vanishing
+
+-- Route C, slice S1: general chain tools (`PosetJKS/ChainTools.lean`) and its control
+#print axioms PosetJKS.bd_chainMapEmb
+#print axioms PosetJKS.chainMapEmb_injective
+#print axioms PosetJKS.subsingleton_redHom_iff
+#print axioms PosetJKS.subsingleton_redHom_congr
+#print axioms PosetJKS.subsingleton_redHom_of_isEmpty
+#print axioms PosetJKS.face_insertAt_succAbove
+#print axioms PosetJKS.bd_single_insertAt
+#print axioms PosetJKS.Test.redHom_antichain2_ne

@@ -2,6 +2,7 @@ import PosetJKS.Basic
 import PosetJKS.Words
 import PosetJKS.Bridge
 import PosetJKS.OrderComplex
+import PosetJKS.ChainTools
 import PosetJKS.Milestone
 import PosetJKS.LieTrace
 import PosetJKS.OPLattice
