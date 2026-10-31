@@ -11,7 +11,8 @@ Convention: if M = {0̂, 1̂}, its coatom is 0̂ and its atom is 1̂, so CC fail
 there (and μ = −1).
 
 **Answer: Observation CC holds for every finite poset (Theorem CC, PROVEN
-below).** The coatom side LOW holds on every zero of rows W+1, W+2, W−1,
+below, and independently audited in [AudOCC] = `notes/audit_observation_cc.md`:
+Theorem CC and every step it uses HOLD).** The coatom side LOW holds on every zero of rows W+1, W+2, W−1,
 W−2 and W−3 of table W of `notes/cr_v_type_a.md` ("[CVA]"). The atom side
 HIGH holds on every zero of row W−4. The proof gives an explicit lower bound
 for ⋀ coatoms, namely the common refinement c ∧ D of two explicit
@@ -30,9 +31,11 @@ The proof does not use Theorem TA-CR. It uses:
   here (Lemma T).
 
 Tags:
-- **PROVEN**: proof given here, with every input named. Not yet
-  independently audited. The shared steps are numbered (CD, CK, A, P, Z+,
-  Z−, T, B, B′, U) so that an audit can check them one by one.
+- **PROVEN**: proof given here, with every input named. The steps are
+  numbered (CD, CK, A, P, Z+, Z−, T, B, B′, U, X). [AudOCC] checked them one
+  by one and finds that every one HOLDS. Its two bookkeeping remarks R1, R2
+  (verdict-table inputs) are applied below, and its remark R3 is applied in
+  §4.
 - **COMPUTED**: by `compute/observation_cc.py` ("[OCC]"). It imports the
   enumeration and lattice code of `compute/cr_v_type_a.py` and, for the side
   question, the cone-lattice code of `compute/conjecture_cr_v.py`.
@@ -43,17 +46,20 @@ Tags:
 
 | # | Claim | Status | Inputs |
 |---|---|---|---|
-| CC | **Theorem CC.** For every poset P on [n], n ≥ 3, and every g = ±τ preserving C_P: μ(M) = 0 iff LOW or HIGH. More precisely: (a) for g = +w, μ = 0 iff c ∧ D ≠ 0̂, and then LOW holds; (b) for g = −τ, if one of (TA1)–(TA3) fails then c ∧ D ≠ 0̂ and LOW holds; (c) for g = −τ in row W−4, HIGH holds, with ⋁ atoms ≤ O \| Q | **PROVEN** (§3). COMPUTED: exhaustive for n ≤ 8 up to isomorphism, with 0 failures (§4); plus the 13 targeted pairs with n = 8, 9, 18 of [CVA] | CD, CK, A, Z+, Z−, B; Cor. 3.9.5; [Thm], [PCV] TA (nonvanishing halves) |
-| CD | **Lemma CD.** Every coatom x of M satisfies x ≥ κ or x ≥ c | **PROVEN** (§2). COMPUTED on every pair with n ≤ 8, 0 failures | S5's averaging (CITED [CVA]) |
-| CK | **Lemma CK.** Every coatom x of M with x ≥ κ satisfies x ≥ D | **PROVEN** (§2) (Hanlon's Lemma 2, relative to κ). COMPUTED, n ≤ 8, 0 failures | S2 |
-| A | **Proposition A.** ⋀ coatoms ≥ c ∧ D. If c ∧ D ≠ 0̂, then M has a proper element and LOW holds | **PROVEN** (§2). COMPUTED, n ≤ 8, 0 failures | CD, CK, S2, S4 |
-| Z | **Proposition Z.** c ∧ D ≠ 0̂ on every zero with g = +w, and whenever g = −τ and one of (TA1)–(TA3) fails. In row W−4, c ∧ D = 0̂ | **PROVEN** (§3). COMPUTED: c ∧ D ≠ 0̂ on every zero outside W−4 and on no W−4 pair, n ≤ 8 | P, T |
-| B | **Proposition B.** In row W−4 every atom of M lies below Q \| singletons or below O \| singletons, so ⋁ atoms ≤ O \| Q < 1̂ | **PROVEN** (§3). COMPUTED, n ≤ 8, 0 failures | S2 |
-| U | **Corollary U.** If c ∧ D ≠ 0̂, then c ∧ D has no complement in M. In row W−4, O \| Q has no complement in M. So every zero has the witness c ∧ D or O \| Q | **PROVEN** (§3). COMPUTED, n ≤ 8, 0 failures | A, B, [PACVA] §2.2 step |
-| X | **Exact form of the coatom predicate.** For g = −τ: c ∧ D ≠ 0̂ iff one of (TA1)–(TA3) fails | **PROVEN** (§3, Cor. X) | Z, A, Cor. 3.9.5, [PCV] TA |
+| CC | **Theorem CC.** For every poset P on [n], n ≥ 3, and every g = ±τ preserving C_P: μ(M) = 0 iff LOW or HIGH. More precisely: (a) for g = +w, μ = 0 iff c ∧ D ≠ 0̂, and then LOW holds; (b) for g = −τ, if one of (TA1)–(TA3) fails then c ∧ D ≠ 0̂ and LOW holds; (c) for g = −τ in row W−4, HIGH holds, with ⋁ atoms ≤ O \| Q | **PROVEN** (§3), audited ([AudOCC]: HOLDS; the case split is exhaustive, and the cited criteria are used only in their nonvanishing direction). COMPUTED: exhaustive for n ≤ 8 up to isomorphism, with 0 failures (§4), reproduced by the independent code of [AudOCC] §5; plus the 13 targeted pairs with n = 8, 9, 18 of [CVA]. Prior art ([PAOCC]): "if" is EC1 Cor. 3.9.5 (KNOWN); "only if" is KNOWN IN SUBSTANCE for the antichain (Hanlon 1981, Lemma 2 and the proof of Lemma 4; Stanley 1982, Lemma 7.1) and NOT FOUND for other P | CD, CK, A, Z+, Z−, B; Cor. 3.9.5; [Thm], [PCV] TA (nonvanishing halves) |
+| CD | **Lemma CD.** Every coatom x of M satisfies x ≥ κ or x ≥ c | **PROVEN** (§2), audited (HOLDS). COMPUTED on every pair with n ≤ 8, 0 failures | S5's averaging (CITED [CVA]) |
+| CK | **Lemma CK.** Every coatom x of M with x ≥ κ satisfies x ≥ D | **PROVEN** (§2), audited (HOLDS). COMPUTED, n ≤ 8, 0 failures. Prior art: KNOWN IN SUBSTANCE ([PAOCC]): Hanlon 1981, Lemma 2 and the proof of Lemma 4, on [κ, 1̂] ≅ Π_k^{τ̄}, given S2 | S2 |
+| A | **Proposition A.** ⋀ coatoms ≥ c ∧ D. If c ∧ D ≠ 0̂, then M has a proper element and LOW holds | **PROVEN** (§2), audited (HOLDS). COMPUTED, n ≤ 8, 0 failures | CD, CK, S2, S4 |
+| P | **Lemma P.** If τ^{ar}i ≠ i and τ^{ar}i ~_c i for some i and a, then c ∧ D ≠ 0̂ | **PROVEN** (§3), audited (HOLDS) | definition of D |
+| T | **Lemma T.** For g = −τ with (TA1): if (TA2) or (TA3) fails, then κ ∧ c ≠ 0̂ | **PROVEN** (§3; the arguments of rows W−2, W−3 of [CVA]), audited (HOLDS) | S4 |
+| Z | **Proposition Z** (Z+ and Z−). c ∧ D ≠ 0̂ on every zero with g = +w, and whenever g = −τ and one of (TA1)–(TA3) fails | **PROVEN** (§3), audited (HOLDS). COMPUTED: c ∧ D ≠ 0̂ on every zero outside W−4, n ≤ 8 | P, T; [Thm] (nonvanishing half) for Z+ |
+| B′ | **Proposition B′.** In row W−4, c ∧ D = 0̂ | **PROVEN** (§3), audited (HOLDS). COMPUTED: no W−4 pair has c ∧ D ≠ 0̂, n ≤ 8 | (TA1), (TA2) |
+| B | **Proposition B.** In row W−4 every atom of M lies below Q \| singletons or below O \| singletons, so ⋁ atoms ≤ O \| Q < 1̂ | **PROVEN** (§3), audited (HOLDS). COMPUTED, n ≤ 8, 0 failures. Prior art: NOT FOUND in the sources searched ([PAOCC]; a search result, not a claim of novelty) | S2 |
+| U | **Corollary U.** If c ∧ D ≠ 0̂, then c ∧ D has no complement in M. In row W−4, O \| Q has no complement in M. So every zero has the witness c ∧ D or O \| Q | **PROVEN** (§3), audited (HOLDS; [AudOCC] also scans all of M for a complement, 0 found). COMPUTED, n ≤ 8, 0 failures. Prior art ([PAOCC]): on the antichain with g = +w, c ∧ D is Hanlon's meet of coatoms x_w; outside the antichain the witnesses were NOT FOUND in the sources searched (a search result, not a claim of novelty) | A, B, [PACVA] §2.2 step |
+| X | **Exact form of the coatom predicate.** For g = −τ: c ∧ D ≠ 0̂ iff one of (TA1)–(TA3) fails | **PROVEN** (§3, Cor. X), audited (HOLDS) | Z, A, Cor. 3.9.5, [PCV] TA; for −τ, "⇒" also uses B′ |
 | W | The task's question: is the TA-CR witness W ≥ ⋀ coatoms, or ≤ ⋁ atoms? | **COMPUTED** (§4, n ≤ 8): W ≥ ⋀ coatoms on every zero of rows W+1, W−2, W−3, W−4, but not on 112 W−1 zeros and 1 W+2 zero. Not used in the proof, which goes through c instead (W ≤ c for rows W+1 to W−3) | — |
 | G | Side question: CC beyond type A | **COMPUTED** (§5). It fails on the rank-4 CR_V counterexample of [CRV] §0, as it must (that lattice is complemented with μ = 0). It holds on all 1,120 zeros of the 12 rank-≤3 families. In rank 4 (7 families plus A4, 438 zeros), the only zeros without CC are the 36 complemented CR_V counterexamples. On all 141,393 pairs, a zero has CC iff it has an uncomplemented element | — |
-| Rk | Status changes for other notes (not applied here) | §6 | — |
+| Rk | Status changes for other notes | §6 (applied) | — |
 
 **In one line.** Every coatom of OP(P)^τ is coarser than comp(P) or than
 cl(Fix g) (a fixed-point averaging argument). The coatoms coarser than
@@ -135,9 +141,16 @@ As x is a coatom and x ≤ ŷ < 1̂, we get ŷ = x, so x ≥ c. ∎
 
 This is Hanlon's classification of the coatoms of Π_n^σ (Hanlon 1981,
 Lemma 2: two σ-stable blocks, or p cyclically permuted blocks with p a prime
-dividing every cycle length; CITED via [PACVA] §3.1), applied to the
-interval [κ, 1̂] of M. That interval is the fixed lattice of the action of τ
-on the set partitions of the components. The proof above is self-contained.
+dividing every cycle length; CITED via [PACVA] §3.1), together with the
+orbit statement in the proof of Hanlon's Lemma 4 (the ⟨σ^j⟩-orbits,
+j = rad gcd of the cycle lengths, lie in one block of every coatom), applied
+to the interval [κ, 1̂] of M. That interval is the fixed lattice of the
+action of τ on the set partitions of the components, i.e. Π_k^{τ̄} with τ̄
+the permutation of the k components induced by τ, whose cycle lengths are
+the λ_K. So Lemma CK is KNOWN IN SUBSTANCE ([PAOCC] §2.1), given S2 (every
+τ-stable partition ≥ κ is acyclic), which is not in the literature. The
+proof above is self-contained ([AudOCC] §1: the relativisation is valid and
+the citation carries no weight in the proof).
 
 **Proposition A (PROVEN).** If M ≠ {0̂, 1̂}, then ⋀ coatoms ≥ c ∧ D. If
 c ∧ D ≠ 0̂, then M ≠ {0̂, 1̂}, and LOW holds.
@@ -298,6 +311,20 @@ w is longer than rad(gcd_K λ_K). For g = −τ: c ∧ D ≠ 0̂ iff one of
   in §4. W ≥ ⋀ coatoms fails on 112 W−1 zeros and 1 W+2 zero with n ≤ 8,
   so the TA-CR witnesses are not themselves uniform.
 - *n ≤ 2* is outside the statement, as for TA-CR ([CVA] S0 needs n ≥ 3).
+- *Prior art* ([PAOCC] = `notes/prior_art_observation_cc.md`). For the
+  antichain, OP(P)^τ = Π_n^τ for either sign, and the "only if" half is
+  KNOWN IN SUBSTANCE: Hanlon 1981, Lemma 2 and the proof of Lemma 4 (the
+  meet of the coatoms is the orbit partition of σ^j, j = rad gcd of the
+  cycle lengths), with Stanley 1982, Lemma 7.1. There c ∧ D = Hanlon's
+  meet of coatoms x_w (for g = +w), and Cor. X for +w is Lemma 7.1 in
+  Hanlon's form. Stanley's Remark after Lemma 7.1, read literally ("x_π = 0̂
+  iff all cycles of π have the same length"), does not hold for σ = (1234):
+  Π_4^σ = {0̂, 13|24, 1̂}, so the meet of the coatoms is 13|24 ≠ 0̂. Lemma 7.1
+  itself is unaffected, and the correct statement (same squarefree length)
+  is the one in the proof of Hanlon's Lemma 4. For other P, the "only if"
+  half, the predicate c ∧ D ≠ 0̂, Prop. B and the witnesses of Cor. U were
+  NOT FOUND in the sources searched. This is a search result, not a claim of
+  novelty.
 - *Both sides are needed.* LOW fails on some W−4 zeros (Prop. B′ explains
   why c ∧ D cannot help there; LOW can still hold through other coatoms), and
   HIGH fails on many W+1 zeros (§4).
@@ -373,9 +400,14 @@ W+2 and the "m odd, not squarefree" branch of W−1, plus nonzero controls):
 every zero has LOW and c ∧ D ≠ 0̂, every nonzero pair fails CC, and all
 checks pass.
 
-**Not run.** τ = (9)(18) on 27 points (the two-length branch of W−1, first at
-n = 27) is UNRUN here. Z− covers it: Λ = {9, 18}, gcd λ = 9, r = 3, and the
-odd points lie on cycles of length 9 > 3.
+**τ = (9)(18) on 27 points** (the two-length branch of W−1, first at n = 27):
+not run by [OCC]; checked symbolically ([AudOCC] §2.3). For every poset P
+with an anti-automorphism τ of this cycle type, Λ = {9, 18} and 9 is not
+squarefree, so (TA1) fails and Z− gives c ∧ D ≠ 0̂ whatever the components
+are. For the antichain, gcd λ = 9 and r = 3; for a general P, r ∈ {1, 3},
+and i, τ^r i (i odd) witness c ∧ D ≠ 0̂ through Lemma P in either case.
+[AudOCC] part [BIG] also computes the antichain case: c ∧ D = cyc(τ⁶) ≠ 0̂
+and ⋀ coatoms = D = cyc(τ³).
 
 ## 5. Side question: CC beyond type A (COMPUTED only)
 
@@ -419,13 +451,16 @@ Findings:
 - **Not run here (UNRUN):** the rank-4 families "A4 minus one/two
   hyperplanes" and "D4 with W(B4)" of [CR], and every rank ≥ 5 family.
 
-## 6. Status changes for other notes (reported, not applied)
+## 6. Status changes for other notes (applied after the audit)
 
-- **[PACVA] §2.3 and Verdict row "Observation CC"**: COMPUTED → PROVEN
-  (Theorem CC here; awaiting independent audit). The n ≤ 7 counts are
-  reproduced, and n = 8 is added.
+These were applied once [AudOCC] found every step HOLDS.
+
+- **[PACVA] §2.3 and Verdict row "Observation CC"**: COMPUTED → PROVEN,
+  audited (Theorem CC here; [AudOCC]). The n ≤ 7 counts are reproduced, and
+  n = 8 is added.
 - **[CVA] §6, "Observation CC … Whether this holds for all n is OPEN"**:
-  settled by Theorem CC (PROVEN here, awaiting audit).
+  settled by Theorem CC (PROVEN here, audited in [AudOCC]).
+- **[CRV] §6, the same OPEN item**: settled likewise.
 - **[CVA] Theorem TA-CR**: unaffected. Corollary U gives a second proof of
   its "only if" half, with the uniform witnesses c ∧ D and O | Q. It uses the
   same cited zero criteria, the same S-steps, and Lemma T, but not Lemma C
@@ -434,8 +469,8 @@ Findings:
 
 ## 7. What remains open
 
-- **Audit.** Every PROVEN claim here awaits an independent audit. The steps
-  to check are CD, CK, A, P, Z+, T, Z−, B, B′, U, X and Theorem CC.
+- **Audit.** Done: [AudOCC] finds Theorem CC and CD, CK, A, P, Z+, T, Z−, B,
+  B′, U, X HOLD, and reproduces the n ≤ 8 table with independent code.
 - **Other Coxeter types.** Lemma CD holds for any arrangement: it is [CRV]
   Lemma F. Lemma CK uses the partition structure of [κ, 1̂], and so does the
   arithmetic of Z±. For B_n and D_n, CC is OPEN. §5 records where it does
@@ -466,6 +501,8 @@ CHECKS PASSED. The archived logs are `compute/output/observation_cc.txt`
 (controls, [EXTRA], sweep n = 3, side question).
 
 References:
+- [AudOCC] = `notes/audit_observation_cc.md` (independent audit of this note);
+- [PAOCC] = `notes/prior_art_observation_cc.md` (prior-art check of this note);
 - [CVA] = `notes/cr_v_type_a.md`; [AudCVA] = `notes/audit_cr_v_type_a.md`;
 - [PACVA] = `notes/prior_art_cr_v_type_a.md`;
 - [PCV] = `notes/per_cone_vanishing.md` (Theorem TA);
@@ -473,4 +510,6 @@ References:
 - [Thm] = `notes/poset_jks_theorem.tex`;
 - Stanley, *Enumerative Combinatorics* vol. 1, 2nd ed., Cor. 3.9.5, Ex. 3.28;
 - Hanlon, *The fixed-point partition lattices*, Pacific J. Math. 96 (1981),
-  Lemma 2.
+  Lemma 2 and the proof of Lemma 4;
+- Stanley, *Some aspects of groups acting on finite posets*, J. Combin.
+  Theory Ser. A 32 (1982), Lemma 7.1 and the Remark after it.

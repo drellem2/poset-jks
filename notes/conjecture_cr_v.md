@@ -546,14 +546,24 @@ All are confirmed by the second implementation (§0.4).
     result of a search, not a claim of novelty. For the antichain with
     g = +w (all chambers) it is KNOWN in substance: Stanley 1982 (Remark
     after Lemma 7.1), using Hanlon 1981 (Lemma 2) and EC1 Cor. 3.9.5, plus
-    one elementary step. Lemma C is PARTLY KNOWN: its h = 1, κ = 0̂
+    one elementary step. (The Remark, read literally, does not hold for
+    σ = (1234); the correct form of its claim about the meet of the coatoms
+    is in the proof of Hanlon's Lemma 4. Lemma 7.1 is unaffected;
+    `notes/prior_art_observation_cc.md` §2.2.) Lemma C is PARTLY KNOWN: its h = 1, κ = 0̂
     existence half is Hanlon's Lemma 6 construction; the gcd criterion for
     powers σ^h and the κ-relative form were NOT FOUND.
-  - *Observation CC* ([PACVA] §2.3; COMPUTED, not proven). On all 3,519
-    zeros with n ≤ 7, 0̂ is not a meet of coatoms of OP(P)^τ, or 1̂ is not a
+  - *Theorem CC* (`notes/observation_cc.md`; PROVEN, independently
+    audited in `notes/audit_observation_cc.md`: every step HOLDS). For
+    every n, every zero has 0̂ not a meet of coatoms of OP(P)^τ, or 1̂ not a
     join of atoms, so each zero is already of EC1 Cor. 3.9.5 type. This is
-    stronger than having an uncomplemented element. Whether it holds for
-    all n is OPEN.
+    stronger than having an uncomplemented element. Every zero has one of
+    two explicit, uniform uncomplemented witnesses, c ∧ D or O | Q
+    (Cor. U there). This settles the item "Observation CC" ([PACVA] §2.3),
+    which was COMPUTED for n ≤ 7 and OPEN for all n. Prior art
+    (`notes/prior_art_observation_cc.md`): for the antichain the "only if"
+    half is KNOWN IN SUBSTANCE (Hanlon 1981, Lemma 2 and the proof of
+    Lemma 4; Stanley 1982, Lemma 7.1); for other P it was NOT FOUND in the
+    sources searched (a search result, not a claim of novelty).
 - **Coxeter arrangements in rank 4.** No counterexample appears in A_4
   (type A is now settled in every rank, above), or in D_4 with all cones. B_4, F_4 and H_4 on all cones were not swept.
 - **A minimal counterexample.** It is OPEN whether a rank-4 counterexample
