@@ -1,0 +1,38 @@
+== instrument: pi and Ree
+  [pair] <rho(c n), L n R> = (-1)^|R| [c in L sh rev R] for all c, all words, n <= 5: PASS
+  [ree] n=2: dim Sh_n = 1 (= n! - (n-1)!), pi kills every shuffle: True, rank pi = 1 (= (n-1)!): PASS
+  [ree] n=3: dim Sh_n = 4 (= n! - (n-1)!), pi kills every shuffle: True, rank pi = 2 (= (n-1)!): PASS
+  [ree] n=4: dim Sh_n = 18 (= n! - (n-1)!), pi kills every shuffle: True, rank pi = 6 (= (n-1)!): PASS
+  [ree] n=5: dim Sh_n = 96 (= n! - (n-1)!), pi kills every shuffle: True, rank pi = 24 (= (n-1)!): PASS
+  [ctl] pi(1032 - 0132) != 0: PASS
+== posets up to isomorphism, n <= 8
+  [count] n=1: 1 posets (A000112: 1), 1 connected (A000608: 1), 0 disconnected: PASS
+  [count] n=2: 2 posets (A000112: 2), 1 connected (A000608: 1), 1 disconnected: PASS
+  [count] n=3: 5 posets (A000112: 5), 3 connected (A000608: 3), 2 disconnected: PASS
+  [count] n=4: 16 posets (A000112: 16), 10 connected (A000608: 10), 6 disconnected: PASS
+  [count] n=5: 63 posets (A000112: 63), 44 connected (A000608: 44), 19 disconnected: PASS
+  [count] n=6: 318 posets (A000112: 318), 238 connected (A000608: 238), 80 disconnected: PASS
+  [count] n=7: 2045 posets (A000112: 2045), 1650 connected (A000608: 1650), 395 disconnected: PASS
+  [count] n=8: 16999 posets (A000112: 16999), 14512 connected (A000608: 14512), 2487 disconnected: PASS
+== does promotion preserve R_P?  (disconnected P)
+  [descend-R] n=2: promotion preserves R_P on 1 of 1 disconnected posets; component sizes of those: [(1, 1)]; = the two-chain posets: PASS
+  [proof]     n=2: proof's r has d r not in R_P on all 0 others (case A, a non-chain component: 0; case B, >= 3 chains: 0): PASS; generators examined: 2
+  [descend-R] n=3: promotion preserves R_P on 1 of 2 disconnected posets; component sizes of those: [(1, 2)]; = the two-chain posets: PASS
+  [proof]     n=3: proof's r has d r not in R_P on all 1 others (case A, a non-chain component: 0; case B, >= 3 chains: 1): PASS; generators examined: 3
+  [descend-R] n=4: promotion preserves R_P on 2 of 6 disconnected posets; component sizes of those: [(1, 3), (2, 2)]; = the two-chain posets: PASS
+  [proof]     n=4: proof's r has d r not in R_P on all 4 others (case A, a non-chain component: 2; case B, >= 3 chains: 2): PASS; generators examined: 8
+  [descend-R] n=5: promotion preserves R_P on 2 of 19 disconnected posets; component sizes of those: [(1, 4), (2, 3)]; = the two-chain posets: PASS
+  [proof]     n=5: proof's r has d r not in R_P on all 17 others (case A, a non-chain component: 13; case B, >= 3 chains: 4): PASS; generators examined: 21
+  [descend-R] n=6: promotion preserves R_P on 3 of 80 disconnected posets; component sizes of those: [(1, 5), (2, 4), (3, 3)]; = the two-chain posets: PASS
+  [proof]     n=6: proof's r has d r not in R_P on all 77 others (case A, a non-chain component: 70; case B, >= 3 chains: 7): PASS; generators examined: 83
+  [control] n <= 6: 9 of 108 (linear_extensions.md: 9 of 108): PASS
+  [descend-R] n=7: promotion preserves R_P on 3 of 395 disconnected posets; component sizes of those: [(1, 6), (2, 5), (3, 4)]; = the two-chain posets: PASS
+  [proof]     n=7: proof's r has d r not in R_P on all 392 others (case A, a non-chain component: 381; case B, >= 3 chains: 11): PASS; generators examined: 398
+  [descend-R] n=8: promotion preserves R_P on 4 of 2487 disconnected posets; component sizes of those: [(1, 7), (2, 6), (3, 5), (4, 4)]; = the two-chain posets: PASS
+  [proof]     n=8: proof's r has d r not in R_P on all 2483 others (case A, a non-chain component: 2466; case B, >= 3 chains: 17): PASS; generators examined: 2491
+  [total] n <= 8: 16 of 2990 disconnected posets
+== smallest examples
+  A_3 (three points): r = 0 sh 12; <rho(012), d r> = -2
+  C_2 + C_1 + C_1: r = 2 sh 013; <rho(0123), d r> = -1
+  V + C_1 (V = 0<1, 0<2): r = 3 sh 012; <rho(0123), d r> = 1
+== ALL PASS  (3 s)
