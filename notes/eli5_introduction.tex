@@ -894,10 +894,20 @@ the components of $P$ and $e(T)=|\Lin(T)|$.
 \item \emph{The Lie module does not see promotion.} Promotion descends to
   $\PLie(P)$ exactly when $P$ is connected or an antichain.
 \item \emph{Cyclic sieving.} Promotion cyclic sieving is closed under
-  disjoint union. The new polynomial is the $q$-multinomial coefficient
+  disjoint union. The resulting polynomial is the $q$-multinomial coefficient
   of the component sizes times the product of the components' polynomials.
   The proof uses a theorem of Reiner, Stanton and White
-  (cited).
+  (cited).\footnote{Prior art, from
+  \src{notes/prior_art_linear_extensions.md}, Verdict table and ``Bottom
+  line''. The description of promotion on disjoint unions is known for two
+  chains (Stanley; Striker--Williams) and for any number of chains and for
+  rectangles (Alexandersson--Kantarci O\u{g}uz--Linusson); its mechanism is
+  Stanley's, and the general statement was not found. The closure of cyclic
+  sieving is known for chains (Reiner--Stanton--White, Prop.~4.4) and for
+  rectangles (Alexandersson--Kantarci O\u{g}uz--Linusson, Thm.~37), and
+  Hopkins's survey treats it as evident; the general form was not found
+  stated or proved. The first two statements of the orbits bullet were not
+  found.}
 \item \emph{A canonical grading.} Let $R_P$ be the span of the lunes
   inside $C_P$, so that $\mathbb C[\Lin P]/R_P\cong H_P\otimes\sgn$ by
   Theorem~\ref{thm:G}. Then $\mathbb C[\Lin P]/R_P$ splits as
@@ -992,9 +1002,9 @@ theorem number was checked in the published paper).}
 What is particular to posets is what comes next. None of it was found in the
 literature searched, which is a search result and not a proof of
 novelty.\footnote{\src{notes/prior_art_cyclic_sieving_cyc.md}, Verdict
-table and ``Bottom line''. The note lists, as the most likely place for
-prior art, eigenspace theory for reflection groups (Lehrer--Springer), which
-was not read.}
+table and ``Bottom line''. The note lists (\S2), as the most likely place
+for prior art, eigenspace theory for reflection groups (Lehrer--Springer),
+which was not read.}
 \begin{itemize}
 \item \PROVEN \emph{A closed form.} For $P=T^{\sqcup k}$, with
   $c_j=e_C(T^{\sqcup j})$ and $\varphi$ Euler's function,
@@ -1062,7 +1072,7 @@ outside type A; the Crapo-type converse on all chambers (conjectured) and
 the fate of the converse on cones (a refutation is claimed, audit pending);
 a canonical bracket or cooperad on the $e_\zeta$ model; a version of the
 Hopf-monoid picture for general arrangements; necessity of clause (a) in the
-cyclic sieving criterion; and a Lean formalization of anything beyond the
+cyclic sieving criterion when $\gcd(k_i)>1$; and a Lean formalization of anything beyond the
 poset theorem.
 
 \section{Status of the Lean formalization}\label{sec:lean}
@@ -1078,7 +1088,7 @@ build succeeds, that no \texttt{sorry} remains, and that Lean's own
 \texttt{\#print axioms} lists only the three standard axioms of Lean's
 logic. What the computer cannot check is whether the Lean statements say the
 same thing as the mathematics; that was reviewed separately, by comparing
-every definition and statement with the paper.
+the definitions and the main statements with the paper.
 
 \medskip
 \noindent\fbox{\parbox{0.96\linewidth}{\textbf{Lean status, as of 31 October
