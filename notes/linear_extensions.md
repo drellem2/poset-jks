@@ -13,8 +13,8 @@ this note was finalised. §8 records that audit and a second, later one,
 
 | # | Question | Verdict | Main results |
 |---|---|---|---|
-| 1 | Cyclic sieving with a q-analogue from the theory | **NO.** Neither H_P nor PLie(P) carries a grading or a cyclic action that yields a q-analogue; we found none (§3.1). One CSP result comes out of its cut structure. | H_P sits in one degree and PLie(P) has no grading (§3.1). Theorem U (**PROVEN**): promotion CSPs are closed under disjoint union, with polynomial [n; m]_q · ∏ X_T(q). Rhoades and RSW positive controls pass. A sweep of all posets with n ≤ 7 and ∂^n = id (**COMPUTED**) shows that the maj polynomial is not a CSP polynomial in general there: it fails on 49 of them. |
-| 2 | Rotation classes and promotion | **PARTIAL.** The classes and the promotion orbits are tightly linked. The Lie module does not see promotion. | Lemma P (**PROVEN**): on a disjoint union, promotion rotates the shuffle pattern. Theorem R (**PROVEN**): if ∂_T^{\|T\|} = id on every component T, each cyclic class lies inside one promotion orbit. Proposition O (**PROVEN**): #promotion orbits ≤ e_C(P) for every P. Proposition E (**PROVEN**): orbits equal classes iff P is a chain or an antichain. Proposition D (**PROVEN**): promotion descends to PLie(P) iff P is connected or an antichain. No equivariant bijection exists in general (the counts differ). |
+| 1 | Cyclic sieving with a q-analogue from the theory | **NO.** Neither H_P nor PLie(P) carries a grading or a cyclic action that yields a q-analogue; we found none (§3.1). One CSP result comes out of its cut structure. | H_P sits in one degree and PLie(P) has no grading (§3.1). Theorem U (**PROVEN**): promotion CSPs are closed under disjoint union, with polynomial [n; m]_q · ∏ X_T(q). Rhoades and RSW positive controls pass. Prior art ([PALE] §3): PARTLY KNOWN. The chain case is [RSW] Prop. 4.4 and the rectangle case is [AKL21] Thm 37; the general case was not found in the literature searched. A sweep of all posets with n ≤ 7 and ∂^n = id (**COMPUTED**) shows that the maj polynomial is not a CSP polynomial in general there: it fails on 49 of them. |
+| 2 | Rotation classes and promotion | **PARTIAL.** The classes and the promotion orbits are tightly linked. The Lie module does not see promotion. | Lemma P (**PROVEN**): on a disjoint union, promotion rotates the shuffle pattern. Theorem R (**PROVEN**): if ∂_T^{\|T\|} = id on every component T, each cyclic class lies inside one promotion orbit. Proposition O (**PROVEN**): #promotion orbits ≤ e_C(P) for every P. Prior art ([PALE] §§1–2): Lemma P is PARTLY KNOWN (two chains [St09], [SW12]; k chains and rectangles [AKL21] Thms 31, 37); Theorem R and Proposition O were not found in the literature searched. Proposition E (**PROVEN**): orbits equal classes iff P is a chain or an antichain. Proposition D (**PROVEN**): promotion descends to PLie(P) iff P is connected or an antichain. No equivariant bijection exists in general (the counts differ). |
 | 3 | New identities, recursions or bounds for e(P), e_C(P) | **NO** for e(P). For e_C(P), every identity reduces to known or elementary facts. | Proposition F (**PROVEN**): e_C(P) = ∏_T e(T) · e_C(⊔_T C_{\|T\|}), so e_C carries no information beyond the e(T) and the component sizes. The Jenča–Sarkoci contraction recursion is, for connected P, the elementary "successor of a minimal element" count. Weisner identities hold (**COMPUTED** on 43,767 pairs) but cost more than counting Lin P. Fixed-class counts and the Burnside orbit count are **PROVEN** and **COMPUTED**; they are not new counts of e(P). |
 | 4 | Basis, filtration or grading of C[Lin P]/R_P with combinatorial meaning | **YES** for one multigrading (restriction to components). **NO** for descents, major index, number of blocks and jumps. | Theorem M (**PROVEN**): C[Lin P]/R_P ≅ C[∏_T Lin T] ⊗ Q(m), where Q(m) is the shuffle quotient of the pattern words. B_P is the set of canonical rotation representatives. R_P is homogeneous for des or maj on 0 of 108 disconnected posets with n ≤ 6 (**COMPUTED**). |
 
@@ -35,18 +35,50 @@ in an essential way. Promotion does not descend to the Lie module except in
 the trivial cases (Proposition D). We found no q-analogue coming from H_P or
 PLie(P).
 
+**Prior art** ([PALE] = `notes/prior_art_linear_extensions.md`).
+- *Lemma P* is PARTLY KNOWN. For two chains it is implicit in Stanley
+  [St09, p. 8], in the published version only, and explicit in
+  Striker–Williams [SW12, §3.1 after Thm 3.3, and Thm 6.1]. For k chains it
+  is in the proof of [AKL21, Thm 31], and for disjoint unions of rectangles
+  it is asserted in the proof of [AKL21, Thm 37]. The proof of §1 is
+  Stanley's factor description of ∂ [St09, §2, proof of Thm 2.1], read on a
+  disjoint union. The general statement, and Corollaries P1 and P2, were not
+  found in the literature searched. [Hop24, §2] says only that the
+  properties of promotion it studies decompose naturally over disjoint
+  unions.
+- *Theorem U* is PARTLY KNOWN. For chains it is [RSW] Prop. 4.4 (also
+  [AKL21, Thm 31] with n = 1). For rectangles it is [AKL21, Thm 37] with
+  standard content γ = (1^n) and d = 1; its polynomial q^E K_{a^b,(1^n)}(q)
+  differs from ours but agrees with it modulo q^n − 1 ([PALE] §3). The case
+  of general components was not found in the literature searched; [Hop24,
+  §2] treats it as evident. Theorem U is the general form of [AKL21, Thm 37]
+  for standard content, and is not new in the rectangle case.
+- *Theorem R* and *Proposition O* were not found in the literature searched
+  ([PALE] §2). This is the result of a search, not a claim of novelty.
+
 Tags: [Thm] = `notes/poset_jks_theorem.tex`; [ME] =
 `notes/mu_op_elementary.md`; [Glob] =
 `notes/global_module_operations_plethlog.md`; [FPM] =
 `notes/fixed_point_mobius_identity.md`; [Nat] =
 `notes/natural_isomorphism.md`; [St09] = R. P. Stanley, *Promotion and
-evacuation*, Electron. J. Combin. 16(2) (2009) R9; [Rh] = B. Rhoades,
+evacuation*, Electron. J. Combin. 16(2) (2009) R9 (the two-chain passage,
+p. 8, is in the published version and not in arXiv:0806.4717v2); [Rh] = B. Rhoades,
 *Cyclic sieving, promotion, and representation theory*, JCTA 117 (2010)
 38–76; [RSW] = V. Reiner, D. Stanton, D. White, *The cyclic sieving
-phenomenon*, JCTA 108 (2004) 17–50; [JS] = Jenča–Sarkoci, JCTA 122 (2014);
+phenomenon*, JCTA 108 (2004) 17–50; [JS] = Jenča–Sarkoci, JCTA 122 (2014); [SW12] = J. Striker,
+N. Williams, *Promotion and rowmotion*, Eur. J. Combin. 33 (2012)
+1919–1942; [AKL21] = P. Alexandersson, E. Kantarci Oğuz, S. Linusson,
+*Promotion and cyclic sieving on families of SSYT*, Ark. Mat. 59 (2021)
+247–274 (theorem numbers of the published version; arXiv:2007.10478v1
+numbers Thms 31 and 37 as 30 and 36); [Hop24] = S. Hopkins, *Order
+polynomial product formulas and poset dynamics*, in *Open Problems in
+Algebraic Combinatorics*, Proc. Sympos. Pure Math. 110, AMS (2024)
+135–157; [PALE] = `notes/prior_art_linear_extensions.md`, the prior-art
+search for Lemma P, Theorem R, Proposition O and Theorem U;
 [AudLE] = `notes/audit_linear_extensions.md` (mg-5dbdd), the independent
 audit of this note, verdict HOLDS WITH FIXES. [AudLE] verified the
-bibliographic details of [St09], [Rh] and [RSW].
+bibliographic details of [St09], [Rh] and [RSW], and [PALE] §0.3 checked
+them again.
 
 ## 0. Conventions
 
@@ -98,9 +130,13 @@ of ∂_A on w|_A, since comparabilities inside A are those of P|_A. So
 (S ∖ {1}) − 1 ∪ {n}, and the B-positions move from S^c to S^c − 1. That is
 the rotation of the pattern. The case w_1 ∈ B is symmetric. ∎
 
-The special case of two disjoint chains, where promotion is rotation of a
-binary word, is Stanley's [St09]. A quick search found no statement of the
-general lemma, which may be folklore.
+The case of two disjoint chains, where promotion is rotation of a binary
+word, is implicit in [St09, p. 8] (published version only) and explicit in
+[SW12, §3.1 and Thm 6.1]. The case of k chains is in the proof of
+[AKL21, Thm 31], and the rectangle case is asserted in the proof of
+[AKL21, Thm 37]. The proof above is Stanley's factor description of ∂
+[St09, §2]. The general lemma, and Corollaries P1 and P2, were not found
+in the literature searched ([PALE] §1).
 
 **Corollary P1 (PROVEN).** In pattern coordinates, ∂^d acts as
 (p; x_1, …, x_k) ↦ (rot_d p; ∂_{T_1}^{a_1} x_1, …, ∂_{T_k}^{a_k} x_k),
@@ -272,6 +308,8 @@ Positive controls (**COMPUTED**, `[ctl-rhoades]`, `[ctl-rsw]`):
   (a, b).
 
 So Theorem U gives, for example, a CSP for any disjoint union of rectangles.
+This special case is [AKL21, Thm 37] with standard content γ = (1^n), which
+also covers semistandard content ([PALE] §3).
 
 *Sweep (COMPUTED, `[sweep]`).* We tested every unlabeled P with n ≤ 7 for
 which ∂^n = id, using X = shifted maj polynomial:
@@ -430,7 +468,10 @@ combinatorial meaning.
    P = T^{⊔k}? **OPEN.** Nothing in the theory points to one.
 3. Find a combinatorial proof of the Weisner family (§4). **OPEN.**
 4. Is Lemma P in the literature beyond [St09]'s two-chain case? Is
-   Theorem U? **OPEN** (one quick search).
+   Theorem U? Answered by [PALE]: partly, in both cases. Lemma P is known
+   for chains and rectangles ([SW12], [AKL21] Thms 31, 37), and Theorem U
+   for chains ([RSW] Prop. 4.4) and rectangles ([AKL21] Thm 37). The general
+   cases were not found in the literature searched.
 
 ## 7. Corrections and remarks on existing notes
 
