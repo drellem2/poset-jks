@@ -30,10 +30,11 @@ H̃_{n−3}(Δ(L̄); ℤ) is a free ℤ[Aut P]-module. [Thm] has this only over 
 own code. Theorem E (all d ≥ 2), Lemma F, Corollaries F1 and F2, the poset corollary,
 Theorem S and (S1)–(S4) **HOLD**. The audit's fixable items R1 (§2.3 wording), R2
 (Theorem S step 5 wording) and R3 (the Π̄_4 example of §3.3) are applied below, as are
-its optional items (May's statement of (W); the "⇐" step of Lemma F(c)). The audit also
-proves the case e_H = 3 of (S4) by a planar-collapse argument ([Aud, §4.2]). That proof
-has **not been independently checked**, so it is recorded as "proved in the audit, not
-independently checked", not as audited.
+its optional items (May's statement of (W); the "⇐" step of Lemma F(c)). The case
+e_H = 3 of (S4), which [Aud, §4.2] proved by a planar-collapse argument, has since been
+**independently checked** in [S4a] = `notes/audit_s4_eh3.md`: the claim HOLDS. The
+planar-collapse proof is FIXABLE (it is vacuous where it is used) and is replaced in §3.1
+by the simpler height-2 argument of [S4a, Lemma D].
 
 **Prior art** ([PA] = `notes/prior_art_theorem_e.md`; all verdicts are search results,
 not proofs of novelty).
@@ -60,7 +61,8 @@ Tags:
 
 Abbreviations: [GT] = `notes/general_theory.md`, [MO] = `notes/mo17370_wedges_of_spheres.md`,
 [Thm] = `notes/poset_jks_theorem.tex`, [TW] = Thévenaz–Webb (below),
-[Aud] = `notes/audit_theorem_e.md`, [PA] = `notes/prior_art_theorem_e.md`.
+[Aud] = `notes/audit_theorem_e.md`, [PA] = `notes/prior_art_theorem_e.md`,
+[S4a] = `notes/audit_s4_eh3.md`.
 
 ---
 
@@ -417,7 +419,7 @@ Thm 5.10), a different object; neither statement contains the other ([PA, §2.2]
      ker φ ≅ U_C as G_C-representations.
    - Finally Σ^u S(U) ≅ S^U. ∎
 
-**Consequences (PROVEN, AUDITED, except (S4) for e_H = 3; see there).**
+**Consequences (PROVEN, AUDITED; (S4) for e_H = 3 independently checked in [S4a]).**
 - (S1) H̃_*(T^H; ℤ) ≅ ℤ^{m_H}, concentrated in degree e_H − 2, for every H ≤ G. Indeed
   (S^{U_C})^H = S^{U_C^H} has dimension e_H − 1 when H ≤ G_C, and dim U_C^H = e_H − 1
   because p_C ∈ Fix(H). Also H̃_{j+1}(Σ^u Y) = H̃_j(Y).
@@ -434,10 +436,22 @@ Thm 5.10), a different object; neither statement contains the other ([PA, §2.2]
   - ≃ ⋁^{m_H} S^{e_H−2} if e_H ≥ 4. Reason: K^H = X^H ∪ (m_H cones on ∂_C^H ≅ S^{e_H−2}),
     so π_1(X^H) = π_1(K^H) = 1, and then Hurewicz and Whitehead apply;
   - for e_H ≤ 2, clear from dimension;
-  - for e_H = 3 with m_H ≥ 1: T^H ≃ ⋁^{m_H} S^1, by a planar-collapse argument
-    (X^H is a 2-dimensional straight-line complex in a plane, so it collapses to a
-    graph). This is **proved in the audit ([Aud, §4.2]), not independently checked**.
-    Until it is, this case is not audited; the homology is known by (S1).
+  - for e_H = 3 with m_H ≥ 1: T^H ≃ ⋁^{m_H} S^1. **PROVEN, independently checked
+    (audit_s4_eh3.md).** The argument is a dimension count ([S4a, Lemma D]):
+    - If m_H ≥ 1, then every F ∈ Q′^H satisfies 1 ≤ dim(F ∩ Fix(H)) ≤ e_H − 1. Upper
+      bound: F lies in some hyperplane h ∈ A, while an H-fixed chamber meets Fix(H)
+      (Lemma F(a)) and avoids h, so Fix(H) ⊄ h. Lower bound: F ∩ Fix(H) ≠ ∅ by
+      Lemma F(a), and it is a cone not containing 0.
+    - By Lemma F(b), F ↦ F ∩ Fix(H) is an order isomorphism onto faces of A^{Fix(H)},
+      so these dimensions strictly increase along chains. Hence Q′^H has height
+      ≤ e_H − 1 = 2, and X^H is a graph.
+    - T^H ≃ X^H (Corollary F1), and by (S1) X^H is connected with b_1 = m_H. A connected
+      graph with b_1 = m is ≃ ⋁^m S^1 (contract a spanning tree).
+    - The case m_H = 0 is Corollary F2. (The planar collapse of [Aud, §4.2] is not
+      needed: X^H is 2-dimensional only when m_H = 0.)
+    - COMPUTED in [S4a] with its own code: 0 failures on 22,215 e_H = 3 pairs (B_3, B_4,
+      and type A with n ≤ 6); X^H is a graph on all 831 pairs with m_H ≥ 1. Type A with
+      n = 7 and B_n with n ≥ 5 were not computed.
 
 ### 3.2 Non-free counterexamples (PROVEN by hand; COMPUTED)
 
@@ -512,7 +526,7 @@ general equivariant question for non-pointed cones stays **OPEN** ([MO §3]).
 | Free ℤG-module (step 3) | chamber basis (§2.1); needed, since stably free ≠ free in general | PROVEN |
 | Fixed sets for every H | Corollary F2; COMPUTED on 1,199 type-A and 446 B_3 pairs | PROVEN, COMPUTED |
 | (iv) literature | [PA]: Theorem E for general pointed cones and Theorem S NOT FOUND; poset corollary KNOWN for the claw K_n (Arone 2015, Ex. 1.4; Arone–Brantner 2021, Ex. after Thm 5.10; Donau 2012), NOT FOUND for other connected P; Step 1 is the Thévenaz–Webb / BWW Cor. 7.2 technique | done (search result) |
-| (v) audit | [Aud]: everything HOLDS; R1–R3 applied; (S4) e_H = 3 proved in [Aud, §4.2], not independently checked | AUDITED |
+| (v) audit | [Aud]: everything HOLDS; R1–R3 applied; (S4) e_H = 3 independently checked in [S4a] (HOLDS; height-2 argument, Lemma D; COMPUTED on 22,215 pairs, B_3, B_4, type A n ≤ 6; type A n = 7 and B_n n ≥ 5 not computed) | AUDITED |
 
 ---
 
