@@ -1,0 +1,22 @@
+[count] ok   n=1: 1 posets, 1 connected (OEIS A000112, A000608)
+[count] ok   n=2: 2 posets, 1 connected (OEIS A000112, A000608)
+[count] ok   n=3: 5 posets, 3 connected (OEIS A000112, A000608)
+[count] ok   n=4: 16 posets, 10 connected (OEIS A000112, A000608)
+[count] ok   n=5: 63 posets, 44 connected (OEIS A000112, A000608)
+[count] ok   n=6: 318 posets, 238 connected (OEIS A000112, A000608)
+[count] ok   n=7: 2045 posets, 1650 connected (OEIS A000112, A000608)
+[ree] ok   n=2: rho(c) has the single word c ending in c_n, and kills sampled shuffles
+[ree] ok   n=3: rho(c) has the single word c ending in c_n, and kills sampled shuffles
+[ree] ok   n=4: rho(c) has the single word c ending in c_n, and kills sampled shuffles
+[ree] ok   n=5: rho(c) has the single word c ending in c_n, and kills sampled shuffles
+[sweep] ok   n=2: 1 disconnected, 1 two-chain, sizes [(1, 1)]; [def] decided 1: 1 preserve; failures []
+[sweep] ok   n=3: 2 disconnected, 1 two-chain, sizes [(1, 2)]; [def] decided 2: 1 preserve; failures []
+[sweep] ok   n=4: 6 disconnected, 2 two-chain, sizes [(1, 3), (2, 2)]; [def] decided 6: 2 preserve; failures []
+[sweep] ok   n=5: 19 disconnected, 2 two-chain, sizes [(1, 4), (2, 3)]; [def] decided 19: 2 preserve; failures []
+[sweep] ok   n=6: 80 disconnected, 3 two-chain, sizes [(1, 5), (2, 4), (3, 3)]; [def] decided 80: 3 preserve; failures []
+[sweep] ok   n=7: 395 disconnected, 3 two-chain, sizes [(1, 6), (2, 5), (3, 4)]; [def] decided 393: 3 preserve; failures []
+[sweep] ok   n=8: 2487 disconnected, 4 two-chain, sizes [(1, 7), (2, 6), (3, 5), (4, 4)]; [def] decided 2476: 4 preserve; failures []
+[total] ok   2990 disconnected posets n<= 8; 16 two-chain; certificates: case A 2932, case B 42; [def] decided 2977
+[control] ok   n<=6, [def] from the definition: 9 of 108 preserve R_P (expect 9 of 108)
+[ctl] ok   a single word does not annihilate R_{A_3}
+[ctl] ok   [def] accepts a generator and rejects a single word
