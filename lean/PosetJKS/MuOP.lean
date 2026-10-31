@@ -851,11 +851,11 @@ theorem erase_split {pre post : List α} {b : α} (hb : b ∉ pre) (hab : a ≠ 
 
 variable (a) in
 /-- `B_P(a)` on lists. -/
-abbrev BL := {l : List α // L.InBL (· < ·) univ a l}
+abbrev BLmin := {l : List α // L.InBL (· < ·) univ a l}
 
 variable (a) in
 /-- `B_{P/π_ab}(a)` on lists of points of `P`. -/
-abbrev TL (b : α) := {l : List α // L.InBL (Rab a b) (univ.erase b) a l}
+abbrev TLmin (b : α) := {l : List α // L.InBL (Rab a b) (univ.erase b) a l}
 
 theorem fwd_spec (ha : ∀ u, u ≤ a → u = a) (h2 : 2 ≤ Fintype.card α) {l : List α}
     (hl : L.InBL (· < ·) univ a l) :
@@ -881,7 +881,7 @@ theorem split_of_TL {b : α} (hab : a ≠ b) {l : List α}
 /-- **Lemma C**, the bijection: `B_P(a) ≅ ∐_b B_{P/π_ab}(a)`, `w ↦ (b, w ∖ b)` with `b` the
 letter after `a`; the inverse inserts `b` after `a`. -/
 noncomputable def lemmaC_equiv (ha : ∀ u, u ≤ a → u = a) (h2 : 2 ≤ Fintype.card α) :
-    BL a ≃ Σ b : Bset a, TL a b.1 where
+    BLmin a ≃ Σ b : Bset a, TLmin a b.1 where
   toFun l := ⟨⟨nxt a l.1, (fwd_spec ha h2 l.2).1⟩,
     ⟨l.1.erase (nxt a l.1), (fwd_spec ha h2 l.2).2⟩⟩
   invFun x := ⟨L.insA x.1.1 a x.2.1, by
