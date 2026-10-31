@@ -7,23 +7,36 @@ admissible quotients X → X/π, giving a lattice Q(X) for each object, whose ax
 the proper part Q̄(X) to be a wedge of spheres, equivariantly for Aut(X), with the number
 of spheres given by a natural invariant?
 
-**Verdict: STOP** (§4). In short:
-1. **The axioms that the existing proofs use are not quotient axioms.** They are
-   *real-points* axioms. Hom(X, ℝ) is a closed polyhedral cone; quotients are cut out by
-   flats; orbit quotients are fixed subspaces (§1). The axiom that forces the spheres is
-   convexity of Hom(X, ℝ). Any category satisfying it has cone lattices as its Q(X), so
-   the framework is framework (a) of `notes/general_theory.md` renamed.
-2. **The genuinely categorical axioms do not force wedges** (§2.3).
+**Verdict: STOP** (§4). This note was audited in `notes/audit_quotient_categories.md`
+([AudQC]). STOP stands; the reasons below are the corrected ones. In short:
+1. **The repo's proofs have two sources of sphericity, and neither is a quotient axiom.**
+   - **Convexity (R1)**, in [GT] and [TE]. These are *real-points* axioms: Hom(X, ℝ) is a
+     closed polyhedral cone; quotients are cut out by flats; orbit quotients are fixed
+     subspaces (§1). Any category satisfying (R1) has cone lattices as its Q(X), so that
+     framework is framework (a) of `notes/general_theory.md` renamed.
+   - **Complementation (C)**, in Route C (`notes/lean_js_route.md` §3). Meet-closure, a
+     complement condition and the upper-interval axiom (Q2) give homology concentration
+     for OP(P) with no convexity at all (§1.5). **This is the part of the quotient idea
+     that does real work:** it is a genuinely non-convex, lattice-level mechanism, and the
+     repo uses it. It does not reverse STOP, because (C) is Björner–Walker
+     complementation, one of the three known mechanisms that the reversal test of §4
+     excludes.
+2. **The bare interval axioms force nothing** (§2.3).
    - Upper intervals are quotients of the quotient, and lower intervals are products over
-     the fibers. These axioms hold for finite G-sets, where Q(G/1) is the subgroup lattice.
-     That lattice is not Cohen–Macaulay in general (COMPUTED, A_4 and S_4).
-   - Whether every such lattice is at least a non-pure wedge is Shareshian's conjecture,
-     which is OPEN. A theorem deriving wedges from these axioms alone would prove it.
+     the fibers. With a single fiber allowed (as for Tits buildings, §2), (Q1)–(Q3) hold
+     for *every* finite lattice, including the face lattice of RP², which has torsion. So
+     "(Q1)–(Q3) ⇒ wedge" is **false** outright (COMPUTED in [AudQC] `[INT]`).
+   - Even with partition-type data, the axioms hold for finite G-sets, where Q(G/1) is the
+     subgroup lattice. That lattice is not Cohen–Macaulay in general (COMPUTED, A_4, S_4
+     and A_5). Whether every such lattice is at least a non-pure wedge is Shareshian's
+     conjecture, which is OPEN. A theorem deriving wedges from the partition-type axioms
+     would prove it.
 3. **The interval axioms are already in the literature** (§3): Schmitt's hereditary
    families, and Vallette's operadic partition posets.
    - For operadic posets, Koszulness and Cohen–Macaulayness are *equivalent* (Vallette
      2007, Thm 9). That is a reformulation of sphericity, not a source of it.
-   - OP(P) is not a Vallette poset with its natural labels (Proposition 3.1, PROVEN).
+   - OP(P) is not a Vallette poset with blocks labelled by their restrictions and finite
+     𝒫(2) (Proposition 3.1, PROVEN). Other labellings are OPEN.
 4. **What the framework does explain** is limited to the support-map mechanism:
    - It explains OP(P) (already done in the repo).
    - It explains the d-divisible partition lattices, a known non-geometric wedge family
@@ -41,8 +54,12 @@ Tags (every claim carries one):
 Abbreviations:
 - [GT] = `notes/general_theory.md`. Its Theorem 1 (the cone wedge theorem) and Theorem 2
   (cone Zaslavsky) are PROVEN and audited.
-- [TE] = `notes/theorem_e_equivariant_wedge.md`. Theorem E is **PROVEN, audit pending**,
-  and nothing here builds a proof on it.
+- [TE] = `notes/theorem_e_equivariant_wedge.md`. Theorem E is **PROVEN, audited
+  (`notes/audit_theorem_e.md`)**.
+- [AudE] = `notes/audit_theorem_e.md`.
+- [JSR] = `notes/lean_js_route.md` (Route C); [AudJSR] = `notes/audit_lean_js_route.md`.
+- [AudQC] = `notes/audit_quotient_categories.md`, the audit of this note; its
+  computations are `compute/audit_quotient_categories.py`.
 - [OM] = `notes/oriented_matroid_cones.md`.
 - [MO] = `notes/mo17370_wedges_of_spheres.md`.
 - [PATE] = `notes/prior_art_theorem_e.md`.
@@ -79,9 +96,9 @@ Read with X = P, π ∈ Q(X), and Y_π = {x constant on the blocks of π}.
 | **(R2) Quotients are slices** | Hom(X/π, ℝ) = K_X ∩ Y_π. So the fiber of s over Q_{≥π} (coarser quotients) is O(X/π) | [GT] Thm 1, Step 2. The fiber of the support map over π is the ordered companion of the quotient X/π, so the fiber condition is (R1) for X/π | PROVEN (a map P/π → ℝ is a map P → ℝ constant on blocks) |
 | **(R3) Spheres come from discrete quotients** | K_{X/π} is a linear subspace iff X/π is an antichain, i.e. π is coarser than the components. Then the fiber is a sphere; otherwise it is contractible | [GT] Thm 1, Step 3 and (1.1); Thm 2 (#V = Σ_{X ⊆ lin V} m(V_X)) | PROVEN ([GT] Lemma 0.1(b),(c)) |
 | **(R4) Chambers are linear extensions** | The open chambers of K_X are the injective real points up to order, i.e. Lin(P) | sphere count: m(C_P) = e(P) for connected P (pointed), and m = e_C(P) in general by Thm 2 + Lemma 1.3 of [GT] | PROVEN ([GT] Cor. 1.4) |
-| **(R5) Orbit quotients are fixed subspaces** | For H ≤ Aut(P), the orbit preorder P/H is a poset, and Hom(P/H, ℝ) = K_P^H. The H-stable faces of K_P are the pullbacks of the faces of K_{P/H} | [TE] Lemma F(a)–(b), the "restriction to Fix(H)" | PROVEN below; COMPUTED `[FIX]` |
+| **(R5) Orbit quotients are fixed subspaces** | For H ≤ Aut(P), the orbit preorder P/H is a poset, and Hom(P/H, ℝ) = K_P^H. The H-stable faces of K_P are the pullbacks of the faces of K_{P/H} | [TE] Lemma F(a)–(b), the "restriction to Fix(H)" | PROVEN below; COMPUTED `[FIX]`. Not an independent axiom: given (R1) and a linear action it is automatic ([TE] Lemma F is proved for any finite group of linear maps preserving the arrangement and the cone, and never forms an orbit quotient) |
 | **(R6) Pointedness** | P connected ⇒ lin K_P = constants, so K_P is pointed after essentialization | [TE] Lemma F(c) (an H-average of a nonzero point of a pointed cone is nonzero); [GT] pointed case (m = #V) | PROVEN ([TE §2.5]) |
-| **(R7) Free action on chambers** | P connected ⇒ Aut(P) acts freely on Lin(P) | [TE] Thm E (free ℤG basis §2.1, contractible singular sets) | CITED in [TE] from [Thm] cor:connected; COMPUTED there |
+| **(R7) Free action on chambers** | Aut(P) acts freely on Lin(P), for every finite P (connectedness is not needed, [AudE] §3.5; it enters only through (R6)) | [TE] Thm E (free ℤG basis §2.1, contractible singular sets) | CITED in [TE] from [Thm] cor:connected; COMPUTED there |
 
 *Proof of (R5) (PROVEN).*
 - **P/H is a poset.** An automorphism preserves height (the length of the longest chain
@@ -106,16 +123,17 @@ g² has more orbits.
 
 ### 1.3 What is *not* used
 
-**PROVEN, by inspection of [GT] Thm 1, Thm 2 and [TE] §§1–2.** The proofs never use a
-lattice-closure property of Q(X) inside the partition lattice:
+**PROVEN, by inspection of [GT] Thm 1, Thm 2 and [TE] §§1–2.** These proofs never use a
+lattice-closure property of Q(X) inside the partition lattice. (This is a statement about
+[GT] and [TE] only. Route C, [JSR] §3, does use meet-closure; see §1.5.)
 - **Closure under refinement is false.** For the chain a < b < c, the one-block partition
   is acyclic, but its refinement {a, c} | {b} is not.
 - **Closure under the joins of Π_n is false.** For the chain a < b < c, the partitions
   {a, b} | {c} and {a} | {b, c} are both acyclic, but their Π_n-join {a, c} | {b} is not.
 - **Closure under common refinement is true** (span F + span G = span(FG) for the Tits
-  product). It is not used either.
-- The proofs use the poset Q̄(X), the support map, and the convexity of the fibers. The
-  lattice structure plays no role.
+  product). It is not used in [GT] or [TE]. It *is* used in Route C (§1.5).
+- The proofs of [GT] and [TE] use the poset Q̄(X), the support map, and the convexity of
+  the fibers. The lattice structure plays no role there.
 
 **The categorical axioms proper.** Write
 - **(Q1)**: Q(X) is a finite lattice with 0̂ = id_X and 1̂ = X → pt;
@@ -128,12 +146,22 @@ For posets, (Q2) and (Q3) hold with X_B = P|_B (PROVEN):
   so it stays inside one block B. Hence σ is acyclic iff each σ|_B is acyclic in P|_B.
 - So every interval of OP(P) is a product of OP lattices.
 
-(Q2) is used, through (R2). (Q1) and (Q3) are not used by any proof in [GT] or [TE].
+(Q2) is used, through (R2). (Q3) is also used, as localization of the cone, at partitions
+σ coarser than the components:
+- [GT] Thm 1, Step 3 uses Lemma 0.1(c): for a flat X ⊆ lin V, [X, ℝ^d] ≅ Λ(V_X). For
+  V = C_P, the interval [X, ℝ^d] is the lower interval [0̂, σ] of OP(P), and
+  V_X = ∏_{B∈σ} C_{P|_B}. That is (Q3) at σ.
+- [GT] Cor. 1.4 uses the same product, (C_P)_σ = ∏ C_{P|_B}, with Λ and μ multiplicative.
 
-So the answer to "which properties of acyclic quotient do the proofs use" is (R1)–(R7).
-Of these, only (R2) and (R5) are quotient properties, and both are used *through* (R1):
-they say that the fibers of the support map, and the fixed points, are again real-point
-cones of a quotient object.
+Both uses are derived from (R1) geometrically, so (Q3) is not an extra input there. (Q1)
+is not used by [GT] or [TE]; Route C uses meet-closure (§1.5).
+
+So the answer to "which properties of acyclic quotient do the proofs of [GT] and [TE]
+use" is (R1)–(R7). Of these, only (R2) and (R5) are quotient properties, and both are
+used *through* (R1): they say that the fibers of the support map, and the fixed points,
+are again real-point cones of a quotient object. Two of the seven are not independent:
+(R5) follows from (R1) for any linear action, and (R7) holds for every finite P (table
+above). Route C uses a different set of inputs, (Q1), (Q2) and (C), in §1.5.
 
 ### 1.4 The abstract statement, and why it is a restatement
 
@@ -143,8 +171,8 @@ Q̄(X) ≃ ⋁^{m(X)} S^{r−2}, with Σ_{X/π discrete} m(·) = #chambers. With
 free Aut(X)-wedge.
 
 *Proof.* (R1) makes Q(X)^op = Λ(K_X) for a top-cone K_X of an arrangement, and (R4)
-identifies its chambers. This is [GT] Thm 1 and Thm 2, and [TE] Thm E (PROVEN, audit
-pending). ∎
+identifies its chambers. This is [GT] Thm 1 and Thm 2, and [TE] Thm E (PROVEN, audited
+(`notes/audit_theorem_e.md`)). ∎
 
 The class of lattices it covers is, by (R1), exactly the class of cone lattices Λ(V). So
 it adds no lattice beyond [GT] framework (a), or [OM] for oriented matroids. It is
@@ -162,6 +190,56 @@ framework (a) in categorical language. This is the first half of the STOP.
 - This is what explains the d-divisible lattices (§2.2). It is also, verbatim, the
   mechanism of Ehrenborg–Jung 2013 (§3). It is a technique, not a new framework.
 
+### 1.5 The second mechanism: complementation (Route C)
+
+Route C ([JSR] §3, audited HOLDS in [AudJSR]; checked over ℤ in
+`notes/audit_mo17370.md` V4) proves (V): H̃_d(Δ(OP̄(P))) = 0 for d ≠ n − 3. Its inputs
+are:
+- **meet-closure (a strong form of (Q1)):** x ∧ π_a ∈ OP(P), where ∧ is the meet of Π_n (Lean
+  `isOrderPreserving_inf`);
+- **a complement condition ([JSR] Lemma M(b)):** for a minimal a and t = π_a = {a} | rest,
+  the elements x ≠ 0̂ with x ∧ t = 0̂ are exactly the atoms π_ab of OP(P);
+- **(Q2) at those atoms ([JSR] Lemma U):** (π_ab, 1̂) ≅ OP̄(P/π_ab).
+
+No convexity, no cone and no arrangement appear. So the claim "only (R1) forces spheres"
+is false for the repo as a whole. The abstract form is:
+
+**Axiom (C) (complementation).** For every object X with Q̄(X) ≠ ∅ there is a t ∈ Q̄(X)
+such that:
+- its complements in Q(X) form an antichain;
+- every complement is an atom a;
+- [a, 1̂] ≅ Q(X/a) for an object X/a of the class.
+
+**Claim (PROVEN, given Björner–Walker's homotopy complementation formula, European J.
+Combin. 4 (1983), CITED from memory as in [JSR]).** In a class satisfying (Q1), (Q2) and
+(C), every Q̄(X) is a wedge of spheres. The wedge is pure when all the X/a have the same
+length.
+
+*Proof.* Björner–Walker give L̄ ≃ ⋁_{a ⊥ t} Σ(Δ(0̂, a) ∗ Δ(a, 1̂)). For an atom a,
+Δ(0̂, a) = ∅, so the summand is Σ Q̄(X/a). Induct on the length, with Σ∅ = S^0. ∎
+
+**Where (C) holds.**
+- **OP(P):** proved in [JSR]; COMPUTED in [AudQC] `[CMP]` on all 959 pairs (P, a minimal)
+  with n ≤ 5: meet-closure, complements of π_a = the atoms π_ab, and
+  |[π_ab, 1̂]| = |OP(P/π_ab)|. Control: in Π_4, t = 01|23 has the non-atom complements
+  02|13 and 03|12.
+- **Π_n:** by hand, t = {n} | rest.
+- **Subgroup lattices, at the top level only:** [AudQC] `[CMP]` finds such a t in L(A_4),
+  L(S_4) (e.g. t = A_4, whose complements are the six transposition subgroups) and L(A_5).
+
+**This is the part of the quotient idea that does real work.** (C) is stated at the level
+of the quotient lattice, uses (Q2) essentially, and gives sphericity without convexity.
+**Why it does not reverse STOP:**
+1. (C) is complementation, one of the three known mechanisms named in §3 (Björner–Walker,
+   Kozlov, Arone–Brantner). The reversal test of §4 asks for a mechanism outside these
+   three, so (C) passes the note's own test for *not* reversing.
+2. Its use for OP(P) is Route C itself, already in the repo.
+3. For G-sets, the induction needs (C) on every interval (H, K) of L(G), not just at the
+   top. That is exactly where Shareshian's problem lives (§2.3).
+
+Whether (C) reaches lattices where complementation is not already known to work was not
+explored (OPEN).
+
 ---
 
 ## 2. Test families
@@ -171,14 +249,15 @@ framework (a) in categorical language. This is the first half of the STOP.
 | Π_n | sets, all quotients | **fits** | K = ℝ^n with the braid arrangement, all chambers. Folkman = [GT] Thm 1 with V = all chambers. Also OP(claw) = Π_n ([PATE §2.2]) |
 | Bond lattices L(G) | graphs, contraction to connected blocks | **fits** | K = ℝ^V with the graphic arrangement A_G, all chambers (acyclic orientations) |
 | Mixed graphs (§2.1) | graphs with some edges oriented; connected blocks with acyclic quotient digraph | **fits** | top-cones of A_G. Interpolates between bond lattices (no arcs) and OP(P) (complete graph, arcs = relations) |
-| OP(P) | posets, acyclic quotients | **fits** (defining case) | [GT] Cor. 1.4 (Jenča–Sarkoci reproved); [TE] Thm E (PROVEN, audit pending) |
+| OP(P) | posets, acyclic quotients | **fits** (defining case) | [GT] Cor. 1.4 (Jenča–Sarkoci reproved); [TE] Thm E (PROVEN, audited (`notes/audit_theorem_e.md`)); also by complementation, Route C (§1.5) |
 | Geometric lattices (Folkman) | matroids, flats | **fits with modification** | only *orientable* matroids have real points: realizable ones by [GT], all oriented matroids by [OM] Thm 1-OM. Non-orientable geometric lattices (e.g. the Fano plane, CITED as standard, not re-read) are wedges by Folkman's theorem, through semimodularity/shellability, not by this mechanism |
 | Dowling lattices Q_n(G) | G-gain graphs | **fits for \|G\| ≤ 2** (types A and B, i.e. signed graphs and signed posets); **does not fit for \|G\| ≥ 3** | there is no ordered real-points functor. For cyclic G these are complex reflection arrangements, where "one side of a hyperplane" is meaningless. They are wedges because they are geometric (Folkman), which is outside the convex mechanism (CITED from memory: Dowling 1973; equivariance in Gottlieb–Wachs, not re-read) |
 | d-divisible Π_n^{(d)} + 0̂ (§2.2) | sets, quotients whose fibers have sizes divisible by d (closed under composition, but no identity, so 0̂ is adjoined) | **fits with modification (R1′)** | the ordered companion is a rank-selected Coxeter complex, not a ball. Explained BY the framework: wedge PROVEN, and the count is the chamber count of the rank-selected pointed companion (COMPUTED) |
 | Noncrossing NC(n) | quotients of an n-cycle by noncrossing partitions | **does not fit** (as tested) | COMPUTED: for n = 5, 6 no OP(P), P any labeled poset on [n], has NC(n)'s size, rank sizes and Möbius number. At n = 4, NC(4) = OP(P) as sets for 12 labelings of two disjoint 2-chains (a small-n coincidence: Π_4 minus one partition). Whether NC(n) is Λ(V) for a cone of a *different* arrangement is OPEN. Its wedge comes from shellability (Björner–Edelman, CITED from memory) |
 | Subspace lattice / Tits building | F_q-vector spaces, all quotients | **does not fit** (no order on F_q, so no real points) | it does satisfy the interval axioms (Q2) and (Q3), with a single fiber. Solomon–Tits has the same *shape*: a contractible complex minus the open top cells opposite a chamber, Hatcher's mechanism quoted in [MO §0]. The Borel-equivariant form is Arone–Brantner Lemma 5.17 (CITED via [PATE §1.2]) |
 | **Negative control**: at-most-2-to-1 quotients + 1̂ (§2.3) | sets, quotients with fibers of size ≤ 2 | **NOT a wedge of spheres** | COMPUTED: 3-torsion in H_1 for a 7-element set. Violates (Q2)/(R2): the class is not closed under composition |
-| **Hardness control**: G-sets (§2.3) | G-sets, all G-quotients | **satisfies the interval axioms, not CM** | Q(G/1) = L(G). COMPUTED: A_4 and S_4 have homology below the top degree. Wedge-ness is Shareshian's conjecture, OPEN |
+| **Hardness control**: G-sets (§2.3) | G-sets, all G-quotients | **satisfies the interval axioms, not CM** | Q(G/1) = L(G). COMPUTED: A_4, S_4 and A_5 have homology below the top degree. Wedge-ness is Shareshian's conjecture, OPEN |
+| **Tautological control**: intervals of any finite lattice, single fiber (§2.3) | objects [x, y], quotient by z is [z, y], fiber [x, z] | **satisfies (Q1)–(Q3), not a wedge** | the face lattice of RP² (6 vertices) has torsion (COMPUTED in [AudQC] `[INT]`) |
 
 ### 2.1 Mixed graphs (PROVEN, as an instance of [GT] Thm 1; COMPUTED)
 
@@ -262,14 +341,23 @@ Remarks:
 Π_n's companion, with no pointing.
 - The fibers become spheres S^{k−2}.
 - The Björner–Wachs–Welker theorem then gives Δ(rank-selected Coxeter complex) ≃
-  Δ(Q) ∨ ⋁_π S^{k(π)−2} ∗ Δ(Q_{>π}). This is the non-pointed [GT] Thm 1 pattern, with
+  Δ(Q) ∨ ⋁_π S^{k(π)−2} ∗ Δ(Q_{<π}), where Q_{<π} is the set of strictly *finer*
+  elements of Q. This is the non-pointed [GT] Thm 1 pattern, with
   #chambers β_n(S) = m + corrections.
+- **Why Q_{<π}.** BWW joins each fiber (taken below) with the part above. Here s reverses
+  order from the face order to refinement, so BWW applies to s : O → Q^op, and
+  (Q^op)_{>π} = Q_{<π}. The dimensions confirm it: (k−2) + (n/d − k − 1) + 1 = n/d − 2,
+  the top degree. (An earlier version of this note printed Q_{>π}, which gives dimension
+  2k − 4, depending on π; [AudQC] §5.2 shows it gives wrong Betti numbers, e.g.
+  {0: 15, 1: 16, 2: 30} at (n, d) = (6, 2) against the true {1: 61}.)
 
 **COMPUTED** (`[DDIV]`) for (n, d) = (4,2), (6,2), (6,3), (8,2), (9,3), (8,4):
 - H̃(Δ(Q)) is concentrated in degree n/d − 2, with rank β_{n−1}(S).
 - The pointed companion has the same homology.
 - Every Quillen fiber is acyclic.
 - The unpointed complex has rank β_n(S), and the fiber-theorem Euler identity holds.
+  [AudQC] `[DDIV]` checks the corrected wedge Δ(Q) ∨ ⋁ S^{k−2} ∗ Δ(Q_{<π}) Betti number
+  by Betti number: β_n(S) = 5, 61, 19, 1385, 1513, 69 in the six cases.
 - Control: an unpointed fiber over a 2-block π is S^0, not acyclic.
 
 **Status: KNOWN.** This is exactly the proof of Ehrenborg–Jung 2013, Thm 5.3
@@ -279,8 +367,11 @@ pointed set partitions are the support lattice of the dual-claw cone.
   Their Quillen fibers are the companions of quotients (R2).
 - It explains *why* the count is β_{n−1} and not β_n: the pointed cone has no lineality
   correction ([GT] Thm 2).
-- That sentence is not found in Ehrenborg–Jung, which never mentions cones. It is an
-  observation, not a theorem.
+- That sentence is not found in Ehrenborg–Jung, which never mentions polyhedral cones.
+  They do, however, realize the pointed partition lattice Π^•_n as the intersection
+  lattice of the arrangement {x_i = x_j} ∪ {x_i = 0} (their Lemma 2.1). So the sentence
+  is a short step from their Lemma 2.1, not a new link. It is an observation, not a
+  theorem.
 
 ### 2.3 Controls
 
@@ -303,23 +394,43 @@ G-equivariant quotients.
 - **The interval axioms hold (PROVEN, correspondence theorem).**
   - (Q1) Q(X) is a sublattice of Π_X containing 0̂ and 1̂.
   - (Q2) [π, 1̂] ≅ Q(X/π).
-  - (Q3) [0̂, π] ≅ ∏_{orbits of blocks} Q_{G_B}(B), the fibers being G_B-sets.
+  - (Q3) holds only in the orbit-twisted form: [0̂, π] ≅ ∏_{orbits of blocks} Q_{G_B}(B),
+    with one block B per orbit, the fibers being G_B-sets, not G-sets. The literal
+    "∏ over all blocks B" fails. So the "category" is the collection of all pairs (G, X),
+    not the G-sets of one group; this is harmless for the reduction below.
   - For X = G/1, Q(X) = L(G), the subgroup lattice.
-- **Not Cohen–Macaulay (COMPUTED, `[GSET]`).**
+- **Not Cohen–Macaulay (COMPUTED, `[GSET]`; recomputed in [AudQC] §2.1).**
   - L(A_4): the proper part has dimension 1 but homology only H̃_0 = ℤ^4.
   - L(S_4): dimension 2, homology only H̃_1 = ℤ^12.
-  - L(A_5): dimension 2, H̃_1 = ℤ^60, consistent with μ(A_5) = −60 (CITED as Hall 1936,
-    from memory). Only its homology was computed.
+  - L(A_5): dimension 2, homology only H̃_1 = ℤ^60, consistent with μ(A_5) = −60 (CITED
+    as Hall 1936, from memory). So L(A_5) is not CM either.
 - **Wedge-ness is open.** A_4 and S_4 are solvable, so their lattices are wedges
   (Kratzer–Thévenaz, CITED from memory). In general, "every open interval in a
   subgroup lattice is a wedge of spheres" is **Shareshian's conjecture, OPEN**
   (Shareshian, *Topology of order complexes of intervals in subgroup lattices*, J.
   Algebra 268 (2003); CITED from search results, not read; a 2020 survey describes the
   case of trivial Frattini subgroup and simple composition factors as wide open).
-- **Consequence.** A theorem "axioms (Q1)–(Q3) + Aut-action ⇒ wedge" would prove
-  Shareshian's conjecture. "⇒ wedge of top-dimensional spheres" is false. So the
-  categorical axioms alone cannot carry the idea. This is the second half of the
-  STOP.
+- **Consequence.** Every open interval (H, K) of a subgroup lattice is Q̄_K(K/H) by (Q2).
+  So a theorem "partition-type axioms (Q1)–(Q3) + Aut-action ⇒ wedge", applied to the
+  transitive K-sets K/H, would prove Shareshian's conjecture. "⇒ wedge of
+  top-dimensional spheres" is false (A_4).
+
+**Tautological control: the bare axioms force nothing (COMPUTED in [AudQC] `[INT]`).**
+Read abstractly, as in §1.3, (Q1)–(Q3) give a lattice Q(X) with no underlying set, and
+§2 accepts (Q3) "with a single fiber" for Tits buildings. In that reading take any finite
+lattice L:
+- the objects are the intervals [x, y], with Q([x, y]) = [x, y];
+- the quotient by z is [z, y], and the single fiber is [x, z].
+
+(Q1)–(Q3) then hold tautologically. Take L = the face lattice of the 6-vertex RP² with
+0̂ and 1̂ adjoined (33 elements). Its proper part has reduced Betti numbers {1: 1, 2: 1}
+mod 2 and none mod 3, so it has torsion and is not a wedge of spheres.
+
+So "(Q1)–(Q3) ⇒ wedge" is **false** outright, not merely as hard as Shareshian's
+conjecture. A meaningful version must require partition-type data (Q(X) ⊆ Π_X, and (Q3)
+with the fibers being the actual blocks), and for that version the G-set reduction above
+is the right hardness statement. So the categorical axioms alone cannot carry the idea.
+This is the second half of the STOP.
 
 ---
 
@@ -347,7 +458,9 @@ of novelty.
 - **Setting.** A *basic-set* operad (a set operad whose composition maps are injective),
   quadratic, generated in one arity. The poset Π_𝒫(n) consists of the 𝒫-partitions:
   partitions with each block decorated by an operation.
-- **Order.** A coarser element is obtained by composing.
+- **Order.** λ ≤ μ when each block of λ is obtained by composing some ν ∈ 𝒫_t with the
+  decorated blocks of μ that it contains. The maximal element is the partition into
+  singletons, so the order is *reverse* refinement.
 - **Thm 9.** 𝒫 is Koszul iff every interval [α, 1̂] is Cohen–Macaulay, and then the
   homology is the Koszul dual cooperad.
 - **Examples.** Com → Π_n; Perm → pointed partitions; As → ordered partitions; t-ary Com
@@ -360,15 +473,32 @@ of novelty.
 Contemp. Math. 346). CITED via Vallette's introduction, not read: the bar construction of
 Com computes the homology of Π_n, and gives Lie.
 
-**Proposition 3.1 (PROVEN). OP(P) is not a Vallette poset with its natural labels.**
-- In Vallette's poset, the interval data at x = (ν; C_1, …, C_t) recover the composite
-  α = ν ∘ (C_i) by an operadic composition, which is a function.
-- For OP(P) the natural labels of π are ν = P/π and C_B = P|_B, and these do not
-  determine P.
-- Example: P = {a < c, b} and P′ = {a < c, b < c}, with π = {a, b} | {c}. Both have
-  P/π = 2-chain, P|_{ab} = antichain, P|_c = point, and π is acyclic in both.
-- So no set operad on posets has the intervals of OP(P) as its intervals [P, 1̂] under
-  these labels. ∎
+**Proposition 3.1 (PROVEN). OP(P) is not a Vallette poset with blocks labelled by their
+restrictions, for any operad with finite 𝒫(2).** Precisely: there is no set operad 𝒫
+with 𝒫(2) finite such that, for every naturally labelled P, OP(P) is the interval
+[P, 1̂] of Π_𝒫(n) with P ∈ 𝒫_n and each block B of π labelled by P|_B.
+- **Vallette's order** (Vallette 2007, §3.1.2) asks, for λ ≤ μ, that each block of λ be a union of
+  blocks C_{p_1}, …, C_{p_t} of μ and that *there exist* ν ∈ 𝒫_t with
+  B_k = μ̃(ν × (C_{p_1}, …, C_{p_t})). So it is not enough to observe that the natural
+  quotient label ν = P/π fails to determine P (e.g. P = {a < c, b} and
+  P′ = {a < c, b < c} share P/π, P|_{ab} and P|_c for π = {a, b} | {c}): P and P′ could
+  use different ν. (An earlier version of this proof stopped there; [AudQC] §3 noted the
+  gap.)
+- **The count.** Take a k-antichain B, a point c, and π = {B} | {c}. The posets Q on
+  B ⊔ {c} with Q|_B an antichain and π acyclic are those with c above a nonempty subset
+  of B, c below a nonempty subset of B, or c incomparable to B. (If c lay above b and
+  below b′, then b < b′, contradicting that B is an antichain.) There are
+  2^{k+1} − 1 of them (COMPUTED in [AudQC] `[VAL]` for k ≤ 5).
+- Each such Q must equal μ̃(ν_Q × (antichain_B, id_c)) for some ν_Q ∈ 𝒫_2, and since the
+  composition μ̃ is a function and the block labels are the same for all Q, different Q
+  need different ν_Q. So |𝒫_2| ≥ 2^{k+1} − 1 for every k, contradicting finiteness. ∎
+
+This rules out every finitely generated quadratic operad, which is Vallette's setting (the
+posets Π_𝒫(n) are finite there, Vallette 2007, Prop. 3(1)).
+
+**OPEN:** labellings by decorations other than restrictions (richer decorations,
+Perm-style markings), and operads with infinite 𝒫(2). In both, the decorations would have
+to carry the comparabilities between blocks, and nothing here rules that out.
 
 OP(P) is instead the incidence poset of a *decomposition* (cooperad-like) structure
 P ↦ Σ_π (P/π) ⊗ ⊗_B P|_B. That is the shape of contraction–extraction coproducts. For
@@ -376,18 +506,22 @@ finite topologies (= preorders) see Fauvet–Foissy–Manchon, *The Hopf algebra
 topologies and mould composition*, Ann. Inst. Fourier 67 (2017) (CITED from search
 snippets, not read). Whether their "T-admissible" equivalences are exactly the acyclic
 quotients is OPEN. No Vallette-type "Koszul ⇔ CM" theorem for such decomposition
-structures was found. Whether OP(P) is abstractly isomorphic to some interval of some
-exotic set operad is OPEN, and not interesting: by the previous paragraph it would not be
-the quotient structure.
+structures was found. Whether OP(P) is a Vallette poset for some exotic labelling is
+OPEN. Such a labelling could even have exactly the acyclic quotients as its underlying
+partitions. It is still not interesting for this note: Thm 9 is an equivalence, so an
+exotic realization would turn OP(P)'s already-known CM property into the Koszulness of
+an exotic operad, and supply no source of sphericity. It would also be one operad per P
+(or one operad with infinite 𝒫(2)), not a uniform framework.
 
 **What the idea adds beyond Vallette/Fresse, and what it does not.**
 - **Adds:**
   - objects that are not indexed by n alone (OP(P) depends on P);
   - a symmetry group Aut(X) of a single object, instead of S_n;
-  - a *space-level* equivariant statement ([TE]; PROVEN, audit pending), where Vallette
+  - a *space-level* equivariant statement ([TE]; PROVEN, audited
+    (`notes/audit_theorem_e.md`)), where Vallette
     identifies an S_n-module.
 - **Does not add:** a reason for sphericity. In Vallette the reason is Koszulness, which
-  is equivalent to CM. In the repo it is convexity (R1).
+  is equivalent to CM. In the repo it is convexity (R1) or complementation (C) (§1.5).
 - **The relation.** The interval axioms (Q1)–(Q3) are the common shape of both pictures.
   That shape is Schmitt's hereditary families (*Incidence Hopf algebras*, JPAA 96 (1994):
   families closed under intervals and products; CITED from search snippets, not read).
@@ -470,12 +604,18 @@ arXiv:1801.01491, Thm 5.10, Lemma 5.17).
 ## 4. Verdict: STOP
 
 - **A framework that only renames known results.**
-  - The axioms the repo's proofs use are (R1)–(R7) (§1.2). Only (R1), convexity of the
-    real points, forces spheres, and with (R1) the framework *is* the cone framework of
+  - The repo has two sources of sphericity: convexity (R1), in [GT] and [TE], and
+    complementation (C), in Route C (§1.5). Both are known mechanisms, and neither is
+    supplied by the interval axioms. With (R1) the framework *is* the cone framework of
     [GT] (§1.4).
+  - Axiom (C) is the part of the quotient idea that does real work: a non-convex,
+    lattice-level axiom that uses (Q2) essentially. It does not reverse the verdict,
+    because it is Björner–Walker complementation, which the reversal test below excludes.
   - The categorical axioms proper ((Q1)–(Q3), i.e. (R2) without (R1)) are the
-    Vallette/Schmitt interval axioms (§3). They cannot force wedges without settling
-    Shareshian's conjecture, and they provably do not force top-dimensional wedges (§2.3).
+    Vallette/Schmitt interval axioms (§3). Read abstractly, with a single fiber allowed,
+    they hold for every finite lattice and force nothing (RP², §2.3). With partition-type
+    data they cannot force wedges without settling Shareshian's conjecture, and they
+    provably do not force top-dimensional wedges (§2.3).
 - **Explanatory test.**
   - The only family the framework explains beyond OP(P) is d-divisible partitions (§2.2),
     and that explanation is Ehrenborg–Jung's proof.
