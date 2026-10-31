@@ -1,0 +1,29 @@
+[CTL] B_3 proper part Betti {1: 1} (expect {1: 1}): True
+[CTL] 3-chain acyclic: True
+[CTL] RP^2 torsion detector: mod2 {1: 1, 2: 1}, mod3 {}: True
+[MIX] 3902 mixed graphs (n<=4 exhaustive, n=5 seeded sample): Lambda_geo = Lambda_comb, homology concentrated, rank m>=1; 2267 pointed with #V = m; 1635 non-pointed with m < #V: True
+[MIX] control: all partitions != Lambda for G = one edge on 3 vertices: True
+[FIX] 602 (P, g != 1) pairs, n <= 5: H-stable faces of C_P = pullbacks of faces of C_(P/H): True; orbit preorder ever cyclic: 0 times (expect 0)
+[FIX] control: quotient by <g^2> instead of <g> rejected on 478/478 pairs: True
+[DDIV] n=4 d=2: |Q|=3 H(Q)={0: 2} beta_(n-1)(S)=2; pointed companion H={0: 2}, all 3 Quillen fibers acyclic: True; unpointed H(K)={0: 5} beta_n(S)=5, fiber Euler identity 5==5: True
+[DDIV] n=6 d=2: |Q|=30 H(Q)={1: 16} beta_(n-1)(S)=16; pointed companion H={1: 16}, all 30 Quillen fibers acyclic: True; unpointed H(K)={1: 61} beta_n(S)=61, fiber Euler identity -61==-61: True
+[DDIV] n=6 d=3: |Q|=10 H(Q)={0: 9} beta_(n-1)(S)=9; pointed companion H={0: 9}, all 10 Quillen fibers acyclic: True; unpointed H(K)={0: 19} beta_n(S)=19, fiber Euler identity 19==19: True
+[DDIV] n=8 d=2: |Q|=378 H(Q)={2: 272} beta_(n-1)(S)=272; pointed companion H={2: 272}, all 378 Quillen fibers acyclic: True; unpointed H(K)={2: 1385} beta_n(S)=1385, fiber Euler identity 1385==1385: True
+[DDIV] n=9 d=3: |Q|=364 H(Q)={1: 477} beta_(n-1)(S)=477; pointed companion H={1: 477}, all 364 Quillen fibers acyclic: True; unpointed H(K)={1: 1513} beta_n(S)=1513, fiber Euler identity -1513==-1513: True
+[DDIV] n=8 d=4: |Q|=35 H(Q)={0: 34} beta_(n-1)(S)=34; pointed companion H={0: 34}, all 35 Quillen fibers acyclic: True; unpointed H(K)={0: 69} beta_n(S)=69, fiber Euler identity 69==69: True
+[NEG] at-most-2-to-1 quotients of a 7-set: proper part Betti mod 2 {2: 20}, mod 3 {1: 1, 2: 21}, mod 2^31-1 {2: 20}; torsion detected: True
+[NEG] upper interval [pi,1] has 27 elements, Q(X/pi) has 77: axiom (Q2) fails: True
+[GSET] A_4: 10 subgroups; proper part dim 1, Betti mod 2 {0: 4}, mod 2^31-1 {0: 4}
+[GSET] S_4: 30 subgroups; proper part dim 2, Betti mod 2 {1: 12}, mod 2^31-1 {1: 12}
+[GSET] A_5: 59 subgroups; proper part dim 2, Betti mod 2 {1: 60}, mod 2^31-1 {1: 60}
+[NC] n=4: NC(n) size/ranks/mu = (14, (1, 6, 6, 1), -5); labeled posets with OP(P) = NC(n) as sets: 12; with matching invariants: 36 (expect >0 sets at n=4, 0 invariant matches at n>=5): True
+[NC] n=5: NC(n) size/ranks/mu = (42, (1, 10, 20, 10, 1), 14); labeled posets with OP(P) = NC(n) as sets: 0; with matching invariants: 0 (expect >0 sets at n=4, 0 invariant matches at n>=5): True
+[NC] n=6: NC(n) size/ranks/mu = (132, (1, 15, 50, 50, 15, 1), -42); labeled posets with OP(P) = NC(n) as sets: 0; with matching invariants: 0 (expect >0 sets at n=4, 0 invariant matches at n>=5): True
+[SUMMARY] CTL: True
+[SUMMARY] MIX: True
+[SUMMARY] FIX: True
+[SUMMARY] DDIV: True
+[SUMMARY] NEG: True
+[SUMMARY] GSET: True
+[SUMMARY] NC: True
+ALL CHECKS PASS: True
