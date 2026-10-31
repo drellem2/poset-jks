@@ -1,0 +1,21 @@
+[CTL] subgroup counts S3, S4, W(B3) = (6, 30, 98) (expected (6, 30, 98))
+[CTL] triangle boundary betti mod 2,3 = {1: 1}, {1: 1} (expected {1: 1})
+[CTL] RP^2 betti mod 2 = {1: 1, 2: 1}, mod 3 = {} (expected {1: 1, 2: 1}, {})
+[CTL] Stong core of the 4-crown = 4 (expected 4)
+[NEG] orthant R^3, G=S_3: subgroups=6 empty T^H=2 ThmE ok/fail=1/5 ThmS ok/fail=6/0 free-test=[(3, 3, 1, 1, False), (2, 2, 1, 1, False)]
+[LEMF] orthant R^3, S_3: (a)-(b) 6 subgroups, (c) 18 pairs, failures []
+[NEG] orthant R^4, G=S_4: subgroups=30 empty T^H=9 ThmE ok/fail=1/29 ThmS ok/fail=30/0 free-test=[(3, 3, 1, 1, False), (2, 2, 1, 1, False), (4, 2, 1, 1, False), (2, 2, 1, 1, False)]
+[GEN] Boolean R^3, all orthants, full stabilizers: (S1) ok/fail = 48/0, T^H empty on 16
+[GEN] Boolean R^4, all orthants, full stabilizers: (S1) ok/fail = 480/0, T^H empty on 144
+[GEN] B_3: {'cones': 941, 'pointed_nontriv': 298, 'pairs': 446, 'E_ok': 744, 'E_fail': 0, 'S_fail': 0, 'nonfree': 0, 'free_fail': 0, 'sing_bad': 0, 'lem_bad': 0}
+[LEMF] B_3, every pointed cone, every subgroup of its stabilizer: (a)-(b) on 1224 (cone, H) pairs, (c) on 13776 (cone, H, Y) triples, failures 0
+[LEMF] control: half-space x_1 >= 0 (pointed=False) violates (c) on 30 triples (must be > 0)
+[NEG] Pi-bar_4 (all chambers of A_3), G=S_4: pointed=False #V=24 H=1 betti={1: 6} ThmE ok/fail=23/7; H!=1 not acyclic: 6, e.g. [(2, {0: 2}), (2, {0: 2})]
+[NEG] two 2-chains, swap: pointed=False #V=6 rows=[(1, 6, 3, {1: 5}), (2, 0, 1, {0: 1})] ThmE ok/fail=0/2 free-test=[(2, 2, 5, 3, True, False)]
+[POS] n=3: connected posets 3, with |Aut|>1: 2
+[POS] n=4: connected posets 10, with |Aut|>1: 6
+[POS] n=5: connected posets 44, with |Aut|>1: 30
+[POS] n=6: connected posets 238, with |Aut|>1: 155
+[POS] free (G = Aut P): {'posets': 193, 'pairs': 1394, 'Hne1': 1201, 'core1': 1201, 'E_fail': 0, 'S_fail': 0, 'h1_skipped': 0, 'free_tests': 351, 'free_fail': 0, 'sing_bad': 0, 'lemF_bad': 0, 'lemF_pairs': 2730}
+[NONFREE] self-dual P, G = <Aut P, -alpha> with some g != 1 fixing a chamber: {'cases': 37, 'pairs': 413, 'S_fail': 0, 'E_fail_cases': 37, 'fixes': 58, 'empty': 1}
+ALL AUDIT CHECKS PASS: True
