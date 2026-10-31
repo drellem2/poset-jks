@@ -1,0 +1,26 @@
+[posets] PASS counts [1, 1, 2, 5, 16, 63, 318, 2045]
+[T-indep] PASS h_C from Theorem Omega independent of T
+[connected=W] PASS h_C = W_P on all 1947 connected posets (Stanley's h-vector)
+[antichain] PASS h_C(A_k) = Eulerian polynomial of S_{k-1}
+[small-values] PASS {'C2+C2': [1, 3, 1], 'A4': [1, 4, 1], 'C3+C1': [1, 2], 'C3+C3': [1, 8, 9, 1]}
+[two-comp] PASS h_C(Q+T) = W(Q+T) - t*W(Q)*W(T) on all 391 two-component posets
+[unimodal] PASS 2450/2450 posets n <= 7
+[log-concave] PASS 2450/2450
+[real-rooted] 2450/2450 posets n <= 7 have real-rooted h_C
+[rr-control] PASS W(P_{36,6}) = sum C(36,k)C(6,k)t^k - 1 reproduces Branden and is detected as non-real-rooted
+[rr-control+] PASS Eulerian polynomials detected as real-rooted
+[stembridge-W] PASS 4 of 255 long-edge readings of EC1 Fig. 3.88 reproduce Stanley's printed A_P(x); they give 1 distinct poset(s) (the rest differ by implied relations)
+[stembridge0] long edges (L_a < R_b, 0-based L=0..8, R=9..16): ((0, 14), (1, 15), (2, 16))
+[stembridge0-props] PASS W_S not real-rooted (control), but unimodal and log-concave
+[stembridge0-hC] PASS connected, so h_C(S) = W_S
+[stembridge0+C1] h_C = [1, 80, 1488, 10384, 31130, 42084, 26012, 7268, 801, 24]  T-indep=True unimodal=True log-concave=True real-rooted=True
+[stembridge0+C2] h_C = [1, 129, 3656, 37864, 171270, 365204, 377594, 188778, 43979, 4137, 108]  T-indep=True unimodal=True log-concave=True real-rooted=True
+[stembridge0+C3] h_C = [1, 178, 6808, 94504, 579790, 1726424, 2607626, 2022442, 792939, 148752, 11508, 252]  T-indep=True unimodal=True log-concave=True real-rooted=True
+[stembridge0+A2] h_C = [1, 177, 5744, 63856, 301026, 657194, 687092, 344276, 79889, 7449, 192]  T-indep=True unimodal=True log-concave=True real-rooted=True
+[stembridge0+C2+C1] h_C = [1, 276, 13161, 209952, 1424310, 4589004, 7390810, 6041352, 2472369, 481160, 38421, 864]  T-indep=True unimodal=True log-concave=True real-rooted=True
+[stembridge0+C2-identity] PASS h_C(S + C2) = W(S + C2) - t W_S
+[chains-formula] PASS h_C(C_a + C_b) = sum_k C(a,k)C(b,k) t^k - t for a, b <= 6
+[chains-rr] C_a + C_b, 1 <= a <= b <= 30: 0 pairs with non-real-rooted h_C; first: []
+[recip-bf] PASS (-1)^n Omega_C(-m) = #strict maps with D_T: 714/714 (P, T, m), n <= 5, m <= n+1
+[ctl-naive] CONTROL REFUTED on 9 posets: strict maps with > anchoring do not give (-1)^n Omega_C(-m)
+[summary] ALL PASS
