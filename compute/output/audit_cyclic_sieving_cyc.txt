@@ -1,0 +1,96 @@
+[ctl-rsw] ok   q-multinomial sieves rotation of words: 11/11
+[ctl-neg] ok   perturbed q-multinomial (q^1 -> q^0) rejected: 11/11
+[ctl-qbin] ok   fake degree of S_k on j-subsets == [k;j]_q: 35/35
+[ctl-kw] ok   fake degree of S_k/C_k == sum_(maj w = 0 mod k) q^maj(w^-1), k=2..7: 6/6
+[ctl-eC] ok   exponential formula for e_C(chains) == brute force: 9/9
+[ctl-gen] ok   unlabelled posets: [1, 2, 5, 16, 63, 318, 2045]
+[tk] ok   number of posets T^(+k) with k >= 2, |P| <= 8: 23
+[tk-row] T=(0,) k=2 n=2 e(T)=1 e_C=1 fix(sigma^j)=[1, 1] X mod q^k-1 = 1 | X = 1 | sieves sigma: True
+[tk-row] T=(0,) k=3 n=3 e(T)=1 e_C=2 fix(sigma^j)=[2, 2, 2] X mod q^k-1 = 2 | X = 1 + q^3 | sieves sigma: True
+[tk-row] T=(0,) k=4 n=4 e(T)=1 e_C=6 fix(sigma^j)=[6, 2, 2, 2] X mod q^k-1 = 3 + q^1 + q^2 + q^3 | X = 1 + q^2 + q^3 + 2q^4 + q^5 | sieves sigma: True
+[tk-row] T=(0,) k=5 n=5 e(T)=1 e_C=24 fix(sigma^j)=[24, 4, 4, 4, 4] X mod q^k-1 = 8 + 4q^1 + 4q^2 + 4q^3 + 4q^4 | X = 1 + q^2 + 3q^3 + 4q^4 + 6q^5 + 4q^6 + 3q^7 + q^8 + q^10 | sieves sigma: True
+[tk-row] T=(0,) k=6 n=6 e(T)=1 e_C=120 fix(sigma^j)=[120, 2, 6, 8, 6, 2] X mod q^k-1 = 24 + 18q^1 + 20q^2 + 20q^3 + 20q^4 + 18q^5 | X = 1 + 2q^2 + 5q^3 + 8q^4 + 11q^5 + 17q^6 + 16q^7 + 17q^8 + 15q^9 + 12q^10 + 7q^11 + 6q^12 + 2q^13 + q^14 | sieves sigma: True
+[tk-row] T=(0,) k=7 n=7 e(T)=1 e_C=720 fix(sigma^j)=[720, 6, 6, 6, 6, 6, 6] X mod q^k-1 = 108 + 102q^1 + 102q^2 + 102q^3 + 102q^4 + 102q^5 + 102q^6 | X = 1 + 2q^2 + 7q^3 + 14q^4 + 25q^5 + 37q^6 + 53q^7 + 65q^8 + 75q^9 + 81q^10 + 81q^11 + 75q^12 + 65q^13 + 53q^14 + 37q^15 + 25q^16 + 14q^17 + 7q^18 + 2q^19 + q^21 | sieves sigma: True
+[tk-row] T=(0,) k=8 n=8 e(T)=1 e_C=5040 fix(sigma^j)=[5040, 4, 8, 4, 48, 4, 8, 4] X mod q^k-1 = 640 + 624q^1 + 634q^2 + 624q^3 + 636q^4 + 624q^5 + 634q^6 + 624q^7 | X = 1 + 3q^2 + 9q^3 + 23q^4 + 42q^5 + 76q^6 + 119q^7 + 180q^8 + 240q^9 + 313q^10 + 374q^11 + 434q^12 + 464q^13 + 482q^14 + 464q^15 + 436q^16 + 375q^17 + 314q^18 + 240q^19 + 179q^20 + 118q^21 + 76q^22 + 41q^23 + 23q^24 + 9q^25 + 4q^26 + q^27 | sieves sigma: True
+[tk-row] T=(0, 1) k=2 n=4 e(T)=1 e_C=5 fix(sigma^j)=[5, 1] X mod q^k-1 = 3 + 2q^1 | X = 3 + 2q^1 | sieves sigma: True
+[tk-row] T=(0, 1) k=3 n=6 e(T)=1 e_C=74 fix(sigma^j)=[74, 2, 2] X mod q^k-1 = 26 + 24q^1 + 24q^2 | X = 13 + 24q^1 + 24q^2 + 13q^3 | sieves sigma: True
+[tk-row] T=(0, 1) k=4 n=8 e(T)=1 e_C=2118 fix(sigma^j)=[2118, 2, 10, 2] X mod q^k-1 = 533 + 527q^1 + 531q^2 + 527q^3 | X = 90 + 263q^1 + 442q^2 + 527q^3 + 443q^4 + 264q^5 + 89q^6 | sieves sigma: True
+[tk-row] T=(0, 0, 3) k=2 n=6 e(T)=2 e_C=76 fix(sigma^j)=[76, 2] X mod q^k-1 = 39 + 37q^1 | X = 39 + 37q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 1) k=2 n=6 e(T)=2 e_C=76 fix(sigma^j)=[76, 2] X mod q^k-1 = 39 + 37q^1 | X = 39 + 37q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 3) k=2 n=6 e(T)=1 e_C=19 fix(sigma^j)=[19, 1] X mod q^k-1 = 10 + 9q^1 | X = 10 + 9q^1 | sieves sigma: True
+[tk-row] T=(0, 0, 0, 7) k=2 n=8 e(T)=6 e_C=2484 fix(sigma^j)=[2484, 6] X mod q^k-1 = 1245 + 1239q^1 | X = 1245 + 1239q^1 | sieves sigma: True
+[tk-row] T=(0, 0, 2, 3) k=2 n=8 e(T)=5 e_C=1725 fix(sigma^j)=[1725, 5] X mod q^k-1 = 865 + 860q^1 | X = 865 + 860q^1 | sieves sigma: True
+[tk-row] T=(0, 0, 2, 7) k=2 n=8 e(T)=3 e_C=621 fix(sigma^j)=[621, 3] X mod q^k-1 = 312 + 309q^1 | X = 312 + 309q^1 | sieves sigma: True
+[tk-row] T=(0, 0, 3, 3) k=2 n=8 e(T)=4 e_C=1104 fix(sigma^j)=[1104, 4] X mod q^k-1 = 554 + 550q^1 | X = 554 + 550q^1 | sieves sigma: True
+[tk-row] T=(0, 0, 3, 7) k=2 n=8 e(T)=2 e_C=276 fix(sigma^j)=[276, 2] X mod q^k-1 = 139 + 137q^1 | X = 139 + 137q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 1, 1) k=2 n=8 e(T)=6 e_C=2484 fix(sigma^j)=[2484, 6] X mod q^k-1 = 1245 + 1239q^1 | X = 1245 + 1239q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 1, 5) k=2 n=8 e(T)=3 e_C=621 fix(sigma^j)=[621, 3] X mod q^k-1 = 312 + 309q^1 | X = 312 + 309q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 1, 7) k=2 n=8 e(T)=2 e_C=276 fix(sigma^j)=[276, 2] X mod q^k-1 = 139 + 137q^1 | X = 139 + 137q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 3, 3) k=2 n=8 e(T)=2 e_C=276 fix(sigma^j)=[276, 2] X mod q^k-1 = 139 + 137q^1 | X = 139 + 137q^1 | sieves sigma: True
+[tk-row] T=(0, 1, 3, 7) k=2 n=8 e(T)=1 e_C=69 fix(sigma^j)=[69, 1] X mod q^k-1 = 35 + 34q^1 | X = 35 + 34q^1 | sieves sigma: True
+[tk-prop2] ok   Proposition 2 (and F = 0 off the types d^(k/d)): 23/23
+[tk-star] ok   closed form (star) == Molien sum with brute-force F: 23/23
+[tk-thmA] ok   X_P in N[q], X_P(1) = e_C(P): 23/23
+[tk-sigma] ok   X_P sieves sigma: 23/23
+[tk-km1] ok   X_P sieves the (k-1)-cycle: 8/8
+[tk-cand] maj B_P: sieves sigma on 4/23
+[tk-cand] maj B_P shifted: sieves sigma on 4/23
+[tk-cand] inv B_P: sieves sigma on 4/23
+[tk-cand] maj lexmin: sieves sigma on 5/23
+[tk-cand] block q-cumulant: sieves sigma on 4/23
+[tk-cand] X_C * majT^k: sieves sigma on 12/23
+[tk-cand] X_C * sum_x q^maj x (pattern): sieves sigma on 23/23
+[tk-pattern] pattern x RSW product == X_P mod q^k-1 on 23/23; equal as polynomials on 12/23
+[tk-allg] (regular, free) = ('mixed', True): 5 classes, X^G sieves 0
+[tk-allg] (regular, free) = (False, False): 1 classes, X^G sieves 1
+[tk-allg] (regular, free) = (False, True): 49 classes, X^G sieves 25
+[tk-allg] (regular, free) = (True, False): 31 classes, X^G sieves 31
+[tk-allg] (regular, free) = (True, True): 33 classes, X^G sieves 33
+[tk-allg] non-regular non-free: T=(0,) k=8 cycles=[2, 6] X^G sieves True F(g^j)=[5040, 0, 0, 48, 0, 0]
+[springer] n=2: P with Aut!=1: 1, regular classes 1, non-regular 0, mixed 0; X^G sieves regular 1, non-regular 0; non-regular non-free 0
+[springer] n=3: P with Aut!=1: 3, regular classes 4, non-regular 0, mixed 0; X^G sieves regular 4, non-regular 0; non-regular non-free 0
+[springer] n=4: P with Aut!=1: 11, regular classes 17, non-regular 1, mixed 0; X^G sieves regular 17, non-regular 0; non-regular non-free 0
+[springer] n=5: P with Aut!=1: 44, regular classes 76, non-regular 5, mixed 0; X^G sieves regular 76, non-regular 4; non-regular non-free 0
+[springer] n=6: P with Aut!=1: 216, regular classes 413, non-regular 27, mixed 0; X^G sieves regular 413, non-regular 15; non-regular non-free 0
+[springer] n=7: P with Aut!=1: 1315, regular classes 2637, non-regular 122, mixed 0; X^G sieves regular 2637, non-regular 95; non-regular non-free 0
+[springer-nf] ok   normal form g' has the same F(g^j) and order as g
+[springer-all] ok   X^G sieves every regular class: 3148/3148
+[springer-ord] ok   some regular eigenvalue has order o(g) on every regular class
+[springer-conn] ok   connected P: X^G == (e(P)/r)[r]_q
+[thmC] ok   Theorem C criterion == CSP of X_P: 206/206 classes (171 with n <= 7, 35 T^(+k) with n = 8)
+[thmC] (a) fails on 8 classes (6 with (b) holding); CSP fails on all of them: True
+[thmC-F] ok   F(w_d) = phi(d) d^(#cycles-1) e_C(one copy per cycle), F = 0 if cycle lengths differ: 206/206
+[cand] disconnected (P, g != 1) classes, n <= 7: 889 (874 free, 15 non-free)
+[cand] fake degree X_P: non-free 15/15, free 290/874
+[cand] maj B_P: non-free 4/15, free 604/874
+[cand] maj B_P shifted: non-free 4/15, free 604/874
+[cand] inv B_P: non-free 1/15, free 815/874
+[cand] maj lexmin: non-free 3/15, free 537/874
+[cand] block q-cumulant: non-free 2/15, free 351/874
+[cand-nonfree] P=(0, 0) cycles=[2] inW=True F=[1, 1]
+[cand-nonfree] P=(0, 0, 0) cycles=[3] inW=True F=[2, 2, 2]
+[cand-nonfree] P=(0, 0, 0, 0) cycles=[2, 2] inW=True F=[6, 2]
+[cand-nonfree] P=(0, 0, 0, 0) cycles=[4] inW=True F=[6, 2, 2, 2]
+[cand-nonfree] P=(0, 0, 1, 2) cycles=[2, 2] inW=True F=[5, 1]
+[cand-nonfree] P=(0, 0, 0, 0, 0) cycles=[5] inW=True F=[24, 4, 4, 4, 4]
+[cand-nonfree] P=(0, 0, 0, 0, 0, 0) cycles=[2, 2, 2] inW=True F=[120, 8]
+[cand-nonfree] P=(0, 0, 0, 0, 0, 0) cycles=[3, 3] inW=True F=[120, 6, 6]
+[cand-nonfree] P=(0, 0, 0, 0, 0, 0) cycles=[6] inW=True F=[120, 2, 6, 8, 6, 2]
+[cand-nonfree] P=(0, 0, 0, 0, 3, 12) cycles=[2, 2, 2] inW=True F=[76, 2]
+[cand-nonfree] P=(0, 0, 0, 0, 4, 8) cycles=[2, 2, 2] inW=True F=[100, 4]
+[cand-nonfree] P=(0, 0, 0, 1, 2, 4) cycles=[3, 3] inW=True F=[74, 2, 2]
+[cand-nonfree] P=(0, 0, 1, 1, 2, 2) cycles=[2, 2, 2] inW=True F=[76, 2]
+[cand-nonfree] P=(0, 0, 1, 2, 5, 10) cycles=[2, 2, 2] inW=True F=[19, 1]
+[cand-nonfree] P=(0, 0, 0, 0, 0, 0, 0) cycles=[7] inW=True F=[720, 6, 6, 6, 6, 6, 6]
+[obst] n=2: posets where F is not a function of o(g): 0
+[obst] n=3: posets where F is not a function of o(g): 0
+[obst] n=4: posets where F is not a function of o(g): 1
+[obst] n=5: posets where F is not a function of o(g): 0
+[obst] n=6: posets where F is not a function of o(g): 4
+[obst]   n=4 P=(0, 0, 0, 0) orders with several F values: {2: {0, 2}}
+[obst-A4] ok   A_4: F((12)) = 0, F((12)(34)) = 2
+[neca] single type, k=3..16, |T|=1..6: 84 (k, m), 690 pairs (k, m, e) with e > k; X_P(zeta_e) has a root y >= 1 in 0 of them
+[neca] two types with gcd(k1,k2) > 1: 81 (k1,k2,m1,m2), 207 bad e; root y >= 1 possible in 0
+[neca] two types: X_P(zeta_e) as a polynomial in y has a root 0 < y < 1 in 9 cases (so nonvanishing is not a formal consequence of (star)): [(1, 1, 4, 4, 6), (1, 2, 4, 4, 6), (1, 3, 4, 4, 6), (2, 1, 4, 4, 6), (2, 2, 4, 4, 6), (2, 3, 4, 4, 6), (3, 1, 4, 4, 6), (3, 2, 4, 4, 6), (3, 3, 4, 4, 6)]
+[neca] ok   X_P(zeta_e) != 0 for every e > max k_i in range, for every y = prod e(T_i)^(k_i/g) >= 1
+[done] 0 failures
