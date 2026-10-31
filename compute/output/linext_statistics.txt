@@ -1,0 +1,24 @@
+posets by n: {1: 1, 2: 2, 3: 5, 4: 16, 5: 63, 6: 318, 7: 2045}
+PASS [faces] w_k = sum_(|pi|=k) e(Q_pi); Omega(P,m) = sum_k w_k C(m,k) = sum_w C(m+n-1-des w, n); 2450 posets n<=7
+PASS CONTROL [faces-ctl] des+1 in place of des (refuted on 2450 cases)
+PASS [omegaC-mu] mu(pi,1) = (-1)^(|pi|-1) e_C(Q_pi) for every pi in OP(P), all posets n<=6
+PASS [omegaC-conn] P connected: Omega_C(P,m) = Omega(P,m)
+PASS [omegaC-f] Omega_C(P,m) = #{f: upper component-union level sets contain T}, every T, m<=3, n<=6 (2220 cases)
+PASS [omegaC-des] descent expansion of Omega_C, every component T: all natural labellings n<=5, canonical labelling n<=7 (3666 cases)
+PASS [omegaC-h] h-vector of Omega_C nonnegative on all 2450 posets n<=7
+PASS CONTROL [omegaC-ctl-noT] drop the condition (gives Omega, not Omega_C) (refuted on 516 cases)
+PASS CONTROL [omegaC-ctl-max] condition 'max f attained on T' (refuted on 322 cases)
+PASS CONTROL [omegaC-ctl-BP] naive sum over w with last block containing T of C(m+n-1-des w, n) (refuted on 708 cases)
+PASS CONTROL [omegaC-ctl-first] naive sum over w with first block containing T (refuted on 811 cases)
+PASS [chi-restr] Prop. Z: (-1)^n e(P) = sum_(sigma >= kappa) (-1)^|sigma| mu(0,sigma), 2449 posets
+PASS CONTROL [chi-full] unrestricted (-1)^(n-1) chi_P(-1) = e(P) (holds on only 6 of 2449) (refuted on 2443 cases)
+PASS [maj-rot] maj(w_2..w_n w_1) = maj(w) - cdes(w) mod n, all w in S_n, n<=7
+PASS [maj-equi] disconnected P, gcd(component sizes)=1: maj equidistributed mod n on Lin P (485 posets)
+PASS CONTROL [maj-equi-ctl] same claim for connected P (refuted on 1871 cases)
+PASS CONTROL [maj-KW-dim] #{w in Lin P: maj = 1 mod n} = e_C(P) (refuted on 2443 cases)
+PASS [maj-rot-closure] n prime: maj equidistributed mod n on Lin(P)C_n (each residue e_C(P) times)
+PASS CONTROL [maj-rot-closure-ctl] same claim for composite n (refuted on 211 cases)
+     rotation-closure equidistribution holds, by n: {2: 2, 3: 5, 4: 10, 5: 63, 6: 113, 7: 2045}
+PASS [sign-union] |I(P)| = |[n; m]_(q=-1)| * prod |I(T_i)| on 503 disconnected posets n<=7
+PASS CONTROL [sign-ctl-eC] |I(P)| = e_C(P) = |mu(OP(P))| (refuted on 2443 cases)
+FAILURES: none
