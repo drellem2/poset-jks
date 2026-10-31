@@ -1,0 +1,33 @@
+INFO n=2: 2 naturally labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=3: 7 naturally labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=4: 40 naturally labelled posets, 0 with an all-ascent class, 0.0s
+INFO n=5: 357 naturally labelled posets, 2 with an all-ascent class, 0.1s
+INFO n=6: 4824 naturally labelled posets, 46 with an all-ascent class, 3.5s
+INFO n=7: 96428 naturally labelled posets, 1032 with an all-ascent class, 224.9s
+INFO iso classes seen (n>=2): n=2: 2, n=3: 5, n=4: 16, n=5: 63, n=6: 318, n=7: 2045
+INFO classes with s=1, and all-ascent classes by s: {'s=1 (never all-ascent)': 13067323, 2: 7458, 3: 135, 4: 2}
+INFO largest A in one labelling: 46
+EXAMPLE first labelling with A>0: n=5 rel=[(0, 1), (3, 4)] h_C=[1, 9, 9, 1] min-des=[1, 9, 8, 2] A=1
+PASS class = orbit cap Lin = cut rotations: 14676790 cases, 0 failures
+PASS class size = s: 14676790 cases, 0 failures
+PASS [F] Moebius h_C = Theorem F: 101658 cases, 0 failures
+PASS [M] sum mindes - sum j h_j = A: 101658 cases, 0 failures
+PASS [iff] f == h_C  <=>  A == 0: 101658 cases, 0 failures
+PASS [sum] f(1) = h_C(1): 101658 cases, 0 failures
+PASS [Mob-sanity] connected: des on Lin P = Moebius h_C (Stanley): 65955 cases, 0 failures
+PASS [aa-a] 1 <= d <= n-s: 7595 cases, 0 failures
+PASS [aa-b] every member has des = d: 7595 cases, 0 failures
+PASS [aa-c] sum_kappa N_T = C(m+n-d,n) - C(m+n-d-s,n-s): 195585 cases, 0 failures
+PASS [aa-c] = sum_i C(M-i,n-i) (audit form): 195585 cases, 0 failures
+PASS [L] agree below d0: 1080 cases, 0 failures
+PASS [L] h_d0 - f_d0 = sum (s-1) > 0: 1080 cases, 0 failures
+PASS [D-e2e] sum_{Lin P} N_T = Moebius Omega_C (labellings with A>0): 24935 cases, 0 failures
+PASS CONTROL [ctl-mindes-all] min-des = h_C on every natural labelling: refuted on 1080 of 101658
+PASS CONTROL [ctl-moment-0] sum mindes = sum j h_j: refuted on 1080 of 101658
+PASS CONTROL [ctl-lin] des on Lin P = h_C for disconnected P: refuted on 35703 of 35703
+PASS CONTROL [ctl-aa-single] all-ascent class gives single binomial C(m+n-1-d,n): refuted on 113675 of 195585
+PASS CONTROL [ctl-F-s1] F with (1-x)^(s-1): refuted on 1080 of 1080
+PASS CONTROL [ctl-F-d] F with x^d for x^(d-1): refuted on 1080 of 1080
+PASS CONTROL [ctl-L-s] h_d0 - f_d0 = sum s (not s-1): refuted on 1080 of 1080
+INFO total time 228.5s
+ALL PASS
