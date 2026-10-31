@@ -1,0 +1,38 @@
+[CTL]
+  poset counts n=0..7: [1, 1, 2, 5, 16, 63, 318, 2045] (OEIS A000112 [1, 1, 2, 5, 16, 63, 318, 2045]): True
+  mu(Pi_n) = (-1)^(n-1)(n-1)! for n = 1..6: True
+  Pi_4^(1234) = chain 0 < 13|24 < 1, mu 0, middle uncomplemented: True
+  Pi_4: 15 elements, mu -6, complemented: True
+  OP(3-chain) has 4 elements, mu 1: True
+  F6 example: acyclic join is 1, partition join is 03|12: True
+  fast join / meet = brute-force lub / glb on 61545 pairs of elements, n <= 5: True (0 bad)
+[COUNT] lattices OP(P)^{+-tau}, all tau (no conjugacy reduction), posets up to iso
+  n=3: automorphism pairs 12, anti-automorphism pairs 8, total 20
+  n=4: automorphism pairs 59, anti-automorphism pairs 37, total 96
+  n=5: automorphism pairs 325, anti-automorphism pairs 153, total 478
+  n=6: automorphism pairs 2060, anti-automorphism pairs 922, total 2982
+  total n=3..6: 3576
+[SWEEP]
+  n=3: posets 5; pairs +9 -5; zeros +3 -2; rows W+1/W+2/W-1/W-2/W-3/W-4 = 3 / 0 / 0 / 0 / 0 / 2; cl(Fix g) complemented on zeros 2 {'W-4': 2}; LemmaC 38 (32 complemented); K_A complements 23 (all w <= c); failures 0  [0s]
+  n=4: posets 16; pairs +34 -16; zeros +16 -6; rows W+1/W+2/W-1/W-2/W-3/W-4 = 15 / 1 / 3 / 0 / 1 / 2; cl(Fix g) complemented on zeros 4 {'W+2': 1, 'W-1': 1, 'W-4': 2}; LemmaC 150 (106 complemented); K_A complements 121 (all w <= c); failures 0  [0s]
+  n=5: posets 63; pairs +144 -30; zeros +80 -19; rows W+1/W+2/W-1/W-2/W-3/W-4 = 80 / 0 / 7 / 0 / 2 / 10; cl(Fix g) complemented on zeros 11 {'W-1': 1, 'W-4': 10}; LemmaC 595 (357 complemented); K_A complements 771 (all w <= c); failures 0  [0s]
+  n=6: posets 318; pairs +758 -108; zeros +432 -49; rows W+1/W+2/W-1/W-2/W-3/W-4 = 432 / 0 / 23 / 2 / 14 / 10; cl(Fix g) complemented on zeros 15 {'W-1': 5, 'W-4': 10}; LemmaC 3028 (1766 complemented); K_A complements 8595 (all w <= c); failures 0  [6s]
+  n=7: posets 2045; pairs +4804 -246; zeros +2758 -154; rows W+1/W+2/W-1/W-2/W-3/W-4 = 2758 / 0 / 69 / 0 / 30 / 55; cl(Fix g) complemented on zeros 61 {'W-1': 6, 'W-4': 55}; LemmaC 17977 (10113 complemented); K_A complements 10554 (w = cl(Fix g^k)); failures 0  [375s]
+  totals: {'pairs+': 5749, 'pairs-': 405, 'zeros+': 3289, 'zeros-': 230}; failures 0
+[NEG] positive controls: each MUST report failures
+  witness cl(Fix g) in every row: 32 failures ['W_COMPLEMENTED'] -> control fires
+  criterion without (TA4): 24 failures ['CRIT'] -> control fires
+  plain partition join: 12 failures ['CR_V'] -> control fires
+  antichain 9, tau=(9), W=cyc(tau^2) (1 blocks): 1 candidate x, 1 complements (expect >0)
+  antichain 9, tau=(9), W=cyc(tau^6) (3 blocks): 1 candidate x, 0 complements (expect 0)
+[LC] Lemma C by brute force, no posets, n <= 7
+  3142 (sigma, kappa, h) triples, 3142 agree, 2055 complemented
+[BIG] row W-1 with m odd not squarefree (antichain; covers every P with this tau, see note)
+  tau=(9,) (n=9, TA1 fails) k=6 h=3: W has 3 blocks; 1 tau-stable x with x^W=0; 0 complements; Lemma C(ii) predicts uncomplemented [0.0s]
+  tau=(18,) (n=18, TA1 fails) k=6 h=6: W has 6 blocks; 2 tau-stable x with x^W=0; 0 complements; Lemma C(ii) predicts uncomplemented [0.0s]
+  tau=(9, 18) (n=27, TA1 fails) k=6 h=6: W has 9 blocks; 11 tau-stable x with x^W=0; 0 complements; Lemma C(ii) predicts uncomplemented [0.0s]
+  tau=(9, 18) (n=27, TA1 fails) k=2 h=2: W has 3 blocks; 11 tau-stable x with x^W=0; 9 complements; Lemma C(ii) predicts complemented [0.0s]
+  tau=(9, 9, 18) (n=36, TA1 fails) k=6 h=6: W has 12 blocks; 119 tau-stable x with x^W=0; 0 complements; Lemma C(ii) predicts uncomplemented [0.1s]
+  tau=(25,) (n=25, TA1 fails) k=10 h=5: W has 5 blocks; 1 tau-stable x with x^W=0; 0 complements; Lemma C(ii) predicts uncomplemented [0.0s]
+[time] 390s
+ALL CHECKS PASSED
