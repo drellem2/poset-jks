@@ -6,13 +6,14 @@ four questions: cyclic sieving, promotion against rotation classes, counting
 identities, and the structure of C[Lin P]/R_P. Every claim is tagged
 **PROVEN**, **COMPUTED**, **CONJECTURED**, **CITED** or **OPEN**. The new
 PROVEN claims (§§1–5) were audited independently, by re-derivation, before
-this note was finalised. §8 records the audit.
+this note was finalised. §8 records that audit and a second, later one,
+[AudLE].
 
 ## Verdict
 
 | # | Question | Verdict | Main results |
 |---|---|---|---|
-| 1 | Cyclic sieving with a q-analogue from the theory | **NO.** The theory gives no q-analogue. One CSP result comes out of its cut structure. | H_P sits in one degree and PLie(P) has no grading (§3.1). Theorem U (**PROVEN**): promotion CSPs are closed under disjoint union, with polynomial [n; m]_q · ∏ X_T(q). Rhoades and RSW positive controls pass. A sweep of all posets with n ≤ 7 (**COMPUTED**) shows that the maj polynomial is not a CSP polynomial in general. |
+| 1 | Cyclic sieving with a q-analogue from the theory | **NO.** Neither H_P nor PLie(P) carries a grading or a cyclic action that yields a q-analogue; we found none (§3.1). One CSP result comes out of its cut structure. | H_P sits in one degree and PLie(P) has no grading (§3.1). Theorem U (**PROVEN**): promotion CSPs are closed under disjoint union, with polynomial [n; m]_q · ∏ X_T(q). Rhoades and RSW positive controls pass. A sweep of all posets with n ≤ 7 and ∂^n = id (**COMPUTED**) shows that the maj polynomial is not a CSP polynomial in general there: it fails on 49 of them. |
 | 2 | Rotation classes and promotion | **PARTIAL.** The classes and the promotion orbits are tightly linked. The Lie module does not see promotion. | Lemma P (**PROVEN**): on a disjoint union, promotion rotates the shuffle pattern. Theorem R (**PROVEN**): if ∂_T^{\|T\|} = id on every component T, each cyclic class lies inside one promotion orbit. Proposition O (**PROVEN**): #promotion orbits ≤ e_C(P) for every P. Proposition E (**PROVEN**): orbits equal classes iff P is a chain or an antichain. Proposition D (**PROVEN**): promotion descends to PLie(P) iff P is connected or an antichain. No equivariant bijection exists in general (the counts differ). |
 | 3 | New identities, recursions or bounds for e(P), e_C(P) | **NO** for e(P). For e_C(P), every identity reduces to known or elementary facts. | Proposition F (**PROVEN**): e_C(P) = ∏_T e(T) · e_C(⊔_T C_{\|T\|}), so e_C carries no information beyond the e(T) and the component sizes. The Jenča–Sarkoci contraction recursion is, for connected P, the elementary "successor of a minimal element" count. Weisner identities hold (**COMPUTED** on 43,767 pairs) but cost more than counting Lin P. Fixed-class counts and the Burnside orbit count are **PROVEN** and **COMPUTED**; they are not new counts of e(P). |
 | 4 | Basis, filtration or grading of C[Lin P]/R_P with combinatorial meaning | **YES** for one multigrading (restriction to components). **NO** for descents, major index, number of blocks and jumps. | Theorem M (**PROVEN**): C[Lin P]/R_P ≅ C[∏_T Lin T] ⊗ Q(m), where Q(m) is the shuffle quotient of the pattern words. B_P is the set of canonical rotation representatives. R_P is homogeneous for des or maj on 0 of 108 disconnected posets with n ≤ 6 (**COMPUTED**). |
@@ -42,9 +43,10 @@ Tags: [Thm] = `notes/poset_jks_theorem.tex`; [ME] =
 evacuation*, Electron. J. Combin. 16(2) (2009) R9; [Rh] = B. Rhoades,
 *Cyclic sieving, promotion, and representation theory*, JCTA 117 (2010)
 38–76; [RSW] = V. Reiner, D. Stanton, D. White, *The cyclic sieving
-phenomenon*, JCTA 108 (2004) 17–50; [JS] = Jenča–Sarkoci, JCTA 122 (2014).
-Bibliographic details of [St09], [Rh] and [RSW] are from memory; verify
-them before citing.
+phenomenon*, JCTA 108 (2004) 17–50; [JS] = Jenča–Sarkoci, JCTA 122 (2014);
+[AudLE] = `notes/audit_linear_extensions.md` (mg-5dbdd), the independent
+audit of this note, verdict HOLDS WITH FIXES. [AudLE] verified the
+bibliographic details of [St09], [Rh] and [RSW].
 
 ## 0. Conventions
 
@@ -83,8 +85,9 @@ and B exchanged.
 *Proof.* Run the toggles in order. Just before τ_i, position i holds a
 "carried" letter c, and position i+1 holds w_{i+1}. At the start, c = w_1.
 If c ∥ w_{i+1}, then τ_i swaps them: w_{i+1} moves to position i, and c is
-carried on. Otherwise c < w_{i+1}, since c precedes w_{i+1} in a linear
-extension. Then nothing moves, c stays in position i, and w_{i+1} becomes
+carried on. Otherwise c < w_{i+1}. Indeed, the partially toggled word
+τ_{i−1} ∘ ⋯ ∘ τ_1(w) is a linear extension, because τ_1, …, τ_{i−1} only
+swapped incomparable adjacent letters, and c precedes w_{i+1} in it. Then nothing moves, c stays in position i, and w_{i+1} becomes
 the carried letter. The carried letter changes only to a letter comparable
 to it, so it stays in the component of w_1. Suppose w_1 ∈ A. Every B-letter
 is incomparable to the carried letter, so each one moves one position to
@@ -126,8 +129,9 @@ applied to the poset A, ∂_A^{|A|} = ∏_{T ⊆ A} ∂_T^{|T|} = id. By P2,
 The hypothesis holds for chains, antichains, rectangles [Rh], and every
 poset whose promotion has order dividing its size. It cannot be dropped:
 refinement fails on 6 of the 401 disconnected posets with n ≤ 7 that violate
-it (**COMPUTED**). The smallest example is V ⊔ V, with V = {0 < 1, 0 < 2},
-where ∂_V has order 2 ∤ 3. When the hypothesis holds, each orbit is a union
+it (**COMPUTED**). A smallest example is V ⊔ V, with V = {0 < 1, 0 < 2},
+where ∂_V has order 2 ∤ 3. V ⊔ Λ and Λ ⊔ Λ, with Λ = V^op, are also
+smallest (n = 6) [AudLE §2]. When the hypothesis holds, each orbit is a union
 of classes.
 
 **Proposition O (PROVEN for every finite P; COMPUTED `[propO]` on all 2450
@@ -182,9 +186,11 @@ module C[Lin P] (Cor. `cor:connected`), on which promotion acts but carries
 no Lie information. On disconnected non-antichain P, promotion does not act.
 
 *The other model.* Promotion preserves R_P, and so acts on
-C[Lin P]/R_P ≅ H_P ⊗ sgn, on 9 of the 108 disconnected posets with n ≤ 6.
-These 9 are the two-component posets whose components are both chains,
-together with the 2-antichain (**COMPUTED** `[descend-R]`). The "if"
+C[Lin P]/R_P, on 9 of the 108 disconnected posets with n ≤ 6. These 9 are
+the two-component posets whose components are both chains
+(**COMPUTED** `[descend-R]`); the 2-antichain C_1 ⊔ C_1 is one of them. The
+identification C[Lin P]/R_P ≅ H_P ⊗ sgn ([Thm] Thm `thm:S`(d)) needs
+n ≥ 3, so for C_1 ⊔ C_1 only the C[Lin P]/R_P side makes sense. The "if"
 direction is **PROVEN**: for two chains, R_P = C · Σ_{w ∈ Lin P} w, and ∂
 permutes Lin P. The "only if" direction is **CONJECTURED** beyond n ≤ 6.
 Note that ∂ = γ does *not* preserve Sh_3 = R_{A_3}.
@@ -232,7 +238,7 @@ count of fixed classes, not a CSP for a cyclic action on Lin P.
 
 ### 3.2 A CSP result from the cut structure
 
-**Theorem U (PROVEN given [RSW]; COMPUTED on all 45 qualifying
+**Theorem U (PROVEN given [RSW] Prop. 4.4; COMPUTED on all 45 qualifying
 disconnected posets with n ≤ 7, `[union]`).** Let P have components
 T_1, …, T_k with |T_i| = m_i. Suppose each (Lin T_i, C_{m_i} = ⟨∂_{T_i}⟩,
 X_i(q)) exhibits the CSP. Then (Lin P, C_n = ⟨∂⟩, X(q)) exhibits the CSP,
@@ -244,13 +250,16 @@ If every X_i is the shifted maj polynomial q^{−min maj} Σ_{u ∈ Lin T_i} q^{
 then so is X. This is MacMahon–Stanley for disjoint unions, checked
 `[union maj factorisation]`.
 
-*Proof.* By P1, ∂^d fixes (p; x) iff rot_d p = p and ∂_{T_i}^{a_i} x_i = x_i
+*Proof.* First, ∂^n = id on Lin P, so C_n = ⟨∂⟩ acts: by P1,
+∂^n = ∏_i ∂_{T_i}^{m_i}, and each factor is the identity because
+C_{m_i} = ⟨∂_{T_i}⟩ acts on Lin T_i. By P1, ∂^d fixes (p; x) iff rot_d p = p and ∂_{T_i}^{a_i} x_i = x_i
 for all i. If p has period dividing e = gcd(d, n), then a_i = d m_i / n,
 which is an integer when such p exist. So
 
   |Fix ∂^d| = #{p ∈ Pat(m) : rot_d p = p} · ∏_i |Fix ∂_{T_i}^{d m_i / n}|.
 
-The first factor is [n; m]_q at q = ω_n^d ([RSW], **CITED**). When it is
+The first factor is [n; m]_q at q = ω_n^d ([RSW] Prop. 4.4 with a = 1,
+equivalently eq. (4.5); **CITED**). When it is
 nonzero, n/e divides every m_i, and ω_{m_i}^{d m_i/n} = ω_n^d. So the second
 factor is ∏ X_i(ω_n^d). When the first factor is zero, the identity holds
 trivially. ∎
@@ -362,7 +371,10 @@ homogeneous, and every piece of the quotient is the same space:
 where u, v run over the pattern words on complementary nonempty sets of
 letters. Each letter keeps all its copies on one side. Aut(P) acts through
 its action on components: it permutes isomorphic components and acts by
-Aut(T) inside each one. dim Q(m) = e_C(⊔ C_{m_i}). For m = (1^k), Q is
+Aut(T) inside each one. The action on C[∏_i Lin T_i] ⊗ Q(m) is diagonal:
+g relabels the restriction tuple and permutes the pattern letters by the
+permutation it induces on components. It is not a product of separate
+actions on the two factors. dim Q(m) = e_C(⊔ C_{m_i}). For m = (1^k), Q is
 C[S_k]/Sh_k ≅ Lie_k.
 
 *Proof.* A generator s ⧢ t of R_P, with S a union of components,
@@ -390,12 +402,16 @@ rank = e_C on all 108 posets, checks it against [Thm] Thm `thm:S`(b). Of the
 | restriction tuple | 108 |
 | number of blocks | 5 (the antichains, where it is constant) |
 | jumps (adjacent incomparable pairs) | 5 (the antichains, where it is constant) |
-| des (natural labelling) | 0 |
-| maj (natural labelling) | 0 |
+| des (one natural labelling per poset) | 0 |
+| maj (one natural labelling per poset) | 0 |
 | first letter | 0 |
 | a random 2-colouring (control) | 1 |
 
-So there is **no grading by descents or major index**. The only natural
+Des and maj were tested for one natural labelling per poset; the des and
+maj of an individual word depend on which natural labelling is chosen.
+[AudLE §8] tested every natural labelling of every disconnected poset with
+n ≤ 5 (603 pairs) and found R_P homogeneous on none. So there is **no
+grading by descents or major index**. The only natural
 grading found is Theorem M.
 
 *Basis.* B_P is the set of canonical rotation representatives: the unique
@@ -447,6 +463,14 @@ separate code (exact linear algebra over GF(p)).
   to the disjoint union of chains.
 - **A further finding.** For three or more chains, for example m = (2,1,1),
   ∂ does not preserve R_P. This agrees with the conjecture in §6.1.
+- **Second audit.** [AudLE] re-derived every PROVEN claim and recomputed
+  them with its own code (n ≤ 7, and n ≤ 6 for the R_P linear algebra).
+  Verdict HOLDS WITH FIXES. Its fixes F1–F7 are wording, scope and
+  citation, none of which changes a result, and they are applied here:
+  F1 (Lemma P proof), F2 (Theorem R), F3 (§2, the other model), F4
+  (Theorem U: [RSW] Prop. 4.4, and ∂^n = id from P1), F5 (Theorem M, the
+  diagonal action), F6 (verdict table scope) and F7 (the homogeneity
+  table's labelling).
 
 ## Reproduce
 
