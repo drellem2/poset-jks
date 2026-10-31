@@ -1,0 +1,68 @@
+[brute] Lemma 1 support, (F_d), Lemma 2, Prop F vs brute force
+  A3             n= 3 K= 3 g=3 e_C=    2 X=ok
+  A4             n= 4 K= 4 g=4 e_C=    6 X=ok
+  A5             n= 5 K= 5 g=5 e_C=   24 X=ok
+  A6             n= 6 K= 6 g=6 e_C=  120 X=ok
+  C2^2           n= 4 K= 2 g=2 e_C=    5 X=ok
+  C2^4           n= 8 K= 4 g=4 e_C= 2118 X=ok
+  C3^2           n= 6 K= 2 g=2 e_C=   19 X=ok
+  V^2            n= 6 K= 2 g=2 e_C=   76 X=ok
+  V^2+A2         n= 8 K= 4 g=2 e_C= 3192 X=ok
+  Lam^2+C2^2     n=10 K= 4 g=2 e_C=93864 X=ok
+  A2+C2^2        n= 6 K= 4 g=2 e_C=  100 X=ok
+  A4+C2^2        n= 8 K= 6 g=2 e_C= 4200 X=ok
+  A3+C2^3        n= 9 K= 6 g=3 e_C=24864 X=ok
+  (F_d) on supported classes: 30 checked; Lemma 2: 13/13
+  control (no phi(d), A5): disagrees = True
+  e_C(C2+C2) = 5 (control: 6 rejected)
+  X_A3 = [1, 0, 0, 1]
+[ratio] Lemma 4: A_d/A_1 <= (phi(d)/d) K mult_d(K)/mult_d(n) <= phi(d) K/d
+  699 (vector, y, d) checks, all within both bounds
+  antichains A_4,A_6,A_8,A_9: A_d/A_1 = phi(d) exactly
+  control y=1/50, k=(4,4), m=(1,2): A_4/A_1 = 4.292 > bound 0.02727: True
+[yroot] k=(4,4), m=(1,2), e=6: X_P(zeta_6) vs y
+  coordinate 1: ['-12', '50', '0', '1048410']
+  coordinate z: ['0', '0', '0', '0']
+  coordinates proportional: True; scaled to lead 1048410: ['-12', '50', '0', '1048410']
+  real root in (0,1): y in [0.0218312, 0.0218312]
+[phase] Lemma 3 (float sanity): closed form at zeta vs phase form
+  685/685 agree to 1e-8
+[ineq] Lemma 5, rigorous, via Chebyshev root brackets
+  enclosure widths <= 1.65e-41
+  (ii) 2 sin(pi/18) <= 0.347296 < 0.3474; max h(K), K=2..9: 0.7241 at K=4
+  (iii) K_e for e=7..17: [127, 55, 33, 23, 17, 13, 11, 9, 7, 4, 4]
+  (iii') e=6: h6(36..39) = [0.6416, 0.6594, 0.6772, 0.6951]
+  (iv) finite range: 490 triples (e, K, g)
+  triples with upper bound >= 1: [(6, 3, 3), (6, 8, 4), (7, 12, 6), (8, 7, 7)]
+  of these, enclosure straddles 1: [(6, 3, 3, 1.0, 1.0)]
+  largest upper bound among the rest: 0.7500
+  (6,3,3) exact value: phi(3)*(K/3)*s^3/s_3 = 2*1*1/2 = 1 (attained)
+  redundancy: 1701 further triples beyond the thresholds (e<=25), all < 1 by direct enclosure: True
+  control (no phase restriction): 17 triples >= 1; A5 at e=6 sum in [4.000000, 4.000000]
+[exc] Lemma 6 bounds with mid-term of Lemma 4 at minimal n
+  (6, 3, 3): D^-=[3], min n=6: sum <= 0.0667
+  (6, 8, 4): D^-=[4], min n=12: sum <= 0.00909
+  (7, 12, 6): D^-=[2, 6], min n=18: sum <= 0.00148
+  (8, 7, 7): D^-=[7], min n=14: sum <= 8.92e-06
+  k-vectors forced: (6,3,3)->(3), (6,8,4)->(4,4), (7,12,6)->(6,6), (8,7,7)->(7)
+  members (3)m=2,3; (4,4)m=(1,2),(1,3); (6,6)m=(1,2); (7)m=2; y=1,2: nonzero
+  (6, 3, 3): e divides some element order of W: False
+  (6, 8, 4): e divides some element order of W: True
+  (7, 12, 6): e divides some element order of W: False
+  (8, 7, 7): e divides some element order of W: False
+[exact] Theorem G: Phi_e does not divide X_P for e >= 6, e > max k_i
+  190 type vectors; 17319 (vector, y, e) triples with e >= 6, e > max k
+  zeros found: [([3], [1], 1, 6)]   (expected exactly A_3 at e=6)
+  positive control B(ii) zeros detected: 2125/2125
+  e < 6, e > max k_i: zeros (vector, y, e, y realizable?) [([3], [1], 2, 4, False)] (outside Theorem G's scope)
+  A_7 at e=8: vanishes = False
+[corH] Corollary H: bad e never a prime power; brute-force CSP failure
+  max k_i <= 9, parts <= max k_i: every bad e is not a prime power and >= 6
+  A5                         cycles [[2, 3]], N=6: CSP holds = False; (bad e, F, X(zeta_e)=0) = [(6, 0, False)]
+  A7                         cycles [[2, 5]], N=10: CSP holds = False; (bad e, F, X(zeta_e)=0) = [(10, 0, False)]
+  A7                         cycles [[3, 4]], N=12: CSP holds = False; (bad e, F, X(zeta_e)=0) = [(12, 0, False)]
+  A3+C2^3                    cycles [[3], [2, 1]], N=6: CSP holds = False; (bad e, F, X(zeta_e)=0) = [(6, 0, False)]
+  A4+C2^2                    cycles [[3, 1], [2]], N=6: CSP holds = False; (bad e, F, X(zeta_e)=0) = [(6, 0, False)]
+  V^2+A2... (2)(2) control   cycles [[2], [2]], N=2: CSP holds = True; (bad e, F, X(zeta_e)=0) = []
+
+FAILURES: none
