@@ -1,0 +1,33 @@
+# n = 1 done: posets 1
+# n = 2 done: posets 2
+# n = 3 done: posets 5
+# n = 4 done: posets 16
+# n = 5 done: posets 63
+# n = 6 done: posets 318
+# n = 7 done: posets 2045
+# posets 2450, (P, T) pairs 3107
+# K_(C,T) depends on T for 492 posets; first: (3, [(1, 2)], ['1*F[] + 1*F[2]', '1*F[] + 1*F[1]'])
+PASS [T-dep] K_(C,T)(P) depends on T for some P (492 posets)
+PASS [Fpos-all-T] K_(C,T)(P) F-positive for all 3107 pairs (P, T), n <= 7
+PASS [spec] principal specialisation = Omega_C from Moebius, m = 0..n+1, 3107 pairs
+PASS [lamT] lambda_T natural, separated, (E_T); |Des R_T| = cdes - 1 (3107 pairs)
+PASS [thmQ] lambda_T: K_(C,T) = sum_kappa F_Des(R_T kappa) on all 3107 pairs (P, T), n <= 7
+PASS [E=>X=>X'] (E_T) implies (X_T) implies (X'_T), n <= 6: 8267 labelled pairs; E 5833, X 5894, X' 5894
+#  X' but not X: 0 labelled pairs; X but not E: 61
+PASS [E*] (E*_T) iff (X_T) on all 8267 labelled pairs, n <= 6
+# under lambda_T, L_T(P) = Lin(P') for a poset P' on 2257 of 3107 pairs; first exception ([(0, 2), (0, 3)], 13)
+PASS [thmQ] every natural labelling with (E_T), n <= 6: 5833 labelled pairs
+PASS [thmQ-iff] identity holds iff (X'_T), every natural labelling n <= 6: holds on 5894, fails on 2373 labelled pairs
+PASS [perclass-X'] under (X'_T) each class contributes one F: 236891 classes
+PASS [propD-qsym] sum_w G_T(w) = K_(C,T), 6996 separated labelled pairs
+PASS [bij] T-anchored iff Stanley word has T's piece last, lambda_T, n <= 5, m = 3: 8600 maps
+# separated labelled pairs 6996: classes 317680, not a single F 23117, not F-positive 23117
+#  first non-F-positive class: ([], 2, [(0, 1, 2), (1, 2, 0), (2, 0, 1)], '1*F[] + 1*F[1] + -1*F[2]')
+PASS CONTROL [ctl-perclass-sep] each class contributes a single F, separated labelling, every T (refuted on 1805 of 6996)
+PASS CONTROL [ctl-perclass-Fpos] each class contribution is F-positive, separated labelling, every T (refuted on 1805 of 6996)
+PASS CONTROL [ctl-mindes] sum_kappa F_Des(lex-first min-des rotation), lambda_0, every T (refuted on 766 of 3107)
+#  first: ([], 1)
+PASS CONTROL [ctl-anyrep] sum_kappa F_Des(first listed rotation), lambda_T (refuted on 766 of 3107)
+#  first: ([], 4, '1*F[] + 1*F[1]')
+PASS CONTROL [ctl-Mneg] M_(2) is F-positive (refuted on 1 of 1)
+ALL CLAIMS HOLD
