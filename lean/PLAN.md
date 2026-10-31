@@ -45,6 +45,12 @@ This directory holds a Lean 4 + Mathlib project. It states the main theorem of
   exact (`exact_of_retract`), through the exact homotopy identity (`bd_s_add_s_bd_eq`) and its
   filtered form (`bd_s_add_s_bd`) (§4.5). The general `p` is done, so the fallback split S2a/S2b
   was not needed. The sorry count is unchanged.
+* **Step 10 (Route C, slice S3)** proves the decomposition of `notes/lean_js_route.md` §3.2 and
+  Proposition C (`Complement.lean`): in a poset `L` with a finite set `A` of minimal elements,
+  `L ∖ A` acyclic and the upper sets `(x₀, ·)`, `x₀ ∈ A`, acyclic one degree lower (or nonempty,
+  in degree 0) give `H̃_d(Δ(L)) = 0`. At `π_a` (`a` minimal, `n ≥ 3`), `A` is the set of the
+  `π_ab`, `L ∖ A` is a cone retraction by `x ↦ x ∧ π_a` (Lemma K), and `(π_ab, 1̂)` is the proper
+  part of `OP(P/π_ab)` (`propC`, `propC_zero_pa`) (§4.6). The sorry count is unchanged.
 
 **Current status.** One `sorry` remains: the proof of `jencaSarkoci_homology` (cited input A,
 the homological content of Jenča–Sarkoci). Everything else is proved. Of the stated theorems,
@@ -79,6 +85,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/Bridge.lean` | words `Fin n ≃ α` ↔ lists (`toL`, the injective linear map `toLmap`, `toLmap_shuffle`, `map_Sh_le`); `rot`, `prefixSet`, `coset`, `IsLinExt` in list terms; `rot_rot`, `rot_card`, `wEζ_rot` (moved here from `Test.lean`) (**all proved**) |
 | `PosetJKS/ChainTools.lean` | general chain tools (Route C, slice S1, `notes/lean_js_route.md` §6): pushforward along order embeddings (`chainMapEmb`, a chain map, injective, functorial; `chainMap` is the case of an automorphism); `H̃_d = 0` iff cycles are boundaries (`subsingleton_redHom_iff`), invariance under order isomorphisms (`subsingleton_redHom_congr`), vanishing for an empty poset; insertion of an element into a chain (`insertAt`, via `Fin.insertNth`) and its face lemmas (`face_insertAt_self`, `face_insertAt_succAbove`, `bd_single_insertAt`) (**all proved**) |
 | `PosetJKS/ConeRetract.lean` | Lemma K (Route C, slice S2, `notes/lean_js_route.md` §3.1): the data `ConeRetraction` (`t`, `p`); low/high elements of a chain (`nlow`, `hcount`, `low_iff`), `τ c` (`tau`), the chain `c ∪ {τ c}` (`cone`), the homotopy `s`; the exact homotopy identity (`bd_s_add_s_bd_eq`, `bd_s_add_s_bd_of_hcount_eq_zero`), the filtration `F` and its filtered form (`bd_s_add_s_bd`); exactness (`exact_of_retract`) (**all proved**) |
+| `PosetJKS/Complement.lean` | The decomposition at `π_a` and Proposition C (Route C, slice S3, `notes/lean_js_route.md` §3.2): `consMap`/`strip` and the identities (iv)–(vi) (`strip_bd`, `mem_range_of_strip_eq_zero`, `strip_cons`, `strip_cons_of_ne`); Proposition C for a finite set of minimal elements (`propC_core`, `propC_succ`, `propC_zero`); at `π_a`: `Aset`, `Q`, `pab_minimal`, the cone retraction `coneQ` and `Q_acyclic`, Lemma U on the open interval (`upperIso`), and `propC`, `propC_zero_pa`, `redHom_zero_subsingleton` (**all proved**) |
 | `PosetJKS/Milestone.lean` | first milestone: Theorem S(a), (b), Theorem Ψ, Corollary Ψ.1, and on words: Lemma 4 (`card_inB`, split into `inB_coset_inj` and `exists_inB_coset`), Lemma 6 (`wd_mem_SB_sup_R`), `pr_P(w e_ζ) = s_ζ(w)/n` (`pr_wEζ`) (**all proved**) |
 | `PosetJKS/LieTrace.lean` | M2: the basis `{w_C e_ζ}` of `PLie(P)` (`basisPLie`, `finrank_PLie`), `r_g(C)` is realised by every word of a fixed class (`classRot_spec`), and Lemma `lem:liechar` (`trace_actPLie`) (**all proved**) |
 | `PosetJKS/OPLattice.lean` | M2: Weisner's theorem (`weisner`); `OP(P)` closed under meets (`isOrderPreserving_inf`); the orbit partition `O_g` (`orbitSetoid`), order-preserving and `g`-fixed; the join `x ∨ O_g` (`joinOrbit`), order-preserving, `g`-fixed and the join in `OP(P)^g`; `x ∨ O_g = 1̂` iff `g` is transitive on blocks, and then blocks are unions of components; Weisner in `OP(P)^g` with `a = O_g` (`sum_mu_join_eq_top`) (**all proved**) |
@@ -91,7 +98,7 @@ grep -rn "^  sorry" PosetJKS               # the sorry list below
 | `PosetJKS/MainTheorem.lean` | the main theorem (characterconj), (mainiso), (closed); the two character lemmas; the cited inputs in the form the proofs use them (`character_identity` proved from `prop_Mside` and `prop_Lside`, `closed_formula` from `character_identity` and `prop_Lside`, `main_iso` from `trace_HP`, `trace_PLie`, `character_identity` (§4.2), `trace_HP` from `trace_HP_of_vanishing` and `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` from `mu_bot_top_eq_chainSum` (§4.3); only `jencaSarkoci_homology` is `sorry`) |
 | `PosetJKS/CharacterIso.lean`, `MainIso.lean`, `CharacterIsoTest.lean` | step 6, see §4.2 |
 | `PosetJKS/Hall.lean`, `Hopf.lean`, `TraceHP.lean` | step 7, see §4.3 |
-| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); the Lemma K controls (`isEmpty_coneRetraction_antichain2`, `vRetraction`, `redHom_V_subsingleton`); see `AUDIT_FAITHFULNESS.md` |
+| `PosetJKS/Test.lean` | positive controls of the definitions on small posets against `compute/` (including `Mt`: `Mt_chain2`), `∂ ∘ ∂ = 0` (`bd_comp_bd`), two counterexamples at `n = 0`, and `H̃_0 ≠ 0` for a two-point antichain (`redHom_antichain2_ne`); the Lemma K controls (`isEmpty_coneRetraction_antichain2`, `vRetraction`, `redHom_V_subsingleton`); the Proposition C control (`propC_zero_control`); see `AUDIT_FAITHFULNESS.md` |
 | `scripts/PrintAxioms.lean` | `#print axioms` for every stated theorem and the main controls |
 | `scripts/CheckDeps.lean` | for given theorems, whether `jencaSarkoci_homology`, `hall_mu_eq_reducedEuler` or `trace_HP` occurs in the transitive closure of the constants they use, with two positive controls that do use them |
 
@@ -663,6 +670,60 @@ antichain, `t = ⊥`, `p ≡ ⊥` is a cone retraction other than the identity (
 Lemma K gives `H̃_d(Δ(V)) = 0` for every `d` (`redHom_V_subsingleton`). So the hypotheses are
 satisfiable and not vacuous.
 
+### 4.6 S3 (Route C): the decomposition at `π_a` and Proposition C
+
+Slice S3 of `notes/lean_js_route.md` §6. New file `Complement.lean` (imports
+`ConeRetract.lean`). Sorry count unchanged (1, `jencaSarkoci_homology`). No existing statement
+changed. The mathematics is §3.2 of the note as audited (`notes/audit_lean_js_route.md` §§3–4).
+
+**General part.** `L` is any poset and `A : Set L` a finite set of minimal elements (`IsMin`).
+`Upper x₀ = {y // x₀ < y}`.
+
+* `consChain x₀ e` (`Fin.cons`) prepends `x₀` to a chain `e` of `Upper x₀`; `tailChain`
+  inverts it on chains with least element `x₀` (`consChain_tailChain`). Faces:
+  `face_consChain_zero` (deleting `x₀` gives `e`, pushed into `L`) and `face_consChain_succ`
+  (`face (x₀ :: e) (i+1) = x₀ :: face e i`). Hence `bd_single_consChain`:
+  `∂[x₀ :: e] = [e] − cons_{x₀}(∂[e])`, the equivalent form of (iv) in the audit.
+* `consMap x₀ m = lmapDomain consChain` and `strip x₀ m = lcomapDomain consChain`. So
+  `strip x₀` is literally the coordinate projection `w ↦ (e ↦ w (x₀ :: e))` (`strip_apply`), and
+  kills every basis chain whose least element is not `x₀` (`strip_single_of_ne`).
+* (iv) `strip_bd`: `strip_{x₀} (∂ x) = −∂ (strip_{x₀} x)` for `x₀` minimal. Minimality is used
+  for the chains not starting at `x₀`: none of their faces can start at `x₀`.
+* (v) `mem_range_of_strip_eq_zero`: if `strip_{x₀} w = 0` for all `x₀ ∈ A`, then `w` is the
+  pushforward of a chain of `{x // x ∉ A}` (`Finsupp.mapDomain_comapDomain`). Minimality puts an
+  element of `A` only at the bottom of a chain (§3.2 (ii)).
+* (vi) `strip_cons` and `strip_cons_of_ne`.
+* `propC_core`: if `{x // x ∉ A}` is acyclic in degree `d` and, for each `x₀ ∈ A`, `strip_{x₀}`
+  of every `d`-cycle of `L` is a boundary of `Upper x₀`, then `H̃_d(Δ(L)) = 0`. The proof is the
+  note's: `w = z + Σ_{x₀} ∂ cons_{x₀}(e_{x₀})` has all strips `0`, so it comes from a cycle of
+  `L ∖ A`, which bounds. `propC_succ` (`d = m + 1`; the strips are cycles by (iv), and
+  `H̃_m(Upper x₀) = 0`) and `propC_zero` (`d = 0`; `Upper x₀` nonempty, `range_bd_zero`) are the
+  two forms of Proposition C.
+
+**At `π_a`** (`a` minimal, `n ≥ 3`).
+
+* `Aset a = {x : ProperOP α | ∃ b, x.1 = pab a b}` (finite, `finite_Aset`), and
+  `Q a = {x // x ∉ Aset a}`, i.e. the `x` with `x.1 ≠ π_ab` for all `b` (`not_mem_Aset_iff`).
+  `pab_minimal` (§3.2 (ii)) via Lemma M(b) (`inf_pa_eq_bot_iff'`).
+* `coneQ : ConeRetraction (Q a)`: `t = π_a` (`paP`), `p x = x ⊓ π_a` (§3.2 (i)). It lands in
+  `Q a` by `inf_pa_ne_bot` (Lemma M(b)) and `eq_bot_of_le_pa` (`π_ab ∧ π_a = 0̂`), and is a
+  proper partition since `π_a ≠ 1̂` (`pa_ne_top`). `Q_acyclic` is Lemma K.
+* `upperIso : {y : ProperOP α // pab a b < y.1} ≃o ProperOP (Contr a b h)`: Lemma U on the open
+  interval. Forward is `σ ↦ σ.comap Contr.val`, backward is the pullback along `Contr.proj`
+  (`isOrderPreserving_comap_proj`, as in `pullOP`). The inverse identities are
+  `comap_val_comap_proj` and `comap_proj_comap_val` (the surjectivity argument of `mu_pab_top`),
+  and `comap_proj_bot` (`0̂ ↦ π_ab`) handles the endpoints. `exists_upperIso` matches it with
+  `Upper x` for `x ∈ Aset a` (and gives `b ≠ a`, since `π_aa = 0̂`, `pab_self`).
+* `propC`: if `H̃_m(Δ(\widehat{OP(P/π_ab)})) = 0` for every `b ≠ a` with `π_ab ∈ OP(P)`, then
+  `H̃_{m+1}(Δ(\widehat{OP(P)})) = 0`. `propC_zero_pa`: if every `\widehat{OP(P/π_ab)}` is nonempty,
+  then `H̃_0 = 0`; `redHom_zero_subsingleton` discharges this for `n ≥ 4` (`Contr.card_eq`,
+  `properOP_nonempty`). These are the inputs of Theorem V (slice S4).
+
+**Control** (`Test.lean`): `propC_zero_control`. On the two-point antichain with `A = {inl}`,
+`A` consists of minimal elements and `L ∖ A = {inr}` is a cone (so acyclic), but `(inl, ·)` is
+empty and `H̃_0 ≠ 0` (`redHom_antichain2_ne`). So the nonemptiness hypothesis of `propC_zero`
+cannot be dropped, and Proposition C is not vacuous in degree 0.
+
 ## 5. `#print axioms` (output of `lake env lean scripts/PrintAxioms.lean`)
 
 ```
@@ -763,6 +824,16 @@ satisfiable and not vacuous.
 'PosetJKS.Test.isEmpty_coneRetraction_antichain2' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.isEmpty_coneRetraction_antichain2'' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PosetJKS.Test.redHom_V_subsingleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.strip_bd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.mem_range_of_strip_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.propC_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.pab_minimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Q_acyclic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.upperIso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.propC' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.propC_zero_pa' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.redHom_zero_subsingleton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PosetJKS.Test.propC_zero_control' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 Every listed declaration depends only on `propext`, `Classical.choice`, `Quot.sound`

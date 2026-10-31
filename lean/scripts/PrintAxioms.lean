@@ -114,3 +114,15 @@ import PosetJKS
 #print axioms PosetJKS.Test.isEmpty_coneRetraction_antichain2
 #print axioms PosetJKS.Test.isEmpty_coneRetraction_antichain2'
 #print axioms PosetJKS.Test.redHom_V_subsingleton
+
+-- Route C, slice S3: the decomposition at `π_a` and Proposition C (`PosetJKS/Complement.lean`)
+#print axioms PosetJKS.strip_bd
+#print axioms PosetJKS.mem_range_of_strip_eq_zero
+#print axioms PosetJKS.propC_core
+#print axioms PosetJKS.pab_minimal
+#print axioms PosetJKS.Q_acyclic
+#print axioms PosetJKS.upperIso
+#print axioms PosetJKS.propC
+#print axioms PosetJKS.propC_zero_pa
+#print axioms PosetJKS.redHom_zero_subsingleton
+#print axioms PosetJKS.Test.propC_zero_control

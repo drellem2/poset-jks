@@ -1,6 +1,7 @@
 import PosetJKS.MainTheorem
 import PosetJKS.ChainTools
 import PosetJKS.ConeRetract
+import PosetJKS.Complement
 
 /-!
 # Positive controls for the definitions, and two counterexamples
@@ -755,6 +756,33 @@ def vRetraction : ConeRetraction (WithBot (Unit ⊕ Unit)) where
 /-- Lemma K on `V`: adding a cone point kills the `H̃_0` of the antichain. -/
 theorem redHom_V_subsingleton (d : ℕ) : Subsingleton (redHom (WithBot (Unit ⊕ Unit)) d) :=
   vRetraction.exact_of_retract d
+
+/-! Control for Proposition C (`Complement.lean`, Route C slice S3). -/
+
+/-- On the two-point antichain with `A = {inl}`, every hypothesis of `propC_zero` holds except
+the nonemptiness of `(inl, ·)`: `A` consists of minimal elements and `L ∖ A = {inr}` is a cone.
+The conclusion fails (`H̃_0 ≠ 0`, `redHom_antichain2_ne`), so that hypothesis is needed. -/
+theorem propC_zero_control :
+    (∀ x ∈ ({Sum.inl ()} : Set (Unit ⊕ Unit)), IsMin x) ∧
+      Subsingleton (redHom {x : Unit ⊕ Unit // x ∉ ({Sum.inl ()} : Set (Unit ⊕ Unit))} 0) ∧
+      IsEmpty (Upper (Sum.inl () : Unit ⊕ Unit)) ∧ ¬ Subsingleton (redHom (Unit ⊕ Unit) 0) := by
+  have hanti : ∀ a b : Unit ⊕ Unit, a ≤ b → a = b := by
+    rintro (⟨⟩ | ⟨⟩) (⟨⟩ | ⟨⟩) h <;> simp_all
+  refine ⟨fun x _ y hy => (hanti _ _ hy).ge, ?_, ⟨fun y => y.2.ne (hanti _ _ y.2.le)⟩,
+    redHom_antichain2_ne⟩
+  have hQ : ∀ x : {x : Unit ⊕ Unit // x ∉ ({Sum.inl ()} : Set (Unit ⊕ Unit))},
+      x = ⟨Sum.inr (), by simp⟩ := by
+    rintro ⟨(⟨⟩ | ⟨⟩), hx⟩
+    · exact absurd rfl hx
+    · rfl
+  let K : ConeRetraction {x : Unit ⊕ Unit // x ∉ ({Sum.inl ()} : Set (Unit ⊕ Unit))} :=
+    { t := ⟨Sum.inr (), by simp⟩
+      p := id
+      monotone := monotone_id
+      le_self := fun _ => le_rfl
+      le_t := fun x => (hQ x).le
+      eq_of_le := fun _ _ => rfl }
+  exact K.exact_of_retract 0
 
 end Test
 
