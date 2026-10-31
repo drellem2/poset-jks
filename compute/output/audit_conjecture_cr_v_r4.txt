@@ -1,0 +1,8 @@
+== [R4] rank 4 ==
+  C6 x C4: 37867 top-cones (the g = 1 pairs, skipped)
+  R^4 C6 x C4                  d=4 n=12 pairs    533 zeros   60 compl    509 (non-mod    271) CR_V cex  36 | P 384 Q 0 K 705 Ln 102 (iv 36) R3 0
+  CR_V counterexamples by (diag g, |M|, dim L): {((-1, -1, 1, 1), 9, 2): 12, ((1, 1, -1, -1), 11, 2): 12, ((1, 1, -1, -1), 10, 1): 12}
+  A4 (+-S5) classes            d=4 n=10 pairs    403 zeros  342 compl     61 (non-mod     41) CR_V cex   0 | P 236 Q 268 K 910 Ln 94 (iv 32) R3 0
+  A4: 4231 top-cones (the g = 1 pairs, skipped)
+ALL CHECKS PASSED
+EXIT 0

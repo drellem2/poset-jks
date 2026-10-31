@@ -1,0 +1,23 @@
+== [R<=3] exhaustive sweep in rank <= 3, every group element, every stable cone ==
+  A2 (+-S3)                    d=2 n= 3 pairs     48 zeros   18 compl     30 (non-mod      0) CR_V cex   0 | P 24 Q 6 K 65 Ln 12 (iv 6) R3 0
+  B2                           d=2 n= 4 pairs     56 zeros    8 compl     48 (non-mod      0) CR_V cex   0 | P 32 Q 8 K 83 Ln 16 (iv 0) R3 0
+  hexagon 6 lines R^2 (D6)     d=2 n= 9 pairs    228 zeros   36 compl    192 (non-mod      0) CR_V cex   0 | P 192 Q 24 K 269 Ln 24 (iv 6) R3 0
+  A3 (+-S4)                    d=3 n= 6 pairs    576 zeros  206 compl    370 (non-mod    214) CR_V cex   0 | P 336 Q 142 K 891 Ln 144 (iv 12) R3 48
+  B3                           d=3 n= 9 pairs   1680 zeros  510 compl   1170 (non-mod    942) CR_V cex   0 | P 1200 Q 494 K 2749 Ln 336 (iv 0) R3 48
+  B3 minus {z=0} (B2 x +-1)    d=3 n= 8 pairs    944 zeros  208 compl    736 (non-mod    632) CR_V cex   0 | P 672 Q 158 K 1279 Ln 208 (iv 24) R3 16
+  A3 minus a plane             d=3 n= 5 pairs    192 zeros   20 compl    172 (non-mod     82) CR_V cex   0 | P 104 Q 12 K 227 Ln 64 (iv 4) R3 8
+  generic 4 (x,y,z,x+y+z) S3x+-1 d=3 n= 4 pairs    156 zeros   14 compl    142 (non-mod     94) CR_V cex   0 | P 72 Q 0 K 198 Ln 48 (iv 12) R3 12
+  C6 x <z->-z> seeds (1,0,1)   d=3 n= 6 pairs    396 zeros    6 compl    390 (non-mod    326) CR_V cex   0 | P 300 Q 0 K 422 Ln 72 (iv 6) R3 12
+  D6 x <z->-z> seeds (1,0,0),(0,0,1),(1,1,2) d=3 n=10 pairs   2904 zeros  444 compl   2460 (non-mod   2324) CR_V cex   0 | P 2472 Q 444 K 3865 Ln 336 (iv 12) R3 24
+  D4 x <z->-z> seeds (1,0,1),(1,1,0) d=3 n= 6 pairs    416 zeros   62 compl    354 (non-mod    214) CR_V cex   0 | P 256 Q 46 K 559 Ln 112 (iv 12) R3 16
+  C3 rotation x +-1 seeds (1,2,0),(1,0,0) d=3 n= 6 pairs    258 zeros    0 compl    258 (non-mod    214) CR_V cex   0 | P 180 Q 0 K 276 Ln 60 (iv 0) R3 6
+  D3 diag seeds (1,0,0),(1,1,1),(1,-1,0) d=3 n= 7 pairs    594 zeros   94 compl    500 (non-mod    452) CR_V cex   0 | P 450 Q 94 K 721 Ln 108 (iv 0) R3 6
+  C4 x z->-z seeds (1,2,1)     d=3 n= 4 pairs     96 zeros    4 compl     92 (non-mod     64) CR_V cex   0 | P 48 Q 0 K 109 Ln 32 (iv 4) R3 8
+  hexagon 12 type: D6 lines + axis seeds (1,0,1),(0,0,1),(1,2,0) d=3 n=13 pairs   7284 zeros  174 compl   7110 (non-mod   6972) CR_V cex   0 | P 6852 Q 174 K 7908 Ln 384 (iv 0) R3 12
+  random C3 seeds [(1, -2, -2)] d=3 n= 3 pairs     33 zeros    0 compl     33 (non-mod      0) CR_V cex   0 | P 12 Q 0 K 33 Ln 12 (iv 0) R3 3
+EXIT 143
+# Run stopped by SIGTERM (exit 143 above) after 2h55m, during the second random family.
+# Completed: the 16 fixed families and random family 1 of 14, with no FAIL line (check()
+# prints "FAIL:" at once on any failure). UNRUN: random families 2-14 of random_rank3(7, 14).
+# Totals over the completed rows: pairs 15861 zeros 1804 compl 14057 (non-mod 12530)
+# CR_V cex 0 | P 13202 Q 1602 K 19654 Ln 1968 (iv 98) R3 219
