@@ -21,7 +21,9 @@ EC1 = Stanley, *Enumerative Combinatorics* vol. 1, 2nd ed.
 every claim with independent code (Ω_C from the Möbius recursion, all 2450
 posets with n ≤ 7). Theorem H, Lemmas 1 and 2, H′, Proposition B and
 Proposition D all HOLD, and nothing fails. They are tagged **PROVEN +
-audited** below. H″ stays OPEN. The two wording fixes of [AudH] §5 (the
+audited** below. H″ was later proved in [H″] = `notes/h_double_prime.md`
+and audited in `notes/audit_h_double_prime.md`, so it is now **PROVEN +
+audited** too. The two wording fixes of [AudH] §5 (the
 Dependence paragraph, and the B_P naming caveat in §3) are applied.
 
 ## Verdict
@@ -49,7 +51,7 @@ Two consequences:
 | L2 | Separated labelling ⇒ first ≤ last in every piece, no all-ascent class, min-des = cdes − 1; separated labellings exist (λ_0) | **PROVEN + audited** (§2.3; [AudH] §3) |
 | D | Descent expansion of Ω_C from the Möbius definition (= Cor. Ω-des of [LS]) | **PROVEN + audited** (§1; [AudH] §1) |
 | H′ | Any natural labelling with no all-ascent class: min-des on Cyc(P) realises h_C | **PROVEN + audited** (same proof; [AudH]); COMPUTED on 5182 labelled posets n ≤ 6 `[mindes-all]` |
-| H″ | Converse of H′: an all-ascent class makes min-des fail | COMPUTED on all 48 such labelled posets n ≤ 6 `[ctl-mindes-asc]`, confirmed in [AudH]; **OPEN** in general |
+| H″ | Converse of H′: an all-ascent class makes min-des fail. With H′: for any natural labelling, min-des realises h_C iff no cyclic class is all-ascent | **PROVEN + audited** ([H″] = `notes/h_double_prime.md`; audit `notes/audit_h_double_prime.md`); COMPUTED here on all 48 such labelled posets n ≤ 6 `[ctl-mindes-asc]`, and in [H″] on all 1080 with n ≤ 7 |
 | B | Under the labelling λ_0 (§3), des on B_P realises h_C. Here B_P is the set of rotations whose last piece contains the component of label n − 1; the first-piece convention (piece of label 0 first) also works. This B_P is fixed by label and is not [LE]'s B_P (§3) | **PROVEN + audited** (§3; [AudH] §4); COMPUTED on 2450 posets `[lambda0-BP]` |
 | ✗ | cdes − 1 for an arbitrary natural labelling | **FALSE**: refuted on 787 of 5230 labelled posets n ≤ 6 `[ctl-cdes-any]` (positive control) |
 | ✗ | des on B_P (last or first convention) for an arbitrary separated labelling | **FALSE**: refuted on 346 of 4443 `[ctl-BP-last]`, `[ctl-BP-first]` |
@@ -292,9 +294,14 @@ cdes − 1 fails on 787 of 5230 labelled posets `[ctl-cdes-any]`.
 3041 | 2 has pieces 3041 and 2. Both junctions, 1 → 2 and 2 → 3, are
 ascents. Min-des gives (1, 9, 8, 2) ≠ h_C = (1, 9, 9, 1). All 48 labelled
 posets with n ≤ 6 that have an all-ascent class fail `[ctl-mindes-asc]`.
-That the failure is forced in general is **OPEN** (H″). An all-ascent class
-contributes Σ_{i=0}^{s−1} C(M − i, n − i), which is not a single binomial,
-but the other classes could in principle compensate.
+The failure is forced in general: this is H″, **PROVEN + audited** in
+`notes/h_double_prime.md` (audit `notes/audit_h_double_prime.md`). An
+all-ascent class contributes Σ_{i=0}^{s−1} C(M − i, n − i), which is not a
+single binomial, and the other classes cannot compensate. So H′ and H″
+together give an iff: for any natural labelling, min-des realises h_C iff
+no cyclic class is all-ascent. The proof goes through the exact formula
+F, h_C(x) = Σ_{κ not all-ascent} x^{mindes κ} + Σ_{κ all-ascent} x^{d_κ−1}(1 − (1−x)^{s_κ}),
+valid for any natural labelling.
 
 ## 3. Why des on B_P failed, and when it works
 
@@ -381,7 +388,10 @@ is all-ascent.
   on Cyc(P) is the same for every separated natural labelling. Separation
   is needed: the positive control above shows the distribution changes
   without it.
-- **OPEN.** The converse H″. A shelling of the upper intervals of OP(P), or
+- *The converse H″* is **PROVEN + audited** (`notes/h_double_prime.md`,
+  audit `notes/audit_h_double_prime.md`): min-des realises h_C iff no
+  cyclic class is all-ascent.
+- **OPEN.** A shelling of the upper intervals of OP(P), or
   of the cone C_P read from 1̂, that realises h_C (lead 3). Symmetry or
   unimodality of h_C (A_4 gives 1, 4, 1, but C_3 ⊔ C_1 gives 1, 2). A
   reciprocity law ([LS] §2.3).

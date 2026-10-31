@@ -346,7 +346,10 @@ Grinberg–Reiner Prop. 7.1.7(iii) + 5.2.19); the D_T reading (Lemma R2) is
 NOT FOUND. The palindromicity classification S′ is PROVEN + audited
 (`notes/palindromic_h_c.md`, audited in `notes/audit_palindromic_h_c.md`):
 its connected case is KNOWN (EC1 Cor. 3.15.18(b), Beck–Sanyal Ex. 6.27),
-and the "only if" for disconnected P is proved there. Still OPEN:
+and the "only if" for disconnected P is proved there. The converse H″ of
+[H] is PROVEN + audited (`notes/h_double_prime.md`, audited in
+`notes/audit_h_double_prime.md`): for any natural labelling, min-des
+realises h_C iff no rotation class is all-ascent. Still OPEN:
 unimodality U of h_C (COMPUTED n ≤ 7). For connected P, U is the open
 unimodality of W_P for naturally labelled P. h_C is not real-rooted in general (Stembridge's
 poset, n = 17, EC1 Fig. 3.88); unimodality is not refuted.

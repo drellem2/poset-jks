@@ -1073,6 +1073,24 @@ one cyclic descent, and $\{132\}$, with two. Theorem~H gives
 $\binom{m+2}3+\binom{m+1}3$, which is again $5$ at $m=2$.
 \end{example}
 
+The separation condition is exactly what is needed, in the following
+sense. Take any natural labelling. Read each rotation class as a cyclic
+word, and call a place between two cyclically adjacent letters a
+\emph{junction} if cutting the word there gives a linear extension.
+Count each class by the least number of descents among its linear
+extensions. Then this count has the $h$-vector of $\Omega_C$ as its
+distribution if and only if no rotation class with at least two linear
+extensions has all its junctions ascending (the smaller letter before
+the larger).\PROVEN\footnote{\src{notes/h_double_prime.md}, Theorem~H$''$
+with Theorem~H$'$ of \src{notes/h_vector_omega_c.md}; audited in
+\src{notes/audit_h_double_prime.md} (it holds). A separated labelling
+never has such a class. Example: $1<2$, $4<5$ and an isolated point $3$.
+The class of $41523$ contains the linear extensions $41523$ and $34152$,
+its junctions $2\to3$ and $3\to4$ both ascend, and the count gives
+$(1,9,8,2)$, while the $h$-vector is $(1,9,9,1)$. Checked by computer,
+from the M\"obius definition, on all $101658$ naturally labelled posets
+with $n\le7$.}
+
 For the antichain, Theorem~H says that the cyclic descents of cyclic
 permutations follow the Eulerian distribution of $S_{n-1}$; this case is
 known (Petersen, after Fulman).\footnote{Prior art, from

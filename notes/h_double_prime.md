@@ -13,11 +13,13 @@ literature. **OPEN** means not settled.
 
 Sources: [H] = `notes/h_vector_omega_c.md`, for the notation of §0, the
 descent expansion (Proposition D) and the per-class lemma (Lemma 1), all
-PROVEN + audited in [AudH] = `notes/audit_h_vector_omega_c.md`.
+PROVEN + audited in [AudH] = `notes/audit_h_vector_omega_c.md`. This note
+was itself audited in [AudH″] = `notes/audit_h_double_prime.md`.
 
 ## Verdict
 
-**H″ is PROVEN** (not yet audited). There is an exact formula for h_C(P)
+**H″ is PROVEN + audited** in [AudH″], which found that L3, F, M, L and
+the assembly of H″ all hold. There is an exact formula for h_C(P)
 under an *arbitrary* natural labelling. The formula shows that each
 all-ascent class moves the first moment of the min-des distribution by
 exactly one. Together with H′ this gives:
@@ -31,11 +33,11 @@ classes.
 
 | # | Statement | Status |
 |---|---|---|
-| L3 | An all-ascent class with s pieces and d = Σ_k des(c_k) has 1 ≤ d ≤ n − s and min-des = d. For every component T, its rotations contribute C(m+n−d, n) − C(m+n−d−s, n−s) to the descent expansion | **PROVEN** (§1); COMPUTED `[aa-d]`, `[aa-class]` |
-| F | Any natural labelling, n ≥ 2: h_C(x) = Σ_{κ not all-ascent} x^{mindes κ} + Σ_{κ all-ascent} x^{d_κ−1}(1 − (1−x)^{s_κ}) | **PROVEN** (§2); COMPUTED on all 101658 natural labellings of all posets with n ≤ 7 `[formula]` |
-| M | Σ_κ mindes(κ) − Σ_j j·h_j = A, i.e. f′(1) − h_C′(1) = A | **PROVEN** (§3); COMPUTED `[moment]` |
-| L | If A > 0 and d_0 is the least d over all-ascent classes, then h_{d_0} − f_{d_0} = Σ (s_κ − 1) over the all-ascent classes with d_κ = d_0, which is > 0 | **PROVEN** (§3) |
-| H″ | A > 0 ⇒ the min-des distribution ≠ h_C(P). With H′: min-des realises h_C ⇔ A = 0 | **PROVEN** (§3); COMPUTED on all 1080 labelled posets with n ≤ 7 that have an all-ascent class (2 at n = 5, 46 at n = 6, 1032 at n = 7) `[iff]` |
+| L3 | An all-ascent class with s pieces and d = Σ_k des(c_k) has 1 ≤ d ≤ n − s and min-des = d. For every component T, its rotations contribute C(m+n−d, n) − C(m+n−d−s, n−s) to the descent expansion | **PROVEN + audited** (§1); COMPUTED `[aa-d]`, `[aa-class]` |
+| F | Any natural labelling, n ≥ 2: h_C(x) = Σ_{κ not all-ascent} x^{mindes κ} + Σ_{κ all-ascent} x^{d_κ−1}(1 − (1−x)^{s_κ}) | **PROVEN + audited** (§2); COMPUTED on all 101658 natural labellings of all posets with n ≤ 7 `[formula]` |
+| M | Σ_κ mindes(κ) − Σ_j j·h_j = A, i.e. f′(1) − h_C′(1) = A | **PROVEN + audited** (§3); COMPUTED `[moment]` |
+| L | If A > 0 and d_0 is the least d over all-ascent classes, then h_{d_0} − f_{d_0} = Σ (s_κ − 1) over the all-ascent classes with d_κ = d_0, which is > 0 | **PROVEN + audited** (§3) |
+| H″ | A > 0 ⇒ the min-des distribution ≠ h_C(P). With H′: min-des realises h_C ⇔ A = 0 | **PROVEN + audited** (§3); COMPUTED on all 1080 labelled posets with n ≤ 7 that have an all-ascent class (2 at n = 5, 46 at n = 6, 1032 at n = 7) `[iff]` |
 | ✗ | min-des realises h_C on every natural labelling | **FALSE**: refuted on 1080 of 101658 `[ctl-mindes-all]` (positive control) |
 | ✗ | F with (1−x)^{s−1}, or with x^d in place of x^{d−1} | **FALSE**: refuted on 1080 of 1080 `[ctl-formula-s1]`, `[ctl-formula-d]` |
 | ✗ | M with right-hand side 0 | **FALSE**: refuted on 1080 of 101658 `[ctl-moment-0]` |
@@ -84,6 +86,13 @@ broken at junction J_i has des = d + jd − δ_i.
   The hypotheses hold because a = M − i ≥ m + n − 1 − (n − s) − (s − 1) = m ≥ 0
   by (a), and b = n − i ≥ n − s + 1 ≥ 1. ∎
 
+*Simplifications noted in the audit [AudH″] §1.* In (c) nothing depends on
+T. Every junction is an ascent, so the re-indexing that puts T in c_s
+leaves the junction data unchanged, and all s rotations contribute for
+every T. Also, Pascal's rule with b ≥ 1 is a polynomial identity in the
+upper index, so the restriction a ≥ 0 is not needed for the telescoping;
+the bound a ≥ m is still what makes each N_T a genuine count.
+
 Every binomial in (c) has a nonnegative top, for every m ≥ 0. So (c) is
 also an identity of polynomials in m, where C(t, k) means
 t(t − 1)⋯(t − k + 1)/k!. The same holds for Lemma 1 of [H]: its top
@@ -122,9 +131,12 @@ kind of class gives x^{mindes κ}. The term C(m + n − d, n) is (i) with
 j = d − 1 ∈ [0, n − 1], by Lemma 3(a), so it gives x^{d−1}. The term
 C(m + n − d − s, n − s) is (ii), so it gives x^{d−1}(1 − x)^s. ∎
 
-When A = 0 this is H′ of [H]. When A > 0 the right-hand side has negative
-coefficients (for s = 2, an all-ascent class gives 2x^d − x^{d+1}). So
-Theorem F is an exact formula, not a combinatorial interpretation. The
+When A = 0 this is H′ of [H]. The right-hand side as a whole equals
+h_C(P), so its coefficients are ≥ 0 (Theorem H). When A > 0, each
+individual all-ascent term has a negative coefficient: its
+x^{d+1}-coefficient is −C(s, 2) (for s = 2 the term is 2x^d − x^{d+1}).
+Other classes can cancel this in the sum. So Theorem F is a signed
+formula, not a combinatorial interpretation. The
 worked example of [H] §2.4 (0 < 1, 3 < 4, 2 isolated) has one all-ascent
 class, 3041 | 2, with d = 2 and s = 2. Theorem F gives
 h_C = f + (2x² − x³) − x² = f + x² − x³, which takes f = (1, 9, 8, 2) to
@@ -144,6 +156,10 @@ class. Subtracting Theorem F from f gives
 
 *Proof.* g_κ(1) = 0. Write g_κ = −(1 − x)u(x) with
 u(x) = x^{d−1}(1 − (1 − x)^{s−1}). Then g_κ′(1) = u(1) = 1, since s ≥ 2. ∎
+
+An all-ascent class has s ≥ 2 by definition ([H] §0: for s = 1 there are
+no junctions and the class falls under the s = 1 case of Lemma 1), so M
+and L need no further hypothesis ([AudH″] §4).
 
 **Corollary L (PROVEN).** Suppose A > 0, and let d_0 be the least d_κ over
 the all-ascent classes. Then f and h_C agree below degree d_0, and
@@ -200,7 +216,8 @@ and each must be refuted.
 
 n = 7 takes about two minutes on one core (96428 labelled posets). Going to
 n = 8 means 16999 posets and, extrapolating the growth from n = 6 to n = 7,
-roughly 2·10⁶ labelled posets. That would take well over the 25-minute
+roughly 2·10⁶ labelled posets (the exact count is 2 800 472, measured in
+[AudH″] §6). That would take well over the 25-minute
 bound used here, so the computation is reported for n ≤ 7 only. The proof
 does not depend on it.
 
